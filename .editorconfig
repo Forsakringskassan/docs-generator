@@ -1,0 +1,22 @@
+# EditorConfig documentation: http://EditorConfig.org
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+
+[Jenkinsfile]
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{html,vue,js,jsx,ts,tsx,scss,json}]
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.md]
+# markdown använder två trailing spaces för att markera manuell radbrytning
+trim_trailing_whitespace = false

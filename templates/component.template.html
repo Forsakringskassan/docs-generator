@@ -1,0 +1,28 @@
+{% extends "content-with-menu.template.html" %}
+
+<!-- prettier-ignore -->
+{% block aside %}
+<dl>
+    <!-- prettier-ignore -->
+    {% if doc.attributes.component %}
+    <dt>Komponent</dt>
+    <dd>
+        {% for component in doc.attributes.component %}
+        <code>{{ component }}</code>{% if not loop.last %}, {% endif %} {% endfor %}
+    </dd>
+    {% endif %}
+
+    <!-- prettier-ignore -->
+    {% if doc.attributes.status %}
+    <dt>Status</dt>
+    <dd>
+        <div class="badge badge--{{ doc.attributes.badge }}">{{ doc.attributes.status }}</div>
+    </dd>
+    {% endif %}
+</dl>
+{% endblock %}
+
+<!-- prettier-ignore -->
+{% block content %}
+{{ doc.body | marked }}
+{% endblock %}

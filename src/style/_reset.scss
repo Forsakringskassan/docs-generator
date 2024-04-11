@@ -1,0 +1,59 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin-top: 0;
+}
+
+article,
+aside,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section {
+    display: block;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+select:focus::-ms-value {
+    background: none;
+    color: #000;
+    outline: 1px dotted #000;
+}
+
+ul,
+ol {
+    padding-left: 1rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}

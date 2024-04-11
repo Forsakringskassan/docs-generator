@@ -1,0 +1,19 @@
+{% extends "content-with-menu.template.html" %}
+<!-- prettier-ignore -->
+{% block aside %}
+<dl>
+    <!-- prettier-ignore -->
+    {% if doc.attributes.component %}
+    <dt>Komponent</dt>
+    <dd>
+        {% for component in doc.attributes.component %}
+        <code>{{ component }}</code>{% if not loop.last %}, {% endif %} {% endfor %}
+    </dd>
+    {% endif %}
+</dl>
+{% endblock %}
+
+<!-- prettier-ignore -->
+{% block content %}
+{{ doc.body | marked }}
+{% endblock %}

@@ -1,0 +1,15 @@
+<!-- prettier-ignore -->
+{% import "macro/menu.html" as menu %}
+
+<!-- prettier-ignore -->
+{% extends "base.template.html" %}
+
+<!-- prettier-ignore -->
+{% block sidenav %}
+<div id="sidenav">{%- if sidenav -%} {{ menu.sidenav(doc, sidenav, "Sekundär") }} {%- endif -%}</div>
+{% endblock %}
+
+<!-- prettier-ignore -->
+{% block content %}
+{{ doc.body | marked }}
+{% endblock %}

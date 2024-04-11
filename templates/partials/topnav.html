@@ -1,0 +1,22 @@
+<nav class="imenu imenu--horizontal" aria-label="Primär">
+    <ul class="imenu__list">
+        <!-- prettier-ignore -->
+        {%- for nav in topnav.children -%}
+        {% set navPath = nav.path | replace("html", "") %}
+        {% set navPath = navPath | replace(".", "") %}
+        {% set activePage = navPath in doc.fileInfo.fullPath %}
+        <li class="imenu__list__item {% if activePage %}imenu__list__item--highlight{% endif %}">
+            <div
+                class="imenu__list__anchor-container {% if activePage %}imenu__list__anchor-container--highlight{% endif %}"
+            >
+                <a
+                    class="imenu__list__anchor {% if activePage %}imenu__list__anchor--highlight{% endif %}"
+                    href="{{ nav.path | relative(doc) }}"
+                >
+                    {{ nav.title }}
+                </a>
+            </div>
+        </li>
+        {%- endfor -%}
+    </ul>
+</nav>

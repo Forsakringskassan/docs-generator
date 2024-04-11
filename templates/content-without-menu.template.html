@@ -1,0 +1,10 @@
+{% extends "base.template.html" %}
+
+<!-- prettier-ignore -->
+{% block sidenav %}
+{% endblock %}
+
+<!-- prettier-ignore -->
+{% block content %}
+{{ doc.body | marked }}
+{% endblock %}

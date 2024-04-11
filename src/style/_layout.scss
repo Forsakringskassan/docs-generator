@@ -1,0 +1,85 @@
+@use "breakpoints" as bp;
+
+.layout-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    flex: 0 0 auto;
+}
+
+#primary {
+    flex: 1 1 auto;
+    display: grid;
+    grid-gap: 0 2rem;
+}
+
+footer {
+    flex: 0 0 auto;
+}
+
+main {
+    padding: 0 3rem 2rem;
+    background: #fff;
+    max-width: 920px;
+}
+
+.layout--content-with-menu,
+.layout--pattern,
+.layout--component {
+    #primary {
+        --sidenav-width: 350px;
+
+        padding-right: 2rem;
+        grid-template:
+            "sidenav title" auto
+            "sidenav aside" auto
+            "sidenav content" 1fr
+            / min-content 1fr;
+
+        @media screen and (width >= #{bp.$breakpoint-md}) {
+            grid-template:
+                "sidenav title aside" auto
+                "sidenav content aside" 1fr
+                / min-content minmax(10rem, 920px) auto;
+        }
+    }
+
+    main {
+        display: contents;
+        padding: 0;
+        max-width: none;
+    }
+
+    #title,
+    #content {
+        padding-left: 1rem;
+    }
+
+    #aside {
+        @media screen and (width < #{bp.$breakpoint-lg}) {
+            padding-left: 1rem;
+        }
+    }
+}
+
+#sidenav {
+    grid-area: sidenav;
+}
+
+#aside {
+    grid-area: aside;
+}
+
+#title {
+    grid-area: title;
+    margin-top: 1.2rem;
+}
+
+#content {
+    grid-area: content;
+    padding-bottom: 1rem;
+    overflow-x: auto;
+}

@@ -1,0 +1,10 @@
+*.tgz
+.jest-cache/
+.eslintcache
+build/
+coverage/
+dist/
+node_modules/
+test-results/
+temp/
+public/

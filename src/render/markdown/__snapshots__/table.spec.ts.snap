@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render table with datatable classes 1`] = `
+"<table class="table">
+<thead>
+<tr class="table__row">
+<th class="table__column table__column--text" scope="col">name</th>
+<th class="table__column table__column--text" scope="col">age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="table__row">
+<td class="table__column table__column--text">Donald Duck</td>
+<td class="table__column table__column--text">47</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text">Scrooge McDuck</td>
+<td class="table__column table__column--text">81</td>
+</tr>
+</tbody>
+</table>
+"
+`;

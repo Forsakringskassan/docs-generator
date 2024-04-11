@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should generate compiled SFC 1`] = `
+"import { setup } from "/path/to/setup.ts";
+
+import Vue from "vue";
+
+const exampleComponent =  Vue.extend({
+    name: "MockExample",
+    props: {
+        name: {
+            type: String,
+            required: true,
+        },
+    },
+});
+var render = function render() {
+  var _vm = this,
+    _c = _vm._self._c
+  return _c("p", { staticClass: "greeting" }, [
+    _vm._v("Hello " + _vm._s(_vm.name) + "!"),
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+exampleComponent.render = render;
+exampleComponent.staticRenderFns = staticRenderFns;
+
+setup({
+  rootComponent: exampleComponent,
+  selector: "#mock-example"
+});
+"
+`;
+
+exports[`should generate markup 1`] = `
+"
+        <div id="mock-example"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+.greeting {
+    color: red;
+}
+
+        </style>
+        <script defer src="./mock-example-123456.js"></script>
+    "
+`;

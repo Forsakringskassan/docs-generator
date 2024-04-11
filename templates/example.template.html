@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="{{ site.lang }}" class="layout--example">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>{{ doc.attributes.title }} - {{ site.name }}</title>
+
+        <!-- prettier-ignore -->
+        {%- for asset in injectHead | take("type", "css") %}
+        <link
+            rel="stylesheet"
+            href="{{ asset.publicPath | relative(doc) }}"
+            crossorigin
+            integrity="{{ asset.integrity }}"
+            {{
+            asset.attrs
+            }}
+        />
+        {%- endfor %}
+
+        <!-- prettier-ignore -->
+        {%- for asset in injectHead | take("type", "js") %}
+        <script
+            src="{{ asset.publicPath | relative(doc) }}"
+            crossorigin
+            integrity="{{ asset.integrity }}"
+            {{
+            asset.attrs
+            }}
+        ></script>
+        {%- endfor %}
+
+        <!-- prettier-ignore -->
+        {% container "head" %}
+    </head>
+    <body>
+        <!-- prettier-ignore -->
+        {%- for asset in vendors %}
+        <script src="{{ asset.publicPath | relative(doc) }}"></script>
+        {%- endfor %}
+
+        <!-- prettier-ignore -->
+        {%- for asset in injectBody | take("type", "css") %}
+        <link
+            rel="stylesheet"
+            href="{{ asset.publicPath | relative(doc) }}"
+            crossorigin
+            integrity="{{ asset.integrity }}"
+            {{
+            asset.attrs
+            }}
+        />
+        {%- endfor -%}
+
+        <!-- prettier-ignore -->
+        {%- for asset in injectBody | take("type", "js") %}
+        <script
+            src="{{ asset.publicPath | relative(doc) }}"
+            crossorigin
+            integrity="{{ asset.integrity }}"
+            {{
+            asset.attrs
+            }}
+        ></script>
+        {%- endfor %}
+
+        <main>{{ content }}</main>
+    </body>
+</html>

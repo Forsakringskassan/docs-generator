@@ -1,0 +1,68 @@
+<div class="toolbar__item">
+    <div class="select-field" hidden>
+        <label for="fkds-theme-select" class="label sr-only"> Tema </label>
+        <div class="select-field__icon-wrapper">
+            <select id="fkds-theme-select" class="select-field__select">
+                <option value="exp">Externportal</option>
+                <option value="int">Intern</option>
+            </select>
+            <svg focusable="false" class="icon select-field__icon">
+                <use xlink:href="#docs-icon-arrow-down"></use>
+            </svg>
+        </div>
+    </div>
+
+    <script>
+        function themeSelector() {
+            const cookieName = "fkds-theme";
+
+            function getCookie(key) {
+                const cookie = document.cookie.split("; ").find((item) => item.trim().startsWith(`${key}=`));
+                if (cookie) {
+                    const [, value] = cookie.split("=", 2);
+                    return value;
+                } else {
+                    return null;
+                }
+            }
+
+            function setCookie(key, value) {
+                document.cookie = `${key}=${value}; expires=Fri, 31 Dec 9999 23:59:59 GMT; SameSite=strict`;
+            }
+
+            function enableTheme(theme) {
+                const style = Array.from(document.querySelectorAll("[data-theme]"));
+                for (const el of style) {
+                    el.disabled = el.dataset.theme !== theme;
+                }
+            }
+
+            const el = document.querySelector("#fkds-theme-select");
+            const wrapper = el.closest(".select-field");
+            el.addEventListener("change", () => {
+                const theme = el.value;
+                setCookie(cookieName, theme);
+                enableTheme(theme);
+            });
+
+            const selected = getCookie(cookieName) || "exp";
+            enableTheme(selected);
+            el.value = selected;
+
+            wrapper.hidden = false;
+        }
+
+        /* technical debt, this entire script should be moved to src/runtime and
+         * import this function instead */
+        function onContentReady(callback) {
+            const { readyState } = document;
+            if (readyState === "complete" || readyState === "interactive") {
+                setTimeout(callback, 0);
+            } else {
+                document.addEventListener("DOMContentLoaded", callback);
+            }
+        }
+
+        onContentReady(themeSelector);
+    </script>
+</div>

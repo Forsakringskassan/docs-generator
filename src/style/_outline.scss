@@ -1,0 +1,105 @@
+@use "breakpoints" as bp;
+
+// palette
+$fk-black-15: #ddddde;
+
+// variables
+$outline-border-size: 4px;
+$outline-border-duration: 300ms;
+$outline-active-border: var(--f-color-brand-a-strong);
+$outline-active-background: $fk-black-15;
+
+#outline {
+    margin-bottom: 1rem;
+    display: none;
+    position: sticky;
+    top: 1rem;
+    padding-right: 1rem;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+    max-width: 15rem;
+    scrollbar-width: thin;
+
+    @media (width >= #{bp.$breakpoint-lg}) {
+        display: block;
+    }
+
+    &::-webkit-scrollbar {
+        height: 7px;
+        width: 7px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #c0c0c0;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: #a7a7a7;
+    }
+
+    .outline__heading {
+        font-size: 1rem;
+        font-weight: normal;
+        color: #5f6165;
+        margin: 0 0 0.5rem;
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+        border-left: 1px solid $fk-black-15;
+    }
+
+    li {
+        list-style: none;
+        padding-left: 4px;
+        position: relative;
+
+        &::before,
+        &::after {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: $outline-border-size;
+            background: transparent;
+        }
+
+        &::before {
+            transition: background-color $outline-border-duration ease-in;
+        }
+
+        @media not (prefers-reduced-motion: reduce) {
+            &.active::before {
+                background: $outline-active-border;
+            }
+        }
+
+        &:hover {
+            &::after {
+                background: $outline-active-border;
+            }
+
+            a {
+                background: $outline-active-background;
+            }
+        }
+    }
+
+    a {
+        display: inline-block;
+        width: 100%;
+        font-size: 16px;
+        line-height: 20px;
+        color: var(--f-font-color-primary);
+        padding: 0.5rem;
+    }
+}

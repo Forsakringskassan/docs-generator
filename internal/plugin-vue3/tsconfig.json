@@ -1,0 +1,10 @@
+{
+    "extend": "../../tsconfig.json",
+    "compilerOptions": {
+        "emitDeclarationOnly": true,
+        "declaration": true,
+        "rootDir": "src",
+        "outDir": "dist",
+        "esModuleInterop": true
+    }
+}

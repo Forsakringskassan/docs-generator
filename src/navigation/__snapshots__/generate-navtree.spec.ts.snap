@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`smoketest 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "external": false,
+          "id": "fs:docs/navigation/index.md",
+          "path": "./navigation/",
+          "sortorder": 1,
+          "title": "Navigation",
+        },
+        {
+          "external": false,
+          "id": "fs:docs/navigation/child-page-1.md",
+          "path": "./navigation/child-page-1.html",
+          "sortorder": Infinity,
+          "title": "Child Page 1",
+        },
+        {
+          "external": false,
+          "id": "fs:docs/navigation/child-page-2.md",
+          "path": "./navigation/child-page-2.html",
+          "sortorder": Infinity,
+          "title": "Child Page 2",
+        },
+        {
+          "external": false,
+          "id": "fs:docs/navigation/child-page-3.md",
+          "path": "./navigation/child-page-3.html",
+          "sortorder": Infinity,
+          "title": "Child Page 3",
+        },
+        {
+          "children": [
+            {
+              "external": false,
+              "id": "fs:docs/navigation/group/nested-page-1.md",
+              "path": "./navigation/group/nested-page-1.html",
+              "sortorder": Infinity,
+              "title": "Nested Page 1",
+            },
+            {
+              "external": false,
+              "id": "fs:docs/navigation/group/nested-page-2.md",
+              "path": "./navigation/group/nested-page-2.html",
+              "sortorder": Infinity,
+              "title": "Nested Page 2",
+            },
+            {
+              "external": false,
+              "id": "fs:docs/navigation/group/nested-page-3.md",
+              "path": "./navigation/group/nested-page-3.html",
+              "sortorder": Infinity,
+              "title": "Nested Page 3",
+            },
+          ],
+          "key": "./navigation/group",
+          "path": "",
+          "sortorder": Infinity,
+          "title": "group",
+        },
+        {
+          "children": [
+            {
+              "external": false,
+              "id": "fs:docs/navigation/sorted-group/top-page.md",
+              "path": "./navigation/sorted-group/top-page.html",
+              "sortorder": 1,
+              "title": "Top page",
+            },
+            {
+              "external": false,
+              "id": "fs:docs/navigation/sorted-group/sorted-page-3.md",
+              "path": "./navigation/sorted-group/sorted-page-3.html",
+              "sortorder": 2,
+              "title": "Sorted Page 3",
+            },
+            {
+              "external": false,
+              "id": "fs:docs/navigation/sorted-group/sorted-page-1.md",
+              "path": "./navigation/sorted-group/sorted-page-1.html",
+              "sortorder": Infinity,
+              "title": "Sorted Page 1",
+            },
+            {
+              "external": false,
+              "id": "fs:docs/navigation/sorted-group/sorted-page-2.md",
+              "path": "./navigation/sorted-group/sorted-page-2.html",
+              "sortorder": Infinity,
+              "title": "Sorted Page 2",
+            },
+          ],
+          "key": "./navigation/sorted-group",
+          "path": "",
+          "sortorder": Infinity,
+          "title": "sorted-group",
+        },
+      ],
+      "key": "./navigation",
+      "path": "./navigation/",
+      "sortorder": 1,
+      "title": "Navigation",
+    },
+    {
+      "children": [
+        {
+          "external": false,
+          "id": "fs:docs/markdown/code-preview.md",
+          "path": "./markdown/code-preview.html",
+          "sortorder": Infinity,
+          "title": "Code preview",
+        },
+        {
+          "external": false,
+          "id": "fs:docs/markdown/index.md",
+          "path": "./markdown/",
+          "sortorder": Infinity,
+          "title": "Markdown",
+        },
+      ],
+      "key": "./markdown",
+      "path": "./markdown/",
+      "sortorder": Infinity,
+      "title": "Markdown",
+    },
+    {
+      "external": false,
+      "id": "fs:docs/processors.md",
+      "path": "./processors.html",
+      "sortorder": Infinity,
+      "title": "processors",
+    },
+  ],
+  "key": ".",
+  "path": "",
+  "sortorder": Infinity,
+  "title": "Todo",
+}
+`;

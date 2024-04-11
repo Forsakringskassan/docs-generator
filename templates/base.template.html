@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="{{ site.lang }}" class="layout--{{ doc.template }}">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>{{ doc.attributes.title }} - {{ site.name }}</title>
+
+        <!-- prettier-ignore -->
+        {%- for asset in injectHead | take("type", "css") %}
+        <link
+            rel="stylesheet"
+            href="{{ asset.publicPath | relative(doc) }}"
+            crossorigin
+            integrity="{{ asset.integrity }}"
+            {{
+            asset.attrs
+            }}
+        />
+        {%- endfor %}
+
+        <!-- prettier-ignore -->
+        {%- for asset in injectHead | take("type", "js") %}
+        <script
+            src="{{ asset.publicPath | relative(doc) }}"
+            crossorigin
+            integrity="{{ asset.integrity }}"
+            {{
+            asset.attrs
+            }}
+        ></script>
+        {%- endfor %}
+
+        <!-- prettier-ignore -->
+        {% container "head" %}
+
+        <link rel="preload" href="{{ searchDataUrl | relative(doc) }}" as="fetch" crossorigin id="search-data" />
+    </head>
+    <body>
+        <!-- prettier-ignore -->
+        {% container "body:begin" %}
+
+        <div class="layout-wrapper">
+            <header>
+                <!-- prettier-ignore -->
+                {%- include "partials/header.html" -%}
+            </header>
+
+            <div id="primary">
+                <!-- prettier-ignore -->
+                {%- block sidenav %}
+                {%- endblock %}
+
+                <!-- prettier-ignore -->
+                {%- for asset in vendors %}
+                <script src="{{ asset.publicPath | relative(doc) }}"></script>
+                {%- endfor %}
+
+                <!-- prettier-ignore -->
+                {%- for asset in injectBody | take("type", "css") %}
+                <link
+                    rel="stylesheet"
+                    href="{{ asset.publicPath | relative(doc) }}"
+                    crossorigin
+                    integrity="{{ asset.integrity }}"
+                    {{
+                    asset.attrs
+                    }}
+                />
+                {%- endfor -%}
+
+                <main>
+                    <h1 id="title">{{ doc.attributes.title }}</h1>
+                    {% set arr = ['component', 'pattern'] %} {% if doc.attributes.layout in arr %}
+                    <div id="aside">
+                        <!-- prettier-ignore -->
+                        {%- block aside %}
+                        {%- endblock %}
+
+                        <div id="outline">
+                            <h2 class="outline__heading">Innehåll</h2>
+                            <ul>
+                                {% for heading in doc.outline %}
+                                <li><a href="#{{ heading.anchor }}">{{ heading.title | escape }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <div id="content">
+                        <!-- prettier-ignore -->
+                        {%- block content %}
+                        {%- endblock %}
+                    </div>
+                </main>
+            </div>
+
+            <footer>
+                <!-- prettier-ignore -->
+                {%- include "partials/footer.html" -%}
+            </footer>
+        </div>
+
+        <!-- prettier-ignore -->
+        {%- include "partials/spritesheet.html" -%}
+
+        <!-- prettier-ignore -->
+        {% container "body:end" %}
+
+        <!-- prettier-ignore -->
+        {%- for asset in injectBody | take("type", "js") %}
+        <script
+            src="{{ asset.publicPath | relative(doc) }}"
+            crossorigin
+            integrity="{{ asset.integrity }}"
+            {{
+            asset.attrs
+            }}
+        ></script>
+        {%- endfor %}
+    </body>
+
+    <!--
+
+         Source file: {{ doc.fileInfo.fullPath }}
+         Document ID: {{ doc.id }}
+         Document name: {{ doc.name }}
+         Document alias: {% for alias in doc.alias %}{{ alias }}{% if not loop.last %}, {% endif %}{% endfor %}
+
+    -->
+</html>

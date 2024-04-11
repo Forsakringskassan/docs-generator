@@ -1,0 +1,25 @@
+<dialog id="search-dialog">
+    <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
+    <form id="search-form">
+        <div class="text-field">
+            <label for="search-field" class="label"> Sök </label>
+            <div class="text-field__input-wrapper">
+                <div class="text-field__icon-wrapper">
+                    <input
+                        autofocus
+                        autocomplete="off"
+                        autocapitalize="off"
+                        autocorrect="off"
+                        id="search-field"
+                        type="text"
+                        class="text-field__input"
+                        maxlength="50"
+                        placeholder="Skriv för att börja söka"
+                    />
+                </div>
+            </div>
+        </div>
+        <div id="search-results"></div>
+        <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
+    </form>
+</dialog>

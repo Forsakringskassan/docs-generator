@@ -1,0 +1,28 @@
+#version button {
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    margin: 0;
+    color: var(--f-text-color-discrete);
+    text-decoration-color: var(--f-text-color-discrete);
+}
+
+#version-dialog {
+    width: 30rem;
+    max-height: 45rem;
+}
+
+#version-dialog-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+#version-dialog .list__item__itempane {
+    padding: 0.2rem;
+}
+
+#version button:hover {
+    background-color: #f4f4f4;
+}

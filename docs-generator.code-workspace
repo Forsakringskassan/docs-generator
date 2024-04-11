@@ -1,0 +1,43 @@
+{
+    "folders": [
+        {
+            "path": ".",
+            "name": "@forsakringskassan/docs-generator",
+        },
+    ],
+    "settings": {
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": true,
+        },
+        "eslint.enable": true,
+        "prettier.requireConfig": true,
+        "editor.renderWhitespace": "boundary",
+        "eslint.alwaysShowStatus": true,
+        "prettier.disableLanguages": [],
+        "eslint.validate": [
+            "javascript",
+            "javascriptreact",
+            "typescript",
+            "typescriptreact",
+            "vue",
+            "html",
+        ],
+        "[vue]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode",
+        },
+    },
+    "extensions": {
+        "recommendations": [
+            "christian-kohler.npm-intellisense",
+            "dbaeumer.vscode-eslint",
+            "ecmel.vscode-html-css",
+            "EditorConfig.EditorConfig",
+            "eg2.vscode-npm-script",
+            "esbenp.prettier-vscode",
+            "octref.vetur",
+            "jebbs.plantuml",
+        ],
+    },
+}

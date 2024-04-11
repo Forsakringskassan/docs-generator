@@ -1,0 +1,157 @@
+{
+  "name": "@forsakringskassan/docs-generator",
+  "version": "1.23.1",
+  "description": "Documentation generator",
+  "keywords": [
+    "documentation"
+  ],
+  "homepage": "https://github.com/Forsakringskassan/docs-generator",
+  "bugs": "https://github.com/Forsakringskassan/docs-generator/issues",
+  "repository": {
+    "url": "https://github.com/Forsakringskassan/docs-generator.git"
+  },
+  "license": "MIT",
+  "author": "Försäkringskassan",
+  "sideEffects": [
+    "dist/runtime.js",
+    "src/runtime/**/*"
+  ],
+  "exports": {
+    ".": "./dist/generator.js",
+    "./markdown": "./dist/markdown.js",
+    "./runtime": "./dist/runtime.js",
+    "./docs.css": "./dist/style/index.css",
+    "./style.css": "./dist/style/index.css",
+    "./style/*.css": "./dist/style/*.css"
+  },
+  "main": "dist/generator.js",
+  "files": [
+    "dist",
+    "tsconfig-examples.json",
+    "templates"
+  ],
+  "workspaces": [
+    "internal/*",
+    "docs"
+  ],
+  "scripts": {
+    "prebuild": "npm run --workspaces --if-present build",
+    "build": "tsc && node build.js",
+    "postbuild": "node generate-docs.mjs",
+    "build:docs": "node generate-docs.mjs",
+    "eslint": "eslint --cache .",
+    "eslint:fix": "eslint --fix .",
+    "lint": "run-s prettier:check eslint stylelint",
+    "prepack": "release-prepack --bundle --retain-scripts",
+    "postpack": "release-postpack",
+    "prepare": "husky",
+    "prepublishOnly": "release-prepublish --bundle --retain-scripts",
+    "prettier:check": "prettier --check .",
+    "prettier:write": "prettier --write .",
+    "postpublish": "release-postpublish",
+    "start": "http-server public",
+    "stylelint": "stylelint \"src/**/*.scss\"",
+    "pretest": "run-s prettier:check eslint stylelint",
+    "test": "jest"
+  },
+  "commitlint": {
+    "extends": "@forsakringskassan/commitlint-config/no-jira"
+  },
+  "lint-staged": {
+    "*.{json,md,css,scss,html}": "prettier --write",
+    "*.{js,cjs,mjs,vue,ts}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
+  "prettier": "@forsakringskassan/prettier-config",
+  "release": {
+    "extends": "@forsakringskassan/semantic-release-config"
+  },
+  "stylelint": {
+    "extends": [
+      "@forsakringskassan/stylelint-config"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.[jt]s",
+      "internal/*/src/**/*.[jt]s",
+      "packages/*/src/**/*.[jt]s",
+      "!**/*.spec.[jt]s",
+      "!**/*.d.ts",
+      "!**/index.[jt]s",
+      "!**/__fixtures__/**"
+    ],
+    "preset": "@forsakringskassan/jest-config"
+  },
+  "dependencies": {
+    "@leeoniya/ufuzzy": "1.0.14",
+    "chokidar": "3.6.0",
+    "cli-progress": "3.12.0",
+    "execa": "8.0.1",
+    "front-matter": "4.0.2",
+    "glob": "10.3.12",
+    "highlight.js": "11.9.0",
+    "livereload-js": "4.0.2",
+    "markdown-it": "14.1.0",
+    "mermaid": "10.9.0",
+    "nunjucks": "3.2.4",
+    "piscina": "2.2.0",
+    "scroll-into-view-if-needed": "3.1.0",
+    "semver": "7.6.0",
+    "tiny-lr": "2.0.0",
+    "vue-docgen-api": "4.78.0"
+  },
+  "devDependencies": {
+    "@forsakringskassan/commitlint-config": "1.2.1",
+    "@forsakringskassan/eslint-config": "11.0.0",
+    "@forsakringskassan/eslint-config-cli": "11.0.0",
+    "@forsakringskassan/eslint-config-jest": "11.0.0",
+    "@forsakringskassan/eslint-config-typescript": "11.0.0",
+    "@forsakringskassan/eslint-config-vue": "11.0.0",
+    "@forsakringskassan/jest-config": "29.5.0",
+    "@forsakringskassan/prettier-config": "2.0.1",
+    "@forsakringskassan/stylelint-config": "2.2.0",
+    "@html-validate/release-scripts": "6.4.0",
+    "@microsoft/api-extractor": "7.43.0",
+    "@types/cli-progress": "3.11.5",
+    "@types/d3": "7.4.3",
+    "@types/dompurify": "3.0.5",
+    "@types/express": "4.17.21",
+    "@types/glob": "8.1.0",
+    "@types/jest": "29.5.12",
+    "@types/markdown-it": "13.0.7",
+    "@types/node": "16.18.95",
+    "@types/nunjucks": "3.2.6",
+    "@types/pug": "2.0.10",
+    "esbuild": "0.20.2",
+    "express": "4.19.2",
+    "html-minifier": "4.0.0",
+    "http-server": "14.1.1",
+    "husky": "9.0.11",
+    "is-ci": "3.0.1",
+    "jest-environment-jsdom": "29.7.0",
+    "lint-staged": "15.2.2",
+    "npm-pkg-lint": "2.4.1",
+    "npm-run-all2": "6.1.2",
+    "sass": "1.74.1",
+    "ts-node": "10.9.2",
+    "typescript": "5.4.4"
+  },
+  "peerDependencies": {
+    "esbuild": "0.x",
+    "he": "^1.2",
+    "sass": "^1.54",
+    "vue": "^2 || ^3"
+  },
+  "engines": {
+    "node": ">= 16.17"
+  },
+  "externalDependencies": [
+    "livereload-js",
+    "nunjucks",
+    "piscina",
+    "vue-docgen-api"
+  ]
+}

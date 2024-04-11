@@ -1,0 +1,100 @@
+@use "breakpoints" as bp;
+
+#sidenav {
+    // this variable is overridden at runtime by js
+    --header-footer-visible-height: 4.5rem;
+
+    overflow: auto;
+    max-height: calc(100vh - var(--header-footer-visible-height));
+    position: sticky;
+    top: 0;
+}
+
+.navigation {
+    --active-background: #ddd;
+    --highlight-color: #116a3e;
+    --highlight-width: 4px;
+    --hover-color: #ddd;
+
+    display: none;
+    padding: 1.5rem;
+    width: var(--sidenav-width);
+    height: max-content;
+
+    .sidenav__toggle:checked + & {
+        display: block;
+    }
+
+    @media screen and (width >= #{bp.$breakpoint-md}) {
+        display: block;
+    }
+
+    ol {
+        padding: 0;
+    }
+
+    li {
+        list-style: none;
+        border-left: var(--highlight-width) solid transparent;
+
+        &.link.active {
+            border-color: var(--highlight-color);
+            background: var(--active-background);
+        }
+
+        &.link a {
+            display: block;
+            color: var(--f-text-color-default);
+            padding: 0.5rem calc(0.25rem + var(--highlight-width)) 0.5rem 0.25rem;
+            line-height: 1.2;
+            text-overflow: ellipsis;
+            overflow: hidden;
+
+            &:hover {
+                background: var(--hover-color);
+                border-color: var(--highlight-color);
+            }
+        }
+    }
+
+    summary {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        line-height: 1.5;
+        padding: 0.5rem calc(0.25rem + var(--highlight-width)) 0.5rem 0.25rem;
+
+        &:hover {
+            background: var(--hover-color);
+            border-color: var(--highlight-color);
+        }
+
+        &::after {
+            content: url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHBhdGggZD0iTTQ2Ny42NTggMTk2LjkxM0wyODMuNjU2IDM3Mi45MDdDMjc1LjkyMiAzODAuMzEzIDI2NS45NTMgMzg0IDI1NiAzODRDMjQ2LjA0NyAzODQgMjM2LjA3OCAzODAuMzEzIDIyOC4zNDQgMzcyLjkwN0w0NC4zNDIgMTk2LjkxM0MyOC4zODkgMTgxLjYzMyAyNy44MjYgMTU2LjMyMSA0My4wOTIgMTQwLjM1M0M1OC4zNzMgMTI0LjM1NCA4My42ODYgMTIzLjg1NCA5OS42NTUgMTM5LjEwM0wyNTYgMjg4LjY2TDQxMi4zNDUgMTM5LjEwM0M0MjguMzE0IDEyMy44MjIgNDUzLjYyNyAxMjQuMzg1IDQ2OC45MDggMTQwLjM1M0M0ODQuMTc0IDE1Ni4zMjEgNDgzLjYxMSAxODEuNjMzIDQ2Ny42NTggMTk2LjkxM1oiIGZpbGw9ImN1cnJlbnRDb2xvciIvPgo8L3N2Zz4K");
+            transform: translateY(3px);
+            transition: all 200ms cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s;
+            width: 1rem;
+            height: 1rem;
+            display: inline;
+        }
+    }
+
+    details {
+        &[open] > summary {
+            font-weight: 700;
+        }
+
+        &[open] > summary::after {
+            content: url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHBhdGggZD0iTTQ2Ny42NTggMTk2LjkxM0wyODMuNjU2IDM3Mi45MDdDMjc1LjkyMiAzODAuMzEzIDI2NS45NTMgMzg0IDI1NiAzODRDMjQ2LjA0NyAzODQgMjM2LjA3OCAzODAuMzEzIDIyOC4zNDQgMzcyLjkwN0w0NC4zNDIgMTk2LjkxM0MyOC4zODkgMTgxLjYzMyAyNy44MjYgMTU2LjMyMSA0My4wOTIgMTQwLjM1M0M1OC4zNzMgMTI0LjM1NCA4My42ODYgMTIzLjg1NCA5OS42NTUgMTM5LjEwM0wyNTYgMjg4LjY2TDQxMi4zNDUgMTM5LjEwM0M0MjguMzE0IDEyMy44MjIgNDUzLjYyNyAxMjQuMzg1IDQ2OC45MDggMTQwLjM1M0M0ODQuMTc0IDE1Ni4zMjEgNDgzLjYxMSAxODEuNjMzIDQ2Ny42NTggMTk2LjkxM1oiIGZpbGw9ImN1cnJlbnRDb2xvciIvPgo8L3N2Zz4K");
+            transform: rotate(180deg) translateY(-5px);
+            transition: all 200ms cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s;
+            width: 1rem;
+            height: 1rem;
+        }
+
+        > ol {
+            margin-bottom: 0;
+            margin-left: 1rem;
+        }
+    }
+}

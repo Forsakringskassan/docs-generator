@@ -1,0 +1,22 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "private": true,
+  "keywords": [
+    "documentation"
+  ],
+  "homepage": "https://github.com/Forsakringskassan/docs-generator",
+  "bugs": "https://github.com/Forsakringskassan/docs-generator/issues",
+  "repository": {
+    "url": "https://github.com/Forsakringskassan/docs-generator.git"
+  },
+  "license": "MIT",
+  "author": "Försäkringskassan",
+  "devDependencies": {
+    "@forsakringskassan/docs-generator": "file:..",
+    "vue": "3.4.21"
+  },
+  "engines": {
+    "node": ">= 16"
+  }
+}

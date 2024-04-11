@@ -1,0 +1,36 @@
+{
+  "name": "plugin-vue3",
+  "version": "1.0.0",
+  "private": true,
+  "keywords": [
+    "documentation"
+  ],
+  "homepage": "https://github.com/Forsakringskassan/docs-generator",
+  "bugs": "https://github.com/Forsakringskassan/docs-generator/issues",
+  "repository": {
+    "url": "https://github.com/Forsakringskassan/docs-generator.git"
+  },
+  "license": "MIT",
+  "author": "Försäkringskassan",
+  "exports": {
+    "types": "./dist/index.d.ts",
+    "import": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "scripts": {
+    "prebuild": "tsc",
+    "build": "node build.mjs"
+  },
+  "dependencies": {
+    "esbuild-plugin-vue3": "0.4.2"
+  },
+  "devDependencies": {
+    "@types/html-minifier": "4.0.5",
+    "esbuild": "0.20.2",
+    "html-minifier": "4.0.0",
+    "vue": "3.4.21"
+  },
+  "engines": {
+    "node": ">= 16"
+  }
+}

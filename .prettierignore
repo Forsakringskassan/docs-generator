@@ -1,0 +1,19 @@
+# owned by tooling
+package.json
+package-lock.json
+etc/*.api.md
+
+# generated files
+CHANGELOG.md
+
+# build artifacts
+coverage/
+dist/
+node_modules/
+.jest-cache/
+temp/
+test-results/
+public/
+
+# not parsable as json (but the output it generates is)
+templates/json.template.json

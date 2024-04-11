@@ -1,0 +1,39 @@
+{% macro sidenav_item(doc, node) %}
+<ol>
+    <!-- prettier-ignore -->
+    {%- for item in node.children -%}
+
+    <!-- prettier-ignore -->
+    {# section node #}
+    {%- if item.children -%}
+    <li class="expandable {% if item.active %}active{% endif %}">
+        <details {% if item.active %}open{% endif %}>
+            <summary>{{ item.title }}</summary>
+            <!-- prettier-ignore -->
+            {% if item.children.length > 0 %}
+            {{ sidenav_item(doc, item) }}
+            {% endif %}
+        </details>
+    </li>
+    {%- endif -%}
+
+    <!-- prettier-ignore -->
+    {# leaf node #}
+    {%- if not item.children -%}
+    <li class="link {% if item.active %}active{% endif %}">
+        <a href="{{ item.path | relative(doc) }}" {% if item.external %} target="_blank" rel="external" {% endif %}>
+            {{ item.title }}
+        </a>
+    </li>
+    {%- endif -%}
+
+    <!-- prettier-ignore -->
+    {%- endfor -%}
+</ol>
+{% endmacro %}
+
+<!-- prettier-ignore -->
+{% macro sidenav(doc, node, label) %}
+<input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
+<nav class="navigation" aria-label="{{ label }}">{{ sidenav_item(doc, node) }}</nav>
+{% endmacro %}

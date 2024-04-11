@@ -1,0 +1,28 @@
+@use "reset";
+@use "breakpoints" as *;
+
+html {
+    --docs-font-family: -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", ubuntu, arial, sans-serif;
+    --docs-menu-width-expanded: 230px;
+
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    font-family: var(--docs-font-family);
+    font-weight: normal;
+    font-size: var(--f-font-size-default-rem);
+    min-width: 400px;
+
+    @media (width >= $breakpoint-md) {
+        font-size: var(--f-font-size-default-large-up-rem);
+    }
+}
+
+body {
+    color: var(--f-text-color-default);
+    font-size: var(--f-font-size-standard);
+    font-weight: var(--f-font-weight-normal);
+    line-height: var(--f-line-height-large);
+}
