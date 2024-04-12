@@ -97,7 +97,7 @@
     "markdown-it": "14.1.0",
     "mermaid": "10.9.0",
     "nunjucks": "3.2.4",
-    "piscina": "2.2.0",
+    "piscina": "4.4.0",
     "scroll-into-view-if-needed": "3.1.0",
     "semver": "7.6.0",
     "tiny-lr": "2.0.0",
