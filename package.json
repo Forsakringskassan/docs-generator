@@ -135,7 +135,7 @@
     "lint-staged": "15.2.2",
     "npm-pkg-lint": "2.4.1",
     "npm-run-all2": "6.1.2",
-    "sass": "1.74.1",
+    "sass": "1.75.0",
     "ts-node": "10.9.2",
     "typescript": "5.4.5"
   },
