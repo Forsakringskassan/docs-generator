@@ -32,7 +32,7 @@ export default defineComponent({
             return /* HTML */ `
                 <p>Hello {{ name }}!</p>
                 <template v-if="useCustomName">
-                    <label>Name: <input v-model="name" /></label>
+                    <label>Name: <input type="text" v-model="name" /></label>
                 </template>
             `;
         },

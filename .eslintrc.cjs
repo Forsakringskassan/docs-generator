@@ -34,5 +34,9 @@ module.exports = {
             files: "*.spec.[jt]s",
             extends: ["@forsakringskassan/jest"],
         },
+        {
+            files: "*.cy.[jt]s",
+            extends: ["@forsakringskassan/cypress"],
+        },
     ],
 };

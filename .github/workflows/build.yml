@@ -15,8 +15,7 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
             - name: Install dependencies
-              run: |
-                  npm ci
+              run: npm ci
             - name: ESLint
               run: npm run eslint
             - name: Prettier
@@ -28,3 +27,29 @@ jobs:
                   npm run --if-present build
                   npm pack
                   npm exec npm-pkg-lint
+
+    cypress:
+        name: Cypress E2E Tests
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+            - name: Use Node.js 20.x
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20.x
+            - name: Install dependencies
+              run: npm ci
+            - name: Build
+              run: npm run build
+            - name: Cypress tests
+              uses: cypress-io/github-action@v6
+              with:
+                  start: npm start
+                  build: npx cypress info
+            - uses: actions/upload-artifact@v4
+              if: failure()
+              with:
+                  name: cypress-screenshots
+                  path: cypress/screenshots
+                  if-no-files-found: ignore
