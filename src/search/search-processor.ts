@@ -1,7 +1,7 @@
 import path from "node:path/posix";
 import { type Document } from "../document";
 import { type Processor } from "../processor";
-import { getFingerprint, getOutputFilePath } from "../utils";
+import { getFingerprint, getIntegrity, getOutputFilePath } from "../utils";
 import { SearchEntry } from "./search-entry";
 import { generateIndex } from "./generate-index";
 
@@ -42,8 +42,10 @@ export function searchProcessor(): Processor {
             const index = generateIndex(entries);
             const body = JSON.stringify(index);
             const fingerprint = getFingerprint(body);
+            const integrity = getIntegrity(body);
             const outputName = `search-data-${fingerprint}.json`;
             context.setTemplateData("searchDataUrl", outputName);
+            context.setTemplateData("searchDataIntegrity", integrity);
             context.addDocument({
                 id: "search:data",
                 name: "search-data",

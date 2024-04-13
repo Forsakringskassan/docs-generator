@@ -1,7 +1,7 @@
 <template>
     <live-example language="vue" :template :livedata>
-        <label class="docs-block" for="html-name"> Name </label>
-        <select id="html-name" v-model="name" class="docs-block" name="html-name">
+        <label class="docs-block" for="vue-name"> Name </label>
+        <select id="vue-name" v-model="name" class="docs-block" name="vue-name">
             <option value="predefined">Predefined</option>
             <option value="custom">Custom</option>
         </select>
