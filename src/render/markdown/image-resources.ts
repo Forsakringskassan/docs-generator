@@ -1,9 +1,6 @@
 import path from "node:path/posix";
 import crypto from "node:crypto";
-import type markdownIt from "markdown-it";
-import MarkdownIt from "markdown-it";
-import type Renderer from "markdown-it/lib/renderer";
-import type Token from "markdown-it/lib/token";
+import type MarkdownIt from "markdown-it";
 import { type FileInfo } from "../../document";
 import { type MarkdownEnv } from "../markdown-env";
 
@@ -20,14 +17,14 @@ function getFilename(fileInfo: FileInfo, src: string): string {
 
 export function imageResources(options: {
     addResource(dst: string, src: string): void;
-}): (md: markdownIt) => void {
+}): (md: MarkdownIt) => void {
     const { addResource } = options;
     function imageResource(
-        tokens: Token[],
+        tokens: MarkdownIt.Token[],
         index: number,
         options: MarkdownIt.Options,
         env: MarkdownEnv,
-        self: Renderer,
+        self: MarkdownIt.Renderer,
     ): string {
         const { fileInfo } = env;
         const token = tokens[index];
@@ -56,7 +53,7 @@ export function imageResources(options: {
         return self.renderToken(tokens, index, options);
     }
 
-    return function (md: markdownIt): void {
+    return function (md: MarkdownIt): void {
         md.renderer.rules.image = imageResource;
     };
 }

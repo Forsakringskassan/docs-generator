@@ -1,19 +1,15 @@
-import type markdownIt from "markdown-it";
-import MarkdownIt from "markdown-it";
-import type Renderer from "markdown-it/lib/renderer";
-import StateBlock from "markdown-it/lib/rules_block/state_block";
-import type Token from "markdown-it/lib/token";
+import type MarkdownIt from "markdown-it";
 import { type Document } from "../../document";
 import { findDocument } from "../../utils/find-document";
 import { MarkdownEnv } from "../markdown-env";
 import { type SoftErrorType, SoftError } from "../soft-error";
 
 type RenderCallback = (
-    tokens: Token[],
+    tokens: MarkdownIt.Token[],
     index: number,
     options: MarkdownIt.Options,
     env: MarkdownEnv,
-    self: Renderer,
+    self: MarkdownIt.Renderer,
 ) => string;
 
 type Options = Record<string, RenderCallback>;
@@ -23,7 +19,7 @@ const markerChar = markerStr.charCodeAt(0);
 
 function parser(md: MarkdownIt, options: Options): void {
     function container(
-        state: StateBlock,
+        state: MarkdownIt.StateBlock,
         startLine: number,
         endLine: number,
         silent: boolean,
@@ -143,10 +139,10 @@ export function include(
     env: MarkdownEnv,
     included: Set<string>,
     handleSoftError: (error: SoftErrorType) => string,
-): (md: markdownIt) => void {
-    return function (md: markdownIt): void {
+): (md: MarkdownIt) => void {
+    return function (md: MarkdownIt): void {
         md.use(parser, {
-            api(tokens: Token[], index: number) {
+            api(tokens: MarkdownIt.Token[], index: number) {
                 const token = tokens[index];
                 const needle = token.content.trim();
                 const doc = findDocument(docs, needle);
