@@ -1,5 +1,4 @@
 import type MarkdownIt from "markdown-it";
-import type Token from "markdown-it/lib/token";
 import { type ExampleResult } from "../../examples";
 import { type MarkdownEnv } from "../markdown-env";
 import { findTestId, highlight, htmlencode, replaceAtLink } from "./utils";
@@ -35,7 +34,7 @@ export function codePreview(
 
     function fence(
         _md: MarkdownIt,
-        tokens: Token[],
+        tokens: MarkdownIt.Token[],
         idx: number,
         _options: MarkdownIt.Options,
         env: MarkdownEnv,

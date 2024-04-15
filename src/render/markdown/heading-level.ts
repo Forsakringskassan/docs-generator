@@ -1,9 +1,8 @@
-import type markdownIt from "markdown-it";
-import type Token from "markdown-it/lib/token";
+import type MarkdownIt from "markdown-it";
 import { generateId } from "../../utils/generate-id";
 import { type MarkdownEnv } from "../markdown-env";
 
-function getTokensText(tokens: Token[]): string {
+function getTokensText(tokens: MarkdownIt.Token[]): string {
     return tokens
         .filter((token) => ["text", "code_inline"].includes(token.type))
         .map((token) => token.content)
@@ -12,11 +11,11 @@ function getTokensText(tokens: Token[]): string {
 
 export function headingLevel(options: {
     initialLevel: number;
-}): (md: markdownIt) => void {
+}): (md: MarkdownIt) => void {
     const { initialLevel } = options;
     const offset = initialLevel - 1;
     let counter = 1;
-    return function (md: markdownIt): void {
+    return function (md: MarkdownIt): void {
         /* eslint-disable-next-line camelcase -- upstream library uses snake_case */
         md.renderer.rules.heading_open = function (
             tokens,
