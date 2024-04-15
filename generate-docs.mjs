@@ -22,7 +22,14 @@ const docs = new Generator({
     cacheFolder: "./temp/docs",
     exampleFolders: ["./docs"],
     templateFolders: ["./docs/templates"],
-    vendor: ["vue"],
+    vendor: [
+        {
+            package: "vue",
+            expose: "named",
+            alias: "vue/dist/vue.esm-bundler.js",
+        },
+        "@forsakringskassan/docs-live-example",
+    ],
     processors: [searchProcessor(), versionProcessor(pkg, "toolbar")],
     setupPath: path.resolve("docs/src/setup.ts"),
 });
@@ -56,6 +63,21 @@ try {
             include: "README.md",
             basePath: "./",
             fileReader: frontMatterFileReader,
+        },
+        {
+            include: [
+                "node_modules/@forsakringskassan/docs-live-example/README.md",
+            ],
+            basePath: "./node_modules/@forsakringskassan/docs-live-example",
+            fileReader: frontMatterFileReader,
+            transform(doc) {
+                doc.template = "content-with-menu";
+                doc.name = "Live example";
+                doc.attributes.title = "Live example";
+                doc.attributes.sortorder = 1;
+                doc.fileInfo.path = "./live-example";
+                return doc;
+            },
         },
         {
             include: "CHANGELOG.md",

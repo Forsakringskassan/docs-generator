@@ -34,7 +34,14 @@
         <!-- prettier-ignore -->
         {% container "head" %}
 
-        <link rel="preload" href="{{ searchDataUrl | relative(doc) }}" as="fetch" crossorigin id="search-data" />
+        <link
+            rel="preload"
+            href="{{ searchDataUrl | relative(doc) }}"
+            as="fetch"
+            crossorigin
+            integrity="{{ searchDataIntegrity }}"
+            id="search-data"
+        />
     </head>
     <body>
         <!-- prettier-ignore -->
@@ -53,7 +60,11 @@
 
                 <!-- prettier-ignore -->
                 {%- for asset in vendors %}
-                <script src="{{ asset.publicPath | relative(doc) }}"></script>
+                <script
+                    src="{{ asset.publicPath | relative(doc) }}"
+                    crossorigin
+                    integrity="{{ asset.integrity }}"
+                ></script>
                 {%- endfor %}
 
                 <!-- prettier-ignore -->

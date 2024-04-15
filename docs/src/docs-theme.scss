@@ -1,5 +1,6 @@
 @use "~@forsakringskassan/docs-generator/style/core";
 @use "~@forsakringskassan/docs-generator/style/site";
+@use "~@forsakringskassan/docs-live-example/dist/main";
 
 .mermaid p {
     margin-bottom: 0;
@@ -11,4 +12,8 @@
     height: 2rem;
     border-radius: 0.25rem;
     border: 1px solid #000;
+}
+
+.docs-block {
+    display: block;
 }

@@ -3,6 +3,7 @@
 .eslintcache
 build/
 coverage/
+cypress/fixtures/
 dist/
 node_modules/
 test-results/
