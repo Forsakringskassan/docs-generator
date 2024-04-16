@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [1.25.1](https://github.com/Forsakringskassan/docs-generator/compare/v1.25.0...v1.25.1) (2024-04-16)
+
+
+### Bug Fixes
+
+* **style:** adjust font-weight on headings ([5a2fb85](https://github.com/Forsakringskassan/docs-generator/commit/5a2fb8519655986c9c9100f896ad2ad16d60598b))
+* **style:** change font ([83c033f](https://github.com/Forsakringskassan/docs-generator/commit/83c033f35be6b0e6dbac2e4ec928991a99f95d5d))
+
 ## [1.25.0](https://github.com/Forsakringskassan/docs-generator/compare/v1.24.0...v1.25.0) (2024-04-15)
 
 
