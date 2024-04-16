@@ -28,18 +28,15 @@ p:not(.code-preview p) {
 main h1:not(.code-preview--default h1) {
     font-size: 2.5rem;
     color: #1b1e23;
-    font-weight: var(--f-font-weight-medium);
 }
 
 main h2:not(.code-preview--default h2) {
     font-size: 1.5rem;
-    font-weight: var(--f-font-weight-medium);
     margin-top: 3rem;
 }
 
 main h3:not(.code-preview--default h3) {
     font-size: 1.2rem;
-    font-weight: var(--f-font-weight-medium);
 }
 
 main h4:not(.code-preview--default h4) {
