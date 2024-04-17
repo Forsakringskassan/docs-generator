@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.25.2](https://github.com/Forsakringskassan/docs-generator/compare/v1.25.1...v1.25.2) (2024-04-17)
+
+
+### Bug Fixes
+
+* fix EPERM error when renaming output folder on Windows ([c82f5f1](https://github.com/Forsakringskassan/docs-generator/commit/c82f5f18beed8462bacbb711da0103e90842c8e4))
+
 ## [1.25.1](https://github.com/Forsakringskassan/docs-generator/compare/v1.25.0...v1.25.1) (2024-04-16)
 
 
