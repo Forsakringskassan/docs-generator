@@ -1,4 +1,5 @@
-import fs from "node:fs";
+import { existsSync } from "node:fs";
+import fs from "node:fs/promises";
 import path from "node:path";
 import {
     type CompileOptions,
@@ -361,7 +362,7 @@ export class Generator {
             setupPath,
         } = this;
 
-        this._prepareFolders();
+        await this._prepareFolders();
 
         const processors: Processor[] = [
             fileReaderProcessor(sourceFiles),
@@ -409,15 +410,15 @@ export class Generator {
         });
     }
 
-    private _prepareFolders(): void {
+    private async _prepareFolders(): Promise<void> {
         const { outputFolder, cacheFolder, assetFolder } = this;
-        fs.rmSync(cacheFolder, { force: true, recursive: true });
-        if (fs.existsSync(outputFolder)) {
-            fs.mkdirSync(path.dirname(cacheFolder), { recursive: true });
-            fs.renameSync(outputFolder, cacheFolder);
+        await fs.rm(cacheFolder, { force: true, recursive: true });
+        if (existsSync(outputFolder)) {
+            await fs.mkdir(path.dirname(cacheFolder), { recursive: true });
+            await fs.rename(outputFolder, cacheFolder);
         }
-        fs.mkdirSync(outputFolder, { recursive: true });
-        fs.mkdirSync(assetFolder, { recursive: true });
-        fs.mkdirSync("temp", { recursive: true });
+        await fs.mkdir(outputFolder, { recursive: true });
+        await fs.mkdir(assetFolder, { recursive: true });
+        await fs.mkdir("temp", { recursive: true });
     }
 }
