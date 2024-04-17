@@ -1,6 +1,7 @@
 import { existsSync } from "node:fs";
 import fs from "node:fs/promises";
 import path from "node:path";
+import fse from "fs-extra";
 import {
     type CompileOptions,
     type CSSAsset,
@@ -415,7 +416,12 @@ export class Generator {
         await fs.rm(cacheFolder, { force: true, recursive: true });
         if (existsSync(outputFolder)) {
             await fs.mkdir(path.dirname(cacheFolder), { recursive: true });
-            await fs.rename(outputFolder, cacheFolder);
+
+            /* `fs.rename(..)` does not work on windows when subdirectories are
+             * involved, these two operations are ofcourse much slower and not
+             * atomic but better than crashing */
+            await fse.copy(outputFolder, cacheFolder);
+            await fs.rm(outputFolder, { recursive: true });
         }
         await fs.mkdir(outputFolder, { recursive: true });
         await fs.mkdir(assetFolder, { recursive: true });
