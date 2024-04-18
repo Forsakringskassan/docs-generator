@@ -1,5 +1,7 @@
 # `@forsakringskassan/docs-generator`
 
+Hej
+
 ```bash
 npm install --save-dev --save-exact @forsakringskassan/docs-generator
 ```
