@@ -1,11 +1,18 @@
 @use "reset";
 @use "breakpoints" as *;
 
-html {
+:root {
     --docs-font-family: arial, "Helvetica Neue", sans-serif;
     --docs-font-weight: normal;
-    --docs-menu-width-expanded: 230px;
 
+    --docs-heading-font-family: arial, "Helvetica Neue", sans-serif;
+    --docs-heading-font-weight: normal;
+    --docs-heading-line-height: 1.4;
+
+    --docs-menu-width-expanded: 230px;
+}
+
+html {
     scroll-behavior: smooth;
 }
 

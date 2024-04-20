@@ -6,8 +6,9 @@ h3,
 h4,
 h5,
 h6 {
-    font-weight: var(--docs-font-weight);
-    line-height: var(--f-line-height-medium);
+    font-family: var(--docs-heading-font-family);
+    font-weight: var(--docs-heading-font-weight);
+    line-height: var(--docs-heading-line-height);
     margin-top: 0;
     margin-bottom: 0.25rem;
 }
