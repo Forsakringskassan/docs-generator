@@ -108,6 +108,21 @@ exports[`smoketest 1`] = `
       "children": [
         {
           "external": false,
+          "id": "fs:docs/theme/index.md",
+          "path": "./theme/",
+          "sortorder": 1,
+          "title": "Theme",
+        },
+      ],
+      "key": "./theme",
+      "path": "./theme/",
+      "sortorder": 1,
+      "title": "Theme",
+    },
+    {
+      "children": [
+        {
+          "external": false,
           "id": "fs:docs/live-example/example.md",
           "path": "./live-example/example.html",
           "sortorder": Infinity,

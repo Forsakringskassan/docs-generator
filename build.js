@@ -1,5 +1,6 @@
 const fs = require("node:fs");
 const path = require("node:path");
+const { URL, fileURLToPath } = require("node:url");
 const esbuild = require("esbuild");
 const isCI = require("is-ci");
 const sass = require("sass");
@@ -8,14 +9,48 @@ const { Extractor, ExtractorConfig } = require("@microsoft/api-extractor");
 const pkg = JSON.parse(fs.readFileSync("package.json", "utf-8"));
 const { externalDependencies, peerDependencies } = pkg;
 
+/** @type {import("sass").Importer<"async">} */
+const sassCSSVariableImporter = {
+    canonicalize(url, context) {
+        const canonicalUrl = new URL(`${url}.mjs`, context.containingUrl);
+        const filePath = fileURLToPath(canonicalUrl);
+        if (fs.existsSync(filePath)) {
+            return canonicalUrl;
+        } else {
+            return null;
+        }
+    },
+    async load(canonicalUrl) {
+        const filePath = fileURLToPath(canonicalUrl);
+        const { default: module } = await import(filePath);
+        const variables = Object.entries(module).flatMap(([key, entry]) => {
+            const prefix = key === "*" ? "--docs-" : `--docs-${key}-`;
+            return Object.entries(entry.variables).map(([variable, it]) => {
+                return {
+                    variable: `${prefix}${variable}`,
+                    value: it.value,
+                };
+            });
+        });
+        const lines = variables.map((it) => `${it.variable}: ${it.value};`);
+        return {
+            contents: `:root { ${lines.join(" ")} }`,
+            syntax: "css",
+        };
+    },
+};
+
 /**
  * @param {Array<{ src: string, dst: string }>} entrypoints
  */
-function buildStyle(entrypoints) {
+async function buildStyle(entrypoints) {
     console.log();
     for (const { src, dst } of entrypoints) {
         console.log("Building", src, "->", dst);
-        const result = sass.compile(src, { style: "expanded" });
+        const result = await sass.compileAsync(src, {
+            style: "expanded",
+            importers: [sassCSSVariableImporter],
+        });
         fs.mkdirSync(path.dirname(dst), { recursive: true });
         fs.writeFileSync(dst, result.css, "utf-8");
     }
@@ -119,7 +154,7 @@ async function build() {
     }
     console.groupEnd();
 
-    buildStyle([
+    await buildStyle([
         { src: "src/style/core.scss", dst: "dist/style/core.css" },
         { src: "src/style/site.scss", dst: "dist/style/site.css" },
         { src: "src/style/style.scss", dst: "dist/style/index.css" },

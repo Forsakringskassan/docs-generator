@@ -13,6 +13,44 @@ const require = module.createRequire(import.meta.url);
 
 const pkg = require("./package.json");
 
+async function cssVariablesFileReader(filePath) {
+    const { default: module } = await import(`./${filePath}`);
+    const capitalize = (value) => `${value[0].toUpperCase()}${value.slice(1)}`;
+    const groups = Object.entries(module).map(([key, entry]) => {
+        const name = key === "*" ? "Global" : `${capitalize(key)}`;
+        const prefix = key === "*" ? "--docs-" : `--docs-${key}-`;
+        const heading = `## ${name}`;
+        const description = entry.description;
+        const table = [
+            `| Variable | Default value | Description |`,
+            `|----------|---------------|-------------|`,
+            ...Object.entries(entry.variables).map(([variable, it]) => {
+                return `| \`${prefix}${variable}\` | \`${it.value}\` | ${it.description ?? "-"} |`;
+            }),
+        ].join("\n");
+        return [heading, description, table].join("\n\n");
+    });
+    const doc = {
+        id: `fs:${filePath.replace(/\\/g, "/")}`,
+        name: `css-variables:${filePath}`,
+        alias: [],
+        visible: false,
+        attributes: { sortorder: Infinity },
+        body: groups.join("\n\n"),
+        outline: [],
+        format: "markdown",
+        tags: [],
+        template: "",
+        fileInfo: {
+            path: "",
+            name: "",
+            fullPath: "",
+            outputName: false,
+        },
+    };
+    return [doc];
+}
+
 const docs = new Generator({
     site: {
         name: "FK Documentation generator",
@@ -89,6 +127,11 @@ try {
                 doc.body = doc.body.replace(/^# CHANGELOG$/m, "");
                 return doc;
             },
+        },
+        {
+            include: "src/style/css-variables.mjs",
+            basePath: "./src/style",
+            fileReader: cssVariablesFileReader,
         },
     ]);
 } catch (err) {
