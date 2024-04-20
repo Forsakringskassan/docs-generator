@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [1.25.3](https://github.com/Forsakringskassan/docs-generator/compare/v1.25.2...v1.25.3) (2024-04-20)
+
+
+### Bug Fixes
+
+* balanced header text wrapping ([7a11c46](https://github.com/Forsakringskassan/docs-generator/commit/7a11c4670a286aad166691461c6f8a708ccb381e))
+* separate variables for default font-weight and headings ([e941260](https://github.com/Forsakringskassan/docs-generator/commit/e94126013d2b0f6f5f6b0c6896d06f2eaff231ae))
+
 ## [1.25.2](https://github.com/Forsakringskassan/docs-generator/compare/v1.25.1...v1.25.2) (2024-04-17)
 
 
