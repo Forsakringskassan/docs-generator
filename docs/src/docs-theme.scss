@@ -17,3 +17,38 @@
 .docs-block {
     display: block;
 }
+
+.table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: separate;
+    border: 1px solid #eee;
+
+    .table__column {
+        padding: 0.25rem;
+        text-align: left;
+    }
+
+    th:first-child,
+    td:first-child {
+        padding-left: 1rem;
+    }
+
+    th:last-child,
+    td:last-child {
+        padding-right: 1rem;
+    }
+
+    thead .table__row {
+        background: #000;
+        color: #fff;
+    }
+
+    tbody .table__row:nth-child(2n) {
+        background: #eee;
+    }
+
+    code {
+        margin: 0;
+    }
+}
