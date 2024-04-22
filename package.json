@@ -129,7 +129,7 @@
     "@types/node": "16.18.96",
     "@types/nunjucks": "3.2.6",
     "@types/pug": "2.0.10",
-    "cypress": "13.7.3",
+    "cypress": "13.8.0",
     "cypress-html-validate": "6.1.0",
     "esbuild": "0.20.2",
     "express": "4.19.2",
