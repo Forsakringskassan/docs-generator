@@ -58,7 +58,7 @@ const docs = new Generator({
     },
     outputFolder: "./public",
     cacheFolder: "./temp/docs",
-    exampleFolders: ["./docs"],
+    exampleFolders: ["./docs", "./src"],
     templateFolders: ["./docs/templates"],
     vendor: [
         {

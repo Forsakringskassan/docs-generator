@@ -20,8 +20,12 @@ import {
     type VendorDefinition,
     vendorProcessor,
 } from "./vendor";
-import { Processor, ProcessorStage } from "./processor";
-import { ProcessorContext, TemplateBlockData } from "./processor-context";
+import { type Processor } from "./processor";
+import {
+    type ProcessorContext,
+    type TemplateBlockData,
+} from "./processor-context";
+import { type ProcessorStage } from "./processor-stage";
 import { serve } from "./serve";
 
 export { type CompileOptions, type ResourceTask } from "./assets";
@@ -54,7 +58,6 @@ export {
     type ProcessorHandler,
     type ProcessorHook,
     type ProcessorOptions,
-    type ProcessorStage,
 } from "./processor";
 export {
     selectableVersionProcessor,
@@ -68,6 +71,7 @@ export {
     type TemplateBlockRenderer,
     type TemplateData,
 } from "./processor-context";
+export { type ProcessorStage } from "./processor-stage";
 export { searchProcessor } from "./search";
 export { type SetupOptions } from "./setup-options";
 export {
