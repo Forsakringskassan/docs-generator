@@ -60,6 +60,8 @@ export {
     type ProcessorOptions,
 } from "./processor";
 export {
+    type ManifestProcessorOptions,
+    manifestProcessor,
     selectableVersionProcessor,
     themeSelectProcessor,
     versionBannerProcessor,

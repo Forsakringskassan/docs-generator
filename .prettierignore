@@ -1,7 +1,7 @@
 # owned by tooling
 package.json
 package-lock.json
-etc/*.api.md
+etc/*.md
 
 # generated files
 CHANGELOG.md

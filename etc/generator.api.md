@@ -108,6 +108,15 @@ export interface GeneratorSiteOptions {
 // @public (undocumented)
 export function livereloadProcessor(options: ProcessorOptions): Processor;
 
+// @public
+export function manifestProcessor(options: ManifestProcessorOptions): Processor;
+
+// @public
+export interface ManifestProcessorOptions {
+    json?: string;
+    markdown?: string;
+}
+
 // @public (undocumented)
 export interface MatomoOptions {
     apiUrl: string;

@@ -108,6 +108,28 @@ exports[`smoketest 1`] = `
       "children": [
         {
           "external": false,
+          "id": "fs:docs/processors/index.md",
+          "path": "./processors/",
+          "sortorder": 1,
+          "title": "Processors",
+        },
+        {
+          "external": false,
+          "id": "fs:docs/processors/manifest.md",
+          "path": "./processors/manifest.html",
+          "sortorder": Infinity,
+          "title": "Manifest",
+        },
+      ],
+      "key": "./processors",
+      "path": "./processors/",
+      "sortorder": 1,
+      "title": "Processors",
+    },
+    {
+      "children": [
+        {
+          "external": false,
           "id": "fs:docs/theme/index.md",
           "path": "./theme/",
           "sortorder": 1,
@@ -155,13 +177,6 @@ exports[`smoketest 1`] = `
       "path": "./markdown/",
       "sortorder": Infinity,
       "title": "Markdown",
-    },
-    {
-      "external": false,
-      "id": "fs:docs/processors.md",
-      "path": "./processors.html",
-      "sortorder": Infinity,
-      "title": "processors",
     },
   ],
   "key": ".",

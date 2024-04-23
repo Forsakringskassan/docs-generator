@@ -1,5 +1,7 @@
 ---
 name: Processors
+layout: content-with-menu
+sortorder: 1
 ---
 
 ## Writing a new processor

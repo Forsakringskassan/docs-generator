@@ -3,6 +3,7 @@ import module from "node:module";
 import {
     frontMatterFileReader,
     Generator,
+    manifestProcessor,
     navigationFileReader,
     versionProcessor,
     searchProcessor,
@@ -68,7 +69,11 @@ const docs = new Generator({
         },
         "@forsakringskassan/docs-live-example",
     ],
-    processors: [searchProcessor(), versionProcessor(pkg, "toolbar")],
+    processors: [
+        manifestProcessor({ markdown: "etc/docs-manifest.md" }),
+        searchProcessor(),
+        versionProcessor(pkg, "toolbar"),
+    ],
     setupPath: path.resolve("docs/src/setup.ts"),
 });
 
