@@ -55,7 +55,13 @@ export interface FileInfo {
     name: string;
     /** path relative to project root */
     fullPath: string;
-    /** output filename or `false` to disable writing result to a file */
+    /**
+     * Output filename or `false` to disable writing result to a file.
+     *
+     * When passing a filename these optional placeholders can be used:
+     *
+     * - `[hash]` - replaced with the hash of the content body.
+     */
     outputName: string | false;
 }
 
