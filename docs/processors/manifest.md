@@ -9,6 +9,20 @@ The manifest can be written in:
 -   Markdown format
 -   JSON format
 
+This page describes the processor for writing the manifest as a file on disk, for programmatical usage use:
+
+```ts
+const config = {
+    sourceFiles: [
+        /* ... */
+    ],
+};
+const docs = new Generator({
+    /* ... */
+});
+const manifest = await docs.manifest(config.sourceFiles);
+```
+
 ## Usage
 
 ```ts

@@ -26,7 +26,9 @@ import {
     type TemplateBlockData,
 } from "./processor-context";
 import { type ProcessorStage } from "./processor-stage";
+import { type Manifest } from "./processors";
 import { serve } from "./serve";
+import { getOutputFilePath, haveOutput } from "./utils";
 
 export { type CompileOptions, type ResourceTask } from "./assets";
 export {
@@ -60,6 +62,7 @@ export {
     type ProcessorOptions,
 } from "./processor";
 export {
+    type Manifest,
     type ManifestProcessorOptions,
     manifestProcessor,
     selectableVersionProcessor,
@@ -156,19 +159,26 @@ async function stage(
     stage: ProcessorStage,
     context: Omit<ProcessorContext, "log">,
     processors: Processor[],
+    { verbose }: { verbose: boolean } = { verbose: true },
 ): Promise<string[]> {
-    console.log(`stage:${stage}`);
+    if (verbose) {
+        console.log(`stage:${stage}`);
+    }
     let generatedFiles: string[] = [];
     const filteredProcessors = filterProcessors(stage, processors);
     for (let i = 0; i < filteredProcessors.length; i++) {
         const processor = filteredProcessors[i];
         const isLast = i === filteredProcessors.length - 1;
-        console.log(isLast ? "  └─" : "  ├─", processor.name);
+        if (verbose) {
+            console.log(isLast ? "  └─" : "  ├─", processor.name);
+        }
         try {
             const result = await processor.handler({
                 ...context,
                 log(...args: unknown[]) {
-                    console.log(isLast ? "      " : "  │   ", ...args);
+                    if (verbose) {
+                        console.log(isLast ? "      " : "  │   ", ...args);
+                    }
                 },
             });
             if (result) {
@@ -355,6 +365,33 @@ export class Generator {
             from: src.replace(/\\/g, "/"),
             to: dst,
         });
+    }
+
+    /**
+     * Generate a manifest listing all generated documents that will be present
+     * in `outputFolder`.
+     *
+     * Note: this only collects documents from the `generate-docs` stage,
+     * potential documents generated at later stages will not be present.
+     *
+     * @public
+     */
+    public async manifest(sourceFiles: SourceFiles[]): Promise<Manifest> {
+        const processors: Processor[] = [
+            fileReaderProcessor(sourceFiles),
+            ...this.processors,
+        ];
+
+        const context = createContext();
+        await stage("generate-docs", context, processors, { verbose: false });
+
+        const docs = context.docs.filter(haveOutput);
+        const filePaths = docs.map((doc) => {
+            const { fileInfo } = doc;
+            return getOutputFilePath("", fileInfo);
+        });
+
+        return filePaths.sort();
     }
 
     public async build(sourceFiles: SourceFiles[]): Promise<string[]> {

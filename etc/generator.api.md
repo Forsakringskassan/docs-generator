@@ -81,6 +81,7 @@ class Generator_2 {
     compileStyle(name: string, src: string, options?: Partial<CompileOptions>): void;
     // (undocumented)
     copyResource(dst: string, src: string): void;
+    manifest(sourceFiles: SourceFiles[]): Promise<Manifest>;
     serve(): Promise<void>;
 }
 export { Generator_2 as Generator }
@@ -107,6 +108,9 @@ export interface GeneratorSiteOptions {
 
 // @public (undocumented)
 export function livereloadProcessor(options: ProcessorOptions): Processor;
+
+// @public (undocumented)
+export type Manifest = string[];
 
 // @public
 export function manifestProcessor(options: ManifestProcessorOptions): Processor;

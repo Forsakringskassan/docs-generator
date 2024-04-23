@@ -1,7 +1,11 @@
 import fs from "node:fs/promises";
-import { type Document } from "../document";
 import { type Processor } from "../processor";
-import { getOutputFilePath } from "../utils";
+import { getOutputFilePath, haveOutput } from "../utils";
+
+/**
+ * @public
+ */
+export type Manifest = string[];
 
 /**
  * Options for {@link manifestProcessor}.
@@ -14,13 +18,6 @@ export interface ManifestProcessorOptions {
 
     /** If set, the manifest will be written as JSON to this destination */
     json?: string;
-}
-
-function haveOutput(
-    doc: Document,
-): doc is Document & { fileInfo: { outputName: string } } {
-    const { fileInfo } = doc;
-    return Boolean(fileInfo.outputName);
 }
 
 function renderMarkdown(filePaths: string[]): string {
@@ -65,7 +62,8 @@ export function manifestProcessor(
                 await fs.writeFile(markdown, content, "utf-8");
             }
             if (json) {
-                const content = renderJSON(filePaths);
+                const manifest: Manifest = filePaths;
+                const content = renderJSON(manifest);
                 await fs.writeFile(json, content, "utf-8");
             }
         },

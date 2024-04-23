@@ -15,6 +15,12 @@ module.exports = {
             files: ["*.cjs", "*.mjs"],
         },
         {
+            files: "*.mjs",
+            rules: {
+                "import/extensions": ["error", "always"],
+            },
+        },
+        {
             files: [
                 "./*.{js,ts,cjs,mjs}",
                 "**/internal/*/*.{js,ts,cjs,mjs}",
