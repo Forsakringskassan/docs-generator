@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## [1.26.0](https://github.com/Forsakringskassan/docs-generator/compare/v1.25.3...v1.26.0) (2024-04-24)
+
+
+### Features
+
+* add a unique id to each example ([4413f26](https://github.com/Forsakringskassan/docs-generator/commit/4413f26c0309b4a144c5699c5f573ab9b90c1903))
+* **api:** new `manifest()` method for programmatically retrieving maniest ([b3020f2](https://github.com/Forsakringskassan/docs-generator/commit/b3020f26794f8f5dca44867b0fe0630563bd19a1))
+* **api:** new `manifestProcessor` ([c5029b4](https://github.com/Forsakringskassan/docs-generator/commit/c5029b479d3c126c304a8d2a97c06460c80a9ddc))
+* **api:** support `[hash]` in `outputName` ([9e257e0](https://github.com/Forsakringskassan/docs-generator/commit/9e257e03165e295710a4ed3eddf52d94d2349ca2))
+
+
+### Bug Fixes
+
+* correct css-variables filepath for windows ([f267b91](https://github.com/Forsakringskassan/docs-generator/commit/f267b9172450688e21bffb47a960e4a4573fb91a))
+
 ## [1.25.3](https://github.com/Forsakringskassan/docs-generator/compare/v1.25.2...v1.25.3) (2024-04-20)
 
 
