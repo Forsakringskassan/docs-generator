@@ -1,6 +1,7 @@
 import type MarkdownIt from "markdown-it";
 import { type ExampleResult } from "../../examples";
 import { type MarkdownEnv } from "../markdown-env";
+import { getFingerprint } from "../../utils";
 import { findTestId, highlight, htmlencode, replaceAtLink } from "./utils";
 
 /**
@@ -40,8 +41,7 @@ export function codePreview(
         env: MarkdownEnv,
     ): string {
         const { fileInfo } = env;
-        const { content: source } = tokens[idx];
-        const { info } = tokens[idx];
+        const { content: source, info, map } = tokens[idx];
         const [language, ...rawTags] = info.split(/\s+/);
 
         if (language === "mermaid") {
@@ -58,6 +58,8 @@ export function codePreview(
         });
         const { tags } = example;
 
+        const hashContent = `${map?.[0]}:${map?.[1]}:${info}:${source}`;
+        const fingerprint = getFingerprint(hashContent);
         const highlightedCode = replaceAtLink(highlight(example));
         const testId = findTestId(tags);
         const liveExample = tags.includes("live-example");
@@ -71,6 +73,7 @@ export function codePreview(
         if (liveExample) {
             return /* HTML */ `
                 <div
+                    id="example-${fingerprint}"
                     class="code-preview code-preview--borderless"
                     ${testIdAttr}
                 >
@@ -81,7 +84,11 @@ export function codePreview(
 
         if (staticCode) {
             return /* HTML */ `
-                <div class="code-preview ${modifier}" ${testIdAttr}>
+                <div
+                    id="example-${fingerprint}"
+                    class="code-preview ${modifier}"
+                    ${testIdAttr}
+                >
                     ${example.comments.join("\n")}
                     <pre class="code-preview__markup">${highlightedCode}</pre>
                 </div>
@@ -90,7 +97,11 @@ export function codePreview(
 
         if (noMarkup) {
             return /* HTML */ `
-                <div class="code-preview ${modifier}" ${testIdAttr}>
+                <div
+                    id="example-${fingerprint}"
+                    class="code-preview ${modifier}"
+                    ${testIdAttr}
+                >
                     ${example.comments.join("\n")}
                     <div class="code-preview__preview">${example.markup}</div>
                 </div>
@@ -119,7 +130,11 @@ export function codePreview(
             : "";
 
         return /* HTML */ `
-            <div class="code-preview ${modifier}" ${testIdAttr}>
+            <div
+                id="example-${fingerprint}"
+                class="code-preview ${modifier}"
+                ${testIdAttr}
+            >
                 ${example.comments.join("\n")}
                 <div class="code-preview__preview">${example.markup}</div>
                 <div>${toggleMarkup} ${toggleFullscreen}</div>

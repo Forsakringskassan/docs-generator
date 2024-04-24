@@ -1,4 +1,5 @@
 import { type ProcessorContext } from "./processor-context";
+import { type ProcessorStage } from "./processor-stage";
 
 /**
  * @public
@@ -7,15 +8,6 @@ export interface ProcessorOptions {
     /** Enable/disable processor. Default: `true` */
     enabled?: boolean;
 }
-
-/**
- * @public
- */
-export type ProcessorStage =
-    | "generate-docs"
-    | "generate-nav"
-    | "assets"
-    | "render";
 
 /**
  * @public

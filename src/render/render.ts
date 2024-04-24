@@ -23,7 +23,7 @@ import {
     isNavigationSection,
     sortNavigationTree,
 } from "../navigation";
-import { getOutputFilePath } from "../utils";
+import { getFingerprint, getOutputFilePath } from "../utils";
 import { type RenderOptions } from "./render-options";
 import { findTemplate } from "./find-template";
 import { createMarkdownRenderer } from "./create-markdown-renderer";
@@ -423,7 +423,14 @@ export async function render(
         throw new Error(`${prefix}: ${message}`, { cause: err });
     }
 
-    const writeFile = fs.writeFile(dst, content ?? "null", "utf-8");
+    const expandedDst = dst.replace(/\[([^]+)\]/g, (match, key) => {
+        if (key === "hash") {
+            return getFingerprint(doc.body);
+        } else {
+            return match;
+        }
+    });
+    const writeFile = fs.writeFile(expandedDst, content ?? "null", "utf-8");
 
     try {
         await compileExamples({

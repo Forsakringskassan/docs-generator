@@ -1,3 +1,7 @@
+export {
+    type ManifestProcessorOptions,
+    manifestProcessor,
+} from "./manifest-processor";
 export { themeSelectProcessor } from "./theme-select-processor";
 export { versionProcessor } from "./version-processor";
 export { selectableVersionProcessor } from "./selectable-version-processor";

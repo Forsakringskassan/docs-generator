@@ -14,15 +14,22 @@ import {
 import { type SourceFiles, fileReaderProcessor } from "./file-reader";
 import { nunjucksProcessor } from "./render";
 import { type Document } from "./document";
+import { manifestPageFromDocument } from "./manifest";
 import { type NavigationSection, navigationProcessor } from "./navigation";
 import {
     type VendorAsset,
     type VendorDefinition,
     vendorProcessor,
 } from "./vendor";
-import { Processor, ProcessorStage } from "./processor";
-import { ProcessorContext, TemplateBlockData } from "./processor-context";
+import { type Processor } from "./processor";
+import {
+    type ProcessorContext,
+    type TemplateBlockData,
+} from "./processor-context";
+import { type ProcessorStage } from "./processor-stage";
+import { type Manifest } from "./manifest";
 import { serve } from "./serve";
+import { haveOutput } from "./utils";
 
 export { type CompileOptions, type ResourceTask } from "./assets";
 export {
@@ -42,6 +49,7 @@ export {
     navigationFileReader,
     vueFileReader,
 } from "./file-reader";
+export { type Manifest } from "./manifest";
 export { type MatomoOptions, matomoProcessor } from "./matomo";
 export {
     type NavigationNode,
@@ -54,9 +62,10 @@ export {
     type ProcessorHandler,
     type ProcessorHook,
     type ProcessorOptions,
-    type ProcessorStage,
 } from "./processor";
 export {
+    type ManifestProcessorOptions,
+    manifestProcessor,
     selectableVersionProcessor,
     themeSelectProcessor,
     versionBannerProcessor,
@@ -68,6 +77,7 @@ export {
     type TemplateBlockRenderer,
     type TemplateData,
 } from "./processor-context";
+export { type ProcessorStage } from "./processor-stage";
 export { searchProcessor } from "./search";
 export { type SetupOptions } from "./setup-options";
 export {
@@ -150,19 +160,26 @@ async function stage(
     stage: ProcessorStage,
     context: Omit<ProcessorContext, "log">,
     processors: Processor[],
+    { verbose }: { verbose: boolean } = { verbose: true },
 ): Promise<string[]> {
-    console.log(`stage:${stage}`);
+    if (verbose) {
+        console.log(`stage:${stage}`);
+    }
     let generatedFiles: string[] = [];
     const filteredProcessors = filterProcessors(stage, processors);
     for (let i = 0; i < filteredProcessors.length; i++) {
         const processor = filteredProcessors[i];
         const isLast = i === filteredProcessors.length - 1;
-        console.log(isLast ? "  └─" : "  ├─", processor.name);
+        if (verbose) {
+            console.log(isLast ? "  └─" : "  ├─", processor.name);
+        }
         try {
             const result = await processor.handler({
                 ...context,
                 log(...args: unknown[]) {
-                    console.log(isLast ? "      " : "  │   ", ...args);
+                    if (verbose) {
+                        console.log(isLast ? "      " : "  │   ", ...args);
+                    }
                 },
             });
             if (result) {
@@ -349,6 +366,29 @@ export class Generator {
             from: src.replace(/\\/g, "/"),
             to: dst,
         });
+    }
+
+    /**
+     * Generate a manifest listing all generated documents that will be present
+     * in `outputFolder`.
+     *
+     * Note: this only collects documents from the `generate-docs` stage,
+     * potential documents generated at later stages will not be present.
+     *
+     * @public
+     */
+    public async manifest(sourceFiles: SourceFiles[]): Promise<Manifest> {
+        const processors: Processor[] = [
+            fileReaderProcessor(sourceFiles),
+            ...this.processors,
+        ];
+
+        const context = createContext();
+        await stage("generate-docs", context, processors, { verbose: false });
+
+        const docs = context.docs.filter(haveOutput);
+        const pages = docs.map(manifestPageFromDocument);
+        return { pages };
     }
 
     public async build(sourceFiles: SourceFiles[]): Promise<string[]> {

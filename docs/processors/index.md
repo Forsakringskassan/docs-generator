@@ -1,3 +1,9 @@
+---
+name: Processors
+layout: content-with-menu
+sortorder: 1
+---
+
 ## Writing a new processor
 
 A procesor implements the `Processor` interface:
@@ -16,6 +22,10 @@ export interface ProcessorHandler {
 ```
 
 One of `before`, `stage` or `after` must be set and decides when the processor is run.
+
+```import
+processor-stage.ts
+```
 
 The `handler` callback performs the actual work.
 

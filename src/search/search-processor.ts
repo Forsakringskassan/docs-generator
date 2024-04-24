@@ -43,8 +43,9 @@ export function searchProcessor(): Processor {
             const body = JSON.stringify(index);
             const fingerprint = getFingerprint(body);
             const integrity = getIntegrity(body);
-            const outputName = `search-data-${fingerprint}.json`;
-            context.setTemplateData("searchDataUrl", outputName);
+            const outputName = `search-data-[hash].json`;
+            const expandedName = `search-data-${fingerprint}.json`;
+            context.setTemplateData("searchDataUrl", expandedName);
             context.setTemplateData("searchDataIntegrity", integrity);
             context.addDocument({
                 id: "search:data",
