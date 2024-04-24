@@ -21,8 +21,7 @@ const sassCSSVariableImporter = {
         }
     },
     async load(canonicalUrl) {
-        const filePath = fileURLToPath(canonicalUrl);
-        const { default: module } = await import(filePath);
+        const { default: module } = await import(canonicalUrl);
         const variables = Object.entries(module).flatMap(([key, entry]) => {
             const prefix = key === "*" ? "--docs-" : `--docs-${key}-`;
             return Object.entries(entry.variables).map(([variable, it]) => {

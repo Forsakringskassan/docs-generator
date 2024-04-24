@@ -32,7 +32,7 @@ async function cssVariablesFileReader(filePath) {
     });
     const doc = {
         id: `fs:${filePath.replace(/\\/g, "/")}`,
-        name: `css-variables:${filePath}`,
+        name: `css-variables:${filePath.replace(/\\/g, "/")}`,
         alias: [],
         visible: false,
         attributes: { sortorder: Infinity },
