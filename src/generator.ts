@@ -14,6 +14,7 @@ import {
 import { type SourceFiles, fileReaderProcessor } from "./file-reader";
 import { nunjucksProcessor } from "./render";
 import { type Document } from "./document";
+import { manifestPageFromDocument } from "./manifest";
 import { type NavigationSection, navigationProcessor } from "./navigation";
 import {
     type VendorAsset,
@@ -26,9 +27,9 @@ import {
     type TemplateBlockData,
 } from "./processor-context";
 import { type ProcessorStage } from "./processor-stage";
-import { type Manifest } from "./processors";
+import { type Manifest } from "./manifest";
 import { serve } from "./serve";
-import { getOutputFilePath, haveOutput } from "./utils";
+import { haveOutput } from "./utils";
 
 export { type CompileOptions, type ResourceTask } from "./assets";
 export {
@@ -48,6 +49,7 @@ export {
     navigationFileReader,
     vueFileReader,
 } from "./file-reader";
+export { type Manifest } from "./manifest";
 export { type MatomoOptions, matomoProcessor } from "./matomo";
 export {
     type NavigationNode,
@@ -62,7 +64,6 @@ export {
     type ProcessorOptions,
 } from "./processor";
 export {
-    type Manifest,
     type ManifestProcessorOptions,
     manifestProcessor,
     selectableVersionProcessor,
@@ -386,12 +387,8 @@ export class Generator {
         await stage("generate-docs", context, processors, { verbose: false });
 
         const docs = context.docs.filter(haveOutput);
-        const filePaths = docs.map((doc) => {
-            const { fileInfo } = doc;
-            return getOutputFilePath("", fileInfo);
-        });
-
-        return filePaths.sort();
+        const pages = docs.map(manifestPageFromDocument);
+        return { pages };
     }
 
     public async build(sourceFiles: SourceFiles[]): Promise<string[]> {

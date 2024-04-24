@@ -1,5 +1,4 @@
 export {
-    type Manifest,
     type ManifestProcessorOptions,
     manifestProcessor,
 } from "./manifest-processor";

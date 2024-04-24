@@ -110,7 +110,22 @@ export interface GeneratorSiteOptions {
 export function livereloadProcessor(options: ProcessorOptions): Processor;
 
 // @public (undocumented)
-export type Manifest = string[];
+export interface Manifest {
+    // (undocumented)
+    pages: Array<{
+        path: string;
+        title: string;
+        outline: Array<{
+            heading: string;
+            anchor: string;
+        }>;
+        examples: Array<{
+            selector: string;
+            language: string;
+            tags: string[];
+        }>;
+    }>;
+}
 
 // @public
 export function manifestProcessor(options: ManifestProcessorOptions): Processor;
