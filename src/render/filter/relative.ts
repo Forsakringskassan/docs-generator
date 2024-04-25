@@ -1,4 +1,5 @@
-import path from "node:path";
+import path from "node:path/posix";
+import { normalizePath } from "../../utils";
 
 function isExternalUrl(url: string): boolean {
     return (
@@ -26,11 +27,14 @@ export function relative(
         /* `/foo` to `./foo` */
         url = `.${url}`;
     }
-    const outputPath = fileInfo.path;
+
+    url = normalizePath(url);
+
+    const outputPath = normalizePath(fileInfo.path);
     if (outputPath === url || `${outputPath}/` === url) {
         return "./";
     }
-    const relative = path.relative(outputPath, url).replace(/\\/g, "/");
+    const relative = path.relative(outputPath, url);
 
     /* force ./ in front of url unless a path already has ./ ../ or similar */
     const prefix = relative.startsWith(".") ? "" : "./";
