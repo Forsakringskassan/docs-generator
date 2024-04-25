@@ -22,15 +22,15 @@ export function relative(
     if (isExternalUrl(url)) {
         return url;
     }
-    const outputFile = `./${path.join(fileInfo.path)}`;
     if (isAbsoluteUrl(url)) {
         /* `/foo` to `./foo` */
         url = `.${url}`;
     }
-    if (outputFile === url || `${outputFile}/` === url) {
+    const outputPath = fileInfo.path;
+    if (outputPath === url || `${outputPath}/` === url) {
         return "./";
     }
-    const relative = path.relative(outputFile, url).replace(/\\/g, "/");
+    const relative = path.relative(outputPath, url).replace(/\\/g, "/");
 
     /* force ./ in front of url unless a path already has ./ ../ or similar */
     const prefix = relative.startsWith(".") ? "" : "./";
