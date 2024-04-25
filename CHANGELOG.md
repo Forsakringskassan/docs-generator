@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## [1.27.0](https://github.com/Forsakringskassan/docs-generator/compare/v1.26.0...v1.27.0) (2024-04-25)
+
+
+### Features
+
+* **deps:** make `express` an optional peer dependency ([c6f1ea1](https://github.com/Forsakringskassan/docs-generator/commit/c6f1ea1975c20c35ad3552ddb610df11306ee7d1))
+
+
+### Bug Fixes
+
+* fix relative urls appending extra trailing `/` ([f949396](https://github.com/Forsakringskassan/docs-generator/commit/f9493968640f2c0dfc20da6a08348711170b5cd2))
+
 ## [1.26.0](https://github.com/Forsakringskassan/docs-generator/compare/v1.25.3...v1.26.0) (2024-04-24)
 
 
