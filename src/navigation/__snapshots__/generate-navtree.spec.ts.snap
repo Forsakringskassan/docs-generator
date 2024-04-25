@@ -120,6 +120,13 @@ exports[`smoketest 1`] = `
           "sortorder": Infinity,
           "title": "Manifest",
         },
+        {
+          "external": false,
+          "id": "fs:docs/processors/nunjucks.md",
+          "path": "./processors/nunjucks.html",
+          "sortorder": Infinity,
+          "title": "Nunjucks",
+        },
       ],
       "key": "./processors",
       "path": "./processors/",
