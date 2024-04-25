@@ -1,20 +1,29 @@
-const fs = require("node:fs");
-const path = require("node:path");
-const { URL, fileURLToPath } = require("node:url");
-const esbuild = require("esbuild");
-const isCI = require("is-ci");
-const sass = require("sass");
-const { Extractor, ExtractorConfig } = require("@microsoft/api-extractor");
+import fs from "node:fs/promises";
+import { existsSync } from "node:fs";
+import path from "node:path/posix";
+import { URL, fileURLToPath } from "node:url";
+import esbuild from "esbuild";
+import isCI from "is-ci";
+import { rollup, defineConfig } from "rollup";
+import esbuildPlugin from "rollup-plugin-esbuild";
+import commonjs from "@rollup/plugin-commonjs";
+import { nodeResolve } from "@rollup/plugin-node-resolve";
+import json from "@rollup/plugin-json";
+import { visualizer } from "rollup-plugin-visualizer";
+import * as sass from "sass";
+import { Extractor, ExtractorConfig } from "@microsoft/api-extractor";
 
-const pkg = JSON.parse(fs.readFileSync("package.json", "utf-8"));
+const pkg = JSON.parse(await fs.readFile("package.json", "utf-8"));
 const { externalDependencies, peerDependencies } = pkg;
+
+const rootDir = fileURLToPath(new URL(".", import.meta.url));
 
 /** @type {import("sass").Importer<"async">} */
 const sassCSSVariableImporter = {
     canonicalize(url, context) {
         const canonicalUrl = new URL(`${url}.mjs`, context.containingUrl);
         const filePath = fileURLToPath(canonicalUrl);
-        if (fs.existsSync(filePath)) {
+        if (existsSync(filePath)) {
             return canonicalUrl;
         } else {
             return null;
@@ -50,23 +59,21 @@ async function buildStyle(entrypoints) {
             style: "expanded",
             importers: [sassCSSVariableImporter],
         });
-        fs.mkdirSync(path.dirname(dst), { recursive: true });
-        fs.writeFileSync(dst, result.css, "utf-8");
+        await fs.mkdir(path.dirname(dst), { recursive: true });
+        await fs.writeFile(dst, result.css, "utf-8");
     }
 }
 
 async function build() {
-    const result1 = await esbuild.build({
-        entryPoints: ["src/generator.ts"],
-        bundle: true,
-        metafile: true,
-        format: "cjs",
-        platform: "node",
-        target: ["node16"],
-        outdir: "dist",
-        logLevel: "info",
+    const options = defineConfig({
+        input: [
+            "src/generator.ts",
+            "src/compile-example.ts",
+            "src/markdown.ts",
+        ],
         external: [
             "@babel/core",
+            "express",
             "vue",
             "vue-template-compiler",
             "@vue/compiler-core",
@@ -77,45 +84,49 @@ async function build() {
             ...externalDependencies,
             ...Object.keys(peerDependencies),
         ],
-    });
-    console.log(await esbuild.analyzeMetafile(result1.metafile));
-
-    const result2 = await esbuild.build({
-        entryPoints: ["src/compile-example.ts"],
-        bundle: true,
-        metafile: true,
-        format: "cjs",
-        platform: "node",
-        target: ["node16"],
-        outdir: "dist",
-        logLevel: "info",
-        external: [
-            "vue",
-            "vue-template-compiler",
-            "@vue/compiler-core",
-            "@vue/compiler-sfc",
-            "@vue/component-compiler",
-            "@vue/component-compiler-utils",
-            "typescript",
-            ...externalDependencies,
-            ...Object.keys(peerDependencies),
+        plugins: [
+            commonjs(),
+            nodeResolve({
+                preferBuiltins: true,
+            }),
+            json(),
+            esbuildPlugin({
+                platform: "node",
+                target: ["node16"],
+            }),
+            visualizer({
+                filename: "temp/bundle.html",
+            }),
         ],
     });
-    console.log(await esbuild.analyzeMetafile(result2.metafile));
-
-    const markdownBundle = await esbuild.build({
-        entryPoints: [{ in: "src/markdown.ts", out: "markdown" }],
-        bundle: true,
-        metafile: true,
+    const bundle = await rollup(options);
+    const { output } = await bundle.write({
+        dir: "dist",
         format: "cjs",
-        platform: "node",
-        target: "node16",
-        logLevel: "info",
-        outdir: "dist",
+        manualChunks(id) {
+            const fullPath = id.replace(/[?].*/, "").replace("\x00", "");
+            const base = path.relative(rootDir, fullPath).replace(/\\/g, "/");
+            if (base.startsWith("node_modules/")) {
+                return "vendor";
+            }
+            if (base.startsWith("internal/plugin-vue2")) {
+                return "vue2";
+            }
+            if (base.startsWith("internal/plugin-vue3")) {
+                return "vue3";
+            }
+            console.log("base", base);
+            return undefined;
+        },
     });
-    console.log(await esbuild.analyzeMetafile(markdownBundle.metafile));
+    for (const item of output) {
+        if (item.type === "chunk") {
+            console.log(path.join("dist", item.fileName), "written");
+        }
+    }
+    await bundle.close();
 
-    const result3 = await esbuild.build({
+    const result = await esbuild.build({
         entryPoints: [{ in: "src/runtime/index.ts", out: "runtime" }],
         bundle: true,
         metafile: true,
@@ -124,7 +135,7 @@ async function build() {
         logLevel: "info",
         outdir: "dist",
     });
-    console.log(await esbuild.analyzeMetafile(result3.metafile));
+    console.log(await esbuild.analyzeMetafile(result.metafile));
 
     if (isCI) {
         console.group(`Running API Extractor in CI mode.`);

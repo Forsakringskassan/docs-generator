@@ -36,7 +36,7 @@
   ],
   "scripts": {
     "prebuild": "npm run --workspaces --if-present build",
-    "build": "tsc && node build.js",
+    "build": "tsc && node build.mjs",
     "postbuild": "node generate-docs.mjs",
     "build:docs": "node generate-docs.mjs",
     "eslint": "eslint --cache .",
@@ -118,6 +118,9 @@
     "@forsakringskassan/stylelint-config": "2.2.0",
     "@html-validate/release-scripts": "6.4.0",
     "@microsoft/api-extractor": "7.43.1",
+    "@rollup/plugin-commonjs": "25.0.7",
+    "@rollup/plugin-json": "6.1.0",
+    "@rollup/plugin-node-resolve": "15.2.3",
     "@types/cli-progress": "3.11.5",
     "@types/d3": "7.4.3",
     "@types/dompurify": "3.0.5",
@@ -141,15 +144,24 @@
     "lint-staged": "15.2.2",
     "npm-pkg-lint": "2.4.1",
     "npm-run-all2": "6.1.2",
+    "rollup": "4.16.4",
+    "rollup-plugin-esbuild": "6.1.1",
+    "rollup-plugin-visualizer": "5.12.0",
     "sass": "1.75.0",
     "ts-node": "10.9.2",
     "typescript": "5.4.5"
   },
   "peerDependencies": {
     "esbuild": "0.x",
+    "express": "^4",
     "he": "^1.2",
     "sass": "^1.54",
     "vue": "^2 || ^3"
+  },
+  "peerDependenciesMeta": {
+    "express": {
+      "optional": true
+    }
   },
   "engines": {
     "node": ">= 16.17"
