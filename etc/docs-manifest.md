@@ -23,6 +23,7 @@ navigation/sorted-group/sorted-page-3.html
 navigation/sorted-group/top-page.html
 processors/index.html
 processors/manifest.html
+processors/nunjucks.html
 search-data-[hash].json
 theme/index.html
 ```

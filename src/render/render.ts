@@ -25,6 +25,7 @@ import {
 } from "../navigation";
 import { getFingerprint, getOutputFilePath } from "../utils";
 import { type RenderOptions } from "./render-options";
+import * as filter from "./filter";
 import { findTemplate } from "./find-template";
 import { createMarkdownRenderer } from "./create-markdown-renderer";
 
@@ -104,18 +105,6 @@ function haveOutputFile(
     fileInfo: FileInfo,
 ): fileInfo is FileInfo & { outputName: string } {
     return fileInfo.outputName !== false;
-}
-
-function isExternalUrl(url: string): boolean {
-    return (
-        url.startsWith("http://") ||
-        url.startsWith("https://") ||
-        url.startsWith("//")
-    );
-}
-
-function isAbsoluteUrl(url: string): boolean {
-    return url.startsWith("/");
 }
 
 function fillActiveNavigation(
@@ -336,37 +325,10 @@ export async function render(
     njk.addFilter("marked", (content: string) => {
         return markdownRenderer.render(doc, content);
     });
-    njk.addFilter("json", (value: unknown) => {
-        return JSON.stringify(value, null, 2);
-    });
-    njk.addFilter("dump", (value: unknown) => {
-        return `<pre>${JSON.stringify(value, null, 2)}</pre>`;
-    });
-    njk.addFilter(
-        "relative",
-        (url: string, { fileInfo }: { fileInfo: FileInfo }) => {
-            if (isExternalUrl(url)) {
-                return url;
-            }
-            const outputFile = `./${path.join(fileInfo.path)}`;
-            if (isAbsoluteUrl(url)) {
-                /* `/foo` to `./foo` */
-                url = `.${url}`;
-            }
-            if (outputFile === url || `${outputFile}/` === url) {
-                return "./";
-            }
-            const relative = path.relative(outputFile, url).replace(/\\/g, "/");
-
-            /* force ./ in front of url unless a path already has ./ ../ or similar */
-            const prefix = relative.startsWith(".") ? "" : "./";
-
-            /* retain trailing / if present in original url */
-            const suffix = url.endsWith("/") ? "/" : "";
-
-            return [prefix, relative, suffix].join("");
-        },
-    );
+    njk.addFilter("json", filter.json);
+    njk.addFilter("dump", filter.dump);
+    njk.addFilter("relative", filter.relative);
+    njk.addFilter("take", filter.take);
     njk.addExtension("BlockContainer", {
         tags: ["container"],
         parse(parser, nodes) {
@@ -401,16 +363,6 @@ export async function render(
             return callback(null, new nunjucks.runtime.SafeString(markup));
         },
     } as nunjucks.Extension);
-    njk.addFilter(
-        "take",
-        <T extends Record<string, unknown>>(
-            haystack: T[],
-            key: string,
-            value: string,
-        ): T[] => {
-            return haystack.filter((it) => it[key] === value);
-        },
-    );
 
     await mkdir;
 
