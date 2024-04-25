@@ -1,12 +1,13 @@
-const fs = require("node:fs");
-const path = require("node:path");
-const { URL, fileURLToPath } = require("node:url");
-const esbuild = require("esbuild");
-const isCI = require("is-ci");
-const sass = require("sass");
-const { Extractor, ExtractorConfig } = require("@microsoft/api-extractor");
+import fs from "node:fs/promises";
+import { existsSync } from "node:fs";
+import path from "node:path";
+import { URL, fileURLToPath } from "node:url";
+import esbuild from "esbuild";
+import isCI from "is-ci";
+import * as sass from "sass";
+import { Extractor, ExtractorConfig } from "@microsoft/api-extractor";
 
-const pkg = JSON.parse(fs.readFileSync("package.json", "utf-8"));
+const pkg = JSON.parse(await fs.readFile("package.json", "utf-8"));
 const { externalDependencies, peerDependencies } = pkg;
 
 /** @type {import("sass").Importer<"async">} */
@@ -14,7 +15,7 @@ const sassCSSVariableImporter = {
     canonicalize(url, context) {
         const canonicalUrl = new URL(`${url}.mjs`, context.containingUrl);
         const filePath = fileURLToPath(canonicalUrl);
-        if (fs.existsSync(filePath)) {
+        if (existsSync(filePath)) {
             return canonicalUrl;
         } else {
             return null;
@@ -50,8 +51,8 @@ async function buildStyle(entrypoints) {
             style: "expanded",
             importers: [sassCSSVariableImporter],
         });
-        fs.mkdirSync(path.dirname(dst), { recursive: true });
-        fs.writeFileSync(dst, result.css, "utf-8");
+        await fs.mkdir(path.dirname(dst), { recursive: true });
+        await fs.writeFile(dst, result.css, "utf-8");
     }
 }
 

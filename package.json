@@ -36,7 +36,7 @@
   ],
   "scripts": {
     "prebuild": "npm run --workspaces --if-present build",
-    "build": "tsc && node build.js",
+    "build": "tsc && node build.mjs",
     "postbuild": "node generate-docs.mjs",
     "build:docs": "node generate-docs.mjs",
     "eslint": "eslint --cache .",
