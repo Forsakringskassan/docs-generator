@@ -73,6 +73,7 @@ async function build() {
         ],
         external: [
             "@babel/core",
+            "express",
             "vue",
             "vue-template-compiler",
             "@vue/compiler-core",

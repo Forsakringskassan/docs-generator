@@ -153,9 +153,15 @@
   },
   "peerDependencies": {
     "esbuild": "0.x",
+    "express": "^4",
     "he": "^1.2",
     "sass": "^1.54",
     "vue": "^2 || ^3"
+  },
+  "peerDependenciesMeta": {
+    "express": {
+      "optional": true
+    }
   },
   "engines": {
     "node": ">= 16.17"
