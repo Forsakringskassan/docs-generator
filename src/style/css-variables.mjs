@@ -64,4 +64,25 @@ export default {
             },
         },
     },
+
+    version: {
+        description: "Version processor",
+        variables: {
+            "text-color": {
+                description: "Text color",
+                type: "color",
+                value: "var(--docs-text-color-discrete)",
+            },
+            "link-color": {
+                description: "Link color",
+                type: "color",
+                value: "var(--docs-text-color-discrete)",
+            },
+            "hover-color": {
+                description: "Link color",
+                type: "color",
+                value: "var(--docs-text-color-default)",
+            },
+        },
+    },
 };

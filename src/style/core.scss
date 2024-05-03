@@ -15,12 +15,6 @@ dialog[open] {
     display: block;
 }
 
-.version {
-    color: var(--f-text-color-discrete);
-    text-wrap: nowrap;
-    margin-left: 1rem;
-}
-
 p:not(.code-preview p) {
     max-width: 680px;
 }
@@ -390,6 +384,10 @@ main #aside dd {
 .toolbar {
     display: flex;
     align-items: center;
+
+    &__item {
+        display: flex;
+    }
 }
 
 kbd {

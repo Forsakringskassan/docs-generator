@@ -375,7 +375,19 @@ export function versionBannerProcessor(message: string, container: string): Proc
 export function versionProcessor(pkg: {
     name: string;
     version: string;
-}, container: string): Processor;
+    homepage: string;
+}, container: string, options?: VersionProcessorOptions): Processor;
+
+// @public
+export interface VersionProcessorOptions {
+    // (undocumented)
+    readonly enabled: boolean;
+    // (undocumented)
+    readonly scm?: {
+        readonly commitUrlFormat: string;
+        readonly prUrlFormat: string;
+    };
+}
 
 // @public
 export function vueFileReader(filePath: string): Promise<Document_2[]>;

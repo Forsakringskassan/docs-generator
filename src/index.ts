@@ -46,6 +46,7 @@ export { type ProcessorStage } from "./processor-stage";
 export {
     type ManifestProcessorOptions,
     type TopnavEntry,
+    type VersionProcessorOptions,
     manifestProcessor,
     selectableVersionProcessor,
     themeSelectProcessor,

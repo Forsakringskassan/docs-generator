@@ -1,6 +1,7 @@
 @use "css-variables";
 @use "reset";
 @use "breakpoints" as *;
+@use "version";
 
 html {
     scroll-behavior: smooth;

@@ -32,7 +32,12 @@ const docs = new Generator({
     processors: [
         manifestProcessor({ markdown: "etc/docs-manifest.md" }),
         searchProcessor(),
-        versionProcessor(pkg, "toolbar"),
+        versionProcessor(pkg, "toolbar", {
+            scm: {
+                commitUrlFormat: "{{ homepage }}/commit/{{ hash }}",
+                prUrlFormat: "{{ homepage }}/pull-requests/{{ id }}",
+            },
+        }),
     ],
     setupPath: path.resolve("docs/src/setup.ts"),
 });
