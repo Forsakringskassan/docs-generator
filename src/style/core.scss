@@ -87,6 +87,23 @@ h1 code {
     font-weight: 400;
 }
 
+#content a:not(.code-preview a) {
+    color: var(--docs-text-color-default);
+}
+
+#content a:not(.code-preview a, h2 a, h3 a, h4 a, h5 a) {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    color: var(--f-text-color-link);
+    text-decoration-color: var(--docs-text-color-link);
+    text-underline-offset: 0.15rem;
+}
+
+#content a:hover:not(.code-preview a, h2 a, h3 a, h4 a, h5 a) {
+    color: var(--f-text-color-default);
+    text-decoration-color: var(--docs-text-link-hover);
+}
+
 .layout-wrapper {
     font-family: var(--docs-font-family);
     background: #fff;
