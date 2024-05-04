@@ -17,14 +17,14 @@
     "src/runtime/**/*"
   ],
   "exports": {
-    ".": "./dist/generator.js",
+    ".": "./dist/index.js",
     "./markdown": "./dist/markdown.js",
     "./runtime": "./dist/runtime.js",
     "./docs.css": "./dist/style/index.css",
     "./style.css": "./dist/style/index.css",
     "./style/*.css": "./dist/style/*.css"
   },
-  "main": "dist/generator.js",
+  "main": "dist/index.js",
   "files": [
     "dist",
     "tsconfig-examples.json",

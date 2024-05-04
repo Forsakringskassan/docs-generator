@@ -5,7 +5,7 @@ import {
     manifestProcessor,
     versionProcessor,
     searchProcessor,
-} from "./dist/generator.js";
+} from "./dist/index.js";
 import config from "./docs.config.mjs";
 
 const require = module.createRequire(import.meta.url);

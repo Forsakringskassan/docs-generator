@@ -1,7 +1,4 @@
-import {
-    frontMatterFileReader,
-    navigationFileReader,
-} from "./dist/generator.js";
+import { frontMatterFileReader, navigationFileReader } from "./dist/index.js";
 
 async function cssVariablesFileReader(filePath) {
     const { default: module } = await import(`./${filePath}`);

@@ -66,11 +66,7 @@ async function buildStyle(entrypoints) {
 
 async function build() {
     const options = defineConfig({
-        input: [
-            "src/generator.ts",
-            "src/compile-example.ts",
-            "src/markdown.ts",
-        ],
+        input: ["src/index.ts", "src/compile-example.ts", "src/markdown.ts"],
         external: [
             "@babel/core",
             "express",
@@ -142,7 +138,7 @@ async function build() {
     } else {
         console.group(`Running API Extractor in local mode.`);
     }
-    for (const entrypoint of ["generator", "markdown", "runtime"]) {
+    for (const entrypoint of ["index", "markdown", "runtime"]) {
         const filename = `api-extractor-${entrypoint}.json`;
         const config = ExtractorConfig.loadFileAndPrepare(filename);
         const result = Extractor.invoke(config, {
