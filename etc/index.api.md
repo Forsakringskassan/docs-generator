@@ -20,6 +20,9 @@ export interface CompileOptions {
     attributes: AttributeTable;
 }
 
+// @public
+export function defineSources(sources: SourceFiles[]): SourceFiles[];
+
 // @public (undocumented)
 interface Document_2 {
     alias: string[];

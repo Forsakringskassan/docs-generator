@@ -1,4 +1,5 @@
 export { type CompileOptions, type ResourceTask } from "./assets";
+export { defineSources } from "./define-sources";
 export {
     type Document,
     type DocumentBadge,
