@@ -111,7 +111,6 @@ async function build() {
             if (base.startsWith("internal/plugin-vue3")) {
                 return "vue3";
             }
-            console.log("base", base);
             return undefined;
         },
     });
