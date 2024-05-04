@@ -122,6 +122,13 @@ exports[`smoketest 1`] = `
         },
         {
           "external": false,
+          "id": "fs:docs/processors/motd.md",
+          "path": "./processors/motd.html",
+          "sortorder": Infinity,
+          "title": "MOTD",
+        },
+        {
+          "external": false,
           "id": "fs:docs/processors/nunjucks.md",
           "path": "./processors/nunjucks.html",
           "sortorder": Infinity,

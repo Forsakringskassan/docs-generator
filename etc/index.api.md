@@ -151,6 +151,16 @@ export interface MatomoOptions {
 export function matomoProcessor(options: MatomoOptions & ProcessorOptions): Processor;
 
 // @public
+export interface MOTDOptions {
+    container?: string;
+    enabled?: boolean;
+    message: string;
+}
+
+// @public
+export function motdProcessor(options: MOTDOptions): Processor;
+
+// @public
 export function navigationFileReader(filePath: string, basePath?: string): Promise<Document_2[]>;
 
 // @public (undocumented)
@@ -368,8 +378,8 @@ export interface VendorDefinitionDescriptor {
     subpaths?: string[];
 }
 
-// @public
-export function versionBannerProcessor(message: string, container: string): Processor;
+// @public @deprecated
+export const versionBannerProcessor: (message: string, container: string) => Processor;
 
 // @public
 export function versionProcessor(pkg: {

@@ -45,9 +45,11 @@ export {
 export { type ProcessorStage } from "./processor-stage";
 export {
     type ManifestProcessorOptions,
+    type MOTDOptions,
     type TopnavEntry,
     type VersionProcessorOptions,
     manifestProcessor,
+    motdProcessor,
     selectableVersionProcessor,
     themeSelectProcessor,
     versionBannerProcessor,
