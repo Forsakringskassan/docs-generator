@@ -11,6 +11,17 @@ export default {
                 description: "Default `font-weight`.",
                 value: "normal",
             },
+            "text-color-default": {
+                description: "Default text color for regular text.",
+                type: "color",
+                value: "#1b1e23",
+            },
+            "text-color-discrete": {
+                description:
+                    "Default text color for discrete text (text that is less important, usually appears a bit dimmer than regular text",
+                type: "color",
+                value: "#5f6165",
+            },
         },
     },
 
@@ -23,6 +34,24 @@ export default {
             },
             "font-weight": { value: "var(--docs-font-weight)" },
             "line-height": { value: "1.4" },
+        },
+    },
+
+    header: {
+        description: "Style related to page header",
+        variables: {
+            "text-color-default": {
+                description:
+                    "`--docs-text-color-default` is overridden with this value.",
+                type: "color",
+                value: "#1b1e23",
+            },
+            "text-color-discrete": {
+                description:
+                    "`--docs-text-color-discrete` is overridden with this value.",
+                type: "color",
+                value: "#5f6165",
+            },
         },
     },
 

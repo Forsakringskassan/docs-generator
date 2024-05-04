@@ -24,3 +24,8 @@ body {
     font-weight: var(--docs-font-weight);
     line-height: var(--f-line-height-large);
 }
+
+.page-header {
+    --docs-text-color-default: var(--docs-header-text-color-default);
+    --docs-text-color-discrete: var(--docs-header-text-color-discrete);
+}
