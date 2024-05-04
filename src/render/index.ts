@@ -7,3 +7,4 @@ export {
     type SoftErrorType,
     SoftError,
 } from "./soft-error";
+export { TemplateLoader } from "./template-loader";

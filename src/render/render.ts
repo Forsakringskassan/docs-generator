@@ -3,11 +3,7 @@ import { existsSync, copyFileSync } from "node:fs";
 import path from "node:path";
 import { promisify } from "node:util";
 import { execa } from "execa";
-import nunjucks, {
-    type Callback,
-    type ILoaderAsync,
-    type LoaderSource,
-} from "nunjucks";
+import nunjucks from "nunjucks";
 import { type VendorAsset } from "../vendor";
 import { type FileInfo, type Document } from "../document";
 import {
@@ -25,14 +21,10 @@ import {
 } from "../navigation";
 import { getFingerprint, getOutputFilePath } from "../utils";
 import { type RenderOptions } from "./render-options";
+import { TemplateLoader } from "./template-loader";
 import * as filter from "./filter";
 import { findTemplate } from "./find-template";
 import { createMarkdownRenderer } from "./create-markdown-renderer";
-
-interface ResolvedTemplate {
-    filePath: string;
-    content: string;
-}
 
 interface ActiveNavigationLeaf extends NavigationLeaf {
     active: boolean;
@@ -44,62 +36,8 @@ interface ActiveNavigationSection extends NavigationSection {
 
 type ActiveNavigationNode = ActiveNavigationLeaf | ActiveNavigationSection;
 
-class Loader implements ILoaderAsync {
-    public readonly async = true as const;
-    private readonly folders: string[];
-    private readonly templateCache: Map<string, ResolvedTemplate>;
-
-    public constructor(folders: string[]) {
-        this.folders = [...folders, path.join(__dirname, "../templates")];
-        this.templateCache = new Map();
-    }
-
-    public async getSource(
-        name: string,
-        callback: Callback<Error, LoaderSource>,
-    ): Promise<void> {
-        try {
-            const { content, filePath } = await this.resolveTemplate(name);
-            callback(null, {
-                src: content,
-                path: filePath,
-                noCache: false,
-            });
-        } catch (err: unknown) {
-            if (err instanceof Error) {
-                callback(err, null);
-            } else {
-                callback(new Error(String(err)), null);
-            }
-        }
-    }
-
-    private async resolveTemplate(name: string): Promise<ResolvedTemplate> {
-        const { templateCache, folders } = this;
-        const cached = templateCache.get(name);
-        if (cached) {
-            return cached;
-        }
-        const searchPaths = folders.map((it) => path.join(it, name));
-        const filePath = searchPaths.find((it) => existsSync(it));
-        if (!filePath) {
-            const searched = folders.map((it) => `  - "${it}"`).join("\n");
-            const message = `Failed to resolve template "${name}", searched in:
-
-${searched}
-
-Make sure the name is correct and the template file exists in one of the listed directories.`;
-            throw new Error(message);
-        }
-        const content = await fs.readFile(filePath, "utf-8");
-        const resolved = { content, filePath };
-        templateCache.set(name, resolved);
-        return resolved;
-    }
-}
-
 const scriptPath = path.join(__dirname, "compile-example.js");
-let loader: Loader | null = null;
+let loader: TemplateLoader | null = null;
 
 function haveOutputFile(
     fileInfo: FileInfo,
@@ -239,7 +177,7 @@ async function compileStandalones(options: {
  * @internal
  */
 export function createTemplateLoader(folders: string[]): void {
-    loader = new Loader(folders);
+    loader = new TemplateLoader(folders);
 }
 
 /**
