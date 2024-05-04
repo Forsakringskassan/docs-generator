@@ -348,9 +348,10 @@ export async function render(
             const blocks = options.templateBlocks.get(container) ?? [];
             const promises = blocks.map(({ renderer }) => {
                 if ("filename" in renderer) {
+                    const data = renderer.data as object;
                     return renderTemplate(renderer.filename, {
                         ...ctx,
-                        ...renderer.data,
+                        ...data,
                     });
                 }
                 if ("render" in renderer) {

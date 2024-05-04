@@ -142,7 +142,7 @@ function createContext(): Omit<ProcessorContext, "log"> {
     let docs: Document[] = [];
     let vendors: VendorAsset[] = [];
     const resources: ResourceTask[] = [];
-    const templateBlocks = new Map<string, TemplateBlockData[]>();
+    const templateBlocks = new Map<string, Array<TemplateBlockData<unknown>>>();
     let topnav: NavigationSection = {
         key: ".",
         title: "",
@@ -195,7 +195,7 @@ function createContext(): Omit<ProcessorContext, "log"> {
         },
 
         addTemplateBlock(container, id, renderer): void {
-            const block: TemplateBlockData = {
+            const block: TemplateBlockData<unknown> = {
                 container,
                 id,
                 renderer,
@@ -204,7 +204,7 @@ function createContext(): Omit<ProcessorContext, "log"> {
             templateBlocks.set(container, [...list, block]);
         },
 
-        getAllTemplateBlocks(): Map<string, TemplateBlockData[]> {
+        getAllTemplateBlocks(): Map<string, Array<TemplateBlockData<unknown>>> {
             return templateBlocks;
         },
 

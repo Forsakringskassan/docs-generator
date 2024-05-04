@@ -13,7 +13,7 @@ export interface RenderOptions {
     exampleFolders: string[];
     templateFolders: string[];
     setupPath: string;
-    templateBlocks: Map<string, TemplateBlockData[]>;
+    templateBlocks: Map<string, Array<TemplateBlockData<unknown>>>;
     templateData: Record<string, unknown>;
 
     addResource(dst: string, src: string): void;

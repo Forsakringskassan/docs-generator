@@ -19,17 +19,17 @@ export interface TemplateData {
  *
  * @public
  */
-export type TemplateBlockRenderer =
-    | { filename: string; data?: Record<string, unknown> }
+export type TemplateBlockRenderer<T> =
+    | { filename: string; data?: T }
     | { render(): string };
 
 /**
  * @internal
  */
-export interface TemplateBlockData {
+export interface TemplateBlockData<T> {
     container: string;
     id: string;
-    renderer: TemplateBlockRenderer;
+    renderer: TemplateBlockRenderer<T>;
 }
 
 /**
@@ -61,16 +61,16 @@ export interface ProcessorContext {
      * @param id - A unique identifier for this block.
      * @param renderer - Describes how to render the block content.
      */
-    addTemplateBlock(
+    addTemplateBlock<T>(
         container: string,
         id: string,
-        renderer: TemplateBlockRenderer,
+        renderer: TemplateBlockRenderer<T>,
     ): void;
 
     /**
      * @internal
      */
-    getAllTemplateBlocks(): Map<string, TemplateBlockData[]>;
+    getAllTemplateBlocks(): Map<string, Array<TemplateBlockData<unknown>>>;
 
     setTopNavigation(root: NavigationSection): void;
     setSideNavigation(root: NavigationSection): void;

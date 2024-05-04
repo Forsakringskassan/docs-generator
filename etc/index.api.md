@@ -209,13 +209,13 @@ export interface ProcessorContext {
     // (undocumented)
     addDocument(document: Document_2 | Document_2[]): void;
     addResource(dst: string, src: string): void;
-    addTemplateBlock(container: string, id: string, renderer: TemplateBlockRenderer): void;
+    addTemplateBlock<T>(container: string, id: string, renderer: TemplateBlockRenderer<T>): void;
     // (undocumented)
     addVendorAsset(asset: VendorAsset | VendorAsset[]): void;
     // (undocumented)
     readonly docs: Document_2[];
     // @internal (undocumented)
-    getAllTemplateBlocks(): Map<string, TemplateBlockData[]>;
+    getAllTemplateBlocks(): Map<string, Array<TemplateBlockData<unknown>>>;
     // (undocumented)
     getAllTemplateData(): Record<string, unknown>;
     // (undocumented)
@@ -311,19 +311,19 @@ export interface SourceFiles {
 }
 
 // @internal (undocumented)
-export interface TemplateBlockData {
+export interface TemplateBlockData<T> {
     // (undocumented)
     container: string;
     // (undocumented)
     id: string;
     // (undocumented)
-    renderer: TemplateBlockRenderer;
+    renderer: TemplateBlockRenderer<T>;
 }
 
 // @public
-export type TemplateBlockRenderer = {
+export type TemplateBlockRenderer<T> = {
     filename: string;
-    data?: Record<string, unknown>;
+    data?: T;
 } | {
     render(): string;
 };
