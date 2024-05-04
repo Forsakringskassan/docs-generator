@@ -16,8 +16,8 @@ export default {
     heading: {
         description: "Headings h1, h2, etc.",
         variables: {
-            "font-family": { value: `arial, "Helvetica Neue", sans-serif` },
-            "font-weight": { value: "normal" },
+            "font-family": { value: `var(--docs-font-family)` },
+            "font-weight": { value: "var(--docs-font-weight)" },
             "line-height": { value: "1.4" },
         },
     },
