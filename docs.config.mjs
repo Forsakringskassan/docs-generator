@@ -1,5 +1,21 @@
 import { frontMatterFileReader, navigationFileReader } from "./dist/index.js";
 
+/**
+ * @param {string} name - Prefixed name of css variable.
+ * @param {{description: string, value: string, type?: string }} entry
+ * @returns {string}
+ */
+function renderVariable(name, entry) {
+    switch (entry.type) {
+        case "color":
+            return `<code class="preview-color" style="--current-value: var(${name})">${entry.value}</code>`;
+        case "font":
+            return `\`${entry.value}\``;
+        default:
+            return `\`${entry.value}\``;
+    }
+}
+
 async function cssVariablesFileReader(filePath) {
     const { default: module } = await import(`./${filePath}`);
     const capitalize = (value) => `${value[0].toUpperCase()}${value.slice(1)}`;
@@ -12,7 +28,11 @@ async function cssVariablesFileReader(filePath) {
             `| Variable | Default value | Description |`,
             `|----------|---------------|-------------|`,
             ...Object.entries(entry.variables).map(([variable, it]) => {
-                return `| \`${prefix}${variable}\` | \`${it.value}\` | ${it.description ?? "-"} |`;
+                const prefixedName = `${prefix}${variable}`;
+                return `| \`${prefixedName}\` | ${renderVariable(
+                    prefixedName,
+                    it,
+                )} | ${it.description ?? "-"} |`;
             }),
         ].join("\n");
         return [heading, description, table].join("\n\n");

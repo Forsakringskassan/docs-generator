@@ -29,6 +29,18 @@
         text-align: left;
     }
 
+    th {
+        text-wrap: nowrap;
+    }
+
+    td {
+        vertical-align: top;
+    }
+
+    td code {
+        text-wrap: nowrap;
+    }
+
     th:first-child,
     td:first-child {
         padding-left: 1rem;
@@ -50,5 +62,21 @@
 
     code {
         margin: 0;
+    }
+}
+
+.preview-color {
+    display: flex;
+
+    &::after {
+        content: " ";
+        display: inline-block;
+        align-self: center;
+        margin-left: 1rem;
+        background: var(--current-value);
+        border: 1px solid #000;
+        border-radius: 3px;
+        width: 1em;
+        height: 1em;
     }
 }
