@@ -68,7 +68,17 @@ export function codePreview(
         const fullscreen = tags.includes("fullscreen");
         const modifier = getClassModifier(tags);
         const standalone = Boolean(example.output) && fullscreen;
-        const testIdAttr = testId ? ` data-test="${testId}"` : "";
+        const testIdAttr = testId ? `data-test="${testId}"` : "";
+        const filteredTags = tags.filter((it) => {
+            if (it.startsWith("test-id=")) {
+                return false;
+            }
+            return true;
+        });
+        const dataTagsAttr =
+            filteredTags.length > 0
+                ? `data-tags=${filteredTags.join(" ")}`
+                : "";
 
         if (liveExample) {
             return /* HTML */ `
@@ -76,6 +86,8 @@ export function codePreview(
                     id="example-${fingerprint}"
                     class="code-preview code-preview--borderless"
                     ${testIdAttr}
+                    ${dataTagsAttr}
+                    data-language="${example.language}"
                 >
                     ${example.markup}
                 </div>
@@ -88,6 +100,8 @@ export function codePreview(
                     id="example-${fingerprint}"
                     class="code-preview ${modifier}"
                     ${testIdAttr}
+                    ${dataTagsAttr}
+                    data-language="${example.language}"
                 >
                     ${example.comments.join("\n")}
                     <pre class="code-preview__markup">${highlightedCode}</pre>
@@ -101,6 +115,8 @@ export function codePreview(
                     id="example-${fingerprint}"
                     class="code-preview ${modifier}"
                     ${testIdAttr}
+                    ${dataTagsAttr}
+                    data-language="${example.language}"
                 >
                     ${example.comments.join("\n")}
                     <div class="code-preview__preview">${example.markup}</div>
@@ -134,6 +150,8 @@ export function codePreview(
                 id="example-${fingerprint}"
                 class="code-preview ${modifier}"
                 ${testIdAttr}
+                ${dataTagsAttr}
+                data-language="${example.language}"
             >
                 ${example.comments.join("\n")}
                 <div class="code-preview__preview">${example.markup}</div>

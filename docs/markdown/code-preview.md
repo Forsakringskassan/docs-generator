@@ -74,3 +74,63 @@ my-file.html
 ```import
 my-file.vue
 ```
+
+## Selectors for E2E testing
+
+While generally discouraged to write E2E tests against the generated documentation it is sometimes a necessity.
+
+There are three supported ways to write selectors:
+
+-   Via a unique automatically generated id retrieved from {@link Manifest manifest}.
+-   Via a custom author specified `test-id` tag.
+-   Via a generic `.code-preview` selector.
+
+### Unique generated id
+
+Each example gets a unique generated id similar to `id="example-${hash}"`.
+The {@link Manifest manifest} includes each example and its selector.
+
+Use this when you want to run the same test over each example available on the site, e.g. when testing if each example starts up properly.
+
+### Custom test id
+
+Examples can be given a custom test id using the `test-id=string` tag which can be used to write a selector such as `[data-test=string]`:
+
+````md
+```html test-id="foobar"
+<!-- markup -->
+```
+````
+
+Use this when you want to run a test against a specific example on a given page.
+
+### Generic selector
+
+Each example can also be selected using the `.code-preview` selector.
+
+This selector gives the least stability as for any given page it might yield no results (no examples on that page) or multiple.
+Moving examples around on the same page will change the order this selector returns the example.
+
+This selector should generally be avoided.
+
+## Example metadata
+
+The example tags and language can be queried from the `data-tags` (space-separated list of author given tags) and `data-language` (explicit or resolved language):
+
+Given an example such as:
+
+````md
+```ts nomarkup custom-tag
+/* ... */
+```
+````
+
+```ts
+const element = document.querySelector("#example-c0ffee");
+
+const language = element.dataset.language;
+const tags = element.dataset.tags.split(/\s+/);
+
+console.log(language); // --> "ts"
+console.log(tags); // --> ["nomarkup", "custom-tag"]
+```
