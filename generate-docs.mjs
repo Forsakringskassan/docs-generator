@@ -8,6 +8,7 @@ import {
 } from "./dist/index.js";
 import config from "./docs.config.mjs";
 
+const isRelease = Boolean(process.env.RELEASE);
 const require = module.createRequire(import.meta.url);
 
 const pkg = require("./package.json");
@@ -33,10 +34,12 @@ const docs = new Generator({
         manifestProcessor({ markdown: "etc/docs-manifest.md" }),
         searchProcessor(),
         versionProcessor(pkg, "toolbar", {
-            scm: {
-                commitUrlFormat: "{{ homepage }}/commit/{{ hash }}",
-                prUrlFormat: "{{ homepage }}/pull-requests/{{ id }}",
-            },
+            scm: !isRelease
+                ? {
+                      commitUrlFormat: "{{ homepage }}/commit/{{ hash }}",
+                      prUrlFormat: "{{ homepage }}/pull-requests/{{ id }}",
+                  }
+                : undefined,
         }),
     ],
     setupPath: path.resolve("docs/src/setup.ts"),

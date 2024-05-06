@@ -33,11 +33,13 @@ jobs:
               run: npm run --if-present build
             - name: Release
               env:
+                  RELEASE: 1
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
               run: |
                   npm config set access public
                   npm install --no-save "@forsakringskassan/semantic-release-config"
                   npm exec semantic-release
+                  npm run build:docs
             - name: Setup Pages
               uses: actions/configure-pages@v5
             - name: Upload artifact
