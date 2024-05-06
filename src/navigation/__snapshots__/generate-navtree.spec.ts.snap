@@ -134,6 +134,13 @@ exports[`smoketest 1`] = `
           "sortorder": Infinity,
           "title": "Topnav",
         },
+        {
+          "external": false,
+          "id": "fs:docs/processors/version.md",
+          "path": "./processors/version.html",
+          "sortorder": Infinity,
+          "title": "Version",
+        },
       ],
       "key": "./processors",
       "path": "./processors/",

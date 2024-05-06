@@ -15,5 +15,9 @@ temp/
 test-results/
 public/
 
+# ignore templates with explicit nunjucks extension as prettier often messes upp
+# nunjucks formatting (it sees it as text nodes)
+*.njk.html
+
 # not parsable as json (but the output it generates is)
 templates/json.template.json

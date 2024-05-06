@@ -25,6 +25,7 @@ processors/index.html
 processors/manifest.html
 processors/nunjucks.html
 processors/topnav.html
+processors/version.html
 search-data-[hash].json
 theme/index.html
 ```

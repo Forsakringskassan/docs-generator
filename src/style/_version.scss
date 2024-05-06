@@ -1,0 +1,16 @@
+.version {
+    color: var(--docs-text-color-discrete);
+    text-wrap: nowrap;
+    margin-left: 1rem;
+
+    a {
+        color: var(--docs-link-color-discrete);
+        text-decoration: underline;
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: var(--docs-text-color-default);
+        }
+    }
+}

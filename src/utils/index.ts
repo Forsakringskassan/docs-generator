@@ -7,6 +7,7 @@ export { getIntegrity } from "./get-integrity";
 export { getFingerprint } from "./get-fingerprint";
 export { getOutputFilePath } from "./get-output-filepath";
 export { haveOutput } from "./have-output";
+export { interpolate } from "./interpolate";
 export { normalizePath } from "./normalize-path";
 export { parseImport } from "./parse-import";
 export {
