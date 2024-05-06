@@ -228,6 +228,11 @@ Document title used for `<title>` and `<nav>`
 Set to `false` to hide document from navigation menu.
 Default `true`.
 
+#### `include`
+
+Set to `false` to not write the document to file or include as a page.
+Default `true`.
+
 ### Inline tags
 
 #### `{@link ...}`
