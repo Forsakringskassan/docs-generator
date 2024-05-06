@@ -1,5 +1,5 @@
+import fs from "node:fs/promises";
 import path from "node:path";
-import module from "node:module";
 import {
     Generator,
     manifestProcessor,
@@ -9,9 +9,7 @@ import {
 import config from "./docs.config.mjs";
 
 const isRelease = Boolean(process.env.RELEASE);
-const require = module.createRequire(import.meta.url);
-
-const pkg = require("./package.json");
+const pkg = JSON.parse(await fs.readFile("./package.json", "utf-8"));
 
 const docs = new Generator({
     site: {
