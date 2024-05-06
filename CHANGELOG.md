@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [1.28.0](https://github.com/Forsakringskassan/docs-generator/compare/v1.27.0...v1.28.0) (2024-05-06)
+
+
+### Features
+
+* add new `defineSources` helper ([5b4b9ad](https://github.com/Forsakringskassan/docs-generator/commit/5b4b9ad5efa3e522324e54c28a1c1ed97948054b))
+* backport topnav processor ([bf1e759](https://github.com/Forsakringskassan/docs-generator/commit/bf1e7595088a1f092180efdfa11b353e8d1e0759))
+* new css-variables for text colors ([b5d9c57](https://github.com/Forsakringskassan/docs-generator/commit/b5d9c57220be1316fa215f13560bd089cafd4834))
+* queryable example metadata ([15e01a5](https://github.com/Forsakringskassan/docs-generator/commit/15e01a541b9bfa2ac30e8e7c544612a79b317c3e))
+* version processor can optionally include scm information ([0680cd8](https://github.com/Forsakringskassan/docs-generator/commit/0680cd81b1c7f302d690c42cb2bffd4d6861978f))
+
 ## [1.27.0](https://github.com/Forsakringskassan/docs-generator/compare/v1.26.0...v1.27.0) (2024-04-25)
 
 
