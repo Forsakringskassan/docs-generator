@@ -45,11 +45,13 @@ export {
 export { type ProcessorStage } from "./processor-stage";
 export {
     type ManifestProcessorOptions,
+    type TopnavEntry,
     manifestProcessor,
     selectableVersionProcessor,
     themeSelectProcessor,
     versionBannerProcessor,
     versionProcessor,
+    topnavProcessor,
 } from "./processors";
 export { searchProcessor } from "./search";
 export { livereloadProcessor } from "./serve";

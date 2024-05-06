@@ -24,6 +24,7 @@ navigation/sorted-group/top-page.html
 processors/index.html
 processors/manifest.html
 processors/nunjucks.html
+processors/topnav.html
 search-data-[hash].json
 theme/index.html
 ```

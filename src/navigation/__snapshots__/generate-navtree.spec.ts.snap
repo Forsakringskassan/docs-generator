@@ -127,6 +127,13 @@ exports[`smoketest 1`] = `
           "sortorder": Infinity,
           "title": "Nunjucks",
         },
+        {
+          "external": false,
+          "id": "fs:docs/processors/topnav.md",
+          "path": "./processors/topnav.html",
+          "sortorder": Infinity,
+          "title": "Topnav",
+        },
       ],
       "key": "./processors",
       "path": "./processors/",

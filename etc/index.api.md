@@ -336,6 +336,17 @@ export interface TemplateData {
 export function themeSelectProcessor(): Processor;
 
 // @public
+export interface TopnavEntry {
+    // (undocumented)
+    path: string;
+    // (undocumented)
+    title: string;
+}
+
+// @public
+export function topnavProcessor(filename: string, title: string): Processor;
+
+// @public
 export interface VendorAsset {
     filename: string;
     integrity: string;
