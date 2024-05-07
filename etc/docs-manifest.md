@@ -9,6 +9,7 @@ index.html
 live-example/example.html
 live-example/index.html
 markdown/code-preview.html
+markdown/custom-containers.html
 markdown/index.html
 navigation/child-page-1.html
 navigation/child-page-2.html

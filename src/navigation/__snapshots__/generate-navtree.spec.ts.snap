@@ -188,6 +188,13 @@ exports[`smoketest 1`] = `
         },
         {
           "external": false,
+          "id": "fs:docs/markdown/custom-containers.md",
+          "path": "./markdown/custom-containers.html",
+          "sortorder": Infinity,
+          "title": "Custom containers",
+        },
+        {
+          "external": false,
           "id": "fs:docs/markdown/index.md",
           "path": "./markdown/",
           "sortorder": Infinity,

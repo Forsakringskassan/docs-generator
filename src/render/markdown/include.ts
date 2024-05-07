@@ -176,6 +176,17 @@ export function include(
                 const content = md.render(doc.body, env);
                 return /* HTML */ ` <div>${content}</div> `;
             },
+            alt(tokens: MarkdownIt.Token[], index: number) {
+                const token = tokens[index];
+                const needle = token.info.split(" ")[1];
+                const doc = findDocument(docs, needle);
+
+                if (doc && doc.format === "markdown") {
+                    return md.render(doc.body, env);
+                }
+
+                return md.render(token.content, env);
+            },
         });
     };
 }
