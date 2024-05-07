@@ -19,21 +19,21 @@ p:not(.code-preview p) {
     max-width: 680px;
 }
 
-main h1:not(.code-preview--default h1) {
+main h1:not(.code-preview h1) {
     font-size: 2.5rem;
     color: #1b1e23;
 }
 
-main h2:not(.code-preview--default h2) {
+main h2:not(.code-preview h2) {
     font-size: 1.5rem;
     margin-top: 3rem;
 }
 
-main h3:not(.code-preview--default h3) {
+main h3:not(.code-preview h3) {
     font-size: 1.2rem;
 }
 
-main h4:not(.code-preview--default h4) {
+main h4:not(.code-preview h4) {
     font-size: 1rem;
 }
 
