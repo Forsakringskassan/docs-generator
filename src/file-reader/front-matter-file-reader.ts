@@ -79,6 +79,7 @@ export function parseFile(
     const name = attributes.name ? attributes.name : parsed.name;
     const urlpath = parsed.dir;
     const outline = getDocumentOutline(blocks.body, "markdown");
+    const include = attributes.include ?? true;
     return {
         id: `fs:${filePath.replace(/\\/g, "/")}`,
         name,
@@ -105,7 +106,7 @@ export function parseFile(
                 : `./${normalizePath(urlpath)}`,
             name: filename,
             fullPath: normalizePath(filePath),
-            outputName: `${filename}.html`,
+            outputName: include ? `${filename}.html` : false,
         },
     };
 }

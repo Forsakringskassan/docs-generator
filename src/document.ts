@@ -16,6 +16,9 @@ export interface DocumentAttributes {
     /** visible in navigation */
     visible?: boolean;
 
+    /** if should write to file and make available as a page */
+    include?: boolean;
+
     /** component(s) this page corresponds to */
     component?: string | string[];
 
