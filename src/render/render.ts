@@ -128,6 +128,11 @@ async function compileExamples(options: {
     const cacheMiss = cache(cacheFolder, outputFolder);
     const dirtyTasks = tasks.filter(cacheMiss);
 
+    /* skip forking if there are no tasks to be run anyway */
+    if (dirtyTasks.length === 0) {
+        return;
+    }
+
     const batch: ExampleBatch = {
         outputFolder,
         external: vendors.map((it) => it.package),
