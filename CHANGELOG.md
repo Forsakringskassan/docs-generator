@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## [1.29.0](https://github.com/Forsakringskassan/docs-generator/compare/v1.28.0...v1.29.0) (2024-05-08)
+
+
+### Features
+
+* add alternative text markdown container ([4afc5bf](https://github.com/Forsakringskassan/docs-generator/commit/4afc5bf6ea3afe64a83e6ee5b1b78d6528af02e4))
+* add frontmatter `include` ([77b762f](https://github.com/Forsakringskassan/docs-generator/commit/77b762fe8ac412bc9e4fc37c70b1d52c8330a699))
+
+
+### Performance Improvements
+
+* skip running example compiler when there are no examples to compile ([67800d8](https://github.com/Forsakringskassan/docs-generator/commit/67800d8d224f926da367b424d4a63d16504e58c6))
+
 ## [1.28.0](https://github.com/Forsakringskassan/docs-generator/compare/v1.27.0...v1.28.0) (2024-05-06)
 
 
