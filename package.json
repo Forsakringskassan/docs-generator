@@ -134,7 +134,7 @@
     "@types/pug": "2.0.10",
     "cypress": "13.8.1",
     "cypress-html-validate": "6.1.0",
-    "esbuild": "0.21.0",
+    "esbuild": "0.21.1",
     "express": "4.19.2",
     "html-minifier": "4.0.0",
     "http-server": "14.1.1",
