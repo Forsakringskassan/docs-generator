@@ -25,7 +25,7 @@
     "esbuild-vue": "1.2.2"
   },
   "devDependencies": {
-    "esbuild": "0.20.2",
+    "esbuild": "0.21.0",
     "vue": "2.7.16"
   },
   "engines": {
