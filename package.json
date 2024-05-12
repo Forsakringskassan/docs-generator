@@ -100,7 +100,7 @@
     "nunjucks": "3.2.4",
     "piscina": "4.4.0",
     "scroll-into-view-if-needed": "3.1.0",
-    "semver": "7.6.1",
+    "semver": "7.6.2",
     "tiny-lr": "2.0.0",
     "vue-docgen-api": "4.78.0"
   },
