@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [1.29.1](https://github.com/Forsakringskassan/docs-generator/compare/v1.29.0...v1.29.1) (2024-05-17)
+
+
+### Bug Fixes
+
+* **deps:** update dependency glob to v10.3.14 ([ccadc65](https://github.com/Forsakringskassan/docs-generator/commit/ccadc6565a644825f46be7a4d0f32c3829a3c862))
+* **deps:** update dependency glob to v10.3.15 ([4916055](https://github.com/Forsakringskassan/docs-generator/commit/491605556769cca5e7aab71acabc5b9312eeea8f))
+* **deps:** update dependency semver to v7.6.1 ([4f02106](https://github.com/Forsakringskassan/docs-generator/commit/4f02106e1394245359d87a6aba4d185759e3fec4))
+* **deps:** update dependency semver to v7.6.2 ([d77d8e4](https://github.com/Forsakringskassan/docs-generator/commit/d77d8e490b69186753f6d4287d458c8b48b18d53))
+
 ## [1.29.0](https://github.com/Forsakringskassan/docs-generator/compare/v1.28.0...v1.29.0) (2024-05-08)
 
 
