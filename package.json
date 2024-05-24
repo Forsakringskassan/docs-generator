@@ -92,7 +92,7 @@
     "execa": "8.0.1",
     "front-matter": "4.0.2",
     "fs-extra": "11.2.0",
-    "glob": "10.3.15",
+    "glob": "10.3.16",
     "highlight.js": "11.9.0",
     "livereload-js": "4.0.2",
     "markdown-it": "14.1.0",
