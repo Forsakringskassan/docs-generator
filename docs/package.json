@@ -14,7 +14,7 @@
   "author": "Försäkringskassan",
   "devDependencies": {
     "@forsakringskassan/docs-generator": "file:..",
-    "@forsakringskassan/docs-live-example": "1.4.3",
+    "@forsakringskassan/docs-live-example": "1.4.4",
     "vue": "3.4.21"
   },
   "engines": {
