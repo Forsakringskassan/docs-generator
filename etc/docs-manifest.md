@@ -24,6 +24,7 @@ navigation/sorted-group/sorted-page-3.html
 navigation/sorted-group/top-page.html
 processors/index.html
 processors/manifest.html
+processors/motd.html
 processors/nunjucks.html
 processors/topnav.html
 processors/version.html
