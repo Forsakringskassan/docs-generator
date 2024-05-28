@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## [1.30.0](https://github.com/Forsakringskassan/docs-generator/compare/v1.29.2...v1.30.0) (2024-05-28)
+
+
+### Features
+
+* new `motdProcessor` replacing now deprecated `versionBannerProcessor` ([c96aaed](https://github.com/Forsakringskassan/docs-generator/commit/c96aaed87128d3d98954b6f77a5fc5b1d2657b60))
+
+
+### Bug Fixes
+
+* **deps:** update dependency glob to v10.3.16 ([60aea60](https://github.com/Forsakringskassan/docs-generator/commit/60aea609bc0a342c431bbd660eebbf318d2c8f33))
+* **deps:** update dependency glob to v10.4.1 ([381a6c1](https://github.com/Forsakringskassan/docs-generator/commit/381a6c1615cf19710f7b7a2ce44d3d5307f0b5c1))
+* **deps:** update dependency piscina to v4.5.1 ([7339a08](https://github.com/Forsakringskassan/docs-generator/commit/7339a0859b04296155ef0d12eb53210e01d06523))
+
 ## [1.29.2](https://github.com/Forsakringskassan/docs-generator/compare/v1.29.1...v1.29.2) (2024-05-24)
 
 
