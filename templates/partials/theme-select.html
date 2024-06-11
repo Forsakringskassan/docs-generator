@@ -14,20 +14,14 @@
 
     <script>
         function themeSelector() {
-            const cookieName = "fkds-theme";
+            const sessionKey = "fkds-theme";
 
-            function getCookie(key) {
-                const cookie = document.cookie.split("; ").find((item) => item.trim().startsWith(`${key}=`));
-                if (cookie) {
-                    const [, value] = cookie.split("=", 2);
-                    return value;
-                } else {
-                    return null;
-                }
+            function getSelectedTheme(key) {
+                return window.localStorage.getItem(key);
             }
 
-            function setCookie(key, value) {
-                document.cookie = `${key}=${value}; path=/; expires=Fri, 31 Dec 9999 23:59:59 GMT; SameSite=strict`;
+            function saveSelectedTheme(key, value) {
+                window.localStorage.setItem(key, value);
             }
 
             function enableTheme(theme) {
@@ -41,11 +35,11 @@
             const wrapper = el.closest(".select-field");
             el.addEventListener("change", () => {
                 const theme = el.value;
-                setCookie(cookieName, theme);
+                saveSelectedTheme(sessionKey, theme);
                 enableTheme(theme);
             });
 
-            const selected = getCookie(cookieName) || "exp";
+            const selected = getSelectedTheme(sessionKey) || "exp";
             enableTheme(selected);
             el.value = selected;
 
