@@ -1,5 +1,5 @@
 <div class="toolbar__item">
-    <div class="select-field" hidden>
+    <div class="select-field" style="visibility: hidden">
         <label for="fkds-theme-select" class="label sr-only"> Tema </label>
         <div class="select-field__icon-wrapper">
             <select id="fkds-theme-select" class="select-field__select">
@@ -14,10 +14,8 @@
 
     <script>
         function themeSelector() {
-            const sessionKey = "fkds-theme";
-
             function getSelectedTheme(key) {
-                return window.localStorage.getItem(key);
+                return window.localStorage.getItem(key) ?? "{{ defaultTheme }}";
             }
 
             function saveSelectedTheme(key, value) {
@@ -32,31 +30,20 @@
             }
 
             const el = document.querySelector("#fkds-theme-select");
-            const wrapper = el.closest(".select-field");
+            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
             el.addEventListener("change", () => {
                 const theme = el.value;
-                saveSelectedTheme(sessionKey, theme);
+                saveSelectedTheme("{{ sessionKey }}", theme);
                 enableTheme(theme);
             });
 
-            const selected = getSelectedTheme(sessionKey) || "exp";
+            const selected = getSelectedTheme("{{ sessionKey }}");
             enableTheme(selected);
             el.value = selected;
 
-            wrapper.hidden = false;
+            wrapper.style.visibility = null;
         }
 
-        /* technical debt, this entire script should be moved to src/runtime and
-         * import this function instead */
-        function onContentReady(callback) {
-            const { readyState } = document;
-            if (readyState === "complete" || readyState === "interactive") {
-                setTimeout(callback, 0);
-            } else {
-                document.addEventListener("DOMContentLoaded", callback);
-            }
-        }
-
-        onContentReady(themeSelector);
+        themeSelector();
     </script>
 </div>
