@@ -21,7 +21,15 @@
     {# leaf node #}
     {%- if not item.children -%}
     <li class="link {% if item.active %}active{% endif %}">
-        <a href="{{ item.path | relative(doc) }}" {% if item.external %} target="_blank" rel="external" {% endif %}>
+        <!-- prettier-ignore -->
+        <a
+            href="{{ item.path | relative(doc) }}"
+            {% if item.external %}
+            target="_blank"
+            rel="external"
+            data-path="{{ item.path.startsWith('/') and item.path.slice(1) or item.path }}"
+            {% endif %}
+        >
             {{ item.title }}
         </a>
     </li>
