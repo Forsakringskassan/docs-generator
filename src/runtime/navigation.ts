@@ -58,6 +58,7 @@ async function replaceContent(href: string): Promise<void> {
     const body = await response.text();
     const doc = parser.parseFromString(body, "text/html");
     const sidenav = doc.querySelector("#sidenav");
+    const rootUrl = doc.documentElement.dataset.rootUrl;
 
     /* replace only <main> if the response is OK and the sidenav is present on
      * the new page */
@@ -78,6 +79,9 @@ async function replaceContent(href: string): Promise<void> {
         cloneScripts(importedHeader, href);
         headerTarget.replaceWith(importedHeader);
     }
+
+    /* update rootUrl on document root */
+    document.documentElement.dataset.rootUrl = rootUrl;
 
     document.title = doc.title;
     target.replaceWith(element);

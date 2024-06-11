@@ -1,4 +1,3 @@
-import path from "node:path/posix";
 import { type Document } from "../document";
 import { type Processor } from "../processor";
 import { getFingerprint, getIntegrity, getOutputFilePath } from "../utils";
@@ -69,13 +68,6 @@ export function searchProcessor(): Processor {
             });
             context.addTemplateBlock("toolbar", "search-toolbar", {
                 filename: "partials/search-toolbar.html",
-                data: {
-                    rootUrl(doc: Document) {
-                        const { fileInfo } = doc;
-                        const relative = path.relative(fileInfo.path, ".");
-                        return relative !== "" ? relative : ".";
-                    },
-                },
             });
             context.addTemplateBlock("body:end", "search-dialog", {
                 filename: "partials/search-dialog.html",
