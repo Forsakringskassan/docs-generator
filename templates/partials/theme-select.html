@@ -1,5 +1,5 @@
 <div class="toolbar__item">
-    <div class="select-field" hidden>
+    <div class="select-field" style="visibility: hidden">
         <label for="fkds-theme-select" class="label sr-only"> Tema </label>
         <div class="select-field__icon-wrapper">
             <select id="fkds-theme-select" class="select-field__select">
@@ -14,20 +14,12 @@
 
     <script>
         function themeSelector() {
-            const cookieName = "fkds-theme";
-
-            function getCookie(key) {
-                const cookie = document.cookie.split("; ").find((item) => item.trim().startsWith(`${key}=`));
-                if (cookie) {
-                    const [, value] = cookie.split("=", 2);
-                    return value;
-                } else {
-                    return null;
-                }
+            function getSelectedTheme(key) {
+                return window.localStorage.getItem(key) ?? "{{ defaultTheme }}";
             }
 
-            function setCookie(key, value) {
-                document.cookie = `${key}=${value}; expires=Fri, 31 Dec 9999 23:59:59 GMT; SameSite=strict`;
+            function saveSelectedTheme(key, value) {
+                window.localStorage.setItem(key, value);
             }
 
             function enableTheme(theme) {
@@ -38,31 +30,20 @@
             }
 
             const el = document.querySelector("#fkds-theme-select");
-            const wrapper = el.closest(".select-field");
+            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
             el.addEventListener("change", () => {
                 const theme = el.value;
-                setCookie(cookieName, theme);
+                saveSelectedTheme("{{ sessionKey }}", theme);
                 enableTheme(theme);
             });
 
-            const selected = getCookie(cookieName) || "exp";
+            const selected = getSelectedTheme("{{ sessionKey }}");
             enableTheme(selected);
             el.value = selected;
 
-            wrapper.hidden = false;
+            wrapper.style.visibility = null;
         }
 
-        /* technical debt, this entire script should be moved to src/runtime and
-         * import this function instead */
-        function onContentReady(callback) {
-            const { readyState } = document;
-            if (readyState === "complete" || readyState === "interactive") {
-                setTimeout(callback, 0);
-            } else {
-                document.addEventListener("DOMContentLoaded", callback);
-            }
-        }
-
-        onContentReady(themeSelector);
+        themeSelector();
     </script>
 </div>

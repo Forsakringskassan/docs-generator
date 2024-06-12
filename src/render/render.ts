@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import { existsSync, copyFileSync } from "node:fs";
 import path from "node:path";
+import pathPosix from "node:path/posix";
 import { promisify } from "node:util";
 import { execa } from "execa";
 import nunjucks from "nunjucks";
@@ -222,6 +223,11 @@ export async function render(
         site: options.site,
         doc,
         topnav,
+        rootUrl(doc: Document) {
+            const { fileInfo } = doc;
+            const relative = pathPosix.relative(fileInfo.path, ".");
+            return relative !== "" ? relative : ".";
+        },
         sidenav,
         vendors,
     };

@@ -1,0 +1,11 @@
+<script>
+    function themeRenderBlocker() {
+        const theme = window.localStorage.getItem("{{ sessionKey }}") ?? "{{ defaultTheme }}";
+        const style = Array.from(document.querySelectorAll("[data-theme]"));
+        for (const el of style) {
+            el.disabled = el.dataset.theme !== theme;
+        }
+    }
+
+    themeRenderBlocker();
+</script>

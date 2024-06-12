@@ -14,7 +14,6 @@ const results = document.querySelector<HTMLButtonElement>("#search-results")!;
 let index: SearchIndex | null = null;
 let searchTerm = "";
 let active = 0;
-const rootUrl = button.dataset.rootUrl;
 const uf = new uFuzzy({
     intraIns: Infinity,
 });
@@ -36,6 +35,7 @@ function updateResults(): void {
 
     active = 0;
 
+    const rootUrl = document.documentElement.dataset.rootUrl ?? ".";
     const ul = document.createElement("ul");
     ul.classList.add("list");
     for (let i = 0; i < order.length; i++) {
