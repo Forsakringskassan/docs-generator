@@ -3,8 +3,8 @@
 exports[`should render correctly with all data 1`] = `
 "<div class="toolbar__item">
     <span class="version">
-        <a href="https://example.net/pull-requests/123">PR 123</a>
         feature/foobar (<a href="https://example.net/commits/c0ffee">c0ffee</a>)<br />
+        <a href="https://example.net/pull-requests/123">PR 123</a><br />
         1999-12-31 13:37:00
     </span>
 </div>
@@ -14,8 +14,8 @@ exports[`should render correctly with all data 1`] = `
 exports[`should render correctly without PR data 1`] = `
 "<div class="toolbar__item">
     <span class="version">
-        
         feature/foobar (<a href="https://example.net/commits/c0ffee">c0ffee</a>)<br />
+        
         1999-12-31 13:37:00
     </span>
 </div>
