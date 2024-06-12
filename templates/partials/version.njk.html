@@ -1,13 +1,9 @@
-{%- macro scmInfo(scm) -%}
-        {{ scm.branch }} (<a href="{{ scm.commitUrl }}">{{ scm.commitShort }}</a>)<br />
-        {% if scm.pr %}<a href="{{ scm.prUrl }}">PR {{ scm.pr }}</a><br />{% endif %}
-        {{ build.date }} {{ build.time }}
-{%- endmacro -%}
+{% from "macro/scm-info.njk.html" import scmInfo -%}
 
 <div class="toolbar__item">
     <span class="version">
         {% if scm -%}
-            {{ scmInfo(scm) }}
+            {{ scmInfo(build, scm) }}
         {%- else -%}
             {{ pkg.version }}
         {%- endif %}

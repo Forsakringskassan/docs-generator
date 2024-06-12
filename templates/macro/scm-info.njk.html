@@ -1,0 +1,5 @@
+{%- macro scmInfo(build, scm) -%}
+        {{ scm.branch }} (<a href="{{ scm.commitUrl }}">{{ scm.commitShort }}</a>)<br />
+        {% if scm.pr %}<a href="{{ scm.prUrl }}">PR {{ scm.pr }}</a><br />{% endif %}
+        {{ build.date }} {{ build.time }}
+{%- endmacro -%}
