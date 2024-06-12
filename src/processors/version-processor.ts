@@ -87,7 +87,13 @@ async function getGitBranch(): Promise<string> {
 
 function getPullRequestID(): string | undefined {
     /* jenkins */
-    return process.env.JOB_BASE_NAME;
+    if (process.env.JOB_BASE_NAME) {
+        const name = process.env.JOB_BASE_NAME;
+        const match = name.match(/PR-(\d+)/);
+        return match ? match[1] : undefined;
+    }
+
+    return undefined;
 }
 
 async function getSCMData(

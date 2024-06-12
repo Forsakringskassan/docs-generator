@@ -57,7 +57,7 @@ The following placeholders can be used:
 
 The URL format of the generated link to SCM pull request.
 
-`{{ homepage }}/pull-requests/{{ id }}`
+`{{ homepage }}/pull-requests/{{ pr }}`
 
 The following placeholders can be used:
 
