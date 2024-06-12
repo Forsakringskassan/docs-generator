@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [1.30.1](https://github.com/Forsakringskassan/docs-generator/compare/v1.30.0...v1.30.1) (2024-06-12)
+
+
+### Bug Fixes
+
+* fix broken external links after navigating to subfolder ([9d3ed2b](https://github.com/Forsakringskassan/docs-generator/commit/9d3ed2b126c24cb933c90ed23d4ab623d6f5069b))
+* fix broken search results when navigating from subdirectory ([6e23db6](https://github.com/Forsakringskassan/docs-generator/commit/6e23db64dd5395d99156dcb5ebaa3114cb0158c4))
+* fix theme selector being stored per directory instead of globally ([90e90e5](https://github.com/Forsakringskassan/docs-generator/commit/90e90e57f2cc4aeb954e39f234138e37fe881fa8))
+* prevent theme from flickering when loading page ([89339c1](https://github.com/Forsakringskassan/docs-generator/commit/89339c140d9815eeff7de274c6ee728982772438))
+
 ## [1.30.0](https://github.com/Forsakringskassan/docs-generator/compare/v1.29.2...v1.30.0) (2024-05-28)
 
 
