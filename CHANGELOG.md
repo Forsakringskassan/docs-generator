@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## [1.30.2](https://github.com/Forsakringskassan/docs-generator/compare/v1.30.1...v1.30.2) (2024-06-12)
+
+
+### Bug Fixes
+
+* fix jenkins pull request id incorrectly including `PR-` prefix ([739b9b1](https://github.com/Forsakringskassan/docs-generator/commit/739b9b15b25a6e0acee79c8b1a255ce1899daff1))
+* move `scmInfo` to importable macro in separate file ([893b315](https://github.com/Forsakringskassan/docs-generator/commit/893b315516a8e512962e1c6b5bf9d33bf6e515b8))
+* move PR info on it's own line in version info ([d5f6e54](https://github.com/Forsakringskassan/docs-generator/commit/d5f6e54b7d3567077e94e50c2de8eeb81cf2e609))
+
 ## [1.30.1](https://github.com/Forsakringskassan/docs-generator/compare/v1.30.0...v1.30.1) (2024-06-12)
 
 
