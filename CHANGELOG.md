@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.30.3](https://github.com/Forsakringskassan/docs-generator/compare/v1.30.2...v1.30.3) (2024-06-16)
+
+
+### Bug Fixes
+
+* fix fullscreen button link ([28a62ac](https://github.com/Forsakringskassan/docs-generator/commit/28a62acf8170c4d80062a132b08c38424edaf911))
+
 ## [1.30.2](https://github.com/Forsakringskassan/docs-generator/compare/v1.30.1...v1.30.2) (2024-06-12)
 
 
