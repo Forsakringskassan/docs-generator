@@ -1,3 +1,4 @@
+import path from "node:path";
 import type MarkdownIt from "markdown-it";
 import { type ExampleResult } from "../../examples";
 import { type MarkdownEnv } from "../markdown-env";
@@ -22,6 +23,14 @@ function getClassModifier(tags: string[]): string {
         return "code-preview--borderless";
     }
     return "code-preview--default";
+}
+
+function getStandalonePath(output: string | null): string | null {
+    if (!output) {
+        return null;
+    }
+    const { dir, name } = path.parse(output);
+    return path.join(dir, `${name}.html`);
 }
 
 export function codePreview(
@@ -67,7 +76,8 @@ export function codePreview(
         const noMarkup = tags.includes("nomarkup");
         const fullscreen = tags.includes("fullscreen");
         const modifier = getClassModifier(tags);
-        const standalone = Boolean(example.output) && fullscreen;
+        const standalonePath = getStandalonePath(example.output);
+        const showFullscreen = Boolean(standalonePath) && fullscreen;
         const testIdAttr = testId ? `data-test="${testId}"` : "";
         const filteredTags = tags.filter((it) => {
             if (it.startsWith("test-id=")) {
@@ -136,9 +146,9 @@ export function codePreview(
             </button>
         `;
 
-        const toggleFullscreen = fullscreen
+        const toggleFullscreen = showFullscreen
             ? /* HTML */ `
-                  <a href="${standalone}" class="code-preview__fullscreen">
+                  <a href="${standalonePath}" class="code-preview__fullscreen">
                       <i class="icon icon--fullscreen"></i>
                       Helskärm
                   </a>
