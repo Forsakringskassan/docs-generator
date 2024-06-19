@@ -1,3 +1,9 @@
 $breakpoint-sm: 640px;
 $breakpoint-md: 1024px;
 $breakpoint-lg: 1280px;
+
+:root {
+    --docs-breakpoint-sm: #{$breakpoint-sm};
+    --docs-breakpoint-md: #{$breakpoint-md};
+    --docs-breakpoint-lg: #{$breakpoint-lg};
+}

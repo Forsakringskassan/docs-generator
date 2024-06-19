@@ -88,14 +88,14 @@
                         {%- block aside %}
                         {%- endblock %}
 
-                        <div id="outline">
-                            <h2 class="outline__heading">Innehåll</h2>
+                        <details id="outline">
+                            <summary class="outline__heading">Innehåll</summary>
                             <ul>
                                 {% for heading in doc.outline %}
                                 <li><a href="#{{ heading.anchor }}">{{ heading.title | escape }}</a></li>
                                 {% endfor %}
                             </ul>
-                        </div>
+                        </details>
                     </div>
                     {% endif %}
 

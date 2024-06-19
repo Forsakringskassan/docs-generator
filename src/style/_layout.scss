@@ -39,7 +39,7 @@ main {
             "sidenav content" 1fr
             / min-content 1fr;
 
-        @media screen and (width >= #{bp.$breakpoint-md}) {
+        @media screen and (width >= #{bp.$breakpoint-lg}) {
             grid-template:
                 "sidenav title aside" auto
                 "sidenav content aside" 1fr

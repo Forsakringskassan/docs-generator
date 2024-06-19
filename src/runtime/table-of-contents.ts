@@ -1,4 +1,5 @@
 import { onContentReady } from "./on-content-ready";
+import { BREAKPOINT_LARGE } from "./breakpoints";
 
 export function tableOfContents(
     toc: Element,
@@ -41,3 +42,26 @@ onContentReady(() => {
 
     tableOfContents(toc, headings);
 });
+
+const tableOfContentsQuery = window.matchMedia(
+    `(min-width: ${BREAKPOINT_LARGE})`,
+);
+tableOfContentsQuery.addEventListener("change", toggleTableOfContents);
+
+// Set initial state of toc on page load.
+toggleTableOfContents();
+
+export function toggleTableOfContents(): void {
+    const toc = document.querySelector("#outline");
+    if (!toc) {
+        return;
+    }
+
+    const { matches } = tableOfContentsQuery;
+    const isOpen = toc.hasAttribute("open");
+    if (matches && !isOpen) {
+        toc.setAttribute("open", "");
+    } else if (!matches && isOpen) {
+        toc.removeAttribute("open");
+    }
+}
