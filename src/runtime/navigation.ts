@@ -1,4 +1,5 @@
-import { tableOfContents } from "./table-of-contents";
+import { tableOfContents, toggleTableOfContents } from "./table-of-contents";
+import { BREAKPOINT_LARGE } from "./breakpoints";
 
 const parser = new DOMParser();
 const variableBlock = document.createElement("style");
@@ -108,6 +109,11 @@ async function replaceContent(href: string): Promise<void> {
     if (toc) {
         const headings = document.querySelectorAll("#content h2");
         tableOfContents(toc, headings);
+
+        const mediaQueryLarge = window.matchMedia(
+            `(min-width: ${BREAKPOINT_LARGE})`,
+        );
+        toggleTableOfContents(mediaQueryLarge);
     }
 }
 

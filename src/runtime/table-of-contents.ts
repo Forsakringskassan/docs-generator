@@ -1,4 +1,5 @@
 import { onContentReady } from "./on-content-ready";
+import { BREAKPOINT_LARGE } from "./breakpoints";
 
 export function tableOfContents(
     toc: Element,
@@ -41,3 +42,24 @@ onContentReady(() => {
 
     tableOfContents(toc, headings);
 });
+
+const mediaQueryLarge = window.matchMedia(`(min-width: ${BREAKPOINT_LARGE})`);
+mediaQueryLarge.addEventListener("change", toggleTableOfContents);
+toggleTableOfContents(mediaQueryLarge);
+
+export function toggleTableOfContents(
+    query: MediaQueryListEvent | MediaQueryList,
+): void {
+    const toc = document.querySelector("#outline");
+    if (!toc) {
+        return;
+    }
+
+    const { matches } = query;
+    const isOpen = toc.hasAttribute("open");
+    if (matches && !isOpen) {
+        toc.setAttribute("open", "");
+    } else if (!matches && isOpen) {
+        toc.removeAttribute("open");
+    }
+}
