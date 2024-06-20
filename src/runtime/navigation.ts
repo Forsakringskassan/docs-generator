@@ -1,3 +1,5 @@
+import { tableOfContents } from "./table-of-contents";
+
 const parser = new DOMParser();
 const variableBlock = document.createElement("style");
 
@@ -133,6 +135,7 @@ function replaceContentOnClick(
         const current = navigation.querySelectorAll(".active");
         for (const element of current) {
             element.classList.remove("active");
+            console.log("replaced. removed active from: ", element);
         }
 
         /* set new active link */
@@ -142,6 +145,7 @@ function replaceContentOnClick(
             parent = getParentElement(parent, maxDepth--)
         ) {
             parent.classList.add("active");
+            console.log("replaced. added active to: ", parent);
         }
 
         /* move focus */
@@ -149,6 +153,27 @@ function replaceContentOnClick(
         if (heading) {
             heading.setAttribute("tabindex", "-1");
             heading.focus();
+        }
+
+        const toc = document.querySelector<HTMLElement>("#outline");
+        if (toc) {
+            /* Update table of contents active heading */
+            const headings = document.querySelectorAll("#content h2");
+            tableOfContents(toc, headings);
+
+            /* Update table of contents open state */
+            const { matches } = window.matchMedia("(min-width: 1280px)");
+            const isOpen = toc.hasAttribute("open");
+
+            if (matches && !isOpen) {
+                toc.setAttribute("open", "");
+
+                console.log("navigated. Opened.");
+            } else if (!matches && isOpen) {
+                toc.removeAttribute("open");
+
+                console.log("navigated. Closed.");
+            }
         }
     });
 }

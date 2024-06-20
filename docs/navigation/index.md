@@ -1,6 +1,6 @@
 ---
 title: Navigation
-layout: content-with-menu
+layout: component
 sortorder: 1
 ---
 

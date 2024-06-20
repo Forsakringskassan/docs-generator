@@ -1,7 +1,11 @@
 import { onContentReady } from "./on-content-ready";
 
-function tableOfContents(toc: Element, headings: NodeListOf<Element>): void {
+export function tableOfContents(
+    toc: Element,
+    headings: NodeListOf<Element>,
+): void {
     function visibilityChange(entries: IntersectionObserverEntry[]): void {
+        console.log("visibility changed");
         for (const { target, isIntersecting } of entries) {
             if (!isIntersecting) {
                 continue;
@@ -13,6 +17,8 @@ function tableOfContents(toc: Element, headings: NodeListOf<Element>): void {
             const link = toc.querySelector(`a[href="${href}"]`);
             const li = link?.closest("li");
             li?.classList.add("active");
+
+            console.log("added active to: ", li);
         }
     }
 
@@ -38,3 +44,27 @@ onContentReady(() => {
 
     tableOfContents(toc, headings);
 });
+
+const mediaQueryList = window.matchMedia("(min-width: 1280px)");
+mediaQueryList.addEventListener("change", onMediaQueryChange);
+onMediaQueryChange(mediaQueryList);
+
+function onMediaQueryChange(event: MediaQueryListEvent | MediaQueryList): void {
+    const toc = document.querySelector("#outline");
+    if (!toc) {
+        return;
+    }
+
+    const { matches } = event;
+    const isOpen = toc.hasAttribute("open");
+
+    if (matches && !isOpen) {
+        toc.setAttribute("open", "");
+
+        console.log("query change. Opened.");
+    } else if (!matches && isOpen) {
+        toc.removeAttribute("open");
+
+        console.log("query change. Closed.");
+    }
+}
