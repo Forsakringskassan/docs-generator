@@ -1,3 +1,5 @@
+import { tableOfContents } from "./table-of-contents";
+
 const parser = new DOMParser();
 const variableBlock = document.createElement("style");
 
@@ -5,6 +7,9 @@ const variableBlock = document.createElement("style");
 const header = document.querySelector("header")!;
 const footer = document.querySelector("footer")!;
 /* eslint-enable @typescript-eslint/no-non-null-assertion */
+
+// Save path to manage whether to replace content for new page or navigate to hash.
+let previousPath = location.pathname;
 
 /**
  * Close all nested `<details>` elements.
@@ -98,6 +103,12 @@ async function replaceContent(href: string): Promise<void> {
 
     document.title = doc.title;
     target.replaceWith(element);
+
+    const toc = document.querySelector("#outline");
+    if (toc) {
+        const headings = document.querySelectorAll("#content h2");
+        tableOfContents(toc, headings);
+    }
 }
 
 /**
@@ -127,6 +138,7 @@ function replaceContentOnClick(
         event.preventDefault();
         await replaceContent(href);
         history.pushState("", "", href);
+        previousPath = location.pathname;
         window.scrollTo({ top: 0, behavior: "smooth" });
 
         /* remove old active link */
@@ -214,7 +226,11 @@ if (navigation) {
     }
 
     window.addEventListener("popstate", () => {
-        replaceContent(location.href);
+        if (previousPath !== location.pathname) {
+            replaceContent(location.href);
+        }
+
+        previousPath = location.pathname;
     });
 
     document.head.appendChild(variableBlock);
