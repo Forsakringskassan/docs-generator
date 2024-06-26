@@ -116,7 +116,7 @@
     "@forsakringskassan/jest-config": "29.5.5",
     "@forsakringskassan/prettier-config": "2.1.0",
     "@forsakringskassan/stylelint-config": "2.2.4",
-    "@html-validate/release-scripts": "6.4.0",
+    "@html-validate/release-scripts": "6.5.0",
     "@microsoft/api-extractor": "7.47.0",
     "@rollup/plugin-commonjs": "26.0.1",
     "@rollup/plugin-json": "6.1.0",
