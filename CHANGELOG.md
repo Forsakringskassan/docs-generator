@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [1.30.4](https://github.com/Forsakringskassan/docs-generator/compare/v1.30.3...v1.30.4) (2024-06-28)
+
+
+### Bug Fixes
+
+* **deps:** update dependency glob to v10.4.2 ([0581866](https://github.com/Forsakringskassan/docs-generator/commit/0581866dbcb02af3c859ac7dcd0b658011e321b1))
+* **deps:** update dependency piscina to v4.6.0 ([65ad2c3](https://github.com/Forsakringskassan/docs-generator/commit/65ad2c3d2d736f2b6407ec817857961800e1ee9c))
+
 ## [1.30.3](https://github.com/Forsakringskassan/docs-generator/compare/v1.30.2...v1.30.3) (2024-06-16)
 
 
