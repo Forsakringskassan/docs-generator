@@ -121,7 +121,7 @@
     "@rollup/plugin-commonjs": "26.0.1",
     "@rollup/plugin-json": "6.1.0",
     "@rollup/plugin-node-resolve": "15.2.3",
-    "@types/cli-progress": "3.11.5",
+    "@types/cli-progress": "3.11.6",
     "@types/d3": "7.4.3",
     "@types/dompurify": "3.0.5",
     "@types/express": "4.17.21",
