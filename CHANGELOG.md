@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [1.30.6](https://github.com/Forsakringskassan/docs-generator/compare/v1.30.5...v1.30.6) (2024-07-12)
+
+
+### Bug Fixes
+
+* **deps:** update dependency highlight.js to v11.10.0 ([818dd66](https://github.com/Forsakringskassan/docs-generator/commit/818dd66b1d6123fe9f5dfa74e9021b9e99df4b0c))
+* **deps:** update dependency vue-docgen-api to v4.79.1 ([5693008](https://github.com/Forsakringskassan/docs-generator/commit/56930081e9a70f608dcdf33ddf8c878c181b039e))
+
 ## [1.30.5](https://github.com/Forsakringskassan/docs-generator/compare/v1.30.4...v1.30.5) (2024-07-05)
 
 
