@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.30.7](https://github.com/Forsakringskassan/docs-generator/compare/v1.30.6...v1.30.7) (2024-07-19)
+
+
+### Bug Fixes
+
+* **deps:** update dependency glob to v10.4.5 ([d6006a2](https://github.com/Forsakringskassan/docs-generator/commit/d6006a23cc78fcdb6db97750cc93c4cfcc95acab))
+
 ## [1.30.6](https://github.com/Forsakringskassan/docs-generator/compare/v1.30.5...v1.30.6) (2024-07-12)
 
 
