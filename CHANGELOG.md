@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.30.8](https://github.com/Forsakringskassan/docs-generator/compare/v1.30.7...v1.30.8) (2024-07-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency semver to v7.6.3 ([05ad04a](https://github.com/Forsakringskassan/docs-generator/commit/05ad04ad0fab05a13091228bf9e94b48e82b4149))
+
 ## [1.30.7](https://github.com/Forsakringskassan/docs-generator/compare/v1.30.6...v1.30.7) (2024-07-19)
 
 
