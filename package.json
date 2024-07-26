@@ -129,7 +129,7 @@
     "@types/glob": "8.1.0",
     "@types/jest": "29.5.12",
     "@types/markdown-it": "14.1.1",
-    "@types/node": "16.18.103",
+    "@types/node": "16.18.104",
     "@types/nunjucks": "3.2.6",
     "@types/pug": "2.0.10",
     "@types/semver": "7.5.8",
