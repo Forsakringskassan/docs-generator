@@ -1,6 +1,9 @@
 import { onContentReady } from "./on-content-ready";
 
-function tableOfContents(toc: Element, headings: NodeListOf<Element>): void {
+export function tableOfContents(
+    toc: Element,
+    headings: NodeListOf<Element>,
+): void {
     function visibilityChange(entries: IntersectionObserverEntry[]): void {
         for (const { target, isIntersecting } of entries) {
             if (!isIntersecting) {
