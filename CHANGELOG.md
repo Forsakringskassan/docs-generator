@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.30.9](https://github.com/Forsakringskassan/docs-generator/compare/v1.30.8...v1.30.9) (2024-08-09)
+
+
+### Bug Fixes
+
+* **deps:** update dependency vue-docgen-api to v4.79.2 ([f8c3494](https://github.com/Forsakringskassan/docs-generator/commit/f8c3494c30522da84cd5b6b958346b838ed437e9))
+
 ## [1.30.8](https://github.com/Forsakringskassan/docs-generator/compare/v1.30.7...v1.30.8) (2024-07-26)
 
 
