@@ -2,7 +2,7 @@ import path from "node:path";
 import { type Plugin, build as esbuild } from "esbuild";
 import { version } from "vue";
 import { vuePlugin as Vue3Plugin } from "plugin-vue3";
-import { virtualEntryPlugin } from "./esbuild";
+import { virtualEntryPlugin, rawImportPlugin } from "./esbuild";
 import { type ExampleBatch } from "./examples";
 
 const vueMajor = parseInt(version.split(".", 2)[0], 10) as 2 | 3;
@@ -46,6 +46,7 @@ async function compileExample(batch: ExampleBatch): Promise<void> {
                 "process.env.DOCS_ICON_LIB": JSON.stringify(iconLib),
             },
             plugins: [
+                rawImportPlugin(),
                 virtualEntryPlugin(Object.fromEntries(virtualEntries)),
                 VuePlugin(),
             ],
