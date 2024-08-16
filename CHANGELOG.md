@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.30.10](https://github.com/Forsakringskassan/docs-generator/compare/v1.30.9...v1.30.10) (2024-08-16)
+
+
+### Bug Fixes
+
+* show active header in outline ([7293119](https://github.com/Forsakringskassan/docs-generator/commit/7293119ee29d08a4138aa34f7705a2a8f2b43d7c))
+
 ## [1.30.9](https://github.com/Forsakringskassan/docs-generator/compare/v1.30.8...v1.30.9) (2024-08-09)
 
 
