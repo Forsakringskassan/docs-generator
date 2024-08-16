@@ -106,8 +106,10 @@ export interface MarkdownRenderer {
 export interface NormalizedDocumentAttributes {
     // (undocumented)
     badge?: DocumentBadge;
+    // Warning: (ae-forgotten-export) The symbol "Component" needs to be exported by the entry point markdown.d.ts
+    //
     // (undocumented)
-    component?: string[];
+    component?: Component[];
     // (undocumented)
     href?: string;
     // (undocumented)

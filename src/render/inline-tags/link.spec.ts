@@ -26,7 +26,10 @@ const docs = [
     createMockDocument("with-name", "./components/with-name.html"),
     createMockDocument("with-components", "./components/f-components.html", {
         alias: ["FFirst", "FSecond"],
-        attributes: { component: ["FFirst", "FSecond"], sortorder: Infinity },
+        attributes: {
+            component: [{ name: "FFirst" }, { name: "FSecond" }],
+            sortorder: Infinity,
+        },
     }),
 ];
 

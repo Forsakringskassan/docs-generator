@@ -2,6 +2,7 @@ import fs from "node:fs/promises";
 import path, { type ParsedPath } from "node:path";
 import fm from "front-matter";
 import {
+    Component,
     DocumentBadge,
     type Document,
     type DocumentAttributes,
@@ -60,6 +61,21 @@ function getComponentAlias(attrs: DocumentAttributes): string[] {
     }
 }
 
+function getComponent(attrs: DocumentAttributes): Component[] | undefined {
+    if (!attrs.component) {
+        return undefined;
+    }
+    return toArray(attrs.component).map((it) => {
+        if (typeof it === "string") {
+            return {
+                name: it,
+            };
+        } else {
+            return it;
+        }
+    });
+}
+
 /**
  * @internal
  */
@@ -90,9 +106,7 @@ export function parseFile(
             layout: attributes.layout,
             status: attributes.status,
             badge: getBadge(attributes),
-            component: attributes.component
-                ? toArray(attributes.component)
-                : undefined,
+            component: getComponent(attributes),
             sortorder: attributes.sortorder ?? Infinity,
         },
         body: blocks.body,

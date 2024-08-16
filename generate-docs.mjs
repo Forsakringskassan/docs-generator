@@ -5,6 +5,7 @@ import {
     manifestProcessor,
     versionProcessor,
     searchProcessor,
+    sourceUrlProcessor,
 } from "./dist/index.js";
 import config from "./docs.config.mjs";
 
@@ -38,6 +39,11 @@ const docs = new Generator({
                       prUrlFormat: "{{ homepage }}/pull-requests/{{ id }}",
                   }
                 : undefined,
+        }),
+        sourceUrlProcessor({
+            urlFormat:
+                "https://github.com/Forsakringskassan/docs-generator/tree/main/{{path}}",
+            componentFileExtension: "baz",
         }),
     ],
     setupPath: path.resolve("docs/src/setup.ts"),
