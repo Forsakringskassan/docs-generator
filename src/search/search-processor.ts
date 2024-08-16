@@ -7,9 +7,9 @@ import { generateIndex } from "./generate-index";
 function extractTerms(doc: Document): string[] {
     const { title, component } = doc.attributes;
     if (title && component) {
-        return component.map((it) => `${title} (${it})`);
+        return component.map((it) => `${title} (${it.name})`);
     } else if (component) {
-        return component;
+        return component.map((it) => it.name);
     } else if (title) {
         return [title];
     } else {

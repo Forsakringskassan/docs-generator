@@ -4,7 +4,7 @@
 
 ```ts
 
-import { Component } from 'vue';
+import { Component as Component_2 } from 'vue';
 
 // @public (undocumented)
 export type AttributeTable = Record<string, AttributeValue>;
@@ -198,8 +198,10 @@ export interface NavigationSection {
 export interface NormalizedDocumentAttributes {
     // (undocumented)
     badge?: DocumentBadge;
+    // Warning: (ae-forgotten-export) The symbol "Component" needs to be exported by the entry point index.d.ts
+    //
     // (undocumented)
-    component?: string[];
+    component?: Component[];
     // (undocumented)
     href?: string;
     // (undocumented)
@@ -303,7 +305,7 @@ export function selectableVersionProcessor(pkg: {
 
 // @public
 export interface SetupOptions {
-    rootComponent: Component;
+    rootComponent: Component_2;
     selector: string;
 }
 
@@ -318,6 +320,16 @@ export interface SourceFiles {
     // (undocumented)
     include: string | string[];
     transform?(doc: Document_2): Document_2;
+}
+
+// @public
+export function sourceUrlProcessor(options: SourceUrlProcessorOptions): Processor;
+
+// @public
+export interface SourceUrlProcessorOptions extends ProcessorOptions {
+    readonly componentFileExtension?: string;
+    // (undocumented)
+    readonly urlFormat: string;
 }
 
 // @internal (undocumented)

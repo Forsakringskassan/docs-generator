@@ -14,3 +14,7 @@ export {
     type VersionProcessorOptions,
     versionProcessor,
 } from "./version-processor";
+export {
+    type SourceUrlProcessorOptions,
+    sourceUrlProcessor,
+} from "./source-url-processor";

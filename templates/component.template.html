@@ -8,7 +8,12 @@
     <dt>Komponent</dt>
     <dd>
         {% for component in doc.attributes.component %}
-        <code>{{ component }}</code>{% if not loop.last %}, {% endif %} {% endfor %}
+        <code>
+            {% if componentSourceUrl and componentSourceUrl(component) %}
+            <a href="{{ componentSourceUrl(component) }}">{{ component.name }}</a>
+            {% else %} {{ component.name }} {% endif %}
+        </code>
+        {% if not loop.last %}, {% endif %} {% endfor %}
     </dd>
     {% endif %}
 

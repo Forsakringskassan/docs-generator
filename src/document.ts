@@ -20,7 +20,7 @@ export interface DocumentAttributes {
     include?: boolean;
 
     /** component(s) this page corresponds to */
-    component?: string | string[];
+    component?: string | Component | Array<string | Component>;
 
     /** link to external page in navigation */
     href?: string;
@@ -34,6 +34,13 @@ export interface DocumentAttributes {
  */
 export type DocumentBadge = "success" | "error" | "info";
 
+export interface Component {
+    /** component name */
+    name: string;
+    /** optional hint (glob pattern) how to find the component */
+    source?: string;
+}
+
 /**
  * @public
  */
@@ -42,7 +49,7 @@ export interface NormalizedDocumentAttributes {
     layout?: string;
     status?: string;
     badge?: DocumentBadge;
-    component?: string[];
+    component?: Component[];
     href?: string;
     /** normalized sortorder (defaults to Infinity) */
     sortorder: number;

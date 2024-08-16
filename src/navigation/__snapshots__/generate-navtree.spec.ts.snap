@@ -136,6 +136,13 @@ exports[`smoketest 1`] = `
         },
         {
           "external": false,
+          "id": "fs:docs/processors/source-url.md",
+          "path": "./processors/source-url.html",
+          "sortorder": Infinity,
+          "title": "Source url",
+        },
+        {
+          "external": false,
           "id": "fs:docs/processors/topnav.md",
           "path": "./processors/topnav.html",
           "sortorder": Infinity,

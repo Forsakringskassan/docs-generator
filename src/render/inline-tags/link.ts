@@ -1,5 +1,5 @@
 import path from "node:path/posix";
-import { type Document } from "../../document";
+import { Component, type Document } from "../../document";
 import { SoftError } from "../soft-error";
 import { getOutputFilePath, findDocument } from "../../utils";
 import { type InlineTag } from "./inline-tag";
@@ -32,7 +32,7 @@ function getLinkTitle(
         return explicitTitle;
     }
     const { title, component } = doc.attributes;
-    if (component && component.includes(key)) {
+    if (component && component.some((it: Component) => it.name === key)) {
         return `<code>${key}</code>`;
     } else {
         return title ?? doc.name;

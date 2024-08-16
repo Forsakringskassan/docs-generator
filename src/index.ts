@@ -48,6 +48,7 @@ export {
     type MOTDOptions,
     type TopnavEntry,
     type VersionProcessorOptions,
+    type SourceUrlProcessorOptions,
     manifestProcessor,
     motdProcessor,
     selectableVersionProcessor,
@@ -55,6 +56,7 @@ export {
     versionBannerProcessor,
     versionProcessor,
     topnavProcessor,
+    sourceUrlProcessor,
 } from "./processors";
 export { searchProcessor } from "./search";
 export { livereloadProcessor } from "./serve";
