@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "@types/html-minifier": "4.0.5",
-    "esbuild": "0.23.0",
+    "esbuild": "0.23.1",
     "html-minifier": "4.0.0",
     "vue": "3.4.21"
   },
