@@ -299,7 +299,7 @@ export function searchProcessor(): Processor;
 export function selectableVersionProcessor(pkg: {
     name: string;
     version: string;
-}, container: string): Processor;
+}, container: string, options?: ProcessorOptions): Processor;
 
 // @public
 export interface SetupOptions {
