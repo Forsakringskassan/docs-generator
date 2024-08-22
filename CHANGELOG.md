@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [1.31.0](https://github.com/Forsakringskassan/docs-generator/compare/v1.30.10...v1.31.0) (2024-08-22)
+
+
+### Features
+
+* add option enabled to `selectableVersionProcessor` ([27d9ff2](https://github.com/Forsakringskassan/docs-generator/commit/27d9ff216513cca23b6aed9053d32d53fc3641a2))
+* generate component links (fixes SFKUI-6698) ([90165d5](https://github.com/Forsakringskassan/docs-generator/commit/90165d591910f3387792fe33216f4785686ffb17))
+
 ## [1.30.10](https://github.com/Forsakringskassan/docs-generator/compare/v1.30.9...v1.30.10) (2024-08-16)
 
 
