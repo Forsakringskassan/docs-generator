@@ -57,6 +57,7 @@ export {
     versionProcessor,
     topnavProcessor,
     sourceUrlProcessor,
+    cookieProcessor,
 } from "./processors";
 export { searchProcessor } from "./search";
 export { livereloadProcessor } from "./serve";

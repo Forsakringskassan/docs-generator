@@ -81,6 +81,7 @@
                 {%- endfor -%}
 
                 <main>
+                    <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
                     <h1 id="title">{{ doc.attributes.title }}</h1>
                     {% set arr = ['component', 'pattern'] %} {% if doc.attributes.layout in arr %}
                     <div id="aside">

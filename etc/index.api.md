@@ -21,6 +21,9 @@ export interface CompileOptions {
 }
 
 // @public
+export function cookieProcessor(options?: ProcessorOptions): Processor;
+
+// @public
 export function defineSources(sources: SourceFiles[]): SourceFiles[];
 
 // @public (undocumented)

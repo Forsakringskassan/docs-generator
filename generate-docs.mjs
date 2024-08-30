@@ -6,6 +6,7 @@ import {
     versionProcessor,
     searchProcessor,
     sourceUrlProcessor,
+    cookieProcessor,
 } from "./dist/index.js";
 import config from "./docs.config.mjs";
 
@@ -45,6 +46,7 @@ const docs = new Generator({
                 "https://github.com/Forsakringskassan/docs-generator/tree/main/{{path}}",
             componentFileExtension: "baz",
         }),
+        cookieProcessor(),
     ],
     setupPath: path.resolve("docs/src/setup.ts"),
 });

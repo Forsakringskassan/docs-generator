@@ -13,6 +13,7 @@
   "license": "MIT",
   "author": "Försäkringskassan",
   "sideEffects": [
+    "dist/runtime-bootstrap.js",
     "dist/runtime.js",
     "src/runtime/**/*"
   ],

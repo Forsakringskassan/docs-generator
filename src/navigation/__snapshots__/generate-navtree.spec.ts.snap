@@ -115,6 +115,13 @@ exports[`smoketest 1`] = `
         },
         {
           "external": false,
+          "id": "fs:docs/processors/cookie.md",
+          "path": "./processors/cookie.html",
+          "sortorder": Infinity,
+          "title": "Cookie",
+        },
+        {
+          "external": false,
           "id": "fs:docs/processors/manifest.md",
           "path": "./processors/manifest.html",
           "sortorder": Infinity,
