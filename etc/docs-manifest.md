@@ -22,6 +22,7 @@ navigation/sorted-group/sorted-page-1.html
 navigation/sorted-group/sorted-page-2.html
 navigation/sorted-group/sorted-page-3.html
 navigation/sorted-group/top-page.html
+processors/cookie.html
 processors/index.html
 processors/manifest.html
 processors/motd.html

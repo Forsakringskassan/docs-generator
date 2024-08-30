@@ -1,6 +1,7 @@
 import { existsSync } from "node:fs";
 import fs from "node:fs/promises";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import fse from "fs-extra";
 import {
     type CompileOptions,
@@ -266,6 +267,11 @@ export class Generator {
         this.styles = [];
         this.resources = [];
         this.sourceFiles = [];
+
+        const bootstrapUrl = new URL("runtime-bootstrap.js", import.meta.url);
+        this.compileScript("bootstrap", fileURLToPath(bootstrapUrl), {
+            appendTo: "head",
+        });
     }
 
     public compileScript(

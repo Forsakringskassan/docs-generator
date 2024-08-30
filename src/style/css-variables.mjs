@@ -95,4 +95,20 @@ export default {
             },
         },
     },
+
+    cookie: {
+        description: "Cookie processor",
+        variables: {
+            "background-color": {
+                description: "Background color",
+                type: "color",
+                value: "#f5f6fa",
+            },
+            "border-color": {
+                description: "Border color",
+                type: "color",
+                value: "#4a52b6",
+            },
+        },
+    },
 };

@@ -18,3 +18,4 @@ export {
     type SourceUrlProcessorOptions,
     sourceUrlProcessor,
 } from "./source-url-processor";
+export { cookieProcessor } from "./cookie-processor";

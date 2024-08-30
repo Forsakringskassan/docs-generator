@@ -122,7 +122,10 @@ async function build() {
     await bundle.close();
 
     const result = await esbuild.build({
-        entryPoints: [{ in: "src/runtime/index.ts", out: "runtime" }],
+        entryPoints: [
+            { in: "src/runtime/bootstrap.ts", out: "runtime-bootstrap" },
+            { in: "src/runtime/index.ts", out: "runtime" },
+        ],
         bundle: true,
         metafile: true,
         format: "cjs",
