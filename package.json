@@ -113,7 +113,7 @@
     "@forsakringskassan/eslint-config-jest": "11.2.7",
     "@forsakringskassan/eslint-config-typescript": "11.2.6",
     "@forsakringskassan/eslint-config-vue": "11.2.8",
-    "@forsakringskassan/jest-config": "29.5.9",
+    "@forsakringskassan/jest-config": "29.5.10",
     "@forsakringskassan/prettier-config": "2.1.1",
     "@forsakringskassan/stylelint-config": "2.2.8",
     "@html-validate/release-scripts": "6.5.3",
