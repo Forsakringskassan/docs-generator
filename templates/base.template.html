@@ -88,6 +88,8 @@
                         {%- block aside %}
                         {%- endblock %}
 
+
+                        {% if doc.outline | length %}
                         <details id="outline">
                             <summary class="outline__heading">Innehåll</summary>
                             <ul>
@@ -96,6 +98,7 @@
                                 {% endfor %}
                             </ul>
                         </details>
+                        {% endif %}
                     </div>
                     {% endif %}
 
