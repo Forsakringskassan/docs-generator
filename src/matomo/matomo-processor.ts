@@ -7,7 +7,7 @@ export interface MatomoOptions {
     /** Matomo Site ID */
     siteId: string;
     /** Matomo API URL */
-    apiUrl: string;
+    apiUrl?: string;
     /** Matomo Tracker URL */
     trackerUrl: string;
     /** Site hostname (analytics will be disabled if the hostname of the running
