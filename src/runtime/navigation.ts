@@ -1,4 +1,4 @@
-import { tableOfContents } from "./table-of-contents";
+import { tableOfContents, toggleTableOfContents } from "./table-of-contents";
 
 const parser = new DOMParser();
 const variableBlock = document.createElement("style");
@@ -108,6 +108,7 @@ async function replaceContent(href: string): Promise<void> {
     if (toc) {
         const headings = document.querySelectorAll("#content h2");
         tableOfContents(toc, headings);
+        toggleTableOfContents();
     }
 }
 
