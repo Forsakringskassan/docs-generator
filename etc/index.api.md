@@ -144,7 +144,7 @@ export interface ManifestProcessorOptions {
 
 // @public (undocumented)
 export interface MatomoOptions {
-    apiUrl: string;
+    apiUrl?: string;
     hostname?: string | string[];
     siteId: string;
     trackerUrl: string;

@@ -5,7 +5,9 @@
             if (allowedHostnames.length === 0 || allowedHostnames.includes(location.hostname)) {
                 /* Matomo */
                 var _paq = (window._paq = window._paq || []);
-                _paq.push(["setAPIUrl", "{{ apiUrl }}"]);
+                {% if apiUrl %}
+                    _paq.push(["setAPIUrl", "{{ apiUrl }}"]);
+                {% endif %}
                 _paq.push(["trackPageView"]);
                 _paq.push(["enableLinkTracking"]);
                 (function () {
