@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## [1.33.0](https://github.com/Forsakringskassan/docs-generator/compare/v1.32.0...v1.33.0) (2024-09-05)
+
+
+### Features
+
+* cookie processor (fixes SFKUI-6728) ([85c730d](https://github.com/Forsakringskassan/docs-generator/commit/85c730dae73c0649c04a15a9ca37779821c2f3cb))
+* optional `apiUrl` in `MatomoOptions` ([c1281d2](https://github.com/Forsakringskassan/docs-generator/commit/c1281d2765fb15d1e565b8346c3865dc92c60e30))
+
+
+### Bug Fixes
+
+* do not render empty outline ([4f06652](https://github.com/Forsakringskassan/docs-generator/commit/4f06652a0efad66138407b964e3fa216f5605dff))
+* heading size in examples ([fc5e087](https://github.com/Forsakringskassan/docs-generator/commit/fc5e08755e4fc82326979ed8c327bc0f789e2f59))
+* responsive table of contents ([a478f56](https://github.com/Forsakringskassan/docs-generator/commit/a478f56d61f612c000a2b52592fee5479145312d))
+
 ## [1.32.0](https://github.com/Forsakringskassan/docs-generator/compare/v1.31.0...v1.32.0) (2024-08-30)
 
 
