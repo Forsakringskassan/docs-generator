@@ -11,6 +11,7 @@ live-example/index.html
 markdown/code-preview.html
 markdown/custom-containers.html
 markdown/index.html
+markdown/mermaid.html
 navigation/child-page-1.html
 navigation/child-page-2.html
 navigation/child-page-3.html

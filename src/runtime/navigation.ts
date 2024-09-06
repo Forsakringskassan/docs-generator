@@ -1,3 +1,4 @@
+import mermaid from "mermaid";
 import { tableOfContents, toggleTableOfContents } from "./table-of-contents";
 
 const parser = new DOMParser();
@@ -163,6 +164,9 @@ function replaceContentOnClick(
             heading.setAttribute("tabindex", "-1");
             heading.focus();
         }
+
+        /* rerender mermaid diagrams */
+        mermaid.contentLoaded();
     });
 }
 

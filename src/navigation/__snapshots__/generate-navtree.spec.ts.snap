@@ -7,6 +7,42 @@ exports[`smoketest 1`] = `
       "children": [
         {
           "external": false,
+          "id": "fs:docs/markdown/index.md",
+          "path": "./markdown/",
+          "sortorder": 0,
+          "title": "Markdown",
+        },
+        {
+          "external": false,
+          "id": "fs:docs/markdown/code-preview.md",
+          "path": "./markdown/code-preview.html",
+          "sortorder": Infinity,
+          "title": "Code preview",
+        },
+        {
+          "external": false,
+          "id": "fs:docs/markdown/custom-containers.md",
+          "path": "./markdown/custom-containers.html",
+          "sortorder": Infinity,
+          "title": "Custom containers",
+        },
+        {
+          "external": false,
+          "id": "fs:docs/markdown/mermaid.md",
+          "path": "./markdown/mermaid.html",
+          "sortorder": Infinity,
+          "title": "Mermaid",
+        },
+      ],
+      "key": "./markdown",
+      "path": "./markdown/",
+      "sortorder": 0,
+      "title": "Markdown",
+    },
+    {
+      "children": [
+        {
+          "external": false,
           "id": "fs:docs/navigation/index.md",
           "path": "./navigation/",
           "sortorder": 1,
@@ -197,35 +233,6 @@ exports[`smoketest 1`] = `
       "path": "",
       "sortorder": Infinity,
       "title": "live-example",
-    },
-    {
-      "children": [
-        {
-          "external": false,
-          "id": "fs:docs/markdown/code-preview.md",
-          "path": "./markdown/code-preview.html",
-          "sortorder": Infinity,
-          "title": "Code preview",
-        },
-        {
-          "external": false,
-          "id": "fs:docs/markdown/custom-containers.md",
-          "path": "./markdown/custom-containers.html",
-          "sortorder": Infinity,
-          "title": "Custom containers",
-        },
-        {
-          "external": false,
-          "id": "fs:docs/markdown/index.md",
-          "path": "./markdown/",
-          "sortorder": Infinity,
-          "title": "Markdown",
-        },
-      ],
-      "key": "./markdown",
-      "path": "./markdown/",
-      "sortorder": Infinity,
-      "title": "Markdown",
     },
   ],
   "key": ".",

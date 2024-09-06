@@ -187,23 +187,6 @@ MyAwesomeLiveExampleFile.vue
 ```
 ````
 
-#### Diagrams and flowcharts
-
-You can generate diagrams from text by using [Mermaid](https://mermaidjs.github.io/).
-The results are rendered as SVG in the browser.
-
-````md
-```mermaid
-graph TD;
-  A-->B;
-  A-->C;
-  B-->D;
-  C-->D;
-```
-````
-
-You can use the [Mermaid Live Editor](https://mermaid-js.github.io/mermaid-live-editor/) to help write your diagrams.
-
 ### Frontmatter
 
 #### `status`
