@@ -72,18 +72,20 @@ function updateVersionList(versions: string[]): void {
         return;
     }
 
-    const sortedVersions = ["latest", ...semver.rsort(versions ?? [])];
+    const sortedVersions = ["latest", ...semver.rsort(versions)];
+
+    /* eslint-disable @typescript-eslint/no-non-null-assertion -- if we've come this far, it probably exists. */
     const ul = document.createElement("ul");
     const template =
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- if we've come this far, it probably exists.
-        document.querySelector<HTMLFormElement>(`#version-list-item`)!;
+        document.querySelector<HTMLTemplateElement>(`#version-list-item`)!;
     for (const version of sortedVersions) {
-        const item = template.content.cloneNode(true);
-        const a = item.querySelector("a");
+        const item = template.content.cloneNode(true) as HTMLLIElement;
+        const a = item.querySelector("a")!;
         a.href = `/${version}/`;
         a.textContent = version;
         ul.appendChild(item);
     }
+    /* eslint-enable @typescript-eslint/no-non-null-assertion */
 
     versionList.innerHTML = "";
     versionList.appendChild(ul);
