@@ -1,5 +1,5 @@
 import semver from "semver";
-import { memoize } from "./utils";
+import { getUrl, memoize } from "./utils";
 
 interface VersionResponse {
     versions: string[];
@@ -34,7 +34,8 @@ function clickOutside(event: MouseEvent): void {
 }
 
 async function fetchVersionsRaw(): Promise<string[]> {
-    const response = await fetch("/latest/versions.json");
+    const url = getUrl(document, "../versions.json");
+    const response = await fetch(url);
     const data: VersionResponse = await response.json();
     return data.versions;
 }
@@ -81,7 +82,7 @@ function updateVersionList(versions: string[]): void {
     for (const version of sortedVersions) {
         const item = template.content.cloneNode(true) as HTMLLIElement;
         const a = item.querySelector("a")!;
-        a.href = `/${version}/`;
+        a.href = getUrl(document, `../${version}`);
         a.textContent = version;
         ul.appendChild(item);
     }
