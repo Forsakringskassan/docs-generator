@@ -1,14 +1,14 @@
 import semver from "semver";
+import { memoize } from "./utils";
+
+interface VersionResponse {
+    versions: string[];
+}
 
 const dialog = document.querySelector<HTMLDialogElement>("#version-dialog");
 const dialogCloseButton = dialog?.querySelector<HTMLDialogElement>("button");
 const form = document.querySelector<HTMLFormElement>("#version");
 const versionList = document.querySelector<HTMLUListElement>("#version-list");
-interface VersionResponse {
-    versions: string[];
-}
-
-let docVersions: string[] | null = null;
 
 function isOutside(rect: DOMRect, point: { x: number; y: number }): boolean {
     if (point.y < rect.top || point.y > rect.top + rect.height) {
@@ -33,6 +33,14 @@ function clickOutside(event: MouseEvent): void {
     }
 }
 
+async function fetchVersionsRaw(): Promise<string[]> {
+    const response = await fetch("/latest/versions.json");
+    const data: VersionResponse = await response.json();
+    return data.versions;
+}
+
+const fetchVersions = memoize(fetchVersionsRaw);
+
 function initVersionProcessor(): void {
     if (!dialog || !dialogCloseButton || !form) {
         return;
@@ -46,31 +54,25 @@ function initVersionProcessor(): void {
         dialog.close();
     });
 
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", async (event) => {
         event.preventDefault();
-        if (!docVersions) {
-            fetch("/latest/versions.json", {})
-                .then((response) => response.json())
-                .then((data: VersionResponse) => {
-                    docVersions = data.versions;
-                    updateVersionList();
-                })
-                .catch(() => {
-                    setErrorMessage();
-                });
+        try {
+            const versions = await fetchVersions();
+            updateVersionList(versions);
+        } catch {
+            setErrorMessage();
         }
         dialog.showModal();
-
         document.body.addEventListener("click", clickOutside);
     });
 }
 
-function updateVersionList(): void {
+function updateVersionList(versions: string[]): void {
     if (!versionList) {
         return;
     }
 
-    const sortedVersions = ["latest", ...semver.rsort(docVersions ?? [])];
+    const sortedVersions = ["latest", ...semver.rsort(versions ?? [])];
     const ul = document.createElement("ul");
     const template =
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- if we've come this far, it probably exists.
