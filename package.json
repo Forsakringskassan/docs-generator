@@ -116,7 +116,7 @@
     "@forsakringskassan/eslint-config-vue": "11.2.8",
     "@forsakringskassan/jest-config": "29.5.10",
     "@forsakringskassan/prettier-config": "2.1.1",
-    "@forsakringskassan/stylelint-config": "2.2.8",
+    "@forsakringskassan/stylelint-config": "2.2.9",
     "@html-validate/release-scripts": "6.5.3",
     "@microsoft/api-extractor": "7.47.7",
     "@rollup/plugin-commonjs": "26.0.1",
