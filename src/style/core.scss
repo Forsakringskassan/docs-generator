@@ -4,6 +4,7 @@
 @use "navigation";
 @use "outline";
 @use "selectable_version";
+@use "skeleton";
 @use "version_banner";
 
 /* reset broken FKUI reset */
@@ -383,6 +384,10 @@ main #aside dd {
 
 .code-preview code {
     margin: 0;
+}
+
+pre.mermaid:not([data-processed]) {
+    @include skeleton.skeleton-element;
 }
 
 .icon--code {
