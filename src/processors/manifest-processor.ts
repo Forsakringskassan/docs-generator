@@ -40,7 +40,7 @@ function renderJSON(manifest: Manifest): string {
  * @public
  */
 export function manifestProcessor(
-    options: ManifestProcessorOptions,
+    options: ManifestProcessorOptions = {},
 ): Processor {
     const { markdown, json } = options;
     return {

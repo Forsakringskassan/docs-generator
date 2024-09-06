@@ -14,6 +14,11 @@ export function selectableVersionProcessor(
     return {
         name: "selectable-version-processor",
         after: "generate-docs",
+        runtime: [
+            {
+                src: "src/runtime/select-version.ts",
+            },
+        ],
         handler(context) {
             if (!enabled) {
                 return;
