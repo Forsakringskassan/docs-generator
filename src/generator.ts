@@ -30,6 +30,7 @@ import { type ProcessorStage } from "./processor-stage";
 import { type Manifest } from "./manifest";
 import { serve } from "./serve";
 import { haveOutput } from "./utils";
+import { processorRuntimeName } from "./processor-runtime-name";
 
 /**
  * @public
@@ -373,6 +374,25 @@ export class Generator {
             }),
             ...this.processors,
         ];
+
+        /* compile a runtime bundle from the enabled processors */
+        const processorScripts = processors
+            .map((processor) => {
+                const { runtime } = processor;
+                if (!runtime || runtime.length === 0) {
+                    return [];
+                }
+                return runtime.map((entry) => {
+                    const name = processorRuntimeName(processor, entry);
+                    return new URL(`${name}.js`, import.meta.url);
+                });
+            })
+            .flat();
+        if (processorScripts.length > 0) {
+            this.compileScript("processors", processorScripts, {
+                appendTo: "body",
+            });
+        }
 
         const context = createContext();
         const generatedFiles = [

@@ -64,6 +64,23 @@ async function buildStyle(entrypoints) {
     }
 }
 
+async function getProcessorScripts() {
+    const { availableProcessors, processorRuntimeName } = await import(
+        "./dist/index.js"
+    );
+    return availableProcessors
+        .filter((processor) => {
+            return processor.runtime && processor.runtime.length > 0;
+        })
+        .map((processor) => {
+            return processor.runtime.map((entry) => ({
+                in: entry.src,
+                out: processorRuntimeName(processor, entry),
+            }));
+        })
+        .flat();
+}
+
 async function build() {
     const options = defineConfig({
         input: ["src/index.ts", "src/compile-example.ts", "src/markdown.ts"],
@@ -121,10 +138,12 @@ async function build() {
     }
     await bundle.close();
 
+    const processorScripts = await getProcessorScripts();
     const result = await esbuild.build({
         entryPoints: [
             { in: "src/runtime/bootstrap.ts", out: "runtime-bootstrap" },
             { in: "src/runtime/index.ts", out: "runtime" },
+            ...processorScripts,
         ],
         bundle: true,
         metafile: true,
