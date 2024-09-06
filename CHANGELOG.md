@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.33.1](https://github.com/Forsakringskassan/docs-generator/compare/v1.33.0...v1.33.1) (2024-09-06)
+
+
+### Bug Fixes
+
+* **deps:** update dependency mermaid to v11.1.0 ([fca5fa2](https://github.com/Forsakringskassan/docs-generator/commit/fca5fa2fcbff55bdd910bd4227079ed179087f29))
+
 ## [1.33.0](https://github.com/Forsakringskassan/docs-generator/compare/v1.32.0...v1.33.0) (2024-09-05)
 
 
