@@ -11,6 +11,7 @@ import {
     jsAssetProcessor,
     staticResourcesProcessor,
 } from "./assets";
+import { compileProcessorRuntime } from "./compile-processor-runtime";
 import { type SourceFiles, fileReaderProcessor } from "./file-reader";
 import { nunjucksProcessor } from "./render";
 import { type Document } from "./document";
@@ -373,6 +374,8 @@ export class Generator {
             }),
             ...this.processors,
         ];
+
+        compileProcessorRuntime(this, import.meta.url, processors);
 
         const context = createContext();
         const generatedFiles = [

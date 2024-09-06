@@ -14,6 +14,9 @@ export type AttributeValue = string | number | boolean | null | {
     [key: string]: AttributeValue;
 };
 
+// @internal
+export const availableProcessors: Processor[];
+
 // @public (undocumented)
 export interface CompileOptions {
     appendTo: "none" | "head" | "body";
@@ -134,7 +137,7 @@ export interface Manifest {
 }
 
 // @public
-export function manifestProcessor(options: ManifestProcessorOptions): Processor;
+export function manifestProcessor(options?: ManifestProcessorOptions): Processor;
 
 // @public
 export interface ManifestProcessorOptions {
@@ -272,6 +275,7 @@ export interface ProcessorHandler {
     handler(context: ProcessorContext): void | string[] | Promise<void> | Promise<string[]>;
     // (undocumented)
     name: string;
+    runtime?: ProcessorRuntime[];
     // (undocumented)
     stage?: ProcessorStage;
 }
@@ -285,6 +289,15 @@ export type ProcessorHook<K extends "before" | "stage" | "after"> = {
 export interface ProcessorOptions {
     enabled?: boolean;
 }
+
+// @public
+export interface ProcessorRuntime {
+    name?: string;
+    src: string;
+}
+
+// @internal
+export function processorRuntimeName(processor: Processor, runtime: ProcessorRuntime): string;
 
 // @public (undocumented)
 export type ProcessorStage = "generate-docs" | "generate-nav" | "assets" | "render";

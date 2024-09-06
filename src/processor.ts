@@ -10,6 +10,19 @@ export interface ProcessorOptions {
 }
 
 /**
+ * Describes a runtime client script required by this processor.
+ *
+ * @public
+ */
+export interface ProcessorRuntime {
+    /** Path (from repo root) to the script entrypoint */
+    src: string;
+
+    /** Bundle name (in dist/processors) folder (default: derived from processor name) */
+    name?: string;
+}
+
+/**
  * @public
  */
 export type ProcessorHook<K extends "before" | "stage" | "after"> = {
@@ -25,6 +38,9 @@ export interface ProcessorHandler {
     after?: ProcessorStage;
     name: string;
     enabled?: boolean;
+
+    /** List of runtime client scripts required by this processor */
+    runtime?: ProcessorRuntime[];
 
     handler(
         context: ProcessorContext,
