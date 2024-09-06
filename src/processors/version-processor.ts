@@ -129,7 +129,10 @@ function getBuildDatetime(): { date: string; time: string } {
     const date = new Date();
     return {
         date: date.toLocaleDateString("sv-SE"),
-        time: date.toLocaleTimeString("sv-SE"),
+        time: date.toLocaleTimeString("sv-SE", {
+            hour: "2-digit",
+            minute: "2-digit",
+        }),
     };
 }
 
