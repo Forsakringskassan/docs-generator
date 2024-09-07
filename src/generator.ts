@@ -275,7 +275,7 @@ export class Generator {
 
     public compileScript(
         name: string,
-        src: string | URL | Array<string | URL>,
+        src: string | URL,
         options?: Partial<CompileOptions>,
     ): void {
         this.scripts.push({
