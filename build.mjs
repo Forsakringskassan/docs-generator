@@ -88,7 +88,7 @@ async function build() {
             json(),
             esbuildPlugin({
                 platform: "node",
-                target: ["node16"],
+                target: ["node20"],
             }),
             visualizer({
                 filename: "temp/bundle.html",
