@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## [2.0.0](https://github.com/Forsakringskassan/docs-generator/compare/v1.33.1...v2.0.0) (2024-09-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* drop vue 2 support
+* **deps:** NodeJS v20 or later is now required.
+
+### Features
+
+* **deps:** require nodejs v20 or later ([59d8172](https://github.com/Forsakringskassan/docs-generator/commit/59d81724384c5ce325a8085ff93c855825c0f6ad))
+* drop vue 2 support ([27a8d7e](https://github.com/Forsakringskassan/docs-generator/commit/27a8d7e3ad6de593f4d1247ad0cdd7b9d327aa36))
+
+
+### Bug Fixes
+
+* try to fix nav icon size on older mobile devices ([b3e601d](https://github.com/Forsakringskassan/docs-generator/commit/b3e601dc9bada479b6a42a395fa197a4099f5d38))
+
 ## [1.33.1](https://github.com/Forsakringskassan/docs-generator/compare/v1.33.0...v1.33.1) (2024-09-06)
 
 
