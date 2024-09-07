@@ -1,5 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { type BuildOptions, build as esbuild } from "esbuild";
 import { getFingerprint, getIntegrity } from "../utils";
 import { AssetInfo } from "./asset-info";
@@ -12,13 +13,17 @@ function toArray<T>(value: T | T[]): T[] {
     }
 }
 
+function toFilePath(value: string | URL): string {
+    return value instanceof URL ? fileURLToPath(value) : value;
+}
+
 /**
  * @internal
  */
 export async function compileScript(
     assetFolder: string,
     name: string,
-    src: string | string[],
+    src: string | URL | Array<string | URL>,
     options?: BuildOptions,
 ): Promise<AssetInfo> {
     const iconLib = process.env.DOCS_ICON_LIB ?? "@fkui/icon-lib-default";
@@ -26,7 +31,7 @@ export async function compileScript(
     try {
         const outfile = path.join("temp", `asset-${name}.js`);
         await esbuild({
-            entryPoints: toArray(src),
+            entryPoints: toArray(src).map(toFilePath),
             outfile,
             bundle: true,
             format: "iife",

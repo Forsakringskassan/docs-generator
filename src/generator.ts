@@ -1,7 +1,6 @@
 import { existsSync } from "node:fs";
 import fs from "node:fs/promises";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 import fse from "fs-extra";
 import {
     type CompileOptions,
@@ -269,14 +268,14 @@ export class Generator {
         this.sourceFiles = [];
 
         const bootstrapUrl = new URL("runtime-bootstrap.js", import.meta.url);
-        this.compileScript("bootstrap", fileURLToPath(bootstrapUrl), {
+        this.compileScript("bootstrap", bootstrapUrl, {
             appendTo: "head",
         });
     }
 
     public compileScript(
         name: string,
-        src: string | string[],
+        src: string | URL | Array<string | URL>,
         options?: Partial<CompileOptions>,
     ): void {
         this.scripts.push({
@@ -292,7 +291,7 @@ export class Generator {
 
     public compileStyle(
         name: string,
-        src: string,
+        src: string | URL,
         options?: Partial<CompileOptions>,
     ): void {
         this.styles.push({
