@@ -8,7 +8,7 @@ import { compileStyle } from "./compile-style";
  */
 export interface CSSAsset {
     name: string;
-    src: string;
+    src: string | URL;
     options: CompileOptions;
 }
 

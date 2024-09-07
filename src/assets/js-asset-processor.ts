@@ -8,7 +8,7 @@ import { compileScript } from "./compile-script";
  */
 export interface JSAsset {
     name: string;
-    src: string | string[];
+    src: string | URL | Array<string | URL>;
     options: CompileOptions;
 }
 
