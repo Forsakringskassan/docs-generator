@@ -13,6 +13,7 @@ export interface ProcessorOptions {
  * @public
  */
 export type ProcessorHook<K extends "before" | "stage" | "after"> = {
+    /* eslint-disable-next-line @typescript-eslint/no-unused-vars -- false positive? (cant reproduce in isolated playground) */
     [k in K]: ProcessorStage;
 };
 
