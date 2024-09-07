@@ -6,7 +6,7 @@ import { type VendorAsset } from "./vendor";
 /**
  * @public
  */
-/* eslint-disable-next-line @typescript-eslint/no-empty-interface -- augmeted by other modules */
+/* eslint-disable-next-line @typescript-eslint/no-empty-object-type -- augmeted by other modules */
 export interface TemplateData {
     /* augmented by processors */
 }
