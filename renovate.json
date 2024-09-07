@@ -1,16 +1,3 @@
 {
-    "extends": ["local>forsakringskassan/renovate-config"],
-    "packageRules": [
-        {
-            "description": "Update Vue 2 and Vue 3 separately",
-            "matchPackageNames": ["vue"],
-            "separateMinorPatch": true
-        },
-        {
-            "description": "Dont update Vue 2 to Vue 3 automatically",
-            "matchPackageNames": ["vue"],
-            "matchCurrentVersion": "<3",
-            "allowedVersions": "<3"
-        }
-    ]
+    "extends": ["local>forsakringskassan/renovate-config"]
 }

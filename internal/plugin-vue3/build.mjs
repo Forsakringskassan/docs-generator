@@ -12,7 +12,7 @@ try {
         sourcemap: true,
         format: "esm",
         platform: "node",
-        target: ["node16"],
+        target: ["node20"],
         outdir: "dist",
         logLevel: "info",
         external: [

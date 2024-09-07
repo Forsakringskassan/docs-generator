@@ -1,6 +1,5 @@
 import fs from "node:fs";
 import { version } from "vue";
-import { generateCode as vue2 } from "plugin-vue2";
 import { generateCode as vue3 } from "plugin-vue3";
 import { getFingerprint, parseImport } from "../utils";
 import { type ExampleOptions } from "./example-options";
@@ -9,10 +8,17 @@ import { getExampleImport } from "./get-example-import";
 import { getExampleName } from "./get-example-name";
 
 const vueMajor = parseInt(version.split(".", 2)[0], 10) as 2 | 3;
-const vueGenerator = {
-    [2]: vue2,
-    [3]: vue3,
-} as const;
+
+function vueGenerator(): typeof vue3 {
+    switch (vueMajor) {
+        case 2:
+            throw new Error(
+                "Vue 2 is no longer supported, upgrade to Vue 3 or downgrade docs-generator",
+            );
+        case 3:
+            return vue3;
+    }
+}
 
 /**
  * @internal
@@ -50,7 +56,7 @@ export function generateExample(options: ExampleOptions): ExampleResult {
 
 function generateVueExample(options: ExampleOptions): ExampleResult {
     const { filename, source, parent, setupPath, tags } = options;
-    const fn = vueGenerator[vueMajor];
+    const fn = vueGenerator();
     const slug = getExampleName(filename);
     const fingerprint = getFingerprint(source);
     const { markup, sourcecode, output } = fn({

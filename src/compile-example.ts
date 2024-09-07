@@ -1,7 +1,6 @@
 import path from "node:path";
 import { type Plugin, build as esbuild } from "esbuild";
 import { version } from "vue";
-import { vuePlugin as Vue2Plugin } from "plugin-vue2";
 import { vuePlugin as Vue3Plugin } from "plugin-vue3";
 import { virtualEntryPlugin } from "./esbuild";
 import { type ExampleBatch } from "./examples";
@@ -16,7 +15,9 @@ function stripExtension(filename: string): string {
 function VuePlugin(): Plugin {
     switch (vueMajor) {
         case 2:
-            return Vue2Plugin({ workers: false });
+            throw new Error(
+                "Vue 2 is no longer supported, upgrade to Vue 3 or downgrade docs-generator",
+            );
         case 3:
             return Vue3Plugin();
     }
