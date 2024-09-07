@@ -8,6 +8,7 @@
   "homepage": "https://github.com/Forsakringskassan/docs-generator",
   "bugs": "https://github.com/Forsakringskassan/docs-generator/issues",
   "repository": {
+    "type": "git",
     "url": "https://github.com/Forsakringskassan/docs-generator.git"
   },
   "license": "MIT",
