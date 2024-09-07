@@ -37,6 +37,7 @@ export async function compileScript(
         const integrity = getIntegrity(content);
         const filename = `${name}-${fingerprint}.js`;
         const dst = path.join(assetFolder, filename);
+        await fs.mkdir(path.dirname(dst), { recursive: true });
         await fs.rename(outfile, dst);
         const stat = await fs.stat(dst);
         return {
