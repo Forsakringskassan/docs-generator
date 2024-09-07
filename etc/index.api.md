@@ -82,7 +82,7 @@ class Generator_2 {
     // (undocumented)
     build(sourceFiles: SourceFiles[]): Promise<string[]>;
     // (undocumented)
-    compileScript(name: string, src: string | URL | Array<string | URL>, options?: Partial<CompileOptions>): void;
+    compileScript(name: string, src: string | URL, options?: Partial<CompileOptions>): void;
     // (undocumented)
     compileStyle(name: string, src: string | URL, options?: Partial<CompileOptions>): void;
     // (undocumented)
