@@ -158,7 +158,7 @@
     "express": "^4",
     "he": "^1.2",
     "sass": "^1.54",
-    "vue": "^2 || ^3"
+    "vue": "^3.0.0"
   },
   "peerDependenciesMeta": {
     "express": {
