@@ -62,12 +62,13 @@ export default {
     sourceFiles: [
         {
             include: "docs/**/*.md",
+            exclude: "docs/node_modules/**",
             basePath: "./docs/",
             fileReader: frontMatterFileReader,
         },
         {
             include: "docs/*/**/*.json",
-            exclude: "docs/src/**",
+            exclude: ["docs/src/**", "docs/node_modules/**"],
             basePath: "./docs/",
             fileReader: navigationFileReader,
         },
