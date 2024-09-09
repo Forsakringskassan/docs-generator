@@ -1,5 +1,5 @@
 import { type Processor } from "../processor";
-import { interpolate, runCommand } from "../utils";
+import { gitCommitHash, interpolate, runCommand } from "../utils";
 
 /**
  * Options for {@link versionProcessor}.
@@ -83,8 +83,8 @@ async function getSCMData(
     pkg: { homepage: string },
     options: ScmOptions,
 ): Promise<GitData | null> {
-    const commitHash = await runCommand(`git rev-parse HEAD`);
-    const commitShort = await runCommand(`git rev-parse --short HEAD`);
+    const commitHash = await gitCommitHash("full");
+    const commitShort = await gitCommitHash("short");
     if (!commitHash || !commitShort) {
         return null;
     }
