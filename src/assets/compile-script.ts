@@ -37,6 +37,7 @@ export async function compileScript(
         const integrity = getIntegrity(content);
         const filename = `${name}-${fingerprint}.js`;
         const dst = path.join(assetFolder, filename);
+        await fs.mkdir(path.dirname(dst), { recursive: true });
         await fs.rename(outfile, dst);
         const stat = await fs.stat(dst);
         return {
@@ -47,7 +48,8 @@ export async function compileScript(
             size: stat.size,
             type: "js",
         };
-    } catch {
-        throw new Error(`Failed to compile script "${name}"`);
+    } catch (err) {
+        const reason = err instanceof Error ? err.message : String(err);
+        throw new Error(`Failed to compile script "${name}": ${reason}`);
     }
 }

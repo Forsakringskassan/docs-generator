@@ -1,4 +1,5 @@
 export { type CompileOptions, type ResourceTask } from "./assets";
+export { availableProcessors } from "./available-processors";
 export { defineSources } from "./define-sources";
 export {
     type Document,
@@ -35,6 +36,7 @@ export {
     type ProcessorHandler,
     type ProcessorHook,
     type ProcessorOptions,
+    type ProcessorRuntime,
 } from "./processor";
 export {
     type ProcessorContext,
@@ -42,6 +44,7 @@ export {
     type TemplateBlockRenderer,
     type TemplateData,
 } from "./processor-context";
+export { processorRuntimeName } from "./processor-runtime-name";
 export { type ProcessorStage } from "./processor-stage";
 export {
     type ManifestProcessorOptions,
