@@ -1,14 +1,14 @@
 import semver from "semver";
+import { getUrl, memoize } from "./utils";
+
+interface VersionResponse {
+    versions: string[];
+}
 
 const dialog = document.querySelector<HTMLDialogElement>("#version-dialog");
 const dialogCloseButton = dialog?.querySelector<HTMLDialogElement>("button");
 const form = document.querySelector<HTMLFormElement>("#version");
 const versionList = document.querySelector<HTMLUListElement>("#version-list");
-interface VersionResponse {
-    versions: string[];
-}
-
-let docVersions: string[] | null = null;
 
 function isOutside(rect: DOMRect, point: { x: number; y: number }): boolean {
     if (point.y < rect.top || point.y > rect.top + rect.height) {
@@ -33,6 +33,15 @@ function clickOutside(event: MouseEvent): void {
     }
 }
 
+async function fetchVersions(): Promise<string[]> {
+    const url = getUrl(document, "../versions.json");
+    const response = await fetch(url);
+    const data: VersionResponse = await response.json();
+    return data.versions;
+}
+
+const getVersions = memoize(fetchVersions);
+
 function initVersionProcessor(): void {
     if (!dialog || !dialogCloseButton || !form) {
         return;
@@ -46,42 +55,38 @@ function initVersionProcessor(): void {
         dialog.close();
     });
 
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", async (event) => {
         event.preventDefault();
-        if (!docVersions) {
-            fetch("/latest/versions.json", {})
-                .then((response) => response.json())
-                .then((data: VersionResponse) => {
-                    docVersions = data.versions;
-                    updateVersionList();
-                })
-                .catch(() => {
-                    setErrorMessage();
-                });
+        try {
+            const versions = await getVersions();
+            updateVersionList(versions);
+        } catch {
+            setErrorMessage();
         }
         dialog.showModal();
-
         document.body.addEventListener("click", clickOutside);
     });
 }
 
-function updateVersionList(): void {
+function updateVersionList(versions: string[]): void {
     if (!versionList) {
         return;
     }
 
-    const sortedVersions = ["latest", ...semver.rsort(docVersions ?? [])];
+    const sortedVersions = ["latest", ...semver.rsort(versions)];
+
+    /* eslint-disable @typescript-eslint/no-non-null-assertion -- if we've come this far, it probably exists. */
     const ul = document.createElement("ul");
     const template =
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- if we've come this far, it probably exists.
-        document.querySelector<HTMLFormElement>(`#version-list-item`)!;
+        document.querySelector<HTMLTemplateElement>(`#version-list-item`)!;
     for (const version of sortedVersions) {
-        const item = template.content.cloneNode(true);
-        const a = item.querySelector("a");
-        a.href = `/${version}/`;
+        const item = template.content.cloneNode(true) as HTMLLIElement;
+        const a = item.querySelector("a")!;
+        a.href = getUrl(document, `../${version}`);
         a.textContent = version;
         ul.appendChild(item);
     }
+    /* eslint-enable @typescript-eslint/no-non-null-assertion */
 
     versionList.innerHTML = "";
     versionList.appendChild(ul);
