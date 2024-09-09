@@ -1,16 +1,9 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { type BuildOptions, build as esbuild } from "esbuild";
 import { getFingerprint, getIntegrity } from "../utils";
 import { AssetInfo } from "./asset-info";
-
-function toArray<T>(value: T | T[]): T[] {
-    if (Array.isArray(value)) {
-        return value;
-    } else {
-        return [value];
-    }
-}
 
 /**
  * @internal
@@ -18,15 +11,16 @@ function toArray<T>(value: T | T[]): T[] {
 export async function compileScript(
     assetFolder: string,
     name: string,
-    src: string | string[],
+    src: string | URL,
     options?: BuildOptions,
 ): Promise<AssetInfo> {
     const iconLib = process.env.DOCS_ICON_LIB ?? "@fkui/icon-lib-default";
 
     try {
+        const entryPoints = [src instanceof URL ? fileURLToPath(src) : src];
         const outfile = path.join("temp", `asset-${name}.js`);
         await esbuild({
-            entryPoints: toArray(src),
+            entryPoints,
             outfile,
             bundle: true,
             format: "iife",

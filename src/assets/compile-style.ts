@@ -10,7 +10,7 @@ import { AssetInfo } from "./asset-info";
 export async function compileStyle(
     assetFolder: string,
     name: string,
-    src: string,
+    src: string | URL,
 ): Promise<AssetInfo> {
     try {
         const outfile = path.join("temp", `asset-${name}.css`);
