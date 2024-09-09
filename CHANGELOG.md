@@ -1,5 +1,27 @@
 # CHANGELOG
 
+## [2.1.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.0.0...v2.1.0) (2024-09-09)
+
+
+### Features
+
+* **api:** `compileScript` and `compileStyle` accepts URL parameter ([a844004](https://github.com/Forsakringskassan/docs-generator/commit/a8440049f7162dec7ee99ef1f9cd20f53d1d01bb))
+* **deps:** update dependency execa to v9 ([1735bbd](https://github.com/Forsakringskassan/docs-generator/commit/1735bbdd3f38ea9c07e018374af6a9eabeab2dc1))
+* **deps:** update dependency glob to v11 ([9417f08](https://github.com/Forsakringskassan/docs-generator/commit/9417f08f3f6111e839723fb4ea8d80001cd78dad))
+* processors may contain optional runtime scripts ([bcf51d7](https://github.com/Forsakringskassan/docs-generator/commit/bcf51d78858c3fb50559db3be12154c8faf3aa04))
+* skeleton element for mermaid diagrams ([bed00fb](https://github.com/Forsakringskassan/docs-generator/commit/bed00fb0782b071b319d1344a7aa02f2abee4d34))
+* support `hash` and `short` placeholders for `urlFormat` in `sourceUrlProcessor` ([174dd97](https://github.com/Forsakringskassan/docs-generator/commit/174dd9739598e49895b18caf0ab42374cca10ee6))
+
+
+### Bug Fixes
+
+* ensure asset directory exists before moving script assets ([5767e2f](https://github.com/Forsakringskassan/docs-generator/commit/5767e2f92e7bd497800fed69de93aa725ba9ba2f))
+* fix broken mermaid diagrams after navigation ([91490fc](https://github.com/Forsakringskassan/docs-generator/commit/91490fc0ca6907ed4c962449430e5059c8a4b3d4))
+* hide seconds from buildinfo ([9b0fec5](https://github.com/Forsakringskassan/docs-generator/commit/9b0fec5aec1553c5b4efb44136795483e5f3798e))
+* include original error message when `compileScript` fails ([122aea3](https://github.com/Forsakringskassan/docs-generator/commit/122aea32307fb3ec1937fa36ff9ca981ece3095e))
+* remove non-working support for arrays to `compileScript` ([c30803a](https://github.com/Forsakringskassan/docs-generator/commit/c30803aaf229910eb0229e5d6921817b5ca81da2))
+* resolve `versions.json` proper when site is in a subdirectory ([ae44ab7](https://github.com/Forsakringskassan/docs-generator/commit/ae44ab7764acf803a016a54593f2aeb450b7238a))
+
 ## [2.0.0](https://github.com/Forsakringskassan/docs-generator/compare/v1.33.1...v2.0.0) (2024-09-07)
 
 
