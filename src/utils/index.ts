@@ -10,6 +10,7 @@ export { haveOutput } from "./have-output";
 export { interpolate } from "./interpolate";
 export { normalizePath } from "./normalize-path";
 export { parseImport } from "./parse-import";
+export { runCommand } from "./run-command";
 export {
     type AttributeValue,
     type AttributeTable,
