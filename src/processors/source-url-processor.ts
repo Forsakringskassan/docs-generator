@@ -1,7 +1,7 @@
 import { ProcessorOptions, type Processor } from "../processor";
 import { Component } from "../document";
 import { getExampleImport } from "../examples";
-import { interpolate } from "../utils";
+import { gitCommitHash, interpolate } from "../utils";
 
 /**
  * Options for {@link sourceUrlProcessor}.
@@ -29,20 +29,24 @@ export function sourceUrlProcessor(
         componentFileExtension = "vue",
     } = options;
 
-    function componentSourceUrl(component: Component): string | undefined {
-        const filename =
-            component.source ?? `${component.name}.${componentFileExtension}`;
-        const path = getExampleImport(["./"], filename);
-
-        return interpolate(urlFormat, { path });
-    }
-
     return {
         after: "generate-docs",
         name: "source-url-processor",
         async handler(context) {
             if (!enabled) {
                 return;
+            }
+
+            const hash = (await gitCommitHash("full")) ?? "";
+            const short = (await gitCommitHash("short")) ?? "";
+
+            function componentSourceUrl(
+                component: Component,
+            ): string | undefined {
+                const { source, name } = component;
+                const filename = source ?? `${name}.${componentFileExtension}`;
+                const path = getExampleImport(["./"], filename);
+                return interpolate(urlFormat, { path, hash, short });
             }
 
             context.setTemplateData("componentSourceUrl", componentSourceUrl);

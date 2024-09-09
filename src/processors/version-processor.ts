@@ -1,6 +1,5 @@
-import { exec } from "node:child_process";
 import { type Processor } from "../processor";
-import { interpolate } from "../utils";
+import { gitCommitHash, interpolate, runCommand } from "../utils";
 
 /**
  * Options for {@link versionProcessor}.
@@ -48,25 +47,6 @@ interface GitData {
     readonly prUrl: string | undefined;
 }
 
-function run(cmd: string): Promise<string | undefined>;
-function run<T>(cmd: string, defaultValue: T): Promise<string | T>;
-function run<T>(
-    cmd: string,
-    defaultValue?: T,
-): Promise<string | undefined | T> {
-    return new Promise((resolve) => {
-        exec(cmd, { encoding: "utf-8" }, (error, stdout) => {
-            if (error) {
-                /* eslint-disable-next-line no-console -- expected to log */
-                console.error(error);
-                resolve(defaultValue);
-            } else {
-                resolve(stdout.trim());
-            }
-        });
-    });
-}
-
 async function getGitBranch(): Promise<string> {
     /* jenkins doesn't checkout using branch name so cant fetch using normal
      * method but instead puts the branch name in environmental variables */
@@ -77,7 +57,10 @@ async function getGitBranch(): Promise<string> {
     if (CHANGE_NAME) {
         return CHANGE_NAME;
     }
-    const branch = await run("git rev-parse --abbrev-ref HEAD", "unknown");
+    const branch = await runCommand(
+        "git rev-parse --abbrev-ref HEAD",
+        "unknown",
+    );
     if (branch === "HEAD" || branch === "") {
         return "unknown";
     } else {
@@ -100,8 +83,8 @@ async function getSCMData(
     pkg: { homepage: string },
     options: ScmOptions,
 ): Promise<GitData | null> {
-    const commitHash = await run(`git rev-parse HEAD`);
-    const commitShort = await run(`git rev-parse --short HEAD`);
+    const commitHash = await gitCommitHash("full");
+    const commitShort = await gitCommitHash("short");
     if (!commitHash || !commitShort) {
         return null;
     }

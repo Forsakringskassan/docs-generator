@@ -6,10 +6,12 @@ export { getDocumentOutline } from "./get-document-outline";
 export { getIntegrity } from "./get-integrity";
 export { getFingerprint } from "./get-fingerprint";
 export { getOutputFilePath } from "./get-output-filepath";
+export { gitCommitHash } from "./git";
 export { haveOutput } from "./have-output";
 export { interpolate } from "./interpolate";
 export { normalizePath } from "./normalize-path";
 export { parseImport } from "./parse-import";
+export { runCommand } from "./run-command";
 export {
     type AttributeValue,
     type AttributeTable,

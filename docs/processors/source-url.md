@@ -44,11 +44,13 @@ Enables/disables the processor.
 
 The URL format of the generated source link.
 
-`url/{{ path }}`
+`example.net/blob/{{ hash }}/{{ path }}`
 
 The following placeholders can be used:
 
--   `path` - relative source file path
+-   `hash` - the full hash of the commit.
+-   `short` - the abbreviated hash of the commit.
+-   `path` - relative source file path.
 
 ### `componentFileExtension`
 
