@@ -96,5 +96,9 @@
             margin-bottom: 0;
             margin-left: 1rem;
         }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
     }
 }
