@@ -128,10 +128,12 @@ function getParentElement(el: HTMLElement, depth: number): HTMLElement | null {
  * instead of navigation as usual. This preserves the state of expanded groups,
  * menu scrolling etc.
  *
+ * @param toggle - The toggle element in `#sidebar`.
  * @param navigation - The `<nav>` element in `#sidebar`.
  * @param link - The `<a>` element to install click handler for.
  */
 function replaceContentOnClick(
+    toggle: HTMLInputElement,
     navigation: HTMLElement,
     link: HTMLAnchorElement,
 ): void {
@@ -167,6 +169,9 @@ function replaceContentOnClick(
 
         /* rerender mermaid diagrams */
         mermaid.contentLoaded();
+
+        /* hide sidebar on content switch */
+        toggle.checked = false;
     });
 }
 
@@ -217,8 +222,11 @@ for (const details of document.querySelectorAll("details")) {
     });
 }
 
+const toggle = document.querySelector<HTMLInputElement>(
+    "#sidenav .sidenav__toggle",
+);
 const navigation = document.querySelector<HTMLElement>("#sidenav nav");
-if (navigation) {
+if (toggle && navigation) {
     const anchorSelector = "#sidenav li.link a";
     const anchorLinks =
         document.querySelectorAll<HTMLAnchorElement>(anchorSelector);
@@ -227,7 +235,7 @@ if (navigation) {
         if (rel === "external") {
             continue;
         }
-        replaceContentOnClick(navigation, link);
+        replaceContentOnClick(toggle, navigation, link);
     }
 
     window.addEventListener("popstate", () => {
