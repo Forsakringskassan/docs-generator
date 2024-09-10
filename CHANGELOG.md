@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## [2.2.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.1.0...v2.2.0) (2024-09-10)
+
+
+### Features
+
+* hide sidenav on click (fixes SFKUI-6767) ([0256f7b](https://github.com/Forsakringskassan/docs-generator/commit/0256f7bb649234df4dd782c0bb51c2002d9418f4))
+
+
+### Bug Fixes
+
+* **deps:** update dependency mermaid to v11.1.1 ([13d79bc](https://github.com/Forsakringskassan/docs-generator/commit/13d79bc5fbed67ab5e6f804041ef505585988e1f))
+* hide details marker on Safari (refs SFKUI-6764) ([c4da3bb](https://github.com/Forsakringskassan/docs-generator/commit/c4da3bb1147a8d726f384171aaf8ad6bd75a5354))
+
 ## [2.1.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.0.0...v2.1.0) (2024-09-09)
 
 
