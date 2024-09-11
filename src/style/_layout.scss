@@ -1,23 +1,26 @@
 @use "breakpoints" as bp;
 
 .layout-wrapper {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template:
+        "header" auto
+        "primary" 1fr
+        "footer" auto;
     min-height: 100vh;
 }
 
 header {
-    flex: 0 0 auto;
+    grid-area: header;
 }
 
 #primary {
-    flex: 1 1 auto;
     display: grid;
+    grid-area: primary;
     grid-gap: 0 2rem;
 }
 
 footer {
-    flex: 0 0 auto;
+    grid-area: footer;
 }
 
 main {
