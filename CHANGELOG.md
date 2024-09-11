@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [2.2.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.2.0...v2.2.1) (2024-09-11)
+
+
+### Bug Fixes
+
+* invalid layout when mobile and expanded menu (refs SFKUI-6794) ([7284025](https://github.com/Forsakringskassan/docs-generator/commit/72840253c6980ceaee69699ecc1f16cecb017881))
+
 ## [2.2.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.1.0...v2.2.0) (2024-09-10)
 
 
