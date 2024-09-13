@@ -28,7 +28,7 @@
     "@types/html-minifier": "4.0.5",
     "esbuild": "0.23.1",
     "html-minifier": "4.0.0",
-    "vue": "3.5.3"
+    "vue": "3.5.4"
   },
   "engines": {
     "node": ">= 20"
