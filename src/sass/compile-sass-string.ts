@@ -1,6 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import { compileStringAsync } from "sass";
+import { compileStringAsync, NodePackageImporter } from "sass";
 import { tildeImporter } from "./tilde-importer";
 
 /**
@@ -14,7 +14,7 @@ export async function compileSassString(
 ): Promise<void> {
     const result = await compileStringAsync(style, {
         style: "expanded",
-        importers: [tildeImporter],
+        importers: [new NodePackageImporter(), tildeImporter],
     });
     await fs.mkdir(path.dirname(dst), { recursive: true });
     await fs.writeFile(dst, result.css, "utf-8");
