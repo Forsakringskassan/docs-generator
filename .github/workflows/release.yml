@@ -14,15 +14,13 @@ permissions:
 jobs:
     release:
         name: Release
-        environment:
-            name: github-pages
-            url: ${{ steps.deployment.outputs.page_url }}
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
               uses: actions/checkout@v4
               with:
                   fetch-depth: 0
+                  ssh-key: "${{ secrets.RELEASE_KEY }}"
             - name: Setup Node.js
               uses: actions/setup-node@v4
               with:
@@ -39,13 +37,3 @@ jobs:
                   npm config set access public
                   npm install --no-save "@forsakringskassan/semantic-release-config"
                   npm exec semantic-release
-                  npm run build:docs
-            - name: Setup Pages
-              uses: actions/configure-pages@v5
-            - name: Upload artifact
-              uses: actions/upload-pages-artifact@v3
-              with:
-                  path: public/
-            - name: Deploy to GitHub Pages
-              id: deployment
-              uses: actions/deploy-pages@v4
