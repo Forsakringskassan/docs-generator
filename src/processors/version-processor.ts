@@ -1,5 +1,10 @@
 import { type Processor } from "../processor";
-import { gitCommitHash, interpolate, runCommand } from "../utils";
+import {
+    getPullRequestID,
+    gitCommitHash,
+    interpolate,
+    runCommand,
+} from "../utils";
 
 /**
  * Options for {@link versionProcessor}.
@@ -68,17 +73,6 @@ async function getGitBranch(): Promise<string> {
     }
 }
 
-function getPullRequestID(): string | undefined {
-    /* jenkins */
-    if (process.env.JOB_BASE_NAME) {
-        const name = process.env.JOB_BASE_NAME;
-        const match = name.match(/PR-(\d+)/);
-        return match ? match[1] : undefined;
-    }
-
-    return undefined;
-}
-
 async function getSCMData(
     pkg: { homepage: string },
     options: ScmOptions,
@@ -90,7 +84,7 @@ async function getSCMData(
     }
 
     const { homepage } = pkg;
-    const pr = getPullRequestID();
+    const pr = getPullRequestID(process.env);
     const prUrl = pr
         ? interpolate(options.prUrlFormat, { homepage, pr })
         : undefined;
