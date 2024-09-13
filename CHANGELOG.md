@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [2.2.2](https://github.com/Forsakringskassan/docs-generator/compare/v2.2.1...v2.2.2) (2024-09-13)
+
+
+### Bug Fixes
+
+* **deps:** update dependency express to v4.20.0 [security] ([dd9d77b](https://github.com/Forsakringskassan/docs-generator/commit/dd9d77bc2bd394d7f147466fa428d7ff5e16d1d0))
+* **deps:** update dependency mermaid to v11.2.0 ([e5b84b9](https://github.com/Forsakringskassan/docs-generator/commit/e5b84b98dcd2391aa695daec7e522a4e9c4bc16d))
+
 ## [2.2.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.2.0...v2.2.1) (2024-09-11)
 
 
