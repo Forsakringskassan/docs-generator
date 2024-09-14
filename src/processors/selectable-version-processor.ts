@@ -1,3 +1,4 @@
+import { type PackageJson } from "../package-json";
 import { type ProcessorOptions, type Processor } from "../processor";
 
 /**
@@ -6,7 +7,7 @@ import { type ProcessorOptions, type Processor } from "../processor";
  * @public
  */
 export function selectableVersionProcessor(
-    pkg: { name: string; version: string },
+    pkg: PackageJson,
     container: string,
     options?: ProcessorOptions,
 ): Processor {

@@ -219,6 +219,18 @@ export interface NormalizedDocumentAttributes {
     title?: string;
 }
 
+// @public
+export interface PackageJson {
+    // (undocumented)
+    readonly name: string;
+    // (undocumented)
+    readonly repository?: {
+        readonly url?: string;
+    };
+    // (undocumented)
+    readonly version: string;
+}
+
 // @public (undocumented)
 export type Processor = ProcessorDescriptor<"before"> | ProcessorDescriptor<"stage"> | ProcessorDescriptor<"after">;
 
@@ -314,10 +326,7 @@ export interface ResourceTask {
 export function searchProcessor(): Processor;
 
 // @public
-export function selectableVersionProcessor(pkg: {
-    name: string;
-    version: string;
-}, container: string, options?: ProcessorOptions): Processor;
+export function selectableVersionProcessor(pkg: PackageJson, container: string, options?: ProcessorOptions): Processor;
 
 // @public
 export interface SetupOptions {
@@ -339,11 +348,7 @@ export interface SourceFiles {
 }
 
 // @public
-export function sourceUrlProcessor(pkg: {
-    repository?: {
-        url?: string;
-    };
-}, options: SourceUrlProcessorOptions): Processor;
+export function sourceUrlProcessor(pkg: PackageJson, options: SourceUrlProcessorOptions): Processor;
 
 // @public
 export function sourceUrlProcessor(options: SourceUrlProcessorOptions): Processor;

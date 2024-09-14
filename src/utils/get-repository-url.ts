@@ -1,3 +1,5 @@
+import { type PackageJson } from "../package-json";
+
 const RE_MATCH_SSH = /^(ssh:\/\/)?(?<user>[^@]+)@(?<host>[^:]+):(?<path>.*)$/;
 
 /**
@@ -6,11 +8,11 @@ const RE_MATCH_SSH = /^(ssh:\/\/)?(?<user>[^@]+)@(?<host>[^:]+):(?<path>.*)$/;
  * @internal
  */
 export function getRepositoryUrl(url: string): string;
-export function getRepositoryUrl(pkg: {
-    repository?: { url?: string };
-}): string | null;
 export function getRepositoryUrl(
-    value: string | { repository?: { url?: string } },
+    pkg: Pick<PackageJson, "repository">,
+): string | null;
+export function getRepositoryUrl(
+    value: string | Pick<PackageJson, "repository">,
 ): string | null {
     if (typeof value !== "string") {
         const url = value.repository?.url;

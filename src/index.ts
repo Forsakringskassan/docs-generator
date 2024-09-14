@@ -30,6 +30,7 @@ export {
     type NavigationLeaf,
     type NavigationSection,
 } from "./navigation";
+export { type PackageJson } from "./package-json";
 export {
     type Processor,
     type ProcessorDescriptor,

@@ -1,3 +1,4 @@
+import { type PackageJson } from "../package-json";
 import { type Processor } from "../processor";
 import {
     getPullRequestID,
@@ -24,10 +25,7 @@ export interface VersionProcessorOptions {
  * @internal
  */
 export interface VersionProcessorTemplateData {
-    readonly pkg: {
-        readonly name: string;
-        readonly version: string;
-    };
+    readonly pkg: PackageJson;
     readonly scm: {
         readonly branch: string;
         readonly commitUrl: string;

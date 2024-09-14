@@ -1,6 +1,7 @@
 import { ProcessorOptions, type Processor } from "../processor";
 import { Component } from "../document";
 import { getExampleImport } from "../examples";
+import { type PackageJson } from "../package-json";
 import { getRepositoryUrl, gitCommitHash, interpolate } from "../utils";
 
 /**
@@ -21,7 +22,7 @@ export interface SourceUrlProcessorOptions extends ProcessorOptions {
  * @public
  */
 export function sourceUrlProcessor(
-    pkg: { repository?: { url?: string } },
+    pkg: PackageJson,
     options: SourceUrlProcessorOptions,
 ): Processor;
 
@@ -37,7 +38,7 @@ export function sourceUrlProcessor(
 
 export function sourceUrlProcessor(
     ...args:
-        | [{ repository?: { url?: string } }, SourceUrlProcessorOptions]
+        | [PackageJson, SourceUrlProcessorOptions]
         | [SourceUrlProcessorOptions]
 ): Processor {
     const pkg = args.length === 2 ? args[0] : {};
