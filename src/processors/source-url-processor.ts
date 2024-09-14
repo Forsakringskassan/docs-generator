@@ -1,10 +1,10 @@
 import { ProcessorOptions, type Processor } from "../processor";
 import { Component } from "../document";
 import { getExampleImport } from "../examples";
-import { gitCommitHash, interpolate } from "../utils";
+import { getRepositoryUrl, gitCommitHash, interpolate } from "../utils";
 
 /**
- * Options for {@link sourceUrlProcessor}.
+ * Options for {@link sourceUrlProcessor#}.
  *
  * @public
  */
@@ -21,13 +21,34 @@ export interface SourceUrlProcessorOptions extends ProcessorOptions {
  * @public
  */
 export function sourceUrlProcessor(
+    pkg: { repository?: { url?: string } },
     options: SourceUrlProcessorOptions,
+): Processor;
+
+/**
+ * Processor that provide `componentSourceUrl` template function used for resolving
+ * component source urls.
+ *
+ * @public
+ */
+export function sourceUrlProcessor(
+    options: SourceUrlProcessorOptions,
+): Processor;
+
+export function sourceUrlProcessor(
+    ...args:
+        | [{ repository?: { url?: string } }, SourceUrlProcessorOptions]
+        | [SourceUrlProcessorOptions]
 ): Processor {
+    const pkg = args.length === 2 ? args[0] : {};
+    const options = args.length === 2 ? args[1] : args[0];
     const {
         enabled = true,
         urlFormat,
         componentFileExtension = "vue",
     } = options;
+
+    const repository = getRepositoryUrl(pkg) ?? "";
 
     return {
         after: "generate-docs",
@@ -46,7 +67,12 @@ export function sourceUrlProcessor(
                 const { source, name } = component;
                 const filename = source ?? `${name}.${componentFileExtension}`;
                 const path = getExampleImport(["./"], filename);
-                return interpolate(urlFormat, { path, hash, short });
+                return interpolate(urlFormat, {
+                    path,
+                    hash,
+                    short,
+                    repository,
+                });
             }
 
             context.setTemplateData("componentSourceUrl", componentSourceUrl);

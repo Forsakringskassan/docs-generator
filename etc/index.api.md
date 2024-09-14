@@ -339,6 +339,13 @@ export interface SourceFiles {
 }
 
 // @public
+export function sourceUrlProcessor(pkg: {
+    repository?: {
+        url?: string;
+    };
+}, options: SourceUrlProcessorOptions): Processor;
+
+// @public
 export function sourceUrlProcessor(options: SourceUrlProcessorOptions): Processor;
 
 // @public

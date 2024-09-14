@@ -36,14 +36,13 @@ const docs = new Generator({
         versionProcessor(pkg, "toolbar", {
             scm: !isRelease
                 ? {
-                      commitUrlFormat: "{{ homepage }}/commit/{{ hash }}",
-                      prUrlFormat: "{{ homepage }}/pull-requests/{{ id }}",
+                      commitUrlFormat: "{{ repository }}/commits/{{ hash }}",
+                      prUrlFormat: "{{ repository }}/pull/{{ id }}",
                   }
                 : undefined,
         }),
-        sourceUrlProcessor({
-            urlFormat:
-                "https://github.com/Forsakringskassan/docs-generator/tree/main/{{path}}",
+        sourceUrlProcessor(pkg, {
+            urlFormat: "{{ repository }}/tree/main/{{path}}",
             componentFileExtension: "baz",
         }),
         cookieProcessor(),

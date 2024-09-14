@@ -1,6 +1,7 @@
 import { type Processor } from "../processor";
 import {
     getPullRequestID,
+    getRepositoryUrl,
     gitCommitHash,
     interpolate,
     runCommand,
@@ -74,7 +75,7 @@ async function getGitBranch(): Promise<string> {
 }
 
 async function getSCMData(
-    pkg: { homepage: string },
+    pkg: { homepage: string; repository?: { url?: string } },
     options: ScmOptions,
 ): Promise<GitData | null> {
     const commitHash = await gitCommitHash("full");
@@ -84,9 +85,10 @@ async function getSCMData(
     }
 
     const { homepage } = pkg;
+    const repository = getRepositoryUrl(pkg) ?? "";
     const pr = getPullRequestID(process.env);
     const prUrl = pr
-        ? interpolate(options.prUrlFormat, { homepage, pr })
+        ? interpolate(options.prUrlFormat, { homepage, pr, repository })
         : undefined;
     return {
         branch: await getGitBranch(),
@@ -96,6 +98,7 @@ async function getSCMData(
             hash: commitHash,
             short: commitShort,
             homepage,
+            repository,
         }),
         pr,
         prUrl,
