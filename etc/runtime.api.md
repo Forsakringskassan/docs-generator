@@ -4,6 +4,9 @@
 
 ```ts
 
+// @public
+export function onContentReady(callback: () => void): void;
+
 // (No @packageDocumentation comment for this package)
 
 ```
