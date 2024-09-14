@@ -6,6 +6,8 @@ import "./table-of-contents";
 import "./version-banner";
 import "./cookie";
 
+export { onContentReady } from "./on-content-ready";
+
 declare global {
     interface Window {
         toggleMarkup(element: HTMLElement): void;

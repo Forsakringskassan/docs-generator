@@ -2,7 +2,7 @@
  * Executes callback when DOM is ready. If DOM is already ready the callback is
  * executed during the next cycle.
  *
- * @internal
+ * @public
  */
 export function onContentReady(callback: () => void): void {
     const { readyState } = document;
