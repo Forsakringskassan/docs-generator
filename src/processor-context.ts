@@ -72,6 +72,13 @@ export interface ProcessorContext {
      */
     getAllTemplateBlocks(): Map<string, Array<TemplateBlockData<unknown>>>;
 
+    /**
+     * Tests if a template with name is present.
+     *
+     * @internal
+     */
+    hasTemplate(name: string): boolean;
+
     setTopNavigation(root: NavigationSection): void;
     setSideNavigation(root: NavigationSection): void;
 

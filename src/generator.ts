@@ -13,7 +13,7 @@ import {
 } from "./assets";
 import { compileProcessorRuntime } from "./compile-processor-runtime";
 import { type SourceFiles, fileReaderProcessor } from "./file-reader";
-import { nunjucksProcessor } from "./render";
+import { nunjucksProcessor, TemplateLoader } from "./render";
 import { type Document } from "./document";
 import { manifestPageFromDocument } from "./manifest";
 import { type NavigationSection, navigationProcessor } from "./navigation";
@@ -31,6 +31,7 @@ import { type ProcessorStage } from "./processor-stage";
 import { type Manifest } from "./manifest";
 import { serve } from "./serve";
 import { haveOutput } from "./utils";
+import { createTemplateLoader } from "./render/render";
 
 /**
  * @public
@@ -139,7 +140,9 @@ async function stage(
 }
 /* eslint-enable no-console */
 
-function createContext(): Omit<ProcessorContext, "log"> {
+function createContext(
+    templateLoader: TemplateLoader,
+): Omit<ProcessorContext, "log"> {
     let docs: Document[] = [];
     let vendors: VendorAsset[] = [];
     const resources: ResourceTask[] = [];
@@ -207,6 +210,10 @@ function createContext(): Omit<ProcessorContext, "log"> {
 
         getAllTemplateBlocks(): Map<string, Array<TemplateBlockData<unknown>>> {
             return templateBlocks;
+        },
+
+        hasTemplate(name: string): boolean {
+            return Boolean(templateLoader?.hasTemplate(name));
         },
 
         setTopNavigation(root: NavigationSection) {
@@ -332,7 +339,8 @@ export class Generator {
             ...this.processors,
         ];
 
-        const context = createContext();
+        const templateLoader = createTemplateLoader([]);
+        const context = createContext(templateLoader);
         await stage("generate-docs", context, processors, { verbose: false });
 
         const docs = context.docs.filter(haveOutput);
@@ -377,7 +385,8 @@ export class Generator {
 
         compileProcessorRuntime(this, import.meta.url, processors);
 
-        const context = createContext();
+        const templateLoader = createTemplateLoader(templateFolders);
+        const context = createContext(templateLoader);
         const generatedFiles = [
             await stage("generate-docs", context, processors),
             await stage("generate-nav", context, processors),

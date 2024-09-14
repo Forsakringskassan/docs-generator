@@ -1,7 +1,7 @@
 import cliProgress from "cli-progress";
 import { type Document } from "../document";
 import { type Processor } from "../processor";
-import { render, createTemplateLoader } from "./render";
+import { render } from "./render";
 import { type RenderOptions } from "./render-options";
 
 const progressbar = new cliProgress.SingleBar({
@@ -40,8 +40,6 @@ export function nunjucksProcessor(
             const docs = context.docs.filter((it) => {
                 return it.fileInfo.outputName;
             });
-
-            createTemplateLoader(options.templateFolders);
 
             progressbar.start(docs.length, 0, {
                 filename: docs.length > 0 ? docs[0].fileInfo.fullPath : "",
