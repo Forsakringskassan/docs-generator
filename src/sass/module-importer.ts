@@ -4,12 +4,16 @@ import posixPath from "node:path/posix";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { type Importer, type ImporterResult } from "sass";
 
-function resolveScssImport(filePath: string): URL {
+function resolveScssImport(
+    filePath: string,
+    throwError: boolean = true,
+): URL | null {
     const { dir, base } = posixPath.parse(filePath);
     const search = [`${base}.css`, `${base}.scss`, `_${base}.scss`, `${base}`];
     for (const variant of search) {
         try {
             const moduleName = posixPath.join(dir, variant);
+
             const resolved = require.resolve(moduleName);
             return pathToFileURL(resolved);
             // eslint-disable-next-line @typescript-eslint/no-explicit-any -- no comment.
@@ -19,17 +23,21 @@ function resolveScssImport(filePath: string): URL {
             }
         }
     }
-    throw new Error(`Failed to resolve "${filePath}"`);
+    if (throwError) {
+        throw new Error(`Failed to resolve "${filePath}"`);
+    }
+    return null;
 }
 
 /**
  * @internal
  */
-export const tildeImporter: Importer = {
+const WEBPACK_NODE_MODULE_PREFIX = "~";
+export const moduleImporter: Importer = {
     canonicalize(url: string): URL | null {
-        const indexOfTilde = url.indexOf("~");
-        if (indexOfTilde >= 0) {
-            return resolveScssImport(url.slice(indexOfTilde + 1));
+        const indexOfPrefix = url.indexOf(WEBPACK_NODE_MODULE_PREFIX);
+        if (indexOfPrefix >= 0) {
+            return resolveScssImport(url.slice(indexOfPrefix + 1));
         }
         if (url.startsWith("file://")) {
             const path = fileURLToPath(url);
@@ -38,7 +46,7 @@ export const tildeImporter: Importer = {
                 : path;
             return resolveScssImport(relative.replace(/\\/g, "/"));
         }
-        return null;
+        return resolveScssImport(url, false);
     },
     async load(url: URL): Promise<ImporterResult> {
         const filepath = fileURLToPath(url);
