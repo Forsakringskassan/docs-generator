@@ -168,7 +168,7 @@ export function matomoProcessor(options: MatomoOptions & ProcessorOptions): Proc
 export interface MOTDOptions {
     container?: string;
     enabled?: boolean;
-    message: string;
+    message?: string;
 }
 
 // @public

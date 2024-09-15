@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render template with static message 1`] = `
+"
+<template id="motd-message">
+    <div class="message-box message-box--info">
+        <span class="message-box__icon">
+            <span class="icon-stack icon-stack--info">
+                <svg class="icon__info icon" focusable="false" aria-hidden="true">
+                    <use xlink:href="#docs-icon-circle"></use>
+                </svg>
+                <svg class="icon" focusable="false" aria-hidden="true">
+                    <use xlink:href="#docs-icon-i"></use>
+                </svg>
+            </span>
+        </span><span data-bind="screenreader" class="sr-only"></span>
+            <p data-bind="message"></p></div>
+</template>
+
+
+<div id="motd-container">
+    
+    <div class="message-box message-box--info">
+        <span class="message-box__icon">
+            <span class="icon-stack icon-stack--info">
+                <svg class="icon__info icon" focusable="false" aria-hidden="true">
+                    <use xlink:href="#docs-icon-circle"></use>
+                </svg>
+                <svg class="icon" focusable="false" aria-hidden="true">
+                    <use xlink:href="#docs-icon-i"></use>
+                </svg>
+            </span>
+        </span><span class="sr-only">Informationsmeddelande</span>
+            <p>lorem ipsum</p></div>
+</div>
+"
+`;
+
+exports[`should render template without static message 1`] = `
+"
+<template id="motd-message">
+    <div class="message-box message-box--info">
+        <span class="message-box__icon">
+            <span class="icon-stack icon-stack--info">
+                <svg class="icon__info icon" focusable="false" aria-hidden="true">
+                    <use xlink:href="#docs-icon-circle"></use>
+                </svg>
+                <svg class="icon" focusable="false" aria-hidden="true">
+                    <use xlink:href="#docs-icon-i"></use>
+                </svg>
+            </span>
+        </span><span data-bind="screenreader" class="sr-only"></span>
+            <p data-bind="message"></p></div>
+</template>
+
+
+<div id="motd-container">
+    </div>
+"
+`;

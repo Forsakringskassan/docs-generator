@@ -1,0 +1,14 @@
+{% from "macro/motd.njk.html" import motd -%}
+
+{# template used for dynamic messages #}
+<template id="motd-message">
+{{- motd() -}}
+</template>
+
+{# container hold all messages #}
+<div id="motd-container">
+    {# render all static messages #}
+    {%- if message -%}
+    {{- motd(message) -}}
+    {%- endif -%}
+</div>
