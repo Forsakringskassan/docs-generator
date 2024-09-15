@@ -1,21 +1,21 @@
 {%- macro motd(message) %}
-    <div class="message-box message-box--info">
-        <span class="message-box__icon">
-            <span class="icon-stack icon-stack--info">
-                <svg class="icon__info icon" focusable="false" aria-hidden="true">
-                    <use xlink:href="#docs-icon-circle"></use>
-                </svg>
-                <svg class="icon" focusable="false" aria-hidden="true">
-                    <use xlink:href="#docs-icon-i"></use>
-                </svg>
-            </span>
+<div class="docs-motd docs-motd--info">
+    <span class="docs-motd__icon">
+        <span class="icon-stack icon-stack--info">
+            <svg class="icon icon--circle" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-circle"></use>
+            </svg>
+            <svg class="icon icon--i" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-i"></use>
+            </svg>
         </span>
-        {%- if message -%}
-            <span class="sr-only">Informationsmeddelande</span>
-            <p>{{ message }}</p>
-        {%- else -%}
-            <span data-bind="screenreader" class="sr-only"></span>
-            <p data-bind="message"></p>
-        {%- endif -%}
-    </div>
+    </span>
+    {%- if message -%}
+    <span class="sr-only">Informationsmeddelande</span>
+    <p>{{ message }}</p>
+    {%- else -%}
+    <span data-bind="screenreader" class="sr-only"></span>
+    <p data-bind="message"></p>
+    {%- endif -%}
+</div>
 {% endmacro -%}
