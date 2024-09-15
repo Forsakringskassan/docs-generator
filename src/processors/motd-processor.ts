@@ -12,15 +12,27 @@ export interface MOTDOptions {
     /** Name of the container to render content in. */
     container?: string;
     /** Message to display */
-    message: string;
+    message?: string;
 }
 
-type NormalizedMOTDOptions = Required<MOTDOptions>;
+/**
+ * @internal
+ */
+export interface MOTDProcessorTemplateData {
+    message: string | undefined;
+}
+
+interface NormalizedMOTDOptions {
+    enabled: boolean;
+    container: string;
+    message: string | undefined;
+}
 
 function normalizeOptions(options: MOTDOptions): NormalizedMOTDOptions {
     const defaults = {
         enabled: true,
         container: "body:begin",
+        message: undefined,
     };
     return { ...defaults, ...options };
 }
@@ -35,14 +47,35 @@ export function motdProcessor(options: MOTDOptions): Processor {
     return {
         name: "motd-processor",
         after: "generate-docs",
+        runtime: [{ src: "src/runtime/motd/index.ts" }],
         handler(context) {
             if (!enabled) {
                 return;
             }
-            context.addTemplateBlock(container, "version-banner", {
-                filename: "partials/version-banner.html",
-                data: { message },
+
+            const useLegacyTemplate = context.hasTemplate(
+                "partials/version-banner.html",
+            );
+            const data: MOTDProcessorTemplateData = {
+                message,
+            };
+
+            context.addTemplateBlock(container, "motd-container", {
+                filename: "partials/motd-container.njk.html",
+                data: useLegacyTemplate ? undefined : data,
             });
+
+            /* legacy for backwards compatibility */
+            if (useLegacyTemplate) {
+                /* eslint-disable-next-line no-console -- expected to log */
+                console.warn(
+                    `[deprecated] using the "partial/version-banner.html" template for motdProcessor is deprecated`,
+                );
+                context.addTemplateBlock(container, "version-banner", {
+                    filename: "partials/version-banner.html",
+                    data,
+                });
+            }
         },
     };
 }

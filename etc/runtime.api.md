@@ -5,6 +5,23 @@
 ```ts
 
 // @public
+export const motd: MOTDApi;
+
+// @public (undocumented)
+export interface MOTDApi {
+    // (undocumented)
+    showMessage(message: MOTDMessage): void;
+}
+
+// @public (undocumented)
+export interface MOTDMessage {
+    bindings?: Record<string, string>;
+    message: string;
+    preprocess?(element: DocumentFragment): void;
+    template?: string;
+}
+
+// @public
 export function onContentReady(callback: () => void): void;
 
 // (No @packageDocumentation comment for this package)
