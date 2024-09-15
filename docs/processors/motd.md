@@ -6,13 +6,13 @@ layout: content-with-menu
 `motdProcessor` adds a MOTD style global message on the site.
 
 ```html nomarkup
-<div class="message-box message-box--info">
-    <span class="message-box__icon">
+<div class="docs-motd docs-motd--info">
+    <span class="docs-motd__icon">
         <span class="icon-stack icon-stack--info">
-            <svg class="icon__info icon" focusable="false" aria-hidden="true">
+            <svg class="icon icon--circle" focusable="false" aria-hidden="true">
                 <use xlink:href="#docs-icon-circle"></use>
             </svg>
-            <svg class="icon" focusable="false" aria-hidden="true">
+            <svg class="icon icon--i" focusable="false" aria-hidden="true">
                 <use xlink:href="#docs-icon-i"></use>
             </svg>
         </span>

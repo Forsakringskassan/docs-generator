@@ -1,6 +1,8 @@
-@use "cookie-warning";
 @use "css-variables";
 @use "reset";
+
+@use "cookie-warning";
+@use "motd";
 @use "breakpoints" as *;
 @use "version";
 
@@ -30,4 +32,15 @@ body {
 .page-header {
     --docs-text-color-default: var(--docs-header-text-color-default);
     --docs-text-color-discrete: var(--docs-header-text-color-discrete);
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
 }

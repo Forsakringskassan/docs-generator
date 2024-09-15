@@ -1,0 +1,46 @@
+.docs-motd {
+    padding: 1.5rem;
+    margin: 0.5rem;
+    color: var(--docs-motd-text-color);
+
+    a {
+        color: var(--docs-motd-link-color);
+
+        &:hover,
+        &:focus {
+            color: var(--docs-motd-hover-color);
+        }
+    }
+
+    p:last-child {
+        margin-bottom: 0;
+    }
+
+    &--info {
+        border: 2px solid var(--docs-motd-info-accent-color);
+        border-top: 1rem solid var(--docs-motd-info-accent-color);
+        background-color: var(--docs-motd-info-background-color);
+        border-radius: 2px;
+
+        .icon--circle {
+            color: #fff;
+        }
+
+        .icon--i {
+            color: var(--docs-motd-text-color);
+        }
+    }
+
+    &__icon {
+        float: left;
+        height: 1.5rem;
+        margin: 0 0.4rem 0 0;
+        width: 1.5rem;
+
+        .icon,
+        .icon-stack {
+            height: 1.5rem;
+            width: 1.5rem;
+        }
+    }
+}

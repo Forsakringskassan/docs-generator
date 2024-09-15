@@ -19,7 +19,7 @@ const motd = {
     get messageElements(): HTMLElement[] {
         return Array.from(
             document.querySelectorAll<HTMLElement>(
-                "#motd-container .message-box",
+                "#motd-container .docs-motd",
             ),
         );
     },
