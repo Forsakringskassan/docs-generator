@@ -39,3 +39,13 @@ it("should handle missing key", () => {
     const result = interpolate(message, data);
     expect(result).toBe("Hello {{ name }}!");
 });
+
+it("should handle extra handlebars", () => {
+    expect.assertions(1);
+    const data = {
+        a: "1",
+    };
+    const message = "{{{ a }}} {{ { a } }}";
+    const result = interpolate(message, data);
+    expect(result).toBe("{1} {{ { a } }}");
+});
