@@ -1,5 +1,12 @@
+import { type PackageJson } from "../package-json";
 import { type Processor } from "../processor";
-import { gitCommitHash, interpolate, runCommand } from "../utils";
+import {
+    getPullRequestID,
+    getRepositoryUrl,
+    gitCommitHash,
+    interpolate,
+    runCommand,
+} from "../utils";
 
 /**
  * Options for {@link versionProcessor}.
@@ -18,10 +25,7 @@ export interface VersionProcessorOptions {
  * @internal
  */
 export interface VersionProcessorTemplateData {
-    readonly pkg: {
-        readonly name: string;
-        readonly version: string;
-    };
+    readonly pkg: PackageJson;
     readonly scm: {
         readonly branch: string;
         readonly commitUrl: string;
@@ -68,19 +72,8 @@ async function getGitBranch(): Promise<string> {
     }
 }
 
-function getPullRequestID(): string | undefined {
-    /* jenkins */
-    if (process.env.JOB_BASE_NAME) {
-        const name = process.env.JOB_BASE_NAME;
-        const match = name.match(/PR-(\d+)/);
-        return match ? match[1] : undefined;
-    }
-
-    return undefined;
-}
-
 async function getSCMData(
-    pkg: { homepage: string },
+    pkg: { homepage: string; repository?: { url?: string } },
     options: ScmOptions,
 ): Promise<GitData | null> {
     const commitHash = await gitCommitHash("full");
@@ -90,9 +83,10 @@ async function getSCMData(
     }
 
     const { homepage } = pkg;
-    const pr = getPullRequestID();
+    const repository = getRepositoryUrl(pkg) ?? "";
+    const pr = getPullRequestID(process.env);
     const prUrl = pr
-        ? interpolate(options.prUrlFormat, { homepage, pr })
+        ? interpolate(options.prUrlFormat, { homepage, pr, repository })
         : undefined;
     return {
         branch: await getGitBranch(),
@@ -102,6 +96,7 @@ async function getSCMData(
             hash: commitHash,
             short: commitShort,
             homepage,
+            repository,
         }),
         pr,
         prUrl,

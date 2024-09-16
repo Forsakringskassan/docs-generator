@@ -13,11 +13,11 @@ template for generating links at the upper right menu.
 ## Usage
 
 ```ts
+const pkg = await fs.readFile("package.json", "utf-8");
 const docs = new Generator({
     processors: [
-        sourceUrlProcessor({
-            urlFormat:
-                "https://github.com/Forsakringskassan/docs-generator/tree/main/{{path}}",
+        sourceUrlProcessor(pkg, {
+            urlFormat: "{{ repository }}/tree/main/{{ path }}",
             componentFileExtension: "baz",
         }),
     ],
@@ -28,7 +28,7 @@ const docs = new Generator({
 
 The `sourceUrlProcessor` takes a configuration object:
 
-`sourceUrlProcessor({ /* ... */ })`
+`sourceUrlProcessor(pkg, { /* ... */ })`
 
 ### `enabled`
 
@@ -44,13 +44,14 @@ Enables/disables the processor.
 
 The URL format of the generated source link.
 
-`example.net/blob/{{ hash }}/{{ path }}`
+`{{ repository }}/blob/{{ hash }}/{{ path }}`
 
 The following placeholders can be used:
 
 -   `hash` - the full hash of the commit.
 -   `short` - the abbreviated hash of the commit.
 -   `path` - relative source file path.
+-   `repository` - the normalized URL to the source repository (derived from the `repository.url` field in `package.json`).
 
 ### `componentFileExtension`
 

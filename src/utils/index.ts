@@ -6,6 +6,8 @@ export { getDocumentOutline } from "./get-document-outline";
 export { getIntegrity } from "./get-integrity";
 export { getFingerprint } from "./get-fingerprint";
 export { getOutputFilePath } from "./get-output-filepath";
+export { getPullRequestID } from "./get-pull-request-id";
+export { getRepositoryUrl } from "./get-repository-url";
 export { gitCommitHash } from "./git";
 export { haveOutput } from "./have-output";
 export { interpolate } from "./interpolate";
