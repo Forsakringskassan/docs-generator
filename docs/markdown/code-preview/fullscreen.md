@@ -3,22 +3,22 @@ title: Fullscreen examples
 layout: content-with-menu
 ---
 
-Examples can run in fullscreen mode by using the `fullscreen` tag:
+Examples can run in fullscreen mode by using the `fullscreen` tag.
+Currently supported languages is:
+
+-   `html`
+-   `vue`
 
 ````md
-```vue fullscreen
-<template>
-    <p>Lorem ipsum</p>
-</template>
+```html fullscreen
+<p>Lorem ipsum</p>
 ```
 ````
 
 This will render the following:
 
-```vue fullscreen
-<template>
-    <p>Lorem ipsum</p>
-</template>
+```html fullscreen
+<p>Lorem ipsum</p>
 ```
 
 ### Template
