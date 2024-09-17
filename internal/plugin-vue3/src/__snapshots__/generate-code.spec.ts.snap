@@ -46,3 +46,23 @@ exports[`should generate markup 1`] = `
         <script defer src="./mock-example-123456.js"></script>
     "
 `;
+
+exports[`should handle missing <script> 1`] = `
+"import { setup } from "/path/to/setup.ts";
+const exampleComponent = {};
+import { openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue"
+
+const _hoisted_1 = { class: "greeting" }
+
+export function render(_ctx, _cache) {
+  return (_openBlock(), _createElementBlock("p", _hoisted_1, "Hello World!"))
+}
+
+exampleComponent.render = render;
+
+setup({
+  rootComponent: exampleComponent,
+  selector: "#no-script"
+});
+"
+`;
