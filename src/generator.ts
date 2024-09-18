@@ -278,6 +278,7 @@ export class Generator {
         const bootstrapUrl = new URL("runtime-bootstrap.js", import.meta.url);
         this.compileScript("bootstrap", bootstrapUrl, {
             appendTo: "head",
+            priority: 100,
         });
     }
 
@@ -292,6 +293,7 @@ export class Generator {
             options: {
                 appendTo: "none",
                 attributes: {},
+                priority: 0,
                 ...options,
             },
         });
@@ -308,6 +310,7 @@ export class Generator {
             options: {
                 appendTo: "none",
                 attributes: {},
+                priority: 0,
                 ...options,
             },
         });

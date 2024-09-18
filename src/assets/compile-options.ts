@@ -1,4 +1,5 @@
 import { type AttributeTable } from "../utils";
+
 /**
  * @public
  */
@@ -16,4 +17,16 @@ export interface CompileOptions {
      * Extra attributes to include in the `<link>` or `<script>` tag.
      */
     attributes: AttributeTable;
+
+    /**
+     * Assets with higher priority is sorted and loaded earlier than assets with
+     * lower.
+     *
+     * The builtin priorities:
+     *
+     * - Default is `0`.
+     * - Processor runtime assets uses `50`.
+     * - Bootstrap runtime uses `100`.
+     */
+    priority: number;
 }
