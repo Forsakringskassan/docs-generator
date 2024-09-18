@@ -28,6 +28,7 @@ it("should queue runtime scripts for compilation", () => {
     expect(compileScript).toHaveBeenCalledTimes(1);
     expect(compileScript).toHaveBeenCalledWith("processors/foo/foo", "foo.js", {
         appendTo: "body",
+        priority: expect.any(Number),
     });
 });
 
@@ -46,9 +47,11 @@ it("should handle multiple scripts from same processor", () => {
     expect(compileScript).toHaveBeenCalledTimes(2);
     expect(compileScript).toHaveBeenCalledWith("processors/foo/foo", "foo.js", {
         appendTo: "body",
+        priority: expect.any(Number),
     });
     expect(compileScript).toHaveBeenCalledWith("processors/foo/bar", "bar.js", {
         appendTo: "body",
+        priority: expect.any(Number),
     });
 });
 
@@ -75,9 +78,11 @@ it("should handle multiple processors with runtime scripts", () => {
     expect(compileScript).toHaveBeenCalledTimes(2);
     expect(compileScript).toHaveBeenCalledWith("processors/foo/foo", "foo.js", {
         appendTo: "body",
+        priority: expect.any(Number),
     });
     expect(compileScript).toHaveBeenCalledWith("processors/bar/foo", "foo.js", {
         appendTo: "body",
+        priority: expect.any(Number),
     });
 });
 
@@ -134,5 +139,6 @@ it("should use custom asset name if provided", () => {
     expect(compileScript).toHaveBeenCalledTimes(1);
     expect(compileScript).toHaveBeenCalledWith("processors/foo/bar", "foo.js", {
         appendTo: "body",
+        priority: expect.any(Number),
     });
 });

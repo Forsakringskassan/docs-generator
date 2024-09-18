@@ -21,6 +21,7 @@ export const availableProcessors: Processor[];
 export interface CompileOptions {
     appendTo: "none" | "head" | "body";
     attributes: AttributeTable;
+    priority: number;
 }
 
 // @public

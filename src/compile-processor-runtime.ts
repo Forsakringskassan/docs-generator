@@ -30,6 +30,7 @@ export function compileProcessorRuntime(
             const scriptPath = existsSync(bundled) ? bundled : entry.src;
             generator.compileScript(assetName, scriptPath, {
                 appendTo: "body",
+                priority: 50,
             });
         }
     }

@@ -12,6 +12,17 @@ export interface JSAsset {
     options: CompileOptions;
 }
 
+function byPriority({ options: a }: JSAsset, { options: b }: JSAsset): number {
+    return b.priority - a.priority;
+}
+
+/**
+ * Cannot use Array.toSorted(..) until NodeJS 20.
+ */
+function toSorted<T>(values: T[], comparator: (a: T, b: T) => number): T[] {
+    return [...values].sort(comparator);
+}
+
 /**
  * @internal
  */
@@ -26,7 +37,7 @@ export function jsAssetProcessor(
             const assetInfo = context.getTemplateData("assets") ?? {};
             const head = context.getTemplateData("injectHead") ?? [];
             const body = context.getTemplateData("injectBody") ?? [];
-            for (const asset of assets) {
+            for (const asset of toSorted(assets, byPriority)) {
                 const info = await compileScript(
                     assetFolder,
                     asset.name,
