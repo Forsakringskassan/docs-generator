@@ -41,14 +41,23 @@ export class TemplateLoader implements ILoaderAsync {
         }
     }
 
+    public hasTemplate(name: string): boolean {
+        const { templateCache } = this;
+        const cached = templateCache.get(name);
+        if (cached) {
+            return true;
+        }
+        const filePath = this.findTemplateFile(name);
+        return Boolean(filePath);
+    }
+
     private async resolveTemplate(name: string): Promise<ResolvedTemplate> {
         const { templateCache, folders } = this;
         const cached = templateCache.get(name);
         if (cached) {
             return cached;
         }
-        const searchPaths = folders.map((it) => path.join(it, name));
-        const filePath = searchPaths.find((it) => existsSync(it));
+        const filePath = this.findTemplateFile(name);
         if (!filePath) {
             const searched = folders.map((it) => `  - "${it}"`).join("\n");
             const message = `Failed to resolve template "${name}", searched in:
@@ -62,5 +71,11 @@ Make sure the name is correct and the template file exists in one of the listed 
         const resolved = { content, filePath };
         templateCache.set(name, resolved);
         return resolved;
+    }
+
+    private findTemplateFile(name: string): string | undefined {
+        const { folders } = this;
+        const searchPaths = folders.map((it) => path.join(it, name));
+        return searchPaths.find((it) => existsSync(it));
     }
 }

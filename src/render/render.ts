@@ -182,8 +182,9 @@ async function compileStandalones(options: {
 /**
  * @internal
  */
-export function createTemplateLoader(folders: string[]): void {
+export function createTemplateLoader(folders: string[]): TemplateLoader {
     loader = new TemplateLoader(folders);
+    return loader;
 }
 
 /**
