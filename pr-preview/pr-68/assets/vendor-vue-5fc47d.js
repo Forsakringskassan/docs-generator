@@ -956,9 +956,11 @@
   function cleanupDeps(sub) {
     let head;
     let tail = sub.depsTail;
-    for (let link = tail; link; link = link.prevDep) {
+    let link = tail;
+    while (link) {
+      const prev = link.prevDep;
       if (link.version === -1) {
-        if (link === tail) tail = link.prevDep;
+        if (link === tail) tail = prev;
         removeSub(link);
         removeDep(link);
       } else {
@@ -966,6 +968,7 @@
       }
       link.dep.activeLink = link.prevActiveLink;
       link.prevActiveLink = void 0;
+      link = prev;
     }
     sub.deps = head;
     sub.depsTail = tail;
@@ -1093,6 +1096,14 @@
     }
   }
   var globalVersion = 0;
+  var Link = class {
+    constructor(sub, dep) {
+      this.sub = sub;
+      this.dep = dep;
+      this.version = dep.version;
+      this.nextDep = this.prevDep = this.nextSub = this.prevSub = this.prevActiveLink = void 0;
+    }
+  };
   var Dep = class {
     constructor(computed3) {
       this.computed = computed3;
@@ -1109,16 +1120,7 @@
       }
       let link = this.activeLink;
       if (link === void 0 || link.sub !== activeSub) {
-        link = this.activeLink = {
-          dep: this,
-          sub: activeSub,
-          version: this.version,
-          nextDep: void 0,
-          prevDep: void 0,
-          nextSub: void 0,
-          prevSub: void 0,
-          prevActiveLink: void 0
-        };
+        link = this.activeLink = new Link(activeSub, this);
         if (!activeSub.deps) {
           activeSub.deps = activeSub.depsTail = link;
         } else {
@@ -3151,6 +3153,9 @@
         insert(mainAnchor, container, anchor);
         const mount = (container2, anchor2) => {
           if (shapeFlag & 16) {
+            if (parentComponent && parentComponent.isCE) {
+              parentComponent.ce._teleportTarget = container2;
+            }
             mountChildren(
               children,
               container2,
@@ -4178,7 +4183,11 @@ Server rendered element contains more child nodes than client vdom.`
             remove2(cur);
           }
         } else if (shapeFlag & 8) {
-          if (el.textContent !== vnode.children) {
+          let clientText = vnode.children;
+          if (clientText[0] === "\n" && (el.tagName === "PRE" || el.tagName === "TEXTAREA")) {
+            clientText = clientText.slice(1);
+          }
+          if (el.textContent !== clientText) {
             if (!isMismatchAllowed(
               el,
               0
@@ -4400,7 +4409,7 @@ Server rendered element contains fewer child nodes than client vdom.`
       }
     };
     const isTemplateNode2 = (node) => {
-      return node.nodeType === 1 && node.tagName.toLowerCase() === "template";
+      return node.nodeType === 1 && node.tagName === "TEMPLATE";
     };
     return [hydrate2, hydrateNode];
   }
@@ -4764,7 +4773,7 @@ Server rendered element contains fewer child nodes than client vdom.`
         load().then(() => {
           loaded.value = true;
           if (instance.parent && isKeepAlive(instance.parent.vnode)) {
-            queueJob(instance.parent.update);
+            instance.parent.update();
           }
         }).catch((err) => {
           onError(err);
@@ -7236,6 +7245,7 @@ For more details, see https://link.vuejs.org/feature-flags.`
         }
       }
       if (instance.asyncDep) {
+        if (false) initialVNode.el = null;
         parentSuspense && parentSuspense.registerDep(instance, setupRenderEffect, optimized);
         if (!initialVNode.el) {
           const placeholder = instance.subTree = createVNode(Comment);
@@ -10326,7 +10336,7 @@ Component that was made reactive: `,
     }
     return true;
   }
-  var version = "3.5.4";
+  var version = "3.5.5";
   var warn2 = false ? warn$1 : NOOP;
   var ErrorTypeStrings = ErrorTypeStrings$1;
   var devtools = true ? devtools$1 : void 0;
@@ -11193,6 +11203,7 @@ Component that was made reactive: `,
       }
     }
     connectedCallback() {
+      if (!this.isConnected) return;
       if (!this.shadowRoot) {
         this._parseSlots();
       }
@@ -11235,7 +11246,7 @@ Component that was made reactive: `,
             this._ob = null;
           }
           this._app && this._app.unmount();
-          this._instance.ce = void 0;
+          if (this._instance) this._instance.ce = void 0;
           this._app = this._instance = null;
         }
       });
@@ -11454,7 +11465,7 @@ Component that was made reactive: `,
       }
     }
     /**
-     * Only called when shaddowRoot is false
+     * Only called when shadowRoot is false
      */
     _parseSlots() {
       const slots = this._slots = {};
@@ -11466,10 +11477,10 @@ Component that was made reactive: `,
       }
     }
     /**
-     * Only called when shaddowRoot is false
+     * Only called when shadowRoot is false
      */
     _renderSlots() {
-      const outlets = this.querySelectorAll("slot");
+      const outlets = (this._teleportTarget || this).querySelectorAll("slot");
       const scopeId = this._instance.type.__scopeId;
       for (let i = 0; i < outlets.length; i++) {
         const o = outlets[i];
@@ -12581,7 +12592,7 @@ Component that was made reactive: `,
         this.sequenceIndex += 1;
       } else if (this.sequenceIndex === 0) {
         if (this.currentSequence === Sequences.TitleEnd || this.currentSequence === Sequences.TextareaEnd && !this.inSFCRoot) {
-          if (c === this.delimiterOpen[0]) {
+          if (!this.inVPre && c === this.delimiterOpen[0]) {
             this.state = 2;
             this.delimiterIndex = 0;
             this.stateInterpolationOpen(c);
@@ -13435,6 +13446,7 @@ Component that was made reactive: `,
     getNamespace: () => 0,
     isVoidTag: NO,
     isPreTag: NO,
+    isIgnoreNewlineTag: NO,
     isCustomElement: NO,
     onError: defaultOnError,
     onWarn: defaultOnWarn,
@@ -13878,7 +13890,7 @@ Component that was made reactive: `,
         el.innerLoc.end.offset
       );
     }
-    const { tag, ns } = el;
+    const { tag, ns, children } = el;
     if (!inVPre) {
       if (tag === "slot") {
         el.tagType = 2;
@@ -13889,7 +13901,13 @@ Component that was made reactive: `,
       }
     }
     if (!tokenizer.inRCDATA) {
-      el.children = condenseWhitespace(el.children, el.tag);
+      el.children = condenseWhitespace(children);
+    }
+    if (ns === 0 && currentOptions.isIgnoreNewlineTag(tag)) {
+      const first = children[0];
+      if (first && first.type === 2) {
+        first.content = first.content.replace(/^\r?\n/, "");
+      }
     }
     if (ns === 0 && currentOptions.isPreTag(tag)) {
       inPre--;
@@ -14033,12 +14051,6 @@ Component that was made reactive: `,
         } else {
           node.content = node.content.replace(windowsNewlineRE, "\n");
         }
-      }
-    }
-    if (inPre && tag && currentOptions.isPreTag(tag)) {
-      const first = nodes[0];
-      if (first && first.type === 2) {
-        first.content = first.content.replace(/^\r?\n/, "");
       }
     }
     return removedWhitespace ? nodes.filter(Boolean) : nodes;
@@ -17223,6 +17235,7 @@ Component that was made reactive: `,
     isVoidTag,
     isNativeTag: (tag) => isHTMLTag(tag) || isSVGTag(tag) || isMathMLTag(tag),
     isPreTag: (tag) => tag === "pre",
+    isIgnoreNewlineTag: (tag) => tag === "pre" || tag === "textarea",
     decodeEntities: decodeHtmlBrowser,
     isBuiltInComponent: (tag) => {
       if (tag === "Transition" || tag === "transition") {
@@ -17648,7 +17661,7 @@ ${codeFrame}` : message);
 
 @vue/shared/dist/shared.esm-bundler.js:
   (**
-  * @vue/shared v3.5.4
+  * @vue/shared v3.5.5
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
@@ -17656,14 +17669,14 @@ ${codeFrame}` : message);
 
 @vue/reactivity/dist/reactivity.esm-bundler.js:
   (**
-  * @vue/reactivity v3.5.4
+  * @vue/reactivity v3.5.5
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
 
 @vue/runtime-core/dist/runtime-core.esm-bundler.js:
   (**
-  * @vue/runtime-core v3.5.4
+  * @vue/runtime-core v3.5.5
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
@@ -17679,7 +17692,7 @@ ${codeFrame}` : message);
 
 @vue/runtime-dom/dist/runtime-dom.esm-bundler.js:
   (**
-  * @vue/runtime-dom v3.5.4
+  * @vue/runtime-dom v3.5.5
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
@@ -17689,21 +17702,21 @@ ${codeFrame}` : message);
 
 @vue/compiler-core/dist/compiler-core.esm-bundler.js:
   (**
-  * @vue/compiler-core v3.5.4
+  * @vue/compiler-core v3.5.5
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
 
 @vue/compiler-dom/dist/compiler-dom.esm-bundler.js:
   (**
-  * @vue/compiler-dom v3.5.4
+  * @vue/compiler-dom v3.5.5
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
 
 vue/dist/vue.esm-bundler.js:
   (**
-  * vue v3.5.4
+  * vue v3.5.5
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
