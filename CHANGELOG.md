@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## [2.3.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.2.2...v2.3.0) (2024-09-20)
+
+
+### Features
+
+* `repository` placeholder in format strings ([3d58208](https://github.com/Forsakringskassan/docs-generator/commit/3d582087cea0e047b19653b59b6e176c3b281331))
+* added support for NodePackageImporter (refs SB-4982) ([dd6c0c0](https://github.com/Forsakringskassan/docs-generator/commit/dd6c0c0f4c04cdd198fd65367473d15352297a8c))
+* asset priority settings for sorting the order they run in ([e93ec83](https://github.com/Forsakringskassan/docs-generator/commit/e93ec8360740fdd513a2408cb9164bf0bfa4a7e7))
+* detect github pull requests ([3c1073d](https://github.com/Forsakringskassan/docs-generator/commit/3c1073d1f1caeab349aca975842552d7b7ac8b35))
+
+
+### Bug Fixes
+
+* **deps:** update dependency mermaid to v11.2.1 ([7e0d689](https://github.com/Forsakringskassan/docs-generator/commit/7e0d68962182dff0cb382a6d72b500b5b9084a0d))
+* fix vulnerable regexp ([63fb562](https://github.com/Forsakringskassan/docs-generator/commit/63fb562cb5f707d1e92bde25fe27e1eaec728552))
+
 ## [2.2.2](https://github.com/Forsakringskassan/docs-generator/compare/v2.2.1...v2.2.2) (2024-09-13)
 
 
