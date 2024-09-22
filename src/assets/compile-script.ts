@@ -1,9 +1,20 @@
-import fs from "node:fs/promises";
+import nodeFS from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { type BuildOptions, build as esbuild } from "esbuild";
+import { type BuildOptions } from "esbuild";
 import { getFingerprint, getIntegrity } from "../utils";
 import { AssetInfo } from "./asset-info";
+import { esbuild } from "./esbuild-wrapper";
+
+/**
+ * @internal
+ */
+export interface FSLike {
+    mkdir: typeof nodeFS.mkdir;
+    readFile: typeof nodeFS.readFile;
+    rename: typeof nodeFS.rename;
+    stat: typeof nodeFS.stat;
+}
 
 /**
  * @internal
@@ -13,6 +24,7 @@ export interface CompileScriptOptions {
     name: string;
     src: string | URL;
     buildOptions: BuildOptions;
+    fs?: FSLike;
 }
 
 /**
@@ -21,7 +33,13 @@ export interface CompileScriptOptions {
 export async function compileScript(
     options: CompileScriptOptions,
 ): Promise<AssetInfo> {
-    const { assetFolder, name, src, buildOptions } = options;
+    const {
+        assetFolder,
+        name,
+        src,
+        buildOptions,
+        fs = nodeFS as FSLike,
+    } = options;
 
     const iconLib = process.env.DOCS_ICON_LIB ?? "@fkui/icon-lib-default";
 
