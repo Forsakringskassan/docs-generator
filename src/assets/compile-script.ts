@@ -8,12 +8,21 @@ import { AssetInfo } from "./asset-info";
 /**
  * @internal
  */
+export interface CompileScriptOptions {
+    assetFolder: string;
+    name: string;
+    src: string | URL;
+    buildOptions: BuildOptions;
+}
+
+/**
+ * @internal
+ */
 export async function compileScript(
-    assetFolder: string,
-    name: string,
-    src: string | URL,
-    options?: BuildOptions,
+    options: CompileScriptOptions,
 ): Promise<AssetInfo> {
+    const { assetFolder, name, src, buildOptions } = options;
+
     const iconLib = process.env.DOCS_ICON_LIB ?? "@fkui/icon-lib-default";
 
     try {
@@ -27,10 +36,10 @@ export async function compileScript(
             platform: "browser",
             external: ["vue", "@fkui/vue"],
             tsconfig: path.join(__dirname, "../tsconfig-examples.json"),
-            ...options,
+            ...buildOptions,
             define: {
                 "process.env.DOCS_ICON_LIB": JSON.stringify(iconLib),
-                ...options?.define,
+                ...buildOptions?.define,
             },
         });
         const content = await fs.readFile(outfile, "utf-8");

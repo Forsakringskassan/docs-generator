@@ -40,12 +40,12 @@ export function jsAssetProcessor(
             const head = context.getTemplateData("injectHead") ?? [];
             const body = context.getTemplateData("injectBody") ?? [];
             for (const asset of toSorted(assets, byPriority)) {
-                const info = await compileScript(
+                const info = await compileScript({
                     assetFolder,
-                    asset.name,
-                    asset.src,
-                    asset.buildOptions,
-                );
+                    name: asset.name,
+                    src: asset.src,
+                    buildOptions: asset.buildOptions,
+                });
                 const attrs = serializeAttrs(asset.options.attributes);
                 const inject = { ...info, attrs: Array.from(attrs).join(" ") };
                 assetInfo[asset.name] = info;
