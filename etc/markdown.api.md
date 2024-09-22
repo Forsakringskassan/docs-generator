@@ -70,10 +70,11 @@ export interface ExampleStaticResult {
     comments: string[];
     language: string;
     markup: string;
-    output: null;
+    output: string | null;
     runtime: boolean;
     source: string;
     tags: string[];
+    task: null;
 }
 
 // @public (undocumented)

@@ -13,9 +13,24 @@ exports[`smoketest 1`] = `
           "title": "Markdown",
         },
         {
-          "external": false,
-          "id": "fs:docs/markdown/code-preview.md",
-          "path": "./markdown/code-preview.html",
+          "children": [
+            {
+              "external": false,
+              "id": "fs:docs/markdown/code-preview/code-preview.md",
+              "path": "./markdown/code-preview/",
+              "sortorder": Infinity,
+              "title": "Code preview",
+            },
+            {
+              "external": false,
+              "id": "fs:docs/markdown/code-preview/fullscreen.md",
+              "path": "./markdown/code-preview/fullscreen.html",
+              "sortorder": Infinity,
+              "title": "Fullscreen examples",
+            },
+          ],
+          "key": "./markdown/code-preview",
+          "path": "./markdown/code-preview/",
           "sortorder": Infinity,
           "title": "Code preview",
         },

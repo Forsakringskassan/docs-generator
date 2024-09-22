@@ -57,6 +57,9 @@ export function generateCode(options: ExampleOptions): ExampleResult {
             "export default",
             "const exampleComponent = ",
         );
+    } else {
+        /* edge case: handle when the vue component does not have <script> but only a <template> */
+        sourcecode += `const exampleComponent = {};\n`;
     }
 
     if (descriptor.template) {

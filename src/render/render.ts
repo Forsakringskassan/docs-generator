@@ -251,7 +251,9 @@ export async function render(
 
             if (example.output) {
                 const { dir, name } = path.parse(example.output);
-                generatedExamples.push(example.task);
+                if (example.task) {
+                    generatedExamples.push(example.task);
+                }
                 generatedStandalone.push({
                     outputFile: path.join(dir, `${name}.html`),
                     content: example.markup,

@@ -44,9 +44,11 @@ export interface ExampleStaticResult {
     /** HTML markup to inject into document */
     markup: string;
     /** asset filename */
-    output: null;
+    output: string | null;
     /** enables/disables running example live in the browser */
     runtime: boolean;
+    /** task data for compiler */
+    task: null;
 }
 
 /**

@@ -69,6 +69,10 @@ my-file.html
 my-file.html
 ```
 
+### `fullscreen`
+
+See documentation for {@link fullscreen fullscreen examples}.
+
 ## Runnable examples
 
 ```import

@@ -84,15 +84,20 @@ function generateVueExample(options: ExampleOptions): ExampleResult {
 }
 
 function generateStaticExample(options: ExampleOptions): ExampleResult {
-    const { source, language, tags } = options;
+    const { filename, source, language, tags } = options;
+    const slug = getExampleName(filename);
+    const fingerprint = getFingerprint(source);
+    const asset = `${slug}-${fingerprint}.${language}`;
     const runtimeLanguages = ["html"];
+    const runtime = runtimeLanguages.includes(language);
     return {
         source,
         language: options.language,
         comments: [],
         tags,
         markup: source,
-        output: null,
-        runtime: runtimeLanguages.includes(language),
+        output: runtime ? asset : null,
+        runtime,
+        task: null,
     };
 }
