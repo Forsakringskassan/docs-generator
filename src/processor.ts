@@ -20,6 +20,11 @@ export interface ProcessorRuntime {
 
     /** Bundle name (in dist/processors) folder (default: derived from processor name) */
     name?: string;
+
+    /** Build options (passed to compileScript) */
+    buildOptions?: {
+        define?: Record<string, string>;
+    };
 }
 
 /**
