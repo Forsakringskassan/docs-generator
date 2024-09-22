@@ -1,3 +1,4 @@
+import { type BuildOptions } from "esbuild";
 import { type Processor } from "../processor";
 import { formatSize, serializeAttrs } from "../utils";
 import { type CompileOptions } from "./compile-options";
@@ -10,6 +11,7 @@ export interface JSAsset {
     name: string;
     src: string | URL;
     options: CompileOptions;
+    buildOptions: Pick<BuildOptions, "define">;
 }
 
 function byPriority({ options: a }: JSAsset, { options: b }: JSAsset): number {
@@ -42,6 +44,7 @@ export function jsAssetProcessor(
                     assetFolder,
                     asset.name,
                     asset.src,
+                    asset.buildOptions,
                 );
                 const attrs = serializeAttrs(asset.options.attributes);
                 const inject = { ...info, attrs: Array.from(attrs).join(" ") };

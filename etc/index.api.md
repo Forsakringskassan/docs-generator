@@ -86,7 +86,9 @@ class Generator_2 {
     // (undocumented)
     build(sourceFiles: SourceFiles[]): Promise<string[]>;
     // (undocumented)
-    compileScript(name: string, src: string | URL, options?: Partial<CompileOptions>): void;
+    compileScript(name: string, src: string | URL, options?: Partial<CompileOptions>, buildOptions?: {
+        define?: Record<string, string>;
+    }): void;
     // (undocumented)
     compileStyle(name: string, src: string | URL, options?: Partial<CompileOptions>): void;
     // (undocumented)
@@ -307,6 +309,9 @@ export interface ProcessorOptions {
 
 // @public
 export interface ProcessorRuntime {
+    buildOptions?: {
+        define?: Record<string, string>;
+    };
     name?: string;
     src: string;
 }

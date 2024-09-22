@@ -28,10 +28,17 @@ export function compileProcessorRuntime(
             const name = processorRuntimeName(processor, entry);
             const bundled = new URL(`${name}.js`, distDir);
             const scriptPath = existsSync(bundled) ? bundled : entry.src;
-            generator.compileScript(assetName, scriptPath, {
-                appendTo: "body",
-                priority: 50,
-            });
+            generator.compileScript(
+                assetName,
+                scriptPath,
+                {
+                    appendTo: "body",
+                    priority: 50,
+                },
+                {
+                    ...entry.buildOptions,
+                },
+            );
         }
     }
 }

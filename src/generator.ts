@@ -286,6 +286,7 @@ export class Generator {
         name: string,
         src: string | URL,
         options?: Partial<CompileOptions>,
+        buildOptions?: { define?: Record<string, string> },
     ): void {
         this.scripts.push({
             name,
@@ -295,6 +296,9 @@ export class Generator {
                 attributes: {},
                 priority: 0,
                 ...options,
+            },
+            buildOptions: {
+                ...buildOptions,
             },
         });
     }

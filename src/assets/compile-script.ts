@@ -27,10 +27,11 @@ export async function compileScript(
             platform: "browser",
             external: ["vue", "@fkui/vue"],
             tsconfig: path.join(__dirname, "../tsconfig-examples.json"),
+            ...options,
             define: {
                 "process.env.DOCS_ICON_LIB": JSON.stringify(iconLib),
+                ...options?.define,
             },
-            ...options,
         });
         const content = await fs.readFile(outfile, "utf-8");
         const fingerprint = getFingerprint(content);
