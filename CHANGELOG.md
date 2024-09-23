@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## [2.4.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.3.0...v2.4.0) (2024-09-23)
+
+
+### Features
+
+* expose a limited set of esbuild options to js assets ([aeb8f81](https://github.com/Forsakringskassan/docs-generator/commit/aeb8f819f4dde8431d1d83998d56bc2d45b6eb89))
+* fullscreen support for html examples ([aa92d6e](https://github.com/Forsakringskassan/docs-generator/commit/aa92d6e64fbb196bba23993a828941c4689da5e6))
+* sass module importer (refs SB-4982) ([592dd06](https://github.com/Forsakringskassan/docs-generator/commit/592dd06ed257741b1922a605793cc4db35a5a996))
+
+
+### Bug Fixes
+
+* **deps:** update dependency piscina to v4.7.0 ([66cca41](https://github.com/Forsakringskassan/docs-generator/commit/66cca41ff2524487584507757fa5a15ecdbea20e))
+* **vue:** handle when vue component is missing `<script>` ([5daa4eb](https://github.com/Forsakringskassan/docs-generator/commit/5daa4ebe02c975087b871ecff4e5ad936eb2160f))
+
 ## [2.3.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.2.2...v2.3.0) (2024-09-20)
 
 
