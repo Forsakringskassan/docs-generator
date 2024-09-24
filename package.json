@@ -146,7 +146,7 @@
     "jest-environment-jsdom": "29.7.0",
     "lint-staged": "15.2.10",
     "memfs": "4.12.0",
-    "npm-pkg-lint": "3.8.0",
+    "npm-pkg-lint": "3.9.0",
     "npm-run-all2": "6.2.3",
     "rollup": "4.22.4",
     "rollup-plugin-esbuild": "6.1.1",
