@@ -5,6 +5,7 @@ import "./search";
 import "./table-of-contents";
 import "./version-banner";
 import "./cookie";
+import "./topnav";
 
 declare global {
     interface Window {

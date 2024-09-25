@@ -80,3 +80,28 @@
         height: 1em;
     }
 }
+
+.imenu__list__item--more {
+    position: absolute;
+    visibility: hidden;
+}
+
+button.imenu__list__anchor {
+    background: none;
+    border: none;
+    color: var(--f-text-color-default);
+    cursor: pointer;
+    padding: 0;
+}
+
+.ipopupmenu__list--more {
+    background: inherit;
+    border-radius: var(--f-border-radius-small);
+    color: var(--f-text-color-default);
+    box-shadow: var(--f-box-modal-shadow);
+    font-weight: var(--f-font-weight-normal);
+    position: absolute;
+    right: 0;
+    visibility: hidden;
+    z-index: 1;
+}

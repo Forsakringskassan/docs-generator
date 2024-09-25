@@ -1,4 +1,4 @@
-<nav class="imenu imenu--horizontal" aria-label="Primär">
+<nav id="topnav" class="imenu imenu--horizontal" aria-label="Primär">
     <ul class="imenu__list">
         <!-- prettier-ignore -->
         {%- for nav in topnav.children -%}
@@ -18,5 +18,28 @@
             </div>
         </li>
         {%- endfor -%}
+        <li class="imenu__list__item imenu__list__item--more">
+            <div class="imenu__list__anchor-container">
+                <button type="button" class="imenu__list__anchor" aria-expanded="false">
+                    Mer<span class="imenu__list__anchor-span"></span>
+                    <svg class="imenu__list__anchor-icon-right icon" focusable="false" aria-hidden>
+                        <use xlink:href="#docs-icon-arrow-down"></use>
+                    </svg>
+                </button>
+            </div>
+            <div class="ipopupmenu ipopupmenu--vertical">
+                <ul class="ipopupmenu__list ipopupmenu__list--more">
+                    <!-- prettier-ignore -->
+                    {%- for nav in topnav.children -%}
+                    {% set navPath = nav.path | replace("html", "") %}
+                    {% set navPath = navPath | replace(".", "") %}
+                    {% set activePage = navPath in doc.fileInfo.fullPath %}
+                    <li class="ipopupmenu__list__item {% if activePage %}ipopupmenu__list__item--highlight{% endif %}">
+                        <a href="{{ nav.path | relative(doc) }}"> {{ nav.title }} </a>
+                    </li>
+                    {%- endfor -%}
+                </ul>
+            </div>
+        </li>
     </ul>
 </nav>
