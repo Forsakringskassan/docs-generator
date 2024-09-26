@@ -206,115 +206,6 @@
     </ul>
 </nav>
 
-<script>
-    function getElementsRefs() {
-        const nav = document.querySelector("#topnav");
-        const menuItems = Array.from(nav.querySelectorAll(".imenu__list__item"));
-        const moreItem = menuItems.pop();
-        const moreButton = moreItem.querySelector("button");
-        const popoverContainer = moreItem.querySelector(".ipopupmenu");
-        const popover = popoverContainer.querySelector(".ipopupmenu__list");
-        const popoverItems = Array.from(popover.querySelectorAll(".ipopupmenu__list__item"));
-        const highlightIndex = menuItems.findIndex((it) => it.classList.contains("imenu__list__item--highlight"));
-        const itemPairs = menuItems.map((menu, index) => ({ menu, popover: popoverItems[index] }));
-
-        return { nav, moreItem, moreButton, popoverContainer, popover, itemPairs, highlightIndex };
-    }
-
-    function setPopoverVisibility(visible, refs) {
-        refs.popover.style.visibility = visible ? "visible" : "hidden";
-        refs.moreButton.ariaExpanded = visible.toString();
-    }
-
-    function togglePopover(event, refs) {
-        event.stopPropagation();
-        setPopoverVisibility(refs.popover.style.visibility === "hidden", refs);
-    }
-
-    function closePopoverOnEsc(e, refs) {
-        if (e.which === 27) {
-            setPopoverVisibility(false, refs);
-            refs.moreButton.focus();
-        }
-    }
-
-    function onClickPopover(event) {
-        event.stopPropagation();
-
-        if (event.target) {
-            const target = event.target;
-
-            if (target.tagName === "LI") {
-                target.firstChild.click();
-            }
-        }
-    }
-
-    function hasOverflow(container, content) {
-        return content.offsetLeft + content.offsetWidth > container.offsetLeft + container.offsetWidth;
-    }
-
-    function setMenuItemVisibility(itemPair, visible) {
-        itemPair.menu.style.visibility = visible ? "visible" : "hidden";
-        itemPair.popover.style.display = visible ? "none" : "block";
-    }
-
-    function calculateVisibility(refs) {
-        refs.moreItem.style.left = 0;
-        const menuItems = refs.itemPairs.map((item) => item.menu);
-        let overflowIndex = menuItems.findIndex((it) => hasOverflow(refs.nav, it));
-
-        if (overflowIndex === -1) {
-            refs.itemPairs.forEach((it) => setMenuItemVisibility(it, true));
-            refs.moreItem.style.visibility = "hidden";
-            setPopoverVisibility(false, refs);
-            return;
-        }
-
-        // step back one position if more item don't fit at overflow index
-        if (
-            hasOverflow(refs.nav, {
-                offsetLeft: menuItems[overflowIndex].offsetLeft,
-                offsetWidth: refs.moreItem.offsetWidth,
-            })
-        ) {
-            overflowIndex--;
-        }
-
-        refs.itemPairs.forEach((it, index) => setMenuItemVisibility(it, index < overflowIndex));
-
-        const classOperation = refs.highlightIndex >= overflowIndex ? "add" : "remove";
-        refs.moreItem.classList[classOperation]("imenu__list__item--highlight");
-        refs.moreItem.style.left = `${menuItems[overflowIndex].offsetLeft}px`;
-        refs.moreItem.style.visibility = "visible";
-
-        const popupTop = refs.moreItem.offsetHeight + 16;
-        refs.popover.style.top = `${popupTop}px`;
-    }
-
-    function onContentReady(callback) {
-        const { readyState } = document;
-
-        if (readyState === "complete" || readyState === "interactive") {
-            setTimeout(callback, 0);
-        } else {
-            document.addEventListener("DOMContentLoaded", callback);
-        }
-    }
-
-    onContentReady(() => {
-        const refs = getElementsRefs();
-
-        window.addEventListener("resize", () => calculateVisibility(refs));
-        document.addEventListener("click", () => setPopoverVisibility(false, refs));
-        refs.moreItem.addEventListener("click", (e) => togglePopover(e, refs));
-        refs.moreItem.addEventListener("keyup", (e) => closePopoverOnEsc(e, refs));
-        refs.popoverContainer.addEventListener("click", onClickPopover);
-
-        calculateVisibility(refs);
-    });
-</script>
-
             <div class="page-header__right-slot">
                 <div class="toolbar"><div class="toolbar__item">
     <form id="search" role="search">
@@ -327,9 +218,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        unknown (<a href="https://github.com/Forsakringskassan/docs-generator/commits/625dcd8a237e5c75814fc575f2fe294ac75bf20d">625dcd8</a>)<br />
+        unknown (<a href="https://github.com/Forsakringskassan/docs-generator/commits/a4855558637e540137324f4b117f79c6dfe0fc36">a485555</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/{{ id }}">PR 85</a><br />
-        2024-09-26 11:33
+        2024-09-26 15:43
     </span>
 </div>
 </div>
@@ -592,9 +483,9 @@ Do note that these changes will only be present in fullscreen mode, not when ren
 
         <!-- prettier-ignore -->
         <script
-            src="../../assets/main-4e40d1.js"
+            src="../../assets/main-8cba01.js"
             crossorigin
-            integrity="sha384-wSlxSn7djXOR3DYKEIe6dGJJ1Jkr+JrsM4uMQcT997SgAFWRXiI7zreDeRdSS8of"
+            integrity="sha384-T0bp3lPL3WMh7ipgUzcoqU8V8RGqLdUOSWo7w2BA6eBVwEZ26V4ahDN1Uluba7i0"
             
         ></script>
     </body>
