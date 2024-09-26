@@ -1251,6 +1251,7 @@ body {
 
 .imenu__list__item--more {
   position: absolute;
+  visibility: hidden;
 }
 
 button.imenu__list__anchor {
@@ -1269,4 +1270,5 @@ button.imenu__list__anchor {
   font-weight: var(--f-font-weight-normal);
   position: absolute;
   right: 0;
+  visibility: hidden;
 }
