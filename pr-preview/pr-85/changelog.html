@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="./assets/docs-88dd5e.css"
+            href="./assets/docs-e39f37.css"
             crossorigin
-            integrity="sha384-RUl1EtHVLewhgMu74YmdmLRtDGL6jKNmcUULUHDO9JZf0gvajbS51JGVIpD0QYzW"
+            integrity="sha384-47OVKHbs8JkoPz86vGRrxMlDBbh0E9fJEQ9+VrdcBC3Q0s0TO3QCgHIAS3L4vam5"
             
         />
         <link
@@ -286,17 +286,8 @@
         event.stopPropagation();
     }
 
-    function hasOverflow(containerWidth, elements) {
-        const contentWidth = elements.reduce((acc, value) => acc + value.offsetWidth, 0);
-        return contentWidth > containerWidth;
-    }
-
-    function findOverflowIndex(containerWidth, elements) {
-        let sum = 0;
-        return elements.findIndex((element) => {
-            sum += element.offsetWidth;
-            return sum > containerWidth;
-        });
+    function hasOverflow(container, content) {
+        return content.offsetLeft + content.offsetWidth > container.offsetLeft + container.offsetWidth;
     }
 
     function setMenuItemVisibility(itemPair, visible) {
@@ -307,23 +298,32 @@
     function calculateVisibility(refs) {
         refs.moreItem.style.left = 0;
         const menuItems = refs.itemPairs.map((item) => item.menu);
-        const overflows = hasOverflow(refs.nav.offsetWidth, menuItems);
+        let overflowIndex = menuItems.findIndex((it) => hasOverflow(refs.nav, it));
 
-        if (!overflows) {
+        if (overflowIndex === -1) {
             refs.itemPairs.forEach((it) => setMenuItemVisibility(it, true));
             refs.moreItem.style.visibility = "hidden";
             setPopoverVisibility(false, refs);
             return;
         }
 
-        const containerWidth = refs.nav.offsetWidth - (refs.moreItem.offsetWidth + 16);
-        const overflowIndex = findOverflowIndex(containerWidth, menuItems);
+        // step back one position if more item don't fit at overflow index
+        if (
+            hasOverflow(refs.nav, {
+                offsetLeft: menuItems[overflowIndex].offsetLeft,
+                offsetWidth: refs.moreItem.offsetWidth,
+            })
+        ) {
+            overflowIndex--;
+        }
+
         refs.itemPairs.forEach((it, index) => setMenuItemVisibility(it, index < overflowIndex));
 
         const classOperation = refs.highlightIndex >= overflowIndex ? "add" : "remove";
         refs.moreItem.classList[classOperation]("imenu__list__item--highlight");
         refs.moreItem.style.left = `${menuItems[overflowIndex].offsetLeft}px`;
         refs.moreItem.style.visibility = "";
+
         const popupTop = refs.moreItem.offsetHeight + 16;
         refs.popover.style.top = `${popupTop}px`;
     }
@@ -364,9 +364,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        unknown (<a href="https://github.com/Forsakringskassan/docs-generator/commits/3c86c1961389a3bfba6c35b482d8e3ce87a85826">3c86c19</a>)<br />
+        unknown (<a href="https://github.com/Forsakringskassan/docs-generator/commits/b4cc45d468f8d7857a4e8b7686b0e4a7fc5373b5">b4cc45d</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/{{ id }}">PR 85</a><br />
-        2024-09-25 15:50
+        2024-09-26 09:52
     </span>
 </div>
 </div>

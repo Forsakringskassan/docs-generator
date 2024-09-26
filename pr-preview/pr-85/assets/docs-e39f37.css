@@ -660,12 +660,15 @@ header .imenu {
   margin-left: -0.5rem;
 }
 
+header .imenu__list {
+  gap: 0.5rem;
+}
+
 header .imenu--horizontal .imenu__list__item {
   display: inline-flex;
   padding-top: 1.1rem;
   padding-left: 0;
   padding-right: 0;
-  margin: 0 0.5rem;
 }
 
 /* navigering vänster */
