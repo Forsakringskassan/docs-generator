@@ -1854,7 +1854,6 @@
   var getVersions = memoize(fetchVersions);
   async function initVersionProcessor() {
     const { latest } = await getVersions();
-    console.log({ latest, current });
     if (motdProxy.enabled && latest !== current) {
       motdProxy.showMessage({ message: "asdf" });
     }

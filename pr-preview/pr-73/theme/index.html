@@ -193,9 +193,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        unknown (<a href="https://github.com/Forsakringskassan/docs-generator/commits/39508adbe40d8c552acb89b1f18b6a0c8478ab76">39508ad</a>)<br />
+        unknown (<a href="https://github.com/Forsakringskassan/docs-generator/commits/840c96dae58fba589a0033343bcc4d46de37c2c1">840c96d</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/{{ id }}">PR 73</a><br />
-        2024-09-27 10:11
+        2024-09-27 13:22
     </span>
 </div>
 </div>
@@ -431,6 +431,35 @@
 
             <footer>
                 <!-- prettier-ignore --><!-- prettier-ignore -->
+<div class="toolbar__item">
+    <form id="version">
+        <button type="submit" class="anchor">
+            <span id="version-info" class="version"> Byt version </span>
+        </button>
+    </form>
+
+    <dialog id="version-dialog">
+        <div id="version-dialog-head">
+            <h1>Välj version</h1>
+            <button type="button" class="button button--discrete button--discrete--black">
+                <span>Stäng</span>
+                <svg class="button__icon icon" focusable="false" aria-hidden>
+                    <use xlink:href="#docs-icon-close"></use>
+                </svg>
+            </button>
+        </div>
+        <div id="version-list">
+            <p>Var god vänta, laddar versionsdata...</p>
+        </div>
+    </dialog>
+</div>
+
+<template id="version-list-item">
+    <li class="list__item">
+        <a class="list__item__itempane">template</a>
+    </li>
+</template>
+
 </footer>
         </div>
 
@@ -514,9 +543,9 @@
             
         ></script>
         <script
-            src="../assets/processors/selectable-version/select-version-9c4eed.js"
+            src="../assets/processors/selectable-version/select-version-a3908a.js"
             crossorigin
-            integrity="sha384-VYo1axMBM24ZRRxjDnaLS9MS3Zny74wo4iJnHo+6G7xwY0rCAc80JkFnI4d0VFlY"
+            integrity="sha384-FTx/pqLzeV9pxs4afMpML/PLES01EuFi9LYA6HLK7+rto5QhBIv6STwjGpr+4tcJ"
             
         ></script>
         <script
