@@ -26,6 +26,7 @@ jobs:
                   npm pack
                   mkdir -p ./temp/pr-preview/docs-generator
                   cp -r ./public/* ./temp/pr-preview/docs-generator
+                  echo '{ "latest": "1.0.0", "versions": ["1.0.0"] }' | tee ./temp/pr-preview/versions.json
 
             - name: Determine docs-generator version
               run: |
@@ -41,7 +42,7 @@ jobs:
                   cd fkui
                   npm ci
                   npm install "../forsakringskassan-docs-generator-${VERSION}.tgz"
-                  npm install --worksapces "../forsakringskassan-docs-generator-${VERSION}.tgz"
+                  npm install --workspaces "../forsakringskassan-docs-generator-${VERSION}.tgz"
                   npm run build || true
                   npm run build:docs || true
                   mkdir -p ../temp/pr-preview/fkui/

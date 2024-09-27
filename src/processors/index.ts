@@ -8,7 +8,10 @@ export {
     versionBannerProcessor,
 } from "./motd-processor";
 export { themeSelectProcessor } from "./theme-select-processor";
-export { selectableVersionProcessor } from "./selectable-version-processor";
+export {
+    type SelectableVersionProcessorOptions,
+    selectableVersionProcessor,
+} from "./selectable-version-processor";
 export { type TopnavEntry, topnavProcessor } from "./topnav-processor";
 export {
     type VersionProcessorOptions,

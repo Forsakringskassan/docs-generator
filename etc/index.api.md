@@ -343,7 +343,13 @@ export interface ResourceTask {
 export function searchProcessor(): Processor;
 
 // @public
-export function selectableVersionProcessor(pkg: PackageJson, container: string, options?: ProcessorOptions): Processor;
+export function selectableVersionProcessor(pkg: PackageJson, container: string, options?: SelectableVersionProcessorOptions): Processor;
+
+// @public
+export interface SelectableVersionProcessorOptions extends ProcessorOptions {
+    // (undocumented)
+    readonly message?: string;
+}
 
 // @public
 export interface SetupOptions {
