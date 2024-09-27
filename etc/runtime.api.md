@@ -10,6 +10,8 @@ export const motd: MOTDApi;
 // @public (undocumented)
 export interface MOTDApi {
     // (undocumented)
+    readonly enabled: boolean;
+    // (undocumented)
     showMessage(message: MOTDMessage): void;
 }
 
