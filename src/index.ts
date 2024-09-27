@@ -52,6 +52,7 @@ export {
     type MOTDOptions,
     type TopnavEntry,
     type VersionProcessorOptions,
+    type SelectableVersionProcessorOptions,
     type SourceUrlProcessorOptions,
     manifestProcessor,
     motdProcessor,

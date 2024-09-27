@@ -1,12 +1,15 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import isCI from "is-ci";
 import {
     Generator,
     manifestProcessor,
+    motdProcessor,
     versionProcessor,
     searchProcessor,
     sourceUrlProcessor,
     cookieProcessor,
+    selectableVersionProcessor,
 } from "./dist/index.js";
 import config from "./docs.config.mjs";
 
@@ -47,6 +50,8 @@ const docs = new Generator({
             componentFileExtension: "baz",
         }),
         cookieProcessor(),
+        motdProcessor(),
+        selectableVersionProcessor(pkg, "footer"),
     ],
     setupPath: path.resolve("docs/src/setup.ts"),
 });
@@ -68,4 +73,16 @@ try {
 } catch (err) {
     console.error(err.prettyError ? err.prettyError() : err);
     process.exitCode = 1;
+}
+
+if (!isCI) {
+    const versions = JSON.stringify(
+        {
+            latest: pkg.version,
+            versions: [pkg.version],
+        },
+        null,
+        2,
+    );
+    await fs.writeFile("public/versions.json", versions, "utf-8");
 }

@@ -1,9 +1,17 @@
 import semver from "semver";
 import { getUrl, memoize } from "./utils";
+import { motdProxy as motd } from "./motd/motd-proxy";
 
 interface VersionResponse {
+    latest: string;
     versions: string[];
 }
+
+declare const __PKG_VERSION__: string;
+declare const __MESSAGE__: string;
+
+const current = __PKG_VERSION__;
+const message = __MESSAGE__;
 
 const dialog = document.querySelector<HTMLDialogElement>("#version-dialog");
 const dialogCloseButton = dialog?.querySelector<HTMLDialogElement>("button");
@@ -33,16 +41,32 @@ function clickOutside(event: MouseEvent): void {
     }
 }
 
-async function fetchVersions(): Promise<string[]> {
+async function fetchVersions(): Promise<VersionResponse> {
     const url = getUrl(document, "../versions.json");
     const response = await fetch(url);
-    const data: VersionResponse = await response.json();
-    return data.versions;
+
+    if (!response.ok) {
+        // eslint-disable-next-line no-console -- expected to log
+        console.error("An error occured when loading versions.json.");
+
+        return {
+            latest: current,
+            versions: [current],
+        };
+    }
+
+    return await response.json();
 }
 
 const getVersions = memoize(fetchVersions);
 
-function initVersionProcessor(): void {
+async function initVersionProcessor(): Promise<void> {
+    const { latest } = await getVersions();
+
+    if (motd.enabled && latest !== current) {
+        motd.showMessage({ message });
+    }
+
     if (!dialog || !dialogCloseButton || !form) {
         return;
     }
@@ -58,7 +82,7 @@ function initVersionProcessor(): void {
     form.addEventListener("submit", async (event) => {
         event.preventDefault();
         try {
-            const versions = await getVersions();
+            const { versions } = await getVersions();
             updateVersionList(versions);
         } catch {
             setErrorMessage();
