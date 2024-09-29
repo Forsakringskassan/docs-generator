@@ -455,6 +455,12 @@
   var getGlobalThis = () => {
     return _globalThis || (_globalThis = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : {});
   };
+  function genCacheKey(source, options) {
+    return source + JSON.stringify(
+      options,
+      (_, val) => typeof val === "function" ? val.toString() : val
+    );
+  }
   var GLOBALS_ALLOWED = "Infinity,undefined,NaN,isFinite,isNaN,parseFloat,parseInt,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,Math,Number,Date,Array,Object,Boolean,String,RegExp,Map,Set,JSON,Intl,BigInt,console,Error,Symbol";
   var isGloballyAllowed = /* @__PURE__ */ makeMap(GLOBALS_ALLOWED);
   var range = 2;
@@ -932,11 +938,14 @@
     let error;
     while (batchedSub) {
       let e = batchedSub;
+      let next;
+      while (e) {
+        e.flags &= ~8;
+        e = e.next;
+      }
+      e = batchedSub;
       batchedSub = void 0;
       while (e) {
-        const next = e.next;
-        e.next = void 0;
-        e.flags &= ~8;
         if (e.flags & 1) {
           try {
             ;
@@ -945,6 +954,8 @@
             if (!error) error = err;
           }
         }
+        next = e.next;
+        e.next = void 0;
         e = next;
       }
     }
@@ -957,7 +968,7 @@
       link.dep.activeLink = link;
     }
   }
-  function cleanupDeps(sub, fromComputed = false) {
+  function cleanupDeps(sub) {
     let head;
     let tail = sub.depsTail;
     let link = tail;
@@ -965,7 +976,7 @@
       const prev = link.prevDep;
       if (link.version === -1) {
         if (link === tail) tail = prev;
-        removeSub(link, fromComputed);
+        removeSub(link);
         removeDep(link);
       } else {
         head = link;
@@ -1020,11 +1031,11 @@
     } finally {
       activeSub = prevSub;
       shouldTrack = prevShouldTrack;
-      cleanupDeps(computed3, true);
+      cleanupDeps(computed3);
       computed3.flags &= ~2;
     }
   }
-  function removeSub(link, fromComputed = false) {
+  function removeSub(link, soft = false) {
     const { dep, prevSub, nextSub } = link;
     if (prevSub) {
       prevSub.nextSub = nextSub;
@@ -1040,16 +1051,14 @@
     if (false) {
       dep.subsHead = nextSub;
     }
-    if (!dep.subs) {
-      if (dep.computed) {
-        dep.computed.flags &= ~4;
-        for (let l = dep.computed.deps; l; l = l.nextDep) {
-          removeSub(l, true);
-        }
-      } else if (dep.map && !fromComputed) {
-        dep.map.delete(dep.key);
-        if (!dep.map.size) targetMap.delete(dep.target);
+    if (!dep.subs && dep.computed) {
+      dep.computed.flags &= ~4;
+      for (let l = dep.computed.deps; l; l = l.nextDep) {
+        removeSub(l, true);
       }
+    }
+    if (!soft && !--dep.sc && dep.map) {
+      dep.map.delete(dep.key);
     }
   }
   function removeDep(link) {
@@ -1125,6 +1134,7 @@
       this.target = void 0;
       this.map = void 0;
       this.key = void 0;
+      this.sc = 0;
       if (false) {
         this.subsHead = void 0;
       }
@@ -1143,9 +1153,7 @@
           activeSub.depsTail.nextDep = link;
           activeSub.depsTail = link;
         }
-        if (activeSub.flags & 4) {
-          addSub(link);
-        }
+        addSub(link);
       } else if (link.version === -1) {
         link.version = this.version;
         if (link.nextDep) {
@@ -1209,22 +1217,25 @@
     }
   };
   function addSub(link) {
-    const computed3 = link.dep.computed;
-    if (computed3 && !link.dep.subs) {
-      computed3.flags |= 4 | 16;
-      for (let l = computed3.deps; l; l = l.nextDep) {
-        addSub(l);
+    link.dep.sc++;
+    if (link.sub.flags & 4) {
+      const computed3 = link.dep.computed;
+      if (computed3 && !link.dep.subs) {
+        computed3.flags |= 4 | 16;
+        for (let l = computed3.deps; l; l = l.nextDep) {
+          addSub(l);
+        }
       }
+      const currentTail = link.dep.subs;
+      if (currentTail !== link) {
+        link.prevSub = currentTail;
+        if (currentTail) currentTail.nextSub = link;
+      }
+      if (false) {
+        link.dep.subsHead = link;
+      }
+      link.dep.subs = link;
     }
-    const currentTail = link.dep.subs;
-    if (currentTail !== link) {
-      link.prevSub = currentTail;
-      if (currentTail) currentTail.nextSub = link;
-    }
-    if (false) {
-      link.dep.subsHead = link;
-    }
-    link.dep.subs = link;
   }
   var targetMap = /* @__PURE__ */ new WeakMap();
   var ITERATE_KEY = Symbol(
@@ -1332,8 +1343,8 @@
     endBatch();
   }
   function getDepFromReactive(object, key) {
-    var _a;
-    return (_a = targetMap.get(object)) == null ? void 0 : _a.get(key);
+    const depMap = targetMap.get(object);
+    return depMap && depMap.get(key);
   }
   function reactiveReadArray(array) {
     const raw = toRaw(array);
@@ -3805,6 +3816,7 @@
         `useId() is called when there is no active component instance to be associated with.`
       );
     }
+    return "";
   }
   function markAsyncBoundary(instance) {
     instance.ids = [instance.ids[0] + instance.ids[2]++ + "-", 0, 0];
@@ -9637,7 +9649,7 @@ Component that was made reactive: `,
         // #3666, avoid reference pollution when reusing vnode
         child.slice()
       );
-    } else if (typeof child === "object") {
+    } else if (isVNode(child)) {
       return cloneIfMounted(child);
     } else {
       return createVNode(Text, null, String(child));
@@ -10374,7 +10386,7 @@ Component that was made reactive: `,
     }
     return true;
   }
-  var version = "3.5.8";
+  var version = "3.5.9";
   var warn2 = false ? warn$1 : NOOP;
   var ErrorTypeStrings = ErrorTypeStrings$1;
   var devtools = true ? devtools$1 : void 0;
@@ -11845,7 +11857,7 @@ Component that was made reactive: `,
       setChecked(el, binding, vnode);
     }
   };
-  function setChecked(el, { value, oldValue }, vnode) {
+  function setChecked(el, { value }, vnode) {
     el._modelValue = value;
     let checked;
     if (isArray(value)) {
@@ -11895,19 +11907,19 @@ Component that was made reactive: `,
     },
     // set value in mounted & updated because <select> relies on its children
     // <option>s.
-    mounted(el, { value, modifiers: { number } }) {
+    mounted(el, { value }) {
       setSelected(el, value);
     },
     beforeUpdate(el, _binding, vnode) {
       el[assignKey] = getModelAssigner(vnode);
     },
-    updated(el, { value, modifiers: { number } }) {
+    updated(el, { value }) {
       if (!el._assigning) {
         setSelected(el, value);
       }
     }
   };
-  function setSelected(el, value, number) {
+  function setSelected(el, value) {
     const isMultiple = el.multiple;
     const isArrayValue = isArray(value);
     if (isMultiple && !isArrayValue && !isSet(value)) {
@@ -17622,15 +17634,7 @@ Component that was made reactive: `,
   if (false) {
     initDev();
   }
-  var compileCache = /* @__PURE__ */ new WeakMap();
-  function getCache(options) {
-    let c = compileCache.get(options != null ? options : EMPTY_OBJ);
-    if (!c) {
-      c = /* @__PURE__ */ Object.create(null);
-      compileCache.set(options != null ? options : EMPTY_OBJ, c);
-    }
-    return c;
-  }
+  var compileCache = /* @__PURE__ */ Object.create(null);
   function compileToFunction(template, options) {
     if (!isString(template)) {
       if (template.nodeType) {
@@ -17639,9 +17643,8 @@ Component that was made reactive: `,
         return NOOP;
       }
     }
-    const key = template;
-    const cache = getCache(options);
-    const cached = cache[key];
+    const key = genCacheKey(template, options);
+    const cached = compileCache[key];
     if (cached) {
       return cached;
     }
@@ -17676,7 +17679,7 @@ ${codeFrame}` : message);
     }
     const render2 = new Function("Vue", code)(runtime_dom_esm_bundler_exports);
     render2._rc = true;
-    return cache[key] = render2;
+    return compileCache[key] = render2;
   }
   registerRuntimeCompiler(compileToFunction);
 
@@ -17699,7 +17702,7 @@ ${codeFrame}` : message);
 
 @vue/shared/dist/shared.esm-bundler.js:
   (**
-  * @vue/shared v3.5.8
+  * @vue/shared v3.5.9
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
@@ -17707,14 +17710,14 @@ ${codeFrame}` : message);
 
 @vue/reactivity/dist/reactivity.esm-bundler.js:
   (**
-  * @vue/reactivity v3.5.8
+  * @vue/reactivity v3.5.9
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
 
 @vue/runtime-core/dist/runtime-core.esm-bundler.js:
   (**
-  * @vue/runtime-core v3.5.8
+  * @vue/runtime-core v3.5.9
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
@@ -17730,7 +17733,7 @@ ${codeFrame}` : message);
 
 @vue/runtime-dom/dist/runtime-dom.esm-bundler.js:
   (**
-  * @vue/runtime-dom v3.5.8
+  * @vue/runtime-dom v3.5.9
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
@@ -17740,21 +17743,21 @@ ${codeFrame}` : message);
 
 @vue/compiler-core/dist/compiler-core.esm-bundler.js:
   (**
-  * @vue/compiler-core v3.5.8
+  * @vue/compiler-core v3.5.9
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
 
 @vue/compiler-dom/dist/compiler-dom.esm-bundler.js:
   (**
-  * @vue/compiler-dom v3.5.8
+  * @vue/compiler-dom v3.5.9
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
 
 vue/dist/vue.esm-bundler.js:
   (**
-  * vue v3.5.8
+  * vue v3.5.9
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
