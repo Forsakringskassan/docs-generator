@@ -940,12 +940,17 @@
       let e = batchedSub;
       let next;
       while (e) {
-        e.flags &= ~8;
+        if (!(e.flags & 1)) {
+          e.flags &= ~8;
+        }
         e = e.next;
       }
       e = batchedSub;
       batchedSub = void 0;
       while (e) {
+        next = e.next;
+        e.next = void 0;
+        e.flags &= ~8;
         if (e.flags & 1) {
           try {
             ;
@@ -954,8 +959,6 @@
             if (!error) error = err;
           }
         }
-        next = e.next;
-        e.next = void 0;
         e = next;
       }
     }
@@ -2248,6 +2251,7 @@
       this.depsTail = void 0;
       this.flags = 16;
       this.globalVersion = globalVersion - 1;
+      this.next = void 0;
       this.effect = this;
       this["__v_isReadonly"] = !setter;
       this.isSSR = isSSR;
@@ -10386,7 +10390,7 @@ Component that was made reactive: `,
     }
     return true;
   }
-  var version = "3.5.9";
+  var version = "3.5.10";
   var warn2 = false ? warn$1 : NOOP;
   var ErrorTypeStrings = ErrorTypeStrings$1;
   var devtools = true ? devtools$1 : void 0;
@@ -11152,6 +11156,11 @@ Component that was made reactive: `,
       if (!el.tagName.includes("-") && (key === "value" || key === "checked" || key === "selected")) {
         patchAttr(el, key, nextValue, isSVG, parentComponent, key !== "value");
       }
+    } else if (
+      // #11081 force set props for possible async custom element
+      el._isVueCE && (/[A-Z]/.test(key) || !isString(nextValue))
+    ) {
+      patchDOMProp(el, camelize(key), nextValue);
     } else {
       if (key === "true-value") {
         el._trueValue = nextValue;
@@ -11192,13 +11201,7 @@ Component that was made reactive: `,
     if (isNativeOn(key) && isString(value)) {
       return false;
     }
-    if (key in el) {
-      return true;
-    }
-    if (el._isVueCE && (/[A-Z]/.test(key) || !isString(value))) {
-      return true;
-    }
-    return false;
+    return key in el;
   }
   var REMOVAL = {};
   // @__NO_SIDE_EFFECTS__
@@ -17702,7 +17705,7 @@ ${codeFrame}` : message);
 
 @vue/shared/dist/shared.esm-bundler.js:
   (**
-  * @vue/shared v3.5.9
+  * @vue/shared v3.5.10
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
@@ -17710,14 +17713,14 @@ ${codeFrame}` : message);
 
 @vue/reactivity/dist/reactivity.esm-bundler.js:
   (**
-  * @vue/reactivity v3.5.9
+  * @vue/reactivity v3.5.10
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
 
 @vue/runtime-core/dist/runtime-core.esm-bundler.js:
   (**
-  * @vue/runtime-core v3.5.9
+  * @vue/runtime-core v3.5.10
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
@@ -17733,7 +17736,7 @@ ${codeFrame}` : message);
 
 @vue/runtime-dom/dist/runtime-dom.esm-bundler.js:
   (**
-  * @vue/runtime-dom v3.5.9
+  * @vue/runtime-dom v3.5.10
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
@@ -17743,21 +17746,21 @@ ${codeFrame}` : message);
 
 @vue/compiler-core/dist/compiler-core.esm-bundler.js:
   (**
-  * @vue/compiler-core v3.5.9
+  * @vue/compiler-core v3.5.10
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
 
 @vue/compiler-dom/dist/compiler-dom.esm-bundler.js:
   (**
-  * @vue/compiler-dom v3.5.9
+  * @vue/compiler-dom v3.5.10
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
 
 vue/dist/vue.esm-bundler.js:
   (**
-  * vue v3.5.9
+  * vue v3.5.10
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
