@@ -1,18 +1,15 @@
 import type MarkdownIt from "markdown-it";
 import { type Document } from "../../document";
-import { findDocument } from "../../utils/find-document";
-import { MarkdownEnv } from "../markdown-env";
-import { type SoftErrorType, SoftError } from "../soft-error";
+import { type MarkdownEnv } from "../markdown-env";
+import { type SoftErrorType } from "../soft-error";
+import {
+    type ContainerCallback,
+    type ContainerContext,
+    altContainer,
+    apiContainer,
+} from "./container";
 
-type RenderCallback = (
-    tokens: MarkdownIt.Token[],
-    index: number,
-    options: MarkdownIt.Options,
-    env: MarkdownEnv,
-    self: MarkdownIt.Renderer,
-) => string;
-
-type Options = Record<string, RenderCallback>;
+type Options = Record<string, ContainerCallback>;
 
 const markerStr = ":";
 const markerChar = markerStr.charCodeAt(0);
@@ -141,52 +138,16 @@ export function containerRenderer(
     handleSoftError: (error: SoftErrorType) => string,
 ): (md: MarkdownIt) => void {
     return function (md: MarkdownIt): void {
+        const context: ContainerContext = {
+            md,
+            env,
+            docs,
+            included,
+            handleSoftError,
+        };
         md.use(parser, {
-            api(tokens: MarkdownIt.Token[], index: number) {
-                const token = tokens[index];
-                const needle = token.content.trim();
-                const doc = findDocument(docs, needle);
-                if (!doc) {
-                    return handleSoftError(
-                        new SoftError(
-                            "EINCLUDETARGET",
-                            `No document matches "${needle}" when trying to include content`,
-                            { id: needle },
-                        ),
-                    );
-                }
-
-                /* @todo here we should instead detect the chain of includes to
-                 * provide a better explanation of *why* it happened, not just
-                 * *that* it happend */
-                if (included.has(doc.id)) {
-                    return handleSoftError(
-                        new SoftError(
-                            "EINCLUDERECURSION",
-                            `Recursion detected when including document "${doc.id}"`,
-                        ),
-                    );
-                }
-                included.add(doc.id);
-
-                if (doc.format === "html") {
-                    return doc.body;
-                }
-
-                const content = md.render(doc.body, env);
-                return /* HTML */ ` <div>${content}</div> `;
-            },
-            alt(tokens: MarkdownIt.Token[], index: number) {
-                const token = tokens[index];
-                const needle = token.info.split(" ")[1];
-                const doc = findDocument(docs, needle);
-
-                if (doc && doc.format === "markdown") {
-                    return md.render(doc.body, env);
-                }
-
-                return md.render(token.content, env);
-            },
+            alt: altContainer(context),
+            api: apiContainer(context),
         });
     };
 }
