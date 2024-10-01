@@ -46,6 +46,14 @@ export interface MarkdownOptions {
      * @returns A replacement string or rethrows error.
      */
     handleSoftError(error: SoftErrorType): string;
+
+    /**
+     * Options for messagebox container.
+     */
+    messagebox?: {
+        /** Default titles for messageboxes */
+        title?: Record<string, string>;
+    };
 }
 
 /**
@@ -96,7 +104,11 @@ export function createMarkdownRenderer(
             addResource: options.addResource,
         }),
     );
-    md.use(containerRenderer(docs, env, included, options.handleSoftError));
+    md.use(
+        containerRenderer(docs, env, included, options.handleSoftError, {
+            messagebox: { title: {}, ...options.messagebox },
+        }),
+    );
     md.use(table());
     md.use(codeInline());
 

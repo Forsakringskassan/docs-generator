@@ -7,6 +7,7 @@ import {
     type ContainerContext,
     altContainer,
     apiContainer,
+    messageboxContainer,
 } from "./container";
 
 type Options = Record<string, ContainerCallback>;
@@ -14,7 +15,10 @@ type Options = Record<string, ContainerCallback>;
 const markerStr = ":";
 const markerChar = markerStr.charCodeAt(0);
 
-function parser(md: MarkdownIt, options: Options): void {
+/**
+ * @internal
+ */
+export function containerParser(md: MarkdownIt, options: Options): void {
     function container(
         state: MarkdownIt.StateBlock,
         startLine: number,
@@ -50,8 +54,9 @@ function parser(md: MarkdownIt, options: Options): void {
         }
 
         const markup = state.src.slice(mem, pos);
-        const params = state.src.slice(pos, max).trim();
-        const kind = params.split(" ", 2)[0];
+        const params = state.src.slice(pos, max).trim().split(/\s+/);
+        const kind = params[0];
+        const info = params.slice(1).join(" ");
 
         // Since start is found, we can report success here in validation mode
         if (silent) {
@@ -114,7 +119,7 @@ function parser(md: MarkdownIt, options: Options): void {
         state.line = nextLine + (haveEndMarker ? 1 : 0);
 
         const token = state.push(`doc_${kind}`, "div", 0);
-        token.info = params;
+        token.info = info?.trim();
         token.content = state.getLines(startLine + 1, nextLine, len, true);
         token.markup = markup;
         token.map = [startLine, state.line];
@@ -136,6 +141,11 @@ export function containerRenderer(
     env: MarkdownEnv,
     included: Set<string>,
     handleSoftError: (error: SoftErrorType) => string,
+    options: {
+        messagebox: {
+            title: Record<string, string>;
+        };
+    },
 ): (md: MarkdownIt) => void {
     return function (md: MarkdownIt): void {
         const context: ContainerContext = {
@@ -145,9 +155,20 @@ export function containerRenderer(
             included,
             handleSoftError,
         };
-        md.use(parser, {
+        md.use(containerParser, {
             alt: altContainer(context),
             api: apiContainer(context),
+            messagebox: messageboxContainer(context, options.messagebox),
+
+            /* aliases for messagebox containers */
+            info: messageboxContainer(context, options.messagebox, "info"),
+            tip: messageboxContainer(context, options.messagebox, "tip"),
+            warning: messageboxContainer(
+                context,
+                options.messagebox,
+                "warning",
+            ),
+            danger: messageboxContainer(context, options.messagebox, "danger"),
         });
     };
 }

@@ -32,6 +32,36 @@ export default {
                 type: "color",
                 value: "#1b1e23",
             },
+            "info-color": {
+                description: "Default info color.",
+                type: "color",
+                value: "#4a52b6",
+            },
+            "info-background": {
+                description: "Default info background.",
+                type: "color",
+                value: "#f5f6fa",
+            },
+            "warning-color": {
+                description: "Default warning color.",
+                type: "color",
+                value: "#ffbe10",
+            },
+            "warning-background": {
+                description: "Default warning background.",
+                type: "color",
+                value: "#fffcf3",
+            },
+            "error-color": {
+                description: "Default warning color.",
+                type: "color",
+                value: "#ca1515",
+            },
+            "error-background": {
+                description: "Default warning background.",
+                type: "color",
+                value: "#fcf3f3",
+            },
         },
     },
 
@@ -71,6 +101,52 @@ export default {
             "width-expanded": {
                 description: "Width of sidebar in desktop resolution.",
                 value: "230px",
+            },
+        },
+    },
+
+    messagebox: {
+        description: "Style related to markdown messageboxes.",
+        variables: {
+            "info-border": {
+                description: "Border color for info variant",
+                type: "color",
+                value: "#a0a0a0",
+            },
+            "info-background": {
+                description: "Background color for info variant",
+                type: "color",
+                value: "#ffffff",
+            },
+            "tip-border": {
+                description: "Border color for tip variant",
+                type: "color",
+                value: "var(--docs-info-color)",
+            },
+            "tip-background": {
+                description: "Background color for tip variant",
+                type: "color",
+                value: "var(--docs-info-background)",
+            },
+            "warning-border": {
+                description: "Border color for warning variant",
+                type: "color",
+                value: "var(--docs-warning-color)",
+            },
+            "warning-background": {
+                description: "Background color for warning variant",
+                type: "color",
+                value: "var(--docs-warning-background)",
+            },
+            "danger-border": {
+                description: "Border color for danger variant",
+                type: "color",
+                value: "var(--docs-error-color)",
+            },
+            "danger-background": {
+                description: "Background color for danger variant",
+                type: "color",
+                value: "var(--docs-error-background)",
             },
         },
     },

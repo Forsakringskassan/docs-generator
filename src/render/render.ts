@@ -272,6 +272,7 @@ export async function render(
             /* rethrow error so we get hard fails on everything */
             throw error;
         },
+        messagebox: options.markdown.messagebox,
     });
 
     njk.addFilter("marked", (content: string) => {

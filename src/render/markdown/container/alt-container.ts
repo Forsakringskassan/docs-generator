@@ -11,7 +11,7 @@ export function altContainer(context: ContainerContext): ContainerCallback {
     const { md, env, docs } = context;
     return (tokens, index) => {
         const token = tokens[index];
-        const needle = token.info.split(" ")[1];
+        const needle = token.info;
         const doc = findDocument(docs, needle);
 
         if (doc && doc.format === "markdown") {

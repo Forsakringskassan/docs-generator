@@ -35,6 +35,21 @@ exports[`smoketest 1`] = `
           "title": "Code preview",
         },
         {
+          "children": [
+            {
+              "external": false,
+              "id": "fs:docs/markdown/containers/messagebox.md",
+              "path": "./markdown/containers/messagebox.html",
+              "sortorder": Infinity,
+              "title": "Messagebox",
+            },
+          ],
+          "key": "./markdown/containers",
+          "path": "",
+          "sortorder": Infinity,
+          "title": "containers",
+        },
+        {
           "external": false,
           "id": "fs:docs/markdown/custom-containers.md",
           "path": "./markdown/custom-containers.html",

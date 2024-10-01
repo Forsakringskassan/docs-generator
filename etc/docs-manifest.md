@@ -14,6 +14,7 @@ live-example/example.html
 live-example/index.html
 markdown/code-preview/fullscreen.html
 markdown/code-preview/index.html
+markdown/containers/messagebox.html
 markdown/custom-containers.html
 markdown/index.html
 markdown/mermaid.html
