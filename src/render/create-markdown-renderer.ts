@@ -8,7 +8,7 @@ import {
     codePreview,
     headingLevel,
     imageResources,
-    include,
+    containerRenderer,
     table,
 } from "./markdown";
 import { MarkdownEnv } from "./markdown-env";
@@ -96,7 +96,7 @@ export function createMarkdownRenderer(
             addResource: options.addResource,
         }),
     );
-    md.use(include(docs, env, included, options.handleSoftError));
+    md.use(containerRenderer(docs, env, included, options.handleSoftError));
     md.use(table());
     md.use(codeInline());
 

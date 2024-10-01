@@ -134,7 +134,7 @@ function parser(md: MarkdownIt, options: Options): void {
     }
 }
 
-export function include(
+export function containerRenderer(
     docs: Document[],
     env: MarkdownEnv,
     included: Set<string>,
