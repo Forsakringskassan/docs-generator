@@ -111,20 +111,10 @@ export default {
             "info-border": {
                 description: "Border color for info variant",
                 type: "color",
-                value: "#a0a0a0",
+                value: "var(--docs-info-color)",
             },
             "info-background": {
                 description: "Background color for info variant",
-                type: "color",
-                value: "#ffffff",
-            },
-            "tip-border": {
-                description: "Border color for tip variant",
-                type: "color",
-                value: "var(--docs-info-color)",
-            },
-            "tip-background": {
-                description: "Background color for tip variant",
                 type: "color",
                 value: "var(--docs-info-background)",
             },

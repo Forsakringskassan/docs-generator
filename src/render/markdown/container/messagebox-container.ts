@@ -3,7 +3,6 @@ import { type ContainerContext } from "./container-context";
 
 const defaultTitle: Record<string, string> = {
     info: "INFO",
-    tip: "TIP",
     warning: "WARNING",
     danger: "DANGER",
 };

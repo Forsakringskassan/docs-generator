@@ -60,16 +60,11 @@ lorem ipsum dolor sit amet
 The following variants are supported:
 
 -   `info` (default)
--   `tip`
 -   `warning`
 -   `danger`
 
 ::: messagebox info
 This is an info box.
-:::
-
-::: messagebox tip
-This is a tip.
 :::
 
 ::: messagebox warning
@@ -89,10 +84,6 @@ For these variants the following aliases can also be used:
 This is an info box.
 :::
 
-::: tip
-This is a tip.
-:::
-
 ::: warning
 This is a warning.
 :::
@@ -106,10 +97,6 @@ This is a dangerous warning.
 
 ::: info
 This is an info box.
-:::
-
-::: tip
-This is a tip.
 :::
 
 ::: warning
@@ -196,7 +183,6 @@ const docs = new Generator({
         messagebox: {
             title: {
                 info: "Information",
-                tip: "Tips",
                 warning: "Varning",
                 danger: "Se upp!",
             },

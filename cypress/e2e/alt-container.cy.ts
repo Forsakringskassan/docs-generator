@@ -1,5 +1,5 @@
 beforeEach(() => {
-    cy.visit("/markdown/custom-containers.html");
+    cy.visit("/markdown/containers/alt-text.html");
 });
 
 it("should render alternative text if file is found", () => {

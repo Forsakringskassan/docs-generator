@@ -35,7 +35,7 @@ const context: ContainerContext = {
 md.use(containerParser, {
     messagebox: messageboxContainer(context, {
         title: {
-            tip: "Localized title for tips",
+            warning: "Localized title for warning",
             danger: "",
             custom: "Custom title",
         },
@@ -62,14 +62,14 @@ it("should render messagebox with default variant", () => {
 it("should render messagebox with explicit variant", () => {
     expect.assertions(1);
     const source = dedent`
-        ::: messagebox warning
+        ::: messagebox info
         foo
         :::
     `;
     const result = md.render(source);
     expect(result).toMatchInlineSnapshot(`
-        <div class="docs-messagebox docs-messagebox--warning">
-            <p class="docs-messagebox__title">WARNING</p>
+        <div class="docs-messagebox docs-messagebox--info">
+            <p class="docs-messagebox__title">INFO</p>
             <p>foo</p>
         </div>
     `);
@@ -166,14 +166,14 @@ it("should use localized title", () => {
     expect.assertions(1);
     /* tip is configured with a localized title */
     const source = dedent`
-        ::: messagebox tip
+        ::: messagebox warning
         foo
         :::
     `;
     const result = md.render(source);
     expect(result).toMatchInlineSnapshot(`
-        <div class="docs-messagebox docs-messagebox--tip">
-            <p class="docs-messagebox__title">Localized title for tips</p>
+        <div class="docs-messagebox docs-messagebox--warning">
+            <p class="docs-messagebox__title">Localized title for warning</p>
             <p>foo</p>
         </div>
     `);

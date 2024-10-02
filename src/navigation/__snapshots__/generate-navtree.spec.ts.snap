@@ -38,6 +38,13 @@ exports[`smoketest 1`] = `
           "children": [
             {
               "external": false,
+              "id": "fs:docs/markdown/containers/alt-text.md",
+              "path": "./markdown/containers/alt-text.html",
+              "sortorder": Infinity,
+              "title": "Alternative text",
+            },
+            {
+              "external": false,
               "id": "fs:docs/markdown/containers/messagebox.md",
               "path": "./markdown/containers/messagebox.html",
               "sortorder": Infinity,
@@ -48,13 +55,6 @@ exports[`smoketest 1`] = `
           "path": "",
           "sortorder": Infinity,
           "title": "containers",
-        },
-        {
-          "external": false,
-          "id": "fs:docs/markdown/custom-containers.md",
-          "path": "./markdown/custom-containers.html",
-          "sortorder": Infinity,
-          "title": "Custom containers",
         },
         {
           "external": false,

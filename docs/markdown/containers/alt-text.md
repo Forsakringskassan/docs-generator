@@ -1,15 +1,13 @@
 ---
-title: Custom containers
-layout: content-with-menu
+title: Alternative text
+layout: pattern
 ---
-
-## Alternative text
 
 The `alt` container is used to provide an alternative text from another markdown file to replace a default text (or add text if no default text is added to the container).
 
 Can be used to simplify the process of serving different documentation snippets in cases where the repository is duplicated to another environment with a different target audience.
 
-### Usage
+## Usage
 
 To define a file with content you want to use as alternative text, insert its filename after the `alt` keyword.
 If this file should only be used to provide an alternative text and not be output as a page, use `include: false` in the frontmatter of the alternative text.
@@ -43,7 +41,7 @@ This text will be rendered if the file is not found.
 This text will be rendered if the file is not found.
 :::
 
-### Configuration
+## Configuration
 
 In order for the alternative text to be rendered, the file containing the alternative text need to be included in `sourceFiles` using `frontMatterFileReader`.
 
