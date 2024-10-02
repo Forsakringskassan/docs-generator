@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../assets/docs-c95f48.css"
+            href="../assets/docs-4dae6d.css"
             crossorigin
-            integrity="sha384-//c23pFL3+oyhJ7kbuxJzVa2EzaKBrfEx9qP0WQIY9eTsjGltkOz9n49vfmvEmVA"
+            integrity="sha384-ODJ3dPw/dyS8kwW4oZwRUw4CsVaZH1oyeoiOz77Zvfm7evIcTc7SCORcezkO7Xel"
             
         />
         <link
@@ -35,10 +35,10 @@
 
         <link
             rel="preload"
-            href="../search-data-a2a6fc.json"
+            href="../search-data-4ff31c.json"
             as="fetch"
             crossorigin
-            integrity="sha384-pLM8vNe/lQ53aDO7jGwohk6wxNwGotHNEY4z/gFTULx3/75tIS4dAS5HPoHFGGM4"
+            integrity="sha384-avcBTmmHxEF7OnUE+tJ6/L5IK7vjteIAVo3f1svTkw9Nul1C/F9T8ugYmTlcrzMr"
             id="search-data"
         />
     </head>
@@ -174,9 +174,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        unknown (<a href="https://github.com/Forsakringskassan/docs-generator/commits/aefdc180dacb1e5218eee5fae4c1cc904db91b2d">aefdc18</a>)<br />
+        unknown (<a href="https://github.com/Forsakringskassan/docs-generator/commits/73579e956829a605748fb44b2bb9bf694555dc10">73579e9</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/{{ id }}">PR 91</a><br />
-        2024-10-02 12:21
+        2024-10-02 17:53
     </span>
 </div>
 </div>
@@ -341,8 +341,9 @@
                 </div>
             <p>The <code>handler</code> callback performs the actual work.</p>
 
-            <div class="docs-messagebox docs-messagebox--default">
-                <p>Note: when bundling processors in <code>@forsakringskassan/docs-generator</code> remember to add your processor to <code>src/available-processors.ts</code>!</p>
+            <div class="docs-messagebox docs-messagebox--warning">
+                <p class="docs-messagebox__title">WARNING</p>
+                <p>When bundling processors in <code>@forsakringskassan/docs-generator</code> remember to add your processor to <code>src/available-processors.ts</code>!</p>
 
             </div>
         <h3 id="runtime_scripts"><a class="header-anchor" href="#runtime_scripts">Runtime scripts</a></h3><p>If the processor needs a runtime script to be executed in the client browser use the <code>runtime</code> property to set one or more filenames.</p>
@@ -366,8 +367,9 @@
             <p>Scripts from enabled processors will be bundled into a bundle <code>processors</code> added before the <code>&lt;/body&gt;</code> tag.
 Scripts from unused processors will not be included.</p>
 
-            <div class="docs-messagebox docs-messagebox--default">
-                <p>Note: unless you are bundling your processor in
+            <div class="docs-messagebox docs-messagebox--warning">
+                <p class="docs-messagebox__title">WARNING</p>
+                <p>Unless you are bundling your processor in
 <code>@forsakringskassan/docs-generator</code> it is up to you to make sure the script is
 properly compiled before building the documentation.</p>
 

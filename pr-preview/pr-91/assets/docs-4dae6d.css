@@ -220,9 +220,8 @@ main {
   margin-bottom: 0;
 }
 
-.docs-messagebox--default {
-  border-color: var(--docs-messagebox-default-border);
-  background: var(--docs-messagebox-default-background);
+.docs-messagebox__title {
+  font-weight: bold;
 }
 
 .docs-messagebox--info {
@@ -230,14 +229,19 @@ main {
   background: var(--docs-messagebox-info-background);
 }
 
+.docs-messagebox--tip {
+  border-color: var(--docs-messagebox-tip-border);
+  background: var(--docs-messagebox-tip-background);
+}
+
 .docs-messagebox--warning {
   border-color: var(--docs-messagebox-warning-border);
   background: var(--docs-messagebox-warning-background);
 }
 
-.docs-messagebox--error {
-  border-color: var(--docs-messagebox-error-border);
-  background: var(--docs-messagebox-error-background);
+.docs-messagebox--danger {
+  border-color: var(--docs-messagebox-danger-border);
+  background: var(--docs-messagebox-danger-background);
 }
 
 #sidenav {
@@ -1011,14 +1015,14 @@ kbd {
   --docs-header-text-color-default: #1b1e23;
   --docs-header-text-color-discrete: #5f6165;
   --docs-menu-width-expanded: 230px;
-  --docs-messagebox-default-border: #808080;
-  --docs-messagebox-default-background: #ffffff;
-  --docs-messagebox-info-border: var(--docs-info-color);
-  --docs-messagebox-info-background: var(--docs-info-background);
+  --docs-messagebox-info-border: #a0a0a0;
+  --docs-messagebox-info-background: #ffffff;
+  --docs-messagebox-tip-border: var(--docs-info-color);
+  --docs-messagebox-tip-background: var(--docs-info-background);
   --docs-messagebox-warning-border: var(--docs-warning-color);
   --docs-messagebox-warning-background: var(--docs-warning-background);
-  --docs-messagebox-error-border: var(--docs-error-color);
-  --docs-messagebox-error-background: var(--docs-error-background);
+  --docs-messagebox-danger-border: var(--docs-error-color);
+  --docs-messagebox-danger-background: var(--docs-error-background);
   --docs-version-text-color: var(--docs-text-color-discrete);
   --docs-version-link-color: var(--docs-text-color-discrete);
   --docs-version-hover-color: var(--docs-text-color-default);
