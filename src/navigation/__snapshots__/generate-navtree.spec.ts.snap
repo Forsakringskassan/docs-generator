@@ -58,6 +58,42 @@ exports[`smoketest 1`] = `
       "children": [
         {
           "external": false,
+          "id": "fs:docs/layout/layout.md",
+          "path": "./layout/",
+          "sortorder": 1,
+          "title": "Layout",
+        },
+        {
+          "external": false,
+          "id": "fs:docs/layout/custom-layout.md",
+          "path": "./layout/custom-layout.html",
+          "sortorder": Infinity,
+          "title": "Custom layout",
+        },
+        {
+          "external": false,
+          "id": "fs:docs/layout/overriding-templates.md",
+          "path": "./layout/overriding-templates.html",
+          "sortorder": Infinity,
+          "title": "Overriding templates",
+        },
+        {
+          "external": false,
+          "id": "fs:docs/layout/plumbing.md",
+          "path": "./layout/plumbing.html",
+          "sortorder": Infinity,
+          "title": "Plumbing",
+        },
+      ],
+      "key": "./layout",
+      "path": "./layout/",
+      "sortorder": 1,
+      "title": "Layout",
+    },
+    {
+      "children": [
+        {
+          "external": false,
           "id": "fs:docs/navigation/index.md",
           "path": "./navigation/",
           "sortorder": 1,
