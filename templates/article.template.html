@@ -1,0 +1,11 @@
+{% set showAside = true %} {% extends "content-with-menu.template.html" %}
+
+<!-- prettier-ignore -->
+{% block aside %}
+<dl></dl>
+{% endblock %}
+
+<!-- prettier-ignore -->
+{% block content %}
+{{ doc.body | marked }}
+{% endblock %}
