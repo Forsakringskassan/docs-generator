@@ -52,15 +52,24 @@ interface GitData {
 }
 
 async function getGitBranch(): Promise<string> {
-    /* jenkins doesn't checkout using branch name so cant fetch using normal
-     * method but instead puts the branch name in environmental variables */
-    const { CHANGE_BRANCH, CHANGE_NAME } = process.env;
+    /* sometimes cicd runners doesn't checkout using branch name so cant fetch
+     * using normal method but instead puts the branch name in environmental
+     * variables */
+    const { CHANGE_BRANCH, CHANGE_NAME, GITHUB_HEAD_REF } = process.env;
+
+    /* jenkins */
     if (CHANGE_BRANCH) {
         return CHANGE_BRANCH;
     }
     if (CHANGE_NAME) {
         return CHANGE_NAME;
     }
+
+    /* github actions */
+    if (GITHUB_HEAD_REF) {
+        return GITHUB_HEAD_REF;
+    }
+
     const branch = await runCommand(
         "git rev-parse --abbrev-ref HEAD",
         "unknown",
