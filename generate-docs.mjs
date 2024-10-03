@@ -37,12 +37,12 @@ const docs = new Generator({
             scm: !isRelease
                 ? {
                       commitUrlFormat: "{{ repository }}/commits/{{ hash }}",
-                      prUrlFormat: "{{ repository }}/pull/{{ id }}",
+                      prUrlFormat: "{{ repository }}/pull/{{ pr }}",
                   }
                 : undefined,
         }),
         sourceUrlProcessor(pkg, {
-            urlFormat: "{{ repository }}/tree/main/{{path}}",
+            urlFormat: "{{ repository }}/tree/main/{{ path }}",
             componentFileExtension: "baz",
         }),
         cookieProcessor(),
