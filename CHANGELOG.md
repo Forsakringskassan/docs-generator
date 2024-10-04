@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [2.5.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.4.0...v2.5.0) (2024-10-04)
+
+
+### Features
+
+* expose `onContentReady` to consumers ([7330ac5](https://github.com/Forsakringskassan/docs-generator/commit/7330ac573751da61818378b37ea139144a984d4d))
+
 ## [2.4.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.3.0...v2.4.0) (2024-09-23)
 
 
