@@ -206,6 +206,10 @@ The following statuses are recognized:
 
 Document title used for `<title>` and `<nav>`
 
+#### `short-title`
+
+Document title used when a shorter title is needed, e.g. site navigation.
+
 #### `visible`
 
 Set to `false` to hide document from navigation menu.

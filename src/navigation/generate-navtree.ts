@@ -127,7 +127,10 @@ export function generateNavtree(docs: Document[]): NavigationSection {
 
     for (const doc of docs) {
         const [name, isSection] = pathFromDoc(doc);
-        const title = doc.attributes.title ?? doc.fileInfo.name;
+        const title =
+            doc.attributes.shortTitle ??
+            doc.attributes.title ??
+            doc.fileInfo.name;
         const sortorder = doc.attributes.sortorder;
 
         /* external link */

@@ -72,6 +72,19 @@ it("should store sort order from document", () => {
     );
 });
 
+it("should use short title if present", () => {
+    const nav = generateNavtree([
+        createDocument("index.md", "Frontpage", {
+            attributes: { shortTitle: "Short", sortorder: Infinity },
+        }),
+    ]);
+    expect(nav).toEqual(
+        expect.objectContaining({
+            title: "Short",
+        }),
+    );
+});
+
 it("should ignore documents with visible false", () => {
     const nav = generateNavtree([
         createDocument("index.md", "Frontpage"),

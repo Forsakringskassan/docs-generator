@@ -4,7 +4,13 @@ import { type DocumentOutline } from "./document-outline";
  * @internal
  */
 export interface DocumentAttributes {
+    /** Page title */
     title?: string;
+
+    /** Short page title (e.g. used in sidenav) */
+    "short-title"?: string;
+
+    /** Page layout */
     layout?: string;
 
     /** sets the `name` property in `Document` */
@@ -46,6 +52,7 @@ export interface Component {
  */
 export interface NormalizedDocumentAttributes {
     title?: string;
+    shortTitle?: string;
     layout?: string;
     status?: string;
     badge?: DocumentBadge;

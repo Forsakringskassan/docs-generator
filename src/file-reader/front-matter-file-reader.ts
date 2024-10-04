@@ -103,6 +103,7 @@ export function parseFile(
         visible: attributes.visible ?? true,
         attributes: {
             title: attributes.title ?? name,
+            shortTitle: attributes["short-title"],
             layout: attributes.layout,
             status: attributes.status,
             badge: getBadge(attributes),

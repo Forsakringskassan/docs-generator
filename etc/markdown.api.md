@@ -118,6 +118,8 @@ export interface NormalizedDocumentAttributes {
     href?: string;
     // (undocumented)
     layout?: string;
+    // (undocumented)
+    shortTitle?: string;
     sortorder: number;
     // (undocumented)
     status?: string;
