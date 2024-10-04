@@ -1822,7 +1822,8 @@
       }
     }
   };
-  var current = "2.4.0";
+  var current = "2.5.0";
+  var message = "Det finns en nyare version";
   var dialog = document.querySelector("#version-dialog");
   var dialogCloseButton = dialog?.querySelector("button");
   var form = document.querySelector("#version");
@@ -1855,7 +1856,7 @@
   async function initVersionProcessor() {
     const { latest } = await getVersions();
     if (motdProxy.enabled && latest !== current) {
-      motdProxy.showMessage({ message: "asdf" });
+      motdProxy.showMessage({ message });
     }
     if (!dialog || !dialogCloseButton || !form) {
       return;

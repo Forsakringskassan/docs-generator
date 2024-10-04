@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="sv" class="layout--content-with-menu" data-root-url="..">
+<html lang="sv" class="layout--article" data-root-url="..">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Processors - FK Documentation generator</title>
+        <title>Plumbing - FK Documentation generator</title>
 
         <!-- prettier-ignore -->
         <link
@@ -111,13 +111,13 @@
         </li>
         
         
-        <li class="imenu__list__item imenu__list__item--highlight">
+        <li class="imenu__list__item ">
             <div
-                class="imenu__list__anchor-container imenu__list__anchor-container--highlight"
+                class="imenu__list__anchor-container "
             >
                 <a
-                    class="imenu__list__anchor imenu__list__anchor--highlight"
-                    href="./"
+                    class="imenu__list__anchor "
+                    href="../processors/"
                 >
                     Processors
                 </a>
@@ -167,13 +167,13 @@
         </li>
         
         
-        <li class="imenu__list__item ">
+        <li class="imenu__list__item imenu__list__item--highlight">
             <div
-                class="imenu__list__anchor-container "
+                class="imenu__list__anchor-container imenu__list__anchor-container--highlight"
             >
                 <a
-                    class="imenu__list__anchor "
-                    href="../layout/"
+                    class="imenu__list__anchor imenu__list__anchor--highlight"
+                    href="./"
                 >
                     Layout
                 </a>
@@ -227,83 +227,43 @@
 <ol>
     <!-- prettier-ignore --><!-- prettier-ignore -->
     <!-- prettier-ignore -->
-    <li class="link active">
+    <li class="link ">
         <!-- prettier-ignore -->
         <a
             href="./"
             
         >
-            Processors
+            Layout
         </a>
     </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <!-- prettier-ignore -->
     <li class="link ">
         <!-- prettier-ignore -->
         <a
-            href="./cookie.html"
+            href="./custom-layout.html"
             
         >
-            Cookie
+            Custom layout
         </a>
     </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <!-- prettier-ignore -->
     <li class="link ">
         <!-- prettier-ignore -->
         <a
-            href="./manifest.html"
+            href="./overriding-templates.html"
             
         >
-            Manifest
+            Overriding templates
         </a>
     </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <!-- prettier-ignore -->
-    <li class="link ">
+    <li class="link active">
         <!-- prettier-ignore -->
         <a
-            href="./motd.html"
+            href="./plumbing.html"
             
         >
-            MOTD
-        </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
-        <a
-            href="./nunjucks.html"
-            
-        >
-            Nunjucks
-        </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
-        <a
-            href="./source-url.html"
-            
-        >
-            Source url
-        </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
-        <a
-            href="./topnav.html"
-            
-        >
-            Topnav
-        </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
-        <a
-            href="./version.html"
-            
-        >
-            Version
+            Plumbing
         </a>
     </li><!-- prettier-ignore --></ol>
 </nav>
@@ -324,145 +284,50 @@
 
                 <!-- prettier-ignore --><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
-                    <h1 id="title">Processors</h1>
+                    <h1 id="title">Plumbing</h1>
 
+                    
+                    <div id="aside">
+                        <!-- prettier-ignore -->
+<dl></dl>
+
+
+                        
+                    </div>
                     
 
                     <div id="content">
                         <!-- prettier-ignore -->
-<h2 id="writing_a_new_processor"><a class="header-anchor" href="#writing_a_new_processor">Writing a new processor</a></h2><p>A procesor implements the <code>Processor</code> interface:</p>
+<p>Layouts are loaded in a hierarcy:</p>
 
-                <div
-                    id="example-a6d709"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="ts"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">ProcessorHandler</span> {
-    before?: <span class="hljs-title class_">ProcessorStage</span>;
-    stage?: <span class="hljs-title class_">ProcessorStage</span>;
-    after?: <span class="hljs-title class_">ProcessorStage</span>;
-    <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
-    enabled?: <span class="hljs-built_in">boolean</span>;
-    runtime?: <span class="hljs-title class_">ProcessorRuntime</span>[];
-    <span class="hljs-title function_">handler</span>(
-        <span class="hljs-attr">context</span>: <span class="hljs-title class_">ProcessorContext</span>,
-    ): <span class="hljs-built_in">void</span> | <span class="hljs-built_in">string</span>[] | <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt; | <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">string</span>[]&gt;;
-}
-</code></pre>
-                </div>
-            <p>One of <code>before</code>, <code>stage</code> or <code>after</code> must be set and decides when the processor is run.</p>
+                <pre class="mermaid">block-beta
+  columns 2
 
-                <div
-                    id="example-5eccb1"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="ts"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-comment">/**
- * <span class="hljs-doctag">@public</span>
- */</span>
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> <span class="hljs-title class_">ProcessorStage</span> =
-    | <span class="hljs-string">&quot;generate-docs&quot;</span>
-    | <span class="hljs-string">&quot;generate-nav&quot;</span>
-    | <span class="hljs-string">&quot;assets&quot;</span>
-    | <span class="hljs-string">&quot;render&quot;</span>;
-</code></pre>
-                </div>
-            <p>The <code>handler</code> callback performs the actual work.</p>
-<blockquote>
-<p>Note: when bundling processors in <code>@forsakringskassan/docs-generator</code> remember to add your processor to <code>src/available-processors.ts</code>!</p>
-</blockquote>
-<h3 id="runtime_scripts"><a class="header-anchor" href="#runtime_scripts">Runtime scripts</a></h3><p>If the processor needs a runtime script to be executed in the client browser use the <code>runtime</code> property to set one or more filenames.</p>
+  block
+    article
+    component
+    def[&quot;default&quot;]
+  end
 
-                <div
-                    id="example-4a556b"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="ts"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">myProcessor</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">Processor</span> {
-    <span class="hljs-keyword">return</span> {
-        <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;awesome-processor&quot;</span>,
-        <span class="hljs-attr">runtime</span>: [{ <span class="hljs-attr">src</span>: <span class="hljs-string">&quot;src/runtime/awesome-processor.ts&quot;</span> }],
-    };
-}
-</code></pre>
-                </div>
-            <p>Scripts from enabled processors will be bundled into a bundle <code>processors</code> added before the <code>&lt;/body&gt;</code> tag.
-Scripts from unused processors will not be included.</p>
-<blockquote>
-<p>Note: unless you are bundling your processor in
-<code>@forsakringskassan/docs-generator</code> it is up to you to make sure the script is
-properly compiled before building the documentation.</p>
-</blockquote>
-<h3 id="navigation"><a class="header-anchor" href="#navigation">Navigation</a></h3><p>To set navigation entries use one of the two navigation setters:</p>
-<ul>
-<li><code>setTopNavigation(..)</code></li>
-<li><code>setSideNavigation(..)</code></li>
-</ul>
-<p>For instance:</p>
+  space
 
-                <div
-                    id="example-2be0b3"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="ts"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-attr">myProcessor</span>: <span class="hljs-title class_">Processor</span> = {
-    <span class="hljs-title function_">handler</span>(<span class="hljs-params">context</span>) {
-        context.<span class="hljs-title function_">setTopNavigation</span>({
-            <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;./index.html&quot;</span>,
-            <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;.&quot;</span>,
-            <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;Site name&quot;</span>,
-            <span class="hljs-attr">children</span>: [
-                {
-                    <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;./foo.html&quot;</span>,
-                    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;foo&quot;</span>,
-                    <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;Foo&quot;</span>,
-                    <span class="hljs-attr">children</span>: [],
-                },
-                {
-                    <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;./bar.html&quot;</span>,
-                    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;bar&quot;</span>,
-                    <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;Bar&quot;</span>,
-                    <span class="hljs-attr">children</span>: [],
-                },
-            ],
-        });
-    },
-};
-</code></pre>
-                </div>
-            <p>This will create a top navigation with two entries &quot;Foo&quot; and &quot;Bar&quot;.</p>
-<p>There is a helper function <code>generateNavtree</code> which creates a navigation structure from the document structure:</p>
+  block
+    with[&quot;content-with-menu&quot;]
+    without[&quot;content-without-menu&quot;]
+  end
 
-                <div
-                    id="example-627244"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="ts"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-attr">myProcessor</span>: <span class="hljs-title class_">Processor</span> = {
-    <span class="hljs-title function_">handler</span>(<span class="hljs-params">context</span>) {
-        <span class="hljs-keyword">const</span> navtree = <span class="hljs-title function_">generateNavtree</span>(context.<span class="hljs-property">docs</span>);
-        context.<span class="hljs-title function_">setTopNavigation</span>(navtree);
-        context.<span class="hljs-title function_">setSideNavigation</span>(navtree);
-    },
-};
-</code></pre>
-                </div>
-            <p>The above behaviour is bundled in the builtin <code>navigationProcessor()</code>.</p>
+  space
+
+  block
+    base
+  end
+
+  block
+    example
+    json
+  end
+</pre>
+            <p>By overriding one of the base templates you modify how all templates extending it works and what content it has access to.</p>
 
 
                     </div>
@@ -600,9 +465,9 @@ properly compiled before building the documentation.</p>
 
     <!--
 
-         Source file: docs/processors/index.md
-         Document ID: fs:docs/processors/index.md
-         Document name: Processors
+         Source file: docs/layout/plumbing.md
+         Document ID: fs:docs/layout/plumbing.md
+         Document name: plumbing
          Document alias: 
 
     -->

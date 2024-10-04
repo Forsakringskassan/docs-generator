@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Nunjucks - FK Documentation generator</title>
+        <title>Custom layout - FK Documentation generator</title>
 
         <!-- prettier-ignore -->
         <link
@@ -58,7 +58,7 @@
             
         ></script>
 
-        <main>../to/page.html
+        <main>{% set showAside = true %} {% extends "base.template.html" %}
 </main>
     </body>
 </html>
