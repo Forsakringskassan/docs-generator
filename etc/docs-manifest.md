@@ -6,6 +6,10 @@
 changelog.html
 index.html
 index.html
+layout/custom-layout.html
+layout/index.html
+layout/overriding-templates.html
+layout/plumbing.html
 live-example/example.html
 live-example/index.html
 markdown/code-preview/fullscreen.html

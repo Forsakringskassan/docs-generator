@@ -30,8 +30,9 @@ main {
 }
 
 .layout--content-with-menu,
-.layout--pattern,
-.layout--component {
+.layout--article,
+.layout--component,
+.layout--pattern {
     #primary {
         --sidenav-width: 350px;
 
