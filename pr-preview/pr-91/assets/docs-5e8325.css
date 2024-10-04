@@ -152,8 +152,9 @@ main {
 }
 
 .layout--content-with-menu #primary,
-.layout--pattern #primary,
-.layout--component #primary {
+.layout--article #primary,
+.layout--component #primary,
+.layout--pattern #primary {
   --sidenav-width: 350px;
   padding-right: 2rem;
   grid-template: "sidenav title" auto "sidenav aside" auto "sidenav content" 1fr/min-content 1fr;
@@ -161,14 +162,16 @@ main {
 
 @media screen and (width >= 1280px) {
   .layout--content-with-menu #primary,
-  .layout--pattern #primary,
-  .layout--component #primary {
+  .layout--article #primary,
+  .layout--component #primary,
+  .layout--pattern #primary {
     grid-template: "sidenav title aside" auto "sidenav content aside" 1fr/min-content minmax(10rem, 920px) auto;
   }
 }
 .layout--content-with-menu main,
-.layout--pattern main,
-.layout--component main {
+.layout--article main,
+.layout--component main,
+.layout--pattern main {
   display: contents;
   padding: 0;
   max-width: none;
@@ -176,17 +179,20 @@ main {
 
 .layout--content-with-menu #title,
 .layout--content-with-menu #content,
-.layout--pattern #title,
-.layout--pattern #content,
+.layout--article #title,
+.layout--article #content,
 .layout--component #title,
-.layout--component #content {
+.layout--component #content,
+.layout--pattern #title,
+.layout--pattern #content {
   padding-left: 1rem;
 }
 
 @media screen and (width < 1280px) {
   .layout--content-with-menu #aside,
-  .layout--pattern #aside,
-  .layout--component #aside {
+  .layout--article #aside,
+  .layout--component #aside,
+  .layout--pattern #aside {
     padding-left: 1rem;
   }
 }
