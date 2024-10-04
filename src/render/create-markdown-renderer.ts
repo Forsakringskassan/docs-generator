@@ -1,4 +1,5 @@
 import markdownIt from "markdown-it";
+import markdownItDeflist from "markdown-it-deflist";
 import { type Document } from "../document";
 import { type ExampleResult } from "../examples/example-result";
 import { processInlineTags } from "./process-inline-tags";
@@ -93,6 +94,7 @@ export function createMarkdownRenderer(
     const md = markdownIt({
         html: true,
     });
+    md.use(markdownItDeflist);
     md.use(
         codePreview({
             generateExample: options.generateExample,
