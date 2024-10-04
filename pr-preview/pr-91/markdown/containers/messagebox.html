@@ -9,16 +9,16 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-5e8325.css"
+            href="../../assets/docs-114471.css"
             crossorigin
-            integrity="sha384-K0z+WszeGyODF66/rEzsvws0zVALabnnHF4EaIj2dTXMpnuGFsoKAX7RVHbxpm4i"
+            integrity="sha384-Lh/MipCF8yJ8DTG5UuDgUmJFRew65StbI8tMhRnlLO5chX6+NCRXbIXeUKb3qy0S"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/fkui-6731bf.css"
+            href="../../assets/fkui-cd17e0.css"
             crossorigin
-            integrity="sha384-CdscpJw+W0MWcuh5QAfi5vHxa+7WzzBQQ6VbYkklY8JqgLlPSeSja3fBVKgKvRjA"
+            integrity="sha384-iFwuacuL6C8Wah0vil8ThFpHfY5oCkjJUfxe5scxA0qcGsUWmjrjGQOpY+D4GbI5"
             
         />
 
@@ -73,7 +73,7 @@
             <span aria-label="FK Documentation generator" role="img" class="page-header__logo--small"> </span>
         </a>
         <a class="page-header__app-name" href="../../index.html"> FK Documentation generator </a>
-        <div class="page-header__right"><nav class="imenu imenu--horizontal" aria-label="Primär">
+        <div class="page-header__right"><nav id="topnav" class="imenu imenu--horizontal" aria-label="Primär">
     <ul class="imenu__list">
         <!-- prettier-ignore -->
         
@@ -173,7 +173,56 @@
                     Changelog
                 </a>
             </div>
-        </li></ul>
+        </li><li class="imenu__list__item imenu__list__item--more">
+            <div class="imenu__list__anchor-container">
+                <button type="button" class="imenu__list__anchor" aria-expanded="false">
+                    Mer<span class="imenu__list__anchor-span"></span>
+                    <svg class="imenu__list__anchor-icon-right icon" focusable="false" aria-hidden>
+                        <use xlink:href="#docs-icon-arrow-down"></use>
+                    </svg>
+                </button>
+            </div>
+            <div class="ipopupmenu ipopupmenu--vertical">
+                <ul class="ipopupmenu__list ipopupmenu__list--more">
+                    <!-- prettier-ignore -->
+                    
+                    
+                    <li class="ipopupmenu__list__item ">
+                        <a href="../../theme/"> Theme </a>
+                    </li>
+                    
+                    
+                    <li class="ipopupmenu__list__item ">
+                        <a href="../../processors/"> Processors </a>
+                    </li>
+                    
+                    
+                    <li class="ipopupmenu__list__item ">
+                        <a href="../../navigation/"> Navigation </a>
+                    </li>
+                    
+                    
+                    <li class="ipopupmenu__list__item ipopupmenu__list__item--highlight">
+                        <a href="../"> Markdown </a>
+                    </li>
+                    
+                    
+                    <li class="ipopupmenu__list__item ">
+                        <a href="../../live-example/"> Live example </a>
+                    </li>
+                    
+                    
+                    <li class="ipopupmenu__list__item ">
+                        <a href="../../layout/"> Layout </a>
+                    </li>
+                    
+                    
+                    <li class="ipopupmenu__list__item ">
+                        <a href="../../changelog.html"> Changelog </a>
+                    </li></ul>
+            </div>
+        </li>
+    </ul>
 </nav>
 
             <div class="page-header__right-slot">
@@ -188,9 +237,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        feature/messagebox (<a href="https://github.com/Forsakringskassan/docs-generator/commits/4a7e867b10b5950fbba972498e1edc3801b6d9ae">4a7e867</a>)<br />
+        feature/messagebox (<a href="https://github.com/Forsakringskassan/docs-generator/commits/205ce13ddf81601f7ed0f3909e006fde87a91dfc">205ce13</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/91">PR 91</a><br />
-        2024-10-04 09:10
+        2024-10-04 14:40
     </span>
 </div>
 </div>
@@ -418,7 +467,6 @@ lorem ipsum dolor sit amet
             <p>The following variants are supported:</p>
 <ul>
 <li><code>info</code> (default)</li>
-<li><code>tip</code></li>
 <li><code>warning</code></li>
 <li><code>danger</code></li>
 </ul>
@@ -426,12 +474,6 @@ lorem ipsum dolor sit amet
             <div class="docs-messagebox docs-messagebox--info">
                 <p class="docs-messagebox__title">INFO</p>
                 <p>This is an info box.</p>
-
-            </div>
-        
-            <div class="docs-messagebox docs-messagebox--tip">
-                <p class="docs-messagebox__title">TIP</p>
-                <p>This is a tip.</p>
 
             </div>
         
@@ -450,7 +492,7 @@ lorem ipsum dolor sit amet
 <p><strong>Input:</strong></p>
 
                 <div
-                    id="example-154632"
+                    id="example-468997"
                     class="code-preview code-preview--default"
                     
                     
@@ -459,10 +501,6 @@ lorem ipsum dolor sit amet
                     
                     <pre class="code-preview__markup"><code class="hljs lang-md" tabindex="0">::: info
 This is an info box.
-:::
-
-::: tip
-This is a tip.
 :::
 
 ::: warning
@@ -482,12 +520,6 @@ This is a dangerous warning.
 
             </div>
         
-            <div class="docs-messagebox docs-messagebox--tip">
-                <p class="docs-messagebox__title">TIP</p>
-                <p>This is a tip.</p>
-
-            </div>
-        
             <div class="docs-messagebox docs-messagebox--warning">
                 <p class="docs-messagebox__title">WARNING</p>
                 <p>This is a warning.</p>
@@ -503,7 +535,7 @@ This is a dangerous warning.
 <p><strong>Input:</strong></p>
 
                 <div
-                    id="example-36dffb"
+                    id="example-586da7"
                     class="code-preview code-preview--default"
                     
                     
@@ -525,7 +557,7 @@ Dolor sit amet.
         <h2 id="custom_variant"><a class="header-anchor" href="#custom_variant">Custom variant</a></h2><p>Custom variants can be implemented by adding the CSS-class <code>docs-messagebox--${variant}</code>.</p>
 
                 <div
-                    id="example-ee53bf"
+                    id="example-da8960"
                     class="code-preview code-preview--default"
                     
                     
@@ -549,7 +581,7 @@ Dolor sit amet.
             <p><strong>Input:</strong></p>
 
                 <div
-                    id="example-effe0b"
+                    id="example-6d9011"
                     class="code-preview code-preview--default"
                     
                     
@@ -585,7 +617,7 @@ Custom variant
         <h2 id="localization"><a class="header-anchor" href="#localization">Localization</a></h2><p>The default titles can be set globally in the site configuration:</p>
 
                 <div
-                    id="example-b44353"
+                    id="example-7ab64f"
                     class="code-preview code-preview--default"
                     
                     
@@ -597,7 +629,6 @@ Custom variant
         <span class="hljs-attr">messagebox</span>: {
             <span class="hljs-attr">title</span>: {
                 <span class="hljs-attr">info</span>: <span class="hljs-string">&quot;Information&quot;</span>,
-                <span class="hljs-attr">tip</span>: <span class="hljs-string">&quot;Tips&quot;</span>,
                 <span class="hljs-attr">warning</span>: <span class="hljs-string">&quot;Varning&quot;</span>,
                 <span class="hljs-attr">danger</span>: <span class="hljs-string">&quot;Se upp!&quot;</span>,
             },
@@ -691,9 +722,9 @@ Custom variant
 
         <!-- prettier-ignore -->
         <script
-            src="../../assets/main-729d06.js"
+            src="../../assets/main-7f3477.js"
             crossorigin
-            integrity="sha384-HLu1zO6DBGpmW4WuGwrpWzmRozXXm6Fkq/tasZvtCw/oQE6qOT61YnBkCWBci5xx"
+            integrity="sha384-CKt9Ln06ZbM0BrTv4I2lKzTHoIcVEceAl6n/3Q3PyIRoABcRdx+PEA6tj5YDr3Yy"
             
         ></script>
     </body>
