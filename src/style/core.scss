@@ -17,6 +17,11 @@ dialog[open] {
     display: block;
 }
 
+dd > dl {
+    border-left: 2px solid var(--docs-text-color-discrete);
+    padding-left: 1rem;
+}
+
 p:not(.code-preview p) {
     max-width: 680px;
 }

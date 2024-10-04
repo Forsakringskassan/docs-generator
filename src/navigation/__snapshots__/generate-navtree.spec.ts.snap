@@ -58,6 +58,13 @@ exports[`smoketest 1`] = `
         },
         {
           "external": false,
+          "id": "fs:docs/markdown/definition-lists.md",
+          "path": "./markdown/definition-lists.html",
+          "sortorder": Infinity,
+          "title": "Definition lists",
+        },
+        {
+          "external": false,
           "id": "fs:docs/markdown/mermaid.md",
           "path": "./markdown/mermaid.html",
           "sortorder": Infinity,
