@@ -35,11 +35,26 @@ exports[`smoketest 1`] = `
           "title": "Code preview",
         },
         {
-          "external": false,
-          "id": "fs:docs/markdown/custom-containers.md",
-          "path": "./markdown/custom-containers.html",
+          "children": [
+            {
+              "external": false,
+              "id": "fs:docs/markdown/containers/alt-text.md",
+              "path": "./markdown/containers/alt-text.html",
+              "sortorder": Infinity,
+              "title": "Alternative text",
+            },
+            {
+              "external": false,
+              "id": "fs:docs/markdown/containers/messagebox.md",
+              "path": "./markdown/containers/messagebox.html",
+              "sortorder": Infinity,
+              "title": "Messagebox",
+            },
+          ],
+          "key": "./markdown/containers",
+          "path": "",
           "sortorder": Infinity,
-          "title": "Custom containers",
+          "title": "containers",
         },
         {
           "external": false,

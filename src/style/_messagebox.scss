@@ -1,0 +1,29 @@
+.docs-messagebox {
+    border: 2px solid transparent;
+    border-left-width: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+
+    :last-child {
+        margin-bottom: 0;
+    }
+
+    &__title {
+        font-weight: bold;
+    }
+
+    &--info {
+        border-color: var(--docs-messagebox-info-border);
+        background: var(--docs-messagebox-info-background);
+    }
+
+    &--warning {
+        border-color: var(--docs-messagebox-warning-border);
+        background: var(--docs-messagebox-warning-background);
+    }
+
+    &--danger {
+        border-color: var(--docs-messagebox-danger-border);
+        background: var(--docs-messagebox-danger-background);
+    }
+}

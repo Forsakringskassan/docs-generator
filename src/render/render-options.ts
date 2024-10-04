@@ -16,5 +16,11 @@ export interface RenderOptions {
     templateBlocks: Map<string, Array<TemplateBlockData<unknown>>>;
     templateData: Record<string, unknown>;
 
+    markdown: {
+        messagebox?: {
+            title?: Record<string, string>;
+        };
+    };
+
     addResource(dst: string, src: string): void;
 }

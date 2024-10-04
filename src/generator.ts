@@ -70,6 +70,36 @@ export interface GeneratorOptions {
      * `function setup(options: { rootComponent: string, selector: string }): void`
      */
     setupPath: string;
+
+    /**
+     * Options for markdown renderer.
+     */
+    markdown: {
+        /**
+         * Options for markdown messagebox container.
+         */
+        messagebox: {
+            /**
+             * Default titles for messageboxes.
+             *
+             * If a title is the empty string `""` the usage of title is
+             * disabled by default.
+             *
+             * @example
+             * ```json
+             * {
+             *   "title": {
+             *     "info": "Information",
+             *     "tip": "Tips",
+             *     "warning": "Varning",
+             *     "danger": "Se upp!"
+             *   }
+             * }
+             * ```
+             */
+            title?: Record<string, string>;
+        };
+    };
 }
 
 function toArray<T>(value: T | T[]): T[] {
@@ -386,6 +416,7 @@ export class Generator {
                 exampleFolders,
                 templateFolders,
                 setupPath,
+                markdown: {},
             }),
             ...this.processors,
         ];

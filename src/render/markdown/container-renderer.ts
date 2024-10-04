@@ -1,23 +1,24 @@
 import type MarkdownIt from "markdown-it";
 import { type Document } from "../../document";
-import { findDocument } from "../../utils/find-document";
-import { MarkdownEnv } from "../markdown-env";
-import { type SoftErrorType, SoftError } from "../soft-error";
+import { type MarkdownEnv } from "../markdown-env";
+import { type SoftErrorType } from "../soft-error";
+import {
+    type ContainerCallback,
+    type ContainerContext,
+    altContainer,
+    apiContainer,
+    messageboxContainer,
+} from "./container";
 
-type RenderCallback = (
-    tokens: MarkdownIt.Token[],
-    index: number,
-    options: MarkdownIt.Options,
-    env: MarkdownEnv,
-    self: MarkdownIt.Renderer,
-) => string;
-
-type Options = Record<string, RenderCallback>;
+type Options = Record<string, ContainerCallback>;
 
 const markerStr = ":";
 const markerChar = markerStr.charCodeAt(0);
 
-function parser(md: MarkdownIt, options: Options): void {
+/**
+ * @internal
+ */
+export function containerParser(md: MarkdownIt, options: Options): void {
     function container(
         state: MarkdownIt.StateBlock,
         startLine: number,
@@ -53,8 +54,9 @@ function parser(md: MarkdownIt, options: Options): void {
         }
 
         const markup = state.src.slice(mem, pos);
-        const params = state.src.slice(pos, max).trim();
-        const kind = params.split(" ", 2)[0];
+        const params = state.src.slice(pos, max).trim().split(/\s+/);
+        const kind = params[0];
+        const info = params.slice(1).join(" ");
 
         // Since start is found, we can report success here in validation mode
         if (silent) {
@@ -117,7 +119,7 @@ function parser(md: MarkdownIt, options: Options): void {
         state.line = nextLine + (haveEndMarker ? 1 : 0);
 
         const token = state.push(`doc_${kind}`, "div", 0);
-        token.info = params;
+        token.info = info?.trim();
         token.content = state.getLines(startLine + 1, nextLine, len, true);
         token.markup = markup;
         token.map = [startLine, state.line];
@@ -134,59 +136,39 @@ function parser(md: MarkdownIt, options: Options): void {
     }
 }
 
-export function include(
+export function containerRenderer(
     docs: Document[],
     env: MarkdownEnv,
     included: Set<string>,
     handleSoftError: (error: SoftErrorType) => string,
+    options: {
+        messagebox: {
+            title: Record<string, string>;
+        };
+    },
 ): (md: MarkdownIt) => void {
     return function (md: MarkdownIt): void {
-        md.use(parser, {
-            api(tokens: MarkdownIt.Token[], index: number) {
-                const token = tokens[index];
-                const needle = token.content.trim();
-                const doc = findDocument(docs, needle);
-                if (!doc) {
-                    return handleSoftError(
-                        new SoftError(
-                            "EINCLUDETARGET",
-                            `No document matches "${needle}" when trying to include content`,
-                            { id: needle },
-                        ),
-                    );
-                }
+        const context: ContainerContext = {
+            md,
+            env,
+            docs,
+            included,
+            handleSoftError,
+        };
+        md.use(containerParser, {
+            alt: altContainer(context),
+            api: apiContainer(context),
+            messagebox: messageboxContainer(context, options.messagebox),
 
-                /* @todo here we should instead detect the chain of includes to
-                 * provide a better explanation of *why* it happened, not just
-                 * *that* it happend */
-                if (included.has(doc.id)) {
-                    return handleSoftError(
-                        new SoftError(
-                            "EINCLUDERECURSION",
-                            `Recursion detected when including document "${doc.id}"`,
-                        ),
-                    );
-                }
-                included.add(doc.id);
-
-                if (doc.format === "html") {
-                    return doc.body;
-                }
-
-                const content = md.render(doc.body, env);
-                return /* HTML */ ` <div>${content}</div> `;
-            },
-            alt(tokens: MarkdownIt.Token[], index: number) {
-                const token = tokens[index];
-                const needle = token.info.split(" ")[1];
-                const doc = findDocument(docs, needle);
-
-                if (doc && doc.format === "markdown") {
-                    return md.render(doc.body, env);
-                }
-
-                return md.render(token.content, env);
-            },
+            /* aliases for messagebox containers */
+            info: messageboxContainer(context, options.messagebox, "info"),
+            tip: messageboxContainer(context, options.messagebox, "tip"),
+            warning: messageboxContainer(
+                context,
+                options.messagebox,
+                "warning",
+            ),
+            danger: messageboxContainer(context, options.messagebox, "danger"),
         });
     };
 }

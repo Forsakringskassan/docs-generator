@@ -96,6 +96,9 @@ export interface MarkdownOptions {
         tags: string[];
     }): ExampleResult;
     handleSoftError(error: SoftErrorType): string;
+    messagebox?: {
+        title?: Record<string, string>;
+    };
 }
 
 // @public

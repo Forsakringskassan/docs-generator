@@ -30,7 +30,9 @@ processor-stage.ts
 
 The `handler` callback performs the actual work.
 
-> Note: when bundling processors in `@forsakringskassan/docs-generator` remember to add your processor to `src/available-processors.ts`!
+::: warning
+When bundling processors in `@forsakringskassan/docs-generator` remember to add your processor to `src/available-processors.ts`!
+:::
 
 ### Runtime scripts
 
@@ -48,9 +50,11 @@ export function myProcessor(): Processor {
 Scripts from enabled processors will be bundled into a bundle `processors` added before the `</body>` tag.
 Scripts from unused processors will not be included.
 
-> Note: unless you are bundling your processor in
-> `@forsakringskassan/docs-generator` it is up to you to make sure the script is
-> properly compiled before building the documentation.
+::: warning
+Unless you are bundling your processor in
+`@forsakringskassan/docs-generator` it is up to you to make sure the script is
+properly compiled before building the documentation.
+:::
 
 ### Navigation
 
