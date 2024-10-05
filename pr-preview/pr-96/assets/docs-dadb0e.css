@@ -1097,7 +1097,7 @@ select:focus::-ms-value {
 
 ul,
 ol {
-  padding-left: 1rem;
+  padding-left: 1.5rem;
   margin-top: 0;
   margin-bottom: 1rem;
 }
