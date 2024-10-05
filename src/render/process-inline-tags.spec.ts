@@ -58,3 +58,15 @@ it("should allow escaping tag with @@", () => {
         "{@mock} {@mock foo}",
     );
 });
+
+it("should not match {@}", () => {
+    expect.assertions(1);
+    const text = "{@}";
+    expect(processInlineTags(tags, doc, [], text, rethrow)).toBe("{@}");
+});
+
+it("should not match {@{}", () => {
+    expect.assertions(1);
+    const text = "{@{}";
+    expect(processInlineTags(tags, doc, [], text, rethrow)).toBe("{@{}");
+});
