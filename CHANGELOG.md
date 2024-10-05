@@ -7,7 +7,7 @@
 
 * add debounce method (refs SFKUI-6794) ([86ba797](https://github.com/Forsakringskassan/docs-generator/commit/86ba7974075bb3df2fa6f96544bba67b109cd514))
 * add ipopupmenu styling (refs SFKUI-6794) ([98545d9](https://github.com/Forsakringskassan/docs-generator/commit/98545d9f41c17968dfebad13f5a3df73748c2564))
-* new `{[@optional](https://github.com/optional)}` tag ([428e685](https://github.com/Forsakringskassan/docs-generator/commit/428e68525290791e655a07a2c369d4c921707982))
+* new `{@optional}` tag ([428e685](https://github.com/Forsakringskassan/docs-generator/commit/428e68525290791e655a07a2c369d4c921707982))
 * new layout `article` ([e55727f](https://github.com/Forsakringskassan/docs-generator/commit/e55727f70eecd5f2be559b265aa2db1bcae53a10))
 * new messagebox container for rendering messageboxes ([d75c97e](https://github.com/Forsakringskassan/docs-generator/commit/d75c97e9db35dc3b3ee878c60cdd975a2323873b))
 * responsive navbar (fixes SFKUI-6794) ([ce86247](https://github.com/Forsakringskassan/docs-generator/commit/ce862474e667f4c611cc0ce19467df7257317380))
