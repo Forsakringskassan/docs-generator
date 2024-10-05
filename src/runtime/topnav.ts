@@ -24,21 +24,22 @@ function getElementsRefs(): Refs | undefined {
 
     /* eslint-disable @typescript-eslint/no-non-null-assertion -- accept runtime error if not found */
     const menuItems = Array.from(
-        nav.querySelectorAll<HTMLElement>(".imenu__list__item"),
-    )!;
+        nav.querySelectorAll<HTMLElement>(".docs-topnav__item"),
+    );
     const moreItem = menuItems.pop()!;
     const moreButton = moreItem.querySelector<HTMLElement>("button")!;
     const popoverContainer =
-        moreItem.querySelector<HTMLElement>(".ipopupmenu")!;
-    const popover =
-        popoverContainer.querySelector<HTMLElement>(".ipopupmenu__list")!;
+        moreItem.querySelector<HTMLElement>(".docs-contextmenu")!;
+    const popover = popoverContainer.querySelector<HTMLElement>(
+        ".docs-contextmenu__list",
+    )!;
     const popoverItems = Array.from(
-        popover.querySelectorAll<HTMLElement>(".ipopupmenu__list__item")!,
+        popover.querySelectorAll<HTMLElement>(".docs-contextmenu__item"),
     );
     /* eslint-enable @typescript-eslint/no-non-null-assertion */
 
     const highlightIndex = menuItems.findIndex((it) =>
-        it.classList.contains("imenu__list__item--highlight"),
+        it.classList.contains("highlight"),
     );
     const itemPairs = menuItems.map((menu, index) => ({
         menu,
@@ -127,9 +128,10 @@ function calculateVisibility(refs: Refs): void {
         setMenuItemVisibility(it, index < overflowIndex),
     );
 
-    const classOperation =
-        refs.highlightIndex >= overflowIndex ? "add" : "remove";
-    refs.moreItem.classList[classOperation]("imenu__list__item--highlight");
+    refs.moreItem.classList.toggle(
+        "highlight",
+        refs.highlightIndex >= overflowIndex,
+    );
     refs.moreItem.style.left = `${menuItems[overflowIndex].offsetLeft}px`;
     refs.moreItem.style.visibility = "visible";
 

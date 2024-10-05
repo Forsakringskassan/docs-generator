@@ -1,0 +1,66 @@
+.docs-topnav {
+    background-color: var(--docs-topnav-background-color);
+    margin: 0 -0.5rem;
+    overflow: hidden;
+
+    &__list {
+        display: flex;
+        gap: 1rem;
+        margin: 0;
+        padding: 0;
+    }
+
+    &__item {
+        display: inline-flex;
+        list-style-type: none;
+        padding: 1.1rem 0 0 0;
+        white-space: nowrap;
+
+        &.highlight {
+            color: var(--docs-topnav-link-color-highlight);
+            font-weight: bold;
+
+            :where(.docs-topnav__anchor) {
+                border-color: var(--docs-topnav-border-color-highlight);
+                font-weight: bold;
+            }
+        }
+
+        &--more {
+            position: absolute;
+            visibility: hidden;
+        }
+    }
+
+    &__anchor {
+        border: none;
+        border-bottom: 5px solid transparent;
+        cursor: pointer;
+        display: inline-flex;
+        padding-bottom: 0.5rem;
+
+        &,
+        &:visited,
+        &:active {
+            color: var(--docs-topnav-link-color-default);
+        }
+
+        &:hover {
+            color: var(--docs-topnav-link-color-hover);
+            border-color: var(--docs-topnav-border-color-hover);
+        }
+
+        @at-root button#{&} {
+            align-items: center;
+            background: none;
+            display: flex;
+            gap: 0.75rem;
+            padding: 0;
+            padding-bottom: 0.5rem;
+
+            svg {
+                color: var(--docs-topnav-border-color-highlight);
+            }
+        }
+    }
+}
