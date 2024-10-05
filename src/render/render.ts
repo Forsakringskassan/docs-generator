@@ -3,7 +3,7 @@ import { existsSync, copyFileSync } from "node:fs";
 import path from "node:path";
 import pathPosix from "node:path/posix";
 import { promisify } from "node:util";
-import { execa } from "execa";
+import spawn from "nano-spawn";
 import nunjucks from "nunjucks";
 import { type VendorAsset } from "../vendor";
 import { type FileInfo, type Document } from "../document";
@@ -139,14 +139,12 @@ async function compileExamples(options: {
         external: vendors.map((it) => it.package),
         tasks: dirtyTasks,
     };
-    const result = await execa("node", [scriptPath], {
-        input: JSON.stringify(batch),
-        all: true,
+    const result = await spawn("node", [scriptPath], {
+        stdin: { string: JSON.stringify(batch) },
     });
-    const hasOutput = result.all ? result.all.length > 0 : false;
-    if (hasOutput) {
+    if (result.output.length > 0) {
         /* eslint-disable-next-line no-console -- We don't want to hide how it went  */
-        console.log(result.all);
+        console.log(result.output);
     }
 }
 
