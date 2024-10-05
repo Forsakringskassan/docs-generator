@@ -1,5 +1,27 @@
 # CHANGELOG
 
+## [2.6.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.5.0...v2.6.0) (2024-10-05)
+
+
+### Features
+
+* add debounce method (refs SFKUI-6794) ([86ba797](https://github.com/Forsakringskassan/docs-generator/commit/86ba7974075bb3df2fa6f96544bba67b109cd514))
+* add ipopupmenu styling (refs SFKUI-6794) ([98545d9](https://github.com/Forsakringskassan/docs-generator/commit/98545d9f41c17968dfebad13f5a3df73748c2564))
+* new `{[@optional](https://github.com/optional)}` tag ([428e685](https://github.com/Forsakringskassan/docs-generator/commit/428e68525290791e655a07a2c369d4c921707982))
+* new layout `article` ([e55727f](https://github.com/Forsakringskassan/docs-generator/commit/e55727f70eecd5f2be559b265aa2db1bcae53a10))
+* new messagebox container for rendering messageboxes ([d75c97e](https://github.com/Forsakringskassan/docs-generator/commit/d75c97e9db35dc3b3ee878c60cdd975a2323873b))
+* responsive navbar (fixes SFKUI-6794) ([ce86247](https://github.com/Forsakringskassan/docs-generator/commit/ce862474e667f4c611cc0ce19467df7257317380))
+* support `short-title` attribute ([863154b](https://github.com/Forsakringskassan/docs-generator/commit/863154b4865b79791d5496b0d8f309c14cf804c6))
+* support definition lists ([63fd90b](https://github.com/Forsakringskassan/docs-generator/commit/63fd90b1adf7a051fb8d0ef6d1df701efee1c170))
+
+
+### Bug Fixes
+
+* branch name when running on github actions ([d4bbca5](https://github.com/Forsakringskassan/docs-generator/commit/d4bbca5a5586cafb43ad87df155267623e0e400e))
+* fix clipped bullet in lists ([7519d60](https://github.com/Forsakringskassan/docs-generator/commit/7519d60782330ccb4e5de480c68c021859853a3f)), closes [#89](https://github.com/Forsakringskassan/docs-generator/issues/89)
+* fix redos issue with inline tags ([8b7b92b](https://github.com/Forsakringskassan/docs-generator/commit/8b7b92bc72118cab8974ef731a234007f6b90f1f))
+* handle inline tags with not content and multiple brackets ([5682319](https://github.com/Forsakringskassan/docs-generator/commit/568231946c71e383b2ff679a11f6754bb31e98bc))
+
 ## [2.5.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.4.0...v2.5.0) (2024-10-04)
 
 
