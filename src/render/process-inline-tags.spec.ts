@@ -50,3 +50,11 @@ it("should handle multiple brackets", () => {
         "[] {} [FOO] {} []",
     );
 });
+
+it("should allow escaping tag with @@", () => {
+    expect.assertions(1);
+    const text = "{@@mock} {@@mock foo}";
+    expect(processInlineTags(tags, doc, [], text, rethrow)).toBe(
+        "{@mock} {@mock foo}",
+    );
+});
