@@ -1,0 +1,13 @@
+.docs-tag {
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+    display: inline-block;
+    padding: 0 0.5rem;
+
+    &--default {
+        background-color: var(--docs-tags-optional-background-color);
+        border-color: var(--docs-tags-optional-border-color);
+        color: var(--docs-tags-optional-text-color);
+    }
+}

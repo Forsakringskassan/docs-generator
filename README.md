@@ -222,19 +222,33 @@ Default `true`.
 
 ### Inline tags
 
-#### `{@link ...}`
+#### `{@@link ...}`
 
 Implicit title:
 
 ```md
-Use the {@link MyAwesomeComponent} component.
+Use the {@@link MyAwesomeComponent} component.
 ```
 
 Explicit title:
 
 ```md
-Use the {@link MyAwesomeComponent awesome component}.
+Use the {@@link MyAwesomeComponent awesome component}.
 ```
+
+#### `{@@optional}`
+
+Creates a tag (badge) to mark something as optional.
+
+**Input:**
+
+```md
+{@@optional}
+```
+
+**Output:**
+
+{@optional}
 
 ### Templating
 

@@ -141,6 +141,27 @@ export default {
         },
     },
 
+    tags: {
+        description: "Style for documentation tags",
+        variables: {
+            "optional-background-color": {
+                description: "Optional tag background color",
+                type: "color",
+                value: "transparent",
+            },
+            "optional-border-color": {
+                description: "Optional tag border color",
+                type: "color",
+                value: "#5f6165",
+            },
+            "optional-text-color": {
+                description: "Optional tag text color",
+                type: "color",
+                value: "var(--docs-text-color-discrete)",
+            },
+        },
+    },
+
     version: {
         description: "Version processor",
         variables: {

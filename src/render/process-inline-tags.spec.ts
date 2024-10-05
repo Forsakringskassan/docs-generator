@@ -42,3 +42,31 @@ it("should throw error if tag isn't registered", () => {
         'No inline tag registered with the name "missing"',
     );
 });
+
+it("should handle multiple brackets", () => {
+    expect.assertions(1);
+    const text = "{@mock} {} {@mock foo} {} {@mock}";
+    expect(processInlineTags(tags, doc, [], text, rethrow)).toBe(
+        "[] {} [FOO] {} []",
+    );
+});
+
+it("should allow escaping tag with @@", () => {
+    expect.assertions(1);
+    const text = "{@@mock} {@@mock foo}";
+    expect(processInlineTags(tags, doc, [], text, rethrow)).toBe(
+        "{@mock} {@mock foo}",
+    );
+});
+
+it("should not match {@}", () => {
+    expect.assertions(1);
+    const text = "{@}";
+    expect(processInlineTags(tags, doc, [], text, rethrow)).toBe("{@}");
+});
+
+it("should not match {@{}", () => {
+    expect.assertions(1);
+    const text = "{@{}";
+    expect(processInlineTags(tags, doc, [], text, rethrow)).toBe("{@{}");
+});
