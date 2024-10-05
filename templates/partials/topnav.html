@@ -18,7 +18,7 @@
             </div>
         </li>
         {%- endfor -%}
-        <li class="imenu__list__item imenu__list__item--more">
+        <li class="imenu__list__item imenu__list__item--more" style="visibility: hidden">
             <div class="imenu__list__anchor-container">
                 <button type="button" class="imenu__list__anchor" aria-expanded="false">
                     Mer<span class="imenu__list__anchor-span"></span>
@@ -34,7 +34,10 @@
                     {% set navPath = nav.path | replace("html", "") %}
                     {% set navPath = navPath | replace(".", "") %}
                     {% set activePage = navPath in doc.fileInfo.fullPath %}
-                    <li class="ipopupmenu__list__item {% if activePage %}ipopupmenu__list__item--highlight{% endif %}">
+                    <li
+                        class="ipopupmenu__list__item {% if activePage %}ipopupmenu__list__item--highlight{% endif %}"
+                        style="display: none"
+                    >
                         <a href="{{ nav.path | relative(doc) }}"> {{ nav.title }} </a>
                     </li>
                     {%- endfor -%}
