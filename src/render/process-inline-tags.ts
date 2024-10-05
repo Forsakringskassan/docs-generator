@@ -12,7 +12,7 @@ export function processInlineTags(
     text: string,
     handleSoftError: (error: SoftErrorType) => string,
 ): string {
-    return text.replace(/{@([\S}]+)([^}]*)}/g, (_, name, content) => {
+    return text.replace(/{@([^\s}}]+)([^}]*)}/g, (_, name, content) => {
         const tag = tags.find((it) => it.name === name);
         if (!tag) {
             return handleSoftError(

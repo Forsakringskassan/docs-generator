@@ -42,3 +42,11 @@ it("should throw error if tag isn't registered", () => {
         'No inline tag registered with the name "missing"',
     );
 });
+
+it("should handle multiple brackets", () => {
+    expect.assertions(1);
+    const text = "{@mock} {} {@mock foo} {} {@mock}";
+    expect(processInlineTags(tags, doc, [], text, rethrow)).toBe(
+        "[] {} [FOO] {} []",
+    );
+});
