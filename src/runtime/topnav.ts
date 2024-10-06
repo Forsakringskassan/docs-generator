@@ -139,24 +139,48 @@ function calculateVisibility(refs: Refs): void {
     refs.popover.style.top = `${popupTop}px`;
 }
 
-onContentReady(() => {
+function setup(): Refs | undefined {
     const refs = getElementsRefs();
     if (!refs) {
         return;
     }
 
-    window.addEventListener(
-        "resize",
-        debounce(() => calculateVisibility(refs), 100),
-    );
-    document.addEventListener("click", () => setPopoverVisibility(false, refs));
-    refs.itemPairs.forEach((pair) => {
+    for (const pair of refs.itemPairs) {
         pair.menu.addEventListener("click", onClickItem);
         pair.popover.addEventListener("click", onClickItem);
-    });
+    }
+
     refs.moreItem.addEventListener("click", (e) => togglePopover(e, refs));
     refs.moreItem.addEventListener("keyup", (e) => closePopoverOnEsc(e, refs));
     refs.popoverContainer.addEventListener("click", onClickPopover);
+
+    return refs;
+}
+
+onContentReady(() => {
+    const newRefs = setup();
+    if (!newRefs) {
+        return;
+    }
+
+    let refs = newRefs;
+
+    window.addEventListener(
+        "resize",
+        debounce(() => {
+            calculateVisibility(refs);
+        }, 100),
+    );
+
+    window.addEventListener("docs:navigation", () => {
+        const newRefs = setup();
+        if (newRefs) {
+            refs = newRefs;
+        }
+        calculateVisibility(refs);
+    });
+
+    document.addEventListener("click", () => setPopoverVisibility(false, refs));
 
     setPopoverVisibility(false, refs);
     calculateVisibility(refs);
