@@ -8,7 +8,7 @@ on:
             - synchronize
             - closed
 jobs:
-    deploy-preview:
+    deploy-docs-preview:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
@@ -23,9 +23,56 @@ jobs:
                   npm ci
                   npm run build
                   npm run build:docs
-            - uses: rossjrw/pr-preview-action@v1
+                  npm pack
+                  mkdir -p ./temp/pr-preview/docs-generator
+                  cp -r ./public/* ./temp/pr-preview/docs-generator
+
+            - name: Determine docs-generator version
+              run: |
+                  echo "VERSION=$(npm pkg get version | jq -r)" | tee -a $GITHUB_ENV
+            #FKUI
+            - uses: actions/checkout@v4
               with:
-                  source-dir: ./public/
+                  path: "fkui"
+                  repository: "Forsakringskassan/designsystem"
+            - name: Build FKUI documentation
+              if: github.event.action != 'closed'
+              run: |
+                  cd fkui
+                  npm ci
+                  npm install "../forsakringskassan-docs-generator-${VERSION}.tgz"
+                  npm install --worksapces "../forsakringskassan-docs-generator-${VERSION}.tgz"
+                  npm run build || true
+                  npm run build:docs || true
+                  mkdir -p ../temp/pr-preview/fkui/
+                  cp -r ./public/* ../temp/pr-preview/fkui/ || true
+                  cat << EOF > ../temp/pr-preview/index.html
+                  <style>
+                    body { 
+                      padding: 2rem;
+                      font-family: sans-serif;
+                    }
+                    a {
+                      background-color: #4a52b6;
+                      text-decoration: none;
+                      color: white;
+                      margin-bottom: 1rem;
+                      border-radius: 4px;
+                      padding: 0.5rem;
+                      display: inline-block;
+                    }
+                    a:hover {
+                      background-color: #3b4292;
+                    }
+                  </style>
+                  <a href="./docs-generator">FK Documentation generator</a>
+                  <br>
+                  <a href="./fkui">FK Designsystem</a>
+                  EOF
+            - name: Deploy docs
+              uses: rossjrw/pr-preview-action@v1
+              with:
+                  source-dir: ./temp/pr-preview/
                   preview-branch: gh-pages
                   umbrella-dir: pr-preview
                   action: auto
