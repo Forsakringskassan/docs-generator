@@ -131,6 +131,26 @@ it("should render custom variant", () => {
     `);
 });
 
+it("should render nested markdown", () => {
+    expect.assertions(1);
+    const source = dedent`
+        ::: info foo \`bar\` baz
+
+        * foo **bar** baz
+
+        :::
+    `;
+    const result = md.render(source);
+    expect(result).toMatchInlineSnapshot(`
+        <div class="docs-messagebox docs-messagebox--info">
+            <p class="docs-messagebox__title">foo <code>bar</code> baz</p>
+            <ul>
+        <li>foo <strong>bar</strong> baz</li>
+        </ul>
+        </div>
+    `);
+});
+
 it("should handle missing leading space", () => {
     expect.assertions(1);
     const source = dedent`

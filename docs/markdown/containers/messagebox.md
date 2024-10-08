@@ -1,6 +1,6 @@
 ---
 title: Messagebox
-layout: pattern
+layout: article
 ---
 
 Messageboxes can be added with:
