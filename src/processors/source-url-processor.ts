@@ -1,8 +1,12 @@
 import { ProcessorOptions, type Processor } from "../processor";
 import { Component } from "../document";
-import { getExampleImport } from "../examples";
 import { type PackageJson } from "../package-json";
-import { getRepositoryUrl, gitCommitHash, interpolate } from "../utils";
+import {
+    getRepositoryUrl,
+    gitCommitHash,
+    interpolate,
+    fileMatcher,
+} from "../utils";
 
 /**
  * Options for {@link sourceUrlProcessor#}.
@@ -50,6 +54,7 @@ export function sourceUrlProcessor(
     } = options;
 
     const repository = getRepositoryUrl(pkg) ?? "";
+    const matcher = fileMatcher(["**/*"]);
 
     return {
         after: "generate-docs",
@@ -67,7 +72,7 @@ export function sourceUrlProcessor(
             ): string | undefined {
                 const { source, name } = component;
                 const filename = source ?? `${name}.${componentFileExtension}`;
-                const path = getExampleImport(["./"], filename);
+                const path = matcher(filename, "when generating source url");
                 return interpolate(urlFormat, {
                     path,
                     hash,
