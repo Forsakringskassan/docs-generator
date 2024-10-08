@@ -57,6 +57,7 @@ async function buildStyle(entrypoints) {
         console.log("Building", src, "->", dst);
         const result = await sass.compileAsync(src, {
             style: "expanded",
+            loadPaths: ["./node_modules"],
             importers: [sassCSSVariableImporter],
         });
         await fs.mkdir(path.dirname(dst), { recursive: true });
