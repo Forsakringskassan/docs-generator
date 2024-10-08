@@ -89,7 +89,7 @@
   },
   "dependencies": {
     "@leeoniya/ufuzzy": "1.0.14",
-    "chokidar": "3.6.0",
+    "chokidar": "4.0.1",
     "cli-progress": "3.12.0",
     "front-matter": "4.0.2",
     "fs-extra": "11.2.0",
@@ -168,6 +168,11 @@
   "peerDependenciesMeta": {
     "express": {
       "optional": true
+    }
+  },
+  "overrides": {
+    "nunjucks": {
+      "chokidar": "$chokidar"
     }
   },
   "engines": {
