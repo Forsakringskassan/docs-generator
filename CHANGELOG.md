@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## [2.7.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.6.0...v2.7.0) (2024-10-08)
+
+
+### Features
+
+* bundle highlight styling (refs SB-4982) ([be29bb1](https://github.com/Forsakringskassan/docs-generator/commit/be29bb1d8cc3c12d51e20470f4f35cbece0d877d))
+* **deps:** update dependency chokidar to v4 ([b56cde2](https://github.com/Forsakringskassan/docs-generator/commit/b56cde23f50a3ddb6eaaf063c80771cbf1186d62))
+
+
+### Bug Fixes
+
+* **deps:** update dependency mermaid to v11.3.0 ([1e8e72c](https://github.com/Forsakringskassan/docs-generator/commit/1e8e72cbf81fa6ac102eb144d2295c47aa0d569d))
+* make responsive menu hidden while page is loading ([5512b72](https://github.com/Forsakringskassan/docs-generator/commit/5512b720f8b24ed70a076838ab00984803b1e0ce))
+* move responsive topnav styling to layout styling ([46c9c24](https://github.com/Forsakringskassan/docs-generator/commit/46c9c24dc933441eb0e9959901c82641ab2e0af9)), closes [#101](https://github.com/Forsakringskassan/docs-generator/issues/101) [#102](https://github.com/Forsakringskassan/docs-generator/issues/102)
+* reload responsive menu on site navigation ([a613d6d](https://github.com/Forsakringskassan/docs-generator/commit/a613d6d8828c69c781b6336726dbb6146589787e)), closes [#100](https://github.com/Forsakringskassan/docs-generator/issues/100)
+* rewrite moduleImporter (refs SB-4982) ([8ad44fc](https://github.com/Forsakringskassan/docs-generator/commit/8ad44fcf3e79396c486625452b1007b8b52f3aba))
+
 ## [2.6.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.5.0...v2.6.0) (2024-10-05)
 
 
