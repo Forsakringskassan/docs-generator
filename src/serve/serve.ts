@@ -1,6 +1,6 @@
 import path from "node:path/posix";
 import { type AddressInfo } from "net";
-import chokidar from "chokidar";
+import { watch } from "chokidar";
 import express from "express";
 import tinylr from "tiny-lr";
 import { keypress } from "./keypress";
@@ -79,7 +79,7 @@ export async function serve(options: ServeOptions): Promise<void> {
     const livereload = tinylr();
     livereload.listen(35729);
 
-    const watcher = chokidar.watch(options.watch);
+    const watcher = watch(options.watch);
     const rebuild = createRebuilder(options.rebuild, (filePath: string[]) => {
         const files = filePath.map((it) => {
             return path.relative(options.outputFolder, it);
