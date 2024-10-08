@@ -74,15 +74,6 @@ function closePopoverOnEsc(event: KeyboardEvent, refs: Refs): void {
     }
 }
 
-function onClickItem(event: Event): void {
-    const clickable = (event.target as HTMLElement).querySelector<HTMLElement>(
-        "a, button",
-    );
-
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- accept runtime error
-    clickable!.click();
-}
-
 function onClickPopover(event: Event): void {
     event.stopPropagation();
 }
@@ -143,11 +134,6 @@ function setup(): Refs | undefined {
     const refs = getElementsRefs();
     if (!refs) {
         return;
-    }
-
-    for (const pair of refs.itemPairs) {
-        pair.menu.addEventListener("click", onClickItem);
-        pair.popover.addEventListener("click", onClickItem);
     }
 
     refs.moreItem.addEventListener("click", (e) => togglePopover(e, refs));
