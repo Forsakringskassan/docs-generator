@@ -108,6 +108,16 @@ export default {
     messagebox: {
         description: "Style related to markdown messageboxes.",
         variables: {
+            "details-border": {
+                description: "Border color for details variant",
+                type: "color",
+                value: "#bbbbbd",
+            },
+            "details-background": {
+                description: "Background color for details variant",
+                type: "color",
+                value: "#f4f4f4",
+            },
             "info-border": {
                 description: "Border color for info variant",
                 type: "color",

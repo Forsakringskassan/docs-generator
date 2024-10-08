@@ -7,6 +7,7 @@ import {
     type ContainerContext,
     altContainer,
     apiContainer,
+    detailsContainer,
     messageboxContainer,
 } from "./container";
 
@@ -158,6 +159,7 @@ export function containerRenderer(
         md.use(containerParser, {
             alt: altContainer(context),
             api: apiContainer(context),
+            details: detailsContainer(context, options.messagebox),
             messagebox: messageboxContainer(context, options.messagebox),
 
             /* aliases for messagebox containers */

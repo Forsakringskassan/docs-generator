@@ -12,6 +12,22 @@
         font-weight: bold;
     }
 
+    &--details {
+        border-color: var(--docs-messagebox-details-border);
+        background: var(--docs-messagebox-details-background);
+
+        summary {
+            cursor: pointer;
+            margin: -1.5rem;
+            padding: 1.5rem;
+        }
+
+        &[open] summary {
+            margin-bottom: 0;
+            padding-bottom: 0.75rem;
+        }
+    }
+
     &--info {
         border-color: var(--docs-messagebox-info-border);
         background: var(--docs-messagebox-info-background);
