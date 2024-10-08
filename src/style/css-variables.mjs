@@ -65,6 +65,42 @@ export default {
         },
     },
 
+    contextmenu: {
+        description: "Style related to contextual menus",
+        variables: {
+            "background-color": {
+                description: "Context menu background color",
+                type: "color",
+                value: "#ffffff",
+            },
+            "border-color": {
+                description: "Context menu border color",
+                type: "color",
+                value: "#ddddde",
+            },
+            "highlight-color": {
+                description: "Context menu highlight color",
+                type: "color",
+                value: "#e7f0e9",
+            },
+            "link-color-default": {
+                description: "Context menu link default color",
+                type: "color",
+                value: "var(--docs-text-color-default)",
+            },
+            "link-color-hover": {
+                description: "Context menu link hover color",
+                type: "color",
+                value: "var(--docs-text-color-default)",
+            },
+            "link-background-hover": {
+                description: "Context menu link hover background color",
+                type: "color",
+                value: "#ddddde",
+            },
+        },
+    },
+
     heading: {
         description: "Headings h1, h2, etc.",
         variables: {
@@ -158,6 +194,42 @@ export default {
                 description: "Optional tag text color",
                 type: "color",
                 value: "var(--docs-text-color-discrete)",
+            },
+        },
+    },
+
+    topnav: {
+        description: "Style related to topnav",
+        variables: {
+            "background-color": {
+                description: "Background color",
+                type: "color",
+                value: "transparent",
+            },
+            "link-color-default": {
+                description: "Link color",
+                type: "color",
+                value: "var(--docs-text-color-default)",
+            },
+            "link-color-hover": {
+                description: "Link hover color",
+                type: "color",
+                value: "var(--docs-text-color-link-hover)",
+            },
+            "link-color-highlight": {
+                description: "Link highlight color",
+                type: "color",
+                value: "var(--docs-text-color-link-hover)",
+            },
+            "border-color-hover": {
+                description: "Border hover color",
+                type: "color",
+                value: "#afcfb5",
+            },
+            "border-color-highlight": {
+                description: "Border highlight color",
+                type: "color",
+                value: "#116a3e",
             },
         },
     },

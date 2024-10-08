@@ -1,6 +1,12 @@
 import mermaid from "mermaid";
 import { tableOfContents, toggleTableOfContents } from "./table-of-contents";
 
+declare global {
+    interface WindowEventMap {
+        "docs:navigation": Event;
+    }
+}
+
 const parser = new DOMParser();
 const variableBlock = document.createElement("style");
 
@@ -111,6 +117,9 @@ async function replaceContent(href: string): Promise<void> {
         tableOfContents(toc, headings);
         toggleTableOfContents();
     }
+
+    /* dispatch an event so other components know they might need to update */
+    window.dispatchEvent(new Event("docs:navigation"));
 }
 
 /**
