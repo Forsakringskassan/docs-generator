@@ -1,4 +1,5 @@
 export { createMockDocument } from "./create-mock-document";
+export { fileMatcher } from "./file-matcher";
 export { findDocument } from "./find-document";
 export { formatSize } from "./format-size";
 export { generateId } from "./generate-id";
