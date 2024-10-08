@@ -1,1 +1,5 @@
-* @ext @dvitamin @NicklasWei @MCFK
+* @ext @dvitamin @NicklasWei @MCFK @OlofFredriksson
+
+# dependency updates
+package.json @ext
+package-lock.json @ext
