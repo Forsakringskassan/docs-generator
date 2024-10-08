@@ -42,6 +42,7 @@ const docs = new Generator({
                 : undefined,
         }),
         sourceUrlProcessor(pkg, {
+            sourceFiles: ["docs/**"],
             urlFormat: "{{ repository }}/tree/main/{{ path }}",
             componentFileExtension: "baz",
         }),

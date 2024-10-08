@@ -37,6 +37,13 @@ The `sourceUrlProcessor` takes a configuration object:
 
 Enables/disables the processor.
 
+### `sourceFiles`
+
+-   Type: `string[]`
+-   Default: `[**/*]`
+
+List of patterns to match source files.
+
 ### `urlFormat`
 
 -   Type: `string`

@@ -14,7 +14,11 @@ import {
  * @public
  */
 export interface SourceUrlProcessorOptions extends ProcessorOptions {
+    /** List of glob patterns matching source files */
+    readonly sourceFiles?: string[];
+
     readonly urlFormat: string;
+
     /** File extension used for finding component by name */
     readonly componentFileExtension?: string;
 }
@@ -49,12 +53,13 @@ export function sourceUrlProcessor(
     const options = args.length === 2 ? args[1] : args[0];
     const {
         enabled = true,
+        sourceFiles = ["**/*"],
         urlFormat,
         componentFileExtension = "vue",
     } = options;
 
     const repository = getRepositoryUrl(pkg) ?? "";
-    const matcher = fileMatcher(["**/*"]);
+    const matcher = fileMatcher(sourceFiles);
 
     return {
         after: "generate-docs",
