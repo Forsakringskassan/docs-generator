@@ -1,5 +1,3 @@
-/** @jest-environment jsdom */
-
 import { toggleMarkup } from "./code-preview";
 
 jest.useFakeTimers();
