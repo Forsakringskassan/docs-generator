@@ -371,6 +371,7 @@ export function sourceUrlProcessor(options: SourceUrlProcessorOptions): Processo
 // @public
 export interface SourceUrlProcessorOptions extends ProcessorOptions {
     readonly componentFileExtension?: string;
+    readonly sourceFiles?: string[];
     // (undocumented)
     readonly urlFormat: string;
 }

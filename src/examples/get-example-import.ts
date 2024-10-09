@@ -5,6 +5,7 @@ import { normalizePath } from "../utils";
  * Search filename in directories (deep).
  *
  * @internal
+ * @deprecated use `fileMatcher()` instead, this function is insanely slow
  */
 export function getExampleImport(
     searchDirs: string[],
