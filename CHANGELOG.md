@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## [2.8.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.7.0...v2.8.0) (2024-10-09)
+
+
+### Features
+
+* support `<details>` element in markdown content ([ec2a9cd](https://github.com/Forsakringskassan/docs-generator/commit/ec2a9cde9c2fcc5d8bd8143187d52e1dad4b4511))
+* support markdown content in messagebox titles ([36be401](https://github.com/Forsakringskassan/docs-generator/commit/36be401259809ef62857ee1fe1495bdcc3b2b2c9))
+
+
+### Bug Fixes
+
+* fix `cannot read property of null` when clicking on topnav ([6744894](https://github.com/Forsakringskassan/docs-generator/commit/6744894d84b441bfca17e0988f9c795eccaeebe2))
+
 ## [2.7.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.6.0...v2.7.0) (2024-10-08)
 
 
