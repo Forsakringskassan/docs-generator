@@ -85,7 +85,25 @@
       "!**/index.[jt]s",
       "!**/__fixtures__/**"
     ],
-    "preset": "@forsakringskassan/jest-config"
+    "preset": "@forsakringskassan/jest-config",
+    "projects": [
+      {
+        "displayName": "node",
+        "preset": "@forsakringskassan/jest-config",
+        "testPathIgnorePatterns": [
+          "/node_modules/",
+          "<rootDir>/src/runtime"
+        ]
+      },
+      {
+        "displayName": "browser",
+        "preset": "@forsakringskassan/jest-config",
+        "testMatch": [
+          "<rootDir>/src/runtime/**/*.spec.[jt]s"
+        ],
+        "testEnvironment": "jest-environment-jsdom"
+      }
+    ]
   },
   "dependencies": {
     "@leeoniya/ufuzzy": "1.0.14",
@@ -171,11 +189,6 @@
       "optional": true
     }
   },
-  "overrides": {
-    "nunjucks": {
-      "chokidar": "$chokidar"
-    }
-  },
   "engines": {
     "node": ">= 20.5"
   },
@@ -184,5 +197,10 @@
     "nunjucks",
     "piscina",
     "vue-docgen-api"
-  ]
+  ],
+  "overrides": {
+    "nunjucks": {
+      "chokidar": "$chokidar"
+    }
+  }
 }
