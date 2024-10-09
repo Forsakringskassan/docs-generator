@@ -45,6 +45,13 @@ exports[`smoketest 1`] = `
             },
             {
               "external": false,
+              "id": "fs:docs/markdown/containers/details.md",
+              "path": "./markdown/containers/details.html",
+              "sortorder": Infinity,
+              "title": "Details",
+            },
+            {
+              "external": false,
               "id": "fs:docs/markdown/containers/messagebox.md",
               "path": "./markdown/containers/messagebox.html",
               "sortorder": Infinity,

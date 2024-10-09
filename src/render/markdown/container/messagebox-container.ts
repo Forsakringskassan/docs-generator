@@ -1,7 +1,7 @@
 import { type ContainerCallback } from "./container-callback";
 import { type ContainerContext } from "./container-context";
 
-const defaultTitle: Record<string, string> = {
+const defaultTitle: Record<string, string | undefined> = {
     info: "INFO",
     warning: "WARNING",
     danger: "DANGER",
@@ -15,7 +15,7 @@ const defaultTitle: Record<string, string> = {
  */
 export function messageboxContainer(
     context: ContainerContext,
-    options: { title: Record<string, string> },
+    options: { title: Record<string, string | undefined> },
     alias?: string,
 ): ContainerCallback {
     const { md, env } = context;
@@ -53,11 +53,15 @@ export function messageboxContainer(
         const token = tokens[index];
         const { variant, title } = parseInfo(token.info);
         const text = token.content.trim();
-        const content = md.render(text, env);
         return /* HTML */ `
             <div class="docs-messagebox docs-messagebox--${variant}">
-                ${title ? `<p class="docs-messagebox__title">${title}</p>` : ""}
-                ${content}
+                ${title
+                    ? `<p class="docs-messagebox__title">${md.renderInline(
+                          title,
+                          env,
+                      )}</p>`
+                    : ""}
+                ${md.render(text, env)}
             </div>
         `;
     };

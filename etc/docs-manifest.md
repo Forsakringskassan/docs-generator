@@ -15,6 +15,7 @@ live-example/index.html
 markdown/code-preview/fullscreen.html
 markdown/code-preview/index.html
 markdown/containers/alt-text.html
+markdown/containers/details.html
 markdown/containers/messagebox.html
 markdown/definition-lists.html
 markdown/index.html
