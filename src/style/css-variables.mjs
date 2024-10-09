@@ -187,6 +187,37 @@ export default {
         },
     },
 
+    motd: {
+        description: "MOTD processor",
+        variables: {
+            "text-color": {
+                description: "Text color",
+                type: "color",
+                value: "var(--docs-text-color-discrete)",
+            },
+            "info-accent-color": {
+                description: "Accent color, info variant",
+                type: "color",
+                value: "#4a52b6",
+            },
+            "info-background-color": {
+                description: "background color, info variant",
+                type: "color",
+                value: "#f5f6fa",
+            },
+            "link-color": {
+                description: "Link color",
+                type: "color",
+                value: "var(--docs-text-color-discrete)",
+            },
+            "hover-color": {
+                description: "Link color",
+                type: "color",
+                value: "var(--docs-text-color-default)",
+            },
+        },
+    },
+
     tags: {
         description: "Style for documentation tags",
         variables: {
