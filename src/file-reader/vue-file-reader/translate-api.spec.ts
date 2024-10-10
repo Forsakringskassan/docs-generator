@@ -308,3 +308,55 @@ describe("composition API", () => {
         ]);
     });
 });
+
+it("should handle v-model with @model", async () => {
+    expect.assertions(1);
+    const filepath = fixture("options-vmodel.vue");
+    const result = await translateAPI(filepath);
+    expect(result.props).toEqual([
+        {
+            name: "v-model",
+            type: "string",
+            required: "false",
+            description: "Lorem ipsum.",
+            default: `""`,
+        },
+    ]);
+});
+
+it("should handle v-model with update event", async () => {
+    expect.assertions(1);
+    const filepath = fixture("options-vmodel-emit.vue");
+    const result = await translateAPI(filepath);
+    expect(result.props).toEqual([
+        {
+            name: "v-model",
+            type: "string",
+            required: "false",
+            description: "Lorem ipsum.",
+            default: `""`,
+        },
+    ]);
+});
+
+it("should handle multiple v-model", async () => {
+    expect.assertions(1);
+    const filepath = fixture("options-vmodel-multiple.vue");
+    const result = await translateAPI(filepath);
+    expect(result.props).toEqual([
+        {
+            name: "v-model",
+            type: "string",
+            required: "false",
+            description: "Lorem ipsum.",
+            default: `""`,
+        },
+        {
+            name: "v-model:foo",
+            type: "number",
+            required: "false",
+            description: HYPHEN,
+            default: `0`,
+        },
+    ]);
+});
