@@ -123,6 +123,18 @@ export async function translateAPI(filePath: string): Promise<ComponentAPI> {
     const events = api.events ? translateEvents(api.events) : [];
     const slots = api.slots ? translateSlots(api.slots) : [];
 
+    /* remap v-model props */
+    for (const event of events) {
+        if (!event.name.startsWith("update:")) {
+            continue;
+        }
+        const prop = event.name.slice("update:".length);
+        const entry = props.find((it) => it.name === prop);
+        if (entry) {
+            entry.name = prop === "modelValue" ? "v-model" : `v-model:${prop}`;
+        }
+    }
+
     return {
         props,
         events,
