@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## [2.9.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.8.0...v2.9.0) (2024-10-11)
+
+
+### Features
+
+* add styling for mermaid git graph ([770bbc9](https://github.com/Forsakringskassan/docs-generator/commit/770bbc93e7a97b39cfb09a55a570ab72a0091478))
+* new `sourceFiles` parameter to limit `sourceUrlProcessor` results ([30c7906](https://github.com/Forsakringskassan/docs-generator/commit/30c7906852533247a1c62f4710bbb3eb8bd9f876))
+
+
+### Bug Fixes
+
+* fix performance regression when using `sourceUrlProcessor` ([d024574](https://github.com/Forsakringskassan/docs-generator/commit/d02457409d9e647179bd2f78aa553213e58984c8))
+
 ## [2.8.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.7.0...v2.8.0) (2024-10-09)
 
 
