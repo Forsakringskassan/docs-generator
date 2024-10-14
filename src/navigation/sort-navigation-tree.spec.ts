@@ -37,6 +37,7 @@ it("should sort by manual sort order", () => {
                 sortorder: 3,
             }),
         ],
+        visible: true,
     };
     sortNavigationTree(items);
     expect(items.children).toEqual([
@@ -64,6 +65,7 @@ it("should sort entries with same sortorder by title", () => {
                 sortorder: 1,
             }),
         ],
+        visible: true,
     };
     sortNavigationTree(items);
     expect(items.children).toEqual([
@@ -91,6 +93,7 @@ it("should handle Infinity", () => {
                 sortorder: 1,
             }),
         ],
+        visible: true,
     };
     sortNavigationTree(items);
     expect(items.children).toEqual([

@@ -23,6 +23,7 @@ export interface NavigationSection {
     readonly path: string;
     readonly sortorder: number;
     readonly children: NavigationNode[];
+    readonly visible: boolean;
 }
 
 /**
@@ -64,18 +65,21 @@ export function generateNavtree(docs: Document[]): NavigationSection {
         key: string,
         title: string,
         sortorder: number,
+        { visible }: { visible?: boolean } = {},
     ): void {
         const existing = section[key];
         if (existing) {
             existing.title = title;
             existing.sortorder = sortorder;
+            existing.visible = visible ?? true;
         } else {
-            const node: NavigationSection = {
+            const node: MutableNavigationSection = {
                 key,
                 title,
                 path: "",
                 sortorder,
                 children: [],
+                visible: visible ?? true,
             };
             section[key] = node;
             if (key !== ".") {
@@ -101,6 +105,7 @@ export function generateNavtree(docs: Document[]): NavigationSection {
             path: "",
             sortorder: Infinity,
             children: [],
+            visible: true,
         };
         section[parentKey] = parent;
         let anchestor = parentKey;
@@ -111,12 +116,13 @@ export function generateNavtree(docs: Document[]): NavigationSection {
                 section[anchestor].children.push(current);
                 break;
             }
-            const node: NavigationSection = {
+            const node: MutableNavigationSection = {
                 key: anchestor,
                 title: "",
                 path: "",
                 sortorder: Infinity,
                 children: [current],
+                visible: true,
             };
             section[anchestor] = node;
             current = node;
@@ -158,7 +164,7 @@ export function generateNavtree(docs: Document[]): NavigationSection {
         /* ignore documents with are marked as not navigatable */
         if (!doc.visible) {
             if (isSection) {
-                createSection(name, title, sortorder);
+                createSection(name, title, sortorder, { visible: false });
             }
             continue;
         }
@@ -186,13 +192,15 @@ export function generateNavtree(docs: Document[]): NavigationSection {
                 existing.path = leafNode.path;
                 existing.sortorder = sortorder;
                 existing.children.unshift(leafNode);
+                existing.visible = true;
             } else {
-                const sectionNode: NavigationSection = {
+                const sectionNode: MutableNavigationSection = {
                     key: name,
                     title,
                     path: leafNode.path,
                     sortorder,
                     children: [leafNode],
+                    visible: true,
                 };
                 section[name] = sectionNode;
                 parent.children.push(sectionNode);
@@ -219,6 +227,7 @@ export function generateNavtree(docs: Document[]): NavigationSection {
             path: "",
             sortorder: Infinity,
             children: [],
+            visible: true,
         };
     }
 }

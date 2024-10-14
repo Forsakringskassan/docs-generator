@@ -206,6 +206,8 @@ export interface NavigationSection {
     readonly sortorder: number;
     // (undocumented)
     readonly title: string;
+    // (undocumented)
+    readonly visible: boolean;
 }
 
 // @public (undocumented)
@@ -406,7 +408,11 @@ export interface TopnavEntry {
     // (undocumented)
     path: string;
     // (undocumented)
+    sortorder?: number;
+    // (undocumented)
     title: string;
+    // (undocumented)
+    visible?: boolean;
 }
 
 // @public

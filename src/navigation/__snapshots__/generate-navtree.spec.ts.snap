@@ -33,6 +33,7 @@ exports[`smoketest 1`] = `
           "path": "./markdown/code-preview/",
           "sortorder": Infinity,
           "title": "Code preview",
+          "visible": true,
         },
         {
           "children": [
@@ -62,6 +63,7 @@ exports[`smoketest 1`] = `
           "path": "",
           "sortorder": Infinity,
           "title": "containers",
+          "visible": true,
         },
         {
           "external": false,
@@ -82,6 +84,7 @@ exports[`smoketest 1`] = `
       "path": "./markdown/",
       "sortorder": 0,
       "title": "Markdown",
+      "visible": true,
     },
     {
       "children": [
@@ -118,6 +121,7 @@ exports[`smoketest 1`] = `
       "path": "./layout/",
       "sortorder": 1,
       "title": "Layout",
+      "visible": true,
     },
     {
       "children": [
@@ -177,6 +181,7 @@ exports[`smoketest 1`] = `
           "path": "",
           "sortorder": Infinity,
           "title": "group",
+          "visible": true,
         },
         {
           "children": [
@@ -213,12 +218,14 @@ exports[`smoketest 1`] = `
           "path": "",
           "sortorder": Infinity,
           "title": "sorted-group",
+          "visible": true,
         },
       ],
       "key": "./navigation",
       "path": "./navigation/",
       "sortorder": 1,
       "title": "Navigation",
+      "visible": true,
     },
     {
       "children": [
@@ -283,6 +290,7 @@ exports[`smoketest 1`] = `
       "path": "./processors/",
       "sortorder": 1,
       "title": "Processors",
+      "visible": true,
     },
     {
       "children": [
@@ -298,6 +306,7 @@ exports[`smoketest 1`] = `
       "path": "./theme/",
       "sortorder": 1,
       "title": "Theme",
+      "visible": true,
     },
     {
       "children": [
@@ -313,11 +322,13 @@ exports[`smoketest 1`] = `
       "path": "",
       "sortorder": Infinity,
       "title": "live-example",
+      "visible": true,
     },
   ],
   "key": ".",
   "path": "",
   "sortorder": Infinity,
   "title": "Todo",
+  "visible": true,
 }
 `;
