@@ -324,6 +324,22 @@ exports[`smoketest 1`] = `
       "title": "live-example",
       "visible": true,
     },
+    {
+      "children": [
+        {
+          "external": false,
+          "id": "fs:docs/smoketest/table.md",
+          "path": "./smoketest/table.html",
+          "sortorder": Infinity,
+          "title": "Tables",
+        },
+      ],
+      "key": "./smoketest",
+      "path": "",
+      "sortorder": Infinity,
+      "title": "Smoketest",
+      "visible": false,
+    },
   ],
   "key": ".",
   "path": "",
