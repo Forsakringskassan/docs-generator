@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [2.9.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.9.0...v2.9.1) (2024-10-14)
+
+
+### Bug Fixes
+
+* **vue:** handle multiple `v-model` ([5fc40d9](https://github.com/Forsakringskassan/docs-generator/commit/5fc40d90fceabf84041aba951df5f38b20b8e6c0)), closes [#112](https://github.com/Forsakringskassan/docs-generator/issues/112)
+
 ## [2.9.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.8.0...v2.9.0) (2024-10-11)
 
 
