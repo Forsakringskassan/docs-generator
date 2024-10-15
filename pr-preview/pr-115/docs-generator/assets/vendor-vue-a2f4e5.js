@@ -5505,12 +5505,12 @@ If this is a native custom element, make sure to exclude it from component resol
       $root: (i) => getPublicInstance(i.root),
       $host: (i) => i.ce,
       $emit: (i) => i.emit,
-      $options: (i) => __VUE_OPTIONS_API__ ? resolveMergedOptions(i) : i.type,
+      $options: (i) => true ? resolveMergedOptions(i) : i.type,
       $forceUpdate: (i) => i.f || (i.f = () => {
         queueJob(i.update);
       }),
       $nextTick: (i) => i.n || (i.n = nextTick.bind(i.proxy)),
-      $watch: (i) => __VUE_OPTIONS_API__ ? instanceWatch.bind(i) : NOOP
+      $watch: (i) => true ? instanceWatch.bind(i) : NOOP
     })
   );
   var isReservedPrefix = (key) => key === "_" || key === "$";
@@ -5554,7 +5554,7 @@ If this is a native custom element, make sure to exclude it from component resol
         } else if (ctx !== EMPTY_OBJ && hasOwn(ctx, key)) {
           accessCache[key] = 4;
           return ctx[key];
-        } else if (!__VUE_OPTIONS_API__ || shouldCacheAccess) {
+        } else if (shouldCacheAccess) {
           accessCache[key] = 0;
         }
       }
@@ -6333,7 +6333,7 @@ If this is a native custom element, make sure to exclude it from component resol
           return app;
         },
         mixin(mixin) {
-          if (__VUE_OPTIONS_API__) {
+          if (true) {
             if (!context.mixins.includes(mixin)) {
               context.mixins.push(mixin);
             } else if (true) {
@@ -6706,7 +6706,7 @@ If you want to remount the same app, move your app creation logic into a factory
   }
   var mixinPropsCache = /* @__PURE__ */ new WeakMap();
   function normalizePropsOptions(comp, appContext, asMixin = false) {
-    const cache = __VUE_OPTIONS_API__ && asMixin ? mixinPropsCache : appContext.propsCache;
+    const cache = asMixin ? mixinPropsCache : appContext.propsCache;
     const cached = cache.get(comp);
     if (cached) {
       return cached;
@@ -6715,7 +6715,7 @@ If you want to remount the same app, move your app creation logic into a factory
     const normalized = {};
     const needCastKeys = [];
     let hasExtends = false;
-    if (__VUE_OPTIONS_API__ && !isFunction(comp)) {
+    if (!isFunction(comp)) {
       const extendProps = (raw2) => {
         hasExtends = true;
         const [props, keys] = normalizePropsOptions(raw2, appContext, true);
@@ -7057,15 +7057,15 @@ If you want to remount the same app, move your app creation logic into a factory
   }
   function initFeatureFlags() {
     const needWarn = [];
-    if (typeof __VUE_OPTIONS_API__ !== "boolean") {
+    if (false) {
       needWarn.push(`__VUE_OPTIONS_API__`);
       getGlobalThis().__VUE_OPTIONS_API__ = true;
     }
-    if (typeof __VUE_PROD_DEVTOOLS__ !== "boolean") {
+    if (false) {
       needWarn.push(`__VUE_PROD_DEVTOOLS__`);
       getGlobalThis().__VUE_PROD_DEVTOOLS__ = false;
     }
-    if (typeof __VUE_PROD_HYDRATION_MISMATCH_DETAILS__ !== "boolean") {
+    if (false) {
       needWarn.push(`__VUE_PROD_HYDRATION_MISMATCH_DETAILS__`);
       getGlobalThis().__VUE_PROD_HYDRATION_MISMATCH_DETAILS__ = false;
     }
@@ -8879,7 +8879,7 @@ For more details, see https://link.vuejs.org/feature-flags.`
     const raw = comp.emits;
     let normalized = {};
     let hasExtends = false;
-    if (__VUE_OPTIONS_API__ && !isFunction(comp)) {
+    if (!isFunction(comp)) {
       const extendEmits = (raw2) => {
         const normalizedFromExtend = normalizeEmitsOptions(raw2, appContext, true);
         if (normalizedFromExtend) {
@@ -10473,7 +10473,7 @@ Component that was made reactive: `,
         installWithProxy(instance);
       }
     }
-    if (__VUE_OPTIONS_API__ && true) {
+    if (true) {
       const reset2 = setCurrentInstance(instance);
       pauseTracking();
       try {
