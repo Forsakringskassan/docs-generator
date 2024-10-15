@@ -42,6 +42,7 @@ async function compileExample(batch: ExampleBatch): Promise<void> {
             external,
             tsconfig,
             define: {
+                "process.env.NODE_ENV": JSON.stringify("development"),
                 "process.env.DOCS_ICON_LIB": JSON.stringify(iconLib),
             },
             plugins: [
