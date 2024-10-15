@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [2.9.2](https://github.com/Forsakringskassan/docs-generator/compare/v2.9.1...v2.9.2) (2024-10-15)
+
+
+### Bug Fixes
+
+* build examples in development mode ([8d8f0c3](https://github.com/Forsakringskassan/docs-generator/commit/8d8f0c3a2f3c24f612d606bd3c242e6a3a54360c))
+* hide hidden sections (`index.md`) in topmenu ([2d55a07](https://github.com/Forsakringskassan/docs-generator/commit/2d55a07696a26e722679bd72290769aff38ed3c1))
+
 ## [2.9.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.9.0...v2.9.1) (2024-10-14)
 
 
