@@ -183,6 +183,7 @@ function createContext(
         path: "",
         sortorder: Infinity,
         children: [],
+        visible: true,
     };
     let sidenav: NavigationSection = {
         key: ".",
@@ -190,6 +191,7 @@ function createContext(
         path: "",
         sortorder: Infinity,
         children: [],
+        visible: true,
     };
     const templateData: Record<string, unknown> = {};
     return {

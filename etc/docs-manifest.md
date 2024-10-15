@@ -40,5 +40,7 @@ processors/source-url.html
 processors/topnav.html
 processors/version.html
 search-data-[hash].json
+smoketest/index.html
+smoketest/table.html
 theme/index.html
 ```

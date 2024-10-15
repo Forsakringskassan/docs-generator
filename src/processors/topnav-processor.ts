@@ -11,6 +11,8 @@ import { type Processor } from "../processor";
 export interface TopnavEntry {
     path: string;
     title: string;
+    sortorder?: number;
+    visible?: boolean;
 }
 
 /**
@@ -25,6 +27,7 @@ export function generateNavigation(
             key: key,
             sortorder: index,
             children: [],
+            visible: true,
             ...it,
         };
     });
@@ -33,6 +36,7 @@ export function generateNavigation(
         path: "./index.html",
         sortorder: Infinity,
         children,
+        visible: true,
     };
 }
 

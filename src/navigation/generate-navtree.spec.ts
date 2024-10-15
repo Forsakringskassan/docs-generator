@@ -43,6 +43,7 @@ it("should create root node", () => {
         title: "",
         path: "",
         sortorder: Infinity,
+        visible: true,
         children: [],
     });
 });
@@ -54,6 +55,7 @@ it("should merge root index.md to root node", () => {
         title: "Frontpage",
         path: "",
         sortorder: Infinity,
+        visible: true,
         children: [],
     });
 });
@@ -96,6 +98,40 @@ it("should ignore documents with visible false", () => {
         path: "",
         sortorder: Infinity,
         children: [],
+        visible: true,
+    });
+});
+
+it("should not ignore sections with visible false", () => {
+    const nav = generateNavtree([
+        createDocument("index.md", "Frontpage"),
+        createDocument("foo/index.md", "Foo", { visible: false }),
+        createDocument("foo/bar.md", "Bar"),
+    ]);
+    expect(nav).toEqual({
+        key: ".",
+        title: "Frontpage",
+        path: "",
+        sortorder: Infinity,
+        visible: true,
+        children: [
+            {
+                key: "./foo",
+                title: "Foo",
+                path: "",
+                sortorder: Infinity,
+                visible: false,
+                children: [
+                    {
+                        id: "mock:foo/bar.md",
+                        title: "Bar",
+                        path: "./foo/bar.html",
+                        sortorder: Infinity,
+                        external: false,
+                    },
+                ],
+            },
+        ],
     });
 });
 
@@ -113,12 +149,14 @@ it("should create children for each folder", () => {
         title: "Frontpage",
         path: "",
         sortorder: Infinity,
+        visible: true,
         children: [
             {
                 key: "./usage",
                 title: "Usage guide",
                 path: "./usage/",
                 sortorder: Infinity,
+                visible: true,
                 children: [
                     {
                         id: "mock:usage/index.md",
@@ -141,6 +179,7 @@ it("should create children for each folder", () => {
                 title: "Components",
                 path: "./components/",
                 sortorder: 10,
+                visible: true,
                 children: [
                     {
                         id: "mock:components/index.md",
@@ -171,12 +210,14 @@ it("should create children for each folder (inverse order)", () => {
         title: "Frontpage",
         path: "",
         sortorder: 10,
+        visible: true,
         children: [
             {
                 key: "./components",
                 title: "Components",
                 path: "./components/",
                 sortorder: Infinity,
+                visible: true,
                 children: [
                     {
                         id: "mock:components/index.md",
@@ -192,6 +233,7 @@ it("should create children for each folder (inverse order)", () => {
                 title: "Usage guide",
                 path: "./usage/",
                 sortorder: 20,
+                visible: true,
                 children: [
                     {
                         id: "mock:usage/index.md",
@@ -231,12 +273,14 @@ it("should create children for subpages", () => {
         title: "Frontpage",
         path: "",
         sortorder: Infinity,
+        visible: true,
         children: [
             {
                 key: "./a",
                 title: "A",
                 path: "./a/",
                 sortorder: Infinity,
+                visible: true,
                 children: [
                     {
                         id: "mock:a/index.md",
@@ -266,6 +310,7 @@ it("should create children for subpages", () => {
                 title: "B",
                 path: "./b/",
                 sortorder: Infinity,
+                visible: true,
                 children: [
                     {
                         id: "mock:b/index.md",
@@ -293,6 +338,7 @@ it("should create children for subpages", () => {
                         title: "B > C",
                         path: "./b/c/",
                         sortorder: Infinity,
+                        visible: true,
                         children: [
                             {
                                 id: "mock:b/c/index.md",
@@ -336,12 +382,14 @@ it("should read title and sortorder from hidden index.md", () => {
         title: ".",
         path: "",
         sortorder: Infinity,
+        visible: true,
         children: [
             {
                 key: "./usage",
                 title: "Usage guide",
                 path: "",
                 sortorder: 10,
+                visible: false,
                 children: [
                     {
                         id: "mock:usage/foo.md",

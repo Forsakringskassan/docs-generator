@@ -53,6 +53,8 @@ This page will be rendered but will not be visible in the menu.
 It can be linked to by other means.
 ```
 
+If a section (`index.md`) is hidden it will still generate a navigation tree but will not be rendered in the menu.
+
 ## Expandable groups
 
 Each folder with new files will be a expandable group.

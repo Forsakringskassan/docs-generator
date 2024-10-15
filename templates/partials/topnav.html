@@ -5,10 +5,11 @@
         {% set navPath = nav.path | replace("html", "") %}
         {% set navPath = navPath | replace(".", "") %}
         {% set activePage = navPath in doc.fileInfo.fullPath %}
+        {% if nav.visible %}
         <li class="docs-topnav__item {% if activePage %}highlight{% endif %}">
             <a class="docs-topnav__anchor" href="{{ nav.path | relative(doc) }}"> {{ nav.title }} </a>
         </li>
-        {%- endfor -%}
+        {% endif %} {%- endfor -%}
         <li class="docs-topnav__item docs-topnav__item--more" style="visibility: hidden">
             <button type="button" class="docs-topnav__anchor" aria-expanded="false">
                 <span>Mer</span>
@@ -23,10 +24,11 @@
                     {% set navPath = nav.path | replace("html", "") %}
                     {% set navPath = navPath | replace(".", "") %}
                     {% set activePage = navPath in doc.fileInfo.fullPath %}
+                    {% if nav.visible %}
                     <li class="docs-contextmenu__item {% if activePage %}highlight{% endif %}" style="display: none">
                         <a class="docs-contextmenu__anchor" href="{{ nav.path | relative(doc) }}"> {{ nav.title }} </a>
                     </li>
-                    {%- endfor -%}
+                    {% endif %} {%- endfor -%}
                 </ul>
             </div>
         </li>
