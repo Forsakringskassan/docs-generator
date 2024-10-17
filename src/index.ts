@@ -53,6 +53,7 @@ export {
     type TopnavEntry,
     type VersionProcessorOptions,
     type SourceUrlProcessorOptions,
+    htmlRedirectProcessor,
     manifestProcessor,
     motdProcessor,
     selectableVersionProcessor,

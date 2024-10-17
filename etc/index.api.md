@@ -123,6 +123,9 @@ export interface GeneratorSiteOptions {
     name: string;
 }
 
+// @public
+export function htmlRedirectProcessor(): Processor;
+
 // @public (undocumented)
 export function livereloadProcessor(options: ProcessorOptions): Processor;
 
@@ -271,6 +274,8 @@ export interface ProcessorContext {
     hasTemplate(name: string): boolean;
     // (undocumented)
     log<TArgs extends unknown[]>(...args: TArgs): void;
+    // (undocumented)
+    readonly outputFolder: string;
     // (undocumented)
     readonly resources: ResourceTask[];
     // (undocumented)

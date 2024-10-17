@@ -2,6 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import {
     Generator,
+    htmlRedirectProcessor,
     manifestProcessor,
     versionProcessor,
     searchProcessor,
@@ -31,6 +32,7 @@ const docs = new Generator({
         "@forsakringskassan/docs-live-example",
     ],
     processors: [
+        htmlRedirectProcessor(),
         manifestProcessor({ markdown: "etc/docs-manifest.md" }),
         searchProcessor(),
         versionProcessor(pkg, "toolbar", {
