@@ -56,6 +56,7 @@ export {
     htmlRedirectProcessor,
     manifestProcessor,
     motdProcessor,
+    redirectFileProcessor,
     selectableVersionProcessor,
     themeSelectProcessor,
     versionBannerProcessor,
