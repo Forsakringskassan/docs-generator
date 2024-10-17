@@ -18,3 +18,16 @@ redirect_from:
 ```
 
 Make sure `old-page.md` does not exist.
+
+::: warning
+
+Remember to configure a redirect generator:
+
+-   `htmlRedirectProcessor` for generating HTML meta refresh redirects.
+
+:::
+
+## `htmlRedirectProcessor`
+
+Generates html-files with a HTML meta refresh.
+supported by all hosting services but does not respond with proper a proper HTTP 301 response.

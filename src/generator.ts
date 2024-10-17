@@ -171,6 +171,7 @@ async function stage(
 /* eslint-enable no-console */
 
 function createContext(
+    outputFolder: string,
     templateLoader: TemplateLoader,
 ): Omit<ProcessorContext, "log"> {
     let docs: Document[] = [];
@@ -214,6 +215,8 @@ function createContext(
         get sidenav(): NavigationSection {
             return sidenav;
         },
+
+        outputFolder,
 
         addDocument(document: Document | Document[]) {
             docs = [...docs, ...toArray(document)];
@@ -380,7 +383,7 @@ export class Generator {
         ];
 
         const templateLoader = createTemplateLoader([]);
-        const context = createContext(templateLoader);
+        const context = createContext("", templateLoader);
         await stage("generate-docs", context, processors, { verbose: false });
 
         const docs = context.docs.filter(haveOutput);
@@ -430,7 +433,7 @@ export class Generator {
         compileProcessorRuntime(this, import.meta.url, processors);
 
         const templateLoader = createTemplateLoader(templateFolders);
-        const context = createContext(templateLoader);
+        const context = createContext(outputFolder, templateLoader);
         const generatedFiles = [
             await stage("generate-docs", context, processors),
             await stage("generate-nav", context, processors),

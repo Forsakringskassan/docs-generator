@@ -41,6 +41,7 @@ export interface ProcessorContext {
     readonly topnav: NavigationSection;
     readonly sidenav: NavigationSection;
     readonly resources: ResourceTask[];
+    readonly outputFolder: string;
 
     addDocument(document: Document | Document[]): void;
     addVendorAsset(asset: VendorAsset | VendorAsset[]): void;

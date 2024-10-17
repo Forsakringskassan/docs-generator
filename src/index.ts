@@ -54,6 +54,7 @@ export {
     type VersionProcessorOptions,
     type SelectableVersionProcessorOptions,
     type SourceUrlProcessorOptions,
+    htmlRedirectProcessor,
     manifestProcessor,
     motdProcessor,
     selectableVersionProcessor,

@@ -3,6 +3,7 @@ import path from "node:path";
 import isCI from "is-ci";
 import {
     Generator,
+    htmlRedirectProcessor,
     manifestProcessor,
     motdProcessor,
     versionProcessor,
@@ -34,6 +35,7 @@ const docs = new Generator({
         "@forsakringskassan/docs-live-example",
     ],
     processors: [
+        htmlRedirectProcessor(),
         manifestProcessor({ markdown: "etc/docs-manifest.md" }),
         searchProcessor(),
         versionProcessor(pkg, "toolbar", {
