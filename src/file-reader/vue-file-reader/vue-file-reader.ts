@@ -54,7 +54,7 @@ function parseAPI(filePath: string, api: ComponentAPI): Document {
         name: `vue:${componentName}`,
         alias: [],
         visible: false,
-        attributes: { sortorder: Infinity },
+        attributes: { sortorder: Infinity, redirectFrom: [] },
         body: html,
         outline: [],
         format: "html",

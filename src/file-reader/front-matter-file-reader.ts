@@ -108,6 +108,7 @@ export function parseFile(
             status: attributes.status,
             badge: getBadge(attributes),
             component: getComponent(attributes),
+            redirectFrom: toArray(attributes.redirect_from ?? []),
             sortorder: attributes.sortorder ?? Infinity,
         },
         body: blocks.body,

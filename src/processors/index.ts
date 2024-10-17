@@ -8,6 +8,11 @@ export {
     versionBannerProcessor,
 } from "./motd-processor";
 export { themeSelectProcessor } from "./theme-select-processor";
+export {
+    htmlRedirectProcessor,
+    redirectFileProcessor,
+    redirectProcessor,
+} from "./redirect";
 export { selectableVersionProcessor } from "./selectable-version-processor";
 export { type TopnavEntry, topnavProcessor } from "./topnav-processor";
 export {

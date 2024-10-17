@@ -33,6 +33,9 @@ export interface DocumentAttributes {
 
     /** navigation sortorder */
     sortorder?: number;
+
+    /** pages redirecting to this page */
+    redirect_from?: string | string[];
 }
 
 /**
@@ -60,6 +63,7 @@ export interface NormalizedDocumentAttributes {
     href?: string;
     /** normalized sortorder (defaults to Infinity) */
     sortorder: number;
+    redirectFrom: string[];
 }
 
 /**
@@ -106,7 +110,7 @@ export interface Document {
     outline: DocumentOutline;
 
     /** format of body */
-    format: "markdown" | "html" | "json";
+    format: "markdown" | "html" | "json" | "redirect";
 
     /*' list of generic tags */
     tags: string[];
