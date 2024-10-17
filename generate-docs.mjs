@@ -7,6 +7,7 @@ import {
     manifestProcessor,
     motdProcessor,
     versionProcessor,
+    redirectFileProcessor,
     searchProcessor,
     sourceUrlProcessor,
     cookieProcessor,
@@ -36,6 +37,7 @@ const docs = new Generator({
     ],
     processors: [
         htmlRedirectProcessor(),
+        redirectFileProcessor(),
         manifestProcessor({ markdown: "etc/docs-manifest.md" }),
         searchProcessor(),
         versionProcessor(pkg, "toolbar", {

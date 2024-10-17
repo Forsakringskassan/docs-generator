@@ -340,6 +340,9 @@ export function processorRuntimeName(processor: Processor, runtime: ProcessorRun
 export type ProcessorStage = "generate-docs" | "generate-nav" | "assets" | "render";
 
 // @public
+export function redirectFileProcessor(prefix?: string, filename?: string): Processor;
+
+// @public
 export interface ResourceTask {
     // (undocumented)
     from: string;
