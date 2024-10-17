@@ -31,6 +31,7 @@ function createDocument(
         attributes: {
             title,
             sortorder: Infinity /* sorting is tested separately */,
+            redirectFrom: [],
             ...doc?.attributes,
         },
     };
@@ -63,7 +64,7 @@ it("should merge root index.md to root node", () => {
 it("should store sort order from document", () => {
     const nav = generateNavtree([
         createDocument("index.md", "Frontpage", {
-            attributes: { sortorder: 10 },
+            attributes: { sortorder: 10, redirectFrom: [] },
         }),
     ]);
     expect(nav).toEqual(
@@ -77,7 +78,11 @@ it("should store sort order from document", () => {
 it("should use short title if present", () => {
     const nav = generateNavtree([
         createDocument("index.md", "Frontpage", {
-            attributes: { shortTitle: "Short", sortorder: Infinity },
+            attributes: {
+                shortTitle: "Short",
+                sortorder: Infinity,
+                redirectFrom: [],
+            },
         }),
     ]);
     expect(nav).toEqual(
@@ -135,13 +140,28 @@ it("should not ignore sections with visible false", () => {
     });
 });
 
+it("should ignore redirects", () => {
+    const nav = generateNavtree([
+        createDocument("index.md", "Frontpage"),
+        createDocument("foo.md", "Foo", { format: "redirect" }),
+    ]);
+    expect(nav).toEqual({
+        key: ".",
+        title: "Frontpage",
+        path: "",
+        sortorder: Infinity,
+        children: [],
+        visible: true,
+    });
+});
+
 it("should create children for each folder", () => {
     const nav = generateNavtree([
         createDocument("index.md", "Frontpage"),
         createDocument("usage/index.md", "Usage guide"),
         createDocument("usage/foo.md", "Foo component"),
         createDocument("components/index.md", "Components", {
-            attributes: { sortorder: 10 },
+            attributes: { sortorder: 10, redirectFrom: [] },
         }),
     ]);
     expect(nav).toEqual({
@@ -199,10 +219,10 @@ it("should create children for each folder (inverse order)", () => {
         createDocument("components/index.md", "Components"),
         createDocument("usage/foo.md", "Foo component"),
         createDocument("usage/index.md", "Usage guide", {
-            attributes: { sortorder: 20 },
+            attributes: { sortorder: 20, redirectFrom: [] },
         }),
         createDocument("index.md", "Frontpage", {
-            attributes: { sortorder: 10 },
+            attributes: { sortorder: 10, redirectFrom: [] },
         }),
     ]);
     expect(nav).toEqual({
@@ -373,7 +393,7 @@ it("should read title and sortorder from hidden index.md", () => {
     const nav = generateNavtree([
         createDocument("usage/index.md", "Usage guide", {
             visible: false,
-            attributes: { sortorder: 10 },
+            attributes: { sortorder: 10, redirectFrom: [] },
         }),
         createDocument("usage/foo.md", "Foo component"),
     ]);

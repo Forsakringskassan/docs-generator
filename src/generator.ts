@@ -28,6 +28,7 @@ import {
     type TemplateBlockData,
 } from "./processor-context";
 import { type ProcessorStage } from "./processor-stage";
+import { redirectProcessor } from "./processors";
 import { type Manifest } from "./manifest";
 import { serve } from "./serve";
 import { haveOutput } from "./utils";
@@ -375,6 +376,7 @@ export class Generator {
     public async manifest(sourceFiles: SourceFiles[]): Promise<Manifest> {
         const processors: Processor[] = [
             fileReaderProcessor(sourceFiles),
+            redirectProcessor(),
             ...this.processors,
         ];
 
@@ -403,6 +405,7 @@ export class Generator {
 
         const processors: Processor[] = [
             fileReaderProcessor(sourceFiles),
+            redirectProcessor(),
             vendorProcessor(assetFolder, this.vendor),
             cssAssetProcessor(assetFolder, this.styles),
             jsAssetProcessor(assetFolder, this.scripts),
