@@ -37,7 +37,13 @@ export function nunjucksProcessor(
                 });
             }
 
+            const formats = ["markdown", "json"];
             const docs = context.docs.filter((it) => {
+                /* the nunjucks process primarly renders markdown documents but
+                 * for legacy reasons it also renders raw json files */
+                if (!formats.includes(it.format)) {
+                    return false;
+                }
                 return it.fileInfo.outputName;
             });
 
@@ -47,7 +53,7 @@ export function nunjucksProcessor(
 
             const generatedFiles: string[] = [];
             try {
-                for (const doc of context.docs) {
+                for (const doc of docs) {
                     const filePath = await renderDocument(doc);
                     if (filePath) {
                         generatedFiles.push(filePath);

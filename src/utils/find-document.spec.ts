@@ -9,7 +9,7 @@ function createDocument(filePath: string, doc: Partial<Document>): Document {
         name: path.basename(filePath),
         alias: [],
         visible: true,
-        attributes: { sortorder: Infinity },
+        attributes: { sortorder: Infinity, redirectFrom: [] },
         body: "",
         outline: [],
         format: "markdown",

@@ -39,7 +39,7 @@ interface Document_2 {
     body: string;
     // (undocumented)
     fileInfo: FileInfo;
-    format: "markdown" | "html" | "json";
+    format: "markdown" | "html" | "json" | "redirect";
     id: string;
     name: string;
     outline: DocumentOutline;
@@ -132,6 +132,7 @@ export interface Manifest {
     pages: Array<{
         path: string;
         title: string;
+        redirect: null | string;
         outline: Array<{
             heading: string;
             anchor: string;
@@ -222,6 +223,8 @@ export interface NormalizedDocumentAttributes {
     href?: string;
     // (undocumented)
     layout?: string;
+    // (undocumented)
+    redirectFrom: string[];
     // (undocumented)
     shortTitle?: string;
     sortorder: number;

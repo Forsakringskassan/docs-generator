@@ -132,6 +132,12 @@ export function generateNavtree(docs: Document[]): NavigationSection {
     }
 
     for (const doc of docs) {
+        /* always ignore redirects, should never be present in navigation no
+         * matter what */
+        if (doc.format === "redirect") {
+            continue;
+        }
+
         const [name, isSection] = pathFromDoc(doc);
         const title =
             doc.attributes.shortTitle ??

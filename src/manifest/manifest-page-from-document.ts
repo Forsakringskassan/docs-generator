@@ -54,10 +54,11 @@ function findExamples(doc: DocumentLike): ManifestExamples {
  * @internal
  */
 export function manifestPageFromDocument(doc: DocumentLike): ManifestPage {
-    const { fileInfo } = doc;
+    const { body, fileInfo, format } = doc;
     return {
         path: getOutputFilePath("", fileInfo),
         title: doc.attributes.title ?? doc.name ?? "",
+        redirect: format === "redirect" ? body : null,
         outline: flattenOutline(doc.outline),
         examples: findExamples(doc),
     };
