@@ -12,16 +12,11 @@ export function normalizeVendorDefinition(
     if (typeof vendor === "string") {
         return {
             package: vendor,
-            global: undefined,
-            expose: "named",
-            subpaths: [],
+            alias: undefined,
         };
     } else {
         return {
             package: vendor.package,
-            global: vendor.global,
-            expose: vendor.expose ?? "named",
-            subpaths: vendor.subpaths ?? [],
             alias: vendor.alias ?? undefined,
         };
     }
