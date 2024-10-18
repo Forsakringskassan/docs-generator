@@ -21,6 +21,7 @@ const docs = [
         attributes: {
             title: "Document with title",
             sortorder: Infinity,
+            redirectFrom: [],
         },
     }),
     createMockDocument("with-name", "./components/with-name.html"),
@@ -29,6 +30,7 @@ const docs = [
         attributes: {
             component: [{ name: "FFirst" }, { name: "FSecond" }],
             sortorder: Infinity,
+            redirectFrom: [],
         },
     }),
 ];
