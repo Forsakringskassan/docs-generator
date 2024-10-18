@@ -162,7 +162,6 @@ async function stage(
             }
         } catch (err) {
             console.error(`When running processor "${processor.name}":`);
-            console.error(err);
             throw err;
         }
     }
