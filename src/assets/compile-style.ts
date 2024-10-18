@@ -11,11 +11,13 @@ export async function compileStyle(
     assetFolder: string,
     name: string,
     src: string | URL,
+    options: { cwd: string },
 ): Promise<AssetInfo> {
+    const { cwd } = options;
     try {
         const outfile = path.join("temp", `asset-${name}.css`);
         const source = await fs.readFile(src, "utf-8");
-        await compileSassString(outfile, source);
+        await compileSassString(outfile, source, { cwd });
         const content = await fs.readFile(outfile, "utf-8");
         const fingerprint = getFingerprint(content);
         const integrity = getIntegrity(content);
