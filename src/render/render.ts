@@ -152,11 +152,13 @@ async function compileStandalones(options: {
     fileInfo: FileInfo;
     cacheFolder: string;
     outputFolder: string;
+    templateFolders: string[];
     tasks: ExampleStandaloneTask[];
     renderTemplate(name: string, context: object): Promise<string>;
     templateData: Record<string, unknown>;
 }): Promise<void> {
-    const { fileInfo, tasks, renderTemplate, templateData } = options;
+    const { fileInfo, tasks, renderTemplate, templateData, templateFolders } =
+        options;
     if (tasks.length === 0) {
         return;
     }
@@ -166,7 +168,11 @@ async function compileStandalones(options: {
     const cacheMiss = cache(cacheFolder, outputFolder);
     const dirtyTasks = tasks.filter(cacheMiss);
 
-    const standaloneTemplate = findTemplate(fileInfo, "example");
+    const standaloneTemplate = findTemplate(
+        templateFolders,
+        fileInfo,
+        "example",
+    );
     for (const task of dirtyTasks) {
         const outputFile = path.join(outputFolder, task.outputFile);
         const content = await renderTemplate(standaloneTemplate, {
@@ -196,7 +202,7 @@ export async function render(
     options: RenderOptions,
 ): Promise<string | null> {
     const { fileInfo } = doc;
-    const { outputFolder, cacheFolder } = options;
+    const { outputFolder, cacheFolder, templateFolders } = options;
 
     /* skip rendering files which have no output */
     if (!haveOutputFile(fileInfo)) {
@@ -216,7 +222,7 @@ export async function render(
     const njk = new nunjucks.Environment(loader, { autoescape: false });
     const asyncRender = promisify<string, object, string>(njk.render);
     const renderTemplate = asyncRender.bind(njk);
-    const template = findTemplate(doc.fileInfo, doc);
+    const template = findTemplate(templateFolders, doc.fileInfo, doc);
     const templateData = {
         ...options.templateData,
         site: options.site,
@@ -355,6 +361,7 @@ export async function render(
             fileInfo,
             cacheFolder,
             outputFolder,
+            templateFolders,
             tasks: generatedStandalone,
             renderTemplate,
             templateData,

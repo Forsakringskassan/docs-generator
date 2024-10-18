@@ -38,13 +38,19 @@ function cacheKey(layout: string, extension: "html" | "json"): string {
  * @internal
  * @param from - Which document requested this template (for logging/debugging).
  */
-export function findTemplate(from: FileInfo, doc: Document): string;
 export function findTemplate(
+    folders: string[],
+    from: FileInfo,
+    doc: Document,
+): string;
+export function findTemplate(
+    folders: string[],
     from: FileInfo,
     layout: string,
     format?: "html" | "json",
 ): string;
 export function findTemplate(
+    folders: string[],
     from: FileInfo,
     src: Document | string,
     format?: "html" | "json",
@@ -65,12 +71,14 @@ export function findTemplate(
         return cached;
     }
 
+    folders = [...folders, templateDirectory];
     const template = `${layout}.template.${format}`;
-    const templateFile = path.join(templateDirectory, template);
-    if (!fs.existsSync(templateFile)) {
-        throw new MissingTemplateError(from, template, format, [
-            templateDirectory,
-        ]);
+    const searchPaths = folders.map((it) => {
+        return path.join(it, template);
+    });
+    const found = searchPaths.find((it) => fs.existsSync(it));
+    if (!found) {
+        throw new MissingTemplateError(from, template, format, folders);
     }
 
     cache.set(key, template);
