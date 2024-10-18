@@ -14,6 +14,7 @@ live-example/example.html
 live-example/index.html
 markdown/code-preview/fullscreen.html
 markdown/code-preview/index.html
+markdown/code-preview/vue.html
 markdown/containers/alt-text.html
 markdown/containers/details.html
 markdown/containers/messagebox.html

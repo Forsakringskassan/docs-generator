@@ -5,7 +5,7 @@ exports[`should generate compiled SFC 1`] = `
 
 import { defineComponent } from "vue";
 
-const exampleComponent =  defineComponent({
+const exampleComponent = defineComponent({
     name: "MockExample",
     props: {
         name: {
@@ -14,11 +14,13 @@ const exampleComponent =  defineComponent({
         },
     },
 });
+
+
 import { toDisplayString as _toDisplayString, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue"
 
 const _hoisted_1 = { class: "greeting" }
 
-export function render(_ctx, _cache) {
+export function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (_openBlock(), _createElementBlock("p", _hoisted_1, "Hello " + _toDisplayString(_ctx.name) + "!", 1 /* TEXT */))
 }
 
@@ -50,6 +52,7 @@ exports[`should generate markup 1`] = `
 exports[`should handle missing <script> 1`] = `
 "import { setup } from "/path/to/setup.ts";
 const exampleComponent = {};
+
 import { openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue"
 
 const _hoisted_1 = { class: "greeting" }

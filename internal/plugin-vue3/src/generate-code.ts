@@ -1,4 +1,10 @@
-import { compileTemplate, parse } from "vue/compiler-sfc";
+import {
+    type BindingMetadata,
+    compileScript,
+    compileStyle,
+    compileTemplate,
+    parse,
+} from "vue/compiler-sfc";
 
 export interface ExampleOptions {
     /* original filename */
@@ -27,58 +33,84 @@ export function generateCode(options: ExampleOptions): ExampleResult {
     const selector = `#${slug}`;
     const asset = `${slug}-${fingerprint}.js`;
     const { descriptor, errors } = parse(code, { filename });
+    const scopeId = `data-v-${fingerprint}`;
 
     if (errors.length) {
         throw new Error(`Errors occured when trying to parse ${filename}.`);
     }
 
-    /** TODO: Re-examine if needed, when migrated to Vue 3 (SFKUI-5718)*/
-    if (descriptor.template?.content) {
-        descriptor.template.content = descriptor.template.content.replace(
-            "\\\\",
-            "\\",
-        );
-    }
-
-    if (descriptor.styles.some((it) => it.scoped)) {
-        throw new Error(
-            `Scoped style in ${filename}. Scoped styles are not implemented.`,
-        );
-    }
-
+    const hasScoped = descriptor.styles.some((e) => e.scoped);
     const styleContent = descriptor.styles
-        .map((stylePart) => stylePart.content)
+        .map((stylePart) => {
+            const compiledStyle = compileStyle({
+                filename: descriptor.filename,
+                source: stylePart.content,
+                isProd: false,
+                id: scopeId,
+                scoped: stylePart.scoped,
+                trim: true,
+            });
+            return compiledStyle.code;
+        })
         .join("\n");
 
     let sourcecode = `import { setup } from "${setupPath}";\n`;
 
-    if (descriptor.script?.content) {
-        sourcecode += descriptor.script.content.replace(
-            "export default",
-            "const exampleComponent = ",
-        );
+    let bindings: BindingMetadata | undefined = undefined;
+    if (descriptor.script || descriptor.scriptSetup) {
+        const script = compileScript(descriptor, {
+            id: scopeId,
+            isProd: false,
+            sourceMap: false,
+            inlineTemplate: false,
+            genDefaultAs: "exampleComponent",
+            templateOptions: {
+                id: scopeId,
+                filename,
+                source: descriptor.template?.content,
+                scoped: hasScoped,
+                slotted: descriptor.slotted,
+                compilerOptions: {
+                    comments: false,
+                    whitespace: "condense",
+                    scopeId: hasScoped ? scopeId : undefined,
+                    mode: "module",
+                },
+            },
+        });
+        bindings = script.bindings;
+        sourcecode += script.content;
+        sourcecode += "\n\n";
     } else {
         /* edge case: handle when the vue component does not have <script> but only a <template> */
-        sourcecode += `const exampleComponent = {};\n`;
+        sourcecode += `const exampleComponent = {};\n\n`;
     }
 
     if (descriptor.template) {
-        const js = compileTemplate({
-            id: filename,
+        const template = compileTemplate({
+            id: scopeId,
             filename,
             source: descriptor.template.content,
+            scoped: hasScoped,
+            slotted: descriptor.slotted,
             preprocessLang: descriptor.template.lang,
             compilerOptions: {
+                bindingMetadata: bindings,
                 comments: false,
-                whitespace: "preserve",
+                whitespace: "condense",
+                scopeId: hasScoped ? scopeId : undefined,
+                mode: "module",
             },
         });
-
-        sourcecode += `${js.code}\n\n`;
-        sourcecode += `exampleComponent.render = render;\n\n`;
+        sourcecode += `${template.code}\n\n`;
+        sourcecode += `exampleComponent.render = render;\n`;
     }
 
-    sourcecode += `setup({\n  rootComponent: exampleComponent,\n  selector: "${selector}"\n});\n`;
+    if (hasScoped) {
+        sourcecode += `exampleComponent.__scopeId = "${scopeId}";\n`;
+    }
+
+    sourcecode += `\nsetup({\n  rootComponent: exampleComponent,\n  selector: "${selector}"\n});\n`;
 
     const markup = /* HTML */ `
         <div id="${slug}"></div>
