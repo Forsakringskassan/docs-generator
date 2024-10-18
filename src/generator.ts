@@ -162,7 +162,6 @@ async function stage(
             }
         } catch (err) {
             console.error(`When running processor "${processor.name}":`);
-            console.error(err);
             throw err;
         }
     }
@@ -388,6 +387,8 @@ export class Generator {
     }
 
     public async build(sourceFiles: SourceFiles[]): Promise<string[]> {
+        const cwd = process.cwd();
+
         this.sourceFiles = sourceFiles;
         const {
             site,
@@ -404,7 +405,7 @@ export class Generator {
         const processors: Processor[] = [
             fileReaderProcessor(sourceFiles),
             vendorProcessor(assetFolder, this.vendor),
-            cssAssetProcessor(assetFolder, this.styles),
+            cssAssetProcessor(assetFolder, this.styles, { cwd }),
             jsAssetProcessor(assetFolder, this.scripts),
             staticResourcesProcessor(assetFolder, this.resources),
             navigationProcessor(),

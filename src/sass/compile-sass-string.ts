@@ -11,10 +11,12 @@ import { moduleImporter } from "./module-importer";
 export async function compileSassString(
     dst: string,
     style: string,
+    options: { cwd?: string } = {},
 ): Promise<void> {
+    const { cwd = process.cwd() } = options;
     const result = await compileStringAsync(style, {
         style: "expanded",
-        importers: [new NodePackageImporter(), moduleImporter],
+        importers: [new NodePackageImporter(), moduleImporter({ cwd })],
     });
     await fs.mkdir(path.dirname(dst), { recursive: true });
     await fs.writeFile(dst, result.css, "utf-8");
