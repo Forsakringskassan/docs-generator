@@ -1593,7 +1593,6 @@ code.hljs {
     }
 }
 .select-field__select {
-    appearance: none;
     background-color: var(--f-background-input);
     box-shadow: var(--f-input-shadow-inset);
     border-radius: var(--f-border-radius-medium);

@@ -1,4 +1,4 @@
-import { compileTemplate, parse } from "vue/compiler-sfc";
+import { compileTemplate, parse, compileScript } from "vue/compiler-sfc";
 
 export interface ExampleOptions {
     /* original filename */
@@ -27,6 +27,7 @@ export function generateCode(options: ExampleOptions): ExampleResult {
     const selector = `#${slug}`;
     const asset = `${slug}-${fingerprint}.js`;
     const { descriptor, errors } = parse(code, { filename });
+    //console.log("descriptor", descriptor);
 
     if (errors.length) {
         throw new Error(`Errors occured when trying to parse ${filename}.`);
@@ -57,6 +58,16 @@ export function generateCode(options: ExampleOptions): ExampleResult {
             "export default",
             "const exampleComponent = ",
         );
+    } else if (descriptor.scriptSetup?.content) {
+        const compiledScript = compileScript(descriptor, {
+            id: "scope-style-not-supported",
+        });
+        //console.log("compiledScripts:", compiledScript);
+        sourcecode += compiledScript.content
+            .replace("export default", "const exampleComponent = ")
+            .replace("Object.defineProperty", "//Object.defineProperty");
+
+        sourcecode += "\n";
     } else {
         /* edge case: handle when the vue component does not have <script> but only a <template> */
         sourcecode += `const exampleComponent = {};\n`;
@@ -89,7 +100,7 @@ export function generateCode(options: ExampleOptions): ExampleResult {
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
         <script defer src="./${asset}"></script>
     `;
-
+    //console.log("sourcecode:", sourcecode);
     return {
         markup,
         sourcecode,

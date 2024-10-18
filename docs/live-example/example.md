@@ -3,22 +3,24 @@ title: Example
 layout: content-with-menu
 ---
 
-## HTML
-
-```import live-example test-id="html-example"
-HTMLLiveExample.vue
+```import
+test.vue
 ```
 
-```import static
-HTMLLiveExample.vue
+## Multi
+
+```import live-example
+MultipleScriptLiveExample.vue
 ```
 
 ## Vue
 
-```import live-example test-id="vue-example"
+```import live-example
 VueLiveExample.vue
 ```
 
-```import static
-VueLiveExample.vue
+## HTML
+
+```import live-example
+HTMLLiveExample.vue
 ```
