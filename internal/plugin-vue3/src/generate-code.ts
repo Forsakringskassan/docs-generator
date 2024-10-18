@@ -119,7 +119,7 @@ export function generateCode(options: ExampleOptions): ExampleResult {
             ${styleContent}
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./${asset}"></script>
+        <script type="module" src="./${asset}"></script>
     `;
 
     return {
