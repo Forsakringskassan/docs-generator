@@ -28,6 +28,13 @@ exports[`smoketest 1`] = `
               "sortorder": Infinity,
               "title": "Fullscreen examples",
             },
+            {
+              "external": false,
+              "id": "fs:docs/markdown/code-preview/vue.md",
+              "path": "./markdown/code-preview/vue.html",
+              "sortorder": Infinity,
+              "title": "Vue examples",
+            },
           ],
           "key": "./markdown/code-preview",
           "path": "./markdown/code-preview/",
