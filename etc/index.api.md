@@ -39,7 +39,7 @@ interface Document_2 {
     body: string;
     // (undocumented)
     fileInfo: FileInfo;
-    format: "markdown" | "html" | "json";
+    format: "markdown" | "html" | "json" | "redirect";
     id: string;
     name: string;
     outline: DocumentOutline;
@@ -123,6 +123,9 @@ export interface GeneratorSiteOptions {
     name: string;
 }
 
+// @public
+export function htmlRedirectProcessor(): Processor;
+
 // @public (undocumented)
 export function livereloadProcessor(options: ProcessorOptions): Processor;
 
@@ -132,6 +135,7 @@ export interface Manifest {
     pages: Array<{
         path: string;
         title: string;
+        redirect: null | string;
         outline: Array<{
             heading: string;
             anchor: string;
@@ -223,6 +227,8 @@ export interface NormalizedDocumentAttributes {
     // (undocumented)
     layout?: string;
     // (undocumented)
+    redirectFrom: string[];
+    // (undocumented)
     shortTitle?: string;
     sortorder: number;
     // (undocumented)
@@ -268,6 +274,8 @@ export interface ProcessorContext {
     hasTemplate(name: string): boolean;
     // (undocumented)
     log<TArgs extends unknown[]>(...args: TArgs): void;
+    // (undocumented)
+    readonly outputFolder: string;
     // (undocumented)
     readonly resources: ResourceTask[];
     // (undocumented)
@@ -330,6 +338,9 @@ export function processorRuntimeName(processor: Processor, runtime: ProcessorRun
 
 // @public (undocumented)
 export type ProcessorStage = "generate-docs" | "generate-nav" | "assets" | "render";
+
+// @public
+export function redirectFileProcessor(prefix?: string, filename?: string): Processor;
 
 // @public
 export interface ResourceTask {
