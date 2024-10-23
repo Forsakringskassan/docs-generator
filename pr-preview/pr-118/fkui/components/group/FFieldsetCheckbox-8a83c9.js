@@ -48,9 +48,9 @@
     const _component_f_checkbox_field = (0, import_vue5.resolveComponent)("f-checkbox-field");
     const _component_f_fieldset = (0, import_vue5.resolveComponent)("f-fieldset");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_fieldset, { name: "group-name-checkbox" }, {
-      label: (0, import_vue5.withCtx)(() => [
+      label: (0, import_vue5.withCtx)(() => _cache[5] || (_cache[5] = [
         (0, import_vue5.createTextVNode)(" Vilka dagar i veckan vill du bli kontaktad? ")
-      ]),
+      ])),
       default: (0, import_vue5.withCtx)(() => [
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           id: "dagar-mandag",
@@ -58,9 +58,9 @@
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.dagar = $event),
           value: "mandag"
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[6] || (_cache[6] = [
             (0, import_vue5.createTextVNode)(" M\xE5ndag ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
@@ -70,9 +70,9 @@
           "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.dagar = $event),
           value: "tisdag"
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[7] || (_cache[7] = [
             (0, import_vue5.createTextVNode)(" Tisdag ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
@@ -82,9 +82,9 @@
           "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.dagar = $event),
           value: "onsdag"
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[8] || (_cache[8] = [
             (0, import_vue5.createTextVNode)(" Onsdag ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
@@ -94,9 +94,9 @@
           "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.dagar = $event),
           value: "torsdag"
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[9] || (_cache[9] = [
             (0, import_vue5.createTextVNode)(" Torsdag ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
@@ -106,9 +106,9 @@
           "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.dagar = $event),
           value: "fredag"
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[10] || (_cache[10] = [
             (0, import_vue5.createTextVNode)(" Fredag ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"])

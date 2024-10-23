@@ -47,9 +47,9 @@
         key: 0,
         id: "child-name"
       }, {
-        default: (0, import_vue5.withCtx)(() => [
+        default: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
           (0, import_vue5.createTextVNode)(" Barnets namn ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       })), [

@@ -74,43 +74,15 @@
       };
     }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "h3",
-    null,
-    "Frukter",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_2 = { class: "button-group" };
+  var _hoisted_1 = { class: "button-group" };
+  var _hoisted_2 = {
+    class: "button button-group__item button--tertiary button--small",
+    type: "button"
+  };
   var _hoisted_3 = {
     class: "button button-group__item button--tertiary button--small",
     type: "button"
   };
-  var _hoisted_4 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "span",
-    null,
-    " Ta bort ",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_5 = {
-    class: "button button-group__item button--tertiary button--small",
-    type: "button"
-  };
-  var _hoisted_6 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "span",
-    null,
-    " Bifoga ",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_7 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "span",
-    { class: "sr-only" },
-    " Frukter ",
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_icon = (0, import_vue5.resolveComponent)("f-icon");
     const _component_f_table_column = (0, import_vue5.resolveComponent)("f-table-column");
@@ -120,7 +92,13 @@
       import_vue5.Fragment,
       null,
       [
-        _hoisted_1,
+        _cache[4] || (_cache[4] = (0, import_vue5.createElementVNode)(
+          "h3",
+          null,
+          "Frukter",
+          -1
+          /* HOISTED */
+        )),
         (0, import_vue5.createVNode)(_component_f_sort_filter_dataset, {
           data: _ctx.fruits,
           "default-sort-attribute": "name",
@@ -128,20 +106,32 @@
           "sortable-attributes": _ctx.sortableAttributes
         }, {
           header: (0, import_vue5.withCtx)(() => [
-            (0, import_vue5.createElementVNode)("div", _hoisted_2, [
-              (0, import_vue5.createElementVNode)("button", _hoisted_3, [
+            (0, import_vue5.createElementVNode)("div", _hoisted_1, [
+              (0, import_vue5.createElementVNode)("button", _hoisted_2, [
                 (0, import_vue5.createVNode)(_component_f_icon, {
                   name: "trashcan",
                   class: "button__icon"
                 }),
-                _hoisted_4
+                _cache[0] || (_cache[0] = (0, import_vue5.createElementVNode)(
+                  "span",
+                  null,
+                  " Ta bort ",
+                  -1
+                  /* HOISTED */
+                ))
               ]),
-              (0, import_vue5.createElementVNode)("button", _hoisted_5, [
+              (0, import_vue5.createElementVNode)("button", _hoisted_3, [
                 (0, import_vue5.createVNode)(_component_f_icon, {
                   name: "paper-clip",
                   class: "button__icon"
                 }),
-                _hoisted_6
+                _cache[1] || (_cache[1] = (0, import_vue5.createElementVNode)(
+                  "span",
+                  null,
+                  " Bifoga ",
+                  -1
+                  /* HOISTED */
+                ))
               ])
             ])
           ]),
@@ -152,12 +142,18 @@
               selectable: "",
               "key-attribute": "id"
             }, {
-              caption: (0, import_vue5.withCtx)(() => [
-                _hoisted_7
-              ]),
-              "checkbox-description": (0, import_vue5.withCtx)(() => [
+              caption: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
+                (0, import_vue5.createElementVNode)(
+                  "span",
+                  { class: "sr-only" },
+                  " Frukter ",
+                  -1
+                  /* HOISTED */
+                )
+              ])),
+              "checkbox-description": (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
                 (0, import_vue5.createTextVNode)(" V\xE4lj denna raden ")
-              ]),
+              ])),
               default: (0, import_vue5.withCtx)(({ row }) => [
                 (0, import_vue5.createVNode)(
                   _component_f_table_column,

@@ -54,9 +54,9 @@
         bullets: true
       }, null, 8, ["items"]),
       (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, { id: "fornamn-utan-text" }, {
-        default: (0, import_vue5.withCtx)(() => [
+        default: (0, import_vue5.withCtx)(() => _cache[0] || (_cache[0] = [
           (0, import_vue5.createTextVNode)(" F\xF6rnamn ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       })), [
@@ -68,9 +68,9 @@
         ]
       ]),
       (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, { id: "efternamn-utan-text" }, {
-        default: (0, import_vue5.withCtx)(() => [
+        default: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
           (0, import_vue5.createTextVNode)(" Efternamn ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       })), [

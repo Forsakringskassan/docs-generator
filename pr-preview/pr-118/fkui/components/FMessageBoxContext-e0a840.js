@@ -36,13 +36,6 @@
     name: "FMessageBoxContext",
     components: { FMessageBox: import_vue4.FMessageBox }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "p",
-    null,
-    "Komponenten kommer vid fokus inte l\xE4ngre att l\xE4sa texten Informationsmeddelande.",
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_message_box = (0, import_vue5.resolveComponent)("f-message-box");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_message_box, {
@@ -59,7 +52,13 @@
           2
           /* CLASS */
         ),
-        _hoisted_1
+        _cache[0] || (_cache[0] = (0, import_vue5.createElementVNode)(
+          "p",
+          null,
+          "Komponenten kommer vid fokus inte l\xE4ngre att l\xE4sa texten Informationsmeddelande.",
+          -1
+          /* HOISTED */
+        ))
       ]),
       _: 1
       /* STABLE */

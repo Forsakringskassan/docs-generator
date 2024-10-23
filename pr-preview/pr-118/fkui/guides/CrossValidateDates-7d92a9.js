@@ -65,9 +65,9 @@
     const _component_f_fieldset = (0, import_vue5.resolveComponent)("f-fieldset");
     const _directive_validation = (0, import_vue5.resolveDirective)("validation");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_fieldset, null, {
-      label: (0, import_vue5.withCtx)(() => [
+      label: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
         (0, import_vue5.createTextVNode)(" Anst\xE4llningsperiod ")
-      ]),
+      ])),
       default: (0, import_vue5.withCtx)(() => [
         (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_datepicker_field, {
           ref: "fromDate",
@@ -75,9 +75,9 @@
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.fromDate = $event),
           onComponentValidity: _ctx.onValidityFromDate
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
             (0, import_vue5.createTextVNode)(" Fr\xE5n och med ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue", "onComponentValidity"])), [
@@ -105,9 +105,9 @@
           modelValue: _ctx.toDate,
           "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.toDate = $event)
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[4] || (_cache[4] = [
             (0, import_vue5.createTextVNode)(" Till och med ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"])), [

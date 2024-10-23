@@ -84,7 +84,7 @@
           )
         ]),
         default: (0, import_vue5.withCtx)(() => [
-          (0, import_vue5.createTextVNode)(" Detta f\xE4lt accepterar bara str\xE4ngar som b\xF6rjar med 'foo' ")
+          _cache[3] || (_cache[3] = (0, import_vue5.createTextVNode)(" Detta f\xE4lt accepterar bara str\xE4ngar som b\xF6rjar med 'foo' "))
         ]),
         _: 1
         /* STABLE */
@@ -118,7 +118,7 @@
           )
         ]),
         default: (0, import_vue5.withCtx)(() => [
-          (0, import_vue5.createTextVNode)(" Detta f\xE4lt accepterar bara str\xE4ngar som b\xF6rjar med 'bar' ")
+          _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)(" Detta f\xE4lt accepterar bara str\xE4ngar som b\xF6rjar med 'bar' "))
         ]),
         _: 1
         /* STABLE */
@@ -155,7 +155,7 @@
           )
         ]),
         default: (0, import_vue5.withCtx)(() => [
-          (0, import_vue5.createTextVNode)(" Detta f\xE4lt accepterar bara str\xE4ngar som b\xF6rjar med 'demo' ")
+          _cache[5] || (_cache[5] = (0, import_vue5.createTextVNode)(" Detta f\xE4lt accepterar bara str\xE4ngar som b\xF6rjar med 'demo' "))
         ]),
         _: 1
         /* STABLE */

@@ -57,25 +57,7 @@
       }
     }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "span",
-    null,
-    " Custom message ",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_2 = { class: "button-group" };
-  var _hoisted_3 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "button",
-    {
-      type: "submit",
-      "data-test": "submit-button",
-      class: "button button-group__item button--primary button--large"
-    },
-    " Spara ",
-    -1
-    /* HOISTED */
-  );
+  var _hoisted_1 = { class: "button-group" };
   function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_text_field = (0, import_vue5.resolveComponent)("f-text-field");
     const _component_f_expandable_panel = (0, import_vue5.resolveComponent)("f-expandable-panel");
@@ -85,26 +67,32 @@
       "error-list-before-navigate": _ctx.expandPanel,
       onSubmit: _ctx.onSubmit
     }, {
-      "error-message": (0, import_vue5.withCtx)(() => [
-        _hoisted_1
-      ]),
+      "error-message": (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
+        (0, import_vue5.createElementVNode)(
+          "span",
+          null,
+          " Custom message ",
+          -1
+          /* HOISTED */
+        )
+      ])),
       default: (0, import_vue5.withCtx)(() => [
         (0, import_vue5.createVNode)(_component_f_expandable_panel, {
           expanded: _ctx.expand,
           onToggle: _ctx.onToggle
         }, {
-          title: (0, import_vue5.withCtx)(() => [
+          title: (0, import_vue5.withCtx)(() => _cache[4] || (_cache[4] = [
             (0, import_vue5.createTextVNode)("Panel to be expanded")
-          ]),
+          ])),
           default: (0, import_vue5.withCtx)(() => [
             (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, {
               id: "field1",
               modelValue: _ctx.field1,
               "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.field1 = $event)
             }, {
-              default: (0, import_vue5.withCtx)(() => [
+              default: (0, import_vue5.withCtx)(() => _cache[5] || (_cache[5] = [
                 (0, import_vue5.createTextVNode)(" Field1 ")
-              ]),
+              ])),
               _: 1
               /* STABLE */
             }, 8, ["modelValue"])), [
@@ -123,9 +111,9 @@
               modelValue: _ctx.field2,
               "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.field2 = $event)
             }, {
-              default: (0, import_vue5.withCtx)(() => [
+              default: (0, import_vue5.withCtx)(() => _cache[6] || (_cache[6] = [
                 (0, import_vue5.createTextVNode)(" Field2 ")
-              ]),
+              ])),
               _: 1
               /* STABLE */
             }, 8, ["modelValue"])), [
@@ -143,8 +131,18 @@
           _: 1
           /* STABLE */
         }, 8, ["expanded", "onToggle"]),
-        (0, import_vue5.createElementVNode)("div", _hoisted_2, [
-          _hoisted_3,
+        (0, import_vue5.createElementVNode)("div", _hoisted_1, [
+          _cache[7] || (_cache[7] = (0, import_vue5.createElementVNode)(
+            "button",
+            {
+              type: "submit",
+              "data-test": "submit-button",
+              class: "button button-group__item button--primary button--large"
+            },
+            " Spara ",
+            -1
+            /* HOISTED */
+          )),
           (0, import_vue5.createElementVNode)("button", {
             type: "button",
             "data-test": "cancel-button",

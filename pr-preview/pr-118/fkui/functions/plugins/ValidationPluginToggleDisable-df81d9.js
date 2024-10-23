@@ -71,9 +71,9 @@
         name: "color",
         onChange: _ctx.onToggleDisable
       }, {
-        label: (0, import_vue5.withCtx)(() => [
+        label: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
           (0, import_vue5.createTextVNode)(" Ska inmatningsf\xE4ltet vara inaktivt? ")
-        ]),
+        ])),
         default: (0, import_vue5.withCtx)(() => [
           (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_radio_field, {
             id: "disabled-no",
@@ -81,9 +81,9 @@
             "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.isDisabled = $event),
             value: false
           }, {
-            default: (0, import_vue5.withCtx)(() => [
+            default: (0, import_vue5.withCtx)(() => _cache[4] || (_cache[4] = [
               (0, import_vue5.createTextVNode)(" Nej ")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           }, 8, ["modelValue"])), [
@@ -95,9 +95,9 @@
             "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.isDisabled = $event),
             value: true
           }, {
-            default: (0, import_vue5.withCtx)(() => [
+            default: (0, import_vue5.withCtx)(() => _cache[5] || (_cache[5] = [
               (0, import_vue5.createTextVNode)(" Ja ")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           }, 8, ["modelValue"])), [
@@ -116,9 +116,9 @@
             "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.name = $event),
             disabled: _ctx.isDisabled
           }, {
-            default: (0, import_vue5.withCtx)(() => [
+            default: (0, import_vue5.withCtx)(() => _cache[6] || (_cache[6] = [
               (0, import_vue5.createTextVNode)(" Namn ")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           }, 8, ["modelValue", "disabled"])), [

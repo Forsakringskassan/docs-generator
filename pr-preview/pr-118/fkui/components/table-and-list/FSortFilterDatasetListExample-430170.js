@@ -74,20 +74,6 @@
       };
     }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "br",
-    null,
-    null,
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_2 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "br",
-    null,
-    null,
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_list = (0, import_vue5.resolveComponent)("f-list");
     const _component_f_sort_filter_dataset = (0, import_vue5.resolveComponent)("f-sort-filter-dataset");
@@ -120,7 +106,7 @@
               /* TEXT */
             ),
             (0, import_vue5.createElementVNode)("p", null, [
-              (0, import_vue5.createTextVNode)(" Land: "),
+              _cache[0] || (_cache[0] = (0, import_vue5.createTextVNode)(" Land: ")),
               (0, import_vue5.createElementVNode)(
                 "em",
                 null,
@@ -128,8 +114,14 @@
                 1
                 /* TEXT */
               ),
-              _hoisted_1,
-              (0, import_vue5.createTextVNode)(" Beskrivning: "),
+              _cache[1] || (_cache[1] = (0, import_vue5.createElementVNode)(
+                "br",
+                null,
+                null,
+                -1
+                /* HOISTED */
+              )),
+              _cache[2] || (_cache[2] = (0, import_vue5.createTextVNode)(" Beskrivning: ")),
               (0, import_vue5.createElementVNode)(
                 "em",
                 null,
@@ -137,7 +129,13 @@
                 1
                 /* TEXT */
               ),
-              _hoisted_2
+              _cache[3] || (_cache[3] = (0, import_vue5.createElementVNode)(
+                "br",
+                null,
+                null,
+                -1
+                /* HOISTED */
+              ))
             ])
           ]),
           screenreader: (0, import_vue5.withCtx)(({ item }) => [

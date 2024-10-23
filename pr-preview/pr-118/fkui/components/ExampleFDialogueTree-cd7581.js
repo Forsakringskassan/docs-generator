@@ -117,11 +117,11 @@
             import_vue5.Fragment,
             { key: 0 },
             [
-              (0, import_vue5.createTextVNode)(" formA "),
+              _cache[2] || (_cache[2] = (0, import_vue5.createTextVNode)(" formA ")),
               (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, null, {
-                default: (0, import_vue5.withCtx)(() => [
+                default: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
                   (0, import_vue5.createTextVNode)(" Field 1 ")
-                ]),
+                ])),
                 _: 1
                 /* STABLE */
               })), [
@@ -143,11 +143,11 @@
             import_vue5.Fragment,
             { key: 1 },
             [
-              (0, import_vue5.createTextVNode)(" formB "),
+              _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)(" formB ")),
               (0, import_vue5.withDirectives)(((0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_text_field, null, {
-                default: (0, import_vue5.withCtx)(() => [
+                default: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
                   (0, import_vue5.createTextVNode)(" Field 1 ")
-                ]),
+                ])),
                 _: 1
                 /* STABLE */
               })), [

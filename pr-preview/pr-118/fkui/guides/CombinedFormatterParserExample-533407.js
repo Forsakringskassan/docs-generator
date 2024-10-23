@@ -60,9 +60,9 @@
           formatter: _ctx.formatNumber,
           parser: _ctx.parseNumber
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
             (0, import_vue5.createTextVNode)(" Inmatningsf\xE4lt ")
-          ]),
+          ])),
           description: (0, import_vue5.withCtx)(({ descriptionClass }) => [
             (0, import_vue5.createElementVNode)(
               "span",
@@ -87,9 +87,9 @@
       ]),
       (0, import_vue5.createElementVNode)("div", _hoisted_3, [
         (0, import_vue5.createVNode)(_component_f_output_field, { for: "combined-formatter-example" }, {
-          label: (0, import_vue5.withCtx)(() => [
+          label: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
             (0, import_vue5.createTextVNode)(" modelValue ")
-          ]),
+          ])),
           default: (0, import_vue5.withCtx)(() => [
             (0, import_vue5.createElementVNode)(
               "pre",

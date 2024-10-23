@@ -60,9 +60,9 @@
         modelValue: _ctx.model,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.model = $event)
       }, {
-        default: (0, import_vue5.withCtx)(() => [
+        default: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
           (0, import_vue5.createTextVNode)(" Max tio tecken ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"])), [

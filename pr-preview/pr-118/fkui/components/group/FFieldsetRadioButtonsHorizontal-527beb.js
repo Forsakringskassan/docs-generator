@@ -48,9 +48,9 @@
       name: "group-name-radio-horizontal",
       horizontal: ""
     }, {
-      label: (0, import_vue5.withCtx)(() => [
+      label: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
         (0, import_vue5.createTextVNode)(" Ligger radioknapparna horisontellt? ")
-      ]),
+      ])),
       default: (0, import_vue5.withCtx)(() => [
         (0, import_vue5.createVNode)(_component_f_radio_field, {
           id: "horisontellt-ja",
@@ -58,9 +58,9 @@
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.model = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
             (0, import_vue5.createTextVNode)(" Ja ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"]),
@@ -70,9 +70,9 @@
           "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.model = $event),
           value: false
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[4] || (_cache[4] = [
             (0, import_vue5.createTextVNode)(" Nej ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"])

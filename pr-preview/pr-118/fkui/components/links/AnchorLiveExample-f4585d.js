@@ -79,27 +79,6 @@
       }
     }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: "pdf" },
-    "PDF",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_2 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: "doc" },
-    "Doc",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_3 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "option",
-    { value: "pic" },
-    "Bild",
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_radio_field = (0, import_vue5.resolveComponent)("f-radio-field");
     const _component_f_fieldset = (0, import_vue5.resolveComponent)("f-fieldset");
@@ -112,18 +91,18 @@
     }, {
       default: (0, import_vue5.withCtx)(() => [
         (0, import_vue5.createVNode)(_component_f_fieldset, { name: "radio-link-type" }, {
-          label: (0, import_vue5.withCtx)(() => [
+          label: (0, import_vue5.withCtx)(() => _cache[5] || (_cache[5] = [
             (0, import_vue5.createTextVNode)(" Typ av l\xE4nk ")
-          ]),
+          ])),
           default: (0, import_vue5.withCtx)(() => [
             (0, import_vue5.createVNode)(_component_f_radio_field, {
               modelValue: _ctx.linkType,
               "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.linkType = $event),
               value: "standard"
             }, {
-              default: (0, import_vue5.withCtx)(() => [
+              default: (0, import_vue5.withCtx)(() => _cache[6] || (_cache[6] = [
                 (0, import_vue5.createTextVNode)(" Standard ")
-              ]),
+              ])),
               _: 1
               /* STABLE */
             }, 8, ["modelValue"]),
@@ -132,9 +111,9 @@
               "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.linkType = $event),
               value: "document"
             }, {
-              default: (0, import_vue5.withCtx)(() => [
+              default: (0, import_vue5.withCtx)(() => _cache[7] || (_cache[7] = [
                 (0, import_vue5.createTextVNode)(" Dokument ")
-              ]),
+              ])),
               _: 1
               /* STABLE */
             }, 8, ["modelValue"]),
@@ -143,9 +122,9 @@
               "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.linkType = $event),
               value: "external"
             }, {
-              default: (0, import_vue5.withCtx)(() => [
+              default: (0, import_vue5.withCtx)(() => _cache[8] || (_cache[8] = [
                 (0, import_vue5.createTextVNode)(" Ny flik ")
-              ]),
+              ])),
               _: 1
               /* STABLE */
             }, 8, ["modelValue"])
@@ -158,13 +137,31 @@
           modelValue: _ctx.fileType,
           "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.fileType = $event)
         }, {
-          label: (0, import_vue5.withCtx)(() => [
+          label: (0, import_vue5.withCtx)(() => _cache[9] || (_cache[9] = [
             (0, import_vue5.createTextVNode)(" Filtyp ")
-          ]),
+          ])),
           default: (0, import_vue5.withCtx)(() => [
-            _hoisted_1,
-            _hoisted_2,
-            _hoisted_3
+            _cache[10] || (_cache[10] = (0, import_vue5.createElementVNode)(
+              "option",
+              { value: "pdf" },
+              "PDF",
+              -1
+              /* HOISTED */
+            )),
+            _cache[11] || (_cache[11] = (0, import_vue5.createElementVNode)(
+              "option",
+              { value: "doc" },
+              "Doc",
+              -1
+              /* HOISTED */
+            )),
+            _cache[12] || (_cache[12] = (0, import_vue5.createElementVNode)(
+              "option",
+              { value: "pic" },
+              "Bild",
+              -1
+              /* HOISTED */
+            ))
           ]),
           _: 1
           /* STABLE */
@@ -174,9 +171,9 @@
           "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.isDiscrete = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[13] || (_cache[13] = [
             (0, import_vue5.createTextVNode)(" Diskret l\xE4nk ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"])

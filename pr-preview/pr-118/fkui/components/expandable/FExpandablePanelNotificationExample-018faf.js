@@ -58,12 +58,12 @@
         notifications: 1,
         onToggle: _ctx.onToggle1
       }, {
-        title: (0, import_vue5.withCtx)(() => [
+        title: (0, import_vue5.withCtx)(() => _cache[0] || (_cache[0] = [
           (0, import_vue5.createTextVNode)(" Titel med en notifiering ")
-        ]),
-        default: (0, import_vue5.withCtx)(() => [
+        ])),
+        default: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
           (0, import_vue5.createTextVNode)(" Inneh\xE5ll ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["expanded", "onToggle"]),
@@ -72,12 +72,12 @@
         notifications: 2,
         onToggle: _ctx.onToggle2
       }, {
-        title: (0, import_vue5.withCtx)(() => [
+        title: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
           (0, import_vue5.createTextVNode)(" Titel med tv\xE5 notifieringar ")
-        ]),
-        default: (0, import_vue5.withCtx)(() => [
+        ])),
+        default: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
           (0, import_vue5.createTextVNode)(" Inneh\xE5ll ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["expanded", "onToggle"])

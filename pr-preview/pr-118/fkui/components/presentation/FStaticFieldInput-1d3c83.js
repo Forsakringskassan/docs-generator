@@ -50,9 +50,9 @@
         modelValue: _ctx.name,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.name = $event)
       }, {
-        default: (0, import_vue5.withCtx)(() => [
+        default: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
           (0, import_vue5.createTextVNode)(" Namn ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"])), [
@@ -64,11 +64,11 @@
         ]
       ]),
       (0, import_vue5.createVNode)(_component_f_static_field, null, {
-        label: (0, import_vue5.withCtx)(() => [
+        label: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
           (0, import_vue5.createTextVNode)(" Beskrivning ")
-        ]),
+        ])),
         default: (0, import_vue5.withCtx)(() => [
-          (0, import_vue5.createTextVNode)(" En liten statisk beskrivning. ")
+          _cache[3] || (_cache[3] = (0, import_vue5.createTextVNode)(" En liten statisk beskrivning. "))
         ]),
         _: 1
         /* STABLE */

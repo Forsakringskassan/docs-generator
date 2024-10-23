@@ -39,13 +39,6 @@
       return { favoritGrupp: {} };
     }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "pre",
-    null,
-    "v-model",
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_text_field = (0, import_vue5.resolveComponent)("f-text-field");
     const _component_f_validation_group = (0, import_vue5.resolveComponent)("f-validation-group");
@@ -61,9 +54,9 @@
             id: "frukt",
             maxlength: "100"
           }, {
-            default: (0, import_vue5.withCtx)(() => [
+            default: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
               (0, import_vue5.createTextVNode)(" Favoritfrukt ")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           })), [
@@ -78,9 +71,9 @@
             id: "godis",
             maxlength: "100"
           }, {
-            default: (0, import_vue5.withCtx)(() => [
+            default: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
               (0, import_vue5.createTextVNode)(" Favoritgodis ")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           })), [
@@ -95,7 +88,13 @@
         _: 1
         /* STABLE */
       }, 8, ["modelValue"]),
-      _hoisted_1,
+      _cache[3] || (_cache[3] = (0, import_vue5.createElementVNode)(
+        "pre",
+        null,
+        "v-model",
+        -1
+        /* HOISTED */
+      )),
       (0, import_vue5.createElementVNode)(
         "pre",
         null,

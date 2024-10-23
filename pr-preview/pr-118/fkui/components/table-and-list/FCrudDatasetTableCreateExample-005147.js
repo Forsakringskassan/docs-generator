@@ -81,13 +81,6 @@
       }
     }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "b",
-    null,
-    "R\xE4ttigheter",
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_table_column = (0, import_vue5.resolveComponent)("f-table-column");
     const _component_f_data_table = (0, import_vue5.resolveComponent)("f-data-table");
@@ -107,9 +100,15 @@
           rows: _ctx.fruits,
           "key-attribute": "id"
         }, {
-          caption: (0, import_vue5.withCtx)(() => [
-            _hoisted_1
-          ]),
+          caption: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
+            (0, import_vue5.createElementVNode)(
+              "b",
+              null,
+              "R\xE4ttigheter",
+              -1
+              /* HOISTED */
+            )
+          ])),
           default: (0, import_vue5.withCtx)(({ row }) => [
             (0, import_vue5.createVNode)(
               _component_f_table_column,
@@ -188,9 +187,9 @@
           "onUpdate:modelValue": ($event) => item.id = $event,
           type: "text"
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
             (0, import_vue5.createTextVNode)(" ID ")
-          ]),
+          ])),
           _: 2
           /* DYNAMIC */
         }, 1032, ["modelValue", "onUpdate:modelValue"])), [
@@ -209,9 +208,9 @@
           "onUpdate:modelValue": ($event) => item.name = $event,
           type: "text"
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
             (0, import_vue5.createTextVNode)(" Namn ")
-          ]),
+          ])),
           _: 2
           /* DYNAMIC */
         }, 1032, ["modelValue", "onUpdate:modelValue"])), [
@@ -230,9 +229,9 @@
           "onUpdate:modelValue": ($event) => item.origin = $event,
           type: "text"
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[4] || (_cache[4] = [
             (0, import_vue5.createTextVNode)(" Land ")
-          ]),
+          ])),
           _: 2
           /* DYNAMIC */
         }, 1032, ["modelValue", "onUpdate:modelValue"])), [
@@ -250,9 +249,9 @@
           modelValue: item.description,
           "onUpdate:modelValue": ($event) => item.description = $event
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[5] || (_cache[5] = [
             (0, import_vue5.createTextVNode)(" Beskrivning ")
-          ]),
+          ])),
           _: 2
           /* DYNAMIC */
         }, 1032, ["modelValue", "onUpdate:modelValue"])), [

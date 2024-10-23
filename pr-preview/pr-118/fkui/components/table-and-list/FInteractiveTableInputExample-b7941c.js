@@ -79,9 +79,9 @@
           rows: _ctx.betalningar,
           "key-attribute": "id"
         }, {
-          caption: (0, import_vue5.withCtx)(() => [
+          caption: (0, import_vue5.withCtx)(() => _cache[0] || (_cache[0] = [
             (0, import_vue5.createTextVNode)(" Justera betalningar ")
-          ]),
+          ])),
           default: (0, import_vue5.withCtx)(({ row }) => [
             (0, import_vue5.createVNode)(
               _component_f_table_column,

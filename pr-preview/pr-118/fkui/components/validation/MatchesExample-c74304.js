@@ -57,9 +57,9 @@
           modelValue: _ctx.reference,
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.reference = $event)
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
             (0, import_vue5.createTextVNode)(" Referens ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"])
@@ -70,9 +70,9 @@
           modelValue: _ctx.model,
           "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.model = $event)
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
             (0, import_vue5.createTextVNode)(" Inmatningsf\xE4lt ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"])), [

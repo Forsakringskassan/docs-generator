@@ -57,28 +57,26 @@
       (0, import_vue4.focus)(this);
     }
   });
-  var _hoisted_1 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "h1",
-    null,
-    "Important Section",
-    -1
-    /* HOISTED */
-  );
-  var _hoisted_2 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "p",
-    null,
-    "Some interesting content.",
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_my_button = (0, import_vue5.resolveComponent)("my-button");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)(
       import_vue5.Fragment,
       null,
       [
-        _hoisted_1,
-        _hoisted_2,
+        _cache[0] || (_cache[0] = (0, import_vue5.createElementVNode)(
+          "h1",
+          null,
+          "Important Section",
+          -1
+          /* HOISTED */
+        )),
+        _cache[1] || (_cache[1] = (0, import_vue5.createElementVNode)(
+          "p",
+          null,
+          "Some interesting content.",
+          -1
+          /* HOISTED */
+        )),
         (0, import_vue5.createVNode)(
           _component_my_button,
           { ref: "myButton" },

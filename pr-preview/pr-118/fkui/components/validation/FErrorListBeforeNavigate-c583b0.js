@@ -60,9 +60,9 @@
         items: _ctx.items,
         "before-navigate": _ctx.beforeNavigate
       }, {
-        title: (0, import_vue5.withCtx)(() => [
+        title: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
           (0, import_vue5.createTextVNode)(" Kolla p\xE5 felen nedan ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["items", "before-navigate"]),
@@ -70,17 +70,17 @@
         expanded: _ctx.expanded,
         onToggle: _cache[0] || (_cache[0] = ($event) => _ctx.expanded = !_ctx.expanded)
       }, {
-        title: (0, import_vue5.withCtx)(() => [
+        title: (0, import_vue5.withCtx)(() => _cache[2] || (_cache[2] = [
           (0, import_vue5.createTextVNode)(" Favoriter ")
-        ]),
+        ])),
         default: (0, import_vue5.withCtx)(() => [
           (0, import_vue5.createVNode)(_component_f_text_field, {
             id: "favorit-frukt",
             maxlength: "100"
           }, {
-            default: (0, import_vue5.withCtx)(() => [
+            default: (0, import_vue5.withCtx)(() => _cache[3] || (_cache[3] = [
               (0, import_vue5.createTextVNode)(" Favoritfrukt \u{1F34E} ")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           }),
@@ -88,9 +88,9 @@
             id: "favorit-godis",
             maxlength: "100"
           }, {
-            default: (0, import_vue5.withCtx)(() => [
+            default: (0, import_vue5.withCtx)(() => _cache[4] || (_cache[4] = [
               (0, import_vue5.createTextVNode)(" Favoritgodis \u{1F36C} ")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           })

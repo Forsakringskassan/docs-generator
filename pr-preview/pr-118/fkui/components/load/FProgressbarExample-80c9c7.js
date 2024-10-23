@@ -50,13 +50,6 @@
     }
   });
   var _hoisted_1 = { class: "debug-data" };
-  var _hoisted_2 = /* @__PURE__ */ (0, import_vue5.createElementVNode)(
-    "span",
-    { class: "sr-only" },
-    "Debug-data: ",
-    -1
-    /* HOISTED */
-  );
   function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_progressbar = (0, import_vue5.resolveComponent)("f-progressbar");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createElementBlock)("div", null, [
@@ -67,7 +60,13 @@
         "value-text": "You have uploaded %VALUE% %."
       }, null, 8, ["value"]),
       (0, import_vue5.createElementVNode)("pre", _hoisted_1, [
-        _hoisted_2,
+        _cache[3] || (_cache[3] = (0, import_vue5.createElementVNode)(
+          "span",
+          { class: "sr-only" },
+          "Debug-data: ",
+          -1
+          /* HOISTED */
+        )),
         (0, import_vue5.createTextVNode)(
           "value: " + (0, import_vue5.toDisplayString)(_ctx.currentProgress),
           1
@@ -83,7 +82,7 @@
         onClick: _cache[1] || (_cache[1] = ($event) => _ctx.decrease())
       }, "Decrease"),
       (0, import_vue5.createElementVNode)("label", null, [
-        (0, import_vue5.createTextVNode)(" Progress: "),
+        _cache[4] || (_cache[4] = (0, import_vue5.createTextVNode)(" Progress: ")),
         (0, import_vue5.withDirectives)((0, import_vue5.createElementVNode)(
           "input",
           {
