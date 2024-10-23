@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## [2.10.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.9.2...v2.10.0) (2024-10-23)
+
+
+### Features
+
+* support vue composition and scoped styling in examples ([8f00924](https://github.com/Forsakringskassan/docs-generator/commit/8f00924064fb5c7171a74fe5fecb0f1f0c9f01b0))
+
+
+### Bug Fixes
+
+* dont print exceptions twice ([e8c93a9](https://github.com/Forsakringskassan/docs-generator/commit/e8c93a91230320d99deb69a88209f6866a9f280d))
+* ensure compiling sass works when package is linked with `npm link` ([59f3753](https://github.com/Forsakringskassan/docs-generator/commit/59f3753286f1b786aab28054652b5ea9faec6342))
+* load layout templates from custom directories ([c2f37d5](https://github.com/Forsakringskassan/docs-generator/commit/c2f37d541dbccbccd9e2ee206ba2c4baae9c7297))
+
 ## [2.9.2](https://github.com/Forsakringskassan/docs-generator/compare/v2.9.1...v2.9.2) (2024-10-15)
 
 
