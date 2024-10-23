@@ -5,65 +5,11 @@ import { getFingerprint, getIntegrity, slugify } from "../utils";
 import { type VendorAsset } from "./vendor-asset";
 import { type NormalizedVendorDefinition } from "./vendor-definition";
 
-declare global {
-    interface Window {
-        __modules__?: Record<string, unknown>;
-    }
-}
-
-function customRequire<T>(name: string): T {
-    if (typeof window.__modules__ === "undefined") {
-        window.__modules__ = {};
-    }
-
-    const mod = window.__modules__[name];
-
-    if (!mod) {
-        throw new Error(`Cannot find module "${name}"`);
-    }
-    return mod as T;
-}
-
-export function getAssetSource(
-    asset: NormalizedVendorDefinition,
-    require: string,
-): string {
+export function getAssetSource(asset: NormalizedVendorDefinition): string {
     const lines = [];
     const pkg = asset.package.replace(/\\/g, "/");
 
-    if (!asset.expose) {
-        return `import "${pkg}"`;
-    }
-
-    if (asset.expose === "named") {
-        lines.push(`import * as lib from "${pkg}";`);
-    } else {
-        lines.push(`import lib from "${pkg}";`);
-    }
-
-    asset.subpaths.map((subpath, index) => {
-        if (asset.expose === "named") {
-            lines.push(`import * as lib$${index} from "${subpath}";`);
-        } else {
-            lines.push(`import lib$${index} from "${subpath}";`);
-        }
-    });
-
-    lines.push(`window.require = window.require || ${require};`);
-    lines.push(`window.__modules__ = window.__modules__ || {};`);
-    lines.push(`window.__modules__["${asset.package}"] = lib;`);
-
-    if (typeof asset.alias !== "undefined") {
-        lines.push(`window.__modules__["${asset.alias}"] = lib;`);
-    }
-
-    asset.subpaths.map((subpath, index) => {
-        lines.push(`window.__modules__["${subpath}"] = lib$${index};`);
-    });
-
-    if (typeof asset.global !== "undefined") {
-        lines.push(`window["${asset.global}"] = lib;`);
-    }
+    lines.push(`export * from "${pkg}";`);
 
     return lines.join("\n");
 }
@@ -82,14 +28,14 @@ export async function compileVendor(
     const slug = slugify(name);
     const outfile = `temp/vendor-${slug}.out.js`;
     const tmpfile = `temp/vendor-${slug}.in.js`;
-    const source = getAssetSource(vendor, customRequire.toString());
+    const source = getAssetSource(vendor);
     const tsconfig = path.resolve(__dirname, "../tsconfig-examples.json");
     await fs.writeFile(tmpfile, source, "utf-8");
     await esbuild.build({
         entryPoints: [tmpfile],
         outfile,
         bundle: true,
-        format: "iife",
+        format: "esm",
         platform: "browser",
         tsconfig,
         define: {
