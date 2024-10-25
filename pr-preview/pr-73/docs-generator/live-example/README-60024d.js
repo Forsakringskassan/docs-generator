@@ -40,7 +40,7 @@
       }
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_live_example = (0, import_vue3.resolveComponent)("live-example");
     return (0, import_vue3.openBlock)(), (0, import_vue3.createBlock)(_component_live_example, { template: _ctx.template }, {
       default: (0, import_vue3.withCtx)(() => [
@@ -52,7 +52,6 @@
             -1
             /* HOISTED */
           )),
-          _cache[4] || (_cache[4] = (0, import_vue3.createTextVNode)()),
           (0, import_vue3.withDirectives)((0, import_vue3.createElementVNode)(
             "select",
             {
@@ -67,7 +66,6 @@
                 -1
                 /* HOISTED */
               ),
-              (0, import_vue3.createTextVNode)(),
               (0, import_vue3.createElementVNode)(
                 "option",
                 { value: "p" },
@@ -75,7 +73,6 @@
                 -1
                 /* HOISTED */
               ),
-              (0, import_vue3.createTextVNode)(),
               (0, import_vue3.createElementVNode)(
                 "option",
                 { value: "em" },
@@ -90,7 +87,6 @@
             [import_vue3.vModelSelect, _ctx.tagName]
           ])
         ]),
-        _cache[6] || (_cache[6] = (0, import_vue3.createTextVNode)()),
         (0, import_vue3.createElementVNode)("div", null, [
           (0, import_vue3.createElementVNode)("label", null, [
             (0, import_vue3.withDirectives)((0, import_vue3.createElementVNode)(
@@ -106,7 +102,7 @@
             ), [
               [import_vue3.vModelCheckbox, _ctx.placeholderText]
             ]),
-            _cache[5] || (_cache[5] = (0, import_vue3.createTextVNode)("\n                Use placeholder text\n            "))
+            _cache[4] || (_cache[4] = (0, import_vue3.createTextVNode)(" Use placeholder text "))
           ])
         ])
       ]),
