@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## [2.11.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.10.0...v2.11.0) (2024-10-28)
+
+
+### Features
+
+* motd API ([a4ed61d](https://github.com/Forsakringskassan/docs-generator/commit/a4ed61d075ae3d85a1e57968ba6a1d0a73d53edc))
+
+
+### Bug Fixes
+
+* selectable version ([f12db4d](https://github.com/Forsakringskassan/docs-generator/commit/f12db4d3a0d25294b13b4975d2264275f61bfc51))
+
 ## [2.10.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.9.2...v2.10.0) (2024-10-23)
 
 
