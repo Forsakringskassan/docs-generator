@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [2.11.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.11.0...v2.11.1) (2024-10-28)
+
+
+### Bug Fixes
+
+* resolve latest version properly ([d496835](https://github.com/Forsakringskassan/docs-generator/commit/d496835f15035f23f7bb0221bbf17ab4310cbfa1))
+
 ## [2.11.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.10.0...v2.11.0) (2024-10-28)
 
 
