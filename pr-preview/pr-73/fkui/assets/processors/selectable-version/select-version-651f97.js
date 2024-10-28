@@ -1,6 +1,6 @@
 "use strict";
 (() => {
-  // dist/processors/selectable-version.js
+  // node_modules/@forsakringskassan/docs-generator/dist/processors/selectable-version.js
   var __create = Object.create;
   var __defProp = Object.defineProperty;
   var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -1822,7 +1822,7 @@
       }
     }
   };
-  var current = "2.10.0";
+  var current = "5.38.0";
   var message = "Det finns en nyare version";
   var dialog = document.querySelector("#version-dialog");
   var dialogCloseButton = dialog?.querySelector("button");
@@ -1850,6 +1850,13 @@
   async function fetchVersions() {
     const url = getUrl(document, "../versions.json");
     const response = await fetch(url);
+    if (!response.ok) {
+      console.error("An error occured when loading versions.json.");
+      return {
+        latest: current,
+        versions: [current]
+      };
+    }
     return await response.json();
   }
   var getVersions = memoize(fetchVersions);
