@@ -1822,7 +1822,7 @@
       }
     }
   };
-  var current = "2.11.1";
+  var current = "v2.11.1";
   var message = "Det finns en nyare version";
   var dialog = document.querySelector("#version-dialog");
   var dialogCloseButton = dialog?.querySelector("button");
