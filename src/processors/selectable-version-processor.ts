@@ -31,7 +31,7 @@ export function selectableVersionProcessor(
                 src: "src/runtime/select-version.ts",
                 buildOptions: {
                     define: {
-                        __PKG_VERSION__: JSON.stringify(pkg.version),
+                        __PKG_VERSION__: JSON.stringify(`v${pkg.version}`),
                         __MESSAGE__: JSON.stringify(message),
                     },
                 },
