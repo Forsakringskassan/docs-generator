@@ -76,10 +76,11 @@ try {
 }
 
 if (!isCI) {
+    const latest = `v${pkg.version}`;
     const versions = JSON.stringify(
         {
-            latest: pkg.version,
-            versions: [pkg.version],
+            latest,
+            versions: [latest],
         },
         null,
         2,

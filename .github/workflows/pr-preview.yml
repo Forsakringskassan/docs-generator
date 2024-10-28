@@ -26,8 +26,7 @@ jobs:
                   npm pack
                   mkdir -p ./temp/pr-preview/docs-generator
                   cp -r ./public/* ./temp/pr-preview/docs-generator
-                  echo '{ "latest": "1.0.0", "versions": ["1.0.0"] }' | tee ./temp/pr-preview/versions.json
-
+                  echo "{ \"versions\": [\"v$(npm pkg get version | jq -r)\"], \"latest\": \"v$(npm pkg get version | jq -r)\" }" | tee ./temp/pr-preview/versions.json
             - name: Determine docs-generator version
               run: |
                   echo "VERSION=$(npm pkg get version | jq -r)" | tee -a $GITHUB_ENV
