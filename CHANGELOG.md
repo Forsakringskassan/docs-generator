@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [2.11.3](https://github.com/Forsakringskassan/docs-generator/compare/v2.11.2...v2.11.3) (2024-10-29)
+
+
+### Bug Fixes
+
+* set correct language in manifest ([d1f1e0f](https://github.com/Forsakringskassan/docs-generator/commit/d1f1e0fbde666737466db00ae0d52a4c02ba5b6d))
+
 ## [2.11.2](https://github.com/Forsakringskassan/docs-generator/compare/v2.11.1...v2.11.2) (2024-10-28)
 
 
