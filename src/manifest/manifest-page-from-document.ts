@@ -33,9 +33,15 @@ function findExamples(doc: DocumentLike): ManifestExamples {
         const [language, ...tags] = info.split(/\s+/);
         const hashContent = `${map?.[0]}:${map?.[1]}:${info}:${content}`;
         const fingerprint = getFingerprint(hashContent);
+        let extension = undefined;
+
+        if (language === "import") {
+            extension = content.split(".").at(-1)?.trim();
+        }
+
         collected.push({
             selector: `#example-${fingerprint}`,
-            language,
+            language: extension ?? language,
             tags,
         });
         return "";
