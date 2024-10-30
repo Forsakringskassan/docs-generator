@@ -117,7 +117,7 @@
     "markdown-it": "14.1.0",
     "markdown-it-deflist": "3.0.0",
     "mermaid": "11.3.0",
-    "nano-spawn": "0.1.0",
+    "nano-spawn": "0.2.0",
     "nunjucks": "3.2.4",
     "piscina": "4.7.0",
     "scroll-into-view-if-needed": "3.1.0",
