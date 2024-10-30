@@ -311,4 +311,19 @@ export default {
             },
         },
     },
+    code: {
+        description: "Code mark-up",
+        variables: {
+            "background-color": {
+                description: "Default code background.",
+                type: "color",
+                value: "#f4f4f4",
+            },
+            "optional-background-color": {
+                description: "darker code background.",
+                type: "color",
+                value: "#e5e5e5",
+            },
+        },
+    },
 };

@@ -65,14 +65,17 @@ The following variants are supported:
 
 ::: messagebox info
 This is an info box.
+`with code`
 :::
 
 ::: messagebox warning
 This is a warning.
+`with code`
 :::
 
 ::: messagebox danger
 This is a dangerous warning.
+`with code`
 :::
 
 For these variants the following aliases can also be used:

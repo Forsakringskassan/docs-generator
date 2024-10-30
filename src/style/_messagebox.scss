@@ -1,8 +1,9 @@
 .docs-messagebox {
     border: 2px solid transparent;
     border-left-width: 1rem;
-    padding: 1.5rem;
+    padding: 1.5rem 1.5rem 1.5rem 2.5rem;
     margin-bottom: 1rem;
+    border-radius: 2px;
 
     :last-child {
         margin-bottom: 0;
@@ -13,18 +14,42 @@
     }
 
     &--details {
-        border-color: var(--docs-messagebox-details-border);
         background: var(--docs-messagebox-details-background);
+        border-radius: 2px;
+        border: 1px solid var(--docs-messagebox-details-border);
 
         summary {
             cursor: pointer;
-            margin: -1.5rem;
-            padding: 1.5rem;
+            margin: -1.5rem -1.5rem -1.5rem -2.5rem;
+            padding: 1.5rem 1.5rem 1.5rem 0;
+
+            &::before {
+                content: url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHBhdGggZD0iTTQ2Ny42NTggMTk2LjkxM0wyODMuNjU2IDM3Mi45MDdDMjc1LjkyMiAzODAuMzEzIDI2NS45NTMgMzg0IDI1NiAzODRDMjQ2LjA0NyAzODQgMjM2LjA3OCAzODAuMzEzIDIyOC4zNDQgMzcyLjkwN0w0NC4zNDIgMTk2LjkxM0MyOC4zODkgMTgxLjYzMyAyNy44MjYgMTU2LjMyMSA0My4wOTIgMTQwLjM1M0M1OC4zNzMgMTI0LjM1NCA4My42ODYgMTIzLjg1NCA5OS42NTUgMTM5LjEwM0wyNTYgMjg4LjY2TDQxMi4zNDUgMTM5LjEwM0M0MjguMzE0IDEyMy44MjIgNDUzLjYyNyAxMjQuMzg1IDQ2OC45MDggMTQwLjM1M0M0ODQuMTc0IDE1Ni4zMjEgNDgzLjYxMSAxODEuNjMzIDQ2Ny42NTggMTk2LjkxM1oiIGZpbGw9ImN1cnJlbnRDb2xvciIvPgo8L3N2Zz4K");
+                transform: translateY(3px);
+                transition: all 200ms cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s;
+                width: 1rem;
+                height: 1rem;
+                display: inline-block;
+                margin-right: 0.2rem;
+            }
         }
 
         &[open] summary {
             margin-bottom: 0;
             padding-bottom: 0.75rem;
+        }
+
+        &[open] > summary::before {
+            transform: rotate(180deg) translateY(-5px);
+            transition: all 200ms cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s;
+        }
+
+        summary::marker {
+            color: transparent;
+        }
+
+        summary::-webkit-details-marker {
+            color: transparent;
         }
     }
 
@@ -41,5 +66,9 @@
     &--danger {
         border-color: var(--docs-messagebox-danger-border);
         background: var(--docs-messagebox-danger-background);
+    }
+
+    code {
+        background-color: var(--docs-code-optional-background-color);
     }
 }
