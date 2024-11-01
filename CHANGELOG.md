@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [2.11.4](https://github.com/Forsakringskassan/docs-generator/compare/v2.11.3...v2.11.4) (2024-11-01)
+
+
+### Bug Fixes
+
+* code in messagebox and messagebox styling ([7ea1600](https://github.com/Forsakringskassan/docs-generator/commit/7ea1600b5bae3830b7ffeed1b2239a420cddb67b))
+* **deps:** update dependency nano-spawn to v0.2.0 ([b041385](https://github.com/Forsakringskassan/docs-generator/commit/b041385a9ebf655290bf4fd2cbfb5f329ff3fdfa))
+
 ## [2.11.3](https://github.com/Forsakringskassan/docs-generator/compare/v2.11.2...v2.11.3) (2024-10-29)
 
 
