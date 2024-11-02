@@ -266,6 +266,13 @@ exports[`smoketest 1`] = `
         },
         {
           "external": false,
+          "id": "fs:docs/processors/extract-examples.md",
+          "path": "./processors/extract-examples.html",
+          "sortorder": Infinity,
+          "title": "Extract examples",
+        },
+        {
+          "external": false,
           "id": "fs:docs/processors/manifest.md",
           "path": "./processors/manifest.html",
           "sortorder": Infinity,
