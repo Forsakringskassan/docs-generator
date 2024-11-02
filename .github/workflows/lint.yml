@@ -17,7 +17,11 @@ jobs:
               run: npm run prettier:check
             - name: ESLint
               if: success() || failure()
-              run: npm run eslint -- --max-warnings 0
+              run: npm exec eslint -- --max-warnings 0 --ignore-pattern docs/examples/ .
             - name: Stylelint
               if: success() || failure()
               run: npm run stylelint
+            - name: Build
+              run: npm run --if-present build
+            - name: Lint examples
+              run: npm exec eslint -- --max-warnings 0 docs/examples/

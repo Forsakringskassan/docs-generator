@@ -25,6 +25,19 @@ navigation/
 It uses the `frontMatterFileReader` and `navigationFileReader` to read the documents:
 
 ```ts
+import {
+    Generator,
+    frontMatterFileReader,
+    navigationFileReader,
+} from "@forsakringskassan/docs-generator";
+
+const docs = new Generator({
+    site: { name: "" },
+    setupPath: "docs/src/setup.ts",
+});
+
+/* --- cut above --- */
+
 await docs.build([
     {
         include: "docs/**/*.md",

@@ -429,7 +429,7 @@ async function getDocsFromGlob(
     basePath: string,
 ): Promise<Document[]> {
     const filenames = await glob(pattern, {
-        ignore: "./docs/node_modules/**",
+        ignore: ["./docs/node_modules/**", "./docs/examples/**"],
         nodir: true,
     });
     const parsed = filenames.map((it) => frontMatterFileReader(it, basePath));

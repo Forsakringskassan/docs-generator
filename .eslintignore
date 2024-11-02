@@ -1,5 +1,6 @@
 coverage/
 dist/
+docs/examples/**/*-nolint*
 node_modules/
 temp/
 public/

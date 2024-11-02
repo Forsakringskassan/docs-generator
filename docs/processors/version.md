@@ -8,13 +8,18 @@ layout: content-with-menu
 ## Usage
 
 ```ts
+import fs from "node:fs/promises";
+import { Generator, versionProcessor } from "@forsakringskassan/docs-generator";
+
+/* --- cut above --- */
+
 const pkg = JSON.parse(await fs.readFile("package.json", "utf-8"));
 
 const docs = new Generator({
+    /* --- cut begin --- */
     site: { name: ".." },
-    outputFolder: "..",
-    cacheFolder: "..",
-    exampleFolders: [],
+    setupPath: "..",
+    /* --- cut end --- */
 
     processors: [versionProcessor(pkg, "footer:right")],
 });

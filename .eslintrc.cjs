@@ -44,5 +44,15 @@ module.exports = {
             files: "*.cy.[jt]s",
             extends: ["@forsakringskassan/cypress"],
         },
+        {
+            files: "docs/examples/**/*.{js,ts}",
+            rules: {
+                "no-console": "off",
+                "no-unused-vars": "off",
+                "@typescript-eslint/no-unused-vars": "off",
+                "eslint-comments/require-description": "off",
+                "import/no-extraneous-dependencies": "off",
+            },
+        },
     ],
 };

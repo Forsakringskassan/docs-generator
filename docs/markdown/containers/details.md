@@ -65,7 +65,16 @@ Lorem **ipsum** dolor sit amet.
 Uses the same `messagebox.title` property as messageboxes with `details` as key.
 
 ```ts
+import { Generator } from "@forsakringskassan/docs-generator";
+
+/* --- cut above --- */
+
 const docs = new Generator({
+    /* --- cut begin --- */
+    site: { name: ".." },
+    setupPath: "..",
+    /* --- cut end --- */
+
     markdown: {
         messagebox: {
             title: {

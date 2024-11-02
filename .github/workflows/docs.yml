@@ -34,6 +34,8 @@ jobs:
               run: npm run build
             - name: Build documentation
               run: npm run build:docs
+            - name: Lint examples
+              run: npm exec eslint -- --max-warnings 0 docs/examples/
             - name: Sanity check
               run: git status && git diff
             - name: Pull pages as subtree
