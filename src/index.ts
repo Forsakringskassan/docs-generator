@@ -48,12 +48,14 @@ export {
 export { processorRuntimeName } from "./processor-runtime-name";
 export { type ProcessorStage } from "./processor-stage";
 export {
+    type ExtractExamplesOptions,
     type ManifestProcessorOptions,
     type MOTDOptions,
     type TopnavEntry,
     type VersionProcessorOptions,
     type SelectableVersionProcessorOptions,
     type SourceUrlProcessorOptions,
+    extractExamplesProcessor,
     htmlRedirectProcessor,
     manifestProcessor,
     motdProcessor,

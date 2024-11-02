@@ -1,4 +1,8 @@
 export {
+    type ExtractExamplesOptions,
+    extractExamplesProcessor,
+} from "./extract-examples-processor";
+export {
     type ManifestProcessorOptions,
     manifestProcessor,
 } from "./manifest-processor";

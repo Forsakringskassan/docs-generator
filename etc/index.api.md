@@ -65,6 +65,17 @@ export interface DocumentOutlineEntry {
     title: string;
 }
 
+// @public
+export interface ExtractExamplesOptions extends ProcessorOptions {
+    // (undocumented)
+    languages?: string[];
+    // (undocumented)
+    outputFolder: string;
+}
+
+// @public
+export function extractExamplesProcessor(options: ExtractExamplesOptions): Processor;
+
 // @public (undocumented)
 export interface FileInfo {
     fullPath: string;
