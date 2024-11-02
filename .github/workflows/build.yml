@@ -20,6 +20,8 @@ jobs:
               run: npm exec jest
             - name: Build
               run: npm run --if-present build
+            - name: Compile examples
+              run: npm exec tsc -- -b docs/examples
 
     cypress:
         name: Cypress E2E Tests

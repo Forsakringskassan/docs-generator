@@ -9,6 +9,7 @@ CHANGELOG.md
 # build artifacts
 coverage/
 dist/
+docs/examples/files/
 node_modules/
 .jest-cache/
 temp/

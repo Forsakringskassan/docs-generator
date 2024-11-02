@@ -41,7 +41,20 @@ This can be used to exclude the file from compilation or linting.
 ## Usage
 
 ```ts
+import fs from "node:fs/promises";
+import {
+    Generator,
+    extractExamplesProcessor,
+} from "@forsakringskassan/docs-generator";
+
+/* --- cut above --- */
+
 const docs = new Generator({
+    /* --- cut begin --- */
+    site: { name: ".." },
+    setupPath: "..",
+    /* --- cut end --- */
+
     processors: [
         extractExamplesProcessor({
             outputFolder: "docs/examples/files",

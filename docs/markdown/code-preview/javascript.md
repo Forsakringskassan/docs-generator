@@ -40,7 +40,7 @@ function foo(value) {
 
 **Output:**
 
-```js
+```js nocompile
 function foo(value) {
     /* eslint-disable-next-line eqeqeq */
     return value == "foo";

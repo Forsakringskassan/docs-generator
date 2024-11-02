@@ -9,7 +9,16 @@ After the user consents, the cookie warning is hidden and cookies are set.
 ## Usage
 
 ```ts
+import { Generator, cookieProcessor } from "@forsakringskassan/docs-generator";
+
+/* --- cut above --- */
+
 const docs = new Generator({
+    /* --- cut begin --- */
+    site: { name: ".." },
+    setupPath: "..",
+    /* --- cut end --- */
+
     processors: [cookieProcessor()],
 });
 ```
@@ -25,8 +34,19 @@ Make sure to use the same button id's and top `cookie-warning` class.
 A processor that sets cookies should respect the cookie consent, for example Matomo.
 Do this by passing a callback to the global function `withCookieConsent`.
 
-```js
+```ts
+declare function withCookieConsent(cb: () => void): void;
+
+/* --- cut above --- */
+
 withCookieConsent(() => {
     // processor script
 });
 ```
+
+::: danger
+
+This function is not publicly exported.
+If you need this please file a bug explaining your use-case.
+
+:::

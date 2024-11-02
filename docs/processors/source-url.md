@@ -13,8 +13,22 @@ template for generating links at the upper right menu.
 ## Usage
 
 ```ts
-const pkg = await fs.readFile("package.json", "utf-8");
+import fs from "node:fs/promises";
+import {
+    Generator,
+    sourceUrlProcessor,
+} from "@forsakringskassan/docs-generator";
+
+/* --- cut above --- */
+
+const pkg = JSON.parse(await fs.readFile("package.json", "utf-8"));
+
 const docs = new Generator({
+    /* --- cut begin --- */
+    site: { name: ".." },
+    setupPath: "..",
+    /* --- cut end --- */
+
     processors: [
         sourceUrlProcessor(pkg, {
             urlFormat: "{{ repository }}/tree/main/{{ path }}",
@@ -73,7 +87,7 @@ A component link is generated for each item in the `component` section.
 
 For a simple string, it will search for a file matching the component name and file extension as configured in the processor.
 
-```ts
+```md
 ---
 component:
     - Foo
@@ -84,7 +98,7 @@ For an object with name and source, it will search for a file matching the `sour
 This hint may be neccessary when having multiple files with the same filename, or when the component name
 differs from the filename.
 
-```ts
+```md
 ---
 component:
     - name: Bar

@@ -27,7 +27,17 @@ This processor is also available as the deprecated alias `versionBannerProcessor
 ## Usage
 
 ```ts
+import fs from "node:fs/promises";
+import { Generator, motdProcessor } from "@forsakringskassan/docs-generator";
+
+/* --- cut above --- */
+
 const docs = new Generator({
+    /* --- cut begin --- */
+    site: { name: ".." },
+    setupPath: "..",
+    /* --- cut end --- */
+
     processors: [motdProcessor()],
 });
 ```
@@ -35,8 +45,22 @@ const docs = new Generator({
 If you need a static message (always present) you can set the `message` property.
 
 ```ts
+import fs from "node:fs/promises";
+import { Generator, motdProcessor } from "@forsakringskassan/docs-generator";
+
+/* --- cut above --- */
+
 const docs = new Generator({
-    processors: [motdProcessor({ message: "Lorem ipsum dolor sit amet." })],
+    /* --- cut begin --- */
+    site: { name: ".." },
+    setupPath: "..",
+    /* --- cut end --- */
+
+    processors: [
+        motdProcessor({
+            message: "Lorem ipsum dolor sit amet.",
+        }),
+    ],
 });
 ```
 
@@ -45,6 +69,10 @@ const docs = new Generator({
 The `motdProcessor` takes a configuration object:
 
 ```ts
+import { motdProcessor } from "@forsakringskassan/docs-generator";
+
+/* --- cut above --- */
+
 motdProcessor({
     enabled: true,
     container: "body:begin",
@@ -80,7 +108,7 @@ May contain HTML markup.
 There is a runtime API to render dynamic messages:
 
 ```ts
-export interface MOTDMessage {
+interface MOTDMessage {
     /** Text message (may include HTML) */
     message: string;
 
@@ -94,24 +122,31 @@ export interface MOTDMessage {
     preprocess?(element: DocumentFragment): void;
 }
 
-declare global {
-    interface Window {
-        MOTD: {
-            showMessage(message: MOTDMessage): void;
-        };
-    }
-}
+declare const motd: {
+    readonly enabled: boolean;
+    showMessage(message: MOTDMessage): void;
+};
 ```
+
+::: warning
+
+Using the API without the processor causes a runtime error.
+
+:::
 
 Example usage:
 
 ```ts
-MOTD.showMessage({
+import { motd } from "@forsakringskassan/docs-generator/runtime";
+
+motd.showMessage({
     message: "lorem ipsum dolor sit amet",
 });
 ```
 
-> Note: this may cause the page content to be pushed down after initial
-> rendering. This may degrade user experience.
+::: info
 
-Using the API without the processor causes a runtime error.
+This may cause the page content to be pushed down after initial rendering.
+This may degrade user experience.
+
+:::

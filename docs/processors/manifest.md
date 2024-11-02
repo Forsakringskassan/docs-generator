@@ -12,12 +12,21 @@ The manifest can be written in:
 This page describes the processor for writing the manifest as a file on disk, for programmatical usage use:
 
 ```ts
+import { Generator } from "@forsakringskassan/docs-generator";
+
+/* --- cut above --- */
+
 const config = {
     sourceFiles: [
         /* ... */
     ],
 };
 const docs = new Generator({
+    /* --- cut begin --- */
+    site: { name: ".." },
+    setupPath: "..",
+    /* --- cut end --- */
+
     /* ... */
 });
 const manifest = await docs.manifest(config.sourceFiles);
@@ -26,7 +35,19 @@ const manifest = await docs.manifest(config.sourceFiles);
 ## Usage
 
 ```ts
+import {
+    Generator,
+    manifestProcessor,
+} from "@forsakringskassan/docs-generator";
+
+/* --- cut above --- */
+
 const docs = new Generator({
+    /* --- cut begin --- */
+    site: { name: ".." },
+    setupPath: "..",
+    /* --- cut end --- */
+
     processors: [
         manifestProcessor({
             markdown: "etc/docs-manifest.md",

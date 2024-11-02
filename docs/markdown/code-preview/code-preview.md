@@ -213,10 +213,10 @@ Given an example such as:
 ````
 
 ```ts
-const element = document.querySelector("#example-c0ffee");
+const element = document.querySelector<HTMLElement>("#example-c0ffee");
 
-const language = element.dataset.language;
-const tags = element.dataset.tags.split(/\s+/);
+const language = element?.dataset.language;
+const tags = element?.dataset.tags?.split(/\s+/);
 
 console.log(language); // --> "ts"
 console.log(tags); // --> ["nomarkup", "custom-tag"]

@@ -9,6 +9,14 @@ sortorder: 1
 A procesor implements the `Processor` interface:
 
 ```ts
+import {
+    type ProcessorContext,
+    type ProcessorRuntime,
+    type ProcessorStage,
+} from "@forsakringskassan/docs-generator";
+
+/* --- cut above --- */
+
 export interface ProcessorHandler {
     before?: ProcessorStage;
     stage?: ProcessorStage;
@@ -18,6 +26,7 @@ export interface ProcessorHandler {
     runtime?: ProcessorRuntime[];
     handler(
         context: ProcessorContext,
+        /* eslint-disable-next-line @typescript-eslint/no-invalid-void-type */
     ): void | string[] | Promise<void> | Promise<string[]>;
 }
 ```
@@ -39,10 +48,18 @@ When bundling processors in `@forsakringskassan/docs-generator` remember to add 
 If the processor needs a runtime script to be executed in the client browser use the `runtime` property to set one or more filenames.
 
 ```ts
+import { type Processor } from "@forsakringskassan/docs-generator";
+
+/* --- cut above --- */
+
 export function myProcessor(): Processor {
     return {
         name: "awesome-processor",
+        after: "render",
         runtime: [{ src: "src/runtime/awesome-processor.ts" }],
+        handler() {
+            /* ... */
+        },
     };
 }
 ```
@@ -51,9 +68,9 @@ Scripts from enabled processors will be bundled into a bundle `processors` added
 Scripts from unused processors will not be included.
 
 ::: warning
-Unless you are bundling your processor in
-`@forsakringskassan/docs-generator` it is up to you to make sure the script is
-properly compiled before building the documentation.
+
+Unless you are bundling your processor in `@forsakringskassan/docs-generator` it is up to you to make sure the script is properly compiled before building the documentation.
+
 :::
 
 ### Navigation
@@ -66,43 +83,43 @@ To set navigation entries use one of the two navigation setters:
 For instance:
 
 ```ts
-export const myProcessor: Processor = {
-    handler(context) {
-        context.setTopNavigation({
-            path: "./index.html",
-            name: ".",
-            title: "Site name",
-            children: [
-                {
-                    path: "./foo.html",
-                    name: "foo",
-                    title: "Foo",
-                    children: [],
-                },
-                {
-                    path: "./bar.html",
-                    name: "bar",
-                    title: "Bar",
-                    children: [],
-                },
-            ],
-        });
-    },
-};
+import { type Processor } from "@forsakringskassan/docs-generator";
+
+/* --- cut above --- */
+
+export function myProcessor(): Processor {
+    return {
+        stage: "generate-nav",
+        name: "custom-navigation-processor",
+        handler(context) {
+            context.setTopNavigation({
+                path: "./index.html",
+                key: ".",
+                title: "Site name",
+                visible: true,
+                sortorder: 1,
+                children: [
+                    {
+                        path: "./foo.html",
+                        key: "foo",
+                        title: "Foo",
+                        visible: true,
+                        sortorder: 2,
+                        children: [],
+                    },
+                    {
+                        path: "./bar.html",
+                        key: "bar",
+                        title: "Bar",
+                        visible: true,
+                        sortorder: 1,
+                        children: [],
+                    },
+                ],
+            });
+        },
+    };
+}
 ```
 
 This will create a top navigation with two entries "Foo" and "Bar".
-
-There is a helper function `generateNavtree` which creates a navigation structure from the document structure:
-
-```ts
-export const myProcessor: Processor = {
-    handler(context) {
-        const navtree = generateNavtree(context.docs);
-        context.setTopNavigation(navtree);
-        context.setSideNavigation(navtree);
-    },
-};
-```
-
-The above behaviour is bundled in the builtin `navigationProcessor()`.

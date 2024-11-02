@@ -9,7 +9,16 @@ It allows you to specify the order and which items should appear.
 ## Usage
 
 ```ts
+import { Generator, topnavProcessor } from "@forsakringskassan/docs-generator";
+
+/* --- cut above --- */
+
 const docs = new Generator({
+    /* --- cut begin --- */
+    site: { name: ".." },
+    setupPath: "..",
+    /* --- cut end --- */
+
     processors: [topnavProcessor("./docs/topnav.json", "My Awesome Site!")],
 });
 ```

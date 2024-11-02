@@ -11,10 +11,17 @@ npm install --save-dev --save-exact @forsakringskassan/docs-generator
 You can start a development server with watch for incremental builds using `.serve()`.
 
 ```ts
+import {
+    Generator,
+    livereloadProcessor,
+} from "@forsakringskassan/docs-generator";
+
 const docs = new Generator({
-    /* ... */
+    site: {
+        name: "My Awesome Site",
+    },
+    setupPath: "docs/src/setup.ts",
     processors: [livereloadProcessor({ enabled: true })],
-    /* ... */
 });
 
 docs.build([
@@ -29,8 +36,17 @@ docs.serve();
 Vendor alias is optional, it lets you substitute one package for another when bundling. The example below substitutes the package `vue` with the package `vue/dist/esm.bundle.js`. When an alias is given the package can be imported using the given alias as well as the original package name. For instance, when using the following configuration "vue" can be imported and resolved as "vue/dist/esm.bundle.js".
 
 ```ts
+import {
+    Generator,
+    livereloadProcessor,
+} from "@forsakringskassan/docs-generator";
+
 const docs = new Generator({
-    /* ... */
+    site: {
+        name: "My Awesome Site",
+    },
+    setupPath: "docs/src/setup.ts",
+
     vendor: [
         {
             package: "vue",
@@ -39,7 +55,6 @@ const docs = new Generator({
             alias: "vue/dist/esm.bundle.js",
         },
     ],
-    /* ... */
 });
 ```
 
@@ -55,7 +70,7 @@ npm install --save-dev --save-exact @vue/component-compiler
 
 Create the `setup` callback in `docs/src/setup.ts`:
 
-```ts
+```ts nocompile
 import Vue from "vue";
 import { type SetupOptions } from "@forsakringskassan/docs-generator";
 
@@ -73,7 +88,7 @@ export function setup(options: SetupOptions): void {
 
 Create the `setup` callback in `docs/src/setup.ts`:
 
-```ts
+```ts nocompile
 import { createApp } from "vue";
 import { type SetupOptions } from "@forsakringskassan/docs-generator";
 
@@ -102,8 +117,13 @@ Three CSS files are provided:
 Style can be compiled with `compileStyle(name, src, [options])`:
 
 ```ts
+import { Generator } from "@forsakringskassan/docs-generator";
+
 const docs = new Generator({
-    /* ... */
+    site: {
+        name: "My Awesome Site",
+    },
+    setupPath: "docs/src/setup.ts",
 });
 
 docs.compileStyle("docs", "./docs/src/style.scss", {
@@ -274,7 +294,7 @@ Defaults to `@fkui/icon-lib-default`.
 Makes it possible to dynamically load icons and get access to icon metadata.
 The library must have been built using `@fkui/icon-lib-builder`.
 
-```js
+```js nocompile
 const icons = await import(process.env.DOCS_ICON_LIB);
 
 for (const entry of Object.values(icons)) {

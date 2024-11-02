@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "rootDir": ".",
+        "noEmit": true,
+        "allowJs": true,
+        "checkJs": true,
+        "strict": true,
+        "isolatedModules": true,
+        "target": "esnext",
+        "module": "esnext",
+        "moduleResolution": "bundler"
+    },
+    "include": ["**/*.ts", "**/*.js"],
+    "exclude": ["**/*-nocompile*"]
+}

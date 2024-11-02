@@ -1,10 +1,12 @@
 *.tgz
+*.tsbuildinfo
 .jest-cache/
 .eslintcache
 build/
 coverage/
 cypress/fixtures/
 dist/
+docs/examples/files/
 node_modules/
 test-results/
 temp/
