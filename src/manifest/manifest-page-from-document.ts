@@ -2,6 +2,7 @@ import markdownIt from "markdown-it";
 import { type Document } from "../document";
 import { DocumentOutline } from "../document-outline";
 import { getFingerprint, getOutputFilePath } from "../utils";
+import { parseInfostring } from "../examples";
 import { type Manifest } from "./manifest";
 
 type DocumentWithOutput = Document & { fileInfo: { outputName: string } };
@@ -22,7 +23,7 @@ md.renderer.rules.fence = (
     collected: ManifestExamples,
 ) => {
     const { content, info, map } = tokens[idx];
-    const [language, ...tags] = info.split(/\s+/);
+    const { language, tags } = parseInfostring(info);
     const hashContent = `${map?.[0]}:${map?.[1]}:${info}:${content}`;
     const fingerprint = getFingerprint(hashContent);
     let extension = undefined;
