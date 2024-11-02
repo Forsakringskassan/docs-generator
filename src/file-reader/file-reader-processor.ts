@@ -15,7 +15,9 @@ async function globAll(
         return globAll([pattern]);
     }
 
-    const results = await Promise.all(pattern.map((it) => glob(it)));
+    const results = await Promise.all(
+        pattern.map((it) => glob(it, { nodir: true })),
+    );
     return new Set(results.flat());
 }
 
