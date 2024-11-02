@@ -83,6 +83,8 @@ async function getProcessorScripts() {
 }
 
 async function build() {
+    await fs.rm("dist", { recursive: true, force: true });
+
     const options = defineConfig({
         input: ["src/index.ts", "src/compile-example.ts", "src/markdown.ts"],
         external: [
