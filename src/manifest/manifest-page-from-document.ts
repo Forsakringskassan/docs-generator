@@ -13,6 +13,32 @@ type ManifestPage = Manifest["pages"][number];
 type ManifestOutline = ManifestPage["outline"];
 type ManifestExamples = ManifestPage["examples"];
 
+const md = markdownIt();
+
+md.renderer.rules.fence = (
+    tokens,
+    idx,
+    _options,
+    collected: ManifestExamples,
+) => {
+    const { content, info, map } = tokens[idx];
+    const [language, ...tags] = info.split(/\s+/);
+    const hashContent = `${map?.[0]}:${map?.[1]}:${info}:${content}`;
+    const fingerprint = getFingerprint(hashContent);
+    let extension = undefined;
+
+    if (language === "import") {
+        extension = content.split(".").at(-1)?.trim();
+    }
+
+    collected.push({
+        selector: `#example-${fingerprint}`,
+        language: extension ?? language,
+        tags,
+    });
+    return "";
+};
+
 function flattenOutline(outline: DocumentOutline): ManifestOutline {
     return outline.flatMap((entry) => {
         return [
@@ -27,26 +53,7 @@ function findExamples(doc: DocumentLike): ManifestExamples {
         return [];
     }
     const collected: ManifestExamples = [];
-    const md = markdownIt();
-    md.renderer.rules.fence = (tokens, idx) => {
-        const { content, info, map } = tokens[idx];
-        const [language, ...tags] = info.split(/\s+/);
-        const hashContent = `${map?.[0]}:${map?.[1]}:${info}:${content}`;
-        const fingerprint = getFingerprint(hashContent);
-        let extension = undefined;
-
-        if (language === "import") {
-            extension = content.split(".").at(-1)?.trim();
-        }
-
-        collected.push({
-            selector: `#example-${fingerprint}`,
-            language: extension ?? language,
-            tags,
-        });
-        return "";
-    };
-    md.render(doc.body);
+    md.render(doc.body, collected);
     return collected;
 }
 
