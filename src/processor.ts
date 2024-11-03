@@ -30,6 +30,7 @@ export interface ProcessorRuntime {
 /**
  * @public
  */
+/* eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style -- technical debt */
 export type ProcessorHook<K extends "before" | "stage" | "after"> = {
     [k in K]: ProcessorStage;
 };
