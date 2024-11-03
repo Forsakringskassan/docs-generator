@@ -174,7 +174,7 @@ export interface MOTDOptions {
 }
 
 // @public
-export function motdProcessor(options: MOTDOptions): Processor;
+export function motdProcessor(options?: MOTDOptions): Processor;
 
 // @public
 export function navigationFileReader(filePath: string, basePath?: string): Promise<Document_2[]>;
