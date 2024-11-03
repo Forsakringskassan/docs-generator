@@ -79,3 +79,145 @@ it("should remove eslint // comments", () => {
         }
     `);
 });
+
+it("should cut above marker", () => {
+    expect.assertions(1);
+    const source = dedent`
+        a
+        b
+        /* --- cut above --- */
+        c
+        d
+    `;
+    expect(transformCode(source, "typescript")).toMatchInlineSnapshot(`
+        c
+        d
+    `);
+});
+
+it("should cut above marker with surrounding newlines", () => {
+    expect.assertions(1);
+    const source = dedent`
+        a
+        b
+
+        /* --- cut above --- */
+
+        c
+        d
+    `;
+    expect(transformCode(source, "typescript")).toMatchInlineSnapshot(`
+        c
+        d
+    `);
+});
+
+it("should cut below marker", () => {
+    expect.assertions(1);
+    const source = dedent`
+        a
+        b
+        /* --- cut below --- */
+        c
+        d
+    `;
+    expect(transformCode(source, "typescript")).toMatchInlineSnapshot(`
+        a
+        b
+    `);
+});
+
+it("should cut below marker with surrounding newlines", () => {
+    expect.assertions(1);
+    const source = dedent`
+        a
+        b
+
+        /* --- cut below --- */
+
+        c
+        d
+    `;
+    expect(transformCode(source, "typescript")).toMatchInlineSnapshot(`
+        a
+        b
+    `);
+});
+
+it("should cut with start and end marker", () => {
+    expect.assertions(1);
+    const source = dedent`
+        a
+        /* --- cut begin --- */
+        b
+        /* --- cut end --- */
+        c
+    `;
+    expect(transformCode(source, "typescript")).toMatchInlineSnapshot(`
+        a
+        c
+    `);
+});
+
+it("should cut with start and end marker with surrounding newlines", () => {
+    expect.assertions(1);
+    const source = dedent`
+        a
+
+        /* --- cut begin --- */
+        b
+        /* --- cut end --- */
+
+        c
+    `;
+    expect(transformCode(source, "typescript")).toMatchInlineSnapshot(`
+        a
+        c
+    `);
+});
+
+it("should handle missing end instruction same as cut below", () => {
+    expect.assertions(1);
+    const source = dedent`
+        a
+        b
+
+        /* --- cut begin --- */
+
+        c
+        d
+    `;
+    expect(transformCode(source, "typescript")).toMatchInlineSnapshot(`
+        a
+        b
+    `);
+});
+
+it("should handle missing begin instruction same as cut above", () => {
+    expect.assertions(1);
+    const source = dedent`
+        a
+        b
+
+        /* --- cut end --- */
+
+        c
+        d
+    `;
+    expect(transformCode(source, "typescript")).toMatchInlineSnapshot(`
+        c
+        d
+    `);
+});
+
+it("should handle cuts with no other content", () => {
+    expect.assertions(3);
+    expect(transformCode("/* --- cut above --- */", "javascript")).toBe("");
+    expect(transformCode("/* --- cut below --- */", "javascript")).toBe("");
+    expect(
+        transformCode(
+            "/* --- cut begin --- */\n/* --- cut end --- */",
+            "javascript",
+        ),
+    ).toBe("");
+});
