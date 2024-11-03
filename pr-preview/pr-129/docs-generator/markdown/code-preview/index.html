@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="sv" class="layout--content-with-menu" data-root-url="../..">
+<html lang="sv" class="layout--article" data-root-url="../..">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -35,10 +35,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-11b296.json"
+            href="../../search-data-8cf653.json"
             as="fetch"
             crossorigin
-            integrity="sha384-8urIx7hGfLlRcN9coND62Hl9KCE358qBq1E3/Qb93391dbTxGG+5r/ujy/PsVs7t"
+            integrity="sha384-a1NRCC354EfHwc7gHM+mVUfzJ5KMNNzbSTNb6cE/PrbKXfyXiHbBRIcJwt4bmIxm"
             id="search-data"
         />
     </head>
@@ -217,9 +217,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        feature/source-code-stripping (<a href="https://github.com/Forsakringskassan/docs-generator/commits/383ef18084d00dce3b5d9cc7dafbd603e0810750">383ef18</a>)<br />
+        feature/source-code-stripping (<a href="https://github.com/Forsakringskassan/docs-generator/commits/583b6d44ca282930d67d584a0e8e65dd699fd9c2">583b6d4</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/129">PR 129</a><br />
-        2024-11-03 18:37
+        2024-11-03 18:41
     </span>
 </div>
 </div>
@@ -272,6 +272,16 @@
             
         >
             Fullscreen examples
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./javascript.html"
+            
+        >
+            Javascript and Typescript
         </a>
     </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <!-- prettier-ignore -->
@@ -373,6 +383,37 @@
                     <h1 id="title">Code preview</h1>
 
                     
+                    <div id="aside">
+                        <!-- prettier-ignore -->
+<dl></dl>
+
+
+                        
+                        <details id="outline">
+                            <summary class="outline__heading">Innehåll</summary>
+                            <ul>
+                                
+                                <li><a href="#default_no_language_or_tags">Default, no language or tags</a></li>
+                                
+                                <li><a href="#explicit_languages">Explicit languages</a></li>
+                                
+                                <li><a href="#importing_files">Importing files</a></li>
+                                
+                                <li><a href="#fullscreen">Fullscreen</a></li>
+                                
+                                <li><a href="#tags">Tags</a></li>
+                                
+                                <li><a href="#runnable_examples">Runnable examples</a></li>
+                                
+                                <li><a href="#selectors_for_e2e_testing">Selectors for E2E testing</a></li>
+                                
+                                <li><a href="#example_metadata">Example metadata</a></li>
+                                
+                            </ul>
+                        </details>
+                        
+                    </div>
+                    
 
                     <div id="content">
                         <!-- prettier-ignore -->
@@ -455,11 +496,12 @@ Lorem ipsum
 </code></pre>
                 </div>
             </div>
-        <h3 id="javascript_typescript"><a class="header-anchor" href="#javascript_typescript">Javascript / Typescript</a></h3><p>Javascript and typescript only shows the code with syntax highlight.</p>
+        <h3 id="javascript_typescript"><a class="header-anchor" href="#javascript_typescript">Javascript / Typescript</a></h3><p>Javascript and Typescript only shows the code with syntax highlight.</p>
+<p>See also <a href="./javascript.html">Javascript and Typescript</a> for additional details about wrinting JS-based examples.</p>
 <p><strong>Input:</strong></p>
 
                 <div
-                    id="example-7307a2"
+                    id="example-0ef0f3"
                     class="code-preview code-preview--default"
                     
                     
@@ -476,7 +518,7 @@ export interface Foo {
             <p><strong>Output:</strong></p>
 
                 <div
-                    id="example-a7e464"
+                    id="example-c8a40e"
                     class="code-preview code-preview--default"
                     
                     
@@ -488,88 +530,13 @@ export interface Foo {
 }
 </code></pre>
                 </div>
-            <p>ESLint comments will be stripped from the rendered source code.</p>
-<p><strong>Input:</strong></p>
-
-                <div
-                    id="example-2c8023"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="md"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-md" tabindex="0"><span class="hljs-code">```js
-function foo(value) {
-    /* eslint-disable-next-line eqeqeq */
-    return value == &quot;foo&quot;;
-}
-```</span>
-</code></pre>
-                </div>
-            <p><strong>Output:</strong></p>
-
-                <div
-                    id="example-a451c3"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="javascript"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-keyword">function</span> <span class="hljs-title function_">foo</span>(<span class="hljs-params">value</span>) {
-    <span class="hljs-keyword">return</span> value == <span class="hljs-string">&quot;foo&quot;</span>;
-}
-</code></pre>
-                </div>
-            <p>The source code may also contains snippets which are cut from the rendered source code.</p>
-<p>This is mostly useful in combination with extracting the example source code and running external tools, e.g. compiling the example might require additional imports or declarations.</p>
-<p><strong>Input:</strong></p>
-
-                <div
-                    id="example-70f50d"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="md"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-md" tabindex="0"><span class="hljs-code">```ts
-declare function add(a: number, b: number): number;
-
-/* --- cut above --- */
-
-const result = add(1, 2);
-```</span>
-</code></pre>
-                </div>
-            <p><strong>Output:</strong></p>
-
-                <div
-                    id="example-bcc1ec"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="typescript"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> result = <span class="hljs-title function_">add</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);
-</code></pre>
-                </div>
-            <p>The following instructions are available:</p>
-<ul>
-<li><code>/* --- cut above --- */</code> removes all lines above the instruction.</li>
-<li><code>/* --- cut below --- */</code> removes all lines below the instruction.</li>
-<li><code>/* --- cut begin --- */</code> and <code>/* --- cut end --- */</code> removes all lines between the two instructions.</li>
-</ul>
-<p>Blank lines above or below the instructions will always be trimmed as well.</p>
-<h2 id="importing_files"><a class="header-anchor" href="#importing_files">Importing files</a></h2><p>Instead of writing examples inline the source can be imported from another file.
+            <h2 id="importing_files"><a class="header-anchor" href="#importing_files">Importing files</a></h2><p>Instead of writing examples inline the source can be imported from another file.
 This is especially useful if the examples become long and clumpsy to write in a code fence.</p>
 <p>When importing files the extension determines the language but is otherwise the same as if the contents of the file was written inside the code fence directly.</p>
 <p><strong>Input:</strong></p>
 
                 <div
-                    id="example-ca2f76"
+                    id="example-87a147"
                     class="code-preview code-preview--default"
                     
                     
@@ -588,7 +555,7 @@ my-file.ts
             <p><strong>Output:</strong></p>
 
             <div
-                id="example-dcb793"
+                id="example-be0271"
                 class="code-preview code-preview--default"
                 
                 
@@ -619,7 +586,7 @@ my-file.ts
             </div>
         
                 <div
-                    id="example-5d01f0"
+                    id="example-67575f"
                     class="code-preview code-preview--default"
                     
                     
@@ -636,7 +603,7 @@ my-file.ts
 <p><strong>Input:</strong></p>
 
                 <div
-                    id="example-053280"
+                    id="example-5612e9"
                     class="code-preview code-preview--default"
                     
                     
@@ -655,7 +622,7 @@ my-file.html
             <p><strong>Output:</strong></p>
 
                 <div
-                    id="example-3d90a9"
+                    id="example-5ef7a8"
                     class="code-preview code-preview--default"
                     
                     data-tags=static
@@ -667,7 +634,7 @@ my-file.html
                 </div>
             
                 <div
-                    id="example-3aa524"
+                    id="example-cdcc1a"
                     class="code-preview code-preview--default"
                     
                     data-tags=static
@@ -681,7 +648,7 @@ my-file.html
 <p><strong>Input:</strong></p>
 
                 <div
-                    id="example-8ac08c"
+                    id="example-537fe8"
                     class="code-preview code-preview--default"
                     
                     
@@ -700,7 +667,7 @@ my-file.html
             <p><strong>Output:</strong>:</p>
 
                 <div
-                    id="example-ca4a35"
+                    id="example-698759"
                     class="code-preview code-preview--default"
                     
                     data-tags=nomarkup
@@ -712,7 +679,7 @@ my-file.html
                 </div>
             
                 <div
-                    id="example-5f189b"
+                    id="example-2b1015"
                     class="code-preview code-preview--default"
                     
                     data-tags=nomarkup
@@ -724,7 +691,7 @@ my-file.html
                 </div>
             <h2 id="runnable_examples"><a class="header-anchor" href="#runnable_examples">Runnable examples</a></h2>
             <div
-                id="example-661786"
+                id="example-eb5f3a"
                 class="code-preview code-preview--default"
                 
                 
@@ -781,7 +748,7 @@ The <a href="../../processors/manifest.html">manifest</a> includes each example 
 <h3 id="custom_test_id"><a class="header-anchor" href="#custom_test_id">Custom test id</a></h3><p>Examples can be given a custom test id using the <code>test-id=string</code> tag which can be used to write a selector such as <code>[data-test=string]</code>:</p>
 
                 <div
-                    id="example-07c4be"
+                    id="example-8e062f"
                     class="code-preview code-preview--default"
                     
                     
@@ -802,7 +769,7 @@ Moving examples around on the same page will change the order this selector retu
 <p>Given an example such as:</p>
 
                 <div
-                    id="example-296d10"
+                    id="example-7f1ed8"
                     class="code-preview code-preview--default"
                     
                     
@@ -816,7 +783,7 @@ Moving examples around on the same page will change the order this selector retu
                 </div>
             
                 <div
-                    id="example-3b73ba"
+                    id="example-4dddd7"
                     class="code-preview code-preview--default"
                     
                     
@@ -960,9 +927,9 @@ Moving examples around on the same page will change the order this selector retu
             
         ></script>
         <script
-            src="../../assets/main-783075.js"
+            src="../../assets/main-0a173b.js"
             crossorigin
-            integrity="sha384-S322JtZk89LUUAC4Bc1Tx47bTQ97ENyQSvuzEJ9BKOERgB02w+cCQJBzYSxV/XFd"
+            integrity="sha384-GtTLBQIw6W9T163URF0Osj8E4y+JUwXJwJI0InUNeX4NR9OCcWm0MehaWp5zjBnh"
             
         ></script>
     </body>
