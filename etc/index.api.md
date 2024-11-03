@@ -107,8 +107,7 @@ export interface GeneratorOptions {
             title?: Record<string, string>;
         };
     };
-    // (undocumented)
-    outputFolder: string;
+    outputFolder?: string;
     processors?: Processor[];
     setupPath: string;
     site: GeneratorSiteOptions;
