@@ -17,7 +17,7 @@ export function createMockDocument(
         name,
         alias: [],
         visible: false,
-        attributes: { sortorder: Infinity },
+        attributes: { sortorder: Infinity, redirectFrom: [] },
         body: "",
         outline: [],
         format: "html",

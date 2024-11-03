@@ -86,6 +86,13 @@ exports[`smoketest 1`] = `
           "sortorder": Infinity,
           "title": "Mermaid",
         },
+        {
+          "external": false,
+          "id": "fs:docs/markdown/redirects.md",
+          "path": "./markdown/redirects.html",
+          "sortorder": Infinity,
+          "title": "Redirects",
+        },
       ],
       "key": "./markdown",
       "path": "./markdown/",

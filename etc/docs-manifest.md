@@ -4,6 +4,7 @@
 
 ```
 changelog.html
+example/redirect.html -> markdown/redirects.html
 index.html
 index.html
 layout/custom-layout.html
@@ -21,6 +22,7 @@ markdown/containers/messagebox.html
 markdown/definition-lists.html
 markdown/index.html
 markdown/mermaid.html
+markdown/redirects.html
 navigation/child-page-1.html
 navigation/child-page-2.html
 navigation/child-page-3.html

@@ -18,7 +18,9 @@ function extractTerms(doc: Document): string[] {
 }
 
 function isIndexable(doc: Document): boolean {
-    return Boolean(doc.visible && doc.fileInfo.outputName);
+    return Boolean(
+        doc.visible && doc.fileInfo.outputName && doc.format !== "redirect",
+    );
 }
 
 function getTerms(doc: Document): SearchEntry {
@@ -53,6 +55,7 @@ export function searchProcessor(): Processor {
                 visible: false,
                 attributes: {
                     sortorder: Infinity,
+                    redirectFrom: [],
                 },
                 body,
                 outline: [],

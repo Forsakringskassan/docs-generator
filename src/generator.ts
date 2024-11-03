@@ -28,6 +28,7 @@ import {
     type TemplateBlockData,
 } from "./processor-context";
 import { type ProcessorStage } from "./processor-stage";
+import { redirectProcessor } from "./processors";
 import { type Manifest } from "./manifest";
 import { serve } from "./serve";
 import { haveOutput } from "./utils";
@@ -170,6 +171,7 @@ async function stage(
 /* eslint-enable no-console */
 
 function createContext(
+    outputFolder: string,
     templateLoader: TemplateLoader,
 ): Omit<ProcessorContext, "log"> {
     let docs: Document[] = [];
@@ -213,6 +215,8 @@ function createContext(
         get sidenav(): NavigationSection {
             return sidenav;
         },
+
+        outputFolder,
 
         addDocument(document: Document | Document[]) {
             docs = [...docs, ...toArray(document)];
@@ -374,11 +378,12 @@ export class Generator {
     public async manifest(sourceFiles: SourceFiles[]): Promise<Manifest> {
         const processors: Processor[] = [
             fileReaderProcessor(sourceFiles),
+            redirectProcessor(),
             ...this.processors,
         ];
 
         const templateLoader = createTemplateLoader([]);
-        const context = createContext(templateLoader);
+        const context = createContext("", templateLoader);
         await stage("generate-docs", context, processors, { verbose: false });
 
         const docs = context.docs.filter(haveOutput);
@@ -404,6 +409,7 @@ export class Generator {
 
         const processors: Processor[] = [
             fileReaderProcessor(sourceFiles),
+            redirectProcessor(),
             vendorProcessor(assetFolder, this.vendor),
             cssAssetProcessor(assetFolder, this.styles, { cwd }),
             jsAssetProcessor(assetFolder, this.scripts),
@@ -427,7 +433,7 @@ export class Generator {
         compileProcessorRuntime(this, import.meta.url, processors);
 
         const templateLoader = createTemplateLoader(templateFolders);
-        const context = createContext(templateLoader);
+        const context = createContext(outputFolder, templateLoader);
         const generatedFiles = [
             await stage("generate-docs", context, processors),
             await stage("generate-nav", context, processors),

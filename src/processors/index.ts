@@ -9,6 +9,11 @@ export {
 } from "./motd-processor";
 export { themeSelectProcessor } from "./theme-select-processor";
 export {
+    htmlRedirectProcessor,
+    redirectFileProcessor,
+    redirectProcessor,
+} from "./redirect";
+export {
     type SelectableVersionProcessorOptions,
     selectableVersionProcessor,
 } from "./selectable-version-processor";
