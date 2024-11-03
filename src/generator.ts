@@ -74,11 +74,11 @@ export interface GeneratorOptions {
     /**
      * Options for markdown renderer.
      */
-    markdown: {
+    markdown?: {
         /**
          * Options for markdown messagebox container.
          */
-        messagebox: {
+        messagebox?: {
             /**
              * Default titles for messageboxes.
              *
