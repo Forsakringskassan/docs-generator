@@ -52,7 +52,8 @@ export interface GeneratorOptions {
     /** Site options */
     site: GeneratorSiteOptions;
 
-    outputFolder: string;
+    /** Output folder. Default: `public` */
+    outputFolder?: string;
 
     /** Where cached content is stored. Default: `temp/docs` */
     cacheFolder?: string;
@@ -299,9 +300,9 @@ export class Generator {
         }
 
         this.site = options.site;
-        this.outputFolder = options.outputFolder;
+        this.outputFolder = options.outputFolder ?? "./public";
         this.cacheFolder = options.cacheFolder ?? "./temp/docs";
-        this.assetFolder = path.posix.join(options.outputFolder, "assets");
+        this.assetFolder = path.posix.join(this.outputFolder, "assets");
         this.exampleFolders = options.exampleFolders ?? [];
         this.templateFolders = options.templateFolders ?? [];
         this.processors = options.processors ?? [];
