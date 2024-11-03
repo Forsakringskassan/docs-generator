@@ -55,8 +55,8 @@ export interface GeneratorOptions {
     outputFolder: string;
     cacheFolder: string;
 
-    /** List of folders to search when locating examples (searched recursively) */
-    exampleFolders: string[];
+    /** List of folders to search when locating examples (searched recursively). Default: `[]` */
+    exampleFolders?: string[];
 
     /** List of folders to search when locating templates. */
     templateFolders?: string[];
@@ -300,7 +300,7 @@ export class Generator {
         this.outputFolder = options.outputFolder;
         this.cacheFolder = options.cacheFolder;
         this.assetFolder = path.posix.join(options.outputFolder, "assets");
-        this.exampleFolders = options.exampleFolders;
+        this.exampleFolders = options.exampleFolders ?? [];
         this.templateFolders = options.templateFolders ?? [];
         this.processors = options.processors ?? [];
         this.vendor = options.vendor ?? [];

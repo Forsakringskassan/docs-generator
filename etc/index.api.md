@@ -102,7 +102,7 @@ export { Generator_2 as Generator }
 export interface GeneratorOptions {
     // (undocumented)
     cacheFolder: string;
-    exampleFolders: string[];
+    exampleFolders?: string[];
     markdown?: {
         messagebox?: {
             title?: Record<string, string>;
