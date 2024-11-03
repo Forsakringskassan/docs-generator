@@ -6,6 +6,7 @@ import { type ExampleOptions } from "./example-options";
 import { type ExampleResult } from "./example-result";
 import { getExampleImport } from "./get-example-import";
 import { getExampleName } from "./get-example-name";
+import { transformCode } from "./transform-code";
 
 const vueMajor = parseInt(version.split(".", 2)[0], 10) as 2 | 3;
 
@@ -32,9 +33,10 @@ export function generateExample(options: ExampleOptions): ExampleResult {
             options.exampleFolders,
             parsed.filename,
         );
-        const source = fs.readFileSync(filename, "utf-8");
         const language = parsed.extension;
         const comments = parsed.comments;
+        const content = fs.readFileSync(filename, "utf-8");
+        const source = transformCode(content, language);
         const example = generateExample({
             ...options,
             source,

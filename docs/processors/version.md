@@ -11,6 +11,11 @@ layout: content-with-menu
 const pkg = JSON.parse(await fs.readFile("package.json", "utf-8"));
 
 const docs = new Generator({
+    site: { name: ".." },
+    outputFolder: "..",
+    cacheFolder: "..",
+    exampleFolders: [],
+
     processors: [versionProcessor(pkg, "footer:right")],
 });
 ```

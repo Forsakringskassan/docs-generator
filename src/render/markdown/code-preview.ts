@@ -1,6 +1,10 @@
 import path from "node:path";
 import type MarkdownIt from "markdown-it";
-import { type ExampleResult, parseInfostring } from "../../examples";
+import {
+    type ExampleResult,
+    parseInfostring,
+    transformCode,
+} from "../../examples";
 import { type MarkdownEnv } from "../markdown-env";
 import { getFingerprint } from "../../utils";
 import { findTestId, highlight, htmlencode, replaceAtLink } from "./utils";
@@ -50,14 +54,16 @@ export function codePreview(
         env: MarkdownEnv,
     ): string {
         const { fileInfo } = env;
-        const { content: source, info, map } = tokens[idx];
+        const { content: rawSource, info, map } = tokens[idx];
         const { language, tags: rawTags } = parseInfostring(info);
 
         if (language === "mermaid") {
             return /* HTML */ `
-                <pre class="mermaid">${htmlencode(source)}</pre>
+                <pre class="mermaid">${htmlencode(rawSource)}</pre>
             `;
         }
+
+        const source = transformCode(rawSource, language);
 
         const example = generateExample({
             source,
