@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## [2.12.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.11.4...v2.12.0) (2024-11-03)
+
+
+### Features
+
+* new processor `fileRedirctProcessor` for html based redirects ([17c18cc](https://github.com/Forsakringskassan/docs-generator/commit/17c18cc7236afdaa3571ad037d81a972b40f07ee)), closes [#77](https://github.com/Forsakringskassan/docs-generator/issues/77)
+* new processor `redirctFileProcessor` for netlify-style redirects ([a326b5f](https://github.com/Forsakringskassan/docs-generator/commit/a326b5f3d9db1a0cbe8628707fcce33613cf11bb)), closes [#77](https://github.com/Forsakringskassan/docs-generator/issues/77)
+* support tagging redirects on documents ([e695ec6](https://github.com/Forsakringskassan/docs-generator/commit/e695ec60c9cfcb0a1f71019a6bee69a7e6f2b4e1)), closes [#76](https://github.com/Forsakringskassan/docs-generator/issues/76)
+
+
+### Bug Fixes
+
+* **deps:** update dependency mermaid to v11.4.0 ([b408d94](https://github.com/Forsakringskassan/docs-generator/commit/b408d94e21bf6f7c75e9284d076952086cbdc3c3))
+
 ## [2.11.4](https://github.com/Forsakringskassan/docs-generator/compare/v2.11.3...v2.11.4) (2024-11-01)
 
 
