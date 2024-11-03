@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Definition lists - FK Documentation generator</title>
+        <title>Redirects - FK Documentation generator</title>
 
         <!-- prettier-ignore -->
         <link
@@ -333,7 +333,7 @@
     </li><!-- prettier-ignore -->
     <!-- prettier-ignore --><!-- prettier-ignore -->
     <!-- prettier-ignore -->
-    <li class="link active">
+    <li class="link ">
         <!-- prettier-ignore -->
         <a
             href="./definition-lists.html"
@@ -353,7 +353,7 @@
         </a>
     </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <!-- prettier-ignore -->
-    <li class="link ">
+    <li class="link active">
         <!-- prettier-ignore -->
         <a
             href="./redirects.html"
@@ -380,7 +380,7 @@
 
                 <!-- prettier-ignore --><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
-                    <h1 id="title">Definition lists</h1>
+                    <h1 id="title">Redirects</h1>
 
                     
                     <div id="aside">
@@ -393,11 +393,9 @@
                             <summary class="outline__heading">Innehåll</summary>
                             <ul>
                                 
-                                <li><a href="#multiple_definitions">Multiple definitions</a></li>
+                                <li><a href="#htmlredirectprocessor">`htmlRedirectProcessor`</a></li>
                                 
-                                <li><a href="#markdown_content">Markdown content</a></li>
-                                
-                                <li><a href="#nested_content">Nested content</a></li>
+                                <li><a href="#redirectfileprocessor">`redirectFileProcessor`</a></li>
                                 
                             </ul>
                         </details>
@@ -407,132 +405,39 @@
 
                     <div id="content">
                         <!-- prettier-ignore -->
-<p>Definition lists can be created with:</p>
-<p><strong>Input:</strong></p>
+<p>Redirects are configured on the target document.</p>
+<p>To configure a redirect from <code>old-page.html</code> to <code>new-page.html</code> edit <code>new-page.md</code>:</p>
 
                 <div
-                    id="example-c3f4af"
+                    id="example-ea5c09"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="md"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-md" tabindex="0">Term
-: Definition
-</code></pre>
-                </div>
-            <p><strong>Output:</strong>:</p>
-<dl>
-<dt>Term</dt>
-<dd>Definition</dd>
-</dl>
-<h2 id="multiple_definitions"><a class="header-anchor" href="#multiple_definitions">Multiple definitions</a></h2><p>Multiple definition can be used:</p>
-<p><strong>Input:</strong></p>
-
-                <div
-                    id="example-8d9eed"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="md"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-md" tabindex="0">Term
-: Definition 1
-: Definition 2
-</code></pre>
-                </div>
-            <p><strong>Output:</strong>:</p>
-<dl>
-<dt>Term</dt>
-<dd>Definition 1</dd>
-<dd>Definition 2</dd>
-</dl>
-<h2 id="markdown_content"><a class="header-anchor" href="#markdown_content">Markdown content</a></h2><p>Both terms and definitions may contain markdown content:</p>
-<p><strong>Input:</strong></p>
-
-                <div
-                    id="example-04c0e2"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="md"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-md" tabindex="0">Term <span class="hljs-strong">**with**</span> markdown
-: Definition <span class="hljs-strong">**with**</span> markdown
-</code></pre>
-                </div>
-            <p><strong>Output:</strong>:</p>
-<dl>
-<dt>Term <strong>with</strong> markdown</dt>
-<dd>Definition <strong>with</strong> markdown</dd>
-</dl>
-<h2 id="nested_content"><a class="header-anchor" href="#nested_content">Nested content</a></h2><p>The definition may contain nested lists, definition lists, and other complex content by indenting the block with four spaces:</p>
-<p><strong>Input:</strong></p>
-
-                <div
-                    id="example-1ca8d5"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="md"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-md" tabindex="0"><span class="hljs-code">`options`</span>
-: An object containing one or more properties:
-
-<span class="hljs-code">    `foo`
-    : Sets the foo option of the function call.
-</span>
-<span class="hljs-code">        Can be one of:
-</span>
-<span class="hljs-bullet">        *</span> <span class="hljs-code">`&quot;foo&quot;`</span>
-<span class="hljs-bullet">        *</span> <span class="hljs-code">`&quot;bar&quot;`</span>
-
-<span class="hljs-code">    `bar`
-    : Sets the bar option of the function call.
-</span>
-<span class="hljs-code">        ```ts
-        nestedCodeBlock(&quot;foo&quot;);
-        ```
+                    <pre class="code-preview__markup"><code class="hljs lang-md" tabindex="0">---
+title: New page
+redirect<span class="hljs-emphasis">_from:
+    - old-page.html
+---
 </span></code></pre>
                 </div>
-            <p><strong>Output:</strong>:</p>
-<dl>
-<dt><code>options</code></dt>
-<dd>
-<p>An object containing one or more properties:</p>
-<dl>
-<dt><code>foo</code></dt>
-<dd>
-<p>Sets the foo option of the function call.</p>
-<p>Can be one of:</p>
-<ul>
-<li><code>&quot;foo&quot;</code></li>
-<li><code>&quot;bar&quot;</code></li>
-</ul>
-</dd>
-<dt><code>bar</code></dt>
-<dd>
-<p>Sets the bar option of the function call.</p>
+            <p>Make sure <code>old-page.md</code> does not exist.</p>
 
-                <div
-                    id="example-15b771"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="ts"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-title function_">nestedCodeBlock</span>(<span class="hljs-string">&quot;foo&quot;</span>);
-</code></pre>
-                </div>
-            </dd>
-</dl>
-</dd>
-</dl>
+            <div class="docs-messagebox docs-messagebox--warning">
+                <p class="docs-messagebox__title">WARNING</p>
+                <p>Remember to configure a redirect generator:</p>
+<ul>
+<li><code>htmlRedirectProcessor</code> for generating HTML meta refresh redirects.</li>
+<li><code>redirectFileProcessor</code> for generating a Netlify-style <code>_redirect</code> file.</li>
+</ul>
+
+            </div>
+        <h2 id="htmlredirectprocessor"><a class="header-anchor" href="#htmlredirectprocessor"><code>htmlRedirectProcessor</code></a></h2><p>Generates html-files with a HTML meta refresh.
+supported by all hosting services but does not respond with proper a proper HTTP 301 response.</p>
+<h2 id="redirectfileprocessor"><a class="header-anchor" href="#redirectfileprocessor"><code>redirectFileProcessor</code></a></h2><p>Generate a Netlify-style <code>_redirect</code> file.
+Not supported by all hosting sevices but will respond with proper HTTP status codes.</p>
 
 
                     </div>
@@ -670,9 +575,9 @@
 
     <!--
 
-         Source file: docs/markdown/definition-lists.md
-         Document ID: fs:docs/markdown/definition-lists.md
-         Document name: definition-lists
+         Source file: docs/markdown/redirects.md
+         Document ID: fs:docs/markdown/redirects.md
+         Document name: redirects
          Document alias: 
 
     -->
