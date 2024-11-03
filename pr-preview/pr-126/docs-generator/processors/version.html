@@ -35,10 +35,10 @@
 
         <link
             rel="preload"
-            href="../search-data-11b296.json"
+            href="../search-data-d5db83.json"
             as="fetch"
             crossorigin
-            integrity="sha384-8urIx7hGfLlRcN9coND62Hl9KCE358qBq1E3/Qb93391dbTxGG+5r/ujy/PsVs7t"
+            integrity="sha384-cV09d4b5zc4CXCwlYCo/ecl0a/sZD3oZorpol4LIA9pp8VFhFh/rDHDqV07Y6sWR"
             id="search-data"
         />
     </head>
@@ -217,9 +217,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        feature/extract-examples (<a href="https://github.com/Forsakringskassan/docs-generator/commits/ea9568296caa75b7b79ef5015a580b721ff1ad69">ea95682</a>)<br />
+        feature/extract-examples (<a href="https://github.com/Forsakringskassan/docs-generator/commits/c68236401da32674c7c3ae1e9b9752e6c6aa7023">c682364</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/126">PR 126</a><br />
-        2024-11-02 16:52
+        2024-11-03 18:41
     </span>
 </div>
 </div>
@@ -254,6 +254,16 @@
             
         >
             Cookie
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./extract-examples.html"
+            
+        >
+            Extract examples
         </a>
     </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <!-- prettier-ignore -->
@@ -343,7 +353,7 @@
 <p><code>versionProcessor</code> adds a template block with the package version.</p>
 <h2 id="usage"><a class="header-anchor" href="#usage">Usage</a></h2>
                 <div
-                    id="example-ef2eee"
+                    id="example-361a2e"
                     class="code-preview code-preview--default"
                     
                     
@@ -353,6 +363,11 @@
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> pkg = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(<span class="hljs-keyword">await</span> fs.<span class="hljs-title function_">readFile</span>(<span class="hljs-string">&quot;package.json&quot;</span>, <span class="hljs-string">&quot;utf-8&quot;</span>));
 
 <span class="hljs-keyword">const</span> docs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Generator</span>({
+    <span class="hljs-attr">site</span>: { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;..&quot;</span> },
+    <span class="hljs-attr">outputFolder</span>: <span class="hljs-string">&quot;..&quot;</span>,
+    <span class="hljs-attr">cacheFolder</span>: <span class="hljs-string">&quot;..&quot;</span>,
+    <span class="hljs-attr">exampleFolders</span>: [],
+
     <span class="hljs-attr">processors</span>: [<span class="hljs-title function_">versionProcessor</span>(pkg, <span class="hljs-string">&quot;footer:right&quot;</span>)],
 });
 </code></pre>
@@ -522,9 +537,9 @@
             
         ></script>
         <script
-            src="../assets/main-0a173b.js"
+            src="../assets/main-783075.js"
             crossorigin
-            integrity="sha384-GtTLBQIw6W9T163URF0Osj8E4y+JUwXJwJI0InUNeX4NR9OCcWm0MehaWp5zjBnh"
+            integrity="sha384-S322JtZk89LUUAC4Bc1Tx47bTQ97ENyQSvuzEJ9BKOERgB02w+cCQJBzYSxV/XFd"
             
         ></script>
     </body>
