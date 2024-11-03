@@ -1,6 +1,6 @@
 ---
 title: Code preview
-layout: content-with-menu
+layout: article
 ---
 
 Code within markdown code fences will be rendered with syntax highlighting and for languages that can run in the browser a runnable example will be created.
@@ -47,7 +47,9 @@ HTML is rendered in the browser and the HTML markup is shown with syntax highlig
 
 ### Javascript / Typescript
 
-Javascript and typescript only shows the code with syntax highlight.
+Javascript and Typescript only shows the code with syntax highlight.
+
+See also {@link javascript Javascript and Typescript} for additional details about wrinting JS-based examples.
 
 **Input:**
 
@@ -66,62 +68,6 @@ export interface Foo {
     name: string;
 }
 ```
-
-ESLint comments will be stripped from the rendered source code.
-
-**Input:**
-
-````md
-```js
-function foo(value) {
-    /* eslint-disable-next-line eqeqeq */
-    return value == "foo";
-}
-```
-````
-
-**Output:**
-
-```js
-function foo(value) {
-    /* eslint-disable-next-line eqeqeq */
-    return value == "foo";
-}
-```
-
-The source code may also contains snippets which are cut from the rendered source code.
-
-This is mostly useful in combination with extracting the example source code and running external tools, e.g. compiling the example might require additional imports or declarations.
-
-**Input:**
-
-````md
-```ts
-declare function add(a: number, b: number): number;
-
-/* --- cut above --- */
-
-const result = add(1, 2);
-```
-````
-
-**Output:**
-
-```ts
-declare function add(a: number, b: number): number;
-
-/* --- cut above --- */
-
-const result = add(1, 2);
-```
-
-The following instructions are available:
-
--   `/* --- cut above --- */` removes all lines above the instruction.
--   `/* --- cut below --- */` removes all lines below the instruction.
--   `/* --- cut begin --- */` and `/* --- cut end --- */` removes all lines between the two instructions.
-
-Blank lines above or below the instructions will always be trimmed as well.
 
 ## Importing files
 

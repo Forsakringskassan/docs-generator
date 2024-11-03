@@ -30,6 +30,13 @@ exports[`smoketest 1`] = `
             },
             {
               "external": false,
+              "id": "fs:docs/markdown/code-preview/javascript.md",
+              "path": "./markdown/code-preview/javascript.html",
+              "sortorder": Infinity,
+              "title": "Javascript and Typescript",
+            },
+            {
+              "external": false,
               "id": "fs:docs/markdown/code-preview/vue.md",
               "path": "./markdown/code-preview/vue.html",
               "sortorder": Infinity,
