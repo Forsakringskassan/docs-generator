@@ -100,8 +100,7 @@ export { Generator_2 as Generator }
 
 // @public (undocumented)
 export interface GeneratorOptions {
-    // (undocumented)
-    cacheFolder: string;
+    cacheFolder?: string;
     exampleFolders?: string[];
     markdown?: {
         messagebox?: {

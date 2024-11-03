@@ -53,7 +53,9 @@ export interface GeneratorOptions {
     site: GeneratorSiteOptions;
 
     outputFolder: string;
-    cacheFolder: string;
+
+    /** Where cached content is stored. Default: `temp/docs` */
+    cacheFolder?: string;
 
     /** List of folders to search when locating examples (searched recursively). Default: `[]` */
     exampleFolders?: string[];
@@ -298,7 +300,7 @@ export class Generator {
 
         this.site = options.site;
         this.outputFolder = options.outputFolder;
-        this.cacheFolder = options.cacheFolder;
+        this.cacheFolder = options.cacheFolder ?? "./temp/docs";
         this.assetFolder = path.posix.join(options.outputFolder, "assets");
         this.exampleFolders = options.exampleFolders ?? [];
         this.templateFolders = options.templateFolders ?? [];
