@@ -3,21 +3,63 @@ title: Code preview
 layout: content-with-menu
 ---
 
+Code within markdown code fences will be rendered with syntax highlighting and for languages that can run in the browser a runnable example will be created.
+
 ## Default, no language or tags
 
+By default no language is implied and the code is rendered as-is with no syntax highlight.
+
+**Input:**
+
+````md
 ```
-foo
+Lorem ipsum
+```
+````
+
+**Output:**
+
+```
+Lorem ipsum
 ```
 
 ## Explicit languages
 
-**html**:
+When explicit languages is set the behaviour varies for different languages.
+
+### HTML
+
+HTML is rendered in the browser and the HTML markup is shown with syntax highlight.
+
+**Input:**
+
+````md
+```html
+<p>lorem <em>ipsum</em></p>
+```
+````
+
+**Output:**
 
 ```html
 <p>lorem <em>ipsum</em></p>
 ```
 
-**ts**:
+### Javascript / Typescript
+
+Javascript and typescript only shows the code with syntax highlight.
+
+**Input:**
+
+````md
+```ts
+export interface Foo {
+    name: string;
+}
+```
+````
+
+**Output:**
 
 ```ts
 export interface Foo {
@@ -25,31 +67,62 @@ export interface Foo {
 }
 ```
 
-## Import
+## Importing files
 
-**html**:
+Instead of writing examples inline the source can be imported from another file.
+This is especially useful if the examples become long and clumpsy to write in a code fence.
+
+When importing files the extension determines the language but is otherwise the same as if the contents of the file was written inside the code fence directly.
+
+**Input:**
+
+````md
+```import
+my-file.html
+```
+
+```import
+my-file.ts
+```
+````
+
+**Output:**
 
 ```import
 my-file.html
 ```
 
-**ts**:
-
 ```import
 my-file.ts
 ```
+
+## Fullscreen
+
+See documentation for {@link fullscreen fullscreen examples}.
 
 ## Tags
 
 ### `static`
 
-**inline**:
+Disables rendering the example and only shows the source code with highlighting.
 
+**Input:**
+
+````md
 ```html static
 <p>lorem <em>ipsum</em></p>
 ```
 
-**imported**:
+```import static
+my-file.html
+```
+````
+
+**Output:**
+
+```html static
+<p>lorem <em>ipsum</em></p>
+```
 
 ```import static
 my-file.html
@@ -57,21 +130,29 @@ my-file.html
 
 ### `nomarkup`
 
-**inline**:
+Disables showing souce with syntax highlighting and only shows a rendered example.
+
+**Input:**
+
+````md
+```html nomarkup
+<p>lorem <em>ipsum</em></p>
+```
+
+```import nomarkup
+my-file.html
+```
+````
+
+**Output:**:
 
 ```html nomarkup
 <p>lorem <em>ipsum</em></p>
 ```
 
-**imported**:
-
 ```import nomarkup
 my-file.html
 ```
-
-### `fullscreen`
-
-See documentation for {@link fullscreen fullscreen examples}.
 
 ## Runnable examples
 
