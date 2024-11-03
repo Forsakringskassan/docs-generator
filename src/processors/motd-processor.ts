@@ -42,7 +42,7 @@ function normalizeOptions(options: MOTDOptions): NormalizedMOTDOptions {
  *
  * @public
  */
-export function motdProcessor(options: MOTDOptions): Processor {
+export function motdProcessor(options: MOTDOptions = {}): Processor {
     const { enabled, container, message } = normalizeOptions(options);
     return {
         name: "motd-processor",
