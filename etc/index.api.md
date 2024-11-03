@@ -103,8 +103,8 @@ export interface GeneratorOptions {
     // (undocumented)
     cacheFolder: string;
     exampleFolders: string[];
-    markdown: {
-        messagebox: {
+    markdown?: {
+        messagebox?: {
             title?: Record<string, string>;
         };
     };
