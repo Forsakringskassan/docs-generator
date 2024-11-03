@@ -12,3 +12,4 @@ export {
 export { generateExample } from "./generate-example";
 export { getExampleImport } from "./get-example-import";
 export { parseInfostring } from "./parse-infostring";
+export { transformCode } from "./transform-code";

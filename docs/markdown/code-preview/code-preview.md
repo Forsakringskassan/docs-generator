@@ -67,6 +67,28 @@ export interface Foo {
 }
 ```
 
+ESLint comments will be stripped from the rendered source code.
+
+**Input:**
+
+````md
+```js
+function foo(value) {
+    /* eslint-disable-next-line eqeqeq */
+    return value == "foo";
+}
+```
+````
+
+**Output:**
+
+```js
+function foo(value) {
+    /* eslint-disable-next-line eqeqeq */
+    return value == "foo";
+}
+```
+
 ## Importing files
 
 Instead of writing examples inline the source can be imported from another file.
