@@ -66,7 +66,7 @@
       }
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_checkbox_field = (0, import_vue5.resolveComponent)("f-checkbox-field");
     const _component_live_example = (0, import_vue5.resolveComponent)("live-example");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_live_example, {
@@ -79,9 +79,9 @@
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.hasHeader = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
             (0, import_vue5.createTextVNode)(" Rubrik i tooltip")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"])

@@ -21,12 +21,22 @@
 
   // virtual-entry:./docs/markdown/files/my-file.vue
   var import_vue2 = __require("vue");
-  var exampleComponent = {};
-  function render(_ctx, _cache) {
-    return (0, import_vue2.openBlock)(), (0, import_vue2.createElementBlock)(
+  var import_vue3 = __require("vue");
+  var exampleComponent = {
+    __name: "my-file",
+    setup(__props, { expose: __expose }) {
+      __expose();
+      const name = (0, import_vue2.ref)("world");
+      const __returned__ = { name, ref: import_vue2.ref };
+      Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
+      return __returned__;
+    }
+  };
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
+    return (0, import_vue3.openBlock)(), (0, import_vue3.createElementBlock)(
       "div",
       null,
-      "Hello " + (0, import_vue2.toDisplayString)(_ctx.name) + "!",
+      "Hello " + (0, import_vue3.toDisplayString)($setup.name) + "!",
       1
       /* TEXT */
     );

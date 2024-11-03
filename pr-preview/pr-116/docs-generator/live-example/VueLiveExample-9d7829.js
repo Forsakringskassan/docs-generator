@@ -52,7 +52,7 @@
       }
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_live_example = (0, import_vue3.resolveComponent)("live-example");
     return (0, import_vue3.openBlock)(), (0, import_vue3.createBlock)(_component_live_example, {
       language: "vue",
@@ -70,7 +70,6 @@
           -1
           /* HOISTED */
         )),
-        _cache[3] || (_cache[3] = (0, import_vue3.createTextVNode)()),
         (0, import_vue3.withDirectives)((0, import_vue3.createElementVNode)(
           "select",
           {
@@ -87,7 +86,6 @@
               -1
               /* HOISTED */
             ),
-            (0, import_vue3.createTextVNode)(),
             (0, import_vue3.createElementVNode)(
               "option",
               { value: "custom" },

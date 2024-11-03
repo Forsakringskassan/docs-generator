@@ -9,16 +9,16 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-0ad199.css"
+            href="../../assets/docs-eb7205.css"
             crossorigin
-            integrity="sha384-YREgqk15fjHQ3A87un4K0S9N6GxG9Kt9K5t28VXzM2ckmWg8hDUJKsFkxhPyaqLE"
+            integrity="sha384-+t0wmTpSOe5SuItdPL/fUwLi8SLvTkFH/PnaSSED84V7YPMfEDqSPsqf+/OB9Q1f"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/fkui-409dbb.css"
+            href="../../assets/fkui-f99d46.css"
             crossorigin
-            integrity="sha384-MaZv1oPslAKieUVrFO6IVACqQGPHoGO5s/ze5nqwUd2ZHzj+etY779tACG5pAWqS"
+            integrity="sha384-HVtm9qKn/A/MAXCewSzispGl5TRyfM/tFpLT7HGSblvQMtM5QFlssIJ66zyzjy8d"
             
         />
 
@@ -35,10 +35,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-f50ccd.json"
+            href="../../search-data-59f4a5.json"
             as="fetch"
             crossorigin
-            integrity="sha384-ObRM3i+Akp7ohL9qR61zLRYjimAQ9w3Xmmi5sFqyUn/de549XLqYlN1lrJy3bBe9"
+            integrity="sha384-5Aem0WCh1NXbz4tsaykGjDDRxwJTrFMdr6oN4L9MwVNKTU0cS9dEUAq6/0XQEP82"
             id="search-data"
         />
     </head>
@@ -63,6 +63,25 @@
         </button>
     </div>
 </div>
+
+<template id="motd-message">
+<div class="docs-motd docs-motd--info">
+    <span class="docs-motd__icon">
+        <span class="icon-stack icon-stack--info">
+            <svg class="icon icon--circle" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-circle"></use>
+            </svg>
+            <svg class="icon icon--i" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-i"></use>
+            </svg>
+        </span>
+    </span><span data-bind="screenreader" class="sr-only"></span>
+    <p data-bind="message"></p></div>
+</template>
+
+
+<div id="motd-container">
+    </div>
 
 
         <div class="layout-wrapper">
@@ -198,9 +217,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        feature/redirect-generator (<a href="https://github.com/Forsakringskassan/docs-generator/commits/dfedfc2287da3b826e76b346c170c0e3c8fe298d">dfedfc2</a>)<br />
+        feature/redirect-generator (<a href="https://github.com/Forsakringskassan/docs-generator/commits/b091cc3e9d6fb71d2e0fe58091c066a1b2e1e6a8">b091cc3</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/116">PR 116</a><br />
-        2024-10-17 07:06
+        2024-11-03 18:46
     </span>
 </div>
 </div>
@@ -253,6 +272,16 @@
             
         >
             Fullscreen examples
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../code-preview/vue.html"
+            
+        >
+            Vue examples
         </a>
     </li><!-- prettier-ignore --></ol>
 
@@ -475,7 +504,38 @@ Lorem <span class="hljs-strong">**ipsum**</span> dolor sit amet.
             </div>
 
             <footer>
-                <!-- prettier-ignore --><!-- prettier-ignore -->
+                <!-- prettier-ignore --><div class="footer">
+    <!-- prettier-ignore -->
+    <div class="toolbar__item">
+    <form id="version">
+        <button type="submit" class="anchor">
+            <span id="version-info" class="version"> Byt version </span>
+        </button>
+    </form>
+
+    <dialog id="version-dialog">
+        <div id="version-dialog-head">
+            <h1>Välj version</h1>
+            <button type="button" class="button button--discrete button--discrete--black">
+                <span>Stäng</span>
+                <svg class="button__icon icon" focusable="false" aria-hidden>
+                    <use xlink:href="#docs-icon-close"></use>
+                </svg>
+            </button>
+        </div>
+        <div id="version-list">
+            <p>Var god vänta, laddar versionsdata...</p>
+        </div>
+    </dialog>
+</div>
+
+<template id="version-list-item">
+    <li class="list__item">
+        <a class="list__item__itempane">template</a>
+    </li>
+</template>
+
+</div>
 </footer>
         </div>
 
@@ -553,9 +613,21 @@ Lorem <span class="hljs-strong">**ipsum**</span> dolor sit amet.
 
         <!-- prettier-ignore -->
         <script
-            src="../../assets/main-22d7e1.js"
+            src="../../assets/processors/motd/index-ccae11.js"
             crossorigin
-            integrity="sha384-6R9FS056Q9pjoRRdLIPK4WAAi6iEPysUm28H+08moZ3zc06xHQMbHTHgGa5x1UMK"
+            integrity="sha384-UjzVYhsn0gsmnjX9798oLdjjBUr1FUoJtJUcalmnSFRmr3ppJY8WgK0o8ocUcJid"
+            
+        ></script>
+        <script
+            src="../../assets/processors/selectable-version/select-version-6ab704.js"
+            crossorigin
+            integrity="sha384-phrlcjpBZR79njUoBUEdIiS6B3t9vZ9Gnleyl/PbtOgtfHfimXz4VnpWnmXnhNTN"
+            
+        ></script>
+        <script
+            src="../../assets/main-783075.js"
+            crossorigin
+            integrity="sha384-S322JtZk89LUUAC4Bc1Tx47bTQ97ENyQSvuzEJ9BKOERgB02w+cCQJBzYSxV/XFd"
             
         ></script>
     </body>

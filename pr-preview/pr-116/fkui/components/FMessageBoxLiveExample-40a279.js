@@ -72,7 +72,7 @@
       }
     }
   });
-  function render(_ctx, _cache) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_radio_field = (0, import_vue5.resolveComponent)("f-radio-field");
     const _component_f_fieldset = (0, import_vue5.resolveComponent)("f-fieldset");
     const _component_f_checkbox_field = (0, import_vue5.resolveComponent)("f-checkbox-field");
@@ -83,55 +83,51 @@
     }, {
       default: (0, import_vue5.withCtx)(() => [
         (0, import_vue5.createVNode)(_component_f_fieldset, { name: "radio-message-type" }, {
-          label: (0, import_vue5.withCtx)(() => [
+          label: (0, import_vue5.withCtx)(() => _cache[5] || (_cache[5] = [
             (0, import_vue5.createTextVNode)(" Typ ")
-          ]),
+          ])),
           default: (0, import_vue5.withCtx)(() => [
-            (0, import_vue5.createTextVNode)(),
             (0, import_vue5.createVNode)(_component_f_radio_field, {
               modelValue: _ctx.messageType,
               "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.messageType = $event),
               value: "info"
             }, {
-              default: (0, import_vue5.withCtx)(() => [
+              default: (0, import_vue5.withCtx)(() => _cache[6] || (_cache[6] = [
                 (0, import_vue5.createTextVNode)(" Information ")
-              ]),
+              ])),
               _: 1
               /* STABLE */
             }, 8, ["modelValue"]),
-            (0, import_vue5.createTextVNode)(),
             (0, import_vue5.createVNode)(_component_f_radio_field, {
               modelValue: _ctx.messageType,
               "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.messageType = $event),
               value: "warning"
             }, {
-              default: (0, import_vue5.withCtx)(() => [
+              default: (0, import_vue5.withCtx)(() => _cache[7] || (_cache[7] = [
                 (0, import_vue5.createTextVNode)(" Varning ")
-              ]),
+              ])),
               _: 1
               /* STABLE */
             }, 8, ["modelValue"]),
-            (0, import_vue5.createTextVNode)(),
             (0, import_vue5.createVNode)(_component_f_radio_field, {
               modelValue: _ctx.messageType,
               "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.messageType = $event),
               value: "error"
             }, {
-              default: (0, import_vue5.withCtx)(() => [
+              default: (0, import_vue5.withCtx)(() => _cache[8] || (_cache[8] = [
                 (0, import_vue5.createTextVNode)(" Fel ")
-              ]),
+              ])),
               _: 1
               /* STABLE */
             }, 8, ["modelValue"]),
-            (0, import_vue5.createTextVNode)(),
             (0, import_vue5.createVNode)(_component_f_radio_field, {
               modelValue: _ctx.messageType,
               "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.messageType = $event),
               value: "success"
             }, {
-              default: (0, import_vue5.withCtx)(() => [
-                (0, import_vue5.createTextVNode)("\n                Positiv \xE5terkoppling\n            ")
-              ]),
+              default: (0, import_vue5.withCtx)(() => _cache[9] || (_cache[9] = [
+                (0, import_vue5.createTextVNode)(" Positiv \xE5terkoppling ")
+              ])),
               _: 1
               /* STABLE */
             }, 8, ["modelValue"])
@@ -139,15 +135,14 @@
           _: 1
           /* STABLE */
         }),
-        (0, import_vue5.createTextVNode)(),
         (0, import_vue5.createVNode)(_component_f_checkbox_field, {
           modelValue: _ctx.shortLayout,
           "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.shortLayout = $event),
           value: true
         }, {
-          default: (0, import_vue5.withCtx)(() => [
+          default: (0, import_vue5.withCtx)(() => _cache[10] || (_cache[10] = [
             (0, import_vue5.createTextVNode)(" Kort meddelande ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"])
