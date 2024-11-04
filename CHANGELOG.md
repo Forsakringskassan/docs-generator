@@ -1,5 +1,29 @@
 # CHANGELOG
 
+## [2.13.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.12.0...v2.13.0) (2024-11-04)
+
+
+### Features
+
+* allow to cut snippets from examples ([db07585](https://github.com/Forsakringskassan/docs-generator/commit/db07585e5b345ce7aecc7023e0b5b46beac0531e))
+* new `extractExamplesProcessor` ([2559b06](https://github.com/Forsakringskassan/docs-generator/commit/2559b069450362d1006df887087aaaafa912e05b)), closes [#59](https://github.com/Forsakringskassan/docs-generator/issues/59)
+* strip eslint comments from examples ([5dd604e](https://github.com/Forsakringskassan/docs-generator/commit/5dd604e17e8c67e59c38b110455b5ee00aa0086a))
+
+
+### Bug Fixes
+
+* `cacheFolder` is optional ([e4ad918](https://github.com/Forsakringskassan/docs-generator/commit/e4ad9188bde5cd919f699c3b718c2ca1f5f485aa))
+* `exampleFolders` is optional ([bf4893d](https://github.com/Forsakringskassan/docs-generator/commit/bf4893d6ad7e52d8512b837c564d3a507a31d33c))
+* `markdown.messagebox` is optional ([d558a90](https://github.com/Forsakringskassan/docs-generator/commit/d558a90eaa28b58ce4b87a33a17b8f691a366db3))
+* `motdProcessor` options is optional ([d43c0cb](https://github.com/Forsakringskassan/docs-generator/commit/d43c0cbe684e01236b5010c5da693207e132ad8c))
+* `outputFolder` is optional ([53dde23](https://github.com/Forsakringskassan/docs-generator/commit/53dde23d340dd5c6f14f5ee3c38ac7fb0a6baa32))
+* only match filenames when matching source files ([aec08fa](https://github.com/Forsakringskassan/docs-generator/commit/aec08fa318eb1fd828849fcb2648e7b68c3b841d))
+
+
+### Performance Improvements
+
+* reuse same manifest `md` instance for all calls ([616f226](https://github.com/Forsakringskassan/docs-generator/commit/616f226aa895c0595918f7fafa6785637d80d55c))
+
 ## [2.12.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.11.4...v2.12.0) (2024-11-03)
 
 
