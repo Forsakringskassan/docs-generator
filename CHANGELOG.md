@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [2.14.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.13.0...v2.14.0) (2024-11-05)
+
+
+### Features
+
+* dedent code after transforming ([744f9c5](https://github.com/Forsakringskassan/docs-generator/commit/744f9c57abb5dbed7ef783a81b920afe8394e2a5))
+
 ## [2.13.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.12.0...v2.13.0) (2024-11-04)
 
 
