@@ -1,3 +1,5 @@
+import dedent from "dedent";
+
 function removeLinesInline(
     lines: string[],
     { begin, end }: { begin: number; end: number },
@@ -104,10 +106,43 @@ function stripEslintComments(code: string): string {
     return code.replace(matchLine, "").replace(matchEmbedded, "");
 }
 
+function maybeDedent(value: string): string {
+    /* if the string is only whitespace we preserve it exactly as is */
+    if (/^\s*$/.test(value)) {
+        return value;
+    }
+
+    /* Conditionally calling dedent due to
+     * https://github.com/dmnd/dedent/issues/20
+     *
+     * - If the first line is indented we dedent the string as usual.
+     *
+     * - If the first line is not indented the dedention should be a no-op as
+     *   the indentation level is zero already but the referenced bug causes
+     *   `dedent` to pick up any other indented line as basis for the current
+     *   indentation level and thus removes to much.
+     *
+     * Consider the following input:
+     *
+     * ```
+     * function foo() {
+     *     return "...";
+     * }
+     * ```
+     *
+     * The expected output is the same as the input.
+     */
+    if (/^\s/.test(value)) {
+        return dedent(value);
+    } else {
+        return value;
+    }
+}
+
 /* transformations to apply based on language, transforms are run from left to right */
 const transformations: Record<string, Array<(code: string) => string>> = {
-    javascript: [cutSnippets, stripEslintComments],
-    typescript: [cutSnippets, stripEslintComments],
+    javascript: [cutSnippets, stripEslintComments, maybeDedent],
+    typescript: [cutSnippets, stripEslintComments, maybeDedent],
 };
 
 export function transformCode(code: string, lang: string): string {
