@@ -1321,7 +1321,7 @@ Callback anropas innan modalen visas.</p>
                 </div>
             
                 <div
-                    id="example-974548"
+                    id="example-4cce20"
                     class="code-preview code-preview--default"
                     
                     
@@ -1329,11 +1329,12 @@ Callback anropas innan modalen visas.</p>
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">onBeforeCreate</span>(): <span class="hljs-title class_">UnknownItem</span> {
-<span class="hljs-keyword">const</span> <span class="hljs-attr">item</span>: <span class="hljs-title class_">MyInterface</span> = {
-    <span class="hljs-comment">/* ... */</span>
+    <span class="hljs-keyword">const</span> <span class="hljs-attr">item</span>: <span class="hljs-title class_">MyInterface</span> = {
+        <span class="hljs-comment">/* ... */</span>
+    }
+    <span class="hljs-keyword">return</span> item <span class="hljs-keyword">as</span> <span class="hljs-built_in">unknown</span> <span class="hljs-keyword">as</span> <span class="hljs-title class_">UnknownItem</span>;
 }
-<span class="hljs-keyword">return</span> item <span class="hljs-keyword">as</span> <span class="hljs-built_in">unknown</span> <span class="hljs-keyword">as</span> <span class="hljs-title class_">UnknownItem</span>;
-}</code></pre>
+</code></pre>
                 </div>
             <p><strong>Notera</strong>: då <code>FCrudDataset</code> inte är typsäker måste man casta objektet till <code>UnknownItem</code>.</p>
 <h2 id="anpassade_texter"><a class="header-anchor" href="#anpassade_texter">Anpassade texter</a></h2><p>Texterna i modaler kan anpassas för att bättre beskriva vad som läggs till, ändras eller tas bort genom att använda props. Även texten för &quot;lägg till&quot;-knapp kan ändras via slot add-button.</p>
@@ -2151,7 +2152,7 @@ return undefined;<br>
     <!-- prettier-ignore -->
     feature/dedent-code (<a href="https://github.com/Forsakringskassan/designsystem/commits/ec868cdcba34f029c93d3a2d5e63236f2f7dc69f">ec868cd</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/131">PR 131</a><br />
-        2024-11-05 00:14
+        2024-11-05 00:44
 </div>
 <div class="toolbar__item">
     <form id="version">

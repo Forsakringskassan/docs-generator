@@ -217,9 +217,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        feature/dedent-code (<a href="https://github.com/Forsakringskassan/docs-generator/commits/3bef899cc37d7f825fe20d3461e036d2378d7f28">3bef899</a>)<br />
+        feature/dedent-code (<a href="https://github.com/Forsakringskassan/docs-generator/commits/200785ac41185581b1ec925456b0e7be6ad14f5d">200785a</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/131">PR 131</a><br />
-        2024-11-05 00:12
+        2024-11-05 00:41
     </span>
 </div>
 </div>
@@ -458,7 +458,7 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
             <h2 id="createelement"><a class="header-anchor" href="#createelement"><code>createElement</code></a></h2><p>A helper function to render the markup for the live example.</p>
 
                 <div
-                    id="example-e81b3b"
+                    id="example-270f59"
                     class="code-preview code-preview--default"
                     
                     
@@ -468,12 +468,13 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">createElement</span>(tagName);
 <span class="hljs-title function_">createElement</span>(tagName, content);
 <span class="hljs-title function_">createElement</span>(tagName, attributes);
-<span class="hljs-title function_">createElement</span>(tagName, attributes, content);</code></pre>
+<span class="hljs-title function_">createElement</span>(tagName, attributes, content);
+</code></pre>
                 </div>
             <p>Create markup for a simple element:</p>
 
                 <div
-                    id="example-0fd4ab"
+                    id="example-63c44a"
                     class="code-preview code-preview--default"
                     
                     
@@ -481,12 +482,13 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">createElement</span>(<span class="hljs-string">&quot;div&quot;</span>);
-<span class="hljs-comment">// &lt;div&gt;</span></code></pre>
+<span class="hljs-comment">// &lt;div&gt;</span>
+</code></pre>
                 </div>
             <p>Adding attributes:</p>
 
                 <div
-                    id="example-03695a"
+                    id="example-0eced6"
                     class="code-preview code-preview--default"
                     
                     
@@ -494,7 +496,8 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">createElement</span>(<span class="hljs-string">&quot;div&quot;</span>, { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;my-awesome-id&quot;</span>, <span class="hljs-attr">class</span>: [<span class="hljs-string">&quot;foo&quot;</span>, <span class="hljs-string">&quot;bar&quot;</span>] });
-<span class="hljs-comment">// &lt;div id=&quot;my-awesome-id&quot; class=&quot;foo bar&quot;&gt;</span></code></pre>
+<span class="hljs-comment">// &lt;div id=&quot;my-awesome-id&quot; class=&quot;foo bar&quot;&gt;</span>
+</code></pre>
                 </div>
             <p>Attributes can be:</p>
 <ul>
@@ -508,7 +511,7 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
 <p>Content can be added:</p>
 
                 <div
-                    id="example-a475cd"
+                    id="example-8067a6"
                     class="code-preview code-preview--default"
                     
                     
@@ -519,15 +522,16 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
 <span class="hljs-comment">// &lt;div&gt; lorem ipsum &lt;/div&gt;</span>
 
 <span class="hljs-title function_">createElement</span>(<span class="hljs-string">&quot;div&quot;</span>, [
-<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&quot;h1&quot;</span>, <span class="hljs-string">&quot;My Awesome Heading&quot;</span>),
-<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&quot;p&quot;</span>, [<span class="hljs-string">&quot;Lorem ipsum&quot;</span>, <span class="hljs-string">&quot;dolor sit amet&quot;</span>]),
+    <span class="hljs-title function_">createElement</span>(<span class="hljs-string">&quot;h1&quot;</span>, <span class="hljs-string">&quot;My Awesome Heading&quot;</span>),
+    <span class="hljs-title function_">createElement</span>(<span class="hljs-string">&quot;p&quot;</span>, [<span class="hljs-string">&quot;Lorem ipsum&quot;</span>, <span class="hljs-string">&quot;dolor sit amet&quot;</span>]),
 ]);
-<span class="hljs-comment">// &lt;div&gt; &lt;h1&gt; My Awesome Heading &lt;/h1&gt; &lt;p&gt; Lorem ipsum dolor sit amet &lt;/p&gt; &lt;/div&gt;</span></code></pre>
+<span class="hljs-comment">// &lt;div&gt; &lt;h1&gt; My Awesome Heading &lt;/h1&gt; &lt;p&gt; Lorem ipsum dolor sit amet &lt;/p&gt; &lt;/div&gt;</span>
+</code></pre>
                 </div>
             <p>Combined:</p>
 
                 <div
-                    id="example-f17cbb"
+                    id="example-830959"
                     class="code-preview code-preview--default"
                     
                     
@@ -535,7 +539,8 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">createElement</span>(<span class="hljs-string">&quot;div&quot;</span>, { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;foo&quot;</span> }, <span class="hljs-string">&quot;lorem ipsum&quot;</span>);
-<span class="hljs-comment">// &lt;div id=&quot;foo&quot;&gt; lorem ipsum &lt;/div&gt;</span></code></pre>
+<span class="hljs-comment">// &lt;div id=&quot;foo&quot;&gt; lorem ipsum &lt;/div&gt;</span>
+</code></pre>
                 </div>
             
 

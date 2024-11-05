@@ -217,9 +217,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        feature/dedent-code (<a href="https://github.com/Forsakringskassan/docs-generator/commits/3bef899cc37d7f825fe20d3461e036d2378d7f28">3bef899</a>)<br />
+        feature/dedent-code (<a href="https://github.com/Forsakringskassan/docs-generator/commits/200785ac41185581b1ec925456b0e7be6ad14f5d">200785a</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/131">PR 131</a><br />
-        2024-11-05 00:12
+        2024-11-05 00:41
     </span>
 </div>
 </div>
@@ -354,7 +354,7 @@
 After the user consents, the cookie warning is hidden and cookies are set.</p>
 <h2 id="usage"><a class="header-anchor" href="#usage">Usage</a></h2>
                 <div
-                    id="example-bffd1d"
+                    id="example-7ccc58"
                     class="code-preview code-preview--default"
                     
                     
@@ -362,8 +362,9 @@ After the user consents, the cookie warning is hidden and cookies are set.</p>
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> docs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Generator</span>({
-<span class="hljs-attr">processors</span>: [<span class="hljs-title function_">cookieProcessor</span>()],
-});</code></pre>
+    <span class="hljs-attr">processors</span>: [<span class="hljs-title function_">cookieProcessor</span>()],
+});
+</code></pre>
                 </div>
             <h2 id="configuration"><a class="header-anchor" href="#configuration">Configuration</a></h2><p>For a custom cookie warning, replace the template at <code>partials/cookie-warning.html</code>.</p>
 <p>Make sure to use the same button id's and top <code>cookie-warning</code> class.</p>
@@ -371,7 +372,7 @@ After the user consents, the cookie warning is hidden and cookies are set.</p>
 Do this by passing a callback to the global function <code>withCookieConsent</code>.</p>
 
                 <div
-                    id="example-67624b"
+                    id="example-d13dbf"
                     class="code-preview code-preview--default"
                     
                     
@@ -379,8 +380,9 @@ Do this by passing a callback to the global function <code>withCookieConsent</co
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">withCookieConsent</span>(<span class="hljs-function">() =&gt;</span> {
-<span class="hljs-comment">// processor script</span>
-});</code></pre>
+    <span class="hljs-comment">// processor script</span>
+});
+</code></pre>
                 </div>
             
             <div class="docs-messagebox docs-messagebox--danger">

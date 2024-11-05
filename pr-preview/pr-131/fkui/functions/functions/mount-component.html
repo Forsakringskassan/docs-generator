@@ -910,7 +910,7 @@
                         <!-- prettier-ignore -->
 
                 <div
-                    id="example-a990c4"
+                    id="example-fe147b"
                     class="code-preview code-preview--default"
                     
                     
@@ -918,28 +918,29 @@
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">MountOptions</span> {
-<span class="hljs-comment">/**
- * Element to mount component under. Default `&lt;body&gt;`.
- */</span>
-attachTo?: <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Element</span>;
+    <span class="hljs-comment">/**
+     * Element to mount component under. Default `&lt;body&gt;`.
+     */</span>
+    attachTo?: <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Element</span>;
 
-<span class="hljs-comment">/**
- * Attach as first child. Default `false`.
- */</span>
-attachFirst?: <span class="hljs-built_in">boolean</span>;
+    <span class="hljs-comment">/**
+     * Attach as first child. Default `false`.
+     */</span>
+    attachFirst?: <span class="hljs-built_in">boolean</span>;
 }
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">mountComponent</span>(<span class="hljs-params">
-<span class="hljs-attr">callingInstance</span>: <span class="hljs-title class_">MaybeWithFKUIContext</span>,
-<span class="hljs-title class_">Component</span>: <span class="hljs-title class_">MaybeComponent</span>,
-<span class="hljs-attr">options</span>: <span class="hljs-title class_">VNodeData</span> &amp; <span class="hljs-title class_">MountOptions</span>,
-</span>): <span class="hljs-title class_">Vue</span>;</code></pre>
+    <span class="hljs-attr">callingInstance</span>: <span class="hljs-title class_">MaybeWithFKUIContext</span>,
+    <span class="hljs-title class_">Component</span>: <span class="hljs-title class_">MaybeComponent</span>,
+    <span class="hljs-attr">options</span>: <span class="hljs-title class_">VNodeData</span> &amp; <span class="hljs-title class_">MountOptions</span>,
+</span>): <span class="hljs-title class_">Vue</span>;
+</code></pre>
                 </div>
             <p>Mount a VUE component using API.
 The component will be mounted as a child of the target element and not onto the element itself.</p>
 <h2 id="usage"><a class="header-anchor" href="#usage">Usage</a></h2>
                 <div
-                    id="example-238190"
+                    id="example-2beed7"
                     class="code-preview code-preview--default"
                     
                     
@@ -953,7 +954,8 @@ The component will be mounted as a child of the target element and not onto the 
 <span class="hljs-comment">/* do fancy stuff */</span>
 
 <span class="hljs-comment">/* cleanup */</span>
-app.<span class="hljs-title function_">unmount</span>();</code></pre>
+app.<span class="hljs-title function_">unmount</span>();
+</code></pre>
                 </div>
             
             <div
@@ -1017,7 +1019,7 @@ app.<span class="hljs-title function_">unmount</span>();</code></pre>
         <h2 id="passing_props_and_listeners"><a class="header-anchor" href="#passing_props_and_listeners">Passing props and listeners</a></h2><p>Props and listeners can be passed in the options object:</p>
 
                 <div
-                    id="example-a1c7e6"
+                    id="example-5b87bb"
                     class="code-preview code-preview--default"
                     
                     
@@ -1025,16 +1027,17 @@ app.<span class="hljs-title function_">unmount</span>();</code></pre>
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">mountComponent</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-title class_">MyComponent</span>, {
-<span class="hljs-attr">attachTo</span>: targetElement,
+    <span class="hljs-attr">attachTo</span>: targetElement,
 
-<span class="hljs-comment">/* props */</span>
-<span class="hljs-attr">foo</span>: <span class="hljs-string">&quot;bar&quot;</span>,
+    <span class="hljs-comment">/* props */</span>
+    <span class="hljs-attr">foo</span>: <span class="hljs-string">&quot;bar&quot;</span>,
 
-<span class="hljs-comment">/* listeners */</span>
-<span class="hljs-title function_">onSubmit</span>(): <span class="hljs-built_in">void</span> {
-    <span class="hljs-comment">/* do something */</span>
-},
-});</code></pre>
+    <span class="hljs-comment">/* listeners */</span>
+    <span class="hljs-title function_">onSubmit</span>(): <span class="hljs-built_in">void</span> {
+        <span class="hljs-comment">/* do something */</span>
+    },
+});
+</code></pre>
                 </div>
             
 
@@ -1059,7 +1062,7 @@ app.<span class="hljs-title function_">unmount</span>();</code></pre>
     <!-- prettier-ignore -->
     feature/dedent-code (<a href="https://github.com/Forsakringskassan/designsystem/commits/ec868cdcba34f029c93d3a2d5e63236f2f7dc69f">ec868cd</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/131">PR 131</a><br />
-        2024-11-05 00:14
+        2024-11-05 00:44
 </div>
 <div class="toolbar__item">
     <form id="version">

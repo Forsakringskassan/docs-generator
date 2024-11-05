@@ -918,7 +918,7 @@
 </ul>
 
                 <div
-                    id="example-889645"
+                    id="example-3ffcc1"
                     class="code-preview code-preview--default"
                     
                     
@@ -927,12 +927,13 @@
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> <span class="hljs-attr">sizeWrapperWidth</span>: <span class="hljs-built_in">number</span>;
 <span class="hljs-keyword">const</span> <span class="hljs-attr">sizeWrapperHeight</span>: <span class="hljs-built_in">number</span>;
-<span class="hljs-keyword">const</span> <span class="hljs-title class_">SizeWrapper</span>: <span class="hljs-title class_">DefineComponent</span>;</code></pre>
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">SizeWrapper</span>: <span class="hljs-title class_">DefineComponent</span>;
+</code></pre>
                 </div>
             <h3 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h3><p>Kan användas i Cypress för att montera upp en komponent och direkt jämföra hur den beteer sig i olika storlekar och/eller ta skärmdumpar.</p>
 
                 <div
-                    id="example-cc6006"
+                    id="example-b55b45"
                     class="code-preview code-preview--default"
                     
                     
@@ -940,27 +941,28 @@
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> {
-sizeWrapperWidth,
-sizeWrapperHeight,
-<span class="hljs-title class_">SizeWrapper</span>,
+    sizeWrapperWidth,
+    sizeWrapperHeight,
+    <span class="hljs-title class_">SizeWrapper</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/test-utils/vue&quot;</span>;
 
 <span class="hljs-keyword">const</span> <span class="hljs-title class_">SizesButtonsComponent</span> = <span class="hljs-title function_">defineComponent</span>({
-<span class="hljs-attr">template</span>: <span class="hljs-comment">/* HTML */</span> <span class="hljs-string">`
-    &lt;size-wrapper&gt;
-        &lt;awesome-component&gt; Lorem ipsum &lt;/awesome-component&gt;
-    &lt;/size-wrapper&gt;
-`</span>,
-<span class="hljs-attr">components</span>: {
-    <span class="hljs-title class_">AwesomeComponent</span>,
-    <span class="hljs-title class_">SizeWrapper</span>,
-},
+    <span class="hljs-attr">template</span>: <span class="hljs-comment">/* HTML */</span> <span class="hljs-string">`
+        &lt;size-wrapper&gt;
+            &lt;awesome-component&gt; Lorem ipsum &lt;/awesome-component&gt;
+        &lt;/size-wrapper&gt;
+    `</span>,
+    <span class="hljs-attr">components</span>: {
+        <span class="hljs-title class_">AwesomeComponent</span>,
+        <span class="hljs-title class_">SizeWrapper</span>,
+    },
 });
 
 <span class="hljs-title function_">it</span>(<span class="hljs-string">`should show how component looks in different sizes`</span>, <span class="hljs-function">() =&gt;</span> {
-cy.<span class="hljs-title function_">viewport</span>(sizeWrapperWidth, sizeWrapperHeight);
-cy.<span class="hljs-title function_">mount</span>(<span class="hljs-title class_">SizesComponent</span>);
-});</code></pre>
+    cy.<span class="hljs-title function_">viewport</span>(sizeWrapperWidth, sizeWrapperHeight);
+    cy.<span class="hljs-title function_">mount</span>(<span class="hljs-title class_">SizesComponent</span>);
+});
+</code></pre>
                 </div>
             <h2 id="densitywrapper"><a class="header-anchor" href="#densitywrapper"><code>DensityWrapper</code></a></h2><p>Renderar upp innehållet i default slotten i olika densiteter:</p>
 <ul>
@@ -970,7 +972,7 @@ cy.<span class="hljs-title function_">mount</span>(<span class="hljs-title class
 </ul>
 
                 <div
-                    id="example-216bc3"
+                    id="example-2a8fc3"
                     class="code-preview code-preview--default"
                     
                     
@@ -979,12 +981,13 @@ cy.<span class="hljs-title function_">mount</span>(<span class="hljs-title class
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> <span class="hljs-attr">densityWrapperWidth</span>: <span class="hljs-built_in">number</span>;
 <span class="hljs-keyword">const</span> <span class="hljs-attr">densityWrapperHeight</span>: <span class="hljs-built_in">number</span>;
-<span class="hljs-keyword">const</span> <span class="hljs-title class_">DensityWrapper</span>: <span class="hljs-title class_">DefineComponent</span>;</code></pre>
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">DensityWrapper</span>: <span class="hljs-title class_">DefineComponent</span>;
+</code></pre>
                 </div>
             <h3 id="anvandning--1"><a class="header-anchor" href="#anvandning--1">Användning</a></h3><p>Kan användas i Cypress för att montera upp en komponent som använder densitet och direkt jämföra hur den beteer sig i olika densiteter och/eller ta skärmdumpar.</p>
 
                 <div
-                    id="example-7b74be"
+                    id="example-b0858e"
                     class="code-preview code-preview--default"
                     
                     
@@ -992,27 +995,28 @@ cy.<span class="hljs-title function_">mount</span>(<span class="hljs-title class
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> {
-densityWrapperHeight,
-densityWrapperWidth,
-<span class="hljs-title class_">DensityWrapper</span>,
+    densityWrapperHeight,
+    densityWrapperWidth,
+    <span class="hljs-title class_">DensityWrapper</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/test-utils/vue&quot;</span>;
 
 <span class="hljs-keyword">const</span> <span class="hljs-title class_">DensityComponent</span> = <span class="hljs-title function_">defineComponent</span>({
-<span class="hljs-attr">template</span>: <span class="hljs-comment">/* HTML */</span> <span class="hljs-string">`
-    &lt;density-wrapper&gt;
-        &lt;awesome-component&gt; Lorem ipsum &lt;/awesome-component&gt;
-    &lt;/density-wrapper&gt;
-`</span>,
-<span class="hljs-attr">components</span>: {
-    <span class="hljs-title class_">AwesomeComponent</span>,
-    <span class="hljs-title class_">DensityWrapper</span>,
-},
+    <span class="hljs-attr">template</span>: <span class="hljs-comment">/* HTML */</span> <span class="hljs-string">`
+        &lt;density-wrapper&gt;
+            &lt;awesome-component&gt; Lorem ipsum &lt;/awesome-component&gt;
+        &lt;/density-wrapper&gt;
+    `</span>,
+    <span class="hljs-attr">components</span>: {
+        <span class="hljs-title class_">AwesomeComponent</span>,
+        <span class="hljs-title class_">DensityWrapper</span>,
+    },
 });
 
 <span class="hljs-title function_">it</span>(<span class="hljs-string">`should show how component looks in different densities`</span>, <span class="hljs-function">() =&gt;</span> {
-cy.<span class="hljs-title function_">viewport</span>(densityWrapperWidth, densityWrapperHeight);
-cy.<span class="hljs-title function_">mount</span>(<span class="hljs-title class_">DensityComponent</span>);
-});</code></pre>
+    cy.<span class="hljs-title function_">viewport</span>(densityWrapperWidth, densityWrapperHeight);
+    cy.<span class="hljs-title function_">mount</span>(<span class="hljs-title class_">DensityComponent</span>);
+});
+</code></pre>
                 </div>
             
 
@@ -1037,7 +1041,7 @@ cy.<span class="hljs-title function_">mount</span>(<span class="hljs-title class
     <!-- prettier-ignore -->
     feature/dedent-code (<a href="https://github.com/Forsakringskassan/designsystem/commits/ec868cdcba34f029c93d3a2d5e63236f2f7dc69f">ec868cd</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/131">PR 131</a><br />
-        2024-11-05 00:14
+        2024-11-05 00:44
 </div>
 <div class="toolbar__item">
     <form id="version">

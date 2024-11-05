@@ -479,14 +479,15 @@ Du vill även att validatorn ska ha ett fördefinierad felmeddelande som visas n
 <h2 id="validatorn"><a class="header-anchor" href="#validatorn">Validatorn</a></h2><p>Logiken som utför valideringen skrivs i metoden:</p>
 
                 <div
-                    id="example-68677b"
+                    id="example-2f329e"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">validation</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">element</span>: <span class="hljs-title class_">ValidatableHTMLElement</span>, <span class="hljs-attr">config</span>: <span class="hljs-title class_">TConfig</span>): <span class="hljs-built_in">boolean</span></code></pre>
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">validation</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">element</span>: <span class="hljs-title class_">ValidatableHTMLElement</span>, <span class="hljs-attr">config</span>: <span class="hljs-title class_">TConfig</span>): <span class="hljs-built_in">boolean</span>
+</code></pre>
                 </div>
             <p>där:</p>
 <ul>
@@ -509,7 +510,7 @@ Den kontrollen görs enklast tidigt i din validator-logik med hjälp av metoden 
 Validatorns <code>name</code> är det som sedan används för att aktivera validatorn på ett input-fält.</p>
 
                 <div
-                    id="example-1acb0b"
+                    id="example-e7d946"
                     class="code-preview code-preview--default"
                     
                     
@@ -519,14 +520,15 @@ Validatorns <code>name</code> är det som sedan används för att aktivera valid
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-keyword">type</span> <span class="hljs-title class_">Validator</span>, isEmpty } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-attr">startsWithValidator</span>: <span class="hljs-title class_">Validator</span> = {
-<span class="hljs-attr">name</span>: <span class="hljs-string">&quot;startsWith&quot;</span>,
-<span class="hljs-title function_">validation</span>(<span class="hljs-params">value</span>) {
-    <span class="hljs-keyword">if</span> (<span class="hljs-title function_">isEmpty</span>(value)) {
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
-    }
-    <span class="hljs-keyword">return</span> value.<span class="hljs-title function_">startsWith</span>(<span class="hljs-string">&quot;demo&quot;</span>);
-},
-};</code></pre>
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;startsWith&quot;</span>,
+    <span class="hljs-title function_">validation</span>(<span class="hljs-params">value</span>) {
+        <span class="hljs-keyword">if</span> (<span class="hljs-title function_">isEmpty</span>(value)) {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+        }
+        <span class="hljs-keyword">return</span> value.<span class="hljs-title function_">startsWith</span>(<span class="hljs-string">&quot;demo&quot;</span>);
+    },
+};
+</code></pre>
                 </div>
             <p>Glöm inte att skriva tester som verifierar att validatorn fungerar som tänkt.
 Förslagsvis genom att bryta ut logiken till en egen funktion, då blir den enkel att testa med Jest.</p>
@@ -597,7 +599,7 @@ Om konsumenten inte förser validatorn med konfiguration så sätter du även et
             <p>Om det finns möjlighet till felaktig konfiguration eller om standardvärden inte används måste du införa felhantering:</p>
 
                 <div
-                    id="example-d8b332"
+                    id="example-cbf8e7"
                     class="code-preview code-preview--default"
                     
                     
@@ -605,15 +607,16 @@ Om konsumenten inte förser validatorn med konfiguration så sätter du även et
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-attr">startsWithValidator</span>: <span class="hljs-title class_">Validator</span>&lt;<span class="hljs-title class_">StartsWithConfig</span>&gt; = {
-<span class="hljs-attr">name</span>: <span class="hljs-string">&quot;startsWith&quot;</span>,
-<span class="hljs-title function_">validation</span>(<span class="hljs-params">value, element, configuration</span>) {
-    <span class="hljs-keyword">if</span> (!<span class="hljs-title function_">isSet</span>(configuration.<span class="hljs-property">startString</span>)) {
-        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(
-            <span class="hljs-string">&quot;startsWithValidator: configuration.startString is missing!&quot;</span>,
-        );
-    }
-},
-};</code></pre>
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;startsWith&quot;</span>,
+    <span class="hljs-title function_">validation</span>(<span class="hljs-params">value, element, configuration</span>) {
+        <span class="hljs-keyword">if</span> (!<span class="hljs-title function_">isSet</span>(configuration.<span class="hljs-property">startString</span>)) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(
+                <span class="hljs-string">&quot;startsWithValidator: configuration.startString is missing!&quot;</span>,
+            );
+        }
+    },
+};
+</code></pre>
                 </div>
             <h2 id="registrering"><a class="header-anchor" href="#registrering">Registrering</a></h2><p>För att göra validatorn tillgänglig för användning i din applikation så behöver den registreras.
 Tänk på att bara registrera validatorn en gång, förslagsvis görs det globalt tillsammans med registrering av plugins m.m. i t.ex. <code>main.ts</code>. Gör det inte i en komponents lifecycle-hooks så som <code>created</code>, <code>mounted</code> m.fl.</p>
@@ -860,7 +863,7 @@ interface <span class="hljs-title class_">StartsWithConfig</span> {
     <!-- prettier-ignore -->
     feature/dedent-code (<a href="https://github.com/Forsakringskassan/designsystem/commits/ec868cdcba34f029c93d3a2d5e63236f2f7dc69f">ec868cd</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/131">PR 131</a><br />
-        2024-11-05 00:14
+        2024-11-05 00:44
 </div>
 <div class="toolbar__item">
     <form id="version">

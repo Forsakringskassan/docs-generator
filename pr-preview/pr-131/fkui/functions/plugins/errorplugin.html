@@ -1056,7 +1056,7 @@
         <p>Axios-fel mm hanteras om man har kodat på följande vis:</p>
 
                 <div
-                    id="example-2b1d70"
+                    id="example-fbdeea"
                     class="code-preview code-preview--default"
                     
                     
@@ -1064,14 +1064,15 @@
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">bliFel</span>(<span class="hljs-params"></span>) {
-<span class="hljs-keyword">await</span> axios.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;http://hej&quot;</span>);
-<span class="hljs-comment">// alternativt return axios.get(&#x27;http://hej&#x27;);</span>
-}</code></pre>
+    <span class="hljs-keyword">await</span> axios.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;http://hej&quot;</span>);
+    <span class="hljs-comment">// alternativt return axios.get(&#x27;http://hej&#x27;);</span>
+}
+</code></pre>
                 </div>
             <p>Om man däremot har kodat felaktigt, enligt nedanstående exempel, kommer exceptions inte att fångas av denna plugin.</p>
 
                 <div
-                    id="example-3c3aad"
+                    id="example-1b91b5"
                     class="code-preview code-preview--default"
                     
                     
@@ -1079,13 +1080,14 @@
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">function</span> <span class="hljs-title function_">bliFel</span>(<span class="hljs-params"></span>) {
-axios.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;http://hej&quot;</span>);
-}</code></pre>
+    axios.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;http://hej&quot;</span>);
+}
+</code></pre>
                 </div>
             <h2 id="options"><a class="header-anchor" href="#options">Options</a></h2><p>Plugin tar ett optional objekt med inställningar:</p>
 
                 <div
-                    id="example-581c76"
+                    id="example-4e0700"
                     class="code-preview code-preview--default"
                     
                     
@@ -1093,9 +1095,10 @@ axios.<span class="hljs-title function_">get</span>(<span class="hljs-string">&q
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0">app.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">ErrorPlugin</span>, {
-<span class="hljs-attr">captureWarnings</span>: <span class="hljs-literal">true</span>,
-<span class="hljs-attr">logToConsole</span>: <span class="hljs-literal">true</span>,
-});</code></pre>
+    <span class="hljs-attr">captureWarnings</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">logToConsole</span>: <span class="hljs-literal">true</span>,
+});
+</code></pre>
                 </div>
             <h3 id="capturewarnings"><a class="header-anchor" href="#capturewarnings"><code>captureWarnings</code></a></h3><ul>
 <li>type: <code>boolean</code></li>
@@ -1130,7 +1133,7 @@ axios.<span class="hljs-title function_">get</span>(<span class="hljs-string">&q
     <!-- prettier-ignore -->
     feature/dedent-code (<a href="https://github.com/Forsakringskassan/designsystem/commits/ec868cdcba34f029c93d3a2d5e63236f2f7dc69f">ec868cd</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/131">PR 131</a><br />
-        2024-11-05 00:14
+        2024-11-05 00:44
 </div>
 <div class="toolbar__item">
     <form id="version">

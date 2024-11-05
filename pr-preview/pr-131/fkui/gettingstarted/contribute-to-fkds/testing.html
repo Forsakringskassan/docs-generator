@@ -680,7 +680,7 @@ Onödig data ökar den kognitiva belastningen för läsaren och gör det svårar
 <p>Ibland kan detta orsaka konflikt med datatyper i Typescript:</p>
 
                 <div
-                    id="example-d4f1ed"
+                    id="example-19de4e"
                     class="code-preview code-preview--default"
                     
                     
@@ -688,8 +688,9 @@ Onödig data ökar den kognitiva belastningen för läsaren och gör det svårar
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">function</span> <span class="hljs-title function_">getFullName</span>(<span class="hljs-params"><span class="hljs-attr">src</span>: <span class="hljs-title class_">MyComplexObject</span></span>): <span class="hljs-built_in">string</span> {
-<span class="hljs-comment">/* ... */</span>
-}</code></pre>
+    <span class="hljs-comment">/* ... */</span>
+}
+</code></pre>
                 </div>
             <p>Överväg att ändra prototypen så den inte kräver mer än nödvändigt:</p>
 
@@ -765,7 +766,7 @@ Onödig data ökar den kognitiva belastningen för läsaren och gör det svårar
             <h4 id="foredra_testdata_i_direkt_anslutning_till_testfallet"><a class="header-anchor" href="#foredra_testdata_i_direkt_anslutning_till_testfallet">Föredra testdata i direkt anslutning till testfallet</a></h4><p>Testdata lägger vi i första hand i direkt anslutning till testfallet.</p>
 
                 <div
-                    id="example-009c24"
+                    id="example-8ba1d5"
                     class="code-preview code-preview--default"
                     
                     
@@ -773,10 +774,11 @@ Onödig data ökar den kognitiva belastningen för läsaren och gör det svårar
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">it</span>(<span class="hljs-string">&quot;x should y&quot;</span>, <span class="hljs-function">() =&gt;</span> {
-   <span class="hljs-keyword">const</span> data = [{ ... }, { ... }];
-   <span class="hljs-keyword">const</span> result = <span class="hljs-title function_">func</span>(data);
-<span class="hljs-title function_">expect</span>(result).<span class="hljs-title function_">toHaveLength</span>(<span class="hljs-number">2</span>);
-});</code></pre>
+    <span class="hljs-keyword">const</span> data = [{ ... }, { ... }];
+    <span class="hljs-keyword">const</span> result = <span class="hljs-title function_">func</span>(data);
+	<span class="hljs-title function_">expect</span>(result).<span class="hljs-title function_">toHaveLength</span>(<span class="hljs-number">2</span>);
+});
+</code></pre>
                 </div>
             <p>Motivering:
 Genom att lägga testdata i anslutning till testet är det lätt att utläsa varför assertions är förväntade och man behöver inte hoppa runt i testfilen för att läsa ut det.</p>
@@ -827,7 +829,7 @@ Stora mängder testdata distraherar från själva testfallet.</p>
 </ol>
 
                 <div
-                    id="example-160408"
+                    id="example-abb5ef"
                     class="code-preview code-preview--default"
                     
                     
@@ -835,20 +837,21 @@ Stora mängder testdata distraherar från själva testfallet.</p>
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">it</span>(<span class="hljs-string">&quot;x should y&quot;</span>, <span class="hljs-function">() =&gt;</span> {
-<span class="hljs-comment">/* given: a button with a click callback */</span>
-<span class="hljs-keyword">const</span> spy = jest.<span class="hljs-title function_">fn</span>();
-<span class="hljs-keyword">const</span> wrapper = <span class="hljs-title function_">shallowMount</span>(<span class="hljs-title class_">ButtonComponent</span>, {
-    <span class="hljs-attr">listeners</span>: {
-        <span class="hljs-attr">click</span>: spy,
-    },
+    <span class="hljs-comment">/* given: a button with a click callback */</span>
+    <span class="hljs-keyword">const</span> spy = jest.<span class="hljs-title function_">fn</span>();
+    <span class="hljs-keyword">const</span> wrapper = <span class="hljs-title function_">shallowMount</span>(<span class="hljs-title class_">ButtonComponent</span>, {
+        <span class="hljs-attr">listeners</span>: {
+            <span class="hljs-attr">click</span>: spy,
+        },
+    });
+
+    <span class="hljs-comment">/* when: the buton is clicked */</span>
+    wrapper.<span class="hljs-title function_">click</span>();
+
+    <span class="hljs-comment">/* then: the callback should have been called */</span>
+    <span class="hljs-title function_">expect</span>(spy).<span class="hljs-title function_">toHaveBeenCalled</span>();
 });
-
-<span class="hljs-comment">/* when: the buton is clicked */</span>
-wrapper.<span class="hljs-title function_">click</span>();
-
-<span class="hljs-comment">/* then: the callback should have been called */</span>
-<span class="hljs-title function_">expect</span>(spy).<span class="hljs-title function_">toHaveBeenCalled</span>();
-});</code></pre>
+</code></pre>
                 </div>
             <p>Motivering:
 Formatet uppmuntrar igenomtänkta och strukturerade testfall.</p>
@@ -856,27 +859,29 @@ Formatet uppmuntrar igenomtänkta och strukturerade testfall.</p>
 <p>Dåligt:</p>
 
                 <div
-                    id="example-597943"
+                    id="example-631107"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">it</span>(<span class="hljs-string">&quot;propName&quot;</span>, <span class="hljs-function">() =&gt;</span> { ... });</code></pre>
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">it</span>(<span class="hljs-string">&quot;propName&quot;</span>, <span class="hljs-function">() =&gt;</span> { ... });
+</code></pre>
                 </div>
             <p>Förklarar inte vad man förväntar sig av propen</p>
 <p>Bra:</p>
 
                 <div
-                    id="example-f81373"
+                    id="example-3462ab"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">it</span>(<span class="hljs-string">&quot;should emit submit event when clicked&quot;</span>, <span class="hljs-function">() =&gt;</span> { ... });</code></pre>
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">it</span>(<span class="hljs-string">&quot;should emit submit event when clicked&quot;</span>, <span class="hljs-function">() =&gt;</span> { ... });
+</code></pre>
                 </div>
             <p>Motivering:
 Tydligare vad som gått fel när man läser loggar och för att som läsare förstå vad testfallet går ut på.</p>
@@ -911,7 +916,7 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
 <p>Typescript funktion, klass osv:</p>
 
                 <div
-                    id="example-c43b23"
+                    id="example-6f1642"
                     class="code-preview code-preview--default"
                     
                     
@@ -924,24 +929,26 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
 <span class="hljs-keyword">import</span> apimock <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@forsakringskassan/apimock-express&quot;</span>; <span class="hljs-comment">// 4. In-house bibliotek</span>
 <span class="hljs-keyword">import</span> { focus } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;                      <span class="hljs-comment">// 5. Inom monorepo</span>
 <span class="hljs-keyword">import</span> { hasSlot } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../utils&quot;</span>;                       <span class="hljs-comment">// 6. Inom paket</span>
-<span class="hljs-keyword">import</span> { myFunction } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./my-function&quot;</span>;               <span class="hljs-comment">// 7. SUT</span></code></pre>
+<span class="hljs-keyword">import</span> { myFunction } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./my-function&quot;</span>;               <span class="hljs-comment">// 7. SUT</span>
+</code></pre>
                 </div>
             <p>För en VueJS komponent, importera komponenten sist direkt från <code>.vue</code> filen:</p>
 
                 <div
-                    id="example-129532"
+                    id="example-4a36e1"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> <span class="hljs-title class_">MyComponent</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./MyComponent.vue&quot;</span>;</code></pre>
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> <span class="hljs-title class_">MyComponent</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./MyComponent.vue&quot;</span>;
+</code></pre>
                 </div>
             <p>Motivering: ordningen av imports gör det mer överskådligt och snabbare att greppa.</p>
 <h3 id="props"><a class="header-anchor" href="#props">Props</a></h3>
                 <div
-                    id="example-a2c720"
+                    id="example-c0a66c"
                     class="code-preview code-preview--default"
                     
                     
@@ -949,17 +956,18 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">describe</span>(<span class="hljs-string">&quot;props&quot;</span>, <span class="hljs-function">() =&gt;</span> {
-   <span class="hljs-comment">/* v--- denna testas inte här, den ligger under v-model */</span>
-   <span class="hljs-comment">/*describe(&quot;highlight&quot;, () =&gt; {
+    <span class="hljs-comment">/* v--- denna testas inte här, den ligger under v-model */</span>
+    <span class="hljs-comment">/*describe(&quot;highlight&quot;, () =&gt; {
 
-});*/</span>
+	});*/</span>
 
-   <span class="hljs-title function_">describe</span>(<span class="hljs-string">&quot;items&quot;</span>, <span class="hljs-function">() =&gt;</span> {
-       <span class="hljs-title function_">it</span>(<span class="hljs-string">&quot;should do something&quot;</span>, <span class="hljs-function">() =&gt;</span> {});
-   });
+    <span class="hljs-title function_">describe</span>(<span class="hljs-string">&quot;items&quot;</span>, <span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-title function_">it</span>(<span class="hljs-string">&quot;should do something&quot;</span>, <span class="hljs-function">() =&gt;</span> {});
+    });
 
-   <span class="hljs-title function_">describe</span>(<span class="hljs-string">&quot;vertical&quot;</span>, <span class="hljs-function">() =&gt;</span> {});
-});</code></pre>
+    <span class="hljs-title function_">describe</span>(<span class="hljs-string">&quot;vertical&quot;</span>, <span class="hljs-function">() =&gt;</span> {});
+});
+</code></pre>
                 </div>
             <p>Motivering: genom att gruppera i nästlade describes är det enklare att se vad testfallet tillgör, vilken prop exempelvis</p>
 <h3 id="v_model_propen_testas_under_describe_v_model"><a class="header-anchor" href="#v_model_propen_testas_under_describe_v_model"><code>v-model</code> propen testas under describe(&quot;v-model&quot;)</a></h3><h3 id="anvand_shallowmount"><a class="header-anchor" href="#anvand_shallowmount">Använd <code>shallowMount</code></a></h3><p>I första hand använd <code>shallowMount</code>.</p>
@@ -987,7 +995,7 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
 <h3 id="foredra_lokalt_scopad_wrapper_over_global"><a class="header-anchor" href="#foredra_lokalt_scopad_wrapper_over_global">Föredra lokalt scopad wrapper över global</a></h3><p>istället för:</p>
 
                 <div
-                    id="example-f1fd59"
+                    id="example-034c67"
                     class="code-preview code-preview--default"
                     
                     
@@ -997,13 +1005,14 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">let</span> wrapper;
 
 <span class="hljs-title function_">it</span>(.., <span class="hljs-function">() =&gt;</span> {
-wrapper = <span class="hljs-title function_">shallowMount</span>(..);
-});</code></pre>
+    wrapper = <span class="hljs-title function_">shallowMount</span>(..);
+});
+</code></pre>
                 </div>
             <p>kör:</p>
 
                 <div
-                    id="example-9df27c"
+                    id="example-3f34ef"
                     class="code-preview code-preview--default"
                     
                     
@@ -1011,8 +1020,9 @@ wrapper = <span class="hljs-title function_">shallowMount</span>(..);
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">it</span>(.., <span class="hljs-function">() =&gt;</span> {
-<span class="hljs-keyword">const</span> wrapper = <span class="hljs-title function_">shallowMount</span>(..);
-});</code></pre>
+    <span class="hljs-keyword">const</span> wrapper = <span class="hljs-title function_">shallowMount</span>(..);
+});
+</code></pre>
                 </div>
             <h3 id="anvand_get_over_find"><a class="header-anchor" href="#anvand_get_over_find">Använd <code>.get()</code> över <code>.find()</code></a></h3><p>get smäller om den inte finns, find ger ett tomt objekt.</p>
 <p>Om du inte i testet ska testa <code>.exists()</code> eller en array med 0 eller fler element.</p>
@@ -1031,7 +1041,7 @@ Om utskriften bedöms rimlig så bör du också testa att utskriften är korrekt
 <p>För att korrekt mocka och verifiera <code>console.log</code> använder du <code>jest.spyOn(..)</code>:</p>
 
                 <div
-                    id="example-15e6cc"
+                    id="example-df063b"
                     class="code-preview code-preview--default"
                     
                     
@@ -1044,23 +1054,24 @@ Om utskriften bedöms rimlig så bör du också testa att utskriften är korrekt
 <span class="hljs-keyword">const</span> log = jest.<span class="hljs-title function_">spyOn</span>(<span class="hljs-variable language_">console</span>, <span class="hljs-string">&quot;log&quot;</span>);
 
 <span class="hljs-title function_">afterEach</span>(<span class="hljs-function">() =&gt;</span> {
-<span class="hljs-comment">/* keeps the spy but restore eventual mocked implementations of `console.log`. Alternatively `jest.restoreAllMocks()` may be used. */</span>
-log.<span class="hljs-title function_">mockRestore</span>();
+    <span class="hljs-comment">/* keeps the spy but restore eventual mocked implementations of `console.log`. Alternatively `jest.restoreAllMocks()` may be used. */</span>
+    log.<span class="hljs-title function_">mockRestore</span>();
 });
 
 <span class="hljs-title function_">it</span>(<span class="hljs-string">&quot;noisy test&quot;</span>, <span class="hljs-function">() =&gt;</span> {
-<span class="hljs-comment">/* for this test case stub the original implementation to silence output */</span>
-log.<span class="hljs-title function_">mockReturnValue</span>(<span class="hljs-literal">undefined</span>);
+    <span class="hljs-comment">/* for this test case stub the original implementation to silence output */</span>
+    log.<span class="hljs-title function_">mockReturnValue</span>(<span class="hljs-literal">undefined</span>);
 
-<span class="hljs-comment">/* `myFunction()` calls `console.log(..)` */</span>
-<span class="hljs-title function_">expect</span>(<span class="hljs-title function_">myFunction</span>()).<span class="hljs-title function_">toProduceExpectedResult</span>();
+    <span class="hljs-comment">/* `myFunction()` calls `console.log(..)` */</span>
+    <span class="hljs-title function_">expect</span>(<span class="hljs-title function_">myFunction</span>()).<span class="hljs-title function_">toProduceExpectedResult</span>();
 
-<span class="hljs-comment">/* verify `console.log(..)` has been called exactly once to ensure no other messages was silenced */</span>
-<span class="hljs-title function_">expect</span>(log).<span class="hljs-title function_">toHaveBeenCalledTimes</span>(<span class="hljs-number">1</span>);
+    <span class="hljs-comment">/* verify `console.log(..)` has been called exactly once to ensure no other messages was silenced */</span>
+    <span class="hljs-title function_">expect</span>(log).<span class="hljs-title function_">toHaveBeenCalledTimes</span>(<span class="hljs-number">1</span>);
 
-<span class="hljs-comment">/* verify `console.log(..)` was called with the expected message */</span>
-<span class="hljs-title function_">expect</span>(log).<span class="hljs-title function_">toHaveBeenCalledWith</span>(<span class="hljs-string">&quot;lorem ipsum dolot sit amet&quot;</span>);
-});</code></pre>
+    <span class="hljs-comment">/* verify `console.log(..)` was called with the expected message */</span>
+    <span class="hljs-title function_">expect</span>(log).<span class="hljs-title function_">toHaveBeenCalledWith</span>(<span class="hljs-string">&quot;lorem ipsum dolot sit amet&quot;</span>);
+});
+</code></pre>
                 </div>
             <p>Undvik <code>console.log = jest.fn()</code> då det gör det svårare att åerställa mellan testfall.
 Är du inte försiktig när du mockar <code>console.log</code> försvårar du för andra som försöker använda <code>console.log</code> och du kan dölja riktiga fel som skrivs ut i console.</p>
@@ -1069,7 +1080,7 @@ log.<span class="hljs-title function_">mockReturnValue</span>(<span class="hljs-
 <h2 id="pageobject_for_cypress"><a class="header-anchor" href="#pageobject_for_cypress">Pageobject för Cypress</a></h2><p>Vi skriver och levererar pageobject för alla publika komponenter och moduler.</p>
 <h3 id="mall"><a class="header-anchor" href="#mall">Mall</a></h3>
                 <div
-                    id="example-0bc090"
+                    id="example-9cb40d"
                     class="code-preview code-preview--default"
                     
                     
@@ -1077,39 +1088,40 @@ log.<span class="hljs-title function_">mockReturnValue</span>(<span class="hljs-
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-comment">/**
-* Description of what this pageobject represents.
-*/</span>
+ * Description of what this pageobject represents.
+ */</span>
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyPageobject</span> {
-   <span class="hljs-keyword">public</span> <span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span>;
 
-   <span class="hljs-comment">/**
-    * <span class="hljs-doctag">@param</span> <span class="hljs-variable">selector</span> - Component selector.
-    */</span>
-   <span class="hljs-keyword">public</span> <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span></span>) {
-       <span class="hljs-variable language_">this</span>.<span class="hljs-property">selector</span> = selector;
-   }
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@param</span> <span class="hljs-variable">selector</span> - Component selector.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span></span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">selector</span> = selector;
+    }
 
-   <span class="hljs-comment">/**
-    * Returns the component root element.
-    */</span>
-   <span class="hljs-keyword">public</span> <span class="hljs-title function_">el</span>(): <span class="hljs-title class_">Cypress</span>.<span class="hljs-property">Chainable</span>&lt;<span class="hljs-title class_">JQuery</span>&lt;<span class="hljs-title class_">HTMLElement</span>&gt;&gt; {
-       <span class="hljs-keyword">return</span> cy.<span class="hljs-title function_">get</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">selector</span>);
-   }
+    <span class="hljs-comment">/**
+     * Returns the component root element.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">el</span>(): <span class="hljs-title class_">Cypress</span>.<span class="hljs-property">Chainable</span>&lt;<span class="hljs-title class_">JQuery</span>&lt;<span class="hljs-title class_">HTMLElement</span>&gt;&gt; {
+        <span class="hljs-keyword">return</span> cy.<span class="hljs-title function_">get</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">selector</span>);
+    }
 
-   <span class="hljs-comment">/**
-    * Returns the submit button.
-    */</span>
-   <span class="hljs-keyword">public</span> <span class="hljs-title function_">submitButton</span>(): <span class="hljs-title class_">Cypress</span>.<span class="hljs-property">Chainable</span>&lt;<span class="hljs-title class_">JQuery</span>&lt;<span class="hljs-title class_">HTMLButtonElement</span>&gt;&gt; {
-       <span class="hljs-keyword">return</span> cy.<span class="hljs-title function_">get</span>(<span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.selector}</span> .submit-button`</span>);
-   }
-}</code></pre>
+    <span class="hljs-comment">/**
+     * Returns the submit button.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">submitButton</span>(): <span class="hljs-title class_">Cypress</span>.<span class="hljs-property">Chainable</span>&lt;<span class="hljs-title class_">JQuery</span>&lt;<span class="hljs-title class_">HTMLButtonElement</span>&gt;&gt; {
+        <span class="hljs-keyword">return</span> cy.<span class="hljs-title function_">get</span>(<span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.selector}</span> .submit-button`</span>);
+    }
+}
+</code></pre>
                 </div>
             <h3 id="anvand_metoder"><a class="header-anchor" href="#anvand_metoder">Använd metoder</a></h3><p>Låt varje beståndsdel av pageobject vara en egen metod.
 Undvik arrow-funktion-som-property mönster:</p>
 <p>Istället för:</p>
 
                 <div
-                    id="example-9293ea"
+                    id="example-620298"
                     class="code-preview code-preview--default"
                     
                     
@@ -1117,23 +1129,24 @@ Undvik arrow-funktion-som-property mönster:</p>
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyPageobject</span> {
-<span class="hljs-keyword">public</span> <span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span>;
 
-<span class="hljs-comment">/**
- * Returns the submit button.
- */</span>
-<span class="hljs-keyword">public</span> <span class="hljs-attr">submitButton</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-title class_">Cypress</span>.<span class="hljs-property">Chainable</span>&lt;<span class="hljs-title class_">JQuery</span>&lt;<span class="hljs-title class_">HTMLButtonElement</span>&gt;&gt;;
+    <span class="hljs-comment">/**
+     * Returns the submit button.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-attr">submitButton</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-title class_">Cypress</span>.<span class="hljs-property">Chainable</span>&lt;<span class="hljs-title class_">JQuery</span>&lt;<span class="hljs-title class_">HTMLButtonElement</span>&gt;&gt;;
 
-<span class="hljs-keyword">public</span> <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span></span>) {
-    <span class="hljs-variable language_">this</span>.<span class="hljs-property">selector</span> = selector;
-    <span class="hljs-variable language_">this</span>.<span class="hljs-property">submitButton</span> = <span class="hljs-function">() =&gt;</span> cy.<span class="hljs-title function_">get</span>(<span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.selector}</span> .submit-button`</span>);
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span></span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">selector</span> = selector;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">submitButton</span> = <span class="hljs-function">() =&gt;</span> cy.<span class="hljs-title function_">get</span>(<span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.selector}</span> .submit-button`</span>);
+    }
 }
-}</code></pre>
+</code></pre>
                 </div>
             <p>Använd vanliga klassmetoder:</p>
 
                 <div
-                    id="example-8e50c7"
+                    id="example-ead355"
                     class="code-preview code-preview--default"
                     
                     
@@ -1141,19 +1154,20 @@ Undvik arrow-funktion-som-property mönster:</p>
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyPageobject</span> {
-<span class="hljs-keyword">public</span> <span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span>;
 
-<span class="hljs-keyword">public</span> <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span></span>) {
-    <span class="hljs-variable language_">this</span>.<span class="hljs-property">selector</span> = selector;
-}
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span></span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">selector</span> = selector;
+    }
 
-<span class="hljs-comment">/**
- * Returns the submit button.
- */</span>
-<span class="hljs-keyword">public</span> <span class="hljs-title function_">submitButton</span>(): <span class="hljs-title class_">Cypress</span>.<span class="hljs-property">Chainable</span>&lt;<span class="hljs-title class_">JQuery</span>&lt;<span class="hljs-title class_">HTMLButtonElement</span>&gt;&gt; {
-    <span class="hljs-keyword">return</span> cy.<span class="hljs-title function_">get</span>(<span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.selector}</span> .submit-button`</span>);
+    <span class="hljs-comment">/**
+     * Returns the submit button.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">submitButton</span>(): <span class="hljs-title class_">Cypress</span>.<span class="hljs-property">Chainable</span>&lt;<span class="hljs-title class_">JQuery</span>&lt;<span class="hljs-title class_">HTMLButtonElement</span>&gt;&gt; {
+        <span class="hljs-keyword">return</span> cy.<span class="hljs-title function_">get</span>(<span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.selector}</span> .submit-button`</span>);
+    }
 }
-}</code></pre>
+</code></pre>
                 </div>
             <p>Motivering: koden blir enklare att läsa och förstå, dokumentation hänger ihop med implementation.</p>
 <h3 id="undvik_find"><a class="header-anchor" href="#undvik_find">Undvik <code>find(..)</code></a></h3><p>Undvik <code>cy.get(..).find(..)</code> i pageobject.
@@ -1195,7 +1209,7 @@ Skriv istället ihop selectorn med en template literal:</p>
     <!-- prettier-ignore -->
     feature/dedent-code (<a href="https://github.com/Forsakringskassan/designsystem/commits/ec868cdcba34f029c93d3a2d5e63236f2f7dc69f">ec868cd</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/131">PR 131</a><br />
-        2024-11-05 00:14
+        2024-11-05 00:44
 </div>
 <div class="toolbar__item">
     <form id="version">

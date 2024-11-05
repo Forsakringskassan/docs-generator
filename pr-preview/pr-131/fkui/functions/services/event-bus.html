@@ -918,7 +918,7 @@
 Use with caution.</p>
 <h2 id="usage"><a class="header-anchor" href="#usage">Usage</a></h2>
                 <div
-                    id="example-72d67a"
+                    id="example-5f7008"
                     class="code-preview code-preview--default"
                     
                     
@@ -929,16 +929,17 @@ Use with caution.</p>
 
 <span class="hljs-comment">/* optional: type-safe events */</span>
 <span class="hljs-keyword">declare</span> <span class="hljs-variable language_">module</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span> {
-<span class="hljs-keyword">interface</span> <span class="hljs-title class_">EventBusMap</span> {
-    <span class="hljs-string">&quot;my-event&quot;</span>: [<span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">age</span>: <span class="hljs-built_in">number</span>];
-}
+    <span class="hljs-keyword">interface</span> <span class="hljs-title class_">EventBusMap</span> {
+        <span class="hljs-string">&quot;my-event&quot;</span>: [<span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">age</span>: <span class="hljs-built_in">number</span>];
+    }
 }
 
 <span class="hljs-title class_">EventBus</span>.$on(<span class="hljs-string">&quot;my-event&quot;</span>, <span class="hljs-function">(<span class="hljs-params">name, age</span>) =&gt;</span> {
-<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(name, age);
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(name, age);
 });
 
-<span class="hljs-title class_">EventBus</span>.$emit(<span class="hljs-string">&quot;my-event&quot;</span>, <span class="hljs-string">&quot;Kalle Anka&quot;</span>, <span class="hljs-number">42</span>);</code></pre>
+<span class="hljs-title class_">EventBus</span>.$emit(<span class="hljs-string">&quot;my-event&quot;</span>, <span class="hljs-string">&quot;Kalle Anka&quot;</span>, <span class="hljs-number">42</span>);
+</code></pre>
                 </div>
             <p>Type-safety is optional but strongly recommended.
 For untyped events any number of parameters may be passed and their type will be <code>unknown</code>.</p>
@@ -971,7 +972,7 @@ Make sure to pass in the same callback as you used when adding the listener.</p>
     <!-- prettier-ignore -->
     feature/dedent-code (<a href="https://github.com/Forsakringskassan/designsystem/commits/ec868cdcba34f029c93d3a2d5e63236f2f7dc69f">ec868cd</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/131">PR 131</a><br />
-        2024-11-05 00:14
+        2024-11-05 00:44
 </div>
 <div class="toolbar__item">
     <form id="version">

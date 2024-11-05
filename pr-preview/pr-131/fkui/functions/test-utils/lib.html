@@ -914,19 +914,20 @@ Anroparen ansvarar för att städa upp elementet.</p>
 <p>Måste köras i en miljö där DOM finns tillgängligt, exempelvis en browser eller JSDOM.</p>
 
                 <div
-                    id="example-40419e"
+                    id="example-991724"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">function</span> <span class="hljs-title function_">createPlaceholderInDocument</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">HTMLElement</span>;</code></pre>
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">function</span> <span class="hljs-title function_">createPlaceholderInDocument</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">HTMLElement</span>;
+</code></pre>
                 </div>
             <h3 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h3><p>I Vue.js testfall kan funktionen användas med <code>attachTo</code> när komponenten måste finnas i DOM (exempelvis när man testar fokus):</p>
 
                 <div
-                    id="example-4c08be"
+                    id="example-a1ed84"
                     class="code-preview code-preview--default"
                     
                     
@@ -936,28 +937,30 @@ Anroparen ansvarar för att städa upp elementet.</p>
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { createPlaceholderInDocument } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/test-utils&quot;</span>;
 
 <span class="hljs-title function_">shallowMount</span>(<span class="hljs-title class_">MyComponent</span>, {
-<span class="hljs-attr">attachTo</span>: <span class="hljs-title function_">createPlaceholderInDocument</span>(),
-});</code></pre>
+    <span class="hljs-attr">attachTo</span>: <span class="hljs-title function_">createPlaceholderInDocument</span>(),
+});
+</code></pre>
                 </div>
             <h2 id="generateselector"><a class="header-anchor" href="#generateselector"><code>generateSelector</code></a></h2><p>Genererar en CSS selector för givet element.</p>
 <p>Måste köras i en miljö där DOM finns tillgängligt, exempelvis en browser eller JSDOM.</p>
 
                 <div
-                    id="example-c82193"
+                    id="example-595749"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">function</span> <span class="hljs-title function_">generateSelector</span>(<span class="hljs-params"><span class="hljs-attr">element</span>: <span class="hljs-title class_">Element</span> | <span class="hljs-literal">null</span></span>): <span class="hljs-built_in">string</span>;</code></pre>
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">function</span> <span class="hljs-title function_">generateSelector</span>(<span class="hljs-params"><span class="hljs-attr">element</span>: <span class="hljs-title class_">Element</span> | <span class="hljs-literal">null</span></span>): <span class="hljs-built_in">string</span>;
+</code></pre>
                 </div>
             <ul>
 <li><code>element</code> - Elementet att generera selector för.</li>
 </ul>
 <h3 id="anvandning--1"><a class="header-anchor" href="#anvandning--1">Användning</a></h3>
                 <div
-                    id="example-21924a"
+                    id="example-6c24b1"
                     class="code-preview code-preview--default"
                     
                     
@@ -967,15 +970,16 @@ Anroparen ansvarar för att städa upp elementet.</p>
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { generateSelector } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/test-utils&quot;</span>;
 
 <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-property">innerHTML</span> = <span class="hljs-comment">/* HTML */</span> <span class="hljs-string">`
-&lt;main id=&quot;foo&quot;&gt;
-    &lt;p class=&quot;text&quot;&gt;Lorem Ipsum&lt;/p&gt;
-&lt;/main&gt;
+    &lt;main id=&quot;foo&quot;&gt;
+        &lt;p class=&quot;text&quot;&gt;Lorem Ipsum&lt;/p&gt;
+    &lt;/main&gt;
 `</span>;
 
 <span class="hljs-keyword">const</span> element = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;.text&quot;</span>);
 <span class="hljs-keyword">const</span> selector = <span class="hljs-title function_">generateSelector</span>(element);
 
-<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(selector); <span class="hljs-comment">// --&gt; &quot;#foo .text&quot;</span></code></pre>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(selector); <span class="hljs-comment">// --&gt; &quot;#foo .text&quot;</span>
+</code></pre>
                 </div>
             
 
@@ -1000,7 +1004,7 @@ Anroparen ansvarar för att städa upp elementet.</p>
     <!-- prettier-ignore -->
     feature/dedent-code (<a href="https://github.com/Forsakringskassan/designsystem/commits/ec868cdcba34f029c93d3a2d5e63236f2f7dc69f">ec868cd</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/131">PR 131</a><br />
-        2024-11-05 00:14
+        2024-11-05 00:44
 </div>
 <div class="toolbar__item">
     <form id="version">

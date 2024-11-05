@@ -1321,7 +1321,7 @@ Innehållet måste då följa samma datastruktur som ordinarie rader.</p>
 <p>Se nedan exempel av data som kan användas för att generera en expanderbar rad som innehåller två tabellrader.</p>
 
                 <div
-                    id="example-82ba56"
+                    id="example-27f8b4"
                     class="code-preview code-preview--default"
                     
                     data-tags=static
@@ -1329,27 +1329,28 @@ Innehållet måste då följa samma datastruktur som ordinarie rader.</p>
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-keyword">const</span> myExpandableRows = [
-{
-    <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1&quot;</span>,
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Utbetalning&quot;</span>,
-    <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;2023-10-11&quot;</span>,
-    <span class="hljs-attr">sum</span>: <span class="hljs-number">1200</span>,
-    <span class="hljs-attr">expandable</span>: [
-        {
-            <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1a&quot;</span>,
-            <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Barnbidrag&quot;</span>,
-            <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;2023-10-11&quot;</span>,
-            <span class="hljs-attr">sum</span>: <span class="hljs-number">200</span>,
-        },
-        {
-            <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1b&quot;</span>,
-            <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Övrig ersättning&quot;</span>,
-            <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;2023-10-11&quot;</span>,
-            <span class="hljs-attr">sum</span>: <span class="hljs-number">1000</span>,
-        },
-    ],
-},
-];</code></pre>
+    {
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1&quot;</span>,
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Utbetalning&quot;</span>,
+        <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;2023-10-11&quot;</span>,
+        <span class="hljs-attr">sum</span>: <span class="hljs-number">1200</span>,
+        <span class="hljs-attr">expandable</span>: [
+            {
+                <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1a&quot;</span>,
+                <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Barnbidrag&quot;</span>,
+                <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;2023-10-11&quot;</span>,
+                <span class="hljs-attr">sum</span>: <span class="hljs-number">200</span>,
+            },
+            {
+                <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1b&quot;</span>,
+                <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Övrig ersättning&quot;</span>,
+                <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;2023-10-11&quot;</span>,
+                <span class="hljs-attr">sum</span>: <span class="hljs-number">1000</span>,
+            },
+        ],
+    },
+];
+</code></pre>
                 </div>
             <p>För att istället skapa expanderbara rader med valfritt innehåll används <code>expandable</code> slot.</p>
 
@@ -1683,7 +1684,7 @@ parentRow</p>
     <!-- prettier-ignore -->
     feature/dedent-code (<a href="https://github.com/Forsakringskassan/designsystem/commits/ec868cdcba34f029c93d3a2d5e63236f2f7dc69f">ec868cd</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/131">PR 131</a><br />
-        2024-11-05 00:14
+        2024-11-05 00:44
 </div>
 <div class="toolbar__item">
     <form id="version">

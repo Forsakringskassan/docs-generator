@@ -217,9 +217,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        feature/dedent-code (<a href="https://github.com/Forsakringskassan/docs-generator/commits/3bef899cc37d7f825fe20d3461e036d2378d7f28">3bef899</a>)<br />
+        feature/dedent-code (<a href="https://github.com/Forsakringskassan/docs-generator/commits/200785ac41185581b1ec925456b0e7be6ad14f5d">200785a</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/131">PR 131</a><br />
-        2024-11-05 00:12
+        2024-11-05 00:41
     </span>
 </div>
 </div>
@@ -379,7 +379,7 @@
             <p>This processor is also available as the deprecated alias <code>versionBannerProcessor</code>.</p>
 <h2 id="usage"><a class="header-anchor" href="#usage">Usage</a></h2>
                 <div
-                    id="example-680f0a"
+                    id="example-2f30c7"
                     class="code-preview code-preview--default"
                     
                     
@@ -387,13 +387,14 @@
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> docs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Generator</span>({
-<span class="hljs-attr">processors</span>: [<span class="hljs-title function_">motdProcessor</span>()],
-});</code></pre>
+    <span class="hljs-attr">processors</span>: [<span class="hljs-title function_">motdProcessor</span>()],
+});
+</code></pre>
                 </div>
             <p>If you need a static message (always present) you can set the <code>message</code> property.</p>
 
                 <div
-                    id="example-781005"
+                    id="example-069c5c"
                     class="code-preview code-preview--default"
                     
                     
@@ -401,17 +402,18 @@
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> docs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Generator</span>({
-<span class="hljs-attr">processors</span>: [
-    <span class="hljs-title function_">motdProcessor</span>({
-        <span class="hljs-attr">message</span>: <span class="hljs-string">&quot;Lorem ipsum dolor sit amet.&quot;</span>,
-    }),
-],
-});</code></pre>
+    <span class="hljs-attr">processors</span>: [
+        <span class="hljs-title function_">motdProcessor</span>({
+            <span class="hljs-attr">message</span>: <span class="hljs-string">&quot;Lorem ipsum dolor sit amet.&quot;</span>,
+        }),
+    ],
+});
+</code></pre>
                 </div>
             <h2 id="configuration"><a class="header-anchor" href="#configuration">Configuration</a></h2><p>The <code>motdProcessor</code> takes a configuration object:</p>
 
                 <div
-                    id="example-07344b"
+                    id="example-2e2a6d"
                     class="code-preview code-preview--default"
                     
                     
@@ -419,10 +421,11 @@
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">motdProcessor</span>({
-<span class="hljs-attr">enabled</span>: <span class="hljs-literal">true</span>,
-<span class="hljs-attr">container</span>: <span class="hljs-string">&quot;body:begin&quot;</span>,
-<span class="hljs-attr">message</span>: <span class="hljs-string">&quot;Lorem ipsum dolor sit amet&quot;</span>,
-});</code></pre>
+    <span class="hljs-attr">enabled</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">container</span>: <span class="hljs-string">&quot;body:begin&quot;</span>,
+    <span class="hljs-attr">message</span>: <span class="hljs-string">&quot;Lorem ipsum dolor sit amet&quot;</span>,
+});
+</code></pre>
                 </div>
             <h3 id="enabled"><a class="header-anchor" href="#enabled"><code>enabled</code></a></h3><ul>
 <li>Type: <code>boolean</code></li>
@@ -444,7 +447,7 @@ May contain HTML markup.</p>
 <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><p>There is a runtime API to render dynamic messages:</p>
 
                 <div
-                    id="example-65b045"
+                    id="example-c4835c"
                     class="code-preview code-preview--default"
                     
                     
@@ -452,23 +455,24 @@ May contain HTML markup.</p>
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">MOTDMessage</span> {
-<span class="hljs-comment">/** Text message (may include HTML) */</span>
-<span class="hljs-attr">message</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-comment">/** Text message (may include HTML) */</span>
+    <span class="hljs-attr">message</span>: <span class="hljs-built_in">string</span>;
 
-<span class="hljs-comment">/** ID of message template to use */</span>
-template?: <span class="hljs-built_in">string</span>;
+    <span class="hljs-comment">/** ID of message template to use */</span>
+    template?: <span class="hljs-built_in">string</span>;
 
-<span class="hljs-comment">/** Optional extra bindings */</span>
-bindings?: <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>&gt;;
+    <span class="hljs-comment">/** Optional extra bindings */</span>
+    bindings?: <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>&gt;;
 
-<span class="hljs-comment">/** Called with the new DOM element before the element is shown */</span>
-preprocess?(<span class="hljs-attr">element</span>: <span class="hljs-title class_">DocumentFragment</span>): <span class="hljs-built_in">void</span>;
+    <span class="hljs-comment">/** Called with the new DOM element before the element is shown */</span>
+    preprocess?(<span class="hljs-attr">element</span>: <span class="hljs-title class_">DocumentFragment</span>): <span class="hljs-built_in">void</span>;
 }
 
 <span class="hljs-keyword">declare</span> <span class="hljs-keyword">const</span> <span class="hljs-attr">motd</span>: {
-<span class="hljs-keyword">readonly</span> <span class="hljs-attr">enabled</span>: <span class="hljs-built_in">boolean</span>;
-<span class="hljs-title function_">showMessage</span>(<span class="hljs-attr">message</span>: <span class="hljs-title class_">MOTDMessage</span>): <span class="hljs-built_in">void</span>;
-};</code></pre>
+    <span class="hljs-keyword">readonly</span> <span class="hljs-attr">enabled</span>: <span class="hljs-built_in">boolean</span>;
+    <span class="hljs-title function_">showMessage</span>(<span class="hljs-attr">message</span>: <span class="hljs-title class_">MOTDMessage</span>): <span class="hljs-built_in">void</span>;
+};
+</code></pre>
                 </div>
             
             <div class="docs-messagebox docs-messagebox--warning">
@@ -479,7 +483,7 @@ preprocess?(<span class="hljs-attr">element</span>: <span class="hljs-title clas
         <p>Example usage:</p>
 
                 <div
-                    id="example-5d04bd"
+                    id="example-20e7c6"
                     class="code-preview code-preview--default"
                     
                     
@@ -489,8 +493,9 @@ preprocess?(<span class="hljs-attr">element</span>: <span class="hljs-title clas
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { motd } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@forsakringskassan/docs-generator/runtime&quot;</span>;
 
 motd.<span class="hljs-title function_">showMessage</span>({
-<span class="hljs-attr">message</span>: <span class="hljs-string">&quot;lorem ipsum dolor sit amet&quot;</span>,
-});</code></pre>
+    <span class="hljs-attr">message</span>: <span class="hljs-string">&quot;lorem ipsum dolor sit amet&quot;</span>,
+});
+</code></pre>
                 </div>
             
             <div class="docs-messagebox docs-messagebox--info">

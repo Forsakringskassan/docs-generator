@@ -912,7 +912,7 @@
 There is also support for focusing Vue components and <code>$refs</code> in Vue components.</p>
 <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
                 <div
-                    id="example-4850aa"
+                    id="example-8ed73f"
                     class="code-preview code-preview--default"
                     
                     
@@ -921,9 +921,10 @@ There is also support for focusing Vue components and <code>$refs</code> in Vue 
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-comment">// @fkui/logic</span>
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">focus</span>(<span class="hljs-params">
-<span class="hljs-attr">element</span>: <span class="hljs-title class_">Element</span> | <span class="hljs-literal">null</span> | <span class="hljs-literal">undefined</span>,
-<span class="hljs-attr">options</span>: <span class="hljs-built_in">boolean</span> | <span class="hljs-title class_">FocusOptions</span> = {},
-</span>): <span class="hljs-built_in">void</span>;</code></pre>
+    <span class="hljs-attr">element</span>: <span class="hljs-title class_">Element</span> | <span class="hljs-literal">null</span> | <span class="hljs-literal">undefined</span>,
+    <span class="hljs-attr">options</span>: <span class="hljs-built_in">boolean</span> | <span class="hljs-title class_">FocusOptions</span> = {},
+</span>): <span class="hljs-built_in">void</span>;
+</code></pre>
                 </div>
             <ul>
 <li><code>element</code> - Element to focus.</li>
@@ -931,7 +932,7 @@ There is also support for focusing Vue components and <code>$refs</code> in Vue 
 </ul>
 
                 <div
-                    id="example-a3cb8d"
+                    id="example-4a8f54"
                     class="code-preview code-preview--default"
                     
                     
@@ -939,10 +940,11 @@ There is also support for focusing Vue components and <code>$refs</code> in Vue 
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">FocusOptions</span> {
-force?: <span class="hljs-built_in">boolean</span>;
-preventScroll?: <span class="hljs-built_in">boolean</span>;
-scrollToTop?: <span class="hljs-built_in">boolean</span>;
-}</code></pre>
+    force?: <span class="hljs-built_in">boolean</span>;
+    preventScroll?: <span class="hljs-built_in">boolean</span>;
+    scrollToTop?: <span class="hljs-built_in">boolean</span>;
+}
+</code></pre>
                 </div>
             <ul>
 <li><code>force</code> - If set to <code>true</code> <code>tabindex=&quot;-1&quot;</code> will be added as needed so any element can be focused.</li>
@@ -951,7 +953,7 @@ scrollToTop?: <span class="hljs-built_in">boolean</span>;
 </ul>
 
                 <div
-                    id="example-ef777b"
+                    id="example-763ba7"
                     class="code-preview code-preview--default"
                     
                     
@@ -960,9 +962,10 @@ scrollToTop?: <span class="hljs-built_in">boolean</span>;
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-comment">// @fkui/vue</span>
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">focus</span>(<span class="hljs-params">
-<span class="hljs-attr">element</span>: <span class="hljs-built_in">unknown</span>,
-<span class="hljs-attr">options</span>: <span class="hljs-built_in">boolean</span> | <span class="hljs-title class_">FocusOptions</span> = {},
-</span>): <span class="hljs-built_in">boolean</span>;</code></pre>
+    <span class="hljs-attr">element</span>: <span class="hljs-built_in">unknown</span>,
+    <span class="hljs-attr">options</span>: <span class="hljs-built_in">boolean</span> | <span class="hljs-title class_">FocusOptions</span> = {},
+</span>): <span class="hljs-built_in">boolean</span>;
+</code></pre>
                 </div>
             <ul>
 <li><code>element</code> - Element to focus.</li>
@@ -985,7 +988,7 @@ scrollToTop?: <span class="hljs-built_in">boolean</span>;
                 </div>
             
                 <div
-                    id="example-2cf8e3"
+                    id="example-314305"
                     class="code-preview code-preview--default"
                     
                     
@@ -994,7 +997,8 @@ scrollToTop?: <span class="hljs-built_in">boolean</span>;
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { focus } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 
-<span class="hljs-title function_">focus</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;header&quot;</span>), <span class="hljs-literal">true</span>);</code></pre>
+<span class="hljs-title function_">focus</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;header&quot;</span>), <span class="hljs-literal">true</span>);
+</code></pre>
                 </div>
             <h3 id="when_in_vue_context"><a class="header-anchor" href="#when_in_vue_context">When in Vue Context</a></h3><p>When using Vue, it is better to import the variant from <code>@fkui/vue</code>.</p>
 
@@ -1094,7 +1098,7 @@ scrollToTop?: <span class="hljs-built_in">boolean</span>;
     <!-- prettier-ignore -->
     feature/dedent-code (<a href="https://github.com/Forsakringskassan/designsystem/commits/ec868cdcba34f029c93d3a2d5e63236f2f7dc69f">ec868cd</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/131">PR 131</a><br />
-        2024-11-05 00:14
+        2024-11-05 00:44
 </div>
 <div class="toolbar__item">
     <form id="version">

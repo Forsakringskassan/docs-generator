@@ -217,9 +217,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        feature/dedent-code (<a href="https://github.com/Forsakringskassan/docs-generator/commits/3bef899cc37d7f825fe20d3461e036d2378d7f28">3bef899</a>)<br />
+        feature/dedent-code (<a href="https://github.com/Forsakringskassan/docs-generator/commits/200785ac41185581b1ec925456b0e7be6ad14f5d">200785a</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/131">PR 131</a><br />
-        2024-11-05 00:12
+        2024-11-05 00:41
     </span>
 </div>
 </div>
@@ -359,7 +359,7 @@ The manifest can be written in:</p>
 <p>This page describes the processor for writing the manifest as a file on disk, for programmatical usage use:</p>
 
                 <div
-                    id="example-07d15e"
+                    id="example-c0051c"
                     class="code-preview code-preview--default"
                     
                     
@@ -367,18 +367,19 @@ The manifest can be written in:</p>
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> config = {
-<span class="hljs-attr">sourceFiles</span>: [
-    <span class="hljs-comment">/* ... */</span>
-],
+    <span class="hljs-attr">sourceFiles</span>: [
+        <span class="hljs-comment">/* ... */</span>
+    ],
 };
 <span class="hljs-keyword">const</span> docs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Generator</span>({
-<span class="hljs-comment">/* ... */</span>
+    <span class="hljs-comment">/* ... */</span>
 });
-<span class="hljs-keyword">const</span> manifest = <span class="hljs-keyword">await</span> docs.<span class="hljs-title function_">manifest</span>(config.<span class="hljs-property">sourceFiles</span>);</code></pre>
+<span class="hljs-keyword">const</span> manifest = <span class="hljs-keyword">await</span> docs.<span class="hljs-title function_">manifest</span>(config.<span class="hljs-property">sourceFiles</span>);
+</code></pre>
                 </div>
             <h2 id="usage"><a class="header-anchor" href="#usage">Usage</a></h2>
                 <div
-                    id="example-dcb656"
+                    id="example-649457"
                     class="code-preview code-preview--default"
                     
                     
@@ -386,13 +387,14 @@ The manifest can be written in:</p>
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> docs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Generator</span>({
-<span class="hljs-attr">processors</span>: [
-    <span class="hljs-title function_">manifestProcessor</span>({
-        <span class="hljs-attr">markdown</span>: <span class="hljs-string">&quot;etc/docs-manifest.md&quot;</span>,
-        <span class="hljs-attr">json</span>: <span class="hljs-string">&quot;etc/docs-manifest.json&quot;</span>,
-    }),
-],
-});</code></pre>
+    <span class="hljs-attr">processors</span>: [
+        <span class="hljs-title function_">manifestProcessor</span>({
+            <span class="hljs-attr">markdown</span>: <span class="hljs-string">&quot;etc/docs-manifest.md&quot;</span>,
+            <span class="hljs-attr">json</span>: <span class="hljs-string">&quot;etc/docs-manifest.json&quot;</span>,
+        }),
+    ],
+});
+</code></pre>
                 </div>
             
 

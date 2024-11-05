@@ -934,14 +934,15 @@
 Use <a href="../use-modal.html">useModal()</a> with Composition API.</p>
 <h2 id="syntax"><a class="header-anchor" href="#syntax">Syntax</a></h2>
                 <div
-                    id="example-1d633e"
+                    id="example-e725ee"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">function</span> <span class="hljs-title function_">formModal</span>(<span class="hljs-params">callingInstance, options</span>);</code></pre>
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">function</span> <span class="hljs-title function_">formModal</span>(<span class="hljs-params">callingInstance, options</span>);
+</code></pre>
                 </div>
             <h3 id="parameters"><a class="header-anchor" href="#parameters">Parameters</a></h3><dl>
 <dt><code>callingInstance</code></dt>
@@ -977,7 +978,7 @@ Use <a href="../use-modal.html">useModal()</a> with Composition API.</p>
 On cancel/close a promise is rejected.</p>
 
                 <div
-                    id="example-5cca1f"
+                    id="example-e4fabf"
                     class="code-preview code-preview--default"
                     
                     
@@ -986,13 +987,14 @@ On cancel/close a promise is rejected.</p>
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-comment">/* Typescript interface definition of MyFormInterface: */</span>
 <span class="hljs-keyword">interface</span> <span class="hljs-title class_">MyFormInterface</span> {
-<span class="hljs-attr">field1</span>: <span class="hljs-built_in">string</span>;
-<span class="hljs-attr">field2</span>: <span class="hljs-built_in">string</span>;
-}</code></pre>
+    <span class="hljs-attr">field1</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">field2</span>: <span class="hljs-built_in">string</span>;
+}
+</code></pre>
                 </div>
             
                 <div
-                    id="example-1ea85f"
+                    id="example-5bee80"
                     class="code-preview code-preview--default"
                     
                     
@@ -1001,19 +1003,20 @@ On cancel/close a promise is rejected.</p>
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">let</span> <span class="hljs-attr">result</span>: <span class="hljs-title class_">MyFormInterface</span>;
 <span class="hljs-keyword">try</span> {
-result = <span class="hljs-keyword">await</span> formModal&lt;<span class="hljs-title class_">MyFormInterface</span>&gt;(<span class="hljs-title class_">MyFormModalComponent</span>);
+    result = <span class="hljs-keyword">await</span> formModal&lt;<span class="hljs-title class_">MyFormInterface</span>&gt;(<span class="hljs-title class_">MyFormModalComponent</span>);
 } <span class="hljs-keyword">catch</span> (err) {
-<span class="hljs-comment">/* handle cancel/close case */</span>
-<span class="hljs-keyword">return</span>;
+    <span class="hljs-comment">/* handle cancel/close case */</span>
+    <span class="hljs-keyword">return</span>;
 }
 <span class="hljs-comment">/* handle submit case */</span>
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Modal closed with result&quot;</span>, result);
-<span class="hljs-comment">// Modal closed with result `data`</span></code></pre>
+<span class="hljs-comment">// Modal closed with result `data`</span>
+</code></pre>
                 </div>
             <p>The example below is for sending <code>size</code>, and custom Vue props to the component <code>MyFormModalComponent</code>.</p>
 
                 <div
-                    id="example-980e1a"
+                    id="example-9dde6d"
                     class="code-preview code-preview--default"
                     
                     
@@ -1022,19 +1025,20 @@ result = <span class="hljs-keyword">await</span> formModal&lt;<span class="hljs-
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">let</span> <span class="hljs-attr">result</span>: <span class="hljs-title class_">MyFormInterface</span>;
 <span class="hljs-keyword">try</span> {
-result = <span class="hljs-keyword">await</span> formModal&lt;<span class="hljs-title class_">MyFormInterface</span>&gt;(<span class="hljs-title class_">MyFormModalComponent</span>, {
-    <span class="hljs-attr">size</span>: <span class="hljs-string">&quot;large&quot;</span>
-    <span class="hljs-attr">props</span>: {
-        <span class="hljs-attr">myCustomProp</span>: <span class="hljs-string">&quot;myCustomProp&quot;</span>,
-    },
-});
+    result = <span class="hljs-keyword">await</span> formModal&lt;<span class="hljs-title class_">MyFormInterface</span>&gt;(<span class="hljs-title class_">MyFormModalComponent</span>, {
+        <span class="hljs-attr">size</span>: <span class="hljs-string">&quot;large&quot;</span>
+        <span class="hljs-attr">props</span>: {
+            <span class="hljs-attr">myCustomProp</span>: <span class="hljs-string">&quot;myCustomProp&quot;</span>,
+        },
+    });
 } <span class="hljs-keyword">catch</span> (err) {
-<span class="hljs-comment">/* handle cancel/close case */</span>
-<span class="hljs-keyword">return</span>;
+    <span class="hljs-comment">/* handle cancel/close case */</span>
+    <span class="hljs-keyword">return</span>;
 }
 <span class="hljs-comment">/* handle submit case */</span>
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Modal closed with result&quot;</span>, result);
-<span class="hljs-comment">// Modal closed with result `data`</span></code></pre>
+<span class="hljs-comment">// Modal closed with result `data`</span>
+</code></pre>
                 </div>
             <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><ul>
 <li><a href="../use-modal.html">useModal()</a> for using with composition API.</li>
@@ -1062,7 +1066,7 @@ result = <span class="hljs-keyword">await</span> formModal&lt;<span class="hljs-
     <!-- prettier-ignore -->
     feature/dedent-code (<a href="https://github.com/Forsakringskassan/designsystem/commits/ec868cdcba34f029c93d3a2d5e63236f2f7dc69f">ec868cd</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/131">PR 131</a><br />
-        2024-11-05 00:14
+        2024-11-05 00:44
 </div>
 <div class="toolbar__item">
     <form id="version">

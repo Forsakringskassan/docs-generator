@@ -934,14 +934,15 @@
 <p>Check if slot is implemented by the user.</p>
 <h2 id="syntax"><a class="header-anchor" href="#syntax">Syntax</a></h2>
                 <div
-                    id="example-2b56e5"
+                    id="example-b53bc1"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">function</span> <span class="hljs-title function_">hasSlot</span>(<span class="hljs-params">vm, name, props, options</span>);</code></pre>
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">function</span> <span class="hljs-title function_">hasSlot</span>(<span class="hljs-params">vm, name, props, options</span>);
+</code></pre>
                 </div>
             <h2 id="parametrar"><a class="header-anchor" href="#parametrar">Parametrar</a></h2><dl>
 <dt><code>vm: { $slots: Record&lt;string, NormalizedScopedSlot | undefined&gt; }</code></dt>
@@ -987,7 +988,7 @@
                 </div>
             
                 <div
-                    id="example-caf330"
+                    id="example-9a5e2d"
                     class="code-preview code-preview--default"
                     
                     
@@ -996,7 +997,8 @@
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">hasSlot</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-string">&quot;foo&quot;</span>); <span class="hljs-comment">// --&gt; true</span>
 <span class="hljs-title function_">hasSlot</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-string">&quot;bar&quot;</span>); <span class="hljs-comment">// --&gt; false</span>
-<span class="hljs-title function_">hasSlot</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-string">&quot;baz&quot;</span>); <span class="hljs-comment">// --&gt; false</span></code></pre>
+<span class="hljs-title function_">hasSlot</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-string">&quot;baz&quot;</span>); <span class="hljs-comment">// --&gt; false</span>
+</code></pre>
                 </div>
             <p>If you use scoped slots you need to pass in the scope:</p>
 
@@ -1015,14 +1017,15 @@
                 </div>
             
                 <div
-                    id="example-f02292"
+                    id="example-ed1254"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">hasSlot</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-string">&quot;foo&quot;</span>, { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;World&quot;</span> }); <span class="hljs-comment">// --&gt; true</span></code></pre>
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">hasSlot</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-string">&quot;foo&quot;</span>, { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;World&quot;</span> }); <span class="hljs-comment">// --&gt; true</span>
+</code></pre>
                 </div>
             <p>By default text wrapped by the <code>sr-only</code> class is ignored.
 This can be changed by setting the <code>stripClasses</code> option to <code>[]</code></p>
@@ -1044,7 +1047,7 @@ This can be changed by setting the <code>stripClasses</code> option to <code>[]<
                 </div>
             
                 <div
-                    id="example-bf89b0"
+                    id="example-fe6915"
                     class="code-preview code-preview--default"
                     
                     
@@ -1052,7 +1055,8 @@ This can be changed by setting the <code>stripClasses</code> option to <code>[]<
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">hasSlot</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-string">&quot;foo&quot;</span>); <span class="hljs-comment">// --&gt; false</span>
-<span class="hljs-title function_">hasSlot</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-string">&quot;foo&quot;</span>, {}, { <span class="hljs-attr">stripClasses</span>: [] }); <span class="hljs-comment">// --&gt; true</span></code></pre>
+<span class="hljs-title function_">hasSlot</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-string">&quot;foo&quot;</span>, {}, { <span class="hljs-attr">stripClasses</span>: [] }); <span class="hljs-comment">// --&gt; true</span>
+</code></pre>
                 </div>
             
 
@@ -1077,7 +1081,7 @@ This can be changed by setting the <code>stripClasses</code> option to <code>[]<
     <!-- prettier-ignore -->
     feature/dedent-code (<a href="https://github.com/Forsakringskassan/designsystem/commits/ec868cdcba34f029c93d3a2d5e63236f2f7dc69f">ec868cd</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/131">PR 131</a><br />
-        2024-11-05 00:14
+        2024-11-05 00:44
 </div>
 <div class="toolbar__item">
     <form id="version">

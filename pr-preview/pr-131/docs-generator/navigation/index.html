@@ -217,9 +217,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        feature/dedent-code (<a href="https://github.com/Forsakringskassan/docs-generator/commits/3bef899cc37d7f825fe20d3461e036d2378d7f28">3bef899</a>)<br />
+        feature/dedent-code (<a href="https://github.com/Forsakringskassan/docs-generator/commits/200785ac41185581b1ec925456b0e7be6ad14f5d">200785a</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/131">PR 131</a><br />
-        2024-11-05 00:12
+        2024-11-05 00:41
     </span>
 </div>
 </div>
@@ -452,7 +452,7 @@
             <p>It uses the <code>frontMatterFileReader</code> and <code>navigationFileReader</code> to read the documents:</p>
 
                 <div
-                    id="example-1cc71f"
+                    id="example-e70a4c"
                     class="code-preview code-preview--default"
                     
                     
@@ -460,17 +460,18 @@
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">await</span> docs.<span class="hljs-title function_">build</span>([
-{
-    <span class="hljs-attr">include</span>: <span class="hljs-string">&quot;docs/**/*.md&quot;</span>,
-    <span class="hljs-attr">basePath</span>: <span class="hljs-string">&quot;./docs/&quot;</span>,
-    <span class="hljs-attr">fileReader</span>: frontMatterFileReader,
-},
-{
-    <span class="hljs-attr">include</span>: <span class="hljs-string">&quot;docs/**/*.json&quot;</span>,
-    <span class="hljs-attr">basePath</span>: <span class="hljs-string">&quot;./docs/&quot;</span>,
-    <span class="hljs-attr">fileReader</span>: navigationFileReader,
-},
-]);</code></pre>
+    {
+        <span class="hljs-attr">include</span>: <span class="hljs-string">&quot;docs/**/*.md&quot;</span>,
+        <span class="hljs-attr">basePath</span>: <span class="hljs-string">&quot;./docs/&quot;</span>,
+        <span class="hljs-attr">fileReader</span>: frontMatterFileReader,
+    },
+    {
+        <span class="hljs-attr">include</span>: <span class="hljs-string">&quot;docs/**/*.json&quot;</span>,
+        <span class="hljs-attr">basePath</span>: <span class="hljs-string">&quot;./docs/&quot;</span>,
+        <span class="hljs-attr">fileReader</span>: navigationFileReader,
+    },
+]);
+</code></pre>
                 </div>
             <h2 id="hiding_pages"><a class="header-anchor" href="#hiding_pages">Hiding pages</a></h2><p>Each file will be present in the navigation unless the <code>visible</code> attribute is set to <code>false</code>, e.g.:</p>
 

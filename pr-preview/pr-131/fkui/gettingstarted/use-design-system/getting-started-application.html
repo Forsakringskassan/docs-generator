@@ -656,14 +656,15 @@ Du behöver sedan referera till filen i assets-katalogen för varje sida.</p>
             <p>Om du behöver importera styling till javascript:</p>
 
                 <div
-                    id="example-d52f73"
+                    id="example-3c33e5"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="javascript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@fkui/design/lib/fkui-exp.min.css&quot;</span>;</code></pre>
+                    <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@fkui/design/lib/fkui-exp.min.css&quot;</span>;
+</code></pre>
                 </div>
             <h3 id="eget_tema"><a class="header-anchor" href="#eget_tema">Eget tema</a></h3><p>Utgå från tema <code>fk-exp</code> och skriv över de variabler som ska ändras.</p>
 <h2 id="importera_ikonbibliotek"><a class="header-anchor" href="#importera_ikonbibliotek">Importera ikonbibliotek</a></h2><p><a href="../../styles/icons.html">Biblioteket för standardikoner</a> ligger i <code>@fkui/icon-lib-default</code>. Det innehåller licensfria ikoner som används av komponenterna i FKUI.</p>
@@ -672,21 +673,22 @@ Komponenterna i FKUI är beroende av att minst ett ikon-bibliotek är inladdat.<
 <p>Importera ikonbiblioteket genom att lägga nedan i applikationens index.ts eller motsvarande:</p>
 
                 <div
-                    id="example-435452"
+                    id="example-82ba1d"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="javascript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@fkui/icon-lib-default/dist/f&quot;</span>;</code></pre>
+                    <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@fkui/icon-lib-default/dist/f&quot;</span>;
+</code></pre>
                 </div>
             <p>För att använda ett annat ikon-bibliotek ersätt <code>@fkui/icon-lib-default</code> med namnet på det paketet.</p>
 <p>Spritesheets kommer automatiskt laddas in i DOM:en.</p>
 <p>Om du vill ha tillgång till <code>injectSpritesheet</code>-funktionen kan du anropa den själv. Importera den genom:</p>
 
                 <div
-                    id="example-2bdf01"
+                    id="example-088825"
                     class="code-preview code-preview--default"
                     
                     
@@ -694,7 +696,8 @@ Komponenterna i FKUI är beroende av att minst ett ikon-bibliotek är inladdat.<
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-keyword">import</span> { injectSpritesheet } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/icon-lib-default/dist/f/injectSpritesheet&quot;</span>;
-<span class="hljs-title function_">injectSpriteSheet</span>();</code></pre>
+<span class="hljs-title function_">injectSpriteSheet</span>();
+</code></pre>
                 </div>
             <p>Om du behöver andra ikoner utöver de standardikoner som finns kan du ändra på befintliga ikoner eller lägga till nya. Du bygger då ett nytt ikonbibliotek.</p>
 <p><a href="./icon-library.html#skapa-eget-ikonbibliotek">Läs mer här om hur du tar fram egna ikoner.</a></p>
@@ -721,7 +724,7 @@ Komponenterna i FKUI är beroende av att minst ett ikon-bibliotek är inladdat.<
     <!-- prettier-ignore -->
     feature/dedent-code (<a href="https://github.com/Forsakringskassan/designsystem/commits/ec868cdcba34f029c93d3a2d5e63236f2f7dc69f">ec868cd</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/131">PR 131</a><br />
-        2024-11-05 00:14
+        2024-11-05 00:44
 </div>
 <div class="toolbar__item">
     <form id="version">

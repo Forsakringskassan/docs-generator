@@ -1463,7 +1463,7 @@ Använd <code>errorListBeforeNavigate</code> för att öppna den expanderbara yt
 <p>Båda hooks kan avbryta flödet genom att returnera <code>FValidationFormAction.ABORT</code>:</p>
 
                 <div
-                    id="example-82eb45"
+                    id="example-2ddbcf"
                     class="code-preview code-preview--default"
                     
                     
@@ -1471,11 +1471,12 @@ Använd <code>errorListBeforeNavigate</code> för att öppna den expanderbara yt
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-meta">@onBeforeSubmit</span>() {
-<span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">awesomeServerValidation</span>();
-<span class="hljs-keyword">if</span> (result === <span class="hljs-string">&#x27;fail&#x27;</span>) {
-  <span class="hljs-keyword">return</span> <span class="hljs-title class_">FValidationFormAction</span>.<span class="hljs-property">CANCEL</span>;
+  <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">awesomeServerValidation</span>();
+  <span class="hljs-keyword">if</span> (result === <span class="hljs-string">&#x27;fail&#x27;</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-title class_">FValidationFormAction</span>.<span class="hljs-property">CANCEL</span>;
+  }
 }
-}</code></pre>
+</code></pre>
                 </div>
             <h2 id="servervalidering"><a class="header-anchor" href="#servervalidering">Servervalidering</a></h2><p>Följande exempel visar hur man kan använda <code>beforeSubmit</code> för att servervalidera inmatningsfält.
 Första inmatningsfältet kommer alltid få ett fel när man försöker skicka in formuläret.</p>
@@ -1665,7 +1666,7 @@ return () =&gt; {<br>
     <!-- prettier-ignore -->
     feature/dedent-code (<a href="https://github.com/Forsakringskassan/designsystem/commits/ec868cdcba34f029c93d3a2d5e63236f2f7dc69f">ec868cd</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/131">PR 131</a><br />
-        2024-11-05 00:14
+        2024-11-05 00:44
 </div>
 <div class="toolbar__item">
     <form id="version">

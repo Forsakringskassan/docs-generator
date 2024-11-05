@@ -1165,7 +1165,7 @@
 <p>Skapa först upp ett interface motsvarande den data din formulärsmodal ska arbeta med:</p>
 
                 <div
-                    id="example-6fc693"
+                    id="example-06d914"
                     class="code-preview code-preview--default"
                     
                     data-tags=static
@@ -1173,9 +1173,10 @@
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Person</span> {
-<span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
-<span class="hljs-attr">age</span>: <span class="hljs-built_in">string</span>;
-}</code></pre>
+    <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">age</span>: <span class="hljs-built_in">string</span>;
+}
+</code></pre>
                 </div>
             <p>Din komponent ska innehålla en prop <code>value</code> motsvarande ett objekt av interfacet:</p>
 
@@ -1277,7 +1278,7 @@ Du kan antingen låta din formulärsmodal hantera deta genom att internt kopiera
         <h2 id="oppna_modal_med_api"><a class="header-anchor" href="#oppna_modal_med_api">Öppna modal med API</a></h2><p>Det rekommenderade sättet att använda formulärsmodalen är med <a href="../../functions/functions/modal-functions/form-modal.html"><code>formModal()</code></a> (options API) eller <a href="../../functions/functions/use-modal.html"><code>useModal()</code></a> (composition API).</p>
 
                 <div
-                    id="example-ed7fda"
+                    id="example-94ef83"
                     class="code-preview code-preview--default"
                     
                     
@@ -1289,14 +1290,15 @@ Du kan antingen låta din formulärsmodal hantera deta genom att internt kopiera
 
 <span class="hljs-comment">// composition api</span>
 <span class="hljs-keyword">const</span> { formModal } = <span class="hljs-title function_">useModal</span>();
-<span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> formModal&lt;<span class="hljs-title class_">Person</span>&gt;(<span class="hljs-title class_">PersonFormModal</span>);</code></pre>
+<span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> formModal&lt;<span class="hljs-title class_">Person</span>&gt;(<span class="hljs-title class_">PersonFormModal</span>);
+</code></pre>
                 </div>
             <p>Returvärdet är <code>Promise</code> som löses ut med <code>resolve(value)</code> (det objekt som ligger lagrat i <code>value</code> när modalen stängs).
 Om användaren avbryter modalen avvisas <code>Promise</code> med <code>reject()</code> .</p>
 <p>Förifylld data kan skickas in med propen <code>value</code>:</p>
 
                 <div
-                    id="example-0f97ca"
+                    id="example-db282a"
                     class="code-preview code-preview--default"
                     
                     
@@ -1304,13 +1306,14 @@ Om användaren avbryter modalen avvisas <code>Promise</code> med <code>reject()<
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> formModal&lt;<span class="hljs-title class_">Person</span>&gt;(<span class="hljs-title class_">PersonFormModal</span>, {
-<span class="hljs-attr">props</span>: {
-    <span class="hljs-attr">value</span>: {
-        <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Kalle Anka&quot;</span>,
-        <span class="hljs-attr">age</span>: <span class="hljs-number">60</span>,
+    <span class="hljs-attr">props</span>: {
+        <span class="hljs-attr">value</span>: {
+            <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Kalle Anka&quot;</span>,
+            <span class="hljs-attr">age</span>: <span class="hljs-number">60</span>,
+        },
     },
-},
-});</code></pre>
+});
+</code></pre>
                 </div>
             
             <div
@@ -1483,7 +1486,7 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
 <p><strong>Med API:</strong></p>
 
                 <div
-                    id="example-2b4bb4"
+                    id="example-a62485"
                     class="code-preview code-preview--default"
                     
                     
@@ -1491,17 +1494,18 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> formdata = <span class="hljs-keyword">await</span> <span class="hljs-title function_">formModal</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-title class_">MyAwesomeModal</span>, {
-<span class="hljs-attr">props</span>: {
-    <span class="hljs-attr">buttons</span>: [
-        <span class="hljs-comment">/* ... */</span>
-    ],
-},
-});</code></pre>
+    <span class="hljs-attr">props</span>: {
+        <span class="hljs-attr">buttons</span>: [
+            <span class="hljs-comment">/* ... */</span>
+        ],
+    },
+});
+</code></pre>
                 </div>
             <p><code>buttons</code> är en lista av typen <code>FModalButtonDescriptor</code>:</p>
 
                 <div
-                    id="example-e83c06"
+                    id="example-c75c3e"
                     class="code-preview code-preview--default"
                     
                     
@@ -1509,24 +1513,26 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">FModalButtonDescriptor</span> {
-<span class="hljs-attr">label</span>: <span class="hljs-built_in">string</span>;
-screenreader?: <span class="hljs-built_in">string</span>;
-event?: <span class="hljs-built_in">string</span>;
-reason?: <span class="hljs-built_in">string</span>;
-<span class="hljs-attr">type</span>: <span class="hljs-string">&quot;primary&quot;</span> | <span class="hljs-string">&quot;secondary&quot;</span>;
-submitButton?: <span class="hljs-built_in">boolean</span>;
-}</code></pre>
+    <span class="hljs-attr">label</span>: <span class="hljs-built_in">string</span>;
+    screenreader?: <span class="hljs-built_in">string</span>;
+    event?: <span class="hljs-built_in">string</span>;
+    reason?: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;primary&quot;</span> | <span class="hljs-string">&quot;secondary&quot;</span>;
+    submitButton?: <span class="hljs-built_in">boolean</span>;
+}
+</code></pre>
                 </div>
             
                 <div
-                    id="example-28fa18"
+                    id="example-d1c966"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-attr">buttons</span>: [{ <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Stäng&quot;</span>, <span class="hljs-attr">event</span>: <span class="hljs-string">&quot;dismiss&quot;</span> }];</code></pre>
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-attr">buttons</span>: [{ <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Stäng&quot;</span>, <span class="hljs-attr">event</span>: <span class="hljs-string">&quot;dismiss&quot;</span> }];
+</code></pre>
                 </div>
             <p>Två event har speciell innebörd:</p>
 <ul>
@@ -1666,7 +1672,7 @@ submitButton?: <span class="hljs-built_in">boolean</span>;
 I <code>onBeforeSubmit</code> har du möjlighet att sätta nya valideringsfel på inmatningsfält:</p>
 
                 <div
-                    id="example-1c3b5d"
+                    id="example-adab5c"
                     class="code-preview code-preview--default"
                     
                     
@@ -1674,14 +1680,15 @@ I <code>onBeforeSubmit</code> har du möjlighet att sätta nya valideringsfel p�
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">onBeforeSubmit</span>(): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt; {
-<span class="hljs-keyword">const</span> myField = <span class="hljs-title function_">getElementFromVueRef</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">refs</span>.<span class="hljs-property">myField</span>);
-<span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">setError</span>(myField, <span class="hljs-string">&quot;This value is invalid!&quot;</span>);
-},</code></pre>
+    <span class="hljs-keyword">const</span> myField = <span class="hljs-title function_">getElementFromVueRef</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">refs</span>.<span class="hljs-property">myField</span>);
+    <span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">setError</span>(myField, <span class="hljs-string">&quot;This value is invalid!&quot;</span>);
+},
+</code></pre>
                 </div>
             <p>Vi rekommenderar att alla fel är kopplade till ett specifikt inmatningsfält men om du istället vill avbryta inskicket och presentera ett fel med exempelvis en meddeladeruta kan du returnera <code>FFormModalAction.CANCEL</code> från <code>onBeforeSubmit</code>:</p>
 
                 <div
-                    id="example-04a072"
+                    id="example-3526cb"
                     class="code-preview code-preview--default"
                     
                     
@@ -1689,9 +1696,10 @@ I <code>onBeforeSubmit</code> har du möjlighet att sätta nya valideringsfel p�
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">onBeforeSubmit</span>(): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-title class_">FFormModalAction</span>&gt; {
-<span class="hljs-variable language_">this</span>.<span class="hljs-property">showErrorMessage</span> = <span class="hljs-literal">true</span>;
-<span class="hljs-keyword">return</span> <span class="hljs-title class_">FFormModalAction</span>.<span class="hljs-property">CANCEL</span>;
-},</code></pre>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">showErrorMessage</span> = <span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-title class_">FFormModalAction</span>.<span class="hljs-property">CANCEL</span>;
+},
+</code></pre>
                 </div>
             <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody><tr><td><p>fullscreen</p>
 </td><td><p>Enable fullscreen mode in mobile.</p>
@@ -1829,7 +1837,7 @@ The event payload is the data that has been submitted.</p>
     <!-- prettier-ignore -->
     feature/dedent-code (<a href="https://github.com/Forsakringskassan/designsystem/commits/ec868cdcba34f029c93d3a2d5e63236f2f7dc69f">ec868cd</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/131">PR 131</a><br />
-        2024-11-05 00:14
+        2024-11-05 00:44
 </div>
 <div class="toolbar__item">
     <form id="version">

@@ -217,9 +217,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        feature/dedent-code (<a href="https://github.com/Forsakringskassan/docs-generator/commits/3bef899cc37d7f825fe20d3461e036d2378d7f28">3bef899</a>)<br />
+        feature/dedent-code (<a href="https://github.com/Forsakringskassan/docs-generator/commits/200785ac41185581b1ec925456b0e7be6ad14f5d">200785a</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/131">PR 131</a><br />
-        2024-11-05 00:12
+        2024-11-05 00:41
     </span>
 </div>
 </div>
@@ -436,7 +436,7 @@ export interface Foo {
             <p><strong>Output:</strong></p>
 
                 <div
-                    id="example-bb22ad"
+                    id="example-8a4d78"
                     class="code-preview code-preview--default"
                     
                     
@@ -444,8 +444,9 @@ export interface Foo {
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Foo</span> {
-<span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
-}</code></pre>
+    <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+}
+</code></pre>
                 </div>
             <h2 id="eslint"><a class="header-anchor" href="#eslint">ESLint</a></h2><p>ESLint comments will be stripped from the rendered source code.</p>
 <p><strong>Input:</strong></p>
@@ -469,7 +470,7 @@ function foo(value) {
             <p><strong>Output:</strong></p>
 
                 <div
-                    id="example-5e6ee9"
+                    id="example-2da38f"
                     class="code-preview code-preview--default"
                     
                     data-tags=nocompile
@@ -477,8 +478,9 @@ function foo(value) {
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-keyword">function</span> <span class="hljs-title function_">foo</span>(<span class="hljs-params">value</span>) {
-<span class="hljs-keyword">return</span> value == <span class="hljs-string">&quot;foo&quot;</span>;
-}</code></pre>
+    <span class="hljs-keyword">return</span> value == <span class="hljs-string">&quot;foo&quot;</span>;
+}
+</code></pre>
                 </div>
             <h2 id="snippets"><a class="header-anchor" href="#snippets">Snippets</a></h2><p>The source code may also contains snippets which are cut from the rendered source code.</p>
 <p>This is mostly useful in combination with extracting the example source code and running external tools, e.g. compiling the example might require additional imports or declarations.</p>
@@ -504,14 +506,15 @@ const result = add(1, 2);
             <p><strong>Output:</strong></p>
 
                 <div
-                    id="example-4154bb"
+                    id="example-54433c"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> result = <span class="hljs-title function_">add</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);</code></pre>
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> result = <span class="hljs-title function_">add</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);
+</code></pre>
                 </div>
             <p>The following instructions are available:</p>
 <ul>

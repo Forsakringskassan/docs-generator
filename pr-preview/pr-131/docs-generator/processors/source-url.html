@@ -217,9 +217,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        feature/dedent-code (<a href="https://github.com/Forsakringskassan/docs-generator/commits/3bef899cc37d7f825fe20d3461e036d2378d7f28">3bef899</a>)<br />
+        feature/dedent-code (<a href="https://github.com/Forsakringskassan/docs-generator/commits/200785ac41185581b1ec925456b0e7be6ad14f5d">200785a</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/131">PR 131</a><br />
-        2024-11-05 00:12
+        2024-11-05 00:41
     </span>
 </div>
 </div>
@@ -396,7 +396,7 @@
 template for generating links at the upper right menu.</p>
 <h2 id="usage"><a class="header-anchor" href="#usage">Usage</a></h2>
                 <div
-                    id="example-d8f63f"
+                    id="example-86feee"
                     class="code-preview code-preview--default"
                     
                     
@@ -406,13 +406,14 @@ template for generating links at the upper right menu.</p>
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> pkg = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(<span class="hljs-keyword">await</span> fs.<span class="hljs-title function_">readFile</span>(<span class="hljs-string">&quot;package.json&quot;</span>, <span class="hljs-string">&quot;utf-8&quot;</span>));
 
 <span class="hljs-keyword">const</span> docs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Generator</span>({
-<span class="hljs-attr">processors</span>: [
-    <span class="hljs-title function_">sourceUrlProcessor</span>(pkg, {
-        <span class="hljs-attr">urlFormat</span>: <span class="hljs-string">&quot;{{ repository }}/tree/main/{{ path }}&quot;</span>,
-        <span class="hljs-attr">componentFileExtension</span>: <span class="hljs-string">&quot;baz&quot;</span>,
-    }),
-],
-});</code></pre>
+    <span class="hljs-attr">processors</span>: [
+        <span class="hljs-title function_">sourceUrlProcessor</span>(pkg, {
+            <span class="hljs-attr">urlFormat</span>: <span class="hljs-string">&quot;{{ repository }}/tree/main/{{ path }}&quot;</span>,
+            <span class="hljs-attr">componentFileExtension</span>: <span class="hljs-string">&quot;baz&quot;</span>,
+        }),
+    ],
+});
+</code></pre>
                 </div>
             <h2 id="configuration"><a class="header-anchor" href="#configuration">Configuration</a></h2><p>The <code>sourceUrlProcessor</code> takes a configuration object:</p>
 <p><code>sourceUrlProcessor(pkg, { /* ... */ })</code></p>

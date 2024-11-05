@@ -913,7 +913,7 @@ Plugin:et är tänkt att användas vid testautomation, enhets- och e2e-tester.</
 <p><em>ValidationPlugin</em> initialiseras på nedan sätt (bör göras så tidigt i applikationen som möjligt, t.ex. main.ts )</p>
 
                 <div
-                    id="example-2cbeba"
+                    id="example-a97138"
                     class="code-preview code-preview--default"
                     
                     
@@ -921,7 +921,8 @@ Plugin:et är tänkt att användas vid testautomation, enhets- och e2e-tester.</
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">TestPlugin</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-<span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">TestPlugin</span>);</code></pre>
+<span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">TestPlugin</span>);
+</code></pre>
                 </div>
             <h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p>Lägg till direktivet <code>v-test</code> till elementet som ska få <code>data-test</code> attributet.</p>
 <p>Notera att om värdet som skickas in till <code>v-test</code> är en sträng så måste värdet ha <code>''</code> runt sig, t.ex. <code>v-test=&quot;'exempel-v-test'&quot;</code>.
@@ -1066,7 +1067,7 @@ Detta är för att det som är innanför <code>v-test=&quot;&quot;</code> evalue
     <!-- prettier-ignore -->
     feature/dedent-code (<a href="https://github.com/Forsakringskassan/designsystem/commits/ec868cdcba34f029c93d3a2d5e63236f2f7dc69f">ec868cd</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/131">PR 131</a><br />
-        2024-11-05 00:14
+        2024-11-05 00:44
 </div>
 <div class="toolbar__item">
     <form id="version">

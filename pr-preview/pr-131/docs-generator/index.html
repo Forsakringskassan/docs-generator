@@ -217,9 +217,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        feature/dedent-code (<a href="https://github.com/Forsakringskassan/docs-generator/commits/3bef899cc37d7f825fe20d3461e036d2378d7f28">3bef899</a>)<br />
+        feature/dedent-code (<a href="https://github.com/Forsakringskassan/docs-generator/commits/200785ac41185581b1ec925456b0e7be6ad14f5d">200785a</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/131">PR 131</a><br />
-        2024-11-05 00:12
+        2024-11-05 00:41
     </span>
 </div>
 </div>
@@ -268,7 +268,7 @@
             <h2 id="setup"><a class="header-anchor" href="#setup">Setup</a></h2><h3 id="watch_development_mode"><a class="header-anchor" href="#watch_development_mode">Watch (development mode)</a></h3><p>You can start a development server with watch for incremental builds using <code>.serve()</code>.</p>
 
                 <div
-                    id="example-d83ebd"
+                    id="example-24650b"
                     class="code-preview code-preview--default"
                     
                     
@@ -276,28 +276,29 @@
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> {
-<span class="hljs-title class_">Generator</span>,
-livereloadProcessor,
+    <span class="hljs-title class_">Generator</span>,
+    livereloadProcessor,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@forsakringskassan/docs-generator&quot;</span>;
 
 <span class="hljs-keyword">const</span> docs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Generator</span>({
-<span class="hljs-attr">site</span>: {
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;My Awesome Site&quot;</span>,
-},
-<span class="hljs-attr">setupPath</span>: <span class="hljs-string">&quot;docs/src/setup.ts&quot;</span>,
-<span class="hljs-attr">processors</span>: [<span class="hljs-title function_">livereloadProcessor</span>({ <span class="hljs-attr">enabled</span>: <span class="hljs-literal">true</span> })],
+    <span class="hljs-attr">site</span>: {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;My Awesome Site&quot;</span>,
+    },
+    <span class="hljs-attr">setupPath</span>: <span class="hljs-string">&quot;docs/src/setup.ts&quot;</span>,
+    <span class="hljs-attr">processors</span>: [<span class="hljs-title function_">livereloadProcessor</span>({ <span class="hljs-attr">enabled</span>: <span class="hljs-literal">true</span> })],
 });
 
 docs.<span class="hljs-title function_">build</span>([
-<span class="hljs-comment">/* ... */</span>
+    <span class="hljs-comment">/* ... */</span>
 ]);
 
-docs.<span class="hljs-title function_">serve</span>();</code></pre>
+docs.<span class="hljs-title function_">serve</span>();
+</code></pre>
                 </div>
             <h3 id="vendor_alias"><a class="header-anchor" href="#vendor_alias">Vendor alias</a></h3><p>Vendor alias is optional, it lets you substitute one package for another when bundling. The example below substitutes the package <code>vue</code> with the package <code>vue/dist/esm.bundle.js</code>. When an alias is given the package can be imported using the given alias as well as the original package name. For instance, when using the following configuration &quot;vue&quot; can be imported and resolved as &quot;vue/dist/esm.bundle.js&quot;.</p>
 
                 <div
-                    id="example-69855e"
+                    id="example-786d0c"
                     class="code-preview code-preview--default"
                     
                     
@@ -305,25 +306,26 @@ docs.<span class="hljs-title function_">serve</span>();</code></pre>
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> {
-<span class="hljs-title class_">Generator</span>,
-livereloadProcessor,
+    <span class="hljs-title class_">Generator</span>,
+    livereloadProcessor,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@forsakringskassan/docs-generator&quot;</span>;
 
 <span class="hljs-keyword">const</span> docs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Generator</span>({
-<span class="hljs-attr">site</span>: {
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;My Awesome Site&quot;</span>,
-},
-<span class="hljs-attr">setupPath</span>: <span class="hljs-string">&quot;docs/src/setup.ts&quot;</span>,
-
-<span class="hljs-attr">vendor</span>: [
-    {
-        <span class="hljs-attr">package</span>: <span class="hljs-string">&quot;vue&quot;</span>,
-        <span class="hljs-attr">expose</span>: <span class="hljs-string">&quot;named&quot;</span>,
-        <span class="hljs-attr">subpaths</span>: [],
-        <span class="hljs-attr">alias</span>: <span class="hljs-string">&quot;vue/dist/esm.bundle.js&quot;</span>,
+    <span class="hljs-attr">site</span>: {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;My Awesome Site&quot;</span>,
     },
-],
-});</code></pre>
+    <span class="hljs-attr">setupPath</span>: <span class="hljs-string">&quot;docs/src/setup.ts&quot;</span>,
+
+    <span class="hljs-attr">vendor</span>: [
+        {
+            <span class="hljs-attr">package</span>: <span class="hljs-string">&quot;vue&quot;</span>,
+            <span class="hljs-attr">expose</span>: <span class="hljs-string">&quot;named&quot;</span>,
+            <span class="hljs-attr">subpaths</span>: [],
+            <span class="hljs-attr">alias</span>: <span class="hljs-string">&quot;vue/dist/esm.bundle.js&quot;</span>,
+        },
+    ],
+});
+</code></pre>
                 </div>
             <h2 id="usage"><a class="header-anchor" href="#usage">Usage</a></h2><h3 id="using_with_vue_2"><a class="header-anchor" href="#using_with_vue_2">Using with Vue 2</a></h3><p>Vue 2 requires an additional dependency to be installed:</p>
 
@@ -341,7 +343,7 @@ livereloadProcessor,
             <p>Create the <code>setup</code> callback in <code>docs/src/setup.ts</code>:</p>
 
                 <div
-                    id="example-2ea96f"
+                    id="example-2cae4c"
                     class="code-preview code-preview--default"
                     
                     data-tags=nocompile
@@ -355,15 +357,16 @@ livereloadProcessor,
 <span class="hljs-comment">//Vue.use(MyAwesomePlugin);</span>
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">setup</span>(<span class="hljs-params"><span class="hljs-attr">options</span>: <span class="hljs-title class_">SetupOptions</span></span>): <span class="hljs-built_in">void</span> {
-<span class="hljs-keyword">const</span> { rootComponent, selector } = options;
-<span class="hljs-keyword">const</span> vm = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Vue</span>(rootComponent);
-vm.$mount(selector);
-}</code></pre>
+    <span class="hljs-keyword">const</span> { rootComponent, selector } = options;
+    <span class="hljs-keyword">const</span> vm = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Vue</span>(rootComponent);
+    vm.$mount(selector);
+}
+</code></pre>
                 </div>
             <h3 id="using_with_vue_3"><a class="header-anchor" href="#using_with_vue_3">Using with Vue 3</a></h3><p>Create the <code>setup</code> callback in <code>docs/src/setup.ts</code>:</p>
 
                 <div
-                    id="example-3ef65d"
+                    id="example-79d6ae"
                     class="code-preview code-preview--default"
                     
                     data-tags=nocompile
@@ -374,14 +377,15 @@ vm.$mount(selector);
 <span class="hljs-keyword">import</span> { <span class="hljs-keyword">type</span> <span class="hljs-title class_">SetupOptions</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@forsakringskassan/docs-generator&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">setup</span>(<span class="hljs-params"><span class="hljs-attr">options</span>: <span class="hljs-title class_">SetupOptions</span></span>): <span class="hljs-built_in">void</span> {
-<span class="hljs-keyword">const</span> { rootComponent, selector } = options;
-<span class="hljs-keyword">const</span> app = <span class="hljs-title function_">createApp</span>(rootComponent);
+    <span class="hljs-keyword">const</span> { rootComponent, selector } = options;
+    <span class="hljs-keyword">const</span> app = <span class="hljs-title function_">createApp</span>(rootComponent);
 
-<span class="hljs-comment">/* optionally add global plugins or configuration */</span>
-<span class="hljs-comment">//app.use(MyAwesomePlugin);</span>
+    <span class="hljs-comment">/* optionally add global plugins or configuration */</span>
+    <span class="hljs-comment">//app.use(MyAwesomePlugin);</span>
 
-app.<span class="hljs-title function_">mount</span>(selector);
-}</code></pre>
+    app.<span class="hljs-title function_">mount</span>(selector);
+}
+</code></pre>
                 </div>
             <h3 id="styling"><a class="header-anchor" href="#styling">Styling</a></h3><p>Three CSS files are provided:</p>
 <ul>
@@ -394,7 +398,7 @@ app.<span class="hljs-title function_">mount</span>(selector);
 <p>Style can be compiled with <code>compileStyle(name, src, [options])</code>:</p>
 
                 <div
-                    id="example-1d1d6f"
+                    id="example-eab270"
                     class="code-preview code-preview--default"
                     
                     
@@ -404,15 +408,16 @@ app.<span class="hljs-title function_">mount</span>(selector);
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">Generator</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@forsakringskassan/docs-generator&quot;</span>;
 
 <span class="hljs-keyword">const</span> docs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Generator</span>({
-<span class="hljs-attr">site</span>: {
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;My Awesome Site&quot;</span>,
-},
-<span class="hljs-attr">setupPath</span>: <span class="hljs-string">&quot;docs/src/setup.ts&quot;</span>,
+    <span class="hljs-attr">site</span>: {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;My Awesome Site&quot;</span>,
+    },
+    <span class="hljs-attr">setupPath</span>: <span class="hljs-string">&quot;docs/src/setup.ts&quot;</span>,
 });
 
 docs.<span class="hljs-title function_">compileStyle</span>(<span class="hljs-string">&quot;docs&quot;</span>, <span class="hljs-string">&quot;./docs/src/style.scss&quot;</span>, {
-<span class="hljs-attr">appendTo</span>: <span class="hljs-string">&quot;head&quot;</span>,
-});</code></pre>
+    <span class="hljs-attr">appendTo</span>: <span class="hljs-string">&quot;head&quot;</span>,
+});
+</code></pre>
                 </div>
             <p>Where <code>docs/src/style.scss</code> contains:</p>
 
@@ -637,7 +642,7 @@ Makes it possible to dynamically load icons and get access to icon metadata.
 The library must have been built using <code>@fkui/icon-lib-builder</code>.</p>
 
                 <div
-                    id="example-bb0603"
+                    id="example-43a614"
                     class="code-preview code-preview--default"
                     
                     data-tags=nocompile
@@ -647,8 +652,9 @@ The library must have been built using <code>@fkui/icon-lib-builder</code>.</p>
                     <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-keyword">const</span> icons = <span class="hljs-keyword">await</span> <span class="hljs-keyword">import</span>(process.<span class="hljs-property">env</span>.<span class="hljs-property">DOCS_ICON_LIB</span>);
 
 <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> entry <span class="hljs-keyword">of</span> <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">values</span>(icons)) {
-entry.<span class="hljs-title function_">injectSpritesheet</span>();
-}</code></pre>
+    entry.<span class="hljs-title function_">injectSpritesheet</span>();
+}
+</code></pre>
                 </div>
             <h2 id="processors"><a class="header-anchor" href="#processors">Processors</a></h2><h3 id="matomo"><a class="header-anchor" href="#matomo">Matomo</a></h3>
                 <div

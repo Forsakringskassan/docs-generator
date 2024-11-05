@@ -913,7 +913,7 @@ Internt används <code>ValidationService</code> ifrån <code>@fkui/logic</code>.
 <p><code>ValidationPlugin</code> initialiseras på nedan sätt (bör göras så tidigt i applikationen som möjligt, t.ex. main.ts )</p>
 
                 <div
-                    id="example-f9f5c2"
+                    id="example-fb5ee0"
                     class="code-preview code-preview--default"
                     
                     
@@ -921,13 +921,14 @@ Internt används <code>ValidationService</code> ifrån <code>@fkui/logic</code>.
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationPlugin</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-<span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">ValidationPlugin</span>);</code></pre>
+<span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">ValidationPlugin</span>);
+</code></pre>
                 </div>
             <p>Via <code>ValidationService.addValidationErrorMessages</code> kan man specificera översättningar av validator fel.
 I nedan exempel anges ett objekt med validatornamnet som nyckel och översättning som värde (om översättning saknas så kommer validatornamnet istället användas).</p>
 
                 <div
-                    id="example-57c334"
+                    id="example-38c2f1"
                     class="code-preview code-preview--default"
                     
                     
@@ -936,14 +937,15 @@ I nedan exempel anges ett objekt med validatornamnet som nyckel och översättni
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@fkui/logic&#x27;</span>;
 <span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">addValidationErrorMessages</span>({
-<span class="hljs-string">&#x27;required&#x27;</span>, <span class="hljs-string">&#x27;Fältet krävs&#x27;</span>,
-<span class="hljs-string">&#x27;personnummerFormat&#x27;</span>, <span class="hljs-string">&#x27;Felaktigt format på personnummer&#x27;</span>,
-});</code></pre>
+    <span class="hljs-string">&#x27;required&#x27;</span>, <span class="hljs-string">&#x27;Fältet krävs&#x27;</span>,
+    <span class="hljs-string">&#x27;personnummerFormat&#x27;</span>, <span class="hljs-string">&#x27;Felaktigt format på personnummer&#x27;</span>,
+});
+</code></pre>
                 </div>
             <p>För att få <em>autocompletion</em> av validatornamn så rekommenderas att använda <code>ValidationErrorMessageBuilder</code>:</p>
 
                 <div
-                    id="example-cdda16"
+                    id="example-12196d"
                     class="code-preview code-preview--default"
                     
                     
@@ -953,16 +955,17 @@ I nedan exempel anges ett objekt med validatornamnet som nyckel och översättni
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span>, <span class="hljs-title class_">ValidationErrorMessageBuilder</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 
 <span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">addValidationErrorMessages</span>(
-<span class="hljs-title class_">ValidationErrorMessageBuilder</span>.<span class="hljs-title function_">create</span>()
-    .<span class="hljs-title function_">map</span>(<span class="hljs-string">&quot;required&quot;</span>, <span class="hljs-string">&quot;The field is required&quot;</span>)
-    .<span class="hljs-title function_">map</span>(<span class="hljs-string">&quot;personnummerFormat&quot;</span>, <span class="hljs-string">&quot;Bad formatted social security number&quot;</span>)
-    .<span class="hljs-title function_">mapCombined</span>(
-        <span class="hljs-string">&quot;required&quot;</span>,
-        <span class="hljs-string">&quot;personnummerFormat&quot;</span>,
-        <span class="hljs-string">&quot;You must enter a social security number&quot;</span>,
-    )
-    .<span class="hljs-title function_">build</span>(),
-);</code></pre>
+    <span class="hljs-title class_">ValidationErrorMessageBuilder</span>.<span class="hljs-title function_">create</span>()
+        .<span class="hljs-title function_">map</span>(<span class="hljs-string">&quot;required&quot;</span>, <span class="hljs-string">&quot;The field is required&quot;</span>)
+        .<span class="hljs-title function_">map</span>(<span class="hljs-string">&quot;personnummerFormat&quot;</span>, <span class="hljs-string">&quot;Bad formatted social security number&quot;</span>)
+        .<span class="hljs-title function_">mapCombined</span>(
+            <span class="hljs-string">&quot;required&quot;</span>,
+            <span class="hljs-string">&quot;personnummerFormat&quot;</span>,
+            <span class="hljs-string">&quot;You must enter a social security number&quot;</span>,
+        )
+        .<span class="hljs-title function_">build</span>(),
+);
+</code></pre>
                 </div>
             <h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p>Flera validatorer kan läggas till fältet genom att separera dem med punkter. Vissa validatorer kräver en konfiguration vilket görs genom att ange konfigurationen i direktivsvärdet.</p>
 <p><strong>Observera</strong> Ordningen definierar prioriteten för varje validator, ju längre till vänster desto högre prioritet.
@@ -1161,7 +1164,7 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den
         <h2 id="utokade_komponenter_med_default_validering"><a class="header-anchor" href="#utokade_komponenter_med_default_validering">Utökade komponenter med default-validering</a></h2><p>Om man behöver utveckla en egen komponent med inbyggd validering som standard-beteende så måste man lägga till validatorn i komponentens mounted()-metod via metoden <code>ValidationService.addValidatorsToElement()</code> och med tredje parametern <code>isBaseConfigs</code> satt till <code>true</code>:</p>
 
                 <div
-                    id="example-52d04a"
+                    id="example-b84de5"
                     class="code-preview code-preview--default"
                     
                     
@@ -1171,10 +1174,11 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer den
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span>, <span class="hljs-keyword">type</span> <span class="hljs-title class_">ValidatorConfigs</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@fkui/logic&#x27;</span>;
 
 <span class="hljs-keyword">const</span> <span class="hljs-attr">validatorConfigs</span>: <span class="hljs-title class_">ValidatorConfigs</span> = {
-<span class="hljs-attr">email</span>: { <span class="hljs-attr">errorMessage</span>: <span class="hljs-string">&#x27;E-posten är inte korrekt ifylld&#x27;</span> },
+    <span class="hljs-attr">email</span>: { <span class="hljs-attr">errorMessage</span>: <span class="hljs-string">&#x27;E-posten är inte korrekt ifylld&#x27;</span> },
 };
 
-<span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">addValidatorsToElement</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">$el</span>.<span class="hljs-title function_">querySelector</span>(&lt;<span class="hljs-title class_">Your</span>_Selector&gt;) <span class="hljs-keyword">as</span> <span class="hljs-title class_">HTMLInputElement</span>, validatorConfigs, <span class="hljs-literal">true</span>);</code></pre>
+<span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">addValidatorsToElement</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">$el</span>.<span class="hljs-title function_">querySelector</span>(&lt;<span class="hljs-title class_">Your</span>_Selector&gt;) <span class="hljs-keyword">as</span> <span class="hljs-title class_">HTMLInputElement</span>, validatorConfigs, <span class="hljs-literal">true</span>);
+</code></pre>
                 </div>
             <p>Se implementationen av komponenten FEmailTextField på sidan <a href="../../components/input/textfield-specialized.html">Inmatningsfält specialiserade</a> för konkret exempel.</p>
 <h2 id="applikationsspecifikt_felmeddelande"><a class="header-anchor" href="#applikationsspecifikt_felmeddelande">Applikationsspecifikt felmeddelande</a></h2><p>Alla validatorers konfiguration tar attributet <code>errorMessage</code> som ersätter felmeddelandet som definieras med <code>ValidatorService.addValidationErrorMessages</code> funktionen.</p>
@@ -1684,7 +1688,7 @@ Det rekommenderade sättet är att använda sig av event listeners för <code>ch
     <!-- prettier-ignore -->
     feature/dedent-code (<a href="https://github.com/Forsakringskassan/designsystem/commits/ec868cdcba34f029c93d3a2d5e63236f2f7dc69f">ec868cd</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/131">PR 131</a><br />
-        2024-11-05 00:14
+        2024-11-05 00:44
 </div>
 <div class="toolbar__item">
     <form id="version">

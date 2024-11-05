@@ -913,18 +913,19 @@
 <p>Motsvarar <code>expect(document.activeElement).toBe(element)</code> fast med bättre felmeddelande.</p>
 
                 <div
-                    id="example-bc28b6"
+                    id="example-2f6cdd"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">function</span> <span class="hljs-title function_">toHaveFocus</span>(<span class="hljs-params"><span class="hljs-attr">element</span>: <span class="hljs-title class_">HTMLElement</span></span>): <span class="hljs-built_in">void</span>;</code></pre>
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">function</span> <span class="hljs-title function_">toHaveFocus</span>(<span class="hljs-params"><span class="hljs-attr">element</span>: <span class="hljs-title class_">HTMLElement</span></span>): <span class="hljs-built_in">void</span>;
+</code></pre>
                 </div>
             <h3 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h3>
                 <div
-                    id="example-57cd73"
+                    id="example-c6bb00"
                     class="code-preview code-preview--default"
                     
                     
@@ -934,10 +935,11 @@
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@fkui/test-utils/jest&quot;</span>;
 
 <span class="hljs-title function_">it</span>(<span class="hljs-string">&quot;should have focus&quot;</span>, <span class="hljs-function">() =&gt;</span> {
-<span class="hljs-keyword">const</span> wrapper = <span class="hljs-title function_">mount</span>(<span class="hljs-title class_">AwesomeComponent</span>);
-<span class="hljs-keyword">const</span> element = wrapper.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;#something&quot;</span>);
-<span class="hljs-title function_">expect</span>(element).<span class="hljs-title function_">toHaveFocus</span>();
-});</code></pre>
+    <span class="hljs-keyword">const</span> wrapper = <span class="hljs-title function_">mount</span>(<span class="hljs-title class_">AwesomeComponent</span>);
+    <span class="hljs-keyword">const</span> element = wrapper.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;#something&quot;</span>);
+    <span class="hljs-title function_">expect</span>(element).<span class="hljs-title function_">toHaveFocus</span>();
+});
+</code></pre>
                 </div>
             
 
@@ -962,7 +964,7 @@
     <!-- prettier-ignore -->
     feature/dedent-code (<a href="https://github.com/Forsakringskassan/designsystem/commits/ec868cdcba34f029c93d3a2d5e63236f2f7dc69f">ec868cd</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/131">PR 131</a><br />
-        2024-11-05 00:14
+        2024-11-05 00:44
 </div>
 <div class="toolbar__item">
     <form id="version">

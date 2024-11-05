@@ -910,7 +910,7 @@
                         <!-- prettier-ignore -->
 
                 <div
-                    id="example-d22114"
+                    id="example-764234"
                     class="code-preview code-preview--default"
                     
                     
@@ -918,33 +918,34 @@
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">ModalOptions</span> {
-<span class="hljs-attr">attachTo</span>: <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Element</span>;
-<span class="hljs-attr">props</span>: <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span> | <span class="hljs-literal">undefined</span>&gt;;
+    <span class="hljs-attr">attachTo</span>: <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Element</span>;
+    <span class="hljs-attr">props</span>: <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span> | <span class="hljs-literal">undefined</span>&gt;;
 }
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">ModalResult</span>&lt;T&gt; {
-<span class="hljs-attr">reason</span>: <span class="hljs-title class_">ModalReason</span> | <span class="hljs-built_in">string</span>;
-<span class="hljs-attr">data</span>: T;
+    <span class="hljs-attr">reason</span>: <span class="hljs-title class_">ModalReason</span> | <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">data</span>: T;
 }
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> <span class="hljs-title class_">AsyncModalResult</span>&lt;T&gt; = <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-title class_">ModalResult</span>&lt;T&gt;&gt;;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> openModal&lt;T&gt;(
-<span class="hljs-attr">callingInstance</span>: <span class="hljs-title class_">MaybeWithFKUIContext</span>,
-<span class="hljs-title class_">Component</span>: <span class="hljs-title class_">MaybeComponent</span>,
-<span class="hljs-attr">text</span>: <span class="hljs-built_in">string</span>,
+    <span class="hljs-attr">callingInstance</span>: <span class="hljs-title class_">MaybeWithFKUIContext</span>,
+    <span class="hljs-title class_">Component</span>: <span class="hljs-title class_">MaybeComponent</span>,
+    <span class="hljs-attr">text</span>: <span class="hljs-built_in">string</span>,
 ): <span class="hljs-title class_">AsyncModalResult</span>&lt;T&gt;;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> openModal&lt;T&gt;(
-<span class="hljs-attr">callingInstance</span>: <span class="hljs-title class_">MaybeWithFKUIContext</span>,
-<span class="hljs-title class_">Component</span>: <span class="hljs-title class_">MaybeComponent</span>,
-options?: <span class="hljs-title class_">Partial</span>&lt;<span class="hljs-title class_">ModalOptions</span>&gt;,
-): <span class="hljs-title class_">AsyncModalResult</span>&lt;T&gt;;</code></pre>
+    <span class="hljs-attr">callingInstance</span>: <span class="hljs-title class_">MaybeWithFKUIContext</span>,
+    <span class="hljs-title class_">Component</span>: <span class="hljs-title class_">MaybeComponent</span>,
+    options?: <span class="hljs-title class_">Partial</span>&lt;<span class="hljs-title class_">ModalOptions</span>&gt;,
+): <span class="hljs-title class_">AsyncModalResult</span>&lt;T&gt;;
+</code></pre>
                 </div>
             <p>Provides an API to pragmatically open modal dialogs.</p>
 <h2 id="usage"><a class="header-anchor" href="#usage">Usage</a></h2>
                 <div
-                    id="example-aa5f45"
+                    id="example-3f66c9"
                     class="code-preview code-preview--default"
                     
                     
@@ -952,13 +953,14 @@ options?: <span class="hljs-title class_">Partial</span>&lt;<span class="hljs-ti
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> <span class="hljs-title function_">openModal</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-title class_">MyModalComponent</span>, {
-<span class="hljs-attr">props</span>: {
-    <span class="hljs-attr">heading</span>: <span class="hljs-string">&quot;Modal title&quot;</span>,
-    <span class="hljs-attr">content</span>: <span class="hljs-string">&quot;Text to display in modal&quot;</span>,
-},
+    <span class="hljs-attr">props</span>: {
+        <span class="hljs-attr">heading</span>: <span class="hljs-string">&quot;Modal title&quot;</span>,
+        <span class="hljs-attr">content</span>: <span class="hljs-string">&quot;Text to display in modal&quot;</span>,
+    },
 });
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Modal closed with result&quot;</span>, result);
-<span class="hljs-comment">// Modal closed with result { reason: &quot;close&quot;, data: undefined }</span></code></pre>
+<span class="hljs-comment">// Modal closed with result { reason: &quot;close&quot;, data: undefined }</span>
+</code></pre>
                 </div>
             <h2 id="api_for_custom_modals"><a class="header-anchor" href="#api_for_custom_modals">API for custom modals</a></h2><p>The given component must adhere to the following contract:</p>
 <ol>
@@ -993,7 +995,7 @@ Both <code>reason</code> and <code>data</code> will be available in the resolved
     <!-- prettier-ignore -->
     feature/dedent-code (<a href="https://github.com/Forsakringskassan/designsystem/commits/ec868cdcba34f029c93d3a2d5e63236f2f7dc69f">ec868cd</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/131">PR 131</a><br />
-        2024-11-05 00:14
+        2024-11-05 00:44
 </div>
 <div class="toolbar__item">
     <form id="version">

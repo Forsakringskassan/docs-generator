@@ -911,7 +911,7 @@
 <p>Check if given component has a parent with given name.</p>
 <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
                 <div
-                    id="example-03a602"
+                    id="example-e46f3c"
                     class="code-preview code-preview--default"
                     
                     
@@ -919,9 +919,10 @@
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">hasParentByName</span>(<span class="hljs-params">
-<span class="hljs-attr">vm</span>: <span class="hljs-title class_">ComponentPublicInstance</span> | <span class="hljs-literal">undefined</span> | <span class="hljs-literal">null</span>,
-<span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>,
-</span>): <span class="hljs-built_in">boolean</span>;</code></pre>
+    <span class="hljs-attr">vm</span>: <span class="hljs-title class_">ComponentPublicInstance</span> | <span class="hljs-literal">undefined</span> | <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>,
+</span>): <span class="hljs-built_in">boolean</span>;
+</code></pre>
                 </div>
             <ul>
 <li><code>vm</code> - Component instance.</li>
@@ -949,7 +950,7 @@
             <p>And given <code>this</code> is the <code>MyChildComponent</code> instance:</p>
 
                 <div
-                    id="example-c3daef"
+                    id="example-d8e6e7"
                     class="code-preview code-preview--default"
                     
                     
@@ -958,7 +959,8 @@
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">hasParentByName</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-string">&quot;MyChildComponent&quot;</span>); <span class="hljs-comment">// --&gt; true</span>
 <span class="hljs-title function_">hasParentByName</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-string">&quot;MyParentComponent&quot;</span>); <span class="hljs-comment">// --&gt; true</span>
-<span class="hljs-title function_">hasParentByName</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-string">&quot;NowhereToBeFound&quot;</span>); <span class="hljs-comment">// --&gt; false</span></code></pre>
+<span class="hljs-title function_">hasParentByName</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-string">&quot;NowhereToBeFound&quot;</span>); <span class="hljs-comment">// --&gt; false</span>
+</code></pre>
                 </div>
             
 
@@ -983,7 +985,7 @@
     <!-- prettier-ignore -->
     feature/dedent-code (<a href="https://github.com/Forsakringskassan/designsystem/commits/ec868cdcba34f029c93d3a2d5e63236f2f7dc69f">ec868cd</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/131">PR 131</a><br />
-        2024-11-05 00:14
+        2024-11-05 00:44
 </div>
 <div class="toolbar__item">
     <form id="version">

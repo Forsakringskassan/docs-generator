@@ -911,14 +911,15 @@
 <p>Gets an <code>HTMLElement</code> a ref, provided it is defined and not an array.</p>
 <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
                 <div
-                    id="example-af199d"
+                    id="example-27df5c"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getHTMLElementFromVueRef</span>(<span class="hljs-params"><span class="hljs-attr">ref</span>: <span class="hljs-built_in">unknown</span></span>): <span class="hljs-title class_">HTMLElement</span> | <span class="hljs-built_in">never</span>;</code></pre>
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getHTMLElementFromVueRef</span>(<span class="hljs-params"><span class="hljs-attr">ref</span>: <span class="hljs-built_in">unknown</span></span>): <span class="hljs-title class_">HTMLElement</span> | <span class="hljs-built_in">never</span>;
+</code></pre>
                 </div>
             <ul>
 <li><code>ref</code> - The ref to extract the <code>HTMLElement</code> from.</li>
@@ -945,7 +946,7 @@
             <p><code>getHTMLElementFromVueRef</code> can be called as following:</p>
 
                 <div
-                    id="example-fc432f"
+                    id="example-cac5e7"
                     class="code-preview code-preview--default"
                     
                     
@@ -953,7 +954,8 @@
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> element = <span class="hljs-title function_">getHTMLElementFromVueRef</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">$refs</span>.<span class="hljs-property">myParagraph</span>);
-<span class="hljs-comment">//    ^~~~~~~ HTMLElement</span></code></pre>
+<span class="hljs-comment">//    ^~~~~~~ HTMLElement</span>
+</code></pre>
                 </div>
             <p><code>element</code> will be a guaranteed instance of <code>HTMLELement</code>.</p>
 <p>If the ref does not exist or does not reference a single HTML element an error will be thrown.
@@ -981,7 +983,7 @@ Don't handle this exception, if you expect this to happen under normal control f
     <!-- prettier-ignore -->
     feature/dedent-code (<a href="https://github.com/Forsakringskassan/designsystem/commits/ec868cdcba34f029c93d3a2d5e63236f2f7dc69f">ec868cd</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/131">PR 131</a><br />
-        2024-11-05 00:14
+        2024-11-05 00:44
 </div>
 <div class="toolbar__item">
     <form id="version">

@@ -1315,7 +1315,7 @@
 I <code>onBeforeNext</code> har du möjlighet att sätta nya valideringsfel på inmatningsfält:</p>
 
                 <div
-                    id="example-922ae2"
+                    id="example-c2d84a"
                     class="code-preview code-preview--default"
                     
                     
@@ -1323,14 +1323,15 @@ I <code>onBeforeNext</code> har du möjlighet att sätta nya valideringsfel på 
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">onBeforeNext</span>(): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt; {
-<span class="hljs-keyword">const</span> myField = <span class="hljs-title function_">getElementFromVueRef</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">refs</span>.<span class="hljs-property">myField</span>);
-<span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">setError</span>(myField, <span class="hljs-string">&quot;This value is invalid!&quot;</span>);
-},</code></pre>
+    <span class="hljs-keyword">const</span> myField = <span class="hljs-title function_">getElementFromVueRef</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">refs</span>.<span class="hljs-property">myField</span>);
+    <span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">setError</span>(myField, <span class="hljs-string">&quot;This value is invalid!&quot;</span>);
+},
+</code></pre>
                 </div>
             <p>Vi rekommenderar att alla fel är kopplade till ett specifikt inmatningsfält men om du istället vill avbryta inskicket och presentera ett fel med exempelvis en meddeladeruta kan du returnera <code>FWizardStepAction.CANCEL</code> från <code>onBeforeNext</code>:</p>
 
                 <div
-                    id="example-1fef6d"
+                    id="example-741843"
                     class="code-preview code-preview--default"
                     
                     
@@ -1338,9 +1339,10 @@ I <code>onBeforeNext</code> har du möjlighet att sätta nya valideringsfel på 
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">onBeforeNext</span>(): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-title class_">FWizardStepAction</span>&gt; {
-<span class="hljs-variable language_">this</span>.<span class="hljs-property">showErrorMessage</span> = <span class="hljs-literal">true</span>;
-<span class="hljs-keyword">return</span> <span class="hljs-title class_">FWizardStepAction</span>.<span class="hljs-property">CANCEL</span>;
-},</code></pre>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">showErrorMessage</span> = <span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-title class_">FWizardStepAction</span>.<span class="hljs-property">CANCEL</span>;
+},
+</code></pre>
                 </div>
             <h3 id="lagga_till_steg_dynamiskt"><a class="header-anchor" href="#lagga_till_steg_dynamiskt">Lägga till steg dynamiskt</a></h3>
             <div
@@ -1599,7 +1601,7 @@ totalSteps</p>
     <!-- prettier-ignore -->
     feature/dedent-code (<a href="https://github.com/Forsakringskassan/designsystem/commits/ec868cdcba34f029c93d3a2d5e63236f2f7dc69f">ec868cd</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/131">PR 131</a><br />
-        2024-11-05 00:14
+        2024-11-05 00:44
 </div>
 <div class="toolbar__item">
     <form id="version">
