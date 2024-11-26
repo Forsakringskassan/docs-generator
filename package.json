@@ -139,7 +139,7 @@
     "@forsakringskassan/prettier-config": "2.1.1",
     "@forsakringskassan/stylelint-config": "2.2.10",
     "@html-validate/release-scripts": "6.7.0",
-    "@microsoft/api-extractor": "7.47.12",
+    "@microsoft/api-extractor": "7.48.0",
     "@rollup/plugin-commonjs": "28.0.1",
     "@rollup/plugin-json": "6.1.0",
     "@rollup/plugin-node-resolve": "15.3.0",
