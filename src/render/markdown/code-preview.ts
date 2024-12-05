@@ -54,16 +54,14 @@ export function codePreview(
         env: MarkdownEnv,
     ): string {
         const { fileInfo } = env;
-        const { content: rawSource, info, map } = tokens[idx];
+        const { content: source, info, map } = tokens[idx];
         const { language, tags: rawTags } = parseInfostring(info);
 
         if (language === "mermaid") {
             return /* HTML */ `
-                <pre class="mermaid">${htmlencode(rawSource)}</pre>
+                <pre class="mermaid">${htmlencode(source)}</pre>
             `;
         }
-
-        const source = transformCode(rawSource, language);
 
         const example = generateExample({
             source,
@@ -73,9 +71,12 @@ export function codePreview(
         });
         const { tags } = example;
 
-        const hashContent = `${map?.[0]}:${map?.[1]}:${info}:${source}`;
+        const hashContent = `${map?.[0]}:${map?.[1]}:${info}:${example.source}`;
         const fingerprint = getFingerprint(hashContent);
-        const highlightedCode = replaceAtLink(highlight(example));
+        const transformedCode = transformCode(example.source, example.language);
+        const highlightedCode = replaceAtLink(
+            highlight({ source: transformedCode, language: example.language }),
+        );
         const testId = findTestId(tags);
         const liveExample = tags.includes("live-example");
         const staticCode = example.runtime === false || tags.includes("static");
