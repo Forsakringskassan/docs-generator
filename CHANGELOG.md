@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [2.14.2](https://github.com/Forsakringskassan/docs-generator/compare/v2.14.1...v2.14.2) (2024-12-06)
+
+
+### Bug Fixes
+
+* support snippets in imported examples ([70b25ea](https://github.com/Forsakringskassan/docs-generator/commit/70b25eaae661e7fb8a68d5032b203eed36a98a3d))
+
 ## [2.14.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.14.0...v2.14.1) (2024-12-06)
 
 
