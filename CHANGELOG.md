@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [2.14.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.14.0...v2.14.1) (2024-12-06)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @leeoniya/ufuzzy to v1.0.17 ([#135](https://github.com/Forsakringskassan/docs-generator/issues/135)) ([022df8c](https://github.com/Forsakringskassan/docs-generator/commit/022df8cc0c2dbb0f495df3e012ec0d5aa0b2a97e))
+* **deps:** update dependency mermaid to v11.4.1 ([8d060a3](https://github.com/Forsakringskassan/docs-generator/commit/8d060a36076ded677919a3b76cb422539f28a3e6))
+
 ## [2.14.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.13.0...v2.14.0) (2024-11-05)
 
 
