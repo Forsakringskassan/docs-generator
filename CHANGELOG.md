@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [2.14.3](https://github.com/Forsakringskassan/docs-generator/compare/v2.14.2...v2.14.3) (2024-12-07)
+
+
+### Bug Fixes
+
+* fix mismatched example fingerprints ([77e7293](https://github.com/Forsakringskassan/docs-generator/commit/77e7293b6247a910b79b19169366f96def84b9de))
+
 ## [2.14.2](https://github.com/Forsakringskassan/docs-generator/compare/v2.14.1...v2.14.2) (2024-12-06)
 
 
