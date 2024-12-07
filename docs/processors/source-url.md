@@ -46,22 +46,22 @@ The `sourceUrlProcessor` takes a configuration object:
 
 ### `enabled`
 
--   Type: `boolean`
--   Default: `true`
+- Type: `boolean`
+- Default: `true`
 
 Enables/disables the processor.
 
 ### `sourceFiles`
 
--   Type: `string[]`
--   Default: `[**/*]`
+- Type: `string[]`
+- Default: `[**/*]`
 
 List of patterns to match source files.
 
 ### `urlFormat`
 
--   Type: `string`
--   Required: true
+- Type: `string`
+- Required: true
 
 The URL format of the generated source link.
 
@@ -69,15 +69,15 @@ The URL format of the generated source link.
 
 The following placeholders can be used:
 
--   `hash` - the full hash of the commit.
--   `short` - the abbreviated hash of the commit.
--   `path` - relative source file path.
--   `repository` - the normalized URL to the source repository (derived from the `repository.url` field in `package.json`).
+- `hash` - the full hash of the commit.
+- `short` - the abbreviated hash of the commit.
+- `path` - relative source file path.
+- `repository` - the normalized URL to the source repository (derived from the `repository.url` field in `package.json`).
 
 ### `componentFileExtension`
 
--   Type: `string | undefined`
--   Default: `vue`
+- Type: `string | undefined`
+- Default: `vue`
 
 File extension searched for when trying to find a component by name.
 

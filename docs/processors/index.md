@@ -77,8 +77,8 @@ Unless you are bundling your processor in `@forsakringskassan/docs-generator` it
 
 To set navigation entries use one of the two navigation setters:
 
--   `setTopNavigation(..)`
--   `setSideNavigation(..)`
+- `setTopNavigation(..)`
+- `setSideNavigation(..)`
 
 For instance:
 

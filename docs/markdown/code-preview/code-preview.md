@@ -168,9 +168,9 @@ While generally discouraged to write E2E tests against the generated documentati
 
 There are three supported ways to write selectors:
 
--   Via a unique automatically generated id retrieved from {@link Manifest manifest}.
--   Via a custom author specified `test-id` tag.
--   Via a generic `.code-preview` selector.
+- Via a unique automatically generated id retrieved from {@link Manifest manifest}.
+- Via a custom author specified `test-id` tag.
+- Via a generic `.code-preview` selector.
 
 ### Unique generated id
 
