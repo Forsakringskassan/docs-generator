@@ -23,8 +23,8 @@ Make sure `old-page.md` does not exist.
 
 Remember to configure a redirect generator:
 
--   `htmlRedirectProcessor` for generating HTML meta refresh redirects.
--   `redirectFileProcessor` for generating a Netlify-style `_redirect` file.
+- `htmlRedirectProcessor` for generating HTML meta refresh redirects.
+- `redirectFileProcessor` for generating a Netlify-style `_redirect` file.
 
 :::
 

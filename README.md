@@ -107,9 +107,9 @@ export function setup(options: SetupOptions): void {
 
 Three CSS files are provided:
 
--   `@forsakringskassan/docs-generator/style/index.css` (aliased as `@forsakringskassan/docs-generator/style`)
--   `@forsakringskassan/docs-generator/style/core.css`
--   `@forsakringskassan/docs-generator/style/site.css`
+- `@forsakringskassan/docs-generator/style/index.css` (aliased as `@forsakringskassan/docs-generator/style`)
+- `@forsakringskassan/docs-generator/style/core.css`
+- `@forsakringskassan/docs-generator/style/site.css`
 
 `core` contains the necessary styling for components and elements and `site` contains the layout, typography etc required for a documentation site to work.
 `index` is a combination of the two and should be used in most cases.
@@ -167,12 +167,12 @@ The link destination will always be relative to the current document.
 For configured languages (default `html` and `vue`) code fences are run as a live example in the browser with an option to display the source code.
 The following tags can be used:
 
--   `borderless` - removes the border from the example.
--   `fullscreen` - enable support for viewing the example in fullscreen.
--   `static` - force code to be rendered without live preview (only syntax highlight).
--   `live-example` - mark example as containing the `LiveExample` component.
--   `nomarkup` - for live examples this hides the syntax highlighted code and only displays the result of the running code.
--   `test-id=STRING` - Sets the `data-test` attribute.
+- `borderless` - removes the border from the example.
+- `fullscreen` - enable support for viewing the example in fullscreen.
+- `static` - force code to be rendered without live preview (only syntax highlight).
+- `live-example` - mark example as containing the `LiveExample` component.
+- `nomarkup` - for live examples this hides the syntax highlighted code and only displays the result of the running code.
+- `test-id=STRING` - Sets the `data-test` attribute.
 
 `static` and `live` are used to manually set whenever the code should be run as a live example or not.
 
@@ -215,12 +215,12 @@ Set a status badge for a component.
 
 The following statuses are recognized:
 
--   `Produktionsklar`
--   `Deprekerad`
--   `Experimentell`
--   `Preliminär`
--   `Draft` (deprecated alias for `Preliminär`)
--   `Beta` (deprecated alias for `Preliminär`)
+- `Produktionsklar`
+- `Deprekerad`
+- `Experimentell`
+- `Preliminär`
+- `Draft` (deprecated alias for `Preliminär`)
+- `Beta` (deprecated alias for `Preliminär`)
 
 #### `title`
 

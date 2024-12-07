@@ -6,8 +6,8 @@ layout: content-with-menu
 `manifestProcessor` is a processor writing out a manifest listing all generated documents that will be present in the `outputFolder`.
 The manifest can be written in:
 
--   Markdown format
--   JSON format
+- Markdown format
+- JSON format
 
 This page describes the processor for writing the manifest as a file on disk, for programmatical usage use:
 

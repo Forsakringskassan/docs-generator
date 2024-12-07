@@ -21,9 +21,9 @@ Layouts are created with the [Nunjucks][nunjucks] templating engine.
 
 The template must override one of the base templates.
 
--   `base.template.html` - base template for all layouts
--   `content-with-menu.template.html` - template for layouts with side navigation.
--   `content-without-menu.template.html` - template for layouts without side navigation.
+- `base.template.html` - base template for all layouts
+- `content-with-menu.template.html` - template for layouts with side navigation.
+- `content-without-menu.template.html` - template for layouts without side navigation.
 
 Read more about {@link plumbing plumbing} for details how these may be customized.
 
@@ -31,7 +31,7 @@ Read more about {@link plumbing plumbing} for details how these may be customize
 
 The builtin `base.template.html` comes with the following options:
 
--   `showAside` - if `true` the aside block on the right side will be shown.
+- `showAside` - if `true` the aside block on the right side will be shown.
 
 Properties can be set with:
 
@@ -41,6 +41,6 @@ Properties can be set with:
 
 ## Layout blocks
 
--   `sidenav` - content displayed on the right side.
--   `aside` - content displayed on the right side if `showAside` is enabled.
--   `content` - primary content.
+- `sidenav` - content displayed on the right side.
+- `aside` - content displayed on the right side if `showAside` is enabled.
+- `content` - primary content.

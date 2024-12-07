@@ -6,8 +6,8 @@ layout: content-with-menu
 Examples can run in fullscreen mode by using the `fullscreen` tag.
 Currently supported languages is:
 
--   `html`
--   `vue`
+- `html`
+- `vue`
 
 ````md
 ```html fullscreen

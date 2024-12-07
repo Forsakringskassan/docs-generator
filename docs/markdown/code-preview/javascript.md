@@ -77,8 +77,8 @@ const result = add(1, 2);
 
 The following instructions are available:
 
--   `/* --- cut above --- */` removes all lines above the instruction.
--   `/* --- cut below --- */` removes all lines below the instruction.
--   `/* --- cut begin --- */` and `/* --- cut end --- */` removes all lines between the two instructions.
+- `/* --- cut above --- */` removes all lines above the instruction.
+- `/* --- cut below --- */` removes all lines below the instruction.
+- `/* --- cut begin --- */` and `/* --- cut end --- */` removes all lines between the two instructions.
 
 Blank lines above or below the instructions will always be trimmed as well.

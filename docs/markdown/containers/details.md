@@ -13,9 +13,9 @@ Implemented as a special variant of {@link messagebox}.
 
 Lorem ipsum dolor sit amet.
 
--   Foo
--   Bar
--   Baz
+- Foo
+- Bar
+- Baz
 
 :::
 ```
@@ -26,9 +26,9 @@ Lorem ipsum dolor sit amet.
 
 Lorem ipsum dolor sit amet.
 
--   Foo
--   Bar
--   Baz
+- Foo
+- Bar
+- Baz
 
 :::
 
@@ -41,9 +41,9 @@ Title can optionally be specified:
 
 Lorem **ipsum** dolor sit amet.
 
--   foo
--   bar
--   baz
+- foo
+- bar
+- baz
 
 :::
 ```
@@ -54,9 +54,9 @@ Lorem **ipsum** dolor sit amet.
 
 Lorem **ipsum** dolor sit amet.
 
--   foo
--   bar
--   baz
+- foo
+- bar
+- baz
 
 :::
 

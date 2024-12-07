@@ -108,12 +108,12 @@ sortorder: 1
 Pages with the `sortorder` attributes are sorted with the lower number appearing higher.
 Pages sharing the same `sortorder` or when `sortorder` is omitted are sorted alphabetically, for instance:
 
--   `title: Foo`, `sortorder: 1` - Appears first
--   `title: Bar`, `sortorder: 2` - Appears together with "Baz", sorted alphabetically
--   `title: Baz`, `sortorder: 2` - Appears together with "Bar", sorted alphabetically
--   `title: Tux`, `sortorder: 3` - Appears after "Bar" and "Baz"
--   `title: Barney`, - Appears last, sorted alphabetically
--   `title: Fred`, - Appears last, sorted alphabetically
+- `title: Foo`, `sortorder: 1` - Appears first
+- `title: Bar`, `sortorder: 2` - Appears together with "Baz", sorted alphabetically
+- `title: Baz`, `sortorder: 2` - Appears together with "Bar", sorted alphabetically
+- `title: Tux`, `sortorder: 3` - Appears after "Bar" and "Baz"
+- `title: Barney`, - Appears last, sorted alphabetically
+- `title: Fred`, - Appears last, sorted alphabetically
 
 ## Title
 

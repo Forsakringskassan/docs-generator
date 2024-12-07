@@ -82,23 +82,23 @@ motdProcessor({
 
 ### `enabled`
 
--   Type: `boolean`
--   Default: `true`
+- Type: `boolean`
+- Default: `true`
 
 Enables/disables the MOTD processor.
 
 ### `container`
 
--   Type: `string`
--   Default: `body:begin`
+- Type: `string`
+- Default: `body:begin`
 
 The name of a container (in layout template) to render content in.
 If the container does not exist for given layout the content will not be rendered.
 
 ### `message`
 
--   Type: `string`
--   Required: yes
+- Type: `string`
+- Required: yes
 
 Output a static message.
 May contain HTML markup.

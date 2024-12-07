@@ -28,9 +28,9 @@ Messages may contain additional markdown:
 
 Lorem **ipsum** dolor sit amet.
 
--   foo
--   bar
--   baz
+- foo
+- bar
+- baz
 
 :::
 ```
@@ -41,9 +41,9 @@ Lorem **ipsum** dolor sit amet.
 
 Lorem **ipsum** dolor sit amet.
 
--   foo
--   bar
--   baz
+- foo
+- bar
+- baz
 
 :::
 
@@ -59,9 +59,9 @@ lorem ipsum dolor sit amet
 
 The following variants are supported:
 
--   `info` (default)
--   `warning`
--   `danger`
+- `info` (default)
+- `warning`
+- `danger`
 
 ::: messagebox info
 This is an info box.
