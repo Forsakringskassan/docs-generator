@@ -1659,126 +1659,11 @@ import { defineComponent as defineComponent14 } from "vue";
 
 // sfc-script:/home/runner/work/docs-generator/docs-generator/fkui/packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue?type=script
 import { defineComponent as defineComponent13 } from "vue";
-import { focus as focus5 } from "@fkui/logic";
-
-// sfc-script:/home/runner/work/docs-generator/docs-generator/fkui/packages/vue/src/components/FIcon/FIcon.vue?type=script
-import { defineComponent } from "vue";
-var Flip = ["horizontal", "vertical"];
-var Rotate = ["90", "180", "270"];
-var FIcon_default = defineComponent({
-  name: "FIcon",
-  inheritAttrs: false,
-  props: {
-    /**
-     * Icon name.
-     */
-    name: {
-      type: String,
-      required: true
-    },
-    /**
-     * fk-icon library
-     */
-    library: {
-      type: String,
-      required: false,
-      default: "f"
-    },
-    /**
-     * Flip icon horizontally or vertically.
-     *
-     * Must be set to one of:
-     *
-     * - `horizontal`
-     * - `vertical`
-     */
-    flip: {
-      type: String,
-      default: null,
-      required: false,
-      validator(value) {
-        return Flip.includes(value);
-      }
-    },
-    /**
-     * Rotate icon.
-     *
-     * Must be set to one of:
-     *
-     * - `90`
-     * - `180`
-     * - `270`
-     */
-    rotate: {
-      type: String,
-      default: null,
-      required: false,
-      validator(value) {
-        return Rotate.includes(value);
-      }
-    }
-  },
-  computed: {
-    spriteKey() {
-      return `${this.library}-icon-${this.name}`;
-    },
-    spriteId() {
-      return `#${this.spriteKey}`;
-    },
-    modifiers() {
-      const classes = [];
-      if (this.flip) {
-        classes.push(`icon--flip-${this.flip}`);
-      }
-      if (this.rotate) {
-        classes.push(`icon--rotate-${this.rotate}`);
-      }
-      return classes;
-    },
-    ariaHidden() {
-      const slotUsed = Boolean(this.$slots.default);
-      const ariaLabel = this.$attrs["aria-label"] !== void 0;
-      const ariaLabelledby = this.$attrs["aria-labelledby"] !== void 0;
-      const ariaDescription = this.$attrs["aria-description"] !== void 0;
-      const ariaDescribedby = this.$attrs["aria-describedby"] !== void 0;
-      const hasText = slotUsed || ariaLabel || ariaLabelledby || ariaDescription || ariaDescribedby;
-      return hasText ? void 0 : "true";
-    }
-  }
-});
-
-// sfc-template:/home/runner/work/docs-generator/docs-generator/fkui/packages/vue/src/components/FIcon/FIcon.vue?type=template
-import { createCommentVNode as _createCommentVNode, renderSlot as _renderSlot, createElementVNode as _createElementVNode, mergeProps as _mergeProps, openBlock as _openBlock, createElementBlock as _createElementBlock, Fragment as _Fragment } from "vue";
-var _hoisted_1 = ["aria-hidden"];
-var _hoisted_2 = ["xlink:href"];
-function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock(), _createElementBlock(
-    _Fragment,
-    null,
-    [
-      _createCommentVNode(" [html-validate-disable-block fkui/prefer-ficon -- this is the FIcon component]"),
-      (_openBlock(), _createElementBlock("svg", _mergeProps(_ctx.$attrs, {
-        focusable: "false",
-        class: ["icon", [_ctx.spriteKey, ..._ctx.modifiers]],
-        "aria-hidden": _ctx.ariaHidden
-      }), [
-        _renderSlot(_ctx.$slots, "default"),
-        _createElementVNode("use", { "xlink:href": _ctx.spriteId }, null, 8, _hoisted_2)
-      ], 16, _hoisted_1))
-    ],
-    2112
-    /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
-  );
-}
-
-// packages/vue/src/components/FIcon/FIcon.vue
-FIcon_default.render = render;
-FIcon_default.__file = "packages/vue/src/components/FIcon/FIcon.vue";
-var FIcon_default2 = FIcon_default;
+import { focus as focus6 } from "@fkui/logic";
 
 // sfc-script:/home/runner/work/docs-generator/docs-generator/fkui/packages/vue/src/internal-components/IPopup/IPopup.vue?type=script
 import { defineComponent as defineComponent12 } from "vue";
-import { handleTab, pushFocus as pushFocus2, popFocus as popFocus2 } from "@fkui/logic";
+import { debounce, handleTab, pushFocus as pushFocus2, popFocus as popFocus2 } from "@fkui/logic";
 
 // packages/vue/src/config/config.ts
 import { configLogic } from "@fkui/logic";
@@ -1813,252 +1698,6 @@ var config = {
     return production;
   }
 };
-
-// packages/vue/src/internal-components/IPopup/IPopupUtils.ts
-function offset(page, el) {
-  const rect = el.getBoundingClientRect();
-  return {
-    top: rect.top + page.pageYOffset,
-    left: rect.left + page.pageXOffset
-  };
-}
-function getElement(anchor) {
-  if (!anchor) {
-    return null;
-  }
-  if (typeof anchor === "string") {
-    return document.getElementById(anchor);
-  } else {
-    return anchor;
-  }
-}
-function getCandidates(anchor, target, clippedArea, spacing, candidateOrder) {
-  const dw = target.width - anchor.width;
-  const a = {
-    placement: "A" /* A */,
-    x: anchor.x,
-    y: anchor.y + anchor.height + spacing,
-    width: target.width,
-    height: target.height,
-    direction: 1 /* Vertical */
-  };
-  const b = {
-    placement: "B" /* B */,
-    x: anchor.x - dw,
-    y: anchor.y + anchor.height + spacing,
-    width: target.width,
-    height: target.height,
-    direction: 1 /* Vertical */
-  };
-  const c = {
-    placement: "C" /* C */,
-    x: anchor.x,
-    y: anchor.y - target.height - spacing,
-    width: target.width,
-    height: target.height,
-    direction: 1 /* Vertical */
-  };
-  const d = {
-    placement: "D" /* D */,
-    x: anchor.x - dw,
-    y: anchor.y - target.height - spacing,
-    width: target.width,
-    height: target.height,
-    direction: 1 /* Vertical */
-  };
-  const e = {
-    placement: "E" /* E */,
-    x: anchor.x + anchor.width + spacing,
-    y: anchor.y + anchor.height / 2 - target.height / 2,
-    width: target.width,
-    height: target.height,
-    direction: 0 /* Horizontal */
-  };
-  const f = {
-    placement: "F" /* F */,
-    x: anchor.x - (target.width + spacing),
-    y: anchor.y + anchor.height / 2 - target.height / 2,
-    width: target.width,
-    height: target.height,
-    direction: 0 /* Horizontal */
-  };
-  const g = {
-    placement: "G" /* G */,
-    x: anchor.x + anchor.width + spacing,
-    y: clippedArea.y + spacing,
-    width: target.width,
-    height: target.height,
-    direction: 2 /* Both */
-  };
-  const h2 = {
-    placement: "H" /* H */,
-    x: anchor.x - (target.width + spacing),
-    y: clippedArea.y + spacing,
-    width: target.width,
-    height: target.height,
-    direction: 2 /* Both */
-  };
-  const i = {
-    placement: "I" /* I */,
-    x: clippedArea.x + (clippedArea.width - target.width) / 2,
-    y: clippedArea.y + (clippedArea.height - target.height) / 2,
-    width: target.width,
-    height: target.height,
-    direction: 3 /* None */
-  };
-  if (candidateOrder === "IPopupError" /* IPopupError */) {
-    return [b, a, d, c, e, f, f, f, f];
-  } else {
-    return [a, b, c, d, e, f, g, h2, i];
-  }
-}
-function isInside(outer, inner, spacing) {
-  const isHorizontalDirection = inner.direction === 0 /* Horizontal */ || inner.direction === 2 /* Both */;
-  const xSpacing = isHorizontalDirection ? spacing : 0;
-  const isVerticalDirection = inner.direction === 1 /* Vertical */ || inner.direction === 2 /* Both */;
-  const ySpacing = isVerticalDirection ? spacing : 0;
-  const ax = [inner.x, inner.x + inner.width];
-  const ay = [inner.y, inner.y + inner.height];
-  const bx = [outer.x + xSpacing, outer.x + outer.width - xSpacing];
-  const by = [outer.y + ySpacing, outer.y + outer.height - ySpacing];
-  if (ax[0] < bx[0] || ax[1] > bx[1]) {
-    return false;
-  }
-  if (ay[0] < by[0] || ay[1] > by[1]) {
-    return false;
-  }
-  return true;
-}
-function isElementOptions(options) {
-  return options.target instanceof HTMLElement;
-}
-function clipRect(src, clip) {
-  if (!clip) {
-    return src;
-  }
-  const x = Math.max(src.x, clip.x);
-  const y = Math.max(src.y, clip.y);
-  const width = Math.min(src.x + src.width, clip.x + clip.width) - x;
-  const height = Math.min(src.y + src.height, clip.y + clip.height) - y;
-  return { x, y, width, height };
-}
-function getAbsolutePosition(src) {
-  if (!src) {
-    return void 0;
-  }
-  const isRoot = src.isSameNode(document.documentElement);
-  if (isRoot) {
-    return {
-      x: window.pageXOffset,
-      y: window.pageYOffset,
-      width: src.clientWidth,
-      height: src.clientHeight
-    };
-  }
-  const rect = src.getBoundingClientRect();
-  return {
-    x: Math.floor(rect.left + window.pageXOffset),
-    y: Math.floor(rect.top + window.pageYOffset),
-    width: Math.floor(rect.width),
-    height: Math.floor(rect.height)
-  };
-}
-function fitInsideArea(options) {
-  if (isElementOptions(options)) {
-    const {
-      area: areaElement,
-      anchor: anchorElement,
-      target: targetElement,
-      viewport: viewportElement,
-      spacing: spacing2,
-      candidateOrder
-    } = options;
-    const area2 = getAbsolutePosition(areaElement);
-    const anchor2 = getAbsolutePosition(anchorElement);
-    const target2 = getAbsolutePosition(targetElement);
-    const viewport2 = getAbsolutePosition(viewportElement);
-    const result = fitInsideArea({
-      area: area2,
-      target: target2,
-      anchor: anchor2,
-      viewport: viewport2,
-      spacing: spacing2,
-      candidateOrder
-    });
-    const offset2 = targetElement.offsetParent?.getBoundingClientRect();
-    if (!offset2) {
-      return result;
-    }
-    return {
-      ...result,
-      x: result.x - (offset2.left + window.pageXOffset),
-      y: result.y - (offset2.top + window.pageYOffset)
-    };
-  }
-  const { anchor, target, area, viewport, spacing } = options;
-  const clippedArea = clipRect(area, viewport);
-  const candidates = getCandidates(
-    anchor,
-    target,
-    clippedArea,
-    spacing,
-    options.candidateOrder
-  );
-  const index = candidates.findIndex(
-    (it) => isInside(clippedArea, it, spacing)
-  );
-  if (index >= 0) {
-    const match = candidates[index];
-    return { x: match.x, y: match.y, placement: match.placement };
-  }
-  return {
-    ...getFallbackPosition(anchor, target, clippedArea, spacing),
-    placement: "Fallback" /* Fallback */
-  };
-}
-function getScrollToPopup(param) {
-  const popupOffset = offset(
-    { pageXOffset: 0, pageYOffset: param.scrollTop },
-    param.popup
-  );
-  const popupHeight = param.popup.offsetHeight;
-  const neededScroll = popupOffset.top - param.windowInnerHeight + popupHeight + param.spacing;
-  if (neededScroll > param.scrollTop) {
-    return neededScroll;
-  } else {
-    return param.scrollTop;
-  }
-}
-function getFallbackPosition(anchor, target, clippedArea, spacing) {
-  const x = anchor.x - (target.width + spacing);
-  const y = anchor.y + anchor.height + spacing;
-  if (x >= clippedArea.x) {
-    return {
-      x,
-      y
-    };
-  } else {
-    return {
-      x: clippedArea.x + spacing,
-      y
-    };
-  }
-}
-
-// packages/vue/src/internal-components/IPopup/get-container.ts
-function getContainer(element, prop) {
-  if (prop) {
-    return prop;
-  }
-  const parent = element.closest(".popup__container");
-  if (parent) {
-    return parent;
-  }
-  return config.popupContainer;
-}
-
-// packages/vue/src/internal-components/IPopup/get-focusable-element.ts
-import { findTabbableElements as findTabbableElements2 } from "@fkui/logic";
 
 // packages/vue/src/utils/ListUtils.ts
 import { isSet } from "@fkui/logic";
@@ -2209,7 +1848,122 @@ import { createApp as createApp2 } from "vue";
 
 // sfc-script:/home/runner/work/docs-generator/docs-generator/fkui/packages/vue/src/components/FModal/FModal.vue?type=script
 import { defineComponent as defineComponent4 } from "vue";
-import { ElementIdService, pushFocus, popFocus, findTabbableElements } from "@fkui/logic";
+import { ElementIdService, pushFocus, popFocus, findTabbableElements, focus as focus2 } from "@fkui/logic";
+
+// sfc-script:/home/runner/work/docs-generator/docs-generator/fkui/packages/vue/src/components/FIcon/FIcon.vue?type=script
+import { defineComponent } from "vue";
+var Flip = ["horizontal", "vertical"];
+var Rotate = ["90", "180", "270"];
+var FIcon_default = defineComponent({
+  name: "FIcon",
+  inheritAttrs: false,
+  props: {
+    /**
+     * Icon name.
+     */
+    name: {
+      type: String,
+      required: true
+    },
+    /**
+     * fk-icon library
+     */
+    library: {
+      type: String,
+      required: false,
+      default: "f"
+    },
+    /**
+     * Flip icon horizontally or vertically.
+     *
+     * Must be set to one of:
+     *
+     * - `horizontal`
+     * - `vertical`
+     */
+    flip: {
+      type: String,
+      default: null,
+      required: false,
+      validator(value) {
+        return Flip.includes(value);
+      }
+    },
+    /**
+     * Rotate icon.
+     *
+     * Must be set to one of:
+     *
+     * - `90`
+     * - `180`
+     * - `270`
+     */
+    rotate: {
+      type: String,
+      default: null,
+      required: false,
+      validator(value) {
+        return Rotate.includes(value);
+      }
+    }
+  },
+  computed: {
+    spriteKey() {
+      return `${this.library}-icon-${this.name}`;
+    },
+    spriteId() {
+      return `#${this.spriteKey}`;
+    },
+    modifiers() {
+      const classes = [];
+      if (this.flip) {
+        classes.push(`icon--flip-${this.flip}`);
+      }
+      if (this.rotate) {
+        classes.push(`icon--rotate-${this.rotate}`);
+      }
+      return classes;
+    },
+    ariaHidden() {
+      const slotUsed = Boolean(this.$slots.default);
+      const ariaLabel = this.$attrs["aria-label"] !== void 0;
+      const ariaLabelledby = this.$attrs["aria-labelledby"] !== void 0;
+      const ariaDescription = this.$attrs["aria-description"] !== void 0;
+      const ariaDescribedby = this.$attrs["aria-describedby"] !== void 0;
+      const hasText = slotUsed || ariaLabel || ariaLabelledby || ariaDescription || ariaDescribedby;
+      return hasText ? void 0 : "true";
+    }
+  }
+});
+
+// sfc-template:/home/runner/work/docs-generator/docs-generator/fkui/packages/vue/src/components/FIcon/FIcon.vue?type=template
+import { createCommentVNode as _createCommentVNode, renderSlot as _renderSlot, createElementVNode as _createElementVNode, mergeProps as _mergeProps, openBlock as _openBlock, createElementBlock as _createElementBlock, Fragment as _Fragment } from "vue";
+var _hoisted_1 = ["aria-hidden"];
+var _hoisted_2 = ["xlink:href"];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock(), _createElementBlock(
+    _Fragment,
+    null,
+    [
+      _createCommentVNode(" [html-validate-disable-block fkui/prefer-ficon -- this is the FIcon component]"),
+      (_openBlock(), _createElementBlock("svg", _mergeProps(_ctx.$attrs, {
+        focusable: "false",
+        class: ["icon", [_ctx.spriteKey, ..._ctx.modifiers]],
+        "aria-hidden": _ctx.ariaHidden
+      }), [
+        _renderSlot(_ctx.$slots, "default"),
+        _createElementVNode("use", { "xlink:href": _ctx.spriteId }, null, 8, _hoisted_2)
+      ], 16, _hoisted_1))
+    ],
+    2112
+    /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
+  );
+}
+
+// packages/vue/src/components/FIcon/FIcon.vue
+FIcon_default.render = render;
+FIcon_default.__file = "packages/vue/src/components/FIcon/FIcon.vue";
+var FIcon_default2 = FIcon_default;
 
 // packages/vue/src/plugins/translation/translate.ts
 import { TranslationService } from "@fkui/logic";
@@ -2264,34 +2018,30 @@ var FErrorPage_default = defineComponent2({
 // sfc-template:/home/runner/work/docs-generator/docs-generator/fkui/packages/vue/src/plugins/error/FErrorPage.vue?type=template
 import { createElementVNode as _createElementVNode2, openBlock as _openBlock2, createElementBlock as _createElementBlock2 } from "vue";
 var _hoisted_12 = { "data-test": "f-error-page" };
-var _hoisted_22 = /* @__PURE__ */ _createElementVNode2(
-  "h1",
-  null,
-  "Fel",
-  -1
-  /* HOISTED */
-);
-var _hoisted_3 = /* @__PURE__ */ _createElementVNode2(
-  "p",
-  null,
-  "Ett fel har uppst\xE5tt.",
-  -1
-  /* HOISTED */
-);
-var _hoisted_4 = /* @__PURE__ */ _createElementVNode2(
-  "a",
-  { href: "/" },
-  "G\xE5 till startsidan",
-  -1
-  /* HOISTED */
-);
-var _hoisted_5 = [
-  _hoisted_22,
-  _hoisted_3,
-  _hoisted_4
-];
 function render2(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock2(), _createElementBlock2("div", _hoisted_12, [..._hoisted_5]);
+  return _openBlock2(), _createElementBlock2("div", _hoisted_12, _cache[0] || (_cache[0] = [
+    _createElementVNode2(
+      "h1",
+      null,
+      "Fel",
+      -1
+      /* HOISTED */
+    ),
+    _createElementVNode2(
+      "p",
+      null,
+      "Ett fel har uppst\xE5tt.",
+      -1
+      /* HOISTED */
+    ),
+    _createElementVNode2(
+      "a",
+      { href: "/" },
+      "G\xE5 till startsidan",
+      -1
+      /* HOISTED */
+    )
+  ]));
 }
 
 // packages/vue/src/plugins/error/FErrorPage.vue
@@ -2456,6 +2206,19 @@ var FModal_default = defineComponent4({
       validator(value) {
         return sizes.includes(value);
       }
+    },
+    /**
+     * Default behavior is that the modal will restore focus to previous element once closed.
+     * - "on" (default) - component will set focus both when opened and closed
+     * - "off" - focus strategy disabled
+     * - "open" - focus will only be applied once modal is opened
+     */
+    focus: {
+      type: String,
+      default: "on",
+      validator(value) {
+        return ["on", "off", "open"].includes(value);
+      }
     }
   },
   emits: ["close"],
@@ -2508,8 +2271,12 @@ var FModal_default = defineComponent4({
       root.style.top = `-${scroll}px`;
       root.classList.add("modal__open");
       const focusElement3 = this.resolveFocusElement();
-      this.savedFocus = pushFocus(focusElement3);
-      this.savedScroll = scroll;
+      if (this.focus === "on") {
+        this.savedFocus = pushFocus(focusElement3);
+        this.savedScroll = scroll;
+      } else if (this.focus === "open") {
+        focus2(focusElement3);
+      }
     },
     /**
      * Prioritises what element to initially focus on in the following order:
@@ -2529,14 +2296,14 @@ var FModal_default = defineComponent4({
       return firstTabbableChildElement ?? contentElement;
     },
     restoreState() {
-      if (this.savedFocus) {
-        const root = document.documentElement;
-        root.classList.remove("modal__open");
-        root.style.removeProperty("top");
-        root.scrollTop = this.savedScroll ?? 0;
+      const root = document.documentElement;
+      root.classList.remove("modal__open");
+      root.style.removeProperty("top");
+      root.scrollTop = this.savedScroll ?? 0;
+      this.savedScroll = null;
+      if (this.focus === "on" && this.savedFocus) {
         popFocus(this.savedFocus);
         this.savedFocus = null;
-        this.savedScroll = null;
       }
     },
     onFocusFirst() {
@@ -2555,10 +2322,10 @@ var FModal_default = defineComponent4({
 // sfc-template:/home/runner/work/docs-generator/docs-generator/fkui/packages/vue/src/components/FModal/FModal.vue?type=template
 import { createElementVNode as _createElementVNode3, createCommentVNode as _createCommentVNode3, renderSlot as _renderSlot3, openBlock as _openBlock4, createElementBlock as _createElementBlock4, toDisplayString as _toDisplayString, resolveComponent as _resolveComponent, createVNode as _createVNode, normalizeClass as _normalizeClass, withKeys as _withKeys } from "vue";
 var _hoisted_13 = ["id"];
-var _hoisted_23 = { class: "modal__backdrop" };
-var _hoisted_32 = { class: "modal__inner-container" };
-var _hoisted_42 = { class: "modal__dialog" };
-var _hoisted_52 = { class: "modal__dialog-inner" };
+var _hoisted_22 = { class: "modal__backdrop" };
+var _hoisted_3 = { class: "modal__inner-container" };
+var _hoisted_4 = { class: "modal__dialog" };
+var _hoisted_5 = { class: "modal__dialog-inner" };
 var _hoisted_6 = { class: "modal__header" };
 var _hoisted_7 = {
   key: 0,
@@ -2581,7 +2348,7 @@ function render4(_ctx, _cache, $props, $setup, $data, $options) {
     id: _ctx.id,
     class: _normalizeClass(["modal", _ctx.modalClass])
   }, [
-    _createElementVNode3("div", _hoisted_23, [
+    _createElementVNode3("div", _hoisted_22, [
       _createElementVNode3(
         "div",
         {
@@ -2592,7 +2359,7 @@ function render4(_ctx, _cache, $props, $setup, $data, $options) {
           onKeyup: _cache[3] || (_cache[3] = _withKeys((...args) => _ctx.onClose && _ctx.onClose(...args), ["esc"]))
         },
         [
-          _createElementVNode3("div", _hoisted_32, [
+          _createElementVNode3("div", _hoisted_3, [
             _createElementVNode3(
               "div",
               {
@@ -2600,8 +2367,8 @@ function render4(_ctx, _cache, $props, $setup, $data, $options) {
                 class: _normalizeClass(["modal__dialog-container", _ctx.containerClasses])
               },
               [
-                _createElementVNode3("div", _hoisted_42, [
-                  _createElementVNode3("div", _hoisted_52, [
+                _createElementVNode3("div", _hoisted_4, [
+                  _createElementVNode3("div", _hoisted_5, [
                     _createElementVNode3("div", _hoisted_6, [
                       _createElementVNode3(
                         "div",
@@ -2775,6 +2542,19 @@ var FConfirmModal_default = defineComponent5({
       default: () => {
         return defaultButtons;
       }
+    },
+    /**
+     * Default behavior is that the modal will restore focus to previous element once closed.
+     * - "on" (default) - component will set focus both when opened and closed
+     * - "off" - focus strategy disabled
+     * - "open" - focus will only be applied once modal is opened
+     */
+    focus: {
+      type: String,
+      default: "on",
+      validator(value) {
+        return ["on", "off", "open"].includes(value);
+      }
     }
   },
   emits: ["close", ...defaultButtons.map((it) => it.event ?? "")],
@@ -2801,8 +2581,8 @@ var FConfirmModal_default = defineComponent5({
 // sfc-template:/home/runner/work/docs-generator/docs-generator/fkui/packages/vue/src/components/FModal/FConfirmModal/FConfirmModal.vue?type=template
 import { createCommentVNode as _createCommentVNode4, renderSlot as _renderSlot4, toDisplayString as _toDisplayString2, createTextVNode as _createTextVNode, renderList as _renderList, Fragment as _Fragment2, openBlock as _openBlock5, createElementBlock as _createElementBlock5, createElementVNode as _createElementVNode4, normalizeClass as _normalizeClass2, resolveComponent as _resolveComponent2, withCtx as _withCtx, createBlock as _createBlock2 } from "vue";
 var _hoisted_14 = { class: "button-group" };
-var _hoisted_24 = ["onClick"];
-var _hoisted_33 = {
+var _hoisted_23 = ["onClick"];
+var _hoisted_32 = {
   key: 0,
   class: "sr-only"
 };
@@ -2814,6 +2594,7 @@ function render5(_ctx, _cache, $props, $setup, $data, $options) {
     "aria-close-text": _ctx.ariaCloseText,
     type: "warning",
     size: _ctx.size,
+    focus: _ctx.focus,
     onClose: _ctx.onClose
   }, {
     header: _withCtx(() => [
@@ -2857,12 +2638,12 @@ function render5(_ctx, _cache, $props, $setup, $data, $options) {
               ),
               button.screenreader ? (_openBlock5(), _createElementBlock5(
                 "span",
-                _hoisted_33,
+                _hoisted_32,
                 "\xA0" + _toDisplayString2(button.screenreader),
                 1
                 /* TEXT */
               )) : _createCommentVNode4("v-if", true)
-            ], 10, _hoisted_24);
+            ], 10, _hoisted_23);
           }),
           128
           /* KEYED_FRAGMENT */
@@ -2871,7 +2652,7 @@ function render5(_ctx, _cache, $props, $setup, $data, $options) {
     ]),
     _: 3
     /* FORWARDED */
-  }, 8, ["fullscreen", "is-open", "aria-close-text", "size", "onClose"]);
+  }, 8, ["fullscreen", "is-open", "aria-close-text", "size", "focus", "onClose"]);
 }
 
 // packages/vue/src/components/FModal/FConfirmModal/FConfirmModal.vue
@@ -2884,7 +2665,7 @@ import { ElementIdService as ElementIdService3, ValidationService as ValidationS
 
 // sfc-script:/home/runner/work/docs-generator/docs-generator/fkui/packages/vue/src/components/FValidationForm/FValidationForm.vue?type=script
 import { defineComponent as defineComponent10 } from "vue";
-import { ValidationService as ValidationService2, focus as focus3, ElementIdService as ElementIdService2 } from "@fkui/logic";
+import { ValidationService as ValidationService2, focus as focus4, ElementIdService as ElementIdService2 } from "@fkui/logic";
 
 // sfc-script:/home/runner/work/docs-generator/docs-generator/fkui/packages/vue/src/components/FErrorList/FErrorList.vue?type=script
 import { defineComponent as defineComponent8 } from "vue";
@@ -3069,7 +2850,7 @@ IFlexItem_default.__file = "packages/vue/src/internal-components/IFlex/IFlexItem
 var IFlexItem_default2 = IFlexItem_default;
 
 // packages/vue/src/components/FErrorList/focus-error.ts
-import { focus as focus2, scrollTo } from "@fkui/logic";
+import { focus as focus3, scrollTo } from "@fkui/logic";
 function focusError(item) {
   const element = document.querySelector(`#${item.id}`);
   if (!element) {
@@ -3077,7 +2858,7 @@ function focusError(item) {
   }
   const focusElement3 = document.querySelector(`#${item.focusElementId}`);
   scrollTo(element, window.innerHeight * 0.25);
-  focus2(focusElement3 ? focusElement3 : element);
+  focus3(focusElement3 ? focusElement3 : element);
 }
 
 // sfc-script:/home/runner/work/docs-generator/docs-generator/fkui/packages/vue/src/components/FErrorList/FErrorList.vue?type=script
@@ -3137,30 +2918,10 @@ var FErrorList_default = defineComponent8({
 // sfc-template:/home/runner/work/docs-generator/docs-generator/fkui/packages/vue/src/components/FErrorList/FErrorList.vue?type=template
 import { resolveComponent as _resolveComponent3, createVNode as _createVNode2, withCtx as _withCtx2, openBlock as _openBlock8, createBlock as _createBlock3, createCommentVNode as _createCommentVNode7, createTextVNode as _createTextVNode2, renderSlot as _renderSlot7, createElementBlock as _createElementBlock8, renderList as _renderList2, Fragment as _Fragment3, createElementVNode as _createElementVNode5, toDisplayString as _toDisplayString3, withModifiers as _withModifiers, normalizeClass as _normalizeClass5 } from "vue";
 var _hoisted_15 = { class: "error-list" };
-var _hoisted_25 = { key: 0 };
-var _hoisted_34 = { class: "error-list__list error-list--list-style-none" };
-var _hoisted_43 = ["onClick"];
-var _hoisted_53 = /* @__PURE__ */ _createElementVNode5(
-  "span",
-  {
-    class: "error-list__bullet",
-    "aria-hidden": "true"
-  },
-  null,
-  -1
-  /* HOISTED */
-);
-var _hoisted_62 = { class: "error-list__link" };
-var _hoisted_72 = /* @__PURE__ */ _createElementVNode5(
-  "span",
-  {
-    class: "error-list__bullet",
-    "aria-hidden": "true"
-  },
-  null,
-  -1
-  /* HOISTED */
-);
+var _hoisted_24 = { key: 0 };
+var _hoisted_33 = { class: "error-list__list error-list--list-style-none" };
+var _hoisted_42 = ["onClick"];
+var _hoisted_52 = { class: "error-list__link" };
 function render8(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = _resolveComponent3("f-icon");
   const _component_i_flex_item = _resolveComponent3("i-flex-item");
@@ -3186,19 +2947,19 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
           key: 1,
           shrink: ""
         }, {
-          default: _withCtx2(() => [
+          default: _withCtx2(() => _cache[0] || (_cache[0] = [
             _createTextVNode2("\xA0")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         })) : _createCommentVNode7("v-if", true),
         _createVNode2(_component_i_flex_item, { grow: "" }, {
           default: _withCtx2(() => [
-            _ctx.hasTitleSlot ? (_openBlock8(), _createElementBlock8("div", _hoisted_25, [
+            _ctx.hasTitleSlot ? (_openBlock8(), _createElementBlock8("div", _hoisted_24, [
               _createCommentVNode7(" @slot Optional title shown above the errorlist. No icon is shown if no title is set "),
               _renderSlot7(_ctx.$slots, "title")
             ])) : _createCommentVNode7("v-if", true),
-            _createElementVNode5("ul", _hoisted_34, [
+            _createElementVNode5("ul", _hoisted_33, [
               (_openBlock8(true), _createElementBlock8(
                 _Fragment3,
                 null,
@@ -3219,10 +2980,19 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
                           _Fragment3,
                           { key: 0 },
                           [
-                            _hoisted_53,
+                            _cache[1] || (_cache[1] = _createElementVNode5(
+                              "span",
+                              {
+                                class: "error-list__bullet",
+                                "aria-hidden": "true"
+                              },
+                              null,
+                              -1
+                              /* HOISTED */
+                            )),
                             _createElementVNode5(
                               "span",
-                              _hoisted_62,
+                              _hoisted_52,
                               _toDisplayString3(item.title),
                               1
                               /* TEXT */
@@ -3243,7 +3013,7 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
                           64
                           /* STABLE_FRAGMENT */
                         ))
-                      ], 8, _hoisted_43)) : (_openBlock8(), _createElementBlock8(
+                      ], 8, _hoisted_42)) : (_openBlock8(), _createElementBlock8(
                         _Fragment3,
                         { key: 1 },
                         [
@@ -3251,7 +3021,16 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
                             _Fragment3,
                             { key: 0 },
                             [
-                              _hoisted_72,
+                              _cache[2] || (_cache[2] = _createElementVNode5(
+                                "span",
+                                {
+                                  class: "error-list__bullet",
+                                  "aria-hidden": "true"
+                                },
+                                null,
+                                -1
+                                /* HOISTED */
+                              )),
                               _createElementVNode5(
                                 "span",
                                 null,
@@ -3511,11 +3290,11 @@ var FValidationForm_default = defineComponent10({
         return false;
       }
       if (this.useErrorList) {
-        focus3(this.$refs.errors);
+        focus4(this.$refs.errors);
       } else {
         const firstError = this.validity.componentsWithError[0];
         const element = document.getElementById(firstError.focusElementId);
-        focus3(element);
+        focus4(element);
       }
       return true;
     },
@@ -3543,7 +3322,7 @@ var FValidationForm_default = defineComponent10({
 // sfc-template:/home/runner/work/docs-generator/docs-generator/fkui/packages/vue/src/components/FValidationForm/FValidationForm.vue?type=template
 import { createCommentVNode as _createCommentVNode8, renderSlot as _renderSlot9, resolveComponent as _resolveComponent4, withCtx as _withCtx3, createVNode as _createVNode3, openBlock as _openBlock10, createElementBlock as _createElementBlock10, withModifiers as _withModifiers2, mergeProps as _mergeProps2, createElementVNode as _createElementVNode6, createBlock as _createBlock4 } from "vue";
 var _hoisted_16 = ["id"];
-var _hoisted_26 = {
+var _hoisted_25 = {
   key: 0,
   ref: "errors",
   tabindex: "-1",
@@ -3567,7 +3346,7 @@ function render10(_ctx, _cache, $props, $setup, $data, $options) {
       }), [
         _ctx.displayErrors ? (_openBlock10(), _createElementBlock10(
           "nav",
-          _hoisted_26,
+          _hoisted_25,
           [
             _createVNode3(_component_f_error_list, {
               items: _ctx.errors,
@@ -3747,12 +3526,12 @@ var FFormModal_default = defineComponent11({
 // sfc-template:/home/runner/work/docs-generator/docs-generator/fkui/packages/vue/src/components/FModal/FFormModal/FFormModal.vue?type=template
 import { createCommentVNode as _createCommentVNode9, renderSlot as _renderSlot10, createElementVNode as _createElementVNode7, resolveComponent as _resolveComponent5, withCtx as _withCtx4, createVNode as _createVNode4, renderList as _renderList3, Fragment as _Fragment4, openBlock as _openBlock11, createElementBlock as _createElementBlock11, toDisplayString as _toDisplayString4, normalizeClass as _normalizeClass6, createTextVNode as _createTextVNode3, createBlock as _createBlock5 } from "vue";
 var _hoisted_17 = { class: "button-group" };
-var _hoisted_27 = ["type", "form", "onClick"];
-var _hoisted_35 = {
+var _hoisted_26 = ["type", "form", "onClick"];
+var _hoisted_34 = {
   key: 0,
   class: "sr-only"
 };
-var _hoisted_44 = ["form"];
+var _hoisted_43 = ["form"];
 function render11(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_validation_form = _resolveComponent5("f-validation-form");
   const _component_f_modal = _resolveComponent5("f-modal");
@@ -3814,12 +3593,12 @@ function render11(_ctx, _cache, $props, $setup, $data, $options) {
               ),
               button.screenreader ? (_openBlock11(), _createElementBlock11(
                 "span",
-                _hoisted_35,
+                _hoisted_34,
                 "\xA0" + _toDisplayString4(button.screenreader),
                 1
                 /* TEXT */
               )) : _createCommentVNode9("v-if", true)
-            ], 10, _hoisted_27);
+            ], 10, _hoisted_26);
           }),
           128
           /* KEYED_FRAGMENT */
@@ -3833,7 +3612,7 @@ function render11(_ctx, _cache, $props, $setup, $data, $options) {
               type: "submit",
               class: "button button--primary button-group__item button--large"
             }, [
-              _createCommentVNode9(' @slot @deprecated - Slot for submit button text. If you want to modify the footer section, see prop "buttons" '),
+              _createCommentVNode9(' @slot - @deprecated Slot for submit button text. If you want to modify the footer section, see prop "buttons" '),
               _renderSlot10(_ctx.$slots, "submit-button-text", {}, () => [
                 _createTextVNode3(
                   _toDisplayString4(_ctx.$t("fkui.form-modal.button.submit.text", "Spara")),
@@ -3841,14 +3620,14 @@ function render11(_ctx, _cache, $props, $setup, $data, $options) {
                   /* TEXT */
                 )
               ])
-            ], 8, _hoisted_44),
+            ], 8, _hoisted_43),
             _createElementVNode7("button", {
               "data-test": "cancel-button",
               type: "button",
               class: "button button--secondary button-group__item button--large",
               onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onCancel && _ctx.onCancel(...args))
             }, [
-              _createCommentVNode9(' @slot @deprecated -  Slot for cancel button text. If you want to modify the footer section, see prop "buttons" '),
+              _createCommentVNode9(' @slot - @deprecated Slot for cancel button text. If you want to modify the footer section, see prop "buttons" '),
               _renderSlot10(_ctx.$slots, "cancel-button-text", {}, () => [
                 _createTextVNode3(
                   _toDisplayString4(_ctx.$t("fkui.form-modal.button.cancel.text", "Avbryt")),
@@ -3880,6 +3659,9 @@ function hasSlot(vm, name, props = {}, options = {}) {
   const slot = vm.$slots[name];
   return Boolean(renderSlotText(slot, props, options));
 }
+
+// packages/vue/src/utils/use-modal.ts
+import { getCurrentInstance } from "vue";
 
 // packages/vue/src/utils/action-from-keyboard-event.ts
 function actionFromKeyboardEvent(event) {
@@ -3914,7 +3696,253 @@ function actionFromKeyboardEvent(event) {
   }
 }
 
+// packages/vue/src/utils/get-absolute-position.ts
+function getAbsolutePosition(src) {
+  if (!src) {
+    return void 0;
+  }
+  const isRoot = src.isSameNode(document.documentElement);
+  if (isRoot) {
+    return {
+      x: window.pageXOffset,
+      y: window.pageYOffset,
+      width: src.clientWidth,
+      height: src.clientHeight
+    };
+  }
+  const rect = src.getBoundingClientRect();
+  return {
+    x: Math.floor(rect.left + window.pageXOffset),
+    y: Math.floor(rect.top + window.pageYOffset),
+    width: Math.floor(rect.width),
+    height: Math.floor(rect.height)
+  };
+}
+
+// packages/vue/src/internal-components/IPopup/IPopupUtils.ts
+function offset(page, el) {
+  const rect = el.getBoundingClientRect();
+  return {
+    top: rect.top + page.pageYOffset,
+    left: rect.left + page.pageXOffset
+  };
+}
+function getElement(anchor) {
+  if (!anchor) {
+    return null;
+  }
+  if (typeof anchor === "string") {
+    return document.getElementById(anchor);
+  } else {
+    return anchor;
+  }
+}
+function getCandidates(anchor, target, clippedArea, spacing, candidateOrder) {
+  const dw = target.width - anchor.width;
+  const a = {
+    placement: "A" /* A */,
+    x: anchor.x,
+    y: anchor.y + anchor.height + spacing,
+    width: target.width,
+    height: target.height,
+    direction: 1 /* Vertical */
+  };
+  const b = {
+    placement: "B" /* B */,
+    x: anchor.x - dw,
+    y: anchor.y + anchor.height + spacing,
+    width: target.width,
+    height: target.height,
+    direction: 1 /* Vertical */
+  };
+  const c = {
+    placement: "C" /* C */,
+    x: anchor.x,
+    y: anchor.y - target.height - spacing,
+    width: target.width,
+    height: target.height,
+    direction: 1 /* Vertical */
+  };
+  const d = {
+    placement: "D" /* D */,
+    x: anchor.x - dw,
+    y: anchor.y - target.height - spacing,
+    width: target.width,
+    height: target.height,
+    direction: 1 /* Vertical */
+  };
+  const e = {
+    placement: "E" /* E */,
+    x: anchor.x + anchor.width + spacing,
+    y: anchor.y + anchor.height / 2 - target.height / 2,
+    width: target.width,
+    height: target.height,
+    direction: 0 /* Horizontal */
+  };
+  const f = {
+    placement: "F" /* F */,
+    x: anchor.x - (target.width + spacing),
+    y: anchor.y + anchor.height / 2 - target.height / 2,
+    width: target.width,
+    height: target.height,
+    direction: 0 /* Horizontal */
+  };
+  const g = {
+    placement: "G" /* G */,
+    x: anchor.x + anchor.width + spacing,
+    y: clippedArea.y + spacing,
+    width: target.width,
+    height: target.height,
+    direction: 2 /* Both */
+  };
+  const h2 = {
+    placement: "H" /* H */,
+    x: anchor.x - (target.width + spacing),
+    y: clippedArea.y + spacing,
+    width: target.width,
+    height: target.height,
+    direction: 2 /* Both */
+  };
+  const i = {
+    placement: "I" /* I */,
+    x: clippedArea.x + (clippedArea.width - target.width) / 2,
+    y: clippedArea.y + (clippedArea.height - target.height) / 2,
+    width: target.width,
+    height: target.height,
+    direction: 3 /* None */
+  };
+  if (candidateOrder === "IPopupError" /* IPopupError */) {
+    return [b, a, d, c, e, f, f, f, f];
+  } else {
+    return [a, b, c, d, e, f, g, h2, i];
+  }
+}
+function isInside(outer, inner, spacing) {
+  const isHorizontalDirection = inner.direction === 0 /* Horizontal */ || inner.direction === 2 /* Both */;
+  const xSpacing = isHorizontalDirection ? spacing : 0;
+  const isVerticalDirection = inner.direction === 1 /* Vertical */ || inner.direction === 2 /* Both */;
+  const ySpacing = isVerticalDirection ? spacing : 0;
+  const ax = [inner.x, inner.x + inner.width];
+  const ay = [inner.y, inner.y + inner.height];
+  const bx = [outer.x + xSpacing, outer.x + outer.width - xSpacing];
+  const by = [outer.y + ySpacing, outer.y + outer.height - ySpacing];
+  if (ax[0] < bx[0] || ax[1] > bx[1]) {
+    return false;
+  }
+  if (ay[0] < by[0] || ay[1] > by[1]) {
+    return false;
+  }
+  return true;
+}
+function isElementOptions(options) {
+  return options.target instanceof HTMLElement;
+}
+function clipRect(src, clip) {
+  if (!clip) {
+    return src;
+  }
+  const x = Math.max(src.x, clip.x);
+  const y = Math.max(src.y, clip.y);
+  const width = Math.min(src.x + src.width, clip.x + clip.width) - x;
+  const height = Math.min(src.y + src.height, clip.y + clip.height) - y;
+  return { x, y, width, height };
+}
+function fitInsideArea(options) {
+  if (isElementOptions(options)) {
+    const {
+      area: areaElement,
+      anchor: anchorElement,
+      target: targetElement,
+      viewport: viewportElement,
+      spacing: spacing2,
+      candidateOrder
+    } = options;
+    const area2 = getAbsolutePosition(areaElement);
+    const anchor2 = getAbsolutePosition(anchorElement);
+    const target2 = getAbsolutePosition(targetElement);
+    const viewport2 = getAbsolutePosition(viewportElement);
+    const result = fitInsideArea({
+      area: area2,
+      target: target2,
+      anchor: anchor2,
+      viewport: viewport2,
+      spacing: spacing2,
+      candidateOrder
+    });
+    const offset2 = targetElement.offsetParent?.getBoundingClientRect();
+    if (!offset2) {
+      return result;
+    }
+    return {
+      ...result,
+      x: result.x - (offset2.left + window.pageXOffset),
+      y: result.y - (offset2.top + window.pageYOffset)
+    };
+  }
+  const { anchor, target, area, viewport, spacing } = options;
+  const clippedArea = clipRect(area, viewport);
+  const candidates = getCandidates(
+    anchor,
+    target,
+    clippedArea,
+    spacing,
+    options.candidateOrder
+  );
+  const index = candidates.findIndex(
+    (it) => isInside(clippedArea, it, spacing)
+  );
+  if (index >= 0) {
+    const match = candidates[index];
+    return { x: match.x, y: match.y, placement: match.placement };
+  }
+  return {
+    ...getFallbackPosition(anchor, target, clippedArea, spacing),
+    placement: "Fallback" /* Fallback */
+  };
+}
+function getScrollToPopup(param) {
+  const popupOffset = offset(
+    { pageXOffset: 0, pageYOffset: param.scrollTop },
+    param.popup
+  );
+  const popupHeight = param.popup.offsetHeight;
+  const neededScroll = popupOffset.top - param.windowInnerHeight + popupHeight + param.spacing;
+  if (neededScroll > param.scrollTop) {
+    return neededScroll;
+  } else {
+    return param.scrollTop;
+  }
+}
+function getFallbackPosition(anchor, target, clippedArea, spacing) {
+  const x = anchor.x - (target.width + spacing);
+  const y = anchor.y + anchor.height + spacing;
+  if (x >= clippedArea.x) {
+    return {
+      x,
+      y
+    };
+  } else {
+    return {
+      x: clippedArea.x + spacing,
+      y
+    };
+  }
+}
+
+// packages/vue/src/internal-components/IPopup/get-container.ts
+function getContainer(element, prop) {
+  if (prop) {
+    return prop;
+  }
+  const parent = element.closest(".popup__container");
+  if (parent) {
+    return parent;
+  }
+  return config.popupContainer;
+}
+
 // packages/vue/src/internal-components/IPopup/get-focusable-element.ts
+import { findTabbableElements as findTabbableElements2 } from "@fkui/logic";
 function getFocusableElement(rootElement, callback) {
   if (callback) {
     return callback();
@@ -3936,6 +3964,8 @@ function isTeleportDisabled(options) {
   if (forceInline) {
     disableTeleport = true;
   } else if (forceOverlay) {
+    disableTeleport = false;
+  } else if (placement === "NotCalculated" /* NotCalculated */ && !isMobileSize) {
     disableTeleport = false;
   }
   return disableTeleport;
@@ -4027,25 +4057,38 @@ var IPopup_default = defineComponent12({
       default: true
     }
   },
-  emits: ["open", "close"],
+  emits: [
+    /**
+     * Emitted when popup is visible and placement is fully calculated.
+     */
+    "open",
+    /**
+     * Emitted when clicked outside of popup.
+     */
+    "close"
+  ],
   data() {
     return {
       teleportDisabled: false,
       placement: "NotCalculated" /* NotCalculated */,
-      focus: null,
-      noCloseOnResize: false
+      focus: null
     };
   },
   computed: {
     popupClasses() {
+      const popupState = this.isInline ? ["popup--inline"] : ["popup--overlay"];
+      return ["popup", ...popupState];
+    },
+    isInline() {
       let isInline = this.teleportDisabled || this.placement === "Fallback" /* Fallback */;
       if (this.forceInline) {
         isInline = true;
       } else if (this.forceOverlay) {
         isInline = false;
+      } else if (this.placement === "NotCalculated" /* NotCalculated */ && !this.isMobileSize()) {
+        isInline = false;
       }
-      const popupState = isInline ? ["popup--inline"] : ["popup--overlay"];
-      return ["popup", ...popupState];
+      return isInline;
     },
     forceInline() {
       return this.alwaysInline || this.inline === "always";
@@ -4068,19 +4111,22 @@ var IPopup_default = defineComponent12({
           setTimeout(() => {
             if (this.isOpen) {
               document.addEventListener("click", this.onDocumentClickHandler);
-              window.addEventListener("resize", this.onWindowResizeHandler);
+              window.addEventListener("resize", this.onWindowResizeDebounced);
             }
           }, 0);
         } else {
           document.removeEventListener("click", this.onDocumentClickHandler);
-          window.removeEventListener("resize", this.onWindowResizeHandler);
+          window.removeEventListener("resize", this.onWindowResizeDebounced);
         }
       }
     }
   },
+  created() {
+    this.onWindowResizeDebounced = debounce(this.onWindowResize, 100).bind(this);
+  },
   unmounted() {
     document.removeEventListener("click", this.onDocumentClickHandler);
-    window.removeEventListener("resize", this.onWindowResizeHandler);
+    window.removeEventListener("resize", this.onWindowResizeDebounced);
   },
   methods: {
     async toggleIsOpen(isOpen) {
@@ -4093,8 +4139,13 @@ var IPopup_default = defineComponent12({
         return;
       }
       await this.$nextTick();
-      const popup = this.$refs["popup"];
-      const wrapper = this.$refs["wrapper"];
+      await this.calculatePlacement();
+      this.applyFocus();
+      this.$emit("open");
+    },
+    async calculatePlacement() {
+      const popup = getHTMLElementFromVueRef(this.$refs.popup);
+      const wrapper = getHTMLElementFromVueRef(this.$refs.wrapper);
       const anchor = getElement(this.anchor);
       if (!anchor) {
         throw new Error("No anchor element found");
@@ -4116,13 +4167,12 @@ var IPopup_default = defineComponent12({
         if (useOverlay) {
           wrapper.style.left = `${result.x}px`;
           wrapper.style.top = `${result.y}px`;
-          this.applyFocus();
-          this.$emit("open");
           return;
         }
       }
-      this.noCloseOnResize = true;
       this.teleportDisabled = true;
+      wrapper.style.removeProperty("left");
+      wrapper.style.removeProperty("top");
       await new Promise((resolve) => setTimeout(resolve, 200));
       const scrollTarget = popup.closest(".scroll-target");
       const hasScrollTarget = scrollTarget !== null;
@@ -4133,23 +4183,22 @@ var IPopup_default = defineComponent12({
         spacing: POPUP_SPACING
       });
       const scrollOptions = { top, behavior: "smooth" };
-      wrapper.style.removeProperty("left");
-      wrapper.style.removeProperty("top");
       if (hasScrollTarget) {
         scrollTarget.scrollTo(scrollOptions);
       } else {
         window.scrollTo(scrollOptions);
       }
-      this.noCloseOnResize = false;
-      this.applyFocus();
-      this.$emit("open");
     },
     applyFocus() {
-      if (this.setFocus) {
-        const wrapper = this.$refs["wrapper"];
-        const focusableElement = getFocusableElement(wrapper, this.focusElement);
-        this.focus = pushFocus2(focusableElement);
+      if (!this.setFocus) {
+        return;
       }
+      const wrapper = this.$refs.wrapper;
+      if (!wrapper) {
+        return;
+      }
+      const focusableElement = getFocusableElement(wrapper, this.focusElement);
+      this.focus = pushFocus2(focusableElement);
     },
     isMobileSize() {
       return window.innerWidth < MIN_DESKTOP_WIDTH;
@@ -4157,11 +4206,26 @@ var IPopup_default = defineComponent12({
     onDocumentClickHandler() {
       this.$emit("close");
     },
-    onWindowResizeHandler() {
-      if (this.noCloseOnResize) {
+    onWindowResizeDebounced() {
+    },
+    async onWindowResize() {
+      if (!this.isOpen) {
         return;
       }
-      this.$emit("close");
+      if (this.forceInline) {
+        return;
+      }
+      if (this.isInline && this.isMobileSize()) {
+        return;
+      }
+      if (this.isInline) {
+        this.placement = "NotCalculated" /* NotCalculated */;
+        this.teleportDisabled = false;
+        await this.$nextTick();
+      }
+      await this.calculatePlacement();
+      const { placement, forceInline, forceOverlay } = this;
+      this.teleportDisabled = isTeleportDisabled({ window, placement, forceInline, forceOverlay });
     },
     onPopupClickHandler(event) {
       event.stopPropagation();
@@ -4171,7 +4235,8 @@ var IPopup_default = defineComponent12({
     },
     onKeyTab(event) {
       if (this.keyboardTrap) {
-        handleTab(event, this.$refs.wrapper);
+        const wrapper = getHTMLElementFromVueRef(this.$refs.wrapper);
+        handleTab(event, wrapper);
       }
     }
   }
@@ -4266,7 +4331,7 @@ async function doMenuAction(action, target) {
 var preventKeys = ["Tab", "Up", "Down", "ArrowUp", "ArrowDown", "Home", "End", " ", "Spacebar", "Enter"];
 var IPopupMenu_default = defineComponent13({
   name: "IPopupMenu",
-  components: { FIcon: FIcon_default2, IPopup: IPopup_default2 },
+  components: { IPopup: IPopup_default2 },
   props: {
     /**
      * Key of the currently selected and highlighted item.
@@ -4427,17 +4492,29 @@ var IPopupMenu_default = defineComponent13({
       }
       return this.items.indexOf(item);
     },
-    async onClickItem(item, doClick = false) {
-      if (item.key !== this.lastSelectedItem) {
-        this.$emit("update:modelValue", item.key);
-        this.$emit("select", item.key);
-        this.lastSelectedItem = item.key;
+    onClickItem(event, item) {
+      this.selectItem(item.key);
+      const target = event.target;
+      const isAnchor = target instanceof HTMLElement && target.tagName === "A";
+      if (!isAnchor) {
+        this.clickItemAnchor(item);
+      }
+    },
+    clickItemAnchor(item) {
+      if (!item.href) {
+        return;
+      }
+      const index = this.items.indexOf(item);
+      const anchors = getSortedHTMLElementsFromVueRef(this.$refs.anchors);
+      anchors[index].click();
+    },
+    selectItem(key) {
+      if (key !== this.lastSelectedItem) {
+        this.$emit("update:modelValue", key);
+        this.$emit("select", key);
+        this.lastSelectedItem = key;
       }
       this.$emit("close");
-      if (item.href && doClick) {
-        const anchors = getSortedHTMLElementsFromVueRef(this.$refs.anchors);
-        anchors[this.currentFocusedItemIndex]?.click();
-      }
     },
     itemClasses(item) {
       const highlight = item.key === this.modelValue ? ["ipopupmenu__list__item--highlight"] : [];
@@ -4454,7 +4531,7 @@ var IPopupMenu_default = defineComponent13({
         return;
       }
       const itemAnchor = anchors[index];
-      focus5(itemAnchor, { preventScroll: true });
+      focus6(itemAnchor, { preventScroll: true });
       const key = this.items[index].key;
       this.$emit("update:focusedItem", key);
     },
@@ -4462,7 +4539,9 @@ var IPopupMenu_default = defineComponent13({
       if (index !== this.currentFocusedItemIndex) {
         await this.setFocusOnItem(index);
       }
-      await this.onClickItem(this.items[index], true);
+      const item = this.items[index];
+      this.selectItem(item.key);
+      this.clickItemAnchor(item);
     },
     setFocusedItemIndex(index) {
       this.currentFocusedItemIndex = index;
@@ -4504,20 +4583,19 @@ var IPopupMenu_default = defineComponent13({
 });
 
 // sfc-template:/home/runner/work/docs-generator/docs-generator/fkui/packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue?type=template
-import { renderList as _renderList4, Fragment as _Fragment5, openBlock as _openBlock13, createElementBlock as _createElementBlock12, toDisplayString as _toDisplayString5, createElementVNode as _createElementVNode9, createCommentVNode as _createCommentVNode11, resolveComponent as _resolveComponent6, createBlock as _createBlock7, createTextVNode as _createTextVNode4, normalizeClass as _normalizeClass7, withCtx as _withCtx5 } from "vue";
+import { renderList as _renderList4, Fragment as _Fragment5, openBlock as _openBlock13, createElementBlock as _createElementBlock12, toDisplayString as _toDisplayString5, createElementVNode as _createElementVNode9, createCommentVNode as _createCommentVNode11, createTextVNode as _createTextVNode4, normalizeClass as _normalizeClass7, resolveComponent as _resolveComponent6, withCtx as _withCtx5, createBlock as _createBlock7 } from "vue";
 var _hoisted_18 = ["aria-label"];
-var _hoisted_28 = {
+var _hoisted_27 = {
   role: "menu",
   class: "ipopupmenu__list"
 };
-var _hoisted_36 = ["onClick"];
-var _hoisted_45 = ["data-ref-index", "href", "target"];
-var _hoisted_54 = {
+var _hoisted_35 = ["onClick"];
+var _hoisted_44 = ["data-ref-index", "href", "target"];
+var _hoisted_53 = {
   key: 0,
   class: "sr-only"
 };
 function render13(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_f_icon = _resolveComponent6("f-icon");
   const _component_i_popup = _resolveComponent6("i-popup");
   return _openBlock13(), _createBlock7(_component_i_popup, {
     class: "ipopupmenu",
@@ -4534,7 +4612,7 @@ function render13(_ctx, _cache, $props, $setup, $data, $options) {
         class: "ipopupmenu ipopupmenu--vertical",
         "aria-label": _ctx.ariaLabel
       }, [
-        _createElementVNode9("ul", _hoisted_28, [
+        _createElementVNode9("ul", _hoisted_27, [
           (_openBlock13(true), _createElementBlock12(
             _Fragment5,
             null,
@@ -4545,7 +4623,7 @@ function render13(_ctx, _cache, $props, $setup, $data, $options) {
                 key: item.key,
                 role: "presentation",
                 class: _normalizeClass7(_ctx.itemClasses(item)),
-                onClick: ($event) => _ctx.onClickItem(item)
+                onClick: (event) => _ctx.onClickItem(event, item)
               }, [
                 _createElementVNode9("a", {
                   ref_for: true,
@@ -4556,7 +4634,7 @@ function render13(_ctx, _cache, $props, $setup, $data, $options) {
                   target: item.target,
                   tabindex: "0"
                 }, [
-                  _ctx.isSelected(index) ? (_openBlock13(), _createElementBlock12("span", _hoisted_54, [
+                  _ctx.isSelected(index) ? (_openBlock13(), _createElementBlock12("span", _hoisted_53, [
                     _createElementVNode9(
                       "span",
                       null,
@@ -4566,16 +4644,12 @@ function render13(_ctx, _cache, $props, $setup, $data, $options) {
                     )
                   ])) : _createCommentVNode11("v-if", true),
                   _createTextVNode4(
-                    _toDisplayString5(item.label) + " ",
+                    " " + _toDisplayString5(item.label),
                     1
                     /* TEXT */
-                  ),
-                  item.iconRight ? (_openBlock13(), _createBlock7(_component_f_icon, {
-                    key: 1,
-                    name: item.iconRight
-                  }, null, 8, ["name"])) : _createCommentVNode11("v-if", true)
-                ], 8, _hoisted_45)
-              ], 10, _hoisted_36);
+                  )
+                ], 8, _hoisted_44)
+              ], 10, _hoisted_35);
             }),
             128
             /* KEYED_FRAGMENT */

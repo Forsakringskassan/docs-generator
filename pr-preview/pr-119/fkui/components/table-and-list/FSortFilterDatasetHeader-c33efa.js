@@ -33,23 +33,22 @@ import { createElementVNode as _createElementVNode, resolveComponent as _resolve
 var exampleComponent = defineComponent({
   components: { FSortFilterDataset }
 });
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "h1",
-  null,
-  "Stor rubrik",
-  -1
-  /* HOISTED */
-);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_sort_filter_dataset = _resolveComponent("f-sort-filter-dataset");
   return _openBlock(), _createBlock(_component_f_sort_filter_dataset, {
     data: [],
     "sortable-attributes": { givenname: "F\xF6rnamn", surname: "Efternamn" }
   }, {
-    header: _withCtx(() => [
-      _hoisted_1
-    ]),
-    default: _withCtx(() => []),
+    header: _withCtx(() => _cache[0] || (_cache[0] = [
+      _createElementVNode(
+        "h1",
+        null,
+        "Stor rubrik",
+        -1
+        /* HOISTED */
+      )
+    ])),
+    default: _withCtx(() => _cache[1] || (_cache[1] = [])),
     _: 1
     /* STABLE */
   });

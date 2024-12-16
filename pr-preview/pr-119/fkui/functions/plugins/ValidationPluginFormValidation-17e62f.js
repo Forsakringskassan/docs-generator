@@ -34,13 +34,6 @@ var exampleComponent = defineComponent({
   name: "ValidationPluginFormValidation",
   components: { FValidationForm, FTextField }
 });
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "button",
-  { type: "submit" },
-  "Trigga fel",
-  -1
-  /* HOISTED */
-);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_text_field = _resolveComponent("f-text-field");
   const _component_f_validation_form = _resolveComponent("f-validation-form");
@@ -48,15 +41,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _directive_validation = _resolveDirective("validation");
   const _directive_test = _resolveDirective("test");
   return _withDirectives((_openBlock(), _createBlock(_component_f_validation_form, null, {
-    "error-message": _withCtx(() => [
+    "error-message": _withCtx(() => _cache[0] || (_cache[0] = [
       _createTextVNode(" Fel i f\xF6ljande f\xE4lt... ")
-    ]),
+    ])),
     default: _withCtx(() => [
       _withDirectives((_openBlock(), _createElementBlock("div", null, [
         _withDirectives((_openBlock(), _createBlock(_component_f_text_field, { maxlength: 100 }, {
-          default: _withCtx(() => [
+          default: _withCtx(() => _cache[1] || (_cache[1] = [
             _createTextVNode(" Okreativ etikett ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         })), [
@@ -74,9 +67,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           ]
         ]),
         _withDirectives((_openBlock(), _createBlock(_component_f_text_field, { maxlength: 100 }, {
-          default: _withCtx(() => [
+          default: _withCtx(() => _cache[2] || (_cache[2] = [
             _createTextVNode(" Okreativ etikett ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         })), [
@@ -94,9 +87,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           ]
         ]),
         _withDirectives((_openBlock(), _createBlock(_component_f_text_field, { maxlength: 100 }, {
-          default: _withCtx(() => [
+          default: _withCtx(() => _cache[3] || (_cache[3] = [
             _createTextVNode(" Okreativ etikett ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         })), [
@@ -116,7 +109,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       ])), [
         [_directive_validation_prefix, "PREFIX "]
       ]),
-      _hoisted_1
+      _cache[4] || (_cache[4] = _createElementVNode(
+        "button",
+        { type: "submit" },
+        "Trigga fel",
+        -1
+        /* HOISTED */
+      ))
     ]),
     _: 1
     /* STABLE */

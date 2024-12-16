@@ -56,12 +56,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       notifications: 1,
       onToggle: _ctx.onToggle1
     }, {
-      title: _withCtx(() => [
+      title: _withCtx(() => _cache[0] || (_cache[0] = [
         _createTextVNode(" Titel med en notifiering ")
-      ]),
-      default: _withCtx(() => [
+      ])),
+      default: _withCtx(() => _cache[1] || (_cache[1] = [
         _createTextVNode(" Inneh\xE5ll ")
-      ]),
+      ])),
       _: 1
       /* STABLE */
     }, 8, ["expanded", "onToggle"]),
@@ -70,12 +70,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       notifications: 2,
       onToggle: _ctx.onToggle2
     }, {
-      title: _withCtx(() => [
+      title: _withCtx(() => _cache[2] || (_cache[2] = [
         _createTextVNode(" Titel med tv\xE5 notifieringar ")
-      ]),
-      default: _withCtx(() => [
+      ])),
+      default: _withCtx(() => _cache[3] || (_cache[3] = [
         _createTextVNode(" Inneh\xE5ll ")
-      ]),
+      ])),
       _: 1
       /* STABLE */
     }, 8, ["expanded", "onToggle"])

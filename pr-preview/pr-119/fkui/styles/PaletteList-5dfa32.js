@@ -414,13 +414,6 @@ var ColorTable_default = defineComponent({
 
 // sfc-template:/home/runner/work/docs-generator/docs-generator/fkui/docs/styles/examples/ColorTable.vue?type=template
 import { createElementVNode as _createElementVNode, toDisplayString as _toDisplayString, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, createCommentVNode as _createCommentVNode, normalizeStyle as _normalizeStyle, openBlock as _openBlock, createBlock as _createBlock } from "vue";
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "span",
-  { class: "sr-only" },
-  " F\xE4rgpaletten ",
-  -1
-  /* HOISTED */
-);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_table_column = _resolveComponent("f-table-column");
   const _component_f_data_table = _resolveComponent("f-data-table");
@@ -428,9 +421,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     rows: _ctx.typeWorkaround,
     "key-attribute": "name"
   }, {
-    caption: _withCtx(() => [
-      _hoisted_1
-    ]),
+    caption: _withCtx(() => _cache[0] || (_cache[0] = [
+      _createElementVNode(
+        "span",
+        { class: "sr-only" },
+        " F\xE4rgpaletten ",
+        -1
+        /* HOISTED */
+      )
+    ])),
     default: _withCtx(({ row }) => [
       _createVNode(
         _component_f_table_column,

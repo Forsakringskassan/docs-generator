@@ -37,18 +37,17 @@ var exampleComponent = defineComponent({
     return { validityEvent: "", nameModel: "" };
   }
 });
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "strong",
-  null,
-  "ValidityEvent",
-  -1
-  /* HOISTED */
-);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_text_field = _resolveComponent("f-text-field");
   const _directive_validation = _resolveDirective("validation");
   return _openBlock(), _createElementBlock("div", null, [
-    _hoisted_1,
+    _cache[3] || (_cache[3] = _createElementVNode(
+      "strong",
+      null,
+      "ValidityEvent",
+      -1
+      /* HOISTED */
+    )),
     _createElementVNode(
       "pre",
       null,
@@ -62,9 +61,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.nameModel = $event),
       onValidity: _cache[1] || (_cache[1] = ($event) => _ctx.validityEvent = $event.detail)
     }, {
-      default: _withCtx(() => [
+      default: _withCtx(() => _cache[2] || (_cache[2] = [
         _createTextVNode(" Name of child ")
-      ]),
+      ])),
       _: 1
       /* STABLE */
     }, 8, ["modelValue"])), [

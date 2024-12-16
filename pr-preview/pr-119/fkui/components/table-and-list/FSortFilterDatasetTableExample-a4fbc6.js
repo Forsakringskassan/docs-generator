@@ -72,13 +72,6 @@ var exampleComponent = defineComponent({
     };
   }
 });
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "span",
-  { class: "sr-only" },
-  " Frukter ",
-  -1
-  /* HOISTED */
-);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_table_column = _resolveComponent("f-table-column");
   const _component_f_interactive_table = _resolveComponent("f-interactive-table");
@@ -106,9 +99,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         striped: "",
         "key-attribute": "id"
       }, {
-        caption: _withCtx(() => [
-          _hoisted_1
-        ]),
+        caption: _withCtx(() => _cache[0] || (_cache[0] = [
+          _createElementVNode(
+            "span",
+            { class: "sr-only" },
+            " Frukter ",
+            -1
+            /* HOISTED */
+          )
+        ])),
         default: _withCtx(({ row }) => [
           _createVNode(
             _component_f_table_column,

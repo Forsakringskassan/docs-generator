@@ -264,9 +264,8 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     "input-right": withCtx(() => [createElementVNode("button", _hoisted_1, [createVNode(_component_f_icon, {
       name: "search",
       library: "f"
-    }), createTextVNode(), createElementVNode("span", null, [renderSlot(_ctx.$slots, "button-text", {}, () => [createTextVNode(" S\xF6k ")])])])]),
+    }), _cache[2] || (_cache[2] = createTextVNode()), createElementVNode("span", null, [renderSlot(_ctx.$slots, "button-text", {}, () => [_cache[1] || (_cache[1] = createTextVNode(" S\xF6k "))])])])]),
     _: 3
-    /* FORWARDED */
   }, 8, ["modelValue", "maxlength"]);
 }
 var XSearchBar = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
@@ -301,9 +300,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           modelValue: _ctx.value,
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.value = $event)
         }, {
-          default: _withCtx(() => [
+          default: _withCtx(() => _cache[1] || (_cache[1] = [
             _createTextVNode(" S\xF6kf\xE4lt ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"])

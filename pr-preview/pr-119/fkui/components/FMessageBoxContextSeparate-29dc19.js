@@ -34,31 +34,6 @@ var exampleComponent = defineComponent({
   name: "FMessageBoxContextSeparate",
   components: { FMessageBox }
 });
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "span",
-  { class: "sr-only" },
-  " Sk\xE4rml\xE4sarinformation som fullst\xE4ndigt ers\xE4tter rubriken och som inneh\xE5ller tydlig kontext ",
-  -1
-  /* HOISTED */
-);
-var _hoisted_2 = /* @__PURE__ */ _createElementVNode(
-  "span",
-  { class: "aria-hidden" },
-  " En rubrik som inte f\xF6rklarar sin kontext ",
-  -1
-  /* HOISTED */
-);
-var _hoisted_3 = [
-  _hoisted_1,
-  _hoisted_2
-];
-var _hoisted_4 = /* @__PURE__ */ _createElementVNode(
-  "p",
-  null,
-  "Komponenten kommer vid fokus inte l\xE4ngre att l\xE4sa texten Informationsmeddelande.",
-  -1
-  /* HOISTED */
-);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_message_box = _resolveComponent("f-message-box");
   return _openBlock(), _createBlock(_component_f_message_box, {
@@ -71,11 +46,32 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         {
           class: _normalizeClass(headingSlotClass)
         },
-        [..._hoisted_3],
+        _cache[0] || (_cache[0] = [
+          _createElementVNode(
+            "span",
+            { class: "sr-only" },
+            " Sk\xE4rml\xE4sarinformation som fullst\xE4ndigt ers\xE4tter rubriken och som inneh\xE5ller tydlig kontext ",
+            -1
+            /* HOISTED */
+          ),
+          _createElementVNode(
+            "span",
+            { class: "aria-hidden" },
+            " En rubrik som inte f\xF6rklarar sin kontext ",
+            -1
+            /* HOISTED */
+          )
+        ]),
         2
         /* CLASS */
       ),
-      _hoisted_4
+      _cache[1] || (_cache[1] = _createElementVNode(
+        "p",
+        null,
+        "Komponenten kommer vid fokus inte l\xE4ngre att l\xE4sa texten Informationsmeddelande.",
+        -1
+        /* HOISTED */
+      ))
     ]),
     _: 1
     /* STABLE */

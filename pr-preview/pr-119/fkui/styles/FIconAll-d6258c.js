@@ -258,13 +258,6 @@ var exampleComponent = defineComponent({
     });
   }
 });
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "span",
-  null,
-  " Ikoner ",
-  -1
-  /* HOISTED */
-);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = _resolveComponent("f-icon");
   const _component_f_table_column = _resolveComponent("f-table-column");
@@ -274,9 +267,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     striped: true,
     "key-attribute": "id"
   }, {
-    caption: _withCtx(() => [
-      _hoisted_1
-    ]),
+    caption: _withCtx(() => _cache[0] || (_cache[0] = [
+      _createElementVNode(
+        "span",
+        null,
+        " Ikoner ",
+        -1
+        /* HOISTED */
+      )
+    ])),
     default: _withCtx(({ row }) => [
       _createVNode(
         _component_f_table_column,

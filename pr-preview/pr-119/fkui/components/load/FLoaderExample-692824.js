@@ -77,18 +77,8 @@ var exampleComponent = defineComponent({
 var _hoisted_1 = { style: { "position": "relative", "z-index": "1000000" } };
 var _hoisted_2 = ["disabled"];
 var _hoisted_3 = { key: 0 };
-var _hoisted_4 = /* @__PURE__ */ _createElementVNode(
-  "label",
-  null,
-  " Delay \xE4r p\xE5slagen ",
-  -1
-  /* HOISTED */
-);
-var _hoisted_5 = [
-  _hoisted_4
-];
-var _hoisted_6 = { key: 0 };
-var _hoisted_7 = ["disabled"];
+var _hoisted_4 = { key: 0 };
+var _hoisted_5 = ["disabled"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_loader = _resolveComponent("f-loader");
   const _directive_test = _resolveDirective("test");
@@ -120,9 +110,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         type: "button",
         class: "button button--discrete",
         onClick: _cache[0] || (_cache[0] = ($event) => _ctx.toggleLoader())
-      }, [
+      }, _cache[5] || (_cache[5] = [
         _createTextVNode(" Toggla loader ")
-      ])), [
+      ]))), [
         [_directive_test, "loader-toggle"]
       ]),
       _withDirectives((_openBlock(), _createElementBlock("button", {
@@ -130,40 +120,48 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         class: "button button--discrete",
         disabled: Boolean(_ctx.show),
         onClick: _cache[1] || (_cache[1] = ($event) => _ctx.toggleOverlay())
-      }, [
+      }, _cache[6] || (_cache[6] = [
         _createTextVNode(" Toggla overlay ")
-      ], 8, _hoisted_2)), [
+      ]), 8, _hoisted_2)), [
         [_directive_test, "loader-toggle-overlay"]
       ]),
       _withDirectives((_openBlock(), _createElementBlock("button", {
         type: "button",
         class: "button button--discrete",
         onClick: _cache[2] || (_cache[2] = ($event) => _ctx.toggleDelay())
-      }, [
+      }, _cache[7] || (_cache[7] = [
         _createTextVNode(" Toggla delay ")
-      ])), [
+      ]))), [
         [_directive_test, "loader-toggle-delay"]
       ]),
       _withDirectives((_openBlock(), _createElementBlock("button", {
         type: "button",
         class: "button button--discrete",
         onClick: _cache[3] || (_cache[3] = ($event) => _ctx.toggleCloseText())
-      }, [
+      }, _cache[8] || (_cache[8] = [
         _createTextVNode(" Toggla text ")
-      ])), [
+      ]))), [
         [_directive_test, "loader-toggle-text"]
       ]),
-      _ctx.delay ? (_openBlock(), _createElementBlock("div", _hoisted_3, [..._hoisted_5])) : _createCommentVNode("v-if", true)
+      _ctx.delay ? (_openBlock(), _createElementBlock("div", _hoisted_3, _cache[9] || (_cache[9] = [
+        _createElementVNode(
+          "label",
+          null,
+          " Delay \xE4r p\xE5slagen ",
+          -1
+          /* HOISTED */
+        )
+      ]))) : _createCommentVNode("v-if", true)
     ]),
-    _ctx.overlay ? (_openBlock(), _createElementBlock("div", _hoisted_6, [
+    _ctx.overlay ? (_openBlock(), _createElementBlock("div", _hoisted_4, [
       _createElementVNode("label", null, [
-        _createTextVNode(" Forcera avst\xE4ngning efter antal sekunder: "),
+        _cache[10] || (_cache[10] = _createTextVNode(" Forcera avst\xE4ngning efter antal sekunder: ")),
         _withDirectives(_createElementVNode("input", {
           id: "loader-timer",
           "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.time = $event),
           type: "text",
           disabled: Boolean(_ctx.show)
-        }, null, 8, _hoisted_7), [
+        }, null, 8, _hoisted_5), [
           [_vModelText, _ctx.time],
           [_directive_test, "loader-timer"],
           [

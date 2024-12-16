@@ -40,17 +40,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_static_field = _resolveComponent("f-static-field");
   return _openBlock(), _createElementBlock("div", _hoisted_1, [
     _createVNode(_component_f_static_field, null, {
-      label: _withCtx(() => [
+      label: _withCtx(() => _cache[0] || (_cache[0] = [
         _createTextVNode(" Etikett ")
-      ]),
+      ])),
       tooltip: _withCtx(() => [
         _createVNode(_component_f_tooltip, { "screen-reader-text": "L\xE4s mer om avancerat f\xE4lt" }, {
-          header: _withCtx(() => [
+          header: _withCtx(() => _cache[1] || (_cache[1] = [
             _createTextVNode(" Mer om avancerat f\xE4lt ")
-          ]),
-          body: _withCtx(() => [
+          ])),
+          body: _withCtx(() => _cache[2] || (_cache[2] = [
             _createTextVNode(" Detta f\xE4ltet kr\xE4ver lite n\xE4rmare f\xF6rklaring. ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         })
@@ -75,9 +75,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           /* CLASS */
         )
       ]),
-      default: _withCtx(() => [
+      default: _withCtx(() => _cache[3] || (_cache[3] = [
         _createTextVNode(" En liten statisk text. ")
-      ]),
+      ])),
       _: 1
       /* STABLE */
     })

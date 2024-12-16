@@ -69,9 +69,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       name: "color",
       onChange: _ctx.onToggleDisable
     }, {
-      label: _withCtx(() => [
+      label: _withCtx(() => _cache[3] || (_cache[3] = [
         _createTextVNode(" Ska inmatningsf\xE4ltet vara inaktivt? ")
-      ]),
+      ])),
       default: _withCtx(() => [
         _withDirectives((_openBlock(), _createBlock(_component_f_radio_field, {
           id: "disabled-no",
@@ -79,9 +79,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.isDisabled = $event),
           value: false
         }, {
-          default: _withCtx(() => [
+          default: _withCtx(() => _cache[4] || (_cache[4] = [
             _createTextVNode(" Nej ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"])), [
@@ -93,9 +93,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.isDisabled = $event),
           value: true
         }, {
-          default: _withCtx(() => [
+          default: _withCtx(() => _cache[5] || (_cache[5] = [
             _createTextVNode(" Ja ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue"])), [
@@ -114,9 +114,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.name = $event),
           disabled: _ctx.isDisabled
         }, {
-          default: _withCtx(() => [
+          default: _withCtx(() => _cache[6] || (_cache[6] = [
             _createTextVNode(" Namn ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["modelValue", "disabled"])), [

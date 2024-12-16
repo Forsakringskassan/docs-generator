@@ -48,31 +48,7 @@ var exampleComponent = defineComponent({
     }
   }
 });
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "option",
-  {
-    disabled: true,
-    value: ""
-  },
-  "V\xE4lj",
-  -1
-  /* HOISTED */
-);
-var _hoisted_2 = /* @__PURE__ */ _createElementVNode(
-  "option",
-  { value: "ALTERNATIV1" },
-  "Alternativ 1",
-  -1
-  /* HOISTED */
-);
-var _hoisted_3 = /* @__PURE__ */ _createElementVNode(
-  "option",
-  { value: "ALTERNATIV2" },
-  "Alternativ 2",
-  -1
-  /* HOISTED */
-);
-var _hoisted_4 = { key: 0 };
+var _hoisted_1 = { key: 0 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_text_field = _resolveComponent("f-text-field");
   const _component_f_wizard_step = _resolveComponent("f-wizard-step");
@@ -95,9 +71,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }, {
           default: _withCtx(() => [
             _withDirectives((_openBlock(), _createBlock(_component_f_text_field, null, {
-              default: _withCtx(() => [
+              default: _withCtx(() => _cache[3] || (_cache[3] = [
                 _createTextVNode(" Etikett-rubrik ")
-              ]),
+              ])),
               _: 1
               /* STABLE */
             })), [
@@ -112,9 +88,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               ]
             ]),
             _withDirectives((_openBlock(), _createBlock(_component_f_text_field, null, {
-              default: _withCtx(() => [
+              default: _withCtx(() => _cache[4] || (_cache[4] = [
                 _createTextVNode(" Etikett-rubrik (frivillig) ")
-              ]),
+              ])),
               _: 1
               /* STABLE */
             })), [
@@ -139,9 +115,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               modelValue: _ctx.date,
               "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.date = $event)
             }, {
-              default: _withCtx(() => [
+              default: _withCtx(() => _cache[5] || (_cache[5] = [
                 _createTextVNode(" Etikett-rubrik ")
-              ]),
+              ])),
               _: 1
               /* STABLE */
             }, 8, ["modelValue"])), [
@@ -156,13 +132,34 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               modelValue: _ctx.options,
               "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.options = $event)
             }, {
-              label: _withCtx(() => [
+              label: _withCtx(() => _cache[6] || (_cache[6] = [
                 _createTextVNode(" Etikett-rubrik ")
-              ]),
+              ])),
               default: _withCtx(() => [
-                _hoisted_1,
-                _hoisted_2,
-                _hoisted_3
+                _cache[7] || (_cache[7] = _createElementVNode(
+                  "option",
+                  {
+                    disabled: true,
+                    value: ""
+                  },
+                  "V\xE4lj",
+                  -1
+                  /* HOISTED */
+                )),
+                _cache[8] || (_cache[8] = _createElementVNode(
+                  "option",
+                  { value: "ALTERNATIV1" },
+                  "Alternativ 1",
+                  -1
+                  /* HOISTED */
+                )),
+                _cache[9] || (_cache[9] = _createElementVNode(
+                  "option",
+                  { value: "ALTERNATIV2" },
+                  "Alternativ 2",
+                  -1
+                  /* HOISTED */
+                ))
               ]),
               _: 1
               /* STABLE */
@@ -183,11 +180,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           "use-error-list": false,
           title: "Stegrubrik 3"
         }, {
-          "next-button-text": _withCtx(() => [
+          "next-button-text": _withCtx(() => _cache[10] || (_cache[10] = [
             _createTextVNode(" Klar ")
-          ]),
+          ])),
           default: _withCtx(() => [
-            _createTextVNode(" En informationstext ")
+            _cache[11] || (_cache[11] = _createTextVNode(" En informationstext "))
           ]),
           _: 1
           /* STABLE */
@@ -196,7 +193,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       _: 1
       /* STABLE */
     }, 8, ["modelValue", "onCompleted"]),
-    _ctx.done ? (_openBlock(), _createElementBlock("p", _hoisted_4, "Allt \xE4r ifyllt")) : _createCommentVNode("v-if", true)
+    _ctx.done ? (_openBlock(), _createElementBlock("p", _hoisted_1, "Allt \xE4r ifyllt")) : _createCommentVNode("v-if", true)
   ]);
 }
 exampleComponent.render = render;

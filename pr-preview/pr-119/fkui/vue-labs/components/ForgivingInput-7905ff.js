@@ -276,27 +276,6 @@ var exampleComponent = defineComponent2({
     }
   }
 });
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "br",
-  null,
-  null,
-  -1
-  /* HOISTED */
-);
-var _hoisted_2 = /* @__PURE__ */ _createElementVNode(
-  "br",
-  null,
-  null,
-  -1
-  /* HOISTED */
-);
-var _hoisted_3 = /* @__PURE__ */ _createElementVNode(
-  "br",
-  null,
-  null,
-  -1
-  /* HOISTED */
-);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_x_time_text_field = _resolveComponent("x-time-text-field");
   const _directive_validation = _resolveDirective("validation");
@@ -318,7 +297,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         )
       ]),
       default: _withCtx(() => [
-        _createTextVNode(" Ange arbetstid ")
+        _cache[1] || (_cache[1] = _createTextVNode(" Ange arbetstid "))
       ]),
       _: 1
       /* STABLE */
@@ -350,19 +329,37 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         1
         /* TEXT */
       ),
-      _hoisted_1,
+      _cache[2] || (_cache[2] = _createElementVNode(
+        "br",
+        null,
+        null,
+        -1
+        /* HOISTED */
+      )),
       _createTextVNode(
         " Renskrivet v\xE4rde: " + _toDisplayString(_ctx.userFriendlyValue) + ".",
         1
         /* TEXT */
       ),
-      _hoisted_2,
+      _cache[3] || (_cache[3] = _createElementVNode(
+        "br",
+        null,
+        null,
+        -1
+        /* HOISTED */
+      )),
       _createTextVNode(
         " V\xE4rde i timmar: " + _toDisplayString(_ctx.timeInHours) + ".",
         1
         /* TEXT */
       ),
-      _hoisted_3,
+      _cache[4] || (_cache[4] = _createElementVNode(
+        "br",
+        null,
+        null,
+        -1
+        /* HOISTED */
+      )),
       _createTextVNode(
         " V\xE4rde i objektnotation: " + _toDisplayString(_ctx.timeAsObject) + ". ",
         1

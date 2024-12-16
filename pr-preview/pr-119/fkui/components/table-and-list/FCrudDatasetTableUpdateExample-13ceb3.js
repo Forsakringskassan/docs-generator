@@ -80,13 +80,6 @@ var exampleComponent = defineComponent({
     }
   }
 });
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "b",
-  null,
-  "Frukter",
-  -1
-  /* HOISTED */
-);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_table_column = _resolveComponent("f-table-column");
   const _component_f_crud_button = _resolveComponent("f-crud-button");
@@ -106,9 +99,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         rows: _ctx.fruits,
         "key-attribute": "id"
       }, {
-        caption: _withCtx(() => [
-          _hoisted_1
-        ]),
+        caption: _withCtx(() => _cache[1] || (_cache[1] = [
+          _createElementVNode(
+            "b",
+            null,
+            "Frukter",
+            -1
+            /* HOISTED */
+          )
+        ])),
         default: _withCtx(({ row }) => [
           _createVNode(
             _component_f_table_column,
@@ -192,9 +191,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   icon: "",
                   label: ""
                 }, {
-                  default: _withCtx(() => [
+                  default: _withCtx(() => _cache[2] || (_cache[2] = [
                     _createTextVNode(" \xC4ndra Namn ")
-                  ]),
+                  ])),
                   _: 2
                   /* DYNAMIC */
                 }, 1032, ["item"])
@@ -216,9 +215,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": ($event) => item.name = $event,
         type: "text"
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[3] || (_cache[3] = [
           _createTextVNode(" Namn ")
-        ]),
+        ])),
         _: 2
         /* DYNAMIC */
       }, 1032, ["modelValue", "onUpdate:modelValue"])), [

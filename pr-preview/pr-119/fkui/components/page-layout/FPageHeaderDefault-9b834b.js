@@ -37,11 +37,11 @@ var exampleComponent = defineComponent({
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_page_header = _resolveComponent("f-page-header");
   return _openBlock(), _createBlock(_component_f_page_header, null, {
-    right: _withCtx(() => [
+    right: _withCtx(() => _cache[0] || (_cache[0] = [
       _createTextVNode(" Namn Namnsson ")
-    ]),
+    ])),
     default: _withCtx(() => [
-      _createTextVNode(" Exempelapplikation ")
+      _cache[1] || (_cache[1] = _createTextVNode(" Exempelapplikation "))
     ]),
     _: 1
     /* STABLE */

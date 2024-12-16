@@ -91,13 +91,6 @@ var ExampleModal_default = defineComponent({
 
 // sfc-template:/home/runner/work/docs-generator/docs-generator/fkui/packages/vue/src/components/FModal/examples/ExampleModal.vue?type=template
 import { createTextVNode as _createTextVNode, createElementVNode as _createElementVNode, resolveComponent as _resolveComponent, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives } from "vue";
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "p",
-  null,
-  " Fruktsallad \xE4r en dessert best\xE5ende av minst tre sorters blandade frukter som \xE4r t\xE4rnade eller skivade och ofta skalade och urk\xE4rnade. En tallrik med fruktsallad best\xE5ende av p\xE4ron, satsuma, kiwi, passionsfrukt, granat\xE4ppelk\xE4rnor, samt grekisk yoghurt blandat med flytande honung, kardemumma och vaniljsocker. ",
-  -1
-  /* HOISTED */
-);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_text_field = _resolveComponent("f-text-field");
   const _component_f_form_modal = _resolveComponent("f-form-modal");
@@ -115,20 +108,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onCancel: _ctx.onCancel,
     onClose: _ctx.onClose
   }, {
-    header: _withCtx(() => [
+    header: _withCtx(() => _cache[2] || (_cache[2] = [
       _createTextVNode(" Fruktsallad ")
-    ]),
-    "error-message": _withCtx(() => [
+    ])),
+    "error-message": _withCtx(() => _cache[3] || (_cache[3] = [
       _createTextVNode(" Oj, du har gl\xF6mt fylla i n\xE5got. G\xE5 till: ")
-    ]),
+    ])),
     "input-text-fields": _withCtx(() => [
       _withDirectives((_openBlock(), _createBlock(_component_f_text_field, {
         modelValue: _ctx.value.field1,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.value.field1 = $event)
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[4] || (_cache[4] = [
           _createTextVNode(" Favoritfrukt ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"])), [
@@ -147,9 +140,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         modelValue: _ctx.value.field2,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.value.field2 = $event)
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[5] || (_cache[5] = [
           _createTextVNode(" Smak ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"])), [
@@ -166,7 +159,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       ])
     ]),
     default: _withCtx(() => [
-      _hoisted_1
+      _cache[6] || (_cache[6] = _createElementVNode(
+        "p",
+        null,
+        " Fruktsallad \xE4r en dessert best\xE5ende av minst tre sorters blandade frukter som \xE4r t\xE4rnade eller skivade och ofta skalade och urk\xE4rnade. En tallrik med fruktsallad best\xE5ende av p\xE4ron, satsuma, kiwi, passionsfrukt, granat\xE4ppelk\xE4rnor, samt grekisk yoghurt blandat med flytande honung, kardemumma och vaniljsocker. ",
+        -1
+        /* HOISTED */
+      ))
     ]),
     _: 1
     /* STABLE */
@@ -214,19 +213,12 @@ var exampleComponent = defineComponent2({
     }
   }
 });
-var _hoisted_12 = { class: "f-form-modal-custom-buttons" };
+var _hoisted_1 = { class: "f-form-modal-custom-buttons" };
 var _hoisted_2 = { class: "f-form-modal-example" };
 var _hoisted_3 = { key: 0 };
-var _hoisted_4 = /* @__PURE__ */ _createElementVNode2(
-  "pre",
-  null,
-  "Modalen st\xE4ngdes med resultatet:",
-  -1
-  /* HOISTED */
-);
 function render2(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_example_modal = _resolveComponent2("example-modal");
-  return _openBlock2(), _createElementBlock("div", _hoisted_12, [
+  return _openBlock2(), _createElementBlock("div", _hoisted_1, [
     _createElementVNode2("button", {
       type: "button",
       class: "button button--secondary",
@@ -242,7 +234,13 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
       }, null, 8, ["is-open", "buttons", "onSubmit", "onCancel", "onClose"])
     ]),
     _ctx.field1 || _ctx.field2 ? (_openBlock2(), _createElementBlock("div", _hoisted_3, [
-      _hoisted_4,
+      _cache[1] || (_cache[1] = _createElementVNode2(
+        "pre",
+        null,
+        "Modalen st\xE4ngdes med resultatet:",
+        -1
+        /* HOISTED */
+      )),
       _createElementVNode2(
         "pre",
         null,

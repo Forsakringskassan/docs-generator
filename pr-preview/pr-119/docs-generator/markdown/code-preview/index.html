@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="sv" class="layout--content-with-menu" data-root-url="../..">
+<html lang="sv" class="layout--article" data-root-url="../..">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,28 +9,28 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-0ad199.css"
+            href="../../assets/docs-eb7205.css"
             crossorigin
-            integrity="sha384-YREgqk15fjHQ3A87un4K0S9N6GxG9Kt9K5t28VXzM2ckmWg8hDUJKsFkxhPyaqLE"
+            integrity="sha384-+t0wmTpSOe5SuItdPL/fUwLi8SLvTkFH/PnaSSED84V7YPMfEDqSPsqf+/OB9Q1f"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/fkui-409dbb.css"
+            href="../../assets/fkui-f99d46.css"
             crossorigin
-            integrity="sha384-MaZv1oPslAKieUVrFO6IVACqQGPHoGO5s/ze5nqwUd2ZHzj+etY779tACG5pAWqS"
+            integrity="sha384-HVtm9qKn/A/MAXCewSzispGl5TRyfM/tFpLT7HGSblvQMtM5QFlssIJ66zyzjy8d"
             
         />
 
         <script type="importmap">
             {
   "imports": {
-    "vue": "../../assets/vendor-vue-f46117.js",
-    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-6351e3.js"
+    "vue": "../../assets/vendor-vue-fd7b76.js",
+    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-ce5c3f.js"
   },
   "integrity": {
-    "../../assets/vendor-vue-f46117.js": "sha384-bpIOGLOUZAkPdjRRipKkve+vteM3oaZqFz18JQNzoXN1MQ9BetYz/rpREx/Zh2F/",
-    "../../assets/vendor-forsakringskassan-docs-live-example-6351e3.js": "sha384-FRTUtWNmEkJgIhqtTX6bQd+em+HCK1LhLnhOJkYJ4y9YbnyG3vU11hiZkB1bfwfw"
+    "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
+    "../../assets/vendor-forsakringskassan-docs-live-example-ce5c3f.js": "sha384-rLyXeIcpVmwGulMOjBGTYbwDjDcBeKL1gobH2xxZ6C8vR5sin3SBbKOsIo9hCeZO"
   }
 }
         </script>
@@ -48,10 +48,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-11b296.json"
+            href="../../search-data-d6cc86.json"
             as="fetch"
             crossorigin
-            integrity="sha384-8urIx7hGfLlRcN9coND62Hl9KCE358qBq1E3/Qb93391dbTxGG+5r/ujy/PsVs7t"
+            integrity="sha384-palo3bFhDXvM78WUGOzplmS8fVR4d1a9zkYLy04wGsUi35T1ifBufYv09i3gW82j"
             id="search-data"
         />
     </head>
@@ -76,6 +76,25 @@
         </button>
     </div>
 </div>
+
+<template id="motd-message">
+<div class="docs-motd docs-motd--info">
+    <span class="docs-motd__icon">
+        <span class="icon-stack icon-stack--info">
+            <svg class="icon icon--circle" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-circle"></use>
+            </svg>
+            <svg class="icon icon--i" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-i"></use>
+            </svg>
+        </span>
+    </span><span data-bind="screenreader" class="sr-only"></span>
+    <p data-bind="message"></p></div>
+</template>
+
+
+<div id="motd-container">
+    </div>
 
 
         <div class="layout-wrapper">
@@ -211,9 +230,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        feature/importmap (<a href="https://github.com/Forsakringskassan/docs-generator/commits/b2ac32ee0213073794c8760ad944459af2882186">b2ac32e</a>)<br />
+        feature/importmap (<a href="https://github.com/Forsakringskassan/docs-generator/commits/2ac82857c8f0236f718991c187ebde36b5e2b94f">2ac8285</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/119">PR 119</a><br />
-        2024-10-18 23:57
+        2024-12-16 14:57
     </span>
 </div>
 </div>
@@ -266,6 +285,16 @@
             
         >
             Fullscreen examples
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./javascript.html"
+            
+        >
+            Javascript and Typescript
         </a>
     </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <!-- prettier-ignore -->
@@ -345,6 +374,16 @@
         >
             Mermaid
         </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../redirects.html"
+            
+        >
+            Redirects
+        </a>
     </li><!-- prettier-ignore --></ol>
 </nav>
 </div>
@@ -355,25 +394,91 @@
                     <h1 id="title">Code preview</h1>
 
                     
+                    <div id="aside">
+                        <!-- prettier-ignore -->
+<dl></dl>
+
+
+                        
+                        <details id="outline">
+                            <summary class="outline__heading">Innehåll</summary>
+                            <ul>
+                                
+                                <li><a href="#default_no_language_or_tags">Default, no language or tags</a></li>
+                                
+                                <li><a href="#explicit_languages">Explicit languages</a></li>
+                                
+                                <li><a href="#importing_files">Importing files</a></li>
+                                
+                                <li><a href="#fullscreen">Fullscreen</a></li>
+                                
+                                <li><a href="#tags">Tags</a></li>
+                                
+                                <li><a href="#runnable_examples">Runnable examples</a></li>
+                                
+                                <li><a href="#selectors_for_e2e_testing">Selectors for E2E testing</a></li>
+                                
+                                <li><a href="#example_metadata">Example metadata</a></li>
+                                
+                            </ul>
+                        </details>
+                        
+                    </div>
+                    
 
                     <div id="content">
                         <!-- prettier-ignore -->
-<h2 id="default_no_language_or_tags"><a class="header-anchor" href="#default_no_language_or_tags">Default, no language or tags</a></h2>
+<p>Code within markdown code fences will be rendered with syntax highlighting and for languages that can run in the browser a runnable example will be created.</p>
+<h2 id="default_no_language_or_tags"><a class="header-anchor" href="#default_no_language_or_tags">Default, no language or tags</a></h2><p>By default no language is implied and the code is rendered as-is with no syntax highlight.</p>
+<p><strong>Input:</strong></p>
+
                 <div
-                    id="example-664305"
+                    id="example-4be2c7"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="md"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-md" tabindex="0"><span class="hljs-code">```
+Lorem ipsum
+```</span>
+</code></pre>
+                </div>
+            <p><strong>Output:</strong></p>
+
+                <div
+                    id="example-ec5ea4"
                     class="code-preview code-preview--default"
                     
                     
                     data-language=""
                 >
                     
-                    <pre class="code-preview__markup"><code>foo
+                    <pre class="code-preview__markup"><code>Lorem ipsum
 </code></pre>
                 </div>
-            <h2 id="explicit_languages"><a class="header-anchor" href="#explicit_languages">Explicit languages</a></h2><p><strong>html</strong>:</p>
+            <h2 id="explicit_languages"><a class="header-anchor" href="#explicit_languages">Explicit languages</a></h2><p>When explicit languages is set the behaviour varies for different languages.</p>
+<h3 id="html"><a class="header-anchor" href="#html">HTML</a></h3><p>HTML is rendered in the browser and the HTML markup is shown with syntax highlight.</p>
+<p><strong>Input:</strong></p>
+
+                <div
+                    id="example-e57ae9"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="md"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-md" tabindex="0"><span class="hljs-code">```html
+&lt;p&gt;lorem &lt;em&gt;ipsum&lt;/em&gt;&lt;/p&gt;
+```</span>
+</code></pre>
+                </div>
+            <p><strong>Output:</strong></p>
 
             <div
-                id="example-8ae6aa"
+                id="example-003739"
                 class="code-preview code-preview--default"
                 
                 
@@ -402,25 +507,66 @@
 </code></pre>
                 </div>
             </div>
-        <p><strong>ts</strong>:</p>
+        <h3 id="javascript_typescript"><a class="header-anchor" href="#javascript_typescript">Javascript / Typescript</a></h3><p>Javascript and Typescript only shows the code with syntax highlight.</p>
+<p>See also <a href="./javascript.html">Javascript and Typescript</a> for additional details about wrinting JS-based examples.</p>
+<p><strong>Input:</strong></p>
 
                 <div
-                    id="example-1c237b"
+                    id="example-0ef0f3"
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="md"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Foo</span> {
+                    <pre class="code-preview__markup"><code class="hljs lang-md" tabindex="0"><span class="hljs-code">```ts
+export interface Foo {
+    name: string;
+}
+```</span>
+</code></pre>
+                </div>
+            <p><strong>Output:</strong></p>
+
+                <div
+                    id="example-c8a40e"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Foo</span> {
     <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
 }
 </code></pre>
                 </div>
-            <h2 id="import"><a class="header-anchor" href="#import">Import</a></h2><p><strong>html</strong>:</p>
+            <h2 id="importing_files"><a class="header-anchor" href="#importing_files">Importing files</a></h2><p>Instead of writing examples inline the source can be imported from another file.
+This is especially useful if the examples become long and clumpsy to write in a code fence.</p>
+<p>When importing files the extension determines the language but is otherwise the same as if the contents of the file was written inside the code fence directly.</p>
+<p><strong>Input:</strong></p>
+
+                <div
+                    id="example-87a147"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="md"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-md" tabindex="0"><span class="hljs-code">```import
+my-file.html
+```</span>
+
+<span class="hljs-code">```import
+my-file.ts
+```</span>
+</code></pre>
+                </div>
+            <p><strong>Output:</strong></p>
 
             <div
-                id="example-660426"
+                id="example-be0271"
                 class="code-preview code-preview--default"
                 
                 
@@ -449,10 +595,9 @@
 </code></pre>
                 </div>
             </div>
-        <p><strong>ts</strong>:</p>
-
+        
                 <div
-                    id="example-84bc97"
+                    id="example-67575f"
                     class="code-preview code-preview--default"
                     
                     
@@ -464,10 +609,31 @@
 }
 </code></pre>
                 </div>
-            <h2 id="tags"><a class="header-anchor" href="#tags">Tags</a></h2><h3 id="static"><a class="header-anchor" href="#static"><code>static</code></a></h3><p><strong>inline</strong>:</p>
+            <h2 id="fullscreen"><a class="header-anchor" href="#fullscreen">Fullscreen</a></h2><p>See documentation for <a href="./fullscreen.html">fullscreen examples</a>.</p>
+<h2 id="tags"><a class="header-anchor" href="#tags">Tags</a></h2><h3 id="static"><a class="header-anchor" href="#static"><code>static</code></a></h3><p>Disables rendering the example and only shows the source code with highlighting.</p>
+<p><strong>Input:</strong></p>
 
                 <div
-                    id="example-3801f0"
+                    id="example-5612e9"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="md"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-md" tabindex="0"><span class="hljs-code">```html static
+&lt;p&gt;lorem &lt;em&gt;ipsum&lt;/em&gt;&lt;/p&gt;
+```</span>
+
+<span class="hljs-code">```import static
+my-file.html
+```</span>
+</code></pre>
+                </div>
+            <p><strong>Output:</strong></p>
+
+                <div
+                    id="example-5ef7a8"
                     class="code-preview code-preview--default"
                     
                     data-tags=static
@@ -477,10 +643,9 @@
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>lorem <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>ipsum<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 </code></pre>
                 </div>
-            <p><strong>imported</strong>:</p>
-
+            
                 <div
-                    id="example-b69079"
+                    id="example-cdcc1a"
                     class="code-preview code-preview--default"
                     
                     data-tags=static
@@ -490,10 +655,30 @@
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>lorem <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>ipsum<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 </code></pre>
                 </div>
-            <h3 id="nomarkup"><a class="header-anchor" href="#nomarkup"><code>nomarkup</code></a></h3><p><strong>inline</strong>:</p>
+            <h3 id="nomarkup"><a class="header-anchor" href="#nomarkup"><code>nomarkup</code></a></h3><p>Disables showing souce with syntax highlighting and only shows a rendered example.</p>
+<p><strong>Input:</strong></p>
 
                 <div
-                    id="example-7e8b35"
+                    id="example-537fe8"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="md"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-md" tabindex="0"><span class="hljs-code">```html nomarkup
+&lt;p&gt;lorem &lt;em&gt;ipsum&lt;/em&gt;&lt;/p&gt;
+```</span>
+
+<span class="hljs-code">```import nomarkup
+my-file.html
+```</span>
+</code></pre>
+                </div>
+            <p><strong>Output:</strong>:</p>
+
+                <div
+                    id="example-698759"
                     class="code-preview code-preview--default"
                     
                     data-tags=nomarkup
@@ -503,10 +688,9 @@
                     <div class="code-preview__preview"><p>lorem <em>ipsum</em></p>
 </div>
                 </div>
-            <p><strong>imported</strong>:</p>
-
+            
                 <div
-                    id="example-4852b6"
+                    id="example-2b1015"
                     class="code-preview code-preview--default"
                     
                     data-tags=nomarkup
@@ -516,10 +700,9 @@
                     <div class="code-preview__preview"><p>lorem <em>ipsum</em></p>
 </div>
                 </div>
-            <h3 id="fullscreen"><a class="header-anchor" href="#fullscreen"><code>fullscreen</code></a></h3><p>See documentation for <a href="./fullscreen.html">fullscreen examples</a>.</p>
-<h2 id="runnable_examples"><a class="header-anchor" href="#runnable_examples">Runnable examples</a></h2>
+            <h2 id="runnable_examples"><a class="header-anchor" href="#runnable_examples">Runnable examples</a></h2>
             <div
-                id="example-39eaa6"
+                id="example-eb5f3a"
                 class="code-preview code-preview--default"
                 
                 
@@ -576,7 +759,7 @@ The <a href="../../processors/manifest.html">manifest</a> includes each example 
 <h3 id="custom_test_id"><a class="header-anchor" href="#custom_test_id">Custom test id</a></h3><p>Examples can be given a custom test id using the <code>test-id=string</code> tag which can be used to write a selector such as <code>[data-test=string]</code>:</p>
 
                 <div
-                    id="example-6a2c5d"
+                    id="example-8e062f"
                     class="code-preview code-preview--default"
                     
                     
@@ -597,7 +780,7 @@ Moving examples around on the same page will change the order this selector retu
 <p>Given an example such as:</p>
 
                 <div
-                    id="example-878bcf"
+                    id="example-7f1ed8"
                     class="code-preview code-preview--default"
                     
                     
@@ -611,17 +794,17 @@ Moving examples around on the same page will change the order this selector retu
                 </div>
             
                 <div
-                    id="example-62421c"
+                    id="example-90fc4c"
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> element = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;#example-c0ffee&quot;</span>);
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> element = <span class="hljs-variable language_">document</span>.<span class="hljs-property">querySelector</span>&lt;<span class="hljs-title class_">HTMLElement</span>&gt;(<span class="hljs-string">&quot;#example-c0ffee&quot;</span>);
 
-<span class="hljs-keyword">const</span> language = element.<span class="hljs-property">dataset</span>.<span class="hljs-property">language</span>;
-<span class="hljs-keyword">const</span> tags = element.<span class="hljs-property">dataset</span>.<span class="hljs-property">tags</span>.<span class="hljs-title function_">split</span>(<span class="hljs-regexp">/\s+/</span>);
+<span class="hljs-keyword">const</span> language = element?.<span class="hljs-property">dataset</span>.<span class="hljs-property">language</span>;
+<span class="hljs-keyword">const</span> tags = element?.<span class="hljs-property">dataset</span>.<span class="hljs-property">tags</span>?.<span class="hljs-title function_">split</span>(<span class="hljs-regexp">/\s+/</span>);
 
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(language); <span class="hljs-comment">// --&gt; &quot;ts&quot;</span>
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(tags); <span class="hljs-comment">// --&gt; [&quot;nomarkup&quot;, &quot;custom-tag&quot;]</span>
@@ -634,7 +817,38 @@ Moving examples around on the same page will change the order this selector retu
             </div>
 
             <footer>
-                <!-- prettier-ignore --><!-- prettier-ignore -->
+                <!-- prettier-ignore --><div class="footer">
+    <!-- prettier-ignore -->
+    <div class="toolbar__item">
+    <form id="version">
+        <button type="submit" class="anchor">
+            <span id="version-info" class="version"> Byt version </span>
+        </button>
+    </form>
+
+    <dialog id="version-dialog">
+        <div id="version-dialog-head">
+            <h1>Välj version</h1>
+            <button type="button" class="button button--discrete button--discrete--black">
+                <span>Stäng</span>
+                <svg class="button__icon icon" focusable="false" aria-hidden>
+                    <use xlink:href="#docs-icon-close"></use>
+                </svg>
+            </button>
+        </div>
+        <div id="version-list">
+            <p>Var god vänta, laddar versionsdata...</p>
+        </div>
+    </dialog>
+</div>
+
+<template id="version-list-item">
+    <li class="list__item">
+        <a class="list__item__itempane">template</a>
+    </li>
+</template>
+
+</div>
 </footer>
         </div>
 
@@ -712,9 +926,21 @@ Moving examples around on the same page will change the order this selector retu
 
         <!-- prettier-ignore -->
         <script
-            src="../../assets/main-36fe62.js"
+            src="../../assets/processors/motd/index-ccae11.js"
             crossorigin
-            integrity="sha384-2B/SHikfL0TrHI0f7HNl2Ul0//40PNpjjXfL3a4r2erHnJ3ip5eSj94dRPLXw9HA"
+            integrity="sha384-UjzVYhsn0gsmnjX9798oLdjjBUr1FUoJtJUcalmnSFRmr3ppJY8WgK0o8ocUcJid"
+            
+        ></script>
+        <script
+            src="../../assets/processors/selectable-version/select-version-016df9.js"
+            crossorigin
+            integrity="sha384-vqsBAHYaTsOru9rHIRrCh83amGyaMwHmfzezaKAliWpG9QFPpOSBqIgNzqwDHjhJ"
+            
+        ></script>
+        <script
+            src="../../assets/main-89ff7b.js"
+            crossorigin
+            integrity="sha384-md5I7DjBtJEBkndOMVwPqTiyigN+A7R50B9cZuKdes8c9AXL2EfVTzjq78Q9gyfY"
             
         ></script>
     </body>

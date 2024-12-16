@@ -34,13 +34,6 @@ var exampleComponent = defineComponent({
   name: "FMessageBoxContext",
   components: { FMessageBox }
 });
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "p",
-  null,
-  "Komponenten kommer vid fokus inte l\xE4ngre att l\xE4sa texten Informationsmeddelande.",
-  -1
-  /* HOISTED */
-);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_message_box = _resolveComponent("f-message-box");
   return _openBlock(), _createBlock(_component_f_message_box, {
@@ -57,7 +50,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         2
         /* CLASS */
       ),
-      _hoisted_1
+      _cache[0] || (_cache[0] = _createElementVNode(
+        "p",
+        null,
+        "Komponenten kommer vid fokus inte l\xE4ngre att l\xE4sa texten Informationsmeddelande.",
+        -1
+        /* HOISTED */
+      ))
     ]),
     _: 1
     /* STABLE */

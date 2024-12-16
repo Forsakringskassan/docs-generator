@@ -79,13 +79,6 @@ var exampleComponent = defineComponent({
     }
   }
 });
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "b",
-  null,
-  "R\xE4ttigheter",
-  -1
-  /* HOISTED */
-);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_table_column = _resolveComponent("f-table-column");
   const _component_f_data_table = _resolveComponent("f-data-table");
@@ -105,9 +98,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         rows: _ctx.fruits,
         "key-attribute": "id"
       }, {
-        caption: _withCtx(() => [
-          _hoisted_1
-        ]),
+        caption: _withCtx(() => _cache[1] || (_cache[1] = [
+          _createElementVNode(
+            "b",
+            null,
+            "R\xE4ttigheter",
+            -1
+            /* HOISTED */
+          )
+        ])),
         default: _withCtx(({ row }) => [
           _createVNode(
             _component_f_table_column,
@@ -186,9 +185,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": ($event) => item.id = $event,
         type: "text"
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[2] || (_cache[2] = [
           _createTextVNode(" ID ")
-        ]),
+        ])),
         _: 2
         /* DYNAMIC */
       }, 1032, ["modelValue", "onUpdate:modelValue"])), [
@@ -207,9 +206,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": ($event) => item.name = $event,
         type: "text"
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[3] || (_cache[3] = [
           _createTextVNode(" Namn ")
-        ]),
+        ])),
         _: 2
         /* DYNAMIC */
       }, 1032, ["modelValue", "onUpdate:modelValue"])), [
@@ -228,9 +227,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": ($event) => item.origin = $event,
         type: "text"
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[4] || (_cache[4] = [
           _createTextVNode(" Land ")
-        ]),
+        ])),
         _: 2
         /* DYNAMIC */
       }, 1032, ["modelValue", "onUpdate:modelValue"])), [
@@ -248,9 +247,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         modelValue: item.description,
         "onUpdate:modelValue": ($event) => item.description = $event
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[5] || (_cache[5] = [
           _createTextVNode(" Beskrivning ")
-        ]),
+        ])),
         _: 2
         /* DYNAMIC */
       }, 1032, ["modelValue", "onUpdate:modelValue"])), [

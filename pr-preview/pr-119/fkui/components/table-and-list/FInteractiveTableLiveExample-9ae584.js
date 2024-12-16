@@ -298,9 +298,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.isSelectable = $event),
         value: true
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[12] || (_cache[12] = [
           _createTextVNode(" Valbara rader ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"]),
@@ -309,9 +309,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.isExpandable = $event),
         value: true
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[13] || (_cache[13] = [
           _createTextVNode(" Expanderbara rader ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"]),
@@ -319,18 +319,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         key: 0,
         name: "radio-expandable-type"
       }, {
-        label: _withCtx(() => [
+        label: _withCtx(() => _cache[14] || (_cache[14] = [
           _createTextVNode(" Typ av expanderat inneh\xE5ll ")
-        ]),
+        ])),
         default: _withCtx(() => [
           _createVNode(_component_f_radio_field, {
             modelValue: _ctx.hasCustomExpandContent,
             "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.hasCustomExpandContent = $event),
             value: false
           }, {
-            default: _withCtx(() => [
+            default: _withCtx(() => _cache[15] || (_cache[15] = [
               _createTextVNode(" Tabellrad ")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           }, 8, ["modelValue"]),
@@ -339,9 +339,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.hasCustomExpandContent = $event),
             value: true
           }, {
-            default: _withCtx(() => [
+            default: _withCtx(() => _cache[16] || (_cache[16] = [
               _createTextVNode(" Valfritt inneh\xE5ll ")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           }, 8, ["modelValue"])
@@ -354,9 +354,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.hasHover = $event),
         value: true
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[17] || (_cache[17] = [
           _createTextVNode(" Hover ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"]),
@@ -365,9 +365,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => _ctx.isStriped = $event),
         value: true
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[18] || (_cache[18] = [
           _createTextVNode(" Zebrarandig ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"]),
@@ -376,9 +376,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => _ctx.hasActions = $event),
         value: true
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[19] || (_cache[19] = [
           _createTextVNode(" \xC5tg\xE4rdsknappar ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"]),
@@ -387,9 +387,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[7] || (_cache[7] = ($event) => _ctx.hasRowHeader = $event),
         value: true
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[20] || (_cache[20] = [
           _createTextVNode(" Radrubriker ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"]),
@@ -398,9 +398,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[8] || (_cache[8] = ($event) => _ctx.hasHiddenCaption = $event),
         value: true
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[21] || (_cache[21] = [
           _createTextVNode(" Dold caption ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"]),
@@ -409,9 +409,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[9] || (_cache[9] = ($event) => _ctx.isEmpty = $event),
         value: true
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[22] || (_cache[22] = [
           _createTextVNode(" Tom tabell ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"]),
@@ -419,18 +419,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         key: 1,
         name: "radio-empty-text"
       }, {
-        label: _withCtx(() => [
+        label: _withCtx(() => _cache[23] || (_cache[23] = [
           _createTextVNode(" Meddelande f\xF6r tom tabell ")
-        ]),
+        ])),
         default: _withCtx(() => [
           _createVNode(_component_f_radio_field, {
             modelValue: _ctx.hasCustomEmptyText,
             "onUpdate:modelValue": _cache[10] || (_cache[10] = ($event) => _ctx.hasCustomEmptyText = $event),
             value: false
           }, {
-            default: _withCtx(() => [
+            default: _withCtx(() => _cache[24] || (_cache[24] = [
               _createTextVNode(" Standardmeddelande ")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           }, 8, ["modelValue"]),
@@ -439,9 +439,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "onUpdate:modelValue": _cache[11] || (_cache[11] = ($event) => _ctx.hasCustomEmptyText = $event),
             value: true
           }, {
-            default: _withCtx(() => [
+            default: _withCtx(() => _cache[25] || (_cache[25] = [
               _createTextVNode(" Eget meddelande ")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           }, 8, ["modelValue"])

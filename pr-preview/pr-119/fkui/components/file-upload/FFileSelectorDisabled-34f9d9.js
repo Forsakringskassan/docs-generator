@@ -41,9 +41,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     accept: "image/jpeg, image/tiff",
     disabled: ""
   }, {
-    default: _withCtx(() => [
+    default: _withCtx(() => _cache[0] || (_cache[0] = [
       _createTextVNode(" L\xE4gg till fil ")
-    ]),
+    ])),
     _: 1
     /* STABLE */
   });

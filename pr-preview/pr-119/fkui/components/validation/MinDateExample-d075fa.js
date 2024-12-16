@@ -45,9 +45,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     modelValue: _ctx.model,
     "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.model = $event)
   }, {
-    default: _withCtx(() => [
+    default: _withCtx(() => _cache[1] || (_cache[1] = [
       _createTextVNode(" Fyll i ett datum som ligger efter den 31 december 2019 ")
-    ]),
+    ])),
     _: 1
     /* STABLE */
   }, 8, ["modelValue"])), [

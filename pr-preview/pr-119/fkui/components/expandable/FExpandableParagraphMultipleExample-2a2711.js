@@ -52,27 +52,6 @@ var exampleComponent = defineComponent({
     }
   }
 });
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "span",
-  null,
-  " Inneh\xE5ll ",
-  -1
-  /* HOISTED */
-);
-var _hoisted_2 = /* @__PURE__ */ _createElementVNode(
-  "span",
-  null,
-  " Inneh\xE5ll ",
-  -1
-  /* HOISTED */
-);
-var _hoisted_3 = /* @__PURE__ */ _createElementVNode(
-  "span",
-  null,
-  " Inneh\xE5ll ",
-  -1
-  /* HOISTED */
-);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_expandable_paragraph = _resolveComponent("f-expandable-paragraph");
   return _openBlock(), _createElementBlock("div", null, [
@@ -81,12 +60,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "header-tag": "h2",
       onToggle: _ctx.onToggle1
     }, {
-      title: _withCtx(() => [
+      title: _withCtx(() => _cache[0] || (_cache[0] = [
         _createTextVNode(" Titel (h2) ")
-      ]),
-      default: _withCtx(() => [
-        _hoisted_1
-      ]),
+      ])),
+      default: _withCtx(() => _cache[1] || (_cache[1] = [
+        _createElementVNode(
+          "span",
+          null,
+          " Inneh\xE5ll ",
+          -1
+          /* HOISTED */
+        )
+      ])),
       _: 1
       /* STABLE */
     }, 8, ["expanded", "onToggle"]),
@@ -95,12 +80,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "header-tag": "h3",
       onToggle: _ctx.onToggle2
     }, {
-      title: _withCtx(() => [
+      title: _withCtx(() => _cache[2] || (_cache[2] = [
         _createTextVNode(" Titel (h3) ")
-      ]),
-      default: _withCtx(() => [
-        _hoisted_2
-      ]),
+      ])),
+      default: _withCtx(() => _cache[3] || (_cache[3] = [
+        _createElementVNode(
+          "span",
+          null,
+          " Inneh\xE5ll ",
+          -1
+          /* HOISTED */
+        )
+      ])),
       _: 1
       /* STABLE */
     }, 8, ["expanded", "onToggle"]),
@@ -109,15 +100,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "header-tag": "h4",
       onToggle: _ctx.onToggle3
     }, {
-      title: _withCtx(() => [
+      title: _withCtx(() => _cache[4] || (_cache[4] = [
         _createTextVNode(" Titel (h4) ")
-      ]),
-      related: _withCtx(() => [
+      ])),
+      related: _withCtx(() => _cache[5] || (_cache[5] = [
         _createTextVNode(" 2020-06-25 ")
-      ]),
-      default: _withCtx(() => [
-        _hoisted_3
-      ]),
+      ])),
+      default: _withCtx(() => _cache[6] || (_cache[6] = [
+        _createElementVNode(
+          "span",
+          null,
+          " Inneh\xE5ll ",
+          -1
+          /* HOISTED */
+        )
+      ])),
       _: 1
       /* STABLE */
     }, 8, ["expanded", "onToggle"])

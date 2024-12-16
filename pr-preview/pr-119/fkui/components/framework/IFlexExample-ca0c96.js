@@ -34,13 +34,6 @@ var exampleComponent = defineComponent({
   name: "IFlexExample",
   components: { FIcon, IFlex, IFlexItem }
 });
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "h2",
-  null,
-  "Rubrik med ikon",
-  -1
-  /* HOISTED */
-);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = _resolveComponent("f-icon");
   const _component_i_flex_item = _resolveComponent("i-flex-item");
@@ -62,9 +55,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           /* STABLE */
         }),
         _createVNode(_component_i_flex_item, { grow: "" }, {
-          default: _withCtx(() => [
-            _hoisted_1
-          ]),
+          default: _withCtx(() => _cache[0] || (_cache[0] = [
+            _createElementVNode(
+              "h2",
+              null,
+              "Rubrik med ikon",
+              -1
+              /* HOISTED */
+            )
+          ])),
           _: 1
           /* STABLE */
         })

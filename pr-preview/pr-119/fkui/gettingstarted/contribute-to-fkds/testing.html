@@ -9,41 +9,41 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-dceb7e.css"
+            href="../../assets/docs-4ad5d0.css"
             crossorigin
-            integrity="sha384-jneD2TiHLKc+0J+CQFzSu5gG1qHmFWZceuAUHNjw6ztcYqCg2CxpIq0ZPMvUExz3"
+            integrity="sha384-AvlRQ9e6ED+w5remosnXTKMq5iFtGxtrXScsqiL1094Uy0Q/az8ERg/16e+VuISm"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-exp-3cb848.css"
+            href="../../assets/docs-exp-7d254d.css"
             crossorigin
-            integrity="sha384-RIFdezZEyghKBnWGnU8GalsCL/pyORCRQSD/JH9H2VJRldNydpMFVdrliikCHoE5"
+            integrity="sha384-sqWEQkmH2jAsztk3CxUCrdtK8cYykguMIJd1+UAbp+gh1gaJtO0UEs42tyyIWO//"
             data-theme="exp" disabled
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-int-b89a7a.css"
+            href="../../assets/docs-int-195032.css"
             crossorigin
-            integrity="sha384-GsPRhr7ciVP6tZLZNtu7XqSTyiRF9MKoN27IgzNFOlySwiHbE70mXb4Axk1KsG52"
+            integrity="sha384-V/ILRCps6g6bgagi33Opo/H/71OfAwkS2GheQp4DazqjuLDf2mlB1OxMd/9mIfzd"
             data-theme="int" disabled
         />
 
         <script type="importmap">
             {
   "imports": {
-    "vue": "../../assets/vendor-vue-3fd87c.js",
-    "@fkui/logic": "../../assets/vendor-fkui-logic-40c392.js",
+    "vue": "../../assets/vendor-vue-fd7b76.js",
+    "@fkui/logic": "../../assets/vendor-fkui-logic-f2e93f.js",
     "@fkui/date": "../../assets/vendor-fkui-date-9b0ef1.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-537be2.js",
-    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-6351e3.js"
+    "@fkui/vue": "../../assets/vendor-fkui-vue-ba16e8.js",
+    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-ce5c3f.js"
   },
   "integrity": {
-    "../../assets/vendor-vue-3fd87c.js": "sha384-3OZ3jlPIdukpSLantTq/cQZ/QglhblARXVsF5Qa3ramhpTPq5oIb64KYJVsmFmcx",
-    "../../assets/vendor-fkui-logic-40c392.js": "sha384-atQyVGDPH3tRpFiNzNh+evfRGsrLWw/vnLqM7jRa56LYusGZf6LTCk9xLVQvRhxL",
+    "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
+    "../../assets/vendor-fkui-logic-f2e93f.js": "sha384-IPacLgPmCz2jfxV3ZacqrFaVi8T6F/RBcVnVbaRhA6+QS6E7/oLrmTvyNYGNNNom",
     "../../assets/vendor-fkui-date-9b0ef1.js": "sha384-xBatGNJBE3UYeafnYIcvibBCzT8ADONUBqG8qLOF3XGi35obeRYsHs6DCq/h5j2Y",
-    "../../assets/vendor-fkui-vue-537be2.js": "sha384-1l9v2TdoBS5+PHt23m3j5nBW4XGjgwG9K4kiPs0nhe+5tjInFmoqMy5RWlBoIGX8",
-    "../../assets/vendor-forsakringskassan-docs-live-example-6351e3.js": "sha384-FRTUtWNmEkJgIhqtTX6bQd+em+HCK1LhLnhOJkYJ4y9YbnyG3vU11hiZkB1bfwfw"
+    "../../assets/vendor-fkui-vue-ba16e8.js": "sha384-8Bfw90woQD7IabvLi4rdqrdLrw4RZZ0oONM07NTxFM4OWkqfOC3AwAe4Jf3y1pOL",
+    "../../assets/vendor-forsakringskassan-docs-live-example-ce5c3f.js": "sha384-rLyXeIcpVmwGulMOjBGTYbwDjDcBeKL1gobH2xxZ6C8vR5sin3SBbKOsIo9hCeZO"
   }
 }
         </script>
@@ -108,16 +108,35 @@
 
         <link
             rel="preload"
-            href="../../search-data-fdce6e.json"
+            href="../../search-data-206ec1.json"
             as="fetch"
             crossorigin
-            integrity="sha384-fK+G7u7K43xJtiFIZf83eTc+qNMPtT/kjBpn/X8qeS2+JRtZYo/zpEOX+TiPgkEh"
+            integrity="sha384-qtmkzIMo8jIhaZ11ePXcG2zo3YLrksmCrLxGlIpa1zJKMpVlqUmLJnc2vkkvwFsx"
             id="search-data"
         />
     </head>
     <body>
         <!-- prettier-ignore -->
-        <div class="cookie-warning">
+        
+<template id="motd-message">
+<div class="docs-motd docs-motd--info">
+    <span class="docs-motd__icon">
+        <span class="icon-stack icon-stack--info">
+            <svg class="icon icon--circle" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-circle"></use>
+            </svg>
+            <svg class="icon icon--i" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-i"></use>
+            </svg>
+        </span>
+    </span><span data-bind="screenreader" class="sr-only"></span>
+    <p data-bind="message"></p></div>
+</template>
+
+
+<div id="motd-container">
+    </div>
+<div class="cookie-warning">
     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
     <h1>Kakor på webbplatsen</h1>
     <p>
@@ -657,10 +676,10 @@ Onödig data ökar den kognitiva belastningen för läsaren och gör det svårar
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">function</span> <span class="hljs-title function_">getFullName</span>(<span class="hljs-params"><span class="hljs-attr">src</span>: <span class="hljs-title class_">MyComplexObject</span></span>): <span class="hljs-built_in">string</span> {
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">function</span> <span class="hljs-title function_">getFullName</span>(<span class="hljs-params"><span class="hljs-attr">src</span>: <span class="hljs-title class_">MyComplexObject</span></span>): <span class="hljs-built_in">string</span> {
     <span class="hljs-comment">/* ... */</span>
 }
 </code></pre>
@@ -743,10 +762,10 @@ Onödig data ökar den kognitiva belastningen för läsaren och gör det svårar
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-title function_">it</span>(<span class="hljs-string">&quot;x should y&quot;</span>, <span class="hljs-function">() =&gt;</span> {
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">it</span>(<span class="hljs-string">&quot;x should y&quot;</span>, <span class="hljs-function">() =&gt;</span> {
     <span class="hljs-keyword">const</span> data = [{ ... }, { ... }];
     <span class="hljs-keyword">const</span> result = <span class="hljs-title function_">func</span>(data);
 	<span class="hljs-title function_">expect</span>(result).<span class="hljs-title function_">toHaveLength</span>(<span class="hljs-number">2</span>);
@@ -806,10 +825,10 @@ Stora mängder testdata distraherar från själva testfallet.</p>
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-title function_">it</span>(<span class="hljs-string">&quot;x should y&quot;</span>, <span class="hljs-function">() =&gt;</span> {
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">it</span>(<span class="hljs-string">&quot;x should y&quot;</span>, <span class="hljs-function">() =&gt;</span> {
     <span class="hljs-comment">/* given: a button with a click callback */</span>
     <span class="hljs-keyword">const</span> spy = jest.<span class="hljs-title function_">fn</span>();
     <span class="hljs-keyword">const</span> wrapper = <span class="hljs-title function_">shallowMount</span>(<span class="hljs-title class_">ButtonComponent</span>, {
@@ -836,10 +855,10 @@ Formatet uppmuntrar igenomtänkta och strukturerade testfall.</p>
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-title function_">it</span>(<span class="hljs-string">&quot;propName&quot;</span>, <span class="hljs-function">() =&gt;</span> { ... });
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">it</span>(<span class="hljs-string">&quot;propName&quot;</span>, <span class="hljs-function">() =&gt;</span> { ... });
 </code></pre>
                 </div>
             <p>Förklarar inte vad man förväntar sig av propen</p>
@@ -850,10 +869,10 @@ Formatet uppmuntrar igenomtänkta och strukturerade testfall.</p>
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-title function_">it</span>(<span class="hljs-string">&quot;should emit submit event when clicked&quot;</span>, <span class="hljs-function">() =&gt;</span> { ... });
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">it</span>(<span class="hljs-string">&quot;should emit submit event when clicked&quot;</span>, <span class="hljs-function">() =&gt;</span> { ... });
 </code></pre>
                 </div>
             <p>Motivering:
@@ -893,10 +912,10 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;html-validate/jest&quot;</span>;                              <span class="hljs-comment">// 1. Enbart side-effects</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;html-validate/jest&quot;</span>;                              <span class="hljs-comment">// 1. Enbart side-effects</span>
 <span class="hljs-keyword">import</span> <span class="hljs-string">&quot;path&quot;</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;path&quot;</span>;                                <span class="hljs-comment">// 2. NodeJS standardbibiliotek</span>
 <span class="hljs-keyword">import</span> _ <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;lodash&quot;</span>;                                   <span class="hljs-comment">// 3. Tredje-parts bibliotek</span>
 <span class="hljs-keyword">import</span> apimock <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@forsakringskassan/apimock-express&quot;</span>; <span class="hljs-comment">// 4. In-house bibliotek</span>
@@ -912,10 +931,10 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">import</span> <span class="hljs-title class_">MyComponent</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./MyComponent.vue&quot;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> <span class="hljs-title class_">MyComponent</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./MyComponent.vue&quot;</span>;
 </code></pre>
                 </div>
             <p>Motivering: ordningen av imports gör det mer överskådligt och snabbare att greppa.</p>
@@ -925,10 +944,10 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-title function_">describe</span>(<span class="hljs-string">&quot;props&quot;</span>, <span class="hljs-function">() =&gt;</span> {
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">describe</span>(<span class="hljs-string">&quot;props&quot;</span>, <span class="hljs-function">() =&gt;</span> {
     <span class="hljs-comment">/* v--- denna testas inte här, den ligger under v-model */</span>
     <span class="hljs-comment">/*describe(&quot;highlight&quot;, () =&gt; {
 
@@ -972,10 +991,10 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">let</span> wrapper;
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">let</span> wrapper;
 
 <span class="hljs-title function_">it</span>(.., <span class="hljs-function">() =&gt;</span> {
     wrapper = <span class="hljs-title function_">shallowMount</span>(..);
@@ -989,10 +1008,10 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-title function_">it</span>(.., <span class="hljs-function">() =&gt;</span> {
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">it</span>(.., <span class="hljs-function">() =&gt;</span> {
     <span class="hljs-keyword">const</span> wrapper = <span class="hljs-title function_">shallowMount</span>(..);
 });
 </code></pre>
@@ -1018,10 +1037,10 @@ Om utskriften bedöms rimlig så bör du också testa att utskriften är korrekt
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">import</span> { myFunction } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./my-function&quot;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { myFunction } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./my-function&quot;</span>;
 
 <span class="hljs-comment">/* spy on `console.log` but does not stub the function, i.e. the original console.log will still be called */</span>
 <span class="hljs-keyword">const</span> log = jest.<span class="hljs-title function_">spyOn</span>(<span class="hljs-variable language_">console</span>, <span class="hljs-string">&quot;log&quot;</span>);
@@ -1057,10 +1076,10 @@ Om utskriften bedöms rimlig så bör du också testa att utskriften är korrekt
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-comment">/**
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-comment">/**
  * Description of what this pageobject represents.
  */</span>
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyPageobject</span> {
@@ -1098,10 +1117,10 @@ Undvik arrow-funktion-som-property mönster:</p>
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyPageobject</span> {
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyPageobject</span> {
     <span class="hljs-keyword">public</span> <span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span>;
 
     <span class="hljs-comment">/**
@@ -1123,10 +1142,10 @@ Undvik arrow-funktion-som-property mönster:</p>
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyPageobject</span> {
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyPageobject</span> {
     <span class="hljs-keyword">public</span> <span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span>;
 
     <span class="hljs-keyword">public</span> <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span></span>) {
@@ -1180,10 +1199,38 @@ Skriv istället ihop selectorn med en template literal:</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/importmap (<a href="https://github.com/Forsakringskassan/designsystem/commits/2515f5fce0d6cd7072fbbe4ecd6999a985c72b3d">2515f5f</a>)<br />
+    feature/importmap (<a href="https://github.com/Forsakringskassan/designsystem/commits/a175535e3bb31a6dd6045fe88277d85a687b952f">a175535</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/119">PR 119</a><br />
-        2024-10-18 23:59
+        2024-12-16 14:59
 </div>
+<div class="toolbar__item">
+    <form id="version">
+        <button type="submit">
+            <span id="version-info" class="anchor"> Byt version </span>
+        </button>
+    </form>
+
+    <dialog id="version-dialog">
+        <div id="version-dialog-head">
+            <h1>Välj version</h1>
+            <button type="button" class="button button--discrete button--discrete--black">
+                <span>Stäng</span>
+                <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
+                    <use xlink:href="#f-icon-close"></use>
+                </svg>
+            </button>
+        </div>
+        <div id="version-list">
+            <p>Var god vänta, laddar versionsdata...</p>
+        </div>
+    </dialog>
+</div>
+
+<template id="version-list-item">
+    <li class="list__item">
+        <a class="list__item__itempane">template</a>
+    </li>
+</template>
 
 
     <ul>
@@ -1269,15 +1316,21 @@ Skriv istället ihop selectorn med en template literal:</p>
 
         <!-- prettier-ignore -->
         <script
-            src="../../assets/processors/selectable-version/select-version-42b338.js"
+            src="../../assets/processors/motd/index-8c87e1.js"
             crossorigin
-            integrity="sha384-9teClDZoUmFqd4Uy9zGlWIwizRBX8jp3Tuvbf8GCf6jj1pTG5nVxJGQ/gOCfOsnK"
+            integrity="sha384-VgbNs0pGkTPNii6sZDsQfyDa2hDTsNJePPW42/GgMW4jj8RspvO2p7e7j22mfz/b"
             
         ></script>
         <script
-            src="../../assets/main-178326.js"
+            src="../../assets/processors/selectable-version/select-version-e7a130.js"
             crossorigin
-            integrity="sha384-2+vGzPgal6hSidZSiWJFCeBLiLxG42ufc1/pJkCgV16E07z8I9yZbphs2h2xiDpg"
+            integrity="sha384-ioVz0q+o5e9xzpHcYgIMUjemejWyVXe+hmnsBFa92juxUWJaJ7JTzVMgU6A81Kgt"
+            
+        ></script>
+        <script
+            src="../../assets/main-ae3895.js"
+            crossorigin
+            integrity="sha384-WQHGoNOK3Mtld4sHZsBn4R23AII6/VsvSPruKRH/24Ii1yE6h2UVAsD8uX3WeZaN"
             
         ></script>
     </body>

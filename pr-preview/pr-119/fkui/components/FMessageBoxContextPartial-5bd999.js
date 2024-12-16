@@ -34,20 +34,6 @@ var exampleComponent = defineComponent({
   name: "FMessageBoxContextPartial",
   components: { FMessageBox }
 });
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "span",
-  { class: "sr-only" },
-  " Sk\xE4rml\xE4sarinformation kombinerad med befintlig titel ",
-  -1
-  /* HOISTED */
-);
-var _hoisted_2 = /* @__PURE__ */ _createElementVNode(
-  "p",
-  null,
-  "Komponenten kommer vid fokus inte l\xE4ngre att l\xE4sa texten Informationsmeddelande.",
-  -1
-  /* HOISTED */
-);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_message_box = _resolveComponent("f-message-box");
   return _openBlock(), _createBlock(_component_f_message_box, {
@@ -60,14 +46,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         {
           class: _normalizeClass(headingSlotClass)
         },
-        [
-          _hoisted_1,
+        _cache[0] || (_cache[0] = [
+          _createElementVNode(
+            "span",
+            { class: "sr-only" },
+            " Sk\xE4rml\xE4sarinformation kombinerad med befintlig titel ",
+            -1
+            /* HOISTED */
+          ),
           _createTextVNode(" En rubrik som kombineras med en sk\xE4rml\xE4sartext f\xF6r att tydligt f\xF6rklara sin kontext n\xE4r den f\xE5r fokus ")
-        ],
+        ]),
         2
         /* CLASS */
       ),
-      _hoisted_2
+      _cache[1] || (_cache[1] = _createElementVNode(
+        "p",
+        null,
+        "Komponenten kommer vid fokus inte l\xE4ngre att l\xE4sa texten Informationsmeddelande.",
+        -1
+        /* HOISTED */
+      ))
     ]),
     _: 1
     /* STABLE */

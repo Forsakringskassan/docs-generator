@@ -144,9 +144,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.isRequired = $event),
         value: true
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[5] || (_cache[5] = [
           _createTextVNode(" Obligatoriskt f\xE4lt ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"]),
@@ -155,25 +155,25 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.isDisabled = $event),
         value: true
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[6] || (_cache[6] = [
           _createTextVNode(" Inaktivt f\xE4lt ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"]),
       _createVNode(_component_f_fieldset, { name: "SelectField-label" }, {
-        label: _withCtx(() => [
+        label: _withCtx(() => _cache[7] || (_cache[7] = [
           _createTextVNode(" Etiketten ")
-        ]),
+        ])),
         default: _withCtx(() => [
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.descriptionVisible,
             "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.descriptionVisible = $event),
             value: true
           }, {
-            default: _withCtx(() => [
+            default: _withCtx(() => _cache[8] || (_cache[8] = [
               _createTextVNode(" Hj\xE4lptext ")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           }, 8, ["modelValue"]),
@@ -182,9 +182,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.tooltipVisible = $event),
             value: true
           }, {
-            default: _withCtx(() => [
+            default: _withCtx(() => _cache[9] || (_cache[9] = [
               _createTextVNode(" Tooltip ")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           }, 8, ["modelValue"]),
@@ -193,9 +193,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.showInline = $event),
             value: true
           }, {
-            default: _withCtx(() => [
+            default: _withCtx(() => _cache[10] || (_cache[10] = [
               _createTextVNode(" Inline ")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           }, 8, ["modelValue"])

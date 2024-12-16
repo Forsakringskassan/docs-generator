@@ -47,14 +47,7 @@ var _hoisted_1 = {
   type: "button",
   class: "button button--tertiary button--medium file-item__file-remove file-item__abort"
 };
-var _hoisted_2 = /* @__PURE__ */ _createElementVNode(
-  "span",
-  null,
-  " Avbryt uppladdning ",
-  -1
-  /* HOISTED */
-);
-var _hoisted_3 = {
+var _hoisted_2 = {
   key: 1,
   type: "button",
   class: "button button--tertiary button--medium file-item__file-remove"
@@ -65,7 +58,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_file_item = _resolveComponent("f-file-item");
   return _openBlock(), _createElementBlock("div", null, [
     _createElementVNode("label", null, [
-      _createTextVNode(" Progress: "),
+      _cache[2] || (_cache[2] = _createTextVNode(" Progress: ")),
       _withDirectives(_createElementVNode(
         "input",
         {
@@ -97,13 +90,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             name: "close",
             class: "button__icon"
           }),
-          _hoisted_2
-        ])) : _ctx.progress === 100 ? (_openBlock(), _createElementBlock("button", _hoisted_3, [
+          _cache[3] || (_cache[3] = _createElementVNode(
+            "span",
+            null,
+            " Avbryt uppladdning ",
+            -1
+            /* HOISTED */
+          ))
+        ])) : _ctx.progress === 100 ? (_openBlock(), _createElementBlock("button", _hoisted_2, [
           _createVNode(_component_f_icon, {
             name: "trashcan",
             class: "button__icon"
           }),
-          _createTextVNode(" Ta bort ")
+          _cache[4] || (_cache[4] = _createTextVNode(" Ta bort "))
         ])) : _createCommentVNode("v-if", true)
       ]),
       default: _withCtx(() => [

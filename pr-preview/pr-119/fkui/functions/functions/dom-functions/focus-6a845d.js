@@ -55,28 +55,26 @@ var exampleComponent = defineComponent({
     focus(this);
   }
 });
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "h1",
-  null,
-  "Important Section",
-  -1
-  /* HOISTED */
-);
-var _hoisted_2 = /* @__PURE__ */ _createElementVNode(
-  "p",
-  null,
-  "Some interesting content.",
-  -1
-  /* HOISTED */
-);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_my_button = _resolveComponent("my-button");
   return _openBlock(), _createElementBlock(
     _Fragment,
     null,
     [
-      _hoisted_1,
-      _hoisted_2,
+      _cache[0] || (_cache[0] = _createElementVNode(
+        "h1",
+        null,
+        "Important Section",
+        -1
+        /* HOISTED */
+      )),
+      _cache[1] || (_cache[1] = _createElementVNode(
+        "p",
+        null,
+        "Some interesting content.",
+        -1
+        /* HOISTED */
+      )),
       _createVNode(
         _component_my_button,
         { ref: "myButton" },

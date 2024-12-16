@@ -45,9 +45,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       key: 0,
       id: "child-name"
     }, {
-      default: _withCtx(() => [
+      default: _withCtx(() => _cache[1] || (_cache[1] = [
         _createTextVNode(" Barnets namn ")
-      ]),
+      ])),
       _: 1
       /* STABLE */
     })), [

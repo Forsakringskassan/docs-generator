@@ -48,13 +48,6 @@ var exampleComponent = defineComponent({
   }
 });
 var _hoisted_1 = { class: "debug-data" };
-var _hoisted_2 = /* @__PURE__ */ _createElementVNode(
-  "span",
-  { class: "sr-only" },
-  "Debug-data: ",
-  -1
-  /* HOISTED */
-);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_progressbar = _resolveComponent("f-progressbar");
   return _openBlock(), _createElementBlock("div", null, [
@@ -65,7 +58,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "value-text": "You have uploaded %VALUE% %."
     }, null, 8, ["value"]),
     _createElementVNode("pre", _hoisted_1, [
-      _hoisted_2,
+      _cache[3] || (_cache[3] = _createElementVNode(
+        "span",
+        { class: "sr-only" },
+        "Debug-data: ",
+        -1
+        /* HOISTED */
+      )),
       _createTextVNode(
         "value: " + _toDisplayString(_ctx.currentProgress),
         1
@@ -81,7 +80,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       onClick: _cache[1] || (_cache[1] = ($event) => _ctx.decrease())
     }, "Decrease"),
     _createElementVNode("label", null, [
-      _createTextVNode(" Progress: "),
+      _cache[4] || (_cache[4] = _createTextVNode(" Progress: ")),
       _withDirectives(_createElementVNode(
         "input",
         {

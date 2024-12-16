@@ -9,28 +9,28 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../assets/docs-0ad199.css"
+            href="../assets/docs-eb7205.css"
             crossorigin
-            integrity="sha384-YREgqk15fjHQ3A87un4K0S9N6GxG9Kt9K5t28VXzM2ckmWg8hDUJKsFkxhPyaqLE"
+            integrity="sha384-+t0wmTpSOe5SuItdPL/fUwLi8SLvTkFH/PnaSSED84V7YPMfEDqSPsqf+/OB9Q1f"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/fkui-409dbb.css"
+            href="../assets/fkui-f99d46.css"
             crossorigin
-            integrity="sha384-MaZv1oPslAKieUVrFO6IVACqQGPHoGO5s/ze5nqwUd2ZHzj+etY779tACG5pAWqS"
+            integrity="sha384-HVtm9qKn/A/MAXCewSzispGl5TRyfM/tFpLT7HGSblvQMtM5QFlssIJ66zyzjy8d"
             
         />
 
         <script type="importmap">
             {
   "imports": {
-    "vue": "../assets/vendor-vue-f46117.js",
-    "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-6351e3.js"
+    "vue": "../assets/vendor-vue-fd7b76.js",
+    "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-ce5c3f.js"
   },
   "integrity": {
-    "../assets/vendor-vue-f46117.js": "sha384-bpIOGLOUZAkPdjRRipKkve+vteM3oaZqFz18JQNzoXN1MQ9BetYz/rpREx/Zh2F/",
-    "../assets/vendor-forsakringskassan-docs-live-example-6351e3.js": "sha384-FRTUtWNmEkJgIhqtTX6bQd+em+HCK1LhLnhOJkYJ4y9YbnyG3vU11hiZkB1bfwfw"
+    "../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
+    "../assets/vendor-forsakringskassan-docs-live-example-ce5c3f.js": "sha384-rLyXeIcpVmwGulMOjBGTYbwDjDcBeKL1gobH2xxZ6C8vR5sin3SBbKOsIo9hCeZO"
   }
 }
         </script>
@@ -48,10 +48,10 @@
 
         <link
             rel="preload"
-            href="../search-data-11b296.json"
+            href="../search-data-d6cc86.json"
             as="fetch"
             crossorigin
-            integrity="sha384-8urIx7hGfLlRcN9coND62Hl9KCE358qBq1E3/Qb93391dbTxGG+5r/ujy/PsVs7t"
+            integrity="sha384-palo3bFhDXvM78WUGOzplmS8fVR4d1a9zkYLy04wGsUi35T1ifBufYv09i3gW82j"
             id="search-data"
         />
     </head>
@@ -76,6 +76,25 @@
         </button>
     </div>
 </div>
+
+<template id="motd-message">
+<div class="docs-motd docs-motd--info">
+    <span class="docs-motd__icon">
+        <span class="icon-stack icon-stack--info">
+            <svg class="icon icon--circle" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-circle"></use>
+            </svg>
+            <svg class="icon icon--i" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-i"></use>
+            </svg>
+        </span>
+    </span><span data-bind="screenreader" class="sr-only"></span>
+    <p data-bind="message"></p></div>
+</template>
+
+
+<div id="motd-container">
+    </div>
 
 
         <div class="layout-wrapper">
@@ -211,9 +230,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        feature/importmap (<a href="https://github.com/Forsakringskassan/docs-generator/commits/b2ac32ee0213073794c8760ad944459af2882186">b2ac32e</a>)<br />
+        feature/importmap (<a href="https://github.com/Forsakringskassan/docs-generator/commits/2ac82857c8f0236f718991c187ebde36b5e2b94f">2ac8285</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/119">PR 119</a><br />
-        2024-10-18 23:57
+        2024-12-16 14:57
     </span>
 </div>
 </div>
@@ -434,14 +453,14 @@
             <p>It uses the <code>frontMatterFileReader</code> and <code>navigationFileReader</code> to read the documents:</p>
 
                 <div
-                    id="example-a11915"
+                    id="example-916d1f"
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">await</span> docs.<span class="hljs-title function_">build</span>([
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">await</span> docs.<span class="hljs-title function_">build</span>([
     {
         <span class="hljs-attr">include</span>: <span class="hljs-string">&quot;docs/**/*.md&quot;</span>,
         <span class="hljs-attr">basePath</span>: <span class="hljs-string">&quot;./docs/&quot;</span>,
@@ -458,7 +477,7 @@
             <h2 id="hiding_pages"><a class="header-anchor" href="#hiding_pages">Hiding pages</a></h2><p>Each file will be present in the navigation unless the <code>visible</code> attribute is set to <code>false</code>, e.g.:</p>
 
                 <div
-                    id="example-5790e2"
+                    id="example-5ab3cb"
                     class="code-preview code-preview--default"
                     
                     
@@ -479,7 +498,7 @@ It can be linked to by other means.
 To set the title of the group create a new <code>index.json</code> with the <code>title</code> attribute set:</p>
 
                 <div
-                    id="example-257f2a"
+                    id="example-064c7d"
                     class="code-preview code-preview--default"
                     
                     
@@ -494,7 +513,7 @@ To set the title of the group create a new <code>index.json</code> with the <cod
             <h2 id="links"><a class="header-anchor" href="#links">Links</a></h2><p>Custom links can be created by adding a json file with both the <code>title</code> and <code>href</code> property set, e.g. <code>external-link.json</code>:</p>
 
                 <div
-                    id="example-90fbd6"
+                    id="example-46768b"
                     class="code-preview code-preview--default"
                     
                     
@@ -513,7 +532,7 @@ It is recommended to start such hrefs with a single <code>/</code> for better cl
 <h2 id="sorting"><a class="header-anchor" href="#sorting">Sorting</a></h2><p>Sorting uses the optional <code>sortorder</code> attribute:</p>
 
                 <div
-                    id="example-90d0f7"
+                    id="example-6040a0"
                     class="code-preview code-preview--default"
                     
                     
@@ -540,7 +559,7 @@ Pages sharing the same <code>sortorder</code> or when <code>sortorder</code> is 
 If the <code>shortTitle</code> attribute is set it is used instead.</p>
 
                 <div
-                    id="example-5df957"
+                    id="example-8f9f51"
                     class="code-preview code-preview--default"
                     
                     
@@ -560,7 +579,38 @@ title: A longer title unsuitable for the navigation
             </div>
 
             <footer>
-                <!-- prettier-ignore --><!-- prettier-ignore -->
+                <!-- prettier-ignore --><div class="footer">
+    <!-- prettier-ignore -->
+    <div class="toolbar__item">
+    <form id="version">
+        <button type="submit" class="anchor">
+            <span id="version-info" class="version"> Byt version </span>
+        </button>
+    </form>
+
+    <dialog id="version-dialog">
+        <div id="version-dialog-head">
+            <h1>Välj version</h1>
+            <button type="button" class="button button--discrete button--discrete--black">
+                <span>Stäng</span>
+                <svg class="button__icon icon" focusable="false" aria-hidden>
+                    <use xlink:href="#docs-icon-close"></use>
+                </svg>
+            </button>
+        </div>
+        <div id="version-list">
+            <p>Var god vänta, laddar versionsdata...</p>
+        </div>
+    </dialog>
+</div>
+
+<template id="version-list-item">
+    <li class="list__item">
+        <a class="list__item__itempane">template</a>
+    </li>
+</template>
+
+</div>
 </footer>
         </div>
 
@@ -638,9 +688,21 @@ title: A longer title unsuitable for the navigation
 
         <!-- prettier-ignore -->
         <script
-            src="../assets/main-36fe62.js"
+            src="../assets/processors/motd/index-ccae11.js"
             crossorigin
-            integrity="sha384-2B/SHikfL0TrHI0f7HNl2Ul0//40PNpjjXfL3a4r2erHnJ3ip5eSj94dRPLXw9HA"
+            integrity="sha384-UjzVYhsn0gsmnjX9798oLdjjBUr1FUoJtJUcalmnSFRmr3ppJY8WgK0o8ocUcJid"
+            
+        ></script>
+        <script
+            src="../assets/processors/selectable-version/select-version-016df9.js"
+            crossorigin
+            integrity="sha384-vqsBAHYaTsOru9rHIRrCh83amGyaMwHmfzezaKAliWpG9QFPpOSBqIgNzqwDHjhJ"
+            
+        ></script>
+        <script
+            src="../assets/main-89ff7b.js"
+            crossorigin
+            integrity="sha384-md5I7DjBtJEBkndOMVwPqTiyigN+A7R50B9cZuKdes8c9AXL2EfVTzjq78Q9gyfY"
             
         ></script>
     </body>

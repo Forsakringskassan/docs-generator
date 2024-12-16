@@ -34,20 +34,6 @@ var exampleComponent = defineComponent({
   name: "FMessageBoxIconLink",
   components: { FMessageBox, FIcon }
 });
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "a",
-  {
-    class: "anchor",
-    href: "javascript:",
-    target: "_blank"
-  },
-  [
-    /* @__PURE__ */ _createTextVNode(" L\xE4nk "),
-    /* @__PURE__ */ _createElementVNode("span", { class: "sr-only" }, " \xF6ppnas i nytt f\xF6nster ")
-  ],
-  -1
-  /* HOISTED */
-);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = _resolveComponent("f-icon");
   const _component_f_message_box = _resolveComponent("f-message-box");
@@ -63,7 +49,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* CLASS */
       ),
       _createElementVNode("p", null, [
-        _hoisted_1,
+        _cache[0] || (_cache[0] = _createElementVNode(
+          "a",
+          {
+            class: "anchor",
+            href: "javascript:",
+            target: "_blank"
+          },
+          [
+            _createTextVNode(" L\xE4nk "),
+            _createElementVNode("span", { class: "sr-only" }, " \xF6ppnas i nytt f\xF6nster ")
+          ],
+          -1
+          /* HOISTED */
+        )),
         _createVNode(_component_f_icon, { name: "new-window" })
       ])
     ]),

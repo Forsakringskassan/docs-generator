@@ -72,43 +72,15 @@ var exampleComponent = defineComponent({
     };
   }
 });
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "h3",
-  null,
-  "Frukter",
-  -1
-  /* HOISTED */
-);
-var _hoisted_2 = { class: "button-group" };
+var _hoisted_1 = { class: "button-group" };
+var _hoisted_2 = {
+  class: "button button-group__item button--tertiary button--small",
+  type: "button"
+};
 var _hoisted_3 = {
   class: "button button-group__item button--tertiary button--small",
   type: "button"
 };
-var _hoisted_4 = /* @__PURE__ */ _createElementVNode(
-  "span",
-  null,
-  " Ta bort ",
-  -1
-  /* HOISTED */
-);
-var _hoisted_5 = {
-  class: "button button-group__item button--tertiary button--small",
-  type: "button"
-};
-var _hoisted_6 = /* @__PURE__ */ _createElementVNode(
-  "span",
-  null,
-  " Bifoga ",
-  -1
-  /* HOISTED */
-);
-var _hoisted_7 = /* @__PURE__ */ _createElementVNode(
-  "span",
-  { class: "sr-only" },
-  " Frukter ",
-  -1
-  /* HOISTED */
-);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = _resolveComponent("f-icon");
   const _component_f_table_column = _resolveComponent("f-table-column");
@@ -118,7 +90,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _Fragment,
     null,
     [
-      _hoisted_1,
+      _cache[4] || (_cache[4] = _createElementVNode(
+        "h3",
+        null,
+        "Frukter",
+        -1
+        /* HOISTED */
+      )),
       _createVNode(_component_f_sort_filter_dataset, {
         data: _ctx.fruits,
         "default-sort-attribute": "name",
@@ -126,20 +104,32 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "sortable-attributes": _ctx.sortableAttributes
       }, {
         header: _withCtx(() => [
-          _createElementVNode("div", _hoisted_2, [
-            _createElementVNode("button", _hoisted_3, [
+          _createElementVNode("div", _hoisted_1, [
+            _createElementVNode("button", _hoisted_2, [
               _createVNode(_component_f_icon, {
                 name: "trashcan",
                 class: "button__icon"
               }),
-              _hoisted_4
+              _cache[0] || (_cache[0] = _createElementVNode(
+                "span",
+                null,
+                " Ta bort ",
+                -1
+                /* HOISTED */
+              ))
             ]),
-            _createElementVNode("button", _hoisted_5, [
+            _createElementVNode("button", _hoisted_3, [
               _createVNode(_component_f_icon, {
                 name: "paper-clip",
                 class: "button__icon"
               }),
-              _hoisted_6
+              _cache[1] || (_cache[1] = _createElementVNode(
+                "span",
+                null,
+                " Bifoga ",
+                -1
+                /* HOISTED */
+              ))
             ])
           ])
         ]),
@@ -150,12 +140,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             selectable: "",
             "key-attribute": "id"
           }, {
-            caption: _withCtx(() => [
-              _hoisted_7
-            ]),
-            "checkbox-description": _withCtx(() => [
+            caption: _withCtx(() => _cache[2] || (_cache[2] = [
+              _createElementVNode(
+                "span",
+                { class: "sr-only" },
+                " Frukter ",
+                -1
+                /* HOISTED */
+              )
+            ])),
+            "checkbox-description": _withCtx(() => _cache[3] || (_cache[3] = [
               _createTextVNode(" V\xE4lj denna raden ")
-            ]),
+            ])),
             default: _withCtx(({ row }) => [
               _createVNode(
                 _component_f_table_column,

@@ -37,13 +37,6 @@ var exampleComponent = defineComponent({
     return { favoritGrupp: {} };
   }
 });
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "pre",
-  null,
-  "v-model",
-  -1
-  /* HOISTED */
-);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_text_field = _resolveComponent("f-text-field");
   const _component_f_validation_group = _resolveComponent("f-validation-group");
@@ -59,9 +52,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           id: "frukt",
           maxlength: "100"
         }, {
-          default: _withCtx(() => [
+          default: _withCtx(() => _cache[1] || (_cache[1] = [
             _createTextVNode(" Favoritfrukt ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         })), [
@@ -76,9 +69,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           id: "godis",
           maxlength: "100"
         }, {
-          default: _withCtx(() => [
+          default: _withCtx(() => _cache[2] || (_cache[2] = [
             _createTextVNode(" Favoritgodis ")
-          ]),
+          ])),
           _: 1
           /* STABLE */
         })), [
@@ -93,7 +86,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       _: 1
       /* STABLE */
     }, 8, ["modelValue"]),
-    _hoisted_1,
+    _cache[3] || (_cache[3] = _createElementVNode(
+      "pre",
+      null,
+      "v-model",
+      -1
+      /* HOISTED */
+    )),
     _createElementVNode(
       "pre",
       null,

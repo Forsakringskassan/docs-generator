@@ -72,20 +72,6 @@ var exampleComponent = defineComponent({
     };
   }
 });
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "br",
-  null,
-  null,
-  -1
-  /* HOISTED */
-);
-var _hoisted_2 = /* @__PURE__ */ _createElementVNode(
-  "br",
-  null,
-  null,
-  -1
-  /* HOISTED */
-);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_list = _resolveComponent("f-list");
   const _component_f_sort_filter_dataset = _resolveComponent("f-sort-filter-dataset");
@@ -118,7 +104,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* TEXT */
           ),
           _createElementVNode("p", null, [
-            _createTextVNode(" Land: "),
+            _cache[0] || (_cache[0] = _createTextVNode(" Land: ")),
             _createElementVNode(
               "em",
               null,
@@ -126,8 +112,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               1
               /* TEXT */
             ),
-            _hoisted_1,
-            _createTextVNode(" Beskrivning: "),
+            _cache[1] || (_cache[1] = _createElementVNode(
+              "br",
+              null,
+              null,
+              -1
+              /* HOISTED */
+            )),
+            _cache[2] || (_cache[2] = _createTextVNode(" Beskrivning: ")),
             _createElementVNode(
               "em",
               null,
@@ -135,7 +127,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               1
               /* TEXT */
             ),
-            _hoisted_2
+            _cache[3] || (_cache[3] = _createElementVNode(
+              "br",
+              null,
+              null,
+              -1
+              /* HOISTED */
+            ))
           ])
         ]),
         screenreader: _withCtx(({ item }) => [

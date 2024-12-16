@@ -46,9 +46,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.model = $event),
     maxlength: 100
   }, {
-    default: _withCtx(() => [
+    default: _withCtx(() => _cache[1] || (_cache[1] = [
       _createTextVNode(" Ett f\xE4lt med specifict felmeddelande ")
-    ]),
+    ])),
     _: 1
     /* STABLE */
   }, 8, ["modelValue"])), [

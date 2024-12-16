@@ -44,9 +44,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_text_field = _resolveComponent("f-text-field");
   const _directive_validation = _resolveDirective("validation");
   return _withDirectives((_openBlock(), _createBlock(_component_f_text_field, null, {
-    default: _withCtx(() => [
+    default: _withCtx(() => _cache[0] || (_cache[0] = [
       _createTextVNode(" Namn p\xE5 barn ")
-    ]),
+    ])),
     _: 1
     /* STABLE */
   })), [

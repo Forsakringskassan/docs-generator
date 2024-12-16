@@ -34,22 +34,21 @@ var exampleComponent = defineComponent({
   name: "FMessageBoxBanner",
   components: { FMessageBox }
 });
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "p",
-  null,
-  " Det verkar som att du inte har n\xE5gon internetuppkoppling just nu. T\xE4nk p\xE5 att du beh\xF6ver uppkoppling f\xF6r att kunna signera ",
-  -1
-  /* HOISTED */
-);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_message_box = _resolveComponent("f-message-box");
   return _openBlock(), _createBlock(_component_f_message_box, {
     type: "error",
     banner: ""
   }, {
-    default: _withCtx(() => [
-      _hoisted_1
-    ]),
+    default: _withCtx(() => _cache[0] || (_cache[0] = [
+      _createElementVNode(
+        "p",
+        null,
+        " Det verkar som att du inte har n\xE5gon internetuppkoppling just nu. T\xE4nk p\xE5 att du beh\xF6ver uppkoppling f\xF6r att kunna signera ",
+        -1
+        /* HOISTED */
+      )
+    ])),
     _: 1
     /* STABLE */
   });

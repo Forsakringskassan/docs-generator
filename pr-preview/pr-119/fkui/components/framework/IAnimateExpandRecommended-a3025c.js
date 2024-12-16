@@ -58,32 +58,6 @@ var exampleComponent = defineComponent({
     }
   }
 });
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "option",
-  { value: "height: 200px; background: hotpink" },
-  "200px h\xF6jd",
-  -1
-  /* HOISTED */
-);
-var _hoisted_2 = /* @__PURE__ */ _createElementVNode(
-  "option",
-  { value: "height: 600px; background: cyan" },
-  "600px h\xF6jd",
-  -1
-  /* HOISTED */
-);
-var _hoisted_3 = /* @__PURE__ */ _createElementVNode(
-  "option",
-  { value: "height: 1200px; background: yellow" },
-  "1200px h\xF6jd",
-  -1
-  /* HOISTED */
-);
-var _hoisted_4 = [
-  _hoisted_1,
-  _hoisted_2,
-  _hoisted_3
-];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_i_animate_expand = _resolveComponent("i-animate-expand");
   return _openBlock(), _createElementBlock("div", null, [
@@ -103,7 +77,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ), [
       [_vModelCheckbox, _ctx.isAnimated]
     ]),
-    _createTextVNode(" Animera "),
+    _cache[6] || (_cache[6] = _createTextVNode(" Animera ")),
     _withDirectives(_createElementVNode(
       "input",
       {
@@ -116,7 +90,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ), [
       [_vModelCheckbox, _ctx.hasOpacity]
     ]),
-    _createTextVNode(" Opacitet "),
+    _cache[7] || (_cache[7] = _createTextVNode(" Opacitet ")),
     _withDirectives(_createElementVNode(
       "input",
       {
@@ -129,13 +103,35 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ), [
       [_vModelCheckbox, _ctx.useVShow]
     ]),
-    _createTextVNode(" Use v-show instead of v-if "),
+    _cache[8] || (_cache[8] = _createTextVNode(" Use v-show instead of v-if ")),
     _withDirectives(_createElementVNode(
       "select",
       {
         "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.style = $event)
       },
-      [..._hoisted_4],
+      _cache[5] || (_cache[5] = [
+        _createElementVNode(
+          "option",
+          { value: "height: 200px; background: hotpink" },
+          "200px h\xF6jd",
+          -1
+          /* HOISTED */
+        ),
+        _createElementVNode(
+          "option",
+          { value: "height: 600px; background: cyan" },
+          "600px h\xF6jd",
+          -1
+          /* HOISTED */
+        ),
+        _createElementVNode(
+          "option",
+          { value: "height: 1200px; background: yellow" },
+          "1200px h\xF6jd",
+          -1
+          /* HOISTED */
+        )
+      ]),
       512
       /* NEED_PATCH */
     ), [

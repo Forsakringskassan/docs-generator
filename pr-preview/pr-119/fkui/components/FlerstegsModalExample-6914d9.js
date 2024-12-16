@@ -185,9 +185,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* TEXT */
       )
     ]),
-    "error-message": _withCtx(() => [
+    "error-message": _withCtx(() => _cache[2] || (_cache[2] = [
       _createTextVNode("Oj, du har gl\xF6mt fylla i n\xE5got. G\xE5 till:")
-    ]),
+    ])),
     "input-text-fields": _withCtx(() => [
       _createVNode(_component_f_dialogue_tree, {
         modelValue: _ctx.current,
@@ -245,13 +245,6 @@ var exampleComponent = defineComponent2({
   }
 });
 var _hoisted_1 = { key: 0 };
-var _hoisted_2 = /* @__PURE__ */ _createElementVNode(
-  "pre",
-  null,
-  "Modalen st\xE4ngdes med resultatet:",
-  -1
-  /* HOISTED */
-);
 function render2(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock2(), _createElementBlock("div", null, [
     _createElementVNode("button", {
@@ -260,7 +253,13 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
       onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onClick && _ctx.onClick(...args))
     }, "\xD6ppna Modal"),
     _ctx.result ? (_openBlock2(), _createElementBlock("div", _hoisted_1, [
-      _hoisted_2,
+      _cache[1] || (_cache[1] = _createElementVNode(
+        "pre",
+        null,
+        "Modalen st\xE4ngdes med resultatet:",
+        -1
+        /* HOISTED */
+      )),
       _createElementVNode(
         "pre",
         null,

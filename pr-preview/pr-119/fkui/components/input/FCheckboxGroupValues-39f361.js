@@ -43,9 +43,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_checkbox_field = _resolveComponent("f-checkbox-field");
   const _component_f_fieldset = _resolveComponent("f-fieldset");
   return _openBlock(), _createBlock(_component_f_fieldset, { name: "checkbox-complex-values" }, {
-    label: _withCtx(() => [
+    label: _withCtx(() => _cache[2] || (_cache[2] = [
       _createTextVNode(" Broschyrer ")
-    ]),
+    ])),
     default: _withCtx(() => [
       _createVNode(_component_f_checkbox_field, {
         id: "broschyrer-bor-eller-arbetar-utomlands",
@@ -53,9 +53,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.brochures = $event),
         value: ["Om du bor eller arbetar utomlands"]
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[3] || (_cache[3] = [
           _createTextVNode(" Om du bor eller arbetar utomlands ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"]),
@@ -65,9 +65,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.brochures = $event),
         value: { offentlighet: false, sekretess: true }
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[4] || (_cache[4] = [
           _createTextVNode(" Offentlighet och sekretess ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"])

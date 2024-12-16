@@ -37,38 +37,6 @@ var exampleComponent = defineComponent({
     return { foo: "" };
   }
 });
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "option",
-  {
-    disabled: "",
-    hidden: "",
-    value: ""
-  },
-  "V\xE4lj\u2026",
-  -1
-  /* HOISTED */
-);
-var _hoisted_2 = /* @__PURE__ */ _createElementVNode(
-  "option",
-  { value: "FOO" },
-  "Foo",
-  -1
-  /* HOISTED */
-);
-var _hoisted_3 = /* @__PURE__ */ _createElementVNode(
-  "option",
-  { value: "BAR" },
-  "Bar",
-  -1
-  /* HOISTED */
-);
-var _hoisted_4 = /* @__PURE__ */ _createElementVNode(
-  "option",
-  { value: "BAZ" },
-  "Baz",
-  -1
-  /* HOISTED */
-);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_select_field = _resolveComponent("f-select-field");
   const _directive_validation = _resolveDirective("validation");
@@ -78,14 +46,42 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "label-width": "md-9",
     "select-width": "md-6"
   }, {
-    label: _withCtx(() => [
+    label: _withCtx(() => _cache[1] || (_cache[1] = [
       _createTextVNode(" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis scelerisque lacus sed mi mollis pulvinar. ")
-    ]),
+    ])),
     default: _withCtx(() => [
-      _hoisted_1,
-      _hoisted_2,
-      _hoisted_3,
-      _hoisted_4
+      _cache[2] || (_cache[2] = _createElementVNode(
+        "option",
+        {
+          disabled: "",
+          hidden: "",
+          value: ""
+        },
+        "V\xE4lj\u2026",
+        -1
+        /* HOISTED */
+      )),
+      _cache[3] || (_cache[3] = _createElementVNode(
+        "option",
+        { value: "FOO" },
+        "Foo",
+        -1
+        /* HOISTED */
+      )),
+      _cache[4] || (_cache[4] = _createElementVNode(
+        "option",
+        { value: "BAR" },
+        "Bar",
+        -1
+        /* HOISTED */
+      )),
+      _cache[5] || (_cache[5] = _createElementVNode(
+        "option",
+        { value: "BAZ" },
+        "Baz",
+        -1
+        /* HOISTED */
+      ))
     ]),
     _: 1
     /* STABLE */

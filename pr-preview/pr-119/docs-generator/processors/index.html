@@ -9,28 +9,28 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../assets/docs-0ad199.css"
+            href="../assets/docs-eb7205.css"
             crossorigin
-            integrity="sha384-YREgqk15fjHQ3A87un4K0S9N6GxG9Kt9K5t28VXzM2ckmWg8hDUJKsFkxhPyaqLE"
+            integrity="sha384-+t0wmTpSOe5SuItdPL/fUwLi8SLvTkFH/PnaSSED84V7YPMfEDqSPsqf+/OB9Q1f"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/fkui-409dbb.css"
+            href="../assets/fkui-f99d46.css"
             crossorigin
-            integrity="sha384-MaZv1oPslAKieUVrFO6IVACqQGPHoGO5s/ze5nqwUd2ZHzj+etY779tACG5pAWqS"
+            integrity="sha384-HVtm9qKn/A/MAXCewSzispGl5TRyfM/tFpLT7HGSblvQMtM5QFlssIJ66zyzjy8d"
             
         />
 
         <script type="importmap">
             {
   "imports": {
-    "vue": "../assets/vendor-vue-f46117.js",
-    "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-6351e3.js"
+    "vue": "../assets/vendor-vue-fd7b76.js",
+    "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-ce5c3f.js"
   },
   "integrity": {
-    "../assets/vendor-vue-f46117.js": "sha384-bpIOGLOUZAkPdjRRipKkve+vteM3oaZqFz18JQNzoXN1MQ9BetYz/rpREx/Zh2F/",
-    "../assets/vendor-forsakringskassan-docs-live-example-6351e3.js": "sha384-FRTUtWNmEkJgIhqtTX6bQd+em+HCK1LhLnhOJkYJ4y9YbnyG3vU11hiZkB1bfwfw"
+    "../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
+    "../assets/vendor-forsakringskassan-docs-live-example-ce5c3f.js": "sha384-rLyXeIcpVmwGulMOjBGTYbwDjDcBeKL1gobH2xxZ6C8vR5sin3SBbKOsIo9hCeZO"
   }
 }
         </script>
@@ -48,10 +48,10 @@
 
         <link
             rel="preload"
-            href="../search-data-11b296.json"
+            href="../search-data-d6cc86.json"
             as="fetch"
             crossorigin
-            integrity="sha384-8urIx7hGfLlRcN9coND62Hl9KCE358qBq1E3/Qb93391dbTxGG+5r/ujy/PsVs7t"
+            integrity="sha384-palo3bFhDXvM78WUGOzplmS8fVR4d1a9zkYLy04wGsUi35T1ifBufYv09i3gW82j"
             id="search-data"
         />
     </head>
@@ -76,6 +76,25 @@
         </button>
     </div>
 </div>
+
+<template id="motd-message">
+<div class="docs-motd docs-motd--info">
+    <span class="docs-motd__icon">
+        <span class="icon-stack icon-stack--info">
+            <svg class="icon icon--circle" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-circle"></use>
+            </svg>
+            <svg class="icon icon--i" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-i"></use>
+            </svg>
+        </span>
+    </span><span data-bind="screenreader" class="sr-only"></span>
+    <p data-bind="message"></p></div>
+</template>
+
+
+<div id="motd-container">
+    </div>
 
 
         <div class="layout-wrapper">
@@ -211,9 +230,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        feature/importmap (<a href="https://github.com/Forsakringskassan/docs-generator/commits/b2ac32ee0213073794c8760ad944459af2882186">b2ac32e</a>)<br />
+        feature/importmap (<a href="https://github.com/Forsakringskassan/docs-generator/commits/2ac82857c8f0236f718991c187ebde36b5e2b94f">2ac8285</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/119">PR 119</a><br />
-        2024-10-18 23:57
+        2024-12-16 14:57
     </span>
 </div>
 </div>
@@ -248,6 +267,16 @@
             
         >
             Cookie
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./extract-examples.html"
+            
+        >
+            Extract examples
         </a>
     </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <!-- prettier-ignore -->
@@ -325,14 +354,14 @@
 <h2 id="writing_a_new_processor"><a class="header-anchor" href="#writing_a_new_processor">Writing a new processor</a></h2><p>A procesor implements the <code>Processor</code> interface:</p>
 
                 <div
-                    id="example-a6d709"
+                    id="example-11a675"
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">ProcessorHandler</span> {
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">ProcessorHandler</span> {
     before?: <span class="hljs-title class_">ProcessorStage</span>;
     stage?: <span class="hljs-title class_">ProcessorStage</span>;
     after?: <span class="hljs-title class_">ProcessorStage</span>;
@@ -348,7 +377,7 @@
             <p>One of <code>before</code>, <code>stage</code> or <code>after</code> must be set and decides when the processor is run.</p>
 
                 <div
-                    id="example-5eccb1"
+                    id="example-70b69e"
                     class="code-preview code-preview--default"
                     
                     
@@ -375,17 +404,21 @@
         <h3 id="runtime_scripts"><a class="header-anchor" href="#runtime_scripts">Runtime scripts</a></h3><p>If the processor needs a runtime script to be executed in the client browser use the <code>runtime</code> property to set one or more filenames.</p>
 
                 <div
-                    id="example-58a1e8"
+                    id="example-7d3b64"
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">myProcessor</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">Processor</span> {
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">myProcessor</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">Processor</span> {
     <span class="hljs-keyword">return</span> {
         <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;awesome-processor&quot;</span>,
+        <span class="hljs-attr">after</span>: <span class="hljs-string">&quot;render&quot;</span>,
         <span class="hljs-attr">runtime</span>: [{ <span class="hljs-attr">src</span>: <span class="hljs-string">&quot;src/runtime/awesome-processor.ts&quot;</span> }],
+        <span class="hljs-title function_">handler</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-comment">/* ... */</span>
+        },
     };
 }
 </code></pre>
@@ -395,9 +428,7 @@ Scripts from unused processors will not be included.</p>
 
             <div class="docs-messagebox docs-messagebox--warning">
                 <p class="docs-messagebox__title">WARNING</p>
-                <p>Unless you are bundling your processor in
-<code>@forsakringskassan/docs-generator</code> it is up to you to make sure the script is
-properly compiled before building the documentation.</p>
+                <p>Unless you are bundling your processor in <code>@forsakringskassan/docs-generator</code> it is up to you to make sure the script is properly compiled before building the documentation.</p>
 
             </div>
         <h3 id="navigation"><a class="header-anchor" href="#navigation">Navigation</a></h3><p>To set navigation entries use one of the two navigation setters:</p>
@@ -408,59 +439,49 @@ properly compiled before building the documentation.</p>
 <p>For instance:</p>
 
                 <div
-                    id="example-59ab36"
+                    id="example-08c769"
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-attr">myProcessor</span>: <span class="hljs-title class_">Processor</span> = {
-    <span class="hljs-title function_">handler</span>(<span class="hljs-params">context</span>) {
-        context.<span class="hljs-title function_">setTopNavigation</span>({
-            <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;./index.html&quot;</span>,
-            <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;.&quot;</span>,
-            <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;Site name&quot;</span>,
-            <span class="hljs-attr">children</span>: [
-                {
-                    <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;./foo.html&quot;</span>,
-                    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;foo&quot;</span>,
-                    <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;Foo&quot;</span>,
-                    <span class="hljs-attr">children</span>: [],
-                },
-                {
-                    <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;./bar.html&quot;</span>,
-                    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;bar&quot;</span>,
-                    <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;Bar&quot;</span>,
-                    <span class="hljs-attr">children</span>: [],
-                },
-            ],
-        });
-    },
-};
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">myProcessor</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">Processor</span> {
+    <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">stage</span>: <span class="hljs-string">&quot;generate-nav&quot;</span>,
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;custom-navigation-processor&quot;</span>,
+        <span class="hljs-title function_">handler</span>(<span class="hljs-params">context</span>) {
+            context.<span class="hljs-title function_">setTopNavigation</span>({
+                <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;./index.html&quot;</span>,
+                <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;.&quot;</span>,
+                <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;Site name&quot;</span>,
+                <span class="hljs-attr">visible</span>: <span class="hljs-literal">true</span>,
+                <span class="hljs-attr">sortorder</span>: <span class="hljs-number">1</span>,
+                <span class="hljs-attr">children</span>: [
+                    {
+                        <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;./foo.html&quot;</span>,
+                        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;foo&quot;</span>,
+                        <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;Foo&quot;</span>,
+                        <span class="hljs-attr">visible</span>: <span class="hljs-literal">true</span>,
+                        <span class="hljs-attr">sortorder</span>: <span class="hljs-number">2</span>,
+                        <span class="hljs-attr">children</span>: [],
+                    },
+                    {
+                        <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;./bar.html&quot;</span>,
+                        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;bar&quot;</span>,
+                        <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;Bar&quot;</span>,
+                        <span class="hljs-attr">visible</span>: <span class="hljs-literal">true</span>,
+                        <span class="hljs-attr">sortorder</span>: <span class="hljs-number">1</span>,
+                        <span class="hljs-attr">children</span>: [],
+                    },
+                ],
+            });
+        },
+    };
+}
 </code></pre>
                 </div>
             <p>This will create a top navigation with two entries &quot;Foo&quot; and &quot;Bar&quot;.</p>
-<p>There is a helper function <code>generateNavtree</code> which creates a navigation structure from the document structure:</p>
-
-                <div
-                    id="example-af9911"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="ts"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-attr">myProcessor</span>: <span class="hljs-title class_">Processor</span> = {
-    <span class="hljs-title function_">handler</span>(<span class="hljs-params">context</span>) {
-        <span class="hljs-keyword">const</span> navtree = <span class="hljs-title function_">generateNavtree</span>(context.<span class="hljs-property">docs</span>);
-        context.<span class="hljs-title function_">setTopNavigation</span>(navtree);
-        context.<span class="hljs-title function_">setSideNavigation</span>(navtree);
-    },
-};
-</code></pre>
-                </div>
-            <p>The above behaviour is bundled in the builtin <code>navigationProcessor()</code>.</p>
 
 
                     </div>
@@ -468,7 +489,38 @@ properly compiled before building the documentation.</p>
             </div>
 
             <footer>
-                <!-- prettier-ignore --><!-- prettier-ignore -->
+                <!-- prettier-ignore --><div class="footer">
+    <!-- prettier-ignore -->
+    <div class="toolbar__item">
+    <form id="version">
+        <button type="submit" class="anchor">
+            <span id="version-info" class="version"> Byt version </span>
+        </button>
+    </form>
+
+    <dialog id="version-dialog">
+        <div id="version-dialog-head">
+            <h1>Välj version</h1>
+            <button type="button" class="button button--discrete button--discrete--black">
+                <span>Stäng</span>
+                <svg class="button__icon icon" focusable="false" aria-hidden>
+                    <use xlink:href="#docs-icon-close"></use>
+                </svg>
+            </button>
+        </div>
+        <div id="version-list">
+            <p>Var god vänta, laddar versionsdata...</p>
+        </div>
+    </dialog>
+</div>
+
+<template id="version-list-item">
+    <li class="list__item">
+        <a class="list__item__itempane">template</a>
+    </li>
+</template>
+
+</div>
 </footer>
         </div>
 
@@ -546,9 +598,21 @@ properly compiled before building the documentation.</p>
 
         <!-- prettier-ignore -->
         <script
-            src="../assets/main-36fe62.js"
+            src="../assets/processors/motd/index-ccae11.js"
             crossorigin
-            integrity="sha384-2B/SHikfL0TrHI0f7HNl2Ul0//40PNpjjXfL3a4r2erHnJ3ip5eSj94dRPLXw9HA"
+            integrity="sha384-UjzVYhsn0gsmnjX9798oLdjjBUr1FUoJtJUcalmnSFRmr3ppJY8WgK0o8ocUcJid"
+            
+        ></script>
+        <script
+            src="../assets/processors/selectable-version/select-version-016df9.js"
+            crossorigin
+            integrity="sha384-vqsBAHYaTsOru9rHIRrCh83amGyaMwHmfzezaKAliWpG9QFPpOSBqIgNzqwDHjhJ"
+            
+        ></script>
+        <script
+            src="../assets/main-89ff7b.js"
+            crossorigin
+            integrity="sha384-md5I7DjBtJEBkndOMVwPqTiyigN+A7R50B9cZuKdes8c9AXL2EfVTzjq78Q9gyfY"
             
         ></script>
     </body>

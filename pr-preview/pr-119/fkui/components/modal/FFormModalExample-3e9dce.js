@@ -44,13 +44,6 @@ var exampleComponent = defineComponent({
     }
   }
 });
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "p",
-  null,
-  "Ingress",
-  -1
-  /* HOISTED */
-);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_text_field = _resolveComponent("f-text-field");
   const _component_f_form_modal = _resolveComponent("f-form-modal");
@@ -65,17 +58,23 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         onClose: _cache[1] || (_cache[1] = ($event) => _ctx.closeModal()),
         onSubmit: _cache[2] || (_cache[2] = ($event) => _ctx.closeModal())
       }, {
-        header: _withCtx(() => [
+        header: _withCtx(() => _cache[4] || (_cache[4] = [
           _createTextVNode(" Rubrik ")
-        ]),
-        default: _withCtx(() => [
-          _hoisted_1
-        ]),
+        ])),
+        default: _withCtx(() => _cache[5] || (_cache[5] = [
+          _createElementVNode(
+            "p",
+            null,
+            "Ingress",
+            -1
+            /* HOISTED */
+          )
+        ])),
         "input-text-fields": _withCtx(() => [
           _withDirectives((_openBlock(), _createBlock(_component_f_text_field, null, {
-            default: _withCtx(() => [
+            default: _withCtx(() => _cache[6] || (_cache[6] = [
               _createTextVNode(" Etikett ")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           })), [

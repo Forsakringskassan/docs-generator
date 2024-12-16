@@ -34,28 +34,27 @@ var exampleComponent = defineComponent({
   name: "FPageHeaderCustomLogo",
   components: { FPageHeader }
 });
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "span",
-  {
-    class: "my-own-logos",
-    "aria-label": "Annan logotyp",
-    role: "img"
-  },
-  null,
-  -1
-  /* HOISTED */
-);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_page_header = _resolveComponent("f-page-header");
   return _openBlock(), _createBlock(_component_f_page_header, null, {
-    right: _withCtx(() => [
+    right: _withCtx(() => _cache[0] || (_cache[0] = [
       _createTextVNode(" Namn Namnsson ")
-    ]),
-    logo: _withCtx(() => [
-      _hoisted_1
-    ]),
+    ])),
+    logo: _withCtx(() => _cache[1] || (_cache[1] = [
+      _createElementVNode(
+        "span",
+        {
+          class: "my-own-logos",
+          "aria-label": "Annan logotyp",
+          role: "img"
+        },
+        null,
+        -1
+        /* HOISTED */
+      )
+    ])),
     default: _withCtx(() => [
-      _createTextVNode(" Exempelapplikation ")
+      _cache[2] || (_cache[2] = _createTextVNode(" Exempelapplikation "))
     ]),
     _: 1
     /* STABLE */

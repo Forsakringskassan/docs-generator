@@ -46,9 +46,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_checkbox_field = _resolveComponent("f-checkbox-field");
   const _component_f_fieldset = _resolveComponent("f-fieldset");
   return _openBlock(), _createBlock(_component_f_fieldset, { name: "group-name-checkbox" }, {
-    label: _withCtx(() => [
+    label: _withCtx(() => _cache[5] || (_cache[5] = [
       _createTextVNode(" Vilka dagar i veckan vill du bli kontaktad? ")
-    ]),
+    ])),
     default: _withCtx(() => [
       _createVNode(_component_f_checkbox_field, {
         id: "dagar-mandag",
@@ -56,9 +56,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.dagar = $event),
         value: "mandag"
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[6] || (_cache[6] = [
           _createTextVNode(" M\xE5ndag ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"]),
@@ -68,9 +68,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.dagar = $event),
         value: "tisdag"
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[7] || (_cache[7] = [
           _createTextVNode(" Tisdag ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"]),
@@ -80,9 +80,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.dagar = $event),
         value: "onsdag"
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[8] || (_cache[8] = [
           _createTextVNode(" Onsdag ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"]),
@@ -92,9 +92,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.dagar = $event),
         value: "torsdag"
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[9] || (_cache[9] = [
           _createTextVNode(" Torsdag ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"]),
@@ -104,9 +104,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.dagar = $event),
         value: "fredag"
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[10] || (_cache[10] = [
           _createTextVNode(" Fredag ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"])

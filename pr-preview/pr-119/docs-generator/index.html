@@ -9,28 +9,28 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="./assets/docs-0ad199.css"
+            href="./assets/docs-eb7205.css"
             crossorigin
-            integrity="sha384-YREgqk15fjHQ3A87un4K0S9N6GxG9Kt9K5t28VXzM2ckmWg8hDUJKsFkxhPyaqLE"
+            integrity="sha384-+t0wmTpSOe5SuItdPL/fUwLi8SLvTkFH/PnaSSED84V7YPMfEDqSPsqf+/OB9Q1f"
             
         />
         <link
             rel="stylesheet"
-            href="./assets/fkui-409dbb.css"
+            href="./assets/fkui-f99d46.css"
             crossorigin
-            integrity="sha384-MaZv1oPslAKieUVrFO6IVACqQGPHoGO5s/ze5nqwUd2ZHzj+etY779tACG5pAWqS"
+            integrity="sha384-HVtm9qKn/A/MAXCewSzispGl5TRyfM/tFpLT7HGSblvQMtM5QFlssIJ66zyzjy8d"
             
         />
 
         <script type="importmap">
             {
   "imports": {
-    "vue": "./assets/vendor-vue-f46117.js",
-    "@forsakringskassan/docs-live-example": "./assets/vendor-forsakringskassan-docs-live-example-6351e3.js"
+    "vue": "./assets/vendor-vue-fd7b76.js",
+    "@forsakringskassan/docs-live-example": "./assets/vendor-forsakringskassan-docs-live-example-ce5c3f.js"
   },
   "integrity": {
-    "./assets/vendor-vue-f46117.js": "sha384-bpIOGLOUZAkPdjRRipKkve+vteM3oaZqFz18JQNzoXN1MQ9BetYz/rpREx/Zh2F/",
-    "./assets/vendor-forsakringskassan-docs-live-example-6351e3.js": "sha384-FRTUtWNmEkJgIhqtTX6bQd+em+HCK1LhLnhOJkYJ4y9YbnyG3vU11hiZkB1bfwfw"
+    "./assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
+    "./assets/vendor-forsakringskassan-docs-live-example-ce5c3f.js": "sha384-rLyXeIcpVmwGulMOjBGTYbwDjDcBeKL1gobH2xxZ6C8vR5sin3SBbKOsIo9hCeZO"
   }
 }
         </script>
@@ -48,10 +48,10 @@
 
         <link
             rel="preload"
-            href="./search-data-11b296.json"
+            href="./search-data-d6cc86.json"
             as="fetch"
             crossorigin
-            integrity="sha384-8urIx7hGfLlRcN9coND62Hl9KCE358qBq1E3/Qb93391dbTxGG+5r/ujy/PsVs7t"
+            integrity="sha384-palo3bFhDXvM78WUGOzplmS8fVR4d1a9zkYLy04wGsUi35T1ifBufYv09i3gW82j"
             id="search-data"
         />
     </head>
@@ -76,6 +76,25 @@
         </button>
     </div>
 </div>
+
+<template id="motd-message">
+<div class="docs-motd docs-motd--info">
+    <span class="docs-motd__icon">
+        <span class="icon-stack icon-stack--info">
+            <svg class="icon icon--circle" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-circle"></use>
+            </svg>
+            <svg class="icon icon--i" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-i"></use>
+            </svg>
+        </span>
+    </span><span data-bind="screenreader" class="sr-only"></span>
+    <p data-bind="message"></p></div>
+</template>
+
+
+<div id="motd-container">
+    </div>
 
 
         <div class="layout-wrapper">
@@ -211,9 +230,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        feature/importmap (<a href="https://github.com/Forsakringskassan/docs-generator/commits/b2ac32ee0213073794c8760ad944459af2882186">b2ac32e</a>)<br />
+        feature/importmap (<a href="https://github.com/Forsakringskassan/docs-generator/commits/2ac82857c8f0236f718991c187ebde36b5e2b94f">2ac8285</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/119">PR 119</a><br />
-        2024-10-18 23:57
+        2024-12-16 14:57
     </span>
 </div>
 </div>
@@ -250,17 +269,24 @@
             <h2 id="setup"><a class="header-anchor" href="#setup">Setup</a></h2><h3 id="watch_development_mode"><a class="header-anchor" href="#watch_development_mode">Watch (development mode)</a></h3><p>You can start a development server with watch for incremental builds using <code>.serve()</code>.</p>
 
                 <div
-                    id="example-b46c1f"
+                    id="example-24650b"
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> docs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Generator</span>({
-    <span class="hljs-comment">/* ... */</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">Generator</span>,
+    livereloadProcessor,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@forsakringskassan/docs-generator&quot;</span>;
+
+<span class="hljs-keyword">const</span> docs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Generator</span>({
+    <span class="hljs-attr">site</span>: {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;My Awesome Site&quot;</span>,
+    },
+    <span class="hljs-attr">setupPath</span>: <span class="hljs-string">&quot;docs/src/setup.ts&quot;</span>,
     <span class="hljs-attr">processors</span>: [<span class="hljs-title function_">livereloadProcessor</span>({ <span class="hljs-attr">enabled</span>: <span class="hljs-literal">true</span> })],
-    <span class="hljs-comment">/* ... */</span>
 });
 
 docs.<span class="hljs-title function_">build</span>([
@@ -273,15 +299,24 @@ docs.<span class="hljs-title function_">serve</span>();
             <h3 id="vendor_alias"><a class="header-anchor" href="#vendor_alias">Vendor alias</a></h3><p>Vendor alias is optional, it lets you substitute one package for another when bundling. The example below substitutes the package <code>vue</code> with the package <code>vue/dist/esm.bundle.js</code>. When an alias is given the package can be imported using the given alias as well as the original package name. For instance, when using the following configuration &quot;vue&quot; can be imported and resolved as &quot;vue/dist/esm.bundle.js&quot;.</p>
 
                 <div
-                    id="example-695057"
+                    id="example-786d0c"
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> docs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Generator</span>({
-    <span class="hljs-comment">/* ... */</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">Generator</span>,
+    livereloadProcessor,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@forsakringskassan/docs-generator&quot;</span>;
+
+<span class="hljs-keyword">const</span> docs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Generator</span>({
+    <span class="hljs-attr">site</span>: {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;My Awesome Site&quot;</span>,
+    },
+    <span class="hljs-attr">setupPath</span>: <span class="hljs-string">&quot;docs/src/setup.ts&quot;</span>,
+
     <span class="hljs-attr">vendor</span>: [
         {
             <span class="hljs-attr">package</span>: <span class="hljs-string">&quot;vue&quot;</span>,
@@ -290,14 +325,13 @@ docs.<span class="hljs-title function_">serve</span>();
             <span class="hljs-attr">alias</span>: <span class="hljs-string">&quot;vue/dist/esm.bundle.js&quot;</span>,
         },
     ],
-    <span class="hljs-comment">/* ... */</span>
 });
 </code></pre>
                 </div>
             <h2 id="usage"><a class="header-anchor" href="#usage">Usage</a></h2><h3 id="using_with_vue_2"><a class="header-anchor" href="#using_with_vue_2">Using with Vue 2</a></h3><p>Vue 2 requires an additional dependency to be installed:</p>
 
                 <div
-                    id="example-f54f32"
+                    id="example-a18b93"
                     class="code-preview code-preview--default"
                     
                     
@@ -310,14 +344,14 @@ docs.<span class="hljs-title function_">serve</span>();
             <p>Create the <code>setup</code> callback in <code>docs/src/setup.ts</code>:</p>
 
                 <div
-                    id="example-c463bf"
+                    id="example-2cae4c"
                     class="code-preview code-preview--default"
                     
-                    
-                    data-language="ts"
+                    data-tags=nocompile
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">import</span> <span class="hljs-title class_">Vue</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> <span class="hljs-title class_">Vue</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-keyword">type</span> <span class="hljs-title class_">SetupOptions</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@forsakringskassan/docs-generator&quot;</span>;
 
 <span class="hljs-comment">/* optionally add global plugins or configuration */</span>
@@ -333,14 +367,14 @@ docs.<span class="hljs-title function_">serve</span>();
             <h3 id="using_with_vue_3"><a class="header-anchor" href="#using_with_vue_3">Using with Vue 3</a></h3><p>Create the <code>setup</code> callback in <code>docs/src/setup.ts</code>:</p>
 
                 <div
-                    id="example-c2fb8a"
+                    id="example-79d6ae"
                     class="code-preview code-preview--default"
                     
-                    
-                    data-language="ts"
+                    data-tags=nocompile
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-keyword">type</span> <span class="hljs-title class_">SetupOptions</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@forsakringskassan/docs-generator&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">setup</span>(<span class="hljs-params"><span class="hljs-attr">options</span>: <span class="hljs-title class_">SetupOptions</span></span>): <span class="hljs-built_in">void</span> {
@@ -365,15 +399,20 @@ docs.<span class="hljs-title function_">serve</span>();
 <p>Style can be compiled with <code>compileStyle(name, src, [options])</code>:</p>
 
                 <div
-                    id="example-fd101a"
+                    id="example-eab270"
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> docs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Generator</span>({
-    <span class="hljs-comment">/* ... */</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">Generator</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@forsakringskassan/docs-generator&quot;</span>;
+
+<span class="hljs-keyword">const</span> docs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Generator</span>({
+    <span class="hljs-attr">site</span>: {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;My Awesome Site&quot;</span>,
+    },
+    <span class="hljs-attr">setupPath</span>: <span class="hljs-string">&quot;docs/src/setup.ts&quot;</span>,
 });
 
 docs.<span class="hljs-title function_">compileStyle</span>(<span class="hljs-string">&quot;docs&quot;</span>, <span class="hljs-string">&quot;./docs/src/style.scss&quot;</span>, {
@@ -384,7 +423,7 @@ docs.<span class="hljs-title function_">compileStyle</span>(<span class="hljs-st
             <p>Where <code>docs/src/style.scss</code> contains:</p>
 
                 <div
-                    id="example-b19048"
+                    id="example-d21b10"
                     class="code-preview code-preview--default"
                     
                     
@@ -397,7 +436,7 @@ docs.<span class="hljs-title function_">compileStyle</span>(<span class="hljs-st
             <h3 id="markdown"><a class="header-anchor" href="#markdown">Markdown</a></h3><h4 id="links_link"><a class="header-anchor" href="#links_link">Links <code>&lcub;@link ...&rcub;</code></a></h4><p>To create link to a different document use <code>&lcub;@link ID [TITLE]&rcub;</code>, e.g.:</p>
 
                 <div
-                    id="example-5b6cb4"
+                    id="example-28b1d3"
                     class="code-preview code-preview--default"
                     
                     
@@ -410,7 +449,7 @@ docs.<span class="hljs-title function_">compileStyle</span>(<span class="hljs-st
             <p>will be rendered as:</p>
 
             <div
-                id="example-0c2ba1"
+                id="example-bdd55f"
                 class="code-preview code-preview--default"
                 
                 
@@ -466,7 +505,7 @@ The following tags can be used:</p>
 <p><code>static</code> and <code>live</code> are used to manually set whenever the code should be run as a live example or not.</p>
 
                 <div
-                    id="example-3eee1f"
+                    id="example-0d9578"
                     class="code-preview code-preview--default"
                     
                     
@@ -480,7 +519,7 @@ The following tags can be used:</p>
                 </div>
             
                 <div
-                    id="example-8e2e14"
+                    id="example-af84d3"
                     class="code-preview code-preview--default"
                     
                     
@@ -495,7 +534,7 @@ alert(&quot;This is run in the browser&quot;);
             <p>Examples can be imported using the <code>import</code> directive:</p>
 
                 <div
-                    id="example-04e164"
+                    id="example-421819"
                     class="code-preview code-preview--default"
                     
                     
@@ -512,7 +551,7 @@ HTML-comments may be placed before or after the filename.</p>
 <p>To import an example that uses the <a href="https://github.com/Forsakringskassan/docs-live-example">LiveExample</a> component you also need to use the <code>live-example</code> tag.</p>
 
                 <div
-                    id="example-3f6647"
+                    id="example-96529a"
                     class="code-preview code-preview--default"
                     
                     
@@ -543,7 +582,7 @@ Default <code>true</code>.</p>
 <h3 id="inline_tags"><a class="header-anchor" href="#inline_tags">Inline tags</a></h3><h4 id="link"><a class="header-anchor" href="#link"><code>{@link ...}</code></a></h4><p>Implicit title:</p>
 
                 <div
-                    id="example-0292f2"
+                    id="example-a4660d"
                     class="code-preview code-preview--default"
                     
                     
@@ -556,7 +595,7 @@ Default <code>true</code>.</p>
             <p>Explicit title:</p>
 
                 <div
-                    id="example-207a3c"
+                    id="example-7d1ee7"
                     class="code-preview code-preview--default"
                     
                     
@@ -570,7 +609,7 @@ Default <code>true</code>.</p>
 <p><strong>Input:</strong></p>
 
                 <div
-                    id="example-da80b1"
+                    id="example-eab78b"
                     class="code-preview code-preview--default"
                     
                     
@@ -587,7 +626,7 @@ See <a href="https://mozilla.github.io/nunjucks/templating.html">templating docu
 <p>These custom filters and tags are available:</p>
 <h4 id="container"><a class="header-anchor" href="#container"><code>container</code></a></h4>
                 <div
-                    id="example-4b6523"
+                    id="example-e9f3f7"
                     class="code-preview code-preview--default"
                     
                     
@@ -604,14 +643,14 @@ Makes it possible to dynamically load icons and get access to icon metadata.
 The library must have been built using <code>@fkui/icon-lib-builder</code>.</p>
 
                 <div
-                    id="example-881831"
+                    id="example-43a614"
                     class="code-preview code-preview--default"
                     
-                    
-                    data-language="js"
+                    data-tags=nocompile
+                    data-language="javascript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-js" tabindex="0"><span class="hljs-keyword">const</span> icons = <span class="hljs-keyword">await</span> <span class="hljs-keyword">import</span>(process.<span class="hljs-property">env</span>.<span class="hljs-property">DOCS_ICON_LIB</span>);
+                    <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-keyword">const</span> icons = <span class="hljs-keyword">await</span> <span class="hljs-keyword">import</span>(process.<span class="hljs-property">env</span>.<span class="hljs-property">DOCS_ICON_LIB</span>);
 
 <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> entry <span class="hljs-keyword">of</span> <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">values</span>(icons)) {
     entry.<span class="hljs-title function_">injectSpritesheet</span>();
@@ -620,7 +659,7 @@ The library must have been built using <code>@fkui/icon-lib-builder</code>.</p>
                 </div>
             <h2 id="processors"><a class="header-anchor" href="#processors">Processors</a></h2><h3 id="matomo"><a class="header-anchor" href="#matomo">Matomo</a></h3>
                 <div
-                    id="example-c7ec40"
+                    id="example-26e51b"
                     class="code-preview code-preview--default"
                     
                     
@@ -641,7 +680,7 @@ The library must have been built using <code>@fkui/icon-lib-builder</code>.</p>
             <p>Optionally set <code>hostname</code> to limit which hostnames can run Matomo analytics:</p>
 
                 <div
-                    id="example-7a8533"
+                    id="example-488027"
                     class="code-preview code-preview--default"
                     
                     
@@ -669,7 +708,38 @@ Multiple hostnames can be specified as an array.</p>
             </div>
 
             <footer>
-                <!-- prettier-ignore --><!-- prettier-ignore -->
+                <!-- prettier-ignore --><div class="footer">
+    <!-- prettier-ignore -->
+    <div class="toolbar__item">
+    <form id="version">
+        <button type="submit" class="anchor">
+            <span id="version-info" class="version"> Byt version </span>
+        </button>
+    </form>
+
+    <dialog id="version-dialog">
+        <div id="version-dialog-head">
+            <h1>Välj version</h1>
+            <button type="button" class="button button--discrete button--discrete--black">
+                <span>Stäng</span>
+                <svg class="button__icon icon" focusable="false" aria-hidden>
+                    <use xlink:href="#docs-icon-close"></use>
+                </svg>
+            </button>
+        </div>
+        <div id="version-list">
+            <p>Var god vänta, laddar versionsdata...</p>
+        </div>
+    </dialog>
+</div>
+
+<template id="version-list-item">
+    <li class="list__item">
+        <a class="list__item__itempane">template</a>
+    </li>
+</template>
+
+</div>
 </footer>
         </div>
 
@@ -747,9 +817,21 @@ Multiple hostnames can be specified as an array.</p>
 
         <!-- prettier-ignore -->
         <script
-            src="./assets/main-36fe62.js"
+            src="./assets/processors/motd/index-ccae11.js"
             crossorigin
-            integrity="sha384-2B/SHikfL0TrHI0f7HNl2Ul0//40PNpjjXfL3a4r2erHnJ3ip5eSj94dRPLXw9HA"
+            integrity="sha384-UjzVYhsn0gsmnjX9798oLdjjBUr1FUoJtJUcalmnSFRmr3ppJY8WgK0o8ocUcJid"
+            
+        ></script>
+        <script
+            src="./assets/processors/selectable-version/select-version-016df9.js"
+            crossorigin
+            integrity="sha384-vqsBAHYaTsOru9rHIRrCh83amGyaMwHmfzezaKAliWpG9QFPpOSBqIgNzqwDHjhJ"
+            
+        ></script>
+        <script
+            src="./assets/main-89ff7b.js"
+            crossorigin
+            integrity="sha384-md5I7DjBtJEBkndOMVwPqTiyigN+A7R50B9cZuKdes8c9AXL2EfVTzjq78Q9gyfY"
             
         ></script>
     </body>

@@ -37,9 +37,9 @@ var exampleComponent = defineComponent({
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_file_selector = _resolveComponent("f-file-selector");
   return _openBlock(), _createBlock(_component_f_file_selector, { accept: "application/pdf, image/jpeg, image/tiff, image/png" }, {
-    default: _withCtx(() => [
+    default: _withCtx(() => _cache[0] || (_cache[0] = [
       _createTextVNode(" L\xE4gg till fil ")
-    ]),
+    ])),
     _: 1
     /* STABLE */
   });

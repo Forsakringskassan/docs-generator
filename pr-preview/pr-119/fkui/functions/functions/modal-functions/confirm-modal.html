@@ -1,49 +1,49 @@
 <!doctype html>
-<html lang="sv" class="layout--content-with-menu" data-root-url="../../..">
+<html lang="sv" class="layout--article" data-root-url="../../..">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>confirmModal - FK Designsystem</title>
+        <title>confirmModal() function - FK Designsystem</title>
 
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../../assets/docs-dceb7e.css"
+            href="../../../assets/docs-4ad5d0.css"
             crossorigin
-            integrity="sha384-jneD2TiHLKc+0J+CQFzSu5gG1qHmFWZceuAUHNjw6ztcYqCg2CxpIq0ZPMvUExz3"
+            integrity="sha384-AvlRQ9e6ED+w5remosnXTKMq5iFtGxtrXScsqiL1094Uy0Q/az8ERg/16e+VuISm"
             
         />
         <link
             rel="stylesheet"
-            href="../../../assets/docs-exp-3cb848.css"
+            href="../../../assets/docs-exp-7d254d.css"
             crossorigin
-            integrity="sha384-RIFdezZEyghKBnWGnU8GalsCL/pyORCRQSD/JH9H2VJRldNydpMFVdrliikCHoE5"
+            integrity="sha384-sqWEQkmH2jAsztk3CxUCrdtK8cYykguMIJd1+UAbp+gh1gaJtO0UEs42tyyIWO//"
             data-theme="exp" disabled
         />
         <link
             rel="stylesheet"
-            href="../../../assets/docs-int-b89a7a.css"
+            href="../../../assets/docs-int-195032.css"
             crossorigin
-            integrity="sha384-GsPRhr7ciVP6tZLZNtu7XqSTyiRF9MKoN27IgzNFOlySwiHbE70mXb4Axk1KsG52"
+            integrity="sha384-V/ILRCps6g6bgagi33Opo/H/71OfAwkS2GheQp4DazqjuLDf2mlB1OxMd/9mIfzd"
             data-theme="int" disabled
         />
 
         <script type="importmap">
             {
   "imports": {
-    "vue": "../../../assets/vendor-vue-3fd87c.js",
-    "@fkui/logic": "../../../assets/vendor-fkui-logic-40c392.js",
+    "vue": "../../../assets/vendor-vue-fd7b76.js",
+    "@fkui/logic": "../../../assets/vendor-fkui-logic-f2e93f.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-9b0ef1.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-537be2.js",
-    "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-6351e3.js"
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-ba16e8.js",
+    "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-ce5c3f.js"
   },
   "integrity": {
-    "../../../assets/vendor-vue-3fd87c.js": "sha384-3OZ3jlPIdukpSLantTq/cQZ/QglhblARXVsF5Qa3ramhpTPq5oIb64KYJVsmFmcx",
-    "../../../assets/vendor-fkui-logic-40c392.js": "sha384-atQyVGDPH3tRpFiNzNh+evfRGsrLWw/vnLqM7jRa56LYusGZf6LTCk9xLVQvRhxL",
+    "../../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
+    "../../../assets/vendor-fkui-logic-f2e93f.js": "sha384-IPacLgPmCz2jfxV3ZacqrFaVi8T6F/RBcVnVbaRhA6+QS6E7/oLrmTvyNYGNNNom",
     "../../../assets/vendor-fkui-date-9b0ef1.js": "sha384-xBatGNJBE3UYeafnYIcvibBCzT8ADONUBqG8qLOF3XGi35obeRYsHs6DCq/h5j2Y",
-    "../../../assets/vendor-fkui-vue-537be2.js": "sha384-1l9v2TdoBS5+PHt23m3j5nBW4XGjgwG9K4kiPs0nhe+5tjInFmoqMy5RWlBoIGX8",
-    "../../../assets/vendor-forsakringskassan-docs-live-example-6351e3.js": "sha384-FRTUtWNmEkJgIhqtTX6bQd+em+HCK1LhLnhOJkYJ4y9YbnyG3vU11hiZkB1bfwfw"
+    "../../../assets/vendor-fkui-vue-ba16e8.js": "sha384-8Bfw90woQD7IabvLi4rdqrdLrw4RZZ0oONM07NTxFM4OWkqfOC3AwAe4Jf3y1pOL",
+    "../../../assets/vendor-forsakringskassan-docs-live-example-ce5c3f.js": "sha384-rLyXeIcpVmwGulMOjBGTYbwDjDcBeKL1gobH2xxZ6C8vR5sin3SBbKOsIo9hCeZO"
   }
 }
         </script>
@@ -108,16 +108,35 @@
 
         <link
             rel="preload"
-            href="../../../search-data-fdce6e.json"
+            href="../../../search-data-206ec1.json"
             as="fetch"
             crossorigin
-            integrity="sha384-fK+G7u7K43xJtiFIZf83eTc+qNMPtT/kjBpn/X8qeS2+JRtZYo/zpEOX+TiPgkEh"
+            integrity="sha384-qtmkzIMo8jIhaZ11ePXcG2zo3YLrksmCrLxGlIpa1zJKMpVlqUmLJnc2vkkvwFsx"
             id="search-data"
         />
     </head>
     <body>
         <!-- prettier-ignore -->
-        <div class="cookie-warning">
+        
+<template id="motd-message">
+<div class="docs-motd docs-motd--info">
+    <span class="docs-motd__icon">
+        <span class="icon-stack icon-stack--info">
+            <svg class="icon icon--circle" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-circle"></use>
+            </svg>
+            <svg class="icon icon--i" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-i"></use>
+            </svg>
+        </span>
+    </span><span data-bind="screenreader" class="sr-only"></span>
+    <p data-bind="message"></p></div>
+</template>
+
+
+<div id="motd-container">
+    </div>
+<div class="cookie-warning">
     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
     <h1>Kakor på webbplatsen</h1>
     <p>
@@ -576,7 +595,7 @@
             href="./confirm-modal.html"
             
         >
-            confirmModal
+            confirmModal()
         </a>
     </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <!-- prettier-ignore -->
@@ -586,7 +605,7 @@
             href="./form-modal.html"
             
         >
-            formModal
+            formModal()
         </a>
     </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <!-- prettier-ignore -->
@@ -643,6 +662,16 @@
         >
             tableScrollClasses
         </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../use-modal.html"
+            
+        >
+            useModal()
+        </a>
     </li><!-- prettier-ignore --></ol>
 
             
@@ -685,6 +714,49 @@
             
         >
             Skärmläsare
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>i18next</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../../i18next-translate/i18next.html"
+            
+        >
+            i18next
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../../i18next-translate/i18next-provider.html"
+            
+        >
+            i18nextProvider
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../../i18next-translate/i18next-provider-interface.html"
+            
+        >
+            I18nextProvider
         </a>
     </li><!-- prettier-ignore --></ol>
 
@@ -865,52 +937,93 @@
 
                 <!-- prettier-ignore --><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
-                    <h1 id="title">confirmModal</h1>
+                    <h1 id="title">confirmModal() function</h1>
 
+                    
+                    <div id="aside">
+                        <!-- prettier-ignore -->
+<dl></dl>
+
+
+                        
+                        <details id="outline">
+                            <summary class="outline__heading">Innehåll</summary>
+                            <ul>
+                                
+                                <li><a href="#syntax">Syntax</a></li>
+                                
+                                <li><a href="#exempel">Exempel</a></li>
+                                
+                                <li><a href="#relaterat">Relaterat</a></li>
+                                
+                            </ul>
+                        </details>
+                        
+                    </div>
                     
 
                     <div id="content">
                         <!-- prettier-ignore -->
-
+<p>Open a <a href="../../../components/modal/fconfirmmodal.html"><code>FConfirmModal</code></a> confirmation modal with given text.</p>
+<p>This is for Vue Options API.
+Use <a href="../use-modal.html">useModal()</a> with Composition API.</p>
+<h2 id="syntax"><a class="header-anchor" href="#syntax">Syntax</a></h2>
                 <div
-                    id="example-85f80c"
+                    id="example-7f22c9"
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> confirmModalObject {
-    <span class="hljs-attr">heading</span>: <span class="hljs-built_in">string</span>;
-    <span class="hljs-attr">content</span>: <span class="hljs-built_in">string</span>;
-    <span class="hljs-attr">confirm</span>: <span class="hljs-built_in">string</span>;
-    <span class="hljs-attr">dismiss</span>: <span class="hljs-built_in">string</span>;
-}
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">confirmModal</span>(<span class="hljs-params">
-    <span class="hljs-attr">callingInstance</span>: <span class="hljs-title class_">MaybeWithFKUIContext</span>,
-    <span class="hljs-attr">modalData</span>: confirmModalObject,
-</span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">boolean</span>&gt;;
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">function</span> <span class="hljs-title function_">confirmModal</span>(<span class="hljs-params">callingInstance, texts</span>);
 </code></pre>
                 </div>
-            <p>Provides function for simpler usage of <a href="#/Utilities/open-modal">open-modal</a></p>
-<h2 id="usage"><a class="header-anchor" href="#usage">Usage</a></h2>
+            <h3 id="parameters"><a class="header-anchor" href="#parameters">Parameters</a></h3><dl>
+<dt><code>callingInstance</code></dt>
+<dd>
+<p>Current component attempting to open confirmation modal. Typically <code>this</code>.</p>
+</dd>
+<dt><code>texts</code></dt>
+<dd>
+<p>Texts to display in modal.</p>
+<dl>
+<dt><code>heading: string</code></dt>
+<dd>Text to display in modal header.</dd>
+<dt><code>content: string</code></dt>
+<dd>Text to display in modal body.</dd>
+<dt><code>confirm: string</code></dt>
+<dd>Text for confirmation button.</dd>
+<dt><code>dismiss: string</code></dt>
+<dd>Text for cancel button.</dd>
+</dl>
+</dd>
+</dl>
+<h3 id="return_value"><a class="header-anchor" href="#return_value">Return value</a></h3><p>A <code>Promise</code> resolving to <code>true</code> if the user confirms the action and <code>false</code> if the user cancels the action.</p>
+<h2 id="exempel"><a class="header-anchor" href="#exempel">Exempel</a></h2>
                 <div
-                    id="example-e7004c"
+                    id="example-94510d"
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0">result = <span class="hljs-keyword">await</span> <span class="hljs-title function_">confirmModal</span>(<span class="hljs-variable language_">this</span>, {
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> confirmed = <span class="hljs-keyword">await</span> <span class="hljs-title function_">confirmModal</span>(<span class="hljs-variable language_">this</span>, {
     <span class="hljs-attr">heading</span>: <span class="hljs-string">&quot;Ta bort arbetsgivare&quot;</span>,
     <span class="hljs-attr">content</span>: <span class="hljs-string">`Är du säker att du vill ta bort &quot;<span class="hljs-subst">${arbetsgivare.namn}</span>&quot;?`</span>,
     <span class="hljs-attr">confirm</span>: <span class="hljs-string">&quot;Ja, ta bort&quot;</span>,
     <span class="hljs-attr">dismiss</span>: <span class="hljs-string">&quot;Nej, behåll&quot;</span>,
 });
+<span class="hljs-keyword">if</span> (confirmed) {
+    <span class="hljs-comment">/* ... */</span>
+}
 </code></pre>
                 </div>
-            
+            <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><ul>
+<li><a href="../use-modal.html">useModal()</a> for using with composition API.</li>
+</ul>
+
 
                     </div>
                 </main>
@@ -931,10 +1044,38 @@
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/importmap (<a href="https://github.com/Forsakringskassan/designsystem/commits/2515f5fce0d6cd7072fbbe4ecd6999a985c72b3d">2515f5f</a>)<br />
+    feature/importmap (<a href="https://github.com/Forsakringskassan/designsystem/commits/a175535e3bb31a6dd6045fe88277d85a687b952f">a175535</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/119">PR 119</a><br />
-        2024-10-18 23:59
+        2024-12-16 14:59
 </div>
+<div class="toolbar__item">
+    <form id="version">
+        <button type="submit">
+            <span id="version-info" class="anchor"> Byt version </span>
+        </button>
+    </form>
+
+    <dialog id="version-dialog">
+        <div id="version-dialog-head">
+            <h1>Välj version</h1>
+            <button type="button" class="button button--discrete button--discrete--black">
+                <span>Stäng</span>
+                <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
+                    <use xlink:href="#f-icon-close"></use>
+                </svg>
+            </button>
+        </div>
+        <div id="version-list">
+            <p>Var god vänta, laddar versionsdata...</p>
+        </div>
+    </dialog>
+</div>
+
+<template id="version-list-item">
+    <li class="list__item">
+        <a class="list__item__itempane">template</a>
+    </li>
+</template>
 
 
     <ul>
@@ -1020,15 +1161,21 @@
 
         <!-- prettier-ignore -->
         <script
-            src="../../../assets/processors/selectable-version/select-version-42b338.js"
+            src="../../../assets/processors/motd/index-8c87e1.js"
             crossorigin
-            integrity="sha384-9teClDZoUmFqd4Uy9zGlWIwizRBX8jp3Tuvbf8GCf6jj1pTG5nVxJGQ/gOCfOsnK"
+            integrity="sha384-VgbNs0pGkTPNii6sZDsQfyDa2hDTsNJePPW42/GgMW4jj8RspvO2p7e7j22mfz/b"
             
         ></script>
         <script
-            src="../../../assets/main-178326.js"
+            src="../../../assets/processors/selectable-version/select-version-e7a130.js"
             crossorigin
-            integrity="sha384-2+vGzPgal6hSidZSiWJFCeBLiLxG42ufc1/pJkCgV16E07z8I9yZbphs2h2xiDpg"
+            integrity="sha384-ioVz0q+o5e9xzpHcYgIMUjemejWyVXe+hmnsBFa92juxUWJaJ7JTzVMgU6A81Kgt"
+            
+        ></script>
+        <script
+            src="../../../assets/main-ae3895.js"
+            crossorigin
+            integrity="sha384-WQHGoNOK3Mtld4sHZsBn4R23AII6/VsvSPruKRH/24Ii1yE6h2UVAsD8uX3WeZaN"
             
         ></script>
     </body>

@@ -55,25 +55,7 @@ var exampleComponent = defineComponent({
     }
   }
 });
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "span",
-  null,
-  " Custom message ",
-  -1
-  /* HOISTED */
-);
-var _hoisted_2 = { class: "button-group" };
-var _hoisted_3 = /* @__PURE__ */ _createElementVNode(
-  "button",
-  {
-    type: "submit",
-    "data-test": "submit-button",
-    class: "button button-group__item button--primary button--large"
-  },
-  " Spara ",
-  -1
-  /* HOISTED */
-);
+var _hoisted_1 = { class: "button-group" };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_text_field = _resolveComponent("f-text-field");
   const _component_f_expandable_panel = _resolveComponent("f-expandable-panel");
@@ -83,26 +65,32 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "error-list-before-navigate": _ctx.expandPanel,
     onSubmit: _ctx.onSubmit
   }, {
-    "error-message": _withCtx(() => [
-      _hoisted_1
-    ]),
+    "error-message": _withCtx(() => _cache[3] || (_cache[3] = [
+      _createElementVNode(
+        "span",
+        null,
+        " Custom message ",
+        -1
+        /* HOISTED */
+      )
+    ])),
     default: _withCtx(() => [
       _createVNode(_component_f_expandable_panel, {
         expanded: _ctx.expand,
         onToggle: _ctx.onToggle
       }, {
-        title: _withCtx(() => [
+        title: _withCtx(() => _cache[4] || (_cache[4] = [
           _createTextVNode("Panel to be expanded")
-        ]),
+        ])),
         default: _withCtx(() => [
           _withDirectives((_openBlock(), _createBlock(_component_f_text_field, {
             id: "field1",
             modelValue: _ctx.field1,
             "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.field1 = $event)
           }, {
-            default: _withCtx(() => [
+            default: _withCtx(() => _cache[5] || (_cache[5] = [
               _createTextVNode(" Field1 ")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           }, 8, ["modelValue"])), [
@@ -121,9 +109,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             modelValue: _ctx.field2,
             "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.field2 = $event)
           }, {
-            default: _withCtx(() => [
+            default: _withCtx(() => _cache[6] || (_cache[6] = [
               _createTextVNode(" Field2 ")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           }, 8, ["modelValue"])), [
@@ -141,8 +129,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
       }, 8, ["expanded", "onToggle"]),
-      _createElementVNode("div", _hoisted_2, [
-        _hoisted_3,
+      _createElementVNode("div", _hoisted_1, [
+        _cache[7] || (_cache[7] = _createElementVNode(
+          "button",
+          {
+            type: "submit",
+            "data-test": "submit-button",
+            class: "button button-group__item button--primary button--large"
+          },
+          " Spara ",
+          -1
+          /* HOISTED */
+        )),
         _createElementVNode("button", {
           type: "button",
           "data-test": "cancel-button",

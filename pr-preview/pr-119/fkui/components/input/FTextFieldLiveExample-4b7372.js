@@ -213,111 +213,6 @@ var exampleComponent = defineComponent({
   },
   methods: {}
 });
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "option",
-  { value: "f-text-field" },
-  "Fritext",
-  -1
-  /* HOISTED */
-);
-var _hoisted_2 = /* @__PURE__ */ _createElementVNode(
-  "option",
-  { value: "f-clearingnumber-text-field" },
-  "Clearingnummer",
-  -1
-  /* HOISTED */
-);
-var _hoisted_3 = /* @__PURE__ */ _createElementVNode(
-  "option",
-  { value: "f-bank-account-number-text-field" },
-  "Kontonummer",
-  -1
-  /* HOISTED */
-);
-var _hoisted_4 = /* @__PURE__ */ _createElementVNode(
-  "option",
-  { value: "f-email-text-field" },
-  "Mejladress",
-  -1
-  /* HOISTED */
-);
-var _hoisted_5 = /* @__PURE__ */ _createElementVNode(
-  "option",
-  { value: "f-numeric-text-field" },
-  "Numeriskt",
-  -1
-  /* HOISTED */
-);
-var _hoisted_6 = /* @__PURE__ */ _createElementVNode(
-  "option",
-  { value: "f-organisationsnummer-text-field" },
-  "Organisationsnummer",
-  -1
-  /* HOISTED */
-);
-var _hoisted_7 = /* @__PURE__ */ _createElementVNode(
-  "option",
-  { value: "f-personnummer-text-field" },
-  "Personnummer",
-  -1
-  /* HOISTED */
-);
-var _hoisted_8 = /* @__PURE__ */ _createElementVNode(
-  "option",
-  { value: "f-plusgiro-text-field" },
-  "Plusgiro",
-  -1
-  /* HOISTED */
-);
-var _hoisted_9 = /* @__PURE__ */ _createElementVNode(
-  "option",
-  { value: "f-postal-code-text-field" },
-  "Postnummer",
-  -1
-  /* HOISTED */
-);
-var _hoisted_10 = /* @__PURE__ */ _createElementVNode(
-  "option",
-  { value: "f-percent-text-field" },
-  "Procent",
-  -1
-  /* HOISTED */
-);
-var _hoisted_11 = /* @__PURE__ */ _createElementVNode(
-  "option",
-  { value: "f-phone-text-field" },
-  "Telefonnummer",
-  -1
-  /* HOISTED */
-);
-var _hoisted_12 = /* @__PURE__ */ _createElementVNode(
-  "option",
-  { value: "f-currency-text-field" },
-  "Valuta",
-  -1
-  /* HOISTED */
-);
-var _hoisted_13 = /* @__PURE__ */ _createElementVNode(
-  "option",
-  { value: "f-search-text-field" },
-  "S\xF6kf\xE4lt",
-  -1
-  /* HOISTED */
-);
-var _hoisted_14 = /* @__PURE__ */ _createElementVNode(
-  "option",
-  { value: 0 },
-  "Ingen gr\xE4ns",
-  -1
-  /* HOISTED */
-);
-var _hoisted_15 = /* @__PURE__ */ _createElementVNode(
-  "option",
-  { value: 20 },
-  "Exempel: 20 tecken",
-  -1
-  /* HOISTED */
-);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_select_field = _resolveComponent("f-select-field");
   const _component_f_checkbox_field = _resolveComponent("f-checkbox-field");
@@ -333,23 +228,101 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         modelValue: _ctx.type,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.type = $event)
       }, {
-        label: _withCtx(() => [
+        label: _withCtx(() => _cache[11] || (_cache[11] = [
           _createTextVNode(" Typ ")
-        ]),
+        ])),
         default: _withCtx(() => [
-          _hoisted_1,
-          _hoisted_2,
-          _hoisted_3,
-          _hoisted_4,
-          _hoisted_5,
-          _hoisted_6,
-          _hoisted_7,
-          _hoisted_8,
-          _hoisted_9,
-          _hoisted_10,
-          _hoisted_11,
-          _hoisted_12,
-          _hoisted_13
+          _cache[12] || (_cache[12] = _createElementVNode(
+            "option",
+            { value: "f-text-field" },
+            "Fritext",
+            -1
+            /* HOISTED */
+          )),
+          _cache[13] || (_cache[13] = _createElementVNode(
+            "option",
+            { value: "f-clearingnumber-text-field" },
+            "Clearingnummer",
+            -1
+            /* HOISTED */
+          )),
+          _cache[14] || (_cache[14] = _createElementVNode(
+            "option",
+            { value: "f-bank-account-number-text-field" },
+            "Kontonummer",
+            -1
+            /* HOISTED */
+          )),
+          _cache[15] || (_cache[15] = _createElementVNode(
+            "option",
+            { value: "f-email-text-field" },
+            "Mejladress",
+            -1
+            /* HOISTED */
+          )),
+          _cache[16] || (_cache[16] = _createElementVNode(
+            "option",
+            { value: "f-numeric-text-field" },
+            "Numeriskt",
+            -1
+            /* HOISTED */
+          )),
+          _cache[17] || (_cache[17] = _createElementVNode(
+            "option",
+            { value: "f-organisationsnummer-text-field" },
+            "Organisationsnummer",
+            -1
+            /* HOISTED */
+          )),
+          _cache[18] || (_cache[18] = _createElementVNode(
+            "option",
+            { value: "f-personnummer-text-field" },
+            "Personnummer",
+            -1
+            /* HOISTED */
+          )),
+          _cache[19] || (_cache[19] = _createElementVNode(
+            "option",
+            { value: "f-plusgiro-text-field" },
+            "Plusgiro",
+            -1
+            /* HOISTED */
+          )),
+          _cache[20] || (_cache[20] = _createElementVNode(
+            "option",
+            { value: "f-postal-code-text-field" },
+            "Postnummer",
+            -1
+            /* HOISTED */
+          )),
+          _cache[21] || (_cache[21] = _createElementVNode(
+            "option",
+            { value: "f-percent-text-field" },
+            "Procent",
+            -1
+            /* HOISTED */
+          )),
+          _cache[22] || (_cache[22] = _createElementVNode(
+            "option",
+            { value: "f-phone-text-field" },
+            "Telefonnummer",
+            -1
+            /* HOISTED */
+          )),
+          _cache[23] || (_cache[23] = _createElementVNode(
+            "option",
+            { value: "f-currency-text-field" },
+            "Valuta",
+            -1
+            /* HOISTED */
+          )),
+          _cache[24] || (_cache[24] = _createElementVNode(
+            "option",
+            { value: "f-search-text-field" },
+            "S\xF6kf\xE4lt",
+            -1
+            /* HOISTED */
+          ))
         ]),
         _: 1
         /* STABLE */
@@ -359,12 +332,24 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         modelValue: _ctx.maxLength,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.maxLength = $event)
       }, {
-        label: _withCtx(() => [
+        label: _withCtx(() => _cache[25] || (_cache[25] = [
           _createTextVNode(" Max antal tecken ")
-        ]),
+        ])),
         default: _withCtx(() => [
-          _hoisted_14,
-          _hoisted_15
+          _cache[26] || (_cache[26] = _createElementVNode(
+            "option",
+            { value: 0 },
+            "Ingen gr\xE4ns",
+            -1
+            /* HOISTED */
+          )),
+          _cache[27] || (_cache[27] = _createElementVNode(
+            "option",
+            { value: 20 },
+            "Exempel: 20 tecken",
+            -1
+            /* HOISTED */
+          ))
         ]),
         _: 1
         /* STABLE */
@@ -375,9 +360,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.isWhitelist = $event),
         value: true
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[28] || (_cache[28] = [
           _createTextVNode(" Begr\xE4nsa till\xE5tna tecken med whitelist-validatorn ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"])) : _createCommentVNode("v-if", true),
@@ -387,9 +372,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.isRequired = $event),
         value: true
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[29] || (_cache[29] = [
           _createTextVNode(" Obligatorisk f\xE4lt ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"])) : _createCommentVNode("v-if", true),
@@ -398,9 +383,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.isDisabled = $event),
         value: true
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[30] || (_cache[30] = [
           _createTextVNode(" Inaktivt f\xE4lt ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"]),
@@ -410,16 +395,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => _ctx.appendInnerVisible = $event),
         value: true
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[31] || (_cache[31] = [
           _createTextVNode(" Inneh\xE5ll i inmatningsf\xE4lt ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"])) : _createCommentVNode("v-if", true),
       _createVNode(_component_f_fieldset, { name: "etikett" }, {
-        label: _withCtx(() => [
+        label: _withCtx(() => _cache[32] || (_cache[32] = [
           _createTextVNode(" Etiketten ")
-        ]),
+        ])),
         default: _withCtx(() => [
           _ctx.supportDescription ? (_openBlock(), _createBlock(_component_f_checkbox_field, {
             key: 0,
@@ -427,9 +412,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => _ctx.descriptionVisible = $event),
             value: true
           }, {
-            default: _withCtx(() => [
+            default: _withCtx(() => _cache[33] || (_cache[33] = [
               _createTextVNode(" Hj\xE4lptext ")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           }, 8, ["modelValue"])) : _createCommentVNode("v-if", true),
@@ -439,9 +424,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "onUpdate:modelValue": _cache[7] || (_cache[7] = ($event) => _ctx.discreteDescriptionVisible = $event),
             value: true
           }, {
-            default: _withCtx(() => [
+            default: _withCtx(() => _cache[34] || (_cache[34] = [
               _createTextVNode(" Formatbeskrivning ")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           }, 8, ["modelValue"])) : _createCommentVNode("v-if", true),
@@ -451,9 +436,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "onUpdate:modelValue": _cache[8] || (_cache[8] = ($event) => _ctx.tooltipVisible = $event),
             value: true
           }, {
-            default: _withCtx(() => [
+            default: _withCtx(() => _cache[35] || (_cache[35] = [
               _createTextVNode(" Tooltip ")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           }, 8, ["modelValue"])) : _createCommentVNode("v-if", true),
@@ -462,9 +447,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "onUpdate:modelValue": _cache[9] || (_cache[9] = ($event) => _ctx.isInline = $event),
             value: true
           }, {
-            default: _withCtx(() => [
+            default: _withCtx(() => _cache[36] || (_cache[36] = [
               _createTextVNode(" Inline ")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           }, 8, ["modelValue"]),
@@ -474,9 +459,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "onUpdate:modelValue": _cache[10] || (_cache[10] = ($event) => _ctx.customLabel = $event),
             value: true
           }, {
-            default: _withCtx(() => [
+            default: _withCtx(() => _cache[37] || (_cache[37] = [
               _createTextVNode(" Annan etikett ")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           }, 8, ["modelValue"])) : _createCommentVNode("v-if", true)

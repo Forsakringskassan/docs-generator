@@ -75,41 +75,6 @@ var exampleComponent = defineComponent({
     }
   }
 });
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "option",
-  { value: "standard" },
-  "Standard",
-  -1
-  /* HOISTED */
-);
-var _hoisted_2 = /* @__PURE__ */ _createElementVNode(
-  "option",
-  { value: "warning" },
-  "Varning",
-  -1
-  /* HOISTED */
-);
-var _hoisted_3 = /* @__PURE__ */ _createElementVNode(
-  "option",
-  { value: "error" },
-  "Fel",
-  -1
-  /* HOISTED */
-);
-var _hoisted_4 = /* @__PURE__ */ _createElementVNode(
-  "option",
-  { value: "success" },
-  "Framg\xE5ng",
-  -1
-  /* HOISTED */
-);
-var _hoisted_5 = /* @__PURE__ */ _createElementVNode(
-  "option",
-  { value: "info" },
-  "Info",
-  -1
-  /* HOISTED */
-);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_select_field = _resolveComponent("f-select-field");
   const _component_f_checkbox_field = _resolveComponent("f-checkbox-field");
@@ -123,15 +88,45 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         modelValue: _ctx.badgeType,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.badgeType = $event)
       }, {
-        label: _withCtx(() => [
+        label: _withCtx(() => _cache[2] || (_cache[2] = [
           _createTextVNode(" Typ ")
-        ]),
+        ])),
         default: _withCtx(() => [
-          _hoisted_1,
-          _hoisted_2,
-          _hoisted_3,
-          _hoisted_4,
-          _hoisted_5
+          _cache[3] || (_cache[3] = _createElementVNode(
+            "option",
+            { value: "standard" },
+            "Standard",
+            -1
+            /* HOISTED */
+          )),
+          _cache[4] || (_cache[4] = _createElementVNode(
+            "option",
+            { value: "warning" },
+            "Varning",
+            -1
+            /* HOISTED */
+          )),
+          _cache[5] || (_cache[5] = _createElementVNode(
+            "option",
+            { value: "error" },
+            "Fel",
+            -1
+            /* HOISTED */
+          )),
+          _cache[6] || (_cache[6] = _createElementVNode(
+            "option",
+            { value: "success" },
+            "Framg\xE5ng",
+            -1
+            /* HOISTED */
+          )),
+          _cache[7] || (_cache[7] = _createElementVNode(
+            "option",
+            { value: "info" },
+            "Info",
+            -1
+            /* HOISTED */
+          ))
         ]),
         _: 1
         /* STABLE */
@@ -141,9 +136,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.isInverted = $event),
         value: true
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[8] || (_cache[8] = [
           _createTextVNode(" Inverterad ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"])

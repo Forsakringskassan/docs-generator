@@ -61,16 +61,6 @@ var exampleComponent = defineComponent({
   }
 });
 var _hoisted_1 = { class: "button-group" };
-var _hoisted_2 = /* @__PURE__ */ _createElementVNode(
-  "button",
-  {
-    type: "submit",
-    class: "button button-group__item button--primary button--large"
-  },
-  " Spara ",
-  -1
-  /* HOISTED */
-);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_text_field = _resolveComponent("f-text-field");
   const _component_f_validation_form = _resolveComponent("f-validation-form");
@@ -79,18 +69,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "before-submit": _ctx.runServerValidation,
     onSubmit: _ctx.onSubmit
   }, {
-    "error-message": _withCtx(() => [
+    "error-message": _withCtx(() => _cache[3] || (_cache[3] = [
       _createTextVNode(" Oj, du har gl\xF6mt fylla i n\xE5got. G\xE5 till: ")
-    ]),
+    ])),
     default: _withCtx(() => [
       _withDirectives((_openBlock(), _createBlock(_component_f_text_field, {
         ref: "field1",
         modelValue: _ctx.field1,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.field1 = $event)
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[4] || (_cache[4] = [
           _createTextVNode(" Ett inmatningsf\xE4lt ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"])), [
@@ -108,9 +98,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         modelValue: _ctx.field2,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.field2 = $event)
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[5] || (_cache[5] = [
           _createTextVNode(" Ett annat inmatningsf\xE4lt ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"])), [
@@ -125,7 +115,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         ]
       ]),
       _createElementVNode("div", _hoisted_1, [
-        _hoisted_2,
+        _cache[6] || (_cache[6] = _createElementVNode(
+          "button",
+          {
+            type: "submit",
+            class: "button button-group__item button--primary button--large"
+          },
+          " Spara ",
+          -1
+          /* HOISTED */
+        )),
         _createElementVNode("button", {
           type: "button",
           class: "button button-group__item button--secondary button--large",

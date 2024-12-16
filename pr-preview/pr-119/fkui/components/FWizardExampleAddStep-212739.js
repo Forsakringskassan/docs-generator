@@ -78,22 +78,8 @@ var exampleComponent = defineComponent({
     }
   }
 });
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "h3",
-  null,
-  "Fruktkorg",
-  -1
-  /* HOISTED */
-);
-var _hoisted_2 = ["onClick"];
-var _hoisted_3 = /* @__PURE__ */ _createElementVNode(
-  "p",
-  null,
-  "Min adress",
-  -1
-  /* HOISTED */
-);
-var _hoisted_4 = { style: { "margin-top": "30px" } };
+var _hoisted_1 = ["onClick"];
+var _hoisted_2 = { style: { "margin-top": "30px" } };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = _resolveComponent("f-icon");
   const _component_f_wizard_step = _resolveComponent("f-wizard-step");
@@ -118,7 +104,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           title: "Min best\xE4llning"
         }, {
           default: _withCtx(() => [
-            _hoisted_1,
+            _cache[4] || (_cache[4] = _createElementVNode(
+              "h3",
+              null,
+              "Fruktkorg",
+              -1
+              /* HOISTED */
+            )),
             _createElementVNode("button", {
               type: "button",
               class: "button button--discrete",
@@ -128,7 +120,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 class: "button__icon",
                 name: "plus"
               }),
-              _createTextVNode(" L\xE4gg till fruktkorg ")
+              _cache[3] || (_cache[3] = _createTextVNode(" L\xE4gg till fruktkorg "))
             ])
           ]),
           _: 1
@@ -150,9 +142,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   modelValue: item.namn,
                   "onUpdate:modelValue": ($event) => item.namn = $event
                 }, {
-                  default: _withCtx(() => [
+                  default: _withCtx(() => [..._cache[5] || (_cache[5] = [
                     _createTextVNode(" Namn p\xE5 presentkort ")
-                  ]),
+                  ])]),
                   _: 2
                   /* DYNAMIC */
                 }, 1032, ["modelValue", "onUpdate:modelValue"])), [
@@ -170,9 +162,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   _component_f_fieldset,
                   { id: "frukt-checkbox-group" },
                   {
-                    label: _withCtx(() => [
+                    label: _withCtx(() => [..._cache[6] || (_cache[6] = [
                       _createTextVNode(" Vad ska ing\xE5 i din fruktkorg? ")
-                    ]),
+                    ])]),
                     default: _withCtx(() => [
                       (_openBlock(true), _createElementBlock(
                         _Fragment,
@@ -218,8 +210,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   onClick: ($event) => _ctx.removeBasket(item)
                 }, [
                   _createVNode(_component_f_icon, { name: "trashcan" }),
-                  _createTextVNode(" Ta bort fruktkorg ")
-                ], 8, _hoisted_2)
+                  _cache[7] || (_cache[7] = _createTextVNode(" Ta bort fruktkorg "))
+                ], 8, _hoisted_1)
               ]),
               _: 2
               /* DYNAMIC */
@@ -233,9 +225,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           title: "Mina uppgifter",
           onBeforeNext: _ctx.onBeforeNext
         }, {
-          default: _withCtx(() => [
-            _hoisted_3
-          ]),
+          default: _withCtx(() => _cache[8] || (_cache[8] = [
+            _createElementVNode(
+              "p",
+              null,
+              "Min adress",
+              -1
+              /* HOISTED */
+            )
+          ])),
           _: 1
           /* STABLE */
         }, 8, ["onBeforeNext"])), [
@@ -245,8 +243,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       _: 1
       /* STABLE */
     }, 8, ["modelValue", "onCompleted", "onCancel"]),
-    _createElementVNode("p", _hoisted_4, [
-      _createTextVNode(" Ett steg kan \xF6ppnas programatiskt, t.ex. man klickar '\xE4ndra' i ett granska-steg. "),
+    _createElementVNode("p", _hoisted_2, [
+      _cache[9] || (_cache[9] = _createTextVNode(" Ett steg kan \xF6ppnas programatiskt, t.ex. man klickar '\xE4ndra' i ett granska-steg. ")),
       _createElementVNode("button", {
         type: "button",
         onClick: _cache[2] || (_cache[2] = ($event) => _ctx.current = "baz")

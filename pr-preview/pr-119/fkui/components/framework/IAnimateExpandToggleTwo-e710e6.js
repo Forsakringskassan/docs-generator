@@ -40,20 +40,6 @@ var exampleComponent = defineComponent({
     };
   }
 });
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "div",
-  { style: { "background-color": "yellow", "height": "200px", "position": "relative" } },
-  null,
-  -1
-  /* HOISTED */
-);
-var _hoisted_2 = /* @__PURE__ */ _createElementVNode(
-  "div",
-  { style: { "background-color": "hotpink", "height": "300px", "position": "relative" } },
-  null,
-  -1
-  /* HOISTED */
-);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_i_animate_expand = _resolveComponent("i-animate-expand");
   return _openBlock(), _createElementBlock("div", null, [
@@ -73,14 +59,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ), [
       [_vModelCheckbox, _ctx.opacity]
     ]),
-    _createTextVNode(" Toning "),
+    _cache[4] || (_cache[4] = _createTextVNode(" Toning ")),
     _createVNode(_component_i_animate_expand, {
       opacity: _ctx.opacity,
       expanded: _ctx.toggle
     }, {
-      default: _withCtx(() => [
-        _hoisted_1
-      ]),
+      default: _withCtx(() => _cache[2] || (_cache[2] = [
+        _createElementVNode(
+          "div",
+          { style: { "background-color": "yellow", "height": "200px", "position": "relative" } },
+          null,
+          -1
+          /* HOISTED */
+        )
+      ])),
       _: 1
       /* STABLE */
     }, 8, ["opacity", "expanded"]),
@@ -88,9 +80,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       opacity: _ctx.opacity,
       expanded: !_ctx.toggle
     }, {
-      default: _withCtx(() => [
-        _hoisted_2
-      ]),
+      default: _withCtx(() => _cache[3] || (_cache[3] = [
+        _createElementVNode(
+          "div",
+          { style: { "background-color": "hotpink", "height": "300px", "position": "relative" } },
+          null,
+          -1
+          /* HOISTED */
+        )
+      ])),
       _: 1
       /* STABLE */
     }, 8, ["opacity", "expanded"])

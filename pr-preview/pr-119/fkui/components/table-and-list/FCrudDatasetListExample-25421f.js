@@ -104,22 +104,8 @@ var exampleComponent = defineComponent({
 });
 var _hoisted_1 = { class: "row" };
 var _hoisted_2 = { class: "col col--md-7" };
-var _hoisted_3 = /* @__PURE__ */ _createElementVNode(
-  "br",
-  null,
-  null,
-  -1
-  /* HOISTED */
-);
-var _hoisted_4 = /* @__PURE__ */ _createElementVNode(
-  "br",
-  null,
-  null,
-  -1
-  /* HOISTED */
-);
-var _hoisted_5 = { class: "col col--md-5" };
-var _hoisted_6 = { class: "button-list" };
+var _hoisted_3 = { class: "col col--md-5" };
+var _hoisted_4 = { class: "button-list" };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_crud_button = _resolveComponent("f-crud-button");
   const _component_f_list = _resolveComponent("f-list");
@@ -155,7 +141,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           _createElementVNode("div", _hoisted_1, [
             _createElementVNode("div", _hoisted_2, [
               _createElementVNode("p", null, [
-                _createTextVNode(" Land: "),
+                _cache[1] || (_cache[1] = _createTextVNode(" Land: ")),
                 _createElementVNode(
                   "em",
                   null,
@@ -163,8 +149,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   1
                   /* TEXT */
                 ),
-                _hoisted_3,
-                _createTextVNode(" Beskrivning: "),
+                _cache[2] || (_cache[2] = _createElementVNode(
+                  "br",
+                  null,
+                  null,
+                  -1
+                  /* HOISTED */
+                )),
+                _cache[3] || (_cache[3] = _createTextVNode(" Beskrivning: ")),
                 _createElementVNode(
                   "em",
                   null,
@@ -172,11 +164,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   1
                   /* TEXT */
                 ),
-                _hoisted_4
+                _cache[4] || (_cache[4] = _createElementVNode(
+                  "br",
+                  null,
+                  null,
+                  -1
+                  /* HOISTED */
+                ))
               ])
             ]),
-            _createElementVNode("div", _hoisted_5, [
-              _createElementVNode("ul", _hoisted_6, [
+            _createElementVNode("div", _hoisted_3, [
+              _createElementVNode("ul", _hoisted_4, [
                 _createElementVNode("li", null, [
                   _createVNode(_component_f_crud_button, {
                     action: "modify",
@@ -214,9 +212,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": ($event) => item.name = $event,
         type: "text"
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[5] || (_cache[5] = [
           _createTextVNode(" Namn ")
-        ]),
+        ])),
         _: 2
         /* DYNAMIC */
       }, 1032, ["modelValue", "onUpdate:modelValue"])), [
@@ -235,9 +233,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": ($event) => item.origin = $event,
         type: "text"
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[6] || (_cache[6] = [
           _createTextVNode(" Land ")
-        ]),
+        ])),
         _: 2
         /* DYNAMIC */
       }, 1032, ["modelValue", "onUpdate:modelValue"])), [
@@ -255,9 +253,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         modelValue: item.description,
         "onUpdate:modelValue": ($event) => item.description = $event
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[7] || (_cache[7] = [
           _createTextVNode(" Beskrivning ")
-        ]),
+        ])),
         _: 2
         /* DYNAMIC */
       }, 1032, ["modelValue", "onUpdate:modelValue"])), [
@@ -275,9 +273,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": ($event) => item.name = $event,
         type: "text"
       }, {
-        label: _withCtx(() => [
+        label: _withCtx(() => _cache[8] || (_cache[8] = [
           _createTextVNode(" Namn ")
-        ]),
+        ])),
         default: _withCtx(() => [
           _createTextVNode(
             _toDisplayString(item.name),
@@ -293,9 +291,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": ($event) => item.origin = $event,
         type: "text"
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[9] || (_cache[9] = [
           _createTextVNode(" Land ")
-        ]),
+        ])),
         _: 2
         /* DYNAMIC */
       }, 1032, ["modelValue", "onUpdate:modelValue"])), [

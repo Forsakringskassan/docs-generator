@@ -78,13 +78,6 @@ var exampleComponent = defineComponent({
 });
 var _hoisted_1 = ["value"];
 var _hoisted_2 = ["value"];
-var _hoisted_3 = /* @__PURE__ */ _createElementVNode(
-  "span",
-  { class: "sr-only" },
-  " Frukter ",
-  -1
-  /* HOISTED */
-);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_select_field = _resolveComponent("f-select-field");
   const _component_f_table_column = _resolveComponent("f-table-column");
@@ -96,9 +89,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       modelValue: _ctx.fruits,
       "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.fruits = $event)
     }, {
-      label: _withCtx(() => [
+      label: _withCtx(() => _cache[1] || (_cache[1] = [
         _createTextVNode(" V\xE4lj datak\xE4lla ")
-      ]),
+      ])),
       default: _withCtx(() => [
         _createElementVNode("option", { value: _ctx.emptyList }, "Inl\xE4st data utan rader", 8, _hoisted_1),
         _createElementVNode("option", { value: _ctx.populatedList }, "Inl\xE4st data med rader", 8, _hoisted_2)
@@ -134,9 +127,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           striped: "",
           "key-attribute": "id"
         }, {
-          caption: _withCtx(() => [
-            _hoisted_3
-          ]),
+          caption: _withCtx(() => _cache[2] || (_cache[2] = [
+            _createElementVNode(
+              "span",
+              { class: "sr-only" },
+              " Frukter ",
+              -1
+              /* HOISTED */
+            )
+          ])),
           default: _withCtx(({ row }) => [
             _createVNode(
               _component_f_table_column,

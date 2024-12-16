@@ -155,18 +155,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, {
     default: _withCtx(() => [
       _createVNode(_component_f_fieldset, { name: "type" }, {
-        label: _withCtx(() => [
+        label: _withCtx(() => _cache[7] || (_cache[7] = [
           _createTextVNode(" Typ ")
-        ]),
+        ])),
         default: _withCtx(() => [
           _createVNode(_component_f_radio_field, {
             modelValue: _ctx.type,
             "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.type = $event),
             value: "radio"
           }, {
-            default: _withCtx(() => [
+            default: _withCtx(() => _cache[8] || (_cache[8] = [
               _createTextVNode(" Enkelval (radioknappar)")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           }, 8, ["modelValue"]),
@@ -175,9 +175,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.type = $event),
             value: "checkbox"
           }, {
-            default: _withCtx(() => [
+            default: _withCtx(() => _cache[9] || (_cache[9] = [
               _createTextVNode(" Flerval (kryssrutor)")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           }, 8, ["modelValue"])
@@ -190,9 +190,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.isHorizontal = $event),
         value: true
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[10] || (_cache[10] = [
           _createTextVNode(" Horisontell layout ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"]),
@@ -201,9 +201,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.isDisabled = $event),
         value: true
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[11] || (_cache[11] = [
           _createTextVNode(" Inaktiverad ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"]),
@@ -212,25 +212,25 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.isRequired = $event),
         value: true
       }, {
-        default: _withCtx(() => [
+        default: _withCtx(() => _cache[12] || (_cache[12] = [
           _createTextVNode(" Obligatorisk ")
-        ]),
+        ])),
         _: 1
         /* STABLE */
       }, 8, ["modelValue"]),
       _createVNode(_component_f_fieldset, { name: "checkbox-label" }, {
-        label: _withCtx(() => [
+        label: _withCtx(() => _cache[13] || (_cache[13] = [
           _createTextVNode(" Etiketten ")
-        ]),
+        ])),
         default: _withCtx(() => [
           _createVNode(_component_f_checkbox_field, {
             modelValue: _ctx.tooltipVisible,
             "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => _ctx.tooltipVisible = $event),
             value: true
           }, {
-            default: _withCtx(() => [
+            default: _withCtx(() => _cache[14] || (_cache[14] = [
               _createTextVNode(" Tooltip ")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           }, 8, ["modelValue"]),
@@ -239,9 +239,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => _ctx.descriptionVisible = $event),
             value: true
           }, {
-            default: _withCtx(() => [
+            default: _withCtx(() => _cache[15] || (_cache[15] = [
               _createTextVNode(" Hj\xE4lptext ")
-            ]),
+            ])),
             _: 1
             /* STABLE */
           }, 8, ["modelValue"])
