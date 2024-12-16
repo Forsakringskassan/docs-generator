@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.14.4](https://github.com/Forsakringskassan/docs-generator/compare/v2.14.3...v2.14.4) (2024-12-16)
+
+### Bug Fixes
+
+* **deps:** update dependency piscina to v4.8.0 ([7d56d01](https://github.com/Forsakringskassan/docs-generator/commit/7d56d0171dbee2cd2f11b1f4a026ceb022387348))
+
 ## [2.14.3](https://github.com/Forsakringskassan/docs-generator/compare/v2.14.2...v2.14.3) (2024-12-07)
 
 
