@@ -37,7 +37,7 @@ async function compileExample(batch: ExampleBatch): Promise<void> {
             entryPoints,
             outdir,
             bundle: true,
-            format: "iife",
+            format: "esm",
             platform: "browser",
             external,
             tsconfig,
