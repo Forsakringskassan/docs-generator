@@ -33,12 +33,14 @@ function cutSnippets(code: string): string {
     const lines = code
         .split(/\n/)
         .map((it, index, lines) => (index < lines.length - 1 ? `${it}\n` : it));
-    const directive = /\/\* +--- +cut (above|below|begin|end) +--- +\*\//;
+    const directive =
+        /(?:\/\* +--- +cut (?<js>above|below|begin|end) +--- +\*\/|<!---? +cut (?<html>above|below|begin|end) +---?>)/;
 
     let buffer = -1;
     lines.forEach((line, index) => {
         const match = line.match(directive);
-        const [, instruction] = match ?? ["", null];
+        const { js, html } = match?.groups ?? { js: null, html: null };
+        const instruction = js ?? html;
         if (!instruction) {
             return;
         }
@@ -142,6 +144,8 @@ function maybeDedent(value: string): string {
 
 /* transformations to apply based on language, transforms are run from left to right */
 const transformations: Record<string, Array<(code: string) => string>> = {
+    html: [cutSnippets, maybeDedent],
+    vue: [cutSnippets, maybeDedent],
     javascript: [cutSnippets, stripEslintComments, maybeDedent],
     typescript: [cutSnippets, stripEslintComments, maybeDedent],
 };
