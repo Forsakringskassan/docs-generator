@@ -1,4 +1,5 @@
 import dedent from "dedent";
+import { normalizeLanguage } from "./normalize-language";
 
 function removeLinesInline(
     lines: string[],
@@ -146,7 +147,8 @@ const transformations: Record<string, Array<(code: string) => string>> = {
 };
 
 export function transformCode(code: string, lang: string): string {
-    const fns = transformations[lang] ?? [];
+    const normalizedLanguage = normalizeLanguage(lang);
+    const fns = transformations[normalizedLanguage] ?? [];
     for (const fn of fns) {
         code = fn(code);
     }

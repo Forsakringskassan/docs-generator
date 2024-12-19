@@ -1,13 +1,4 @@
-function normalizeLanguage(lang: string): string {
-    switch (lang) {
-        case "ts":
-            return "typescript";
-        case "js":
-            return "javascript";
-        default:
-            return lang;
-    }
-}
+import { normalizeLanguage } from "./normalize-language";
 
 /**
  * Parse a markdown infostring from a code fence.
