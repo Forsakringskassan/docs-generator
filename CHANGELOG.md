@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.14.5](https://github.com/Forsakringskassan/docs-generator/compare/v2.14.4...v2.14.5) (2024-12-20)
+
+### Bug Fixes
+
+* **deps:** update dependency highlight.js to v11.11.0 ([66071e8](https://github.com/Forsakringskassan/docs-generator/commit/66071e8ac2214b18737209184e480a03768bd6d7))
+
 ## [2.14.4](https://github.com/Forsakringskassan/docs-generator/compare/v2.14.3...v2.14.4) (2024-12-16)
 
 ### Bug Fixes
