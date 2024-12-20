@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## [2.15.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.14.5...v2.15.0) (2024-12-20)
+
+### Features
+
+* support snippets in html and vue examples ([c58f410](https://github.com/Forsakringskassan/docs-generator/commit/c58f410835dec51d5705b31eb70fb80f3dcaa040))
+
+### Bug Fixes
+
+* fix missing root url on fullscreen example ([4842d58](https://github.com/Forsakringskassan/docs-generator/commit/4842d58f829a3481fac327bc6761dce591f4a248))
+* fix search error in fullscreen example ([ef4aad4](https://github.com/Forsakringskassan/docs-generator/commit/ef4aad44b1d27bb0bb3d6e35b08f246680909a4b))
+* fullscreen example extranous padding ([988bc95](https://github.com/Forsakringskassan/docs-generator/commit/988bc95365cbf13cc2a21ef4ce2979f1c69ca3eb))
+* normalize imported example language ([e0890eb](https://github.com/Forsakringskassan/docs-generator/commit/e0890ebc31f372d1370a3038fedee2589a2e558f))
+
 ## [2.14.5](https://github.com/Forsakringskassan/docs-generator/compare/v2.14.4...v2.14.5) (2024-12-20)
 
 ### Bug Fixes
