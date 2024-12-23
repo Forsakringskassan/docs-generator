@@ -128,7 +128,7 @@
   },
   "devDependencies": {
     "@forsakringskassan/commitlint-config": "1.4.0",
-    "@forsakringskassan/docs-live-example": "1.5.4",
+    "@forsakringskassan/docs-live-example": "1.5.5",
     "@forsakringskassan/eslint-config": "11.4.12",
     "@forsakringskassan/eslint-config-cli": "11.4.2",
     "@forsakringskassan/eslint-config-cypress": "11.4.4",
