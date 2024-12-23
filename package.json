@@ -169,7 +169,7 @@
     "minimatch": "10.0.1",
     "npm-pkg-lint": "3.10.6",
     "npm-run-all2": "7.0.2",
-    "rollup": "4.28.1",
+    "rollup": "4.29.0",
     "rollup-plugin-esbuild": "6.1.1",
     "rollup-plugin-visualizer": "5.12.0",
     "sass": "1.83.0",
