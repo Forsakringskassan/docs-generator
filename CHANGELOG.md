@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.15.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.15.0...v2.15.1) (2024-12-27)
+
+### Bug Fixes
+
+* **deps:** update dependency chokidar to v4.0.3 ([#142](https://github.com/Forsakringskassan/docs-generator/issues/142)) ([929dcdc](https://github.com/Forsakringskassan/docs-generator/commit/929dcdc07e3a6d8477af9ac7d6fe86feab260956))
+
 ## [2.15.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.14.5...v2.15.0) (2024-12-20)
 
 ### Features
