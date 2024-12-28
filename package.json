@@ -113,7 +113,7 @@
     "front-matter": "4.0.2",
     "fs-extra": "11.2.0",
     "glob": "11.0.0",
-    "highlight.js": "11.11.0",
+    "highlight.js": "11.11.1",
     "livereload-js": "4.0.2",
     "markdown-it": "14.1.0",
     "markdown-it-deflist": "3.0.0",
