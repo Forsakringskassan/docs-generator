@@ -293,6 +293,7 @@ export class Generator {
     private styles: CSSAsset[];
     private resources: ResourceTask[];
     private sourceFiles: SourceFiles[];
+    private markdownOptions: GeneratorOptions["markdown"];
 
     public constructor(options: GeneratorOptions) {
         if (typeof options.site === "undefined") {
@@ -312,6 +313,7 @@ export class Generator {
         this.styles = [];
         this.resources = [];
         this.sourceFiles = [];
+        this.markdownOptions = options.markdown;
 
         const bootstrapUrl = new URL("runtime-bootstrap.js", import.meta.url);
         this.compileScript("bootstrap", bootstrapUrl, {
@@ -406,6 +408,7 @@ export class Generator {
             exampleFolders,
             templateFolders,
             setupPath,
+            markdownOptions,
         } = this;
 
         await this._prepareFolders();
@@ -428,7 +431,7 @@ export class Generator {
                 exampleFolders,
                 templateFolders,
                 setupPath,
-                markdown: {},
+                markdown: markdownOptions ?? {},
             }),
             ...this.processors,
         ];
