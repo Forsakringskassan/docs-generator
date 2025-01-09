@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.15.3](https://github.com/Forsakringskassan/docs-generator/compare/v2.15.2...v2.15.3) (2025-01-09)
+
+### Bug Fixes
+
+* properly pass markdown options to markdown renderer ([f11e5d9](https://github.com/Forsakringskassan/docs-generator/commit/f11e5d9569b0551bfaaa06626fd4e24e73cb183d))
+
 ## [2.15.2](https://github.com/Forsakringskassan/docs-generator/compare/v2.15.1...v2.15.2) (2025-01-03)
 
 ### Bug Fixes
