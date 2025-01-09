@@ -171,7 +171,7 @@
     "npm-run-all2": "7.0.2",
     "rollup": "4.29.1",
     "rollup-plugin-esbuild": "6.1.1",
-    "rollup-plugin-visualizer": "5.13.1",
+    "rollup-plugin-visualizer": "5.14.0",
     "sass": "1.83.0",
     "ts-node": "10.9.2",
     "typescript": "5.7.2"
