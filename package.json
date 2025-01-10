@@ -106,7 +106,7 @@
     ]
   },
   "dependencies": {
-    "@leeoniya/ufuzzy": "1.0.17",
+    "@leeoniya/ufuzzy": "1.0.18",
     "chokidar": "4.0.3",
     "cli-progress": "3.12.0",
     "dedent": "1.5.3",
