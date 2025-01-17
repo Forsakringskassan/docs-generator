@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-7975e6.css"
+            href="../../assets/docs-ae50d6.css"
             crossorigin
-            integrity="sha384-h120hHF0tJ4X0x2esOPkO+CV/AwT88ru3OP776yjSs1yMf1QbrkvhBOCPfeQlKlJ"
+            integrity="sha384-0tlpvlHX3Mywp6344+NG/eHUkyTTDGOZdR8lIuyaNiEpERYJIFHv+ToofC5szQJI"
             
         />
         <link
@@ -1083,9 +1083,9 @@
                     integrity="sha384-XgTn6yWRIVTQ33nFXLN5K2ZaFcovqJYAUXIhhFPsvsyWe3HAizwpv5WRjT6S1vOM"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-e69dff.js"
+                    src="../../assets/vendor-fkui-vue-681ff5.js"
                     crossorigin
-                    integrity="sha384-iEjHFgyBr/bwn3HZaHGYqMcez3Dp40QInSGl7ViCFGG/aPeyaHf1BSwFp8GvF0B9"
+                    integrity="sha384-Pamcd54vbyKl7C9REFxG15BxaNtzRgYbTyb2CxZamEpDeDBLOPQnEZ/PrZdzq+qz"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1108,19 +1108,19 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/8acf0ec98104671d8411346256fa664abf2e94af/packages/vue/src/components/FDataTable/FDataTable.vue">FDataTable</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/57990c59a6cb1f712ccaabd8ce1cd305a142003b/packages/vue/src/components/FDataTable/FDataTable.vue">FDataTable</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/8acf0ec98104671d8411346256fa664abf2e94af/packages/vue/src/components/FInteractiveTable/FInteractiveTable.vue">FInteractiveTable</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/57990c59a6cb1f712ccaabd8ce1cd305a142003b/packages/vue/src/components/FInteractiveTable/FInteractiveTable.vue">FInteractiveTable</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/8acf0ec98104671d8411346256fa664abf2e94af/packages/vue/src/components/FTableColumn/FTableColumn.vue">FTableColumn</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/57990c59a6cb1f712ccaabd8ce1cd305a142003b/packages/vue/src/components/FTableColumn/FTableColumn.vue">FTableColumn</a>
             
         </code>
          
@@ -1352,10 +1352,101 @@ Innehållet måste då följa samma datastruktur som ordinarie rader.</p>
 ];
 </code></pre>
                 </div>
-            <p>För att istället skapa expanderbara rader med valfritt innehåll används <code>expandable</code> slot.</p>
+            
+            <div
+                id="example-e760a9"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview">
+        <div id="FInteractiveTableExpandableExample"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script defer src="./FInteractiveTableExpandableExample-993c4b.js"></script>
+    </div>
+                <div>
+            <button
+                type="button"
+                class="button button--discrete code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <i class="icon icon--code"></i>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FInteractiveTable</span>, <span class="hljs-title class_">FTableColumn</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">const</span> rows = [
+    {
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1&quot;</span>,
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Utbetalning&quot;</span>,
+        <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;2023-09-27&quot;</span>,
+        <span class="hljs-attr">sum</span>: <span class="hljs-number">1200</span>,
+        <span class="hljs-attr">myExpandableRow</span>: [
+            {
+                <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1a&quot;</span>,
+                <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Barnbidrag&quot;</span>,
+                <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;2023-09-25&quot;</span>,
+                <span class="hljs-attr">sum</span>: <span class="hljs-number">200</span>,
+            },
+            {
+                <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1b&quot;</span>,
+                <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Övrig ersättning&quot;</span>,
+                <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;2023-09-27&quot;</span>,
+                <span class="hljs-attr">sum</span>: <span class="hljs-number">1000</span>,
+            },
+        ],
+    },
+    {
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;2&quot;</span>,
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Utbetalning&quot;</span>,
+        <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;2023-12-25&quot;</span>,
+        <span class="hljs-attr">sum</span>: <span class="hljs-number">1000</span>,
+        <span class="hljs-attr">myExpandableRow</span>: [
+            {
+                <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;2a&quot;</span>,
+                <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Barnbidrag&quot;</span>,
+                <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;2023-12-25&quot;</span>,
+                <span class="hljs-attr">sum</span>: <span class="hljs-number">1000</span>,
+            },
+        ],
+    },
+];
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">expandable-attribute</span>=<span class="hljs-string">&quot;myExpandableRow&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> Expanderbara rader <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;compensation&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Ersättning&quot;</span>&gt;</span> {{ row.name }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Id&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span> {{ row.id }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;date&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Datum&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;date&quot;</span>&gt;</span> {{ row.date }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;amount&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Summa&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;numeric&quot;</span>&gt;</span>
+                {{ row.sum }} kronor
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
+        <p>För att istället skapa expanderbara rader med valfritt innehåll används <code>expandable</code> slot.</p>
 
                 <div
-                    id="example-bd83f9"
+                    id="example-cd962e"
                     class="code-preview code-preview--default"
                     
                     data-tags=static
@@ -1372,7 +1463,7 @@ Innehållet måste då följa samma datastruktur som ordinarie rader.</p>
 <p>Om tabellen har en heading i nära anslutning som också förklarar tabellens innebörd assoccierar du den med <code>aria-labelledby</code>:</p>
 
                 <div
-                    id="example-10085f"
+                    id="example-7acfcc"
                     class="code-preview code-preview--default"
                     
                     
@@ -1390,7 +1481,7 @@ Innehållet måste då följa samma datastruktur som ordinarie rader.</p>
             <p>Använd caption om tabellen inte har en naturlig rubrik:</p>
 
                 <div
-                    id="example-cb578c"
+                    id="example-6e81e0"
                     class="code-preview code-preview--default"
                     
                     
@@ -1406,7 +1497,7 @@ Innehållet måste då följa samma datastruktur som ordinarie rader.</p>
             <p>I undantagsfall kan du också använda en dold skärmläsartext i caption, men tänk på att tabellens innehåll måste vara begripligt för alla:</p>
 
                 <div
-                    id="example-7834d6"
+                    id="example-37095a"
                     class="code-preview code-preview--default"
                     
                     
@@ -1435,7 +1526,7 @@ Innehållet måste då följa samma datastruktur som ordinarie rader.</p>
 <h3 id="skroll_i_tabell"><a class="header-anchor" href="#skroll_i_tabell">Skroll i tabell</a></h3><p>För att lägga till skoll i tabell använder du prop <code>scroll</code>:</p>
 
                 <div
-                    id="example-a6d93a"
+                    id="example-9ab74b"
                     class="code-preview code-preview--default"
                     
                     
@@ -1454,7 +1545,7 @@ Innehållet måste då följa samma datastruktur som ordinarie rader.</p>
 Texten sätts i slot <code>#empty</code>:</p>
 
                 <div
-                    id="example-f09767"
+                    id="example-3aeaf6"
                     class="code-preview code-preview--default"
                     
                     
@@ -1620,6 +1711,16 @@ If provided, the table can contain expandable rows.</p>
 </td><td><p>ListArray | undefined</p>
 </td><td><p>false</p>
 </td><td><p>undefined</p>
+</td></tr><tr><td><p>showActive</p>
+</td><td><p>Enable showing the active row.</p>
+</td><td><p>boolean</p>
+</td><td><p>false</p>
+</td><td><p>true</p>
+</td></tr><tr><td><p>v-model:active</p>
+</td><td><p>V-model will bind to value containing the current active row.</p>
+</td><td><p>ListItem | undefined</p>
+</td><td><p>false</p>
+</td><td><p>() =&gt; undefined</p>
 </td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th></tr></thead><tbody><tr><td><p>change</p>
 </td><td><p>Emitted when row is activated.</p>
 </td><td><p>row: ListItem</p>
@@ -1635,6 +1736,9 @@ If provided, the table can contain expandable rows.</p>
 </td></tr><tr><td><p>update:modelValue</p>
 </td><td><p>V-model event to update value property.</p>
 </td><td><p>&lt;anonymous&gt;: undefined</p>
+</td></tr><tr><td><p>update:active</p>
+</td><td><p>V-model active event.</p>
+</td><td><p>activeItem: ListItem</p>
 </td></tr><tr><td><p>select</p>
 </td><td><p>Emitted when row is selected.</p>
 </td><td><p>row: ListItem<br>
@@ -1682,7 +1786,9 @@ parentRow</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    <div class="heading--h1">FKDS version 5.45.0</div>
+    renovate/forsakringskassan-prettier-config-3.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/57990c59a6cb1f712ccaabd8ce1cd305a142003b">57990c5</a>)<br />
+        <a href="https://github.com/Forsakringskassan/designsystem/pull/148">PR 148</a><br />
+        2025-01-17 00:12
 </div>
 <div class="toolbar__item">
     <form id="version">
