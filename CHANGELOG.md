@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [2.15.4](https://github.com/Forsakringskassan/docs-generator/compare/v2.15.3...v2.15.4) (2025-01-17)
+
+### Bug Fixes
+
+* **deps:** update dependency @leeoniya/ufuzzy to v1.0.18 ([9eb00f3](https://github.com/Forsakringskassan/docs-generator/commit/9eb00f33956c413f59c850b46b860f1872bba294))
+* **deps:** update dependency glob to v11.0.1 ([7957f62](https://github.com/Forsakringskassan/docs-generator/commit/7957f627e02671dde16a60f23dcf63cdd6ed1dc9))
+
 ## [2.15.3](https://github.com/Forsakringskassan/docs-generator/compare/v2.15.2...v2.15.3) (2025-01-09)
 
 ### Bug Fixes
