@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.15.5](https://github.com/Forsakringskassan/docs-generator/compare/v2.15.4...v2.15.5) (2025-01-24)
+
+### Bug Fixes
+
+* **deps:** update dependency fs-extra to v11.3.0 ([86ac1d4](https://github.com/Forsakringskassan/docs-generator/commit/86ac1d41679b82ca5f0aaa5b9531ad9bd49b9aac))
+
 ## [2.15.4](https://github.com/Forsakringskassan/docs-generator/compare/v2.15.3...v2.15.4) (2025-01-17)
 
 ### Bug Fixes
