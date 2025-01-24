@@ -1,5 +1,5 @@
 @charset "UTF-8";:root {
-  --f-css-variables-version: "5.45.1";
+  --f-css-variables-version: "5.46.0";
   --f-backdrop-modal: rgba(0, 0, 0, 0.75);
   --f-color-backdrop: rgba(0, 0, 0, 0.75);
   --f-shadow-large: 0 0 20px rgba(0, 0, 0, 0.3);
@@ -2491,6 +2491,10 @@ input[type=search]:focus,
   border-radius: var(--f-border-radius-medium, 4px);
   border: var(--f-border-width-medium, 2px) solid var(--f-border-color-card, #8d8e91);
 }
+.card--error {
+  border-radius: var(--f-border-radius-medium, 4px);
+  border: var(--f-border-width-medium, 2px) solid var(--fkds-color-feedback-border-negative, #ca1515);
+}
 .card__content > p:last-child,
 .card__content > div:last-child {
   margin-bottom: 0;
@@ -2515,6 +2519,9 @@ input[type=search]:focus,
 }
 .card__footer > .button-group .button-group__item {
   margin-bottom: 0 !important;
+}
+.card__error-message {
+  color: var(--f-text-color-error, #d23838);
 }
 
 .anchor, .file-item__file-open {
