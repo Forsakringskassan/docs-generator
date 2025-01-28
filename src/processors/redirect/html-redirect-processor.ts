@@ -9,6 +9,7 @@ const template = (dst: string): string => /* HTML */ `
     <!doctype html>
     <html lang="en">
         <head>
+            <title>Redirect</title>
             <meta http-equiv="refresh" content="0; url=${dst}" />
         </head>
         <body>
