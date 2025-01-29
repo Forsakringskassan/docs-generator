@@ -1,7 +1,3 @@
-<template>
-    <p class="greeting">Hello {{ name }}!</p>
-</template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
 
@@ -15,6 +11,10 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <p class="greeting">Hello {{ name }}!</p>
+</template>
 
 <style>
 .greeting {
