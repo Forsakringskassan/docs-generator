@@ -1,9 +1,3 @@
-<template>
-    <p>
-        Hello <em>{{ name }}!</em>
-    </p>
-</template>
-
 <script>
 import { defineComponent } from "vue";
 
@@ -15,6 +9,12 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <p>
+        Hello <em>{{ name }}!</em>
+    </p>
+</template>
 
 <style scoped>
 p {
