@@ -42,7 +42,7 @@
     ]);
   }
   exampleComponent.render = render;
-  exampleComponent.__scopeId = "data-v-6f6599";
+  exampleComponent.__scopeId = "data-v-ed9a74";
   setup({
     rootComponent: exampleComponent,
     selector: "#vue-options"

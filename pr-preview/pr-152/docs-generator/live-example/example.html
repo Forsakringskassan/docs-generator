@@ -217,9 +217,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        renovate/eslint-config-fk (<a href="https://github.com/Forsakringskassan/docs-generator/commits/1071b84cab9f17ce84568c3836f3d3eb548e9936">1071b84</a>)<br />
+        renovate/eslint-config-fk (<a href="https://github.com/Forsakringskassan/docs-generator/commits/58d64bc5f0d7af4657326cb198c2e4539591cf86">58d64bc</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/152">PR 152</a><br />
-        2025-01-29 18:53
+        2025-01-29 18:58
     </span>
 </div>
 </div>
@@ -295,7 +295,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./HTMLLiveExample-d64a58.js"></script>
+        <script defer src="./HTMLLiveExample-d9eb11.js"></script>
     
                 </div>
             
@@ -307,18 +307,7 @@
                     data-language="vue"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">live-example</span> <span class="hljs-attr">language</span>=<span class="hljs-string">&quot;html&quot;</span> <span class="hljs-attr">:template</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-block&quot;</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;html-name&quot;</span>&gt;</span> Name <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;html-name&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;name&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-block&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;html-name&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;World&quot;</span>&gt;</span>World<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Kalle Anka&quot;</span>&gt;</span>Kalle Anka<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Fred Flintstone&quot;</span>&gt;</span>Fred Flintstone<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">live-example</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">LiveExample</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@forsakringskassan/docs-live-example&quot;</span>;
 
@@ -337,6 +326,17 @@
     },
 });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">live-example</span> <span class="hljs-attr">language</span>=<span class="hljs-string">&quot;html&quot;</span> <span class="hljs-attr">:template</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-block&quot;</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;html-name&quot;</span>&gt;</span> Name <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;html-name&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;name&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-block&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;html-name&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;World&quot;</span>&gt;</span>World<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Kalle Anka&quot;</span>&gt;</span>Kalle Anka<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Fred Flintstone&quot;</span>&gt;</span>Fred Flintstone<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">live-example</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
             <h2 id="vue"><a class="header-anchor" href="#vue">Vue</a></h2>
@@ -354,7 +354,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./VueLiveExample-9d7829.js"></script>
+        <script defer src="./VueLiveExample-0802ea.js"></script>
     
                 </div>
             
@@ -366,17 +366,7 @@
                     data-language="vue"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">live-example</span> <span class="hljs-attr">language</span>=<span class="hljs-string">&quot;vue&quot;</span> <span class="hljs-attr">:template</span> <span class="hljs-attr">:livedata</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-block&quot;</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;vue-name&quot;</span>&gt;</span> Name <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;vue-name&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;name&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-block&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;vue-name&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;predefined&quot;</span>&gt;</span>Predefined<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;custom&quot;</span>&gt;</span>Custom<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">live-example</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">LiveExample</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@forsakringskassan/docs-live-example&quot;</span>;
 
@@ -407,6 +397,16 @@
     },
 });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">live-example</span> <span class="hljs-attr">language</span>=<span class="hljs-string">&quot;vue&quot;</span> <span class="hljs-attr">:template</span> <span class="hljs-attr">:livedata</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-block&quot;</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;vue-name&quot;</span>&gt;</span> Name <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;vue-name&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;name&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-block&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;vue-name&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;predefined&quot;</span>&gt;</span>Predefined<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;custom&quot;</span>&gt;</span>Custom<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">live-example</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
             
