@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [2.15.7](https://github.com/Forsakringskassan/docs-generator/compare/v2.15.6...v2.15.7) (2025-01-29)
+
+### Bug Fixes
+
+* more readable and usable error message when a render error occurs ([6b42cd4](https://github.com/Forsakringskassan/docs-generator/commit/6b42cd495b975213565152699c272620ada6181d))
+* show original cause when a vue parse error occurs ([0097db7](https://github.com/Forsakringskassan/docs-generator/commit/0097db73b300cad66bbfb2f02fd1059dc4812c78))
+* show vue compiler errors runtime during local builds ([6d7ff9e](https://github.com/Forsakringskassan/docs-generator/commit/6d7ff9e7a8ea0939f8fa3e2d67b500223a1ab757))
+
 ## [2.15.6](https://github.com/Forsakringskassan/docs-generator/compare/v2.15.5...v2.15.6) (2025-01-29)
 
 ### Bug Fixes
