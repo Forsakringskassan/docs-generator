@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.15.6](https://github.com/Forsakringskassan/docs-generator/compare/v2.15.5...v2.15.6) (2025-01-29)
+
+### Bug Fixes
+
+* add title to html-redirect template ([bb53073](https://github.com/Forsakringskassan/docs-generator/commit/bb53073a31912d1a336bcc3a97faacd2ac95b236))
+
 ## [2.15.5](https://github.com/Forsakringskassan/docs-generator/compare/v2.15.4...v2.15.5) (2025-01-24)
 
 ### Bug Fixes
