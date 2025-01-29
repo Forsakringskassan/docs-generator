@@ -26,6 +26,7 @@ import { TemplateLoader } from "./template-loader";
 import * as filter from "./filter";
 import { findTemplate } from "./find-template";
 import { createMarkdownRenderer } from "./create-markdown-renderer";
+import { TemplateRenderError } from "./template-render-error";
 
 interface ActiveNavigationLeaf extends NavigationLeaf {
     active: boolean;
@@ -328,7 +329,12 @@ export async function render(
     try {
         content = await renderTemplate(template, templateData);
     } catch (err: unknown) {
-        const prefix = `Failed to render "${fileInfo.fullPath}"`;
+        const filename = fileInfo.fullPath;
+        if (err instanceof Error && err.name === "Template render error") {
+            /* recreate nunjucks template errors to be a bit more useful and readable */
+            throw new TemplateRenderError(err.message, filename);
+        }
+        const prefix = `Failed to render "${filename}"`;
         const message = err instanceof Error ? err.message : String(err);
         throw new Error(`${prefix}: ${message}`, { cause: err });
     }
