@@ -14708,7 +14708,7 @@ const _hoisted_2$G = {
 const _hoisted_3$x = {
   class: "modal__inner-container"
 };
-const _hoisted_4$r = {
+const _hoisted_4$q = {
   class: "modal__dialog"
 };
 const _hoisted_5$l = {
@@ -14750,7 +14750,7 @@ function _sfc_render$Z(_ctx, _cache, $props, $setup, $data, $options) {
   }, [createBaseVNode("div", _hoisted_3$x, [createBaseVNode("div", {
     ref: "modalDialogContainer",
     class: normalizeClass(["modal__dialog-container", _ctx.containerClasses])
-  }, [createBaseVNode("div", _hoisted_4$r, [createBaseVNode("div", _hoisted_5$l, [createBaseVNode("div", _hoisted_6$g, [createBaseVNode("div", {
+  }, [createBaseVNode("div", _hoisted_4$q, [createBaseVNode("div", _hoisted_5$l, [createBaseVNode("div", _hoisted_6$g, [createBaseVNode("div", {
     tabindex: "0",
     onFocus: _cache[0] || (_cache[0] = (...args) => _ctx.onFocusFirst && _ctx.onFocusFirst(...args))
   }, null, 32), _cache[4] || (_cache[4] = createTextVNode()), _ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_7$e, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("", true)]), _cache[5] || (_cache[5] = createTextVNode()), createBaseVNode("div", _hoisted_8$9, [renderSlot(_ctx.$slots, "content")], 512), _cache[6] || (_cache[6] = createTextVNode()), createBaseVNode("div", _hoisted_9$6, [renderSlot(_ctx.$slots, "footer")])]), _cache[9] || (_cache[9] = createTextVNode()), createBaseVNode("div", _hoisted_10$4, [createBaseVNode("button", {
@@ -15142,7 +15142,7 @@ const _hoisted_2$E = {
 const _hoisted_3$v = {
   class: "error-list__list error-list--list-style-none"
 };
-const _hoisted_4$q = ["onClick"];
+const _hoisted_4$p = ["onClick"];
 const _hoisted_5$k = {
   class: "error-list__link"
 };
@@ -15184,7 +15184,7 @@ function _sfc_render$V(_ctx, _cache, $props, $setup, $data, $options) {
           "aria-hidden": "true"
         }, null, -1)), _cache[2] || (_cache[2] = createTextVNode()), createBaseVNode("span", _hoisted_5$k, toDisplayString(item.title), 1)], 64)) : (openBlock(), createElementBlock(Fragment, {
           key: 1
-        }, [createTextVNode(toDisplayString(item.title), 1)], 64))], 8, _hoisted_4$q)) : (openBlock(), createElementBlock(Fragment, {
+        }, [createTextVNode(toDisplayString(item.title), 1)], 64))], 8, _hoisted_4$p)) : (openBlock(), createElementBlock(Fragment, {
           key: 1
         }, [_ctx.bullets ? (openBlock(), createElementBlock(Fragment, {
           key: 0
@@ -15589,9 +15589,6 @@ const _sfc_main$14 = /* @__PURE__ */ defineComponent({
   computed: {
     preparedButtons() {
       return prepareButtonList(this.buttons, FKUIConfigButtonOrder.LEFT_TO_RIGHT);
-    },
-    hasDeprecatedSlots() {
-      return hasSlot(this, "cancel-button-text") || hasSlot(this, "submit-button-text");
     }
   },
   methods: {
@@ -15629,7 +15626,6 @@ const _hoisted_3$u = {
   key: 0,
   class: "sr-only"
 };
-const _hoisted_4$p = ["form"];
 function _sfc_render$S(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_validation_form = resolveComponent("f-validation-form");
   const _component_f_modal = resolveComponent("f-modal");
@@ -15642,7 +15638,7 @@ function _sfc_render$S(_ctx, _cache, $props, $setup, $data, $options) {
     onClose: _ctx.onClose
   }, {
     header: withCtx(() => [renderSlot(_ctx.$slots, "header")]),
-    content: withCtx(() => [createBaseVNode("div", null, [renderSlot(_ctx.$slots, "default")]), _cache[2] || (_cache[2] = createTextVNode()), createVNode(_component_f_validation_form, {
+    content: withCtx(() => [createBaseVNode("div", null, [renderSlot(_ctx.$slots, "default")]), _cache[1] || (_cache[1] = createTextVNode()), createVNode(_component_f_validation_form, {
       id: _ctx.formId,
       "before-submit": _ctx.beforeSubmit,
       "before-validation": _ctx.beforeValidation,
@@ -15651,32 +15647,18 @@ function _sfc_render$S(_ctx, _cache, $props, $setup, $data, $options) {
       onCancel: _ctx.onCancel
     }, {
       "error-message": withCtx(() => [renderSlot(_ctx.$slots, "error-message")]),
-      default: withCtx(() => [_cache[1] || (_cache[1] = createTextVNode()), renderSlot(_ctx.$slots, "input-text-fields")]),
+      default: withCtx(() => [_cache[0] || (_cache[0] = createTextVNode()), renderSlot(_ctx.$slots, "input-text-fields")]),
       _: 3
     }, 8, ["id", "before-submit", "before-validation", "use-error-list", "onSubmit", "onCancel"])]),
-    footer: withCtx(() => [createBaseVNode("div", _hoisted_1$R, [!_ctx.hasDeprecatedSlots ? (openBlock(true), createElementBlock(Fragment, {
-      key: 0
-    }, renderList(_ctx.preparedButtons, (button) => {
+    footer: withCtx(() => [createBaseVNode("div", _hoisted_1$R, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.preparedButtons, (button) => {
       return openBlock(), createElementBlock("button", {
         key: button.label,
         type: button.buttonType,
         class: normalizeClass([button.classlist, "button-group__item"]),
         form: button.buttonType === "submit" ? _ctx.formId : void 0,
         onClick: ($event) => button.buttonType === "button" ? _ctx.onCancel() : false
-      }, [createBaseVNode("span", null, toDisplayString(button.label), 1), _cache[3] || (_cache[3] = createTextVNode()), button.screenreader ? (openBlock(), createElementBlock("span", _hoisted_3$u, " " + toDisplayString(button.screenreader), 1)) : createCommentVNode("", true)], 10, _hoisted_2$C);
-    }), 128)) : (openBlock(), createElementBlock(Fragment, {
-      key: 1
-    }, [createBaseVNode("button", {
-      form: _ctx.formId,
-      "data-test": "submit-button",
-      type: "submit",
-      class: "button button--primary button-group__item button--large"
-    }, [renderSlot(_ctx.$slots, "submit-button-text", {}, () => [createTextVNode(toDisplayString(_ctx.$t("fkui.form-modal.button.submit.text", "Spara")), 1)])], 8, _hoisted_4$p), _cache[4] || (_cache[4] = createTextVNode()), createBaseVNode("button", {
-      "data-test": "cancel-button",
-      type: "button",
-      class: "button button--secondary button-group__item button--large",
-      onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onCancel && _ctx.onCancel(...args))
-    }, [renderSlot(_ctx.$slots, "cancel-button-text", {}, () => [createTextVNode(toDisplayString(_ctx.$t("fkui.form-modal.button.cancel.text", "Avbryt")), 1)])])], 64))])]),
+      }, [createBaseVNode("span", null, toDisplayString(button.label), 1), _cache[2] || (_cache[2] = createTextVNode()), button.screenreader ? (openBlock(), createElementBlock("span", _hoisted_3$u, " " + toDisplayString(button.screenreader), 1)) : createCommentVNode("", true)], 10, _hoisted_2$C);
+    }), 128))])]),
     _: 3
   }, 8, ["data-test", "fullscreen", "is-open", "size", "aria-close-text", "onClose"]);
 }
@@ -17528,11 +17510,20 @@ var Operation = /* @__PURE__ */ ((Operation2) => {
     };
   },
   computed: {
-    confirmButtonText() {
-      return this.operation === Operation.ADD ? this.$t("fkui.crud-dataset.modal.confirm.add", "Lägg till") : this.$t("fkui.crud-dataset.modal.confirm.modify", "Spara");
-    },
-    cancelButtonText() {
-      return this.operation === Operation.ADD ? this.$t("fkui.crud-dataset.modal.cancel.add", "Avbryt") : this.$t("fkui.crud-dataset.modal.cancel.modify", "Avbryt");
+    formModalButtons() {
+      const confirmButtonText = this.operation === Operation.ADD ? this.$t("fkui.crud-dataset.modal.confirm.add", "Lägg till") : this.$t("fkui.crud-dataset.modal.confirm.modify", "Spara");
+      const cancelButtonText = this.operation === Operation.ADD ? this.$t("fkui.crud-dataset.modal.cancel.add", "Avbryt") : this.$t("fkui.crud-dataset.modal.cancel.modify", "Avbryt");
+      return [{
+        label: confirmButtonText,
+        event: "confirm",
+        type: "primary",
+        submitButton: true
+      }, {
+        label: cancelButtonText,
+        event: "dismiss",
+        type: "secondary",
+        submitButton: false
+      }];
     },
     confirmDeleteButtons() {
       return [{
