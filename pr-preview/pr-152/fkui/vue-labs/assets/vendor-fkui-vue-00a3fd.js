@@ -4099,7 +4099,7 @@
   var _hoisted_3$x = {
     class: "modal__inner-container"
   };
-  var _hoisted_4$r = {
+  var _hoisted_4$q = {
     class: "modal__dialog"
   };
   var _hoisted_5$l = {
@@ -4141,7 +4141,7 @@
     }, [(0, import_vue.createElementVNode)("div", _hoisted_3$x, [(0, import_vue.createElementVNode)("div", {
       ref: "modalDialogContainer",
       class: (0, import_vue.normalizeClass)(["modal__dialog-container", _ctx.containerClasses])
-    }, [(0, import_vue.createElementVNode)("div", _hoisted_4$r, [(0, import_vue.createElementVNode)("div", _hoisted_5$l, [(0, import_vue.createElementVNode)("div", _hoisted_6$g, [(0, import_vue.createElementVNode)("div", {
+    }, [(0, import_vue.createElementVNode)("div", _hoisted_4$q, [(0, import_vue.createElementVNode)("div", _hoisted_5$l, [(0, import_vue.createElementVNode)("div", _hoisted_6$g, [(0, import_vue.createElementVNode)("div", {
       tabindex: "0",
       onFocus: _cache[0] || (_cache[0] = (...args) => _ctx.onFocusFirst && _ctx.onFocusFirst(...args))
     }, null, 32), _cache[4] || (_cache[4] = (0, import_vue.createTextVNode)()), _ctx.hasHeaderSlot ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("h1", _hoisted_7$e, [(0, import_vue.renderSlot)(_ctx.$slots, "header")], 512)) : (0, import_vue.createCommentVNode)("", true)]), _cache[5] || (_cache[5] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("div", _hoisted_8$9, [(0, import_vue.renderSlot)(_ctx.$slots, "content")], 512), _cache[6] || (_cache[6] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("div", _hoisted_9$6, [(0, import_vue.renderSlot)(_ctx.$slots, "footer")])]), _cache[9] || (_cache[9] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("div", _hoisted_10$4, [(0, import_vue.createElementVNode)("button", {
@@ -4533,7 +4533,7 @@
   var _hoisted_3$v = {
     class: "error-list__list error-list--list-style-none"
   };
-  var _hoisted_4$q = ["onClick"];
+  var _hoisted_4$p = ["onClick"];
   var _hoisted_5$k = {
     class: "error-list__link"
   };
@@ -4575,7 +4575,7 @@
             "aria-hidden": "true"
           }, null, -1)), _cache[2] || (_cache[2] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("span", _hoisted_5$k, (0, import_vue.toDisplayString)(item.title), 1)], 64)) : ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(import_vue.Fragment, {
             key: 1
-          }, [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(item.title), 1)], 64))], 8, _hoisted_4$q)) : ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(import_vue.Fragment, {
+          }, [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(item.title), 1)], 64))], 8, _hoisted_4$p)) : ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(import_vue.Fragment, {
             key: 1
           }, [_ctx.bullets ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(import_vue.Fragment, {
             key: 0
@@ -4995,9 +4995,6 @@
     computed: {
       preparedButtons() {
         return prepareButtonList(this.buttons, FKUIConfigButtonOrder.LEFT_TO_RIGHT);
-      },
-      hasDeprecatedSlots() {
-        return hasSlot(this, "cancel-button-text") || hasSlot(this, "submit-button-text");
       }
     },
     methods: {
@@ -5035,7 +5032,6 @@
     key: 0,
     class: "sr-only"
   };
-  var _hoisted_4$p = ["form"];
   function _sfc_render$S(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_f_validation_form = (0, import_vue.resolveComponent)("f-validation-form");
     const _component_f_modal = (0, import_vue.resolveComponent)("f-modal");
@@ -5048,7 +5044,7 @@
       onClose: _ctx.onClose
     }, {
       header: (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "header")]),
-      content: (0, import_vue.withCtx)(() => [(0, import_vue.createElementVNode)("div", null, [(0, import_vue.renderSlot)(_ctx.$slots, "default")]), _cache[2] || (_cache[2] = (0, import_vue.createTextVNode)()), (0, import_vue.createVNode)(_component_f_validation_form, {
+      content: (0, import_vue.withCtx)(() => [(0, import_vue.createElementVNode)("div", null, [(0, import_vue.renderSlot)(_ctx.$slots, "default")]), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), (0, import_vue.createVNode)(_component_f_validation_form, {
         id: _ctx.formId,
         "before-submit": _ctx.beforeSubmit,
         "before-validation": _ctx.beforeValidation,
@@ -5057,32 +5053,18 @@
         onCancel: _ctx.onCancel
       }, {
         "error-message": (0, import_vue.withCtx)(() => [(0, import_vue.renderSlot)(_ctx.$slots, "error-message")]),
-        default: (0, import_vue.withCtx)(() => [_cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "input-text-fields")]),
+        default: (0, import_vue.withCtx)(() => [_cache[0] || (_cache[0] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "input-text-fields")]),
         _: 3
       }, 8, ["id", "before-submit", "before-validation", "use-error-list", "onSubmit", "onCancel"])]),
-      footer: (0, import_vue.withCtx)(() => [(0, import_vue.createElementVNode)("div", _hoisted_1$R, [!_ctx.hasDeprecatedSlots ? ((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, {
-        key: 0
-      }, (0, import_vue.renderList)(_ctx.preparedButtons, (button) => {
+      footer: (0, import_vue.withCtx)(() => [(0, import_vue.createElementVNode)("div", _hoisted_1$R, [((0, import_vue.openBlock)(true), (0, import_vue.createElementBlock)(import_vue.Fragment, null, (0, import_vue.renderList)(_ctx.preparedButtons, (button) => {
         return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("button", {
           key: button.label,
           type: button.buttonType,
           class: (0, import_vue.normalizeClass)([button.classlist, "button-group__item"]),
           form: button.buttonType === "submit" ? _ctx.formId : void 0,
           onClick: ($event) => button.buttonType === "button" ? _ctx.onCancel() : false
-        }, [(0, import_vue.createElementVNode)("span", null, (0, import_vue.toDisplayString)(button.label), 1), _cache[3] || (_cache[3] = (0, import_vue.createTextVNode)()), button.screenreader ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_3$u, "\xA0" + (0, import_vue.toDisplayString)(button.screenreader), 1)) : (0, import_vue.createCommentVNode)("", true)], 10, _hoisted_2$C);
-      }), 128)) : ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)(import_vue.Fragment, {
-        key: 1
-      }, [(0, import_vue.createElementVNode)("button", {
-        form: _ctx.formId,
-        "data-test": "submit-button",
-        type: "submit",
-        class: "button button--primary button-group__item button--large"
-      }, [(0, import_vue.renderSlot)(_ctx.$slots, "submit-button-text", {}, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.$t("fkui.form-modal.button.submit.text", "Spara")), 1)])], 8, _hoisted_4$p), _cache[4] || (_cache[4] = (0, import_vue.createTextVNode)()), (0, import_vue.createElementVNode)("button", {
-        "data-test": "cancel-button",
-        type: "button",
-        class: "button button--secondary button-group__item button--large",
-        onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onCancel && _ctx.onCancel(...args))
-      }, [(0, import_vue.renderSlot)(_ctx.$slots, "cancel-button-text", {}, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.$t("fkui.form-modal.button.cancel.text", "Avbryt")), 1)])])], 64))])]),
+        }, [(0, import_vue.createElementVNode)("span", null, (0, import_vue.toDisplayString)(button.label), 1), _cache[2] || (_cache[2] = (0, import_vue.createTextVNode)()), button.screenreader ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("span", _hoisted_3$u, "\xA0" + (0, import_vue.toDisplayString)(button.screenreader), 1)) : (0, import_vue.createCommentVNode)("", true)], 10, _hoisted_2$C);
+      }), 128))])]),
       _: 3
     }, 8, ["data-test", "fullscreen", "is-open", "size", "aria-close-text", "onClose"]);
   }
@@ -9575,11 +9557,20 @@
       };
     },
     computed: {
-      confirmButtonText() {
-        return this.operation === Operation.ADD ? this.$t("fkui.crud-dataset.modal.confirm.add", "L\xE4gg till") : this.$t("fkui.crud-dataset.modal.confirm.modify", "Spara");
-      },
-      cancelButtonText() {
-        return this.operation === Operation.ADD ? this.$t("fkui.crud-dataset.modal.cancel.add", "Avbryt") : this.$t("fkui.crud-dataset.modal.cancel.modify", "Avbryt");
+      formModalButtons() {
+        const confirmButtonText = this.operation === Operation.ADD ? this.$t("fkui.crud-dataset.modal.confirm.add", "L\xE4gg till") : this.$t("fkui.crud-dataset.modal.confirm.modify", "Spara");
+        const cancelButtonText = this.operation === Operation.ADD ? this.$t("fkui.crud-dataset.modal.cancel.add", "Avbryt") : this.$t("fkui.crud-dataset.modal.cancel.modify", "Avbryt");
+        return [{
+          label: confirmButtonText,
+          event: "confirm",
+          type: "primary",
+          submitButton: true
+        }, {
+          label: cancelButtonText,
+          event: "dismiss",
+          type: "secondary",
+          submitButton: false
+        }];
       },
       confirmDeleteButtons() {
         return [{
@@ -9707,7 +9698,7 @@
     const _component_f_icon = (0, import_vue.resolveComponent)("f-icon");
     const _component_f_form_modal = (0, import_vue.resolveComponent)("f-form-modal");
     const _component_f_confirm_modal = (0, import_vue.resolveComponent)("f-confirm-modal");
-    return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$y, [(0, import_vue.renderSlot)(_ctx.$slots, "default"), _cache[7] || (_cache[7] = (0, import_vue.createTextVNode)()), _ctx.hasAddSlot ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_2$q, [(0, import_vue.createElementVNode)("button", {
+    return (0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_1$y, [(0, import_vue.renderSlot)(_ctx.$slots, "default"), _cache[5] || (_cache[5] = (0, import_vue.createTextVNode)()), _ctx.hasAddSlot ? ((0, import_vue.openBlock)(), (0, import_vue.createElementBlock)("div", _hoisted_2$q, [(0, import_vue.createElementVNode)("button", {
       "data-test": "f-crud-dataset-add-button",
       type: "button",
       class: "button button--tertiary crud-dataset__add-button",
@@ -9715,9 +9706,10 @@
     }, [(0, import_vue.createVNode)(_component_f_icon, {
       class: "button__icon",
       name: "plus"
-    }), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "add-button", {}, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.$t("fkui.crud-dataset.button.add", "L\xE4gg till ny")), 1)])])])) : (0, import_vue.createCommentVNode)("", true), _cache[8] || (_cache[8] = (0, import_vue.createTextVNode)()), (0, import_vue.createVNode)(_component_f_form_modal, {
+    }), _cache[1] || (_cache[1] = (0, import_vue.createTextVNode)()), (0, import_vue.renderSlot)(_ctx.$slots, "add-button", {}, () => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.$t("fkui.crud-dataset.button.add", "L\xE4gg till ny")), 1)])])])) : (0, import_vue.createCommentVNode)("", true), _cache[6] || (_cache[6] = (0, import_vue.createTextVNode)()), (0, import_vue.createVNode)(_component_f_form_modal, {
       "is-open": _ctx.isFormModalOpen,
       "aria-close-text": _ctx.$t("fkui.crud-dataset.modal.close", "St\xE4ng"),
+      buttons: _ctx.formModalButtons,
       "use-error-list": false,
       "before-submit": _ctx.beforeSubmit,
       "before-validation": _ctx.beforeValidation,
@@ -9736,10 +9728,8 @@
       }, {
         item: _ctx.item
       }))) : (0, import_vue.createCommentVNode)("", true)]),
-      "submit-button-text": (0, import_vue.withCtx)(() => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.confirmButtonText), 1)]),
-      "cancel-button-text": (0, import_vue.withCtx)(() => [(0, import_vue.createTextVNode)((0, import_vue.toDisplayString)(_ctx.cancelButtonText), 1)]),
       _: 3
-    }, 8, ["is-open", "aria-close-text", "before-submit", "before-validation", "on-cancel", "onClose", "onCancel", "onSubmit"]), _cache[9] || (_cache[9] = (0, import_vue.createTextVNode)()), (0, import_vue.createVNode)(_component_f_confirm_modal, {
+    }, 8, ["is-open", "aria-close-text", "buttons", "before-submit", "before-validation", "on-cancel", "onClose", "onCancel", "onSubmit"]), _cache[7] || (_cache[7] = (0, import_vue.createTextVNode)()), (0, import_vue.createVNode)(_component_f_confirm_modal, {
       "is-open": _ctx.isConfirmModalOpen,
       buttons: _ctx.confirmDeleteButtons,
       onConfirm: _ctx.onDeleteConfirm,
