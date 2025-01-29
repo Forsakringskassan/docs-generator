@@ -35,8 +35,11 @@ export function generateCode(options: ExampleOptions): ExampleResult {
     const { descriptor, errors } = parse(code, { filename });
     const scopeId = `data-v-${fingerprint}`;
 
-    if (errors.length) {
-        throw new Error(`Errors occured when trying to parse ${filename}.`);
+    if (errors.length > 0) {
+        const first = errors[0].message;
+        throw new Error(
+            `Errors occured when trying to parse "${filename}": ${first}`,
+        );
     }
 
     const hasScoped = descriptor.styles.some((e) => e.scoped);
