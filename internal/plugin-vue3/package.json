@@ -22,7 +22,8 @@
     "build": "node build.mjs"
   },
   "dependencies": {
-    "esbuild-plugin-vue3": "0.4.2"
+    "esbuild-plugin-vue3": "0.4.2",
+    "is-ci": "4.1.0"
   },
   "devDependencies": {
     "@types/html-minifier": "4.0.5",
