@@ -1,3 +1,4 @@
+import isCI from "is-ci";
 import {
     type BindingMetadata,
     compileScript,
@@ -25,7 +26,24 @@ export interface ExampleResult {
     /* JS sourcecode to compile */
     sourcecode: string;
     /* asset filename */
-    output: string;
+    output: string | false;
+}
+
+const HTML_ESCAPE_REPLACE_RE = /[&<>"]/g;
+const HTML_REPLACEMENTS: Record<string, string> = {
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+};
+
+/**
+ * technical debt: we have a copy in utils but from here we cannot import utils,
+ * this should be moved back into the core src folder and then use the same
+ * function
+ */
+function escapeHtml(str: string): string {
+    return str.replace(HTML_ESCAPE_REPLACE_RE, (ch) => HTML_REPLACEMENTS[ch]);
 }
 
 export function generateCode(options: ExampleOptions): ExampleResult {
@@ -36,10 +54,19 @@ export function generateCode(options: ExampleOptions): ExampleResult {
     const scopeId = `data-v-${fingerprint}`;
 
     if (errors.length > 0) {
-        const first = errors[0].message;
-        throw new Error(
-            `Errors occured when trying to parse "${filename}": ${first}`,
-        );
+        if (isCI) {
+            const first = errors[0].message;
+            throw new Error(
+                `Errors occurred when trying to parse "${filename}": ${first}`,
+            );
+        }
+        const lines = errors.map((it) => `  ${it.message}`);
+        const escaped = lines.map(escapeHtml);
+        return {
+            markup: `<strong style="color: red">Vue compiler error</strong>:<br><pre>${escaped.join("\n")}</pre>`,
+            sourcecode: `Vue compiler error:\n${lines.join("\n")}`,
+            output: false,
+        };
     }
 
     const hasScoped = descriptor.styles.some((e) => e.scoped);

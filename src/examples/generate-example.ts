@@ -68,21 +68,34 @@ function generateVueExample(options: ExampleOptions): ExampleResult {
         code: source,
         setupPath,
     });
-    return {
-        source,
-        language: options.language,
-        comments: [],
-        tags,
-        markup,
-        output,
-        runtime: true,
-        task: {
-            outputFile: output,
-            sourcecode,
-            sourceFile: filename,
-            parent,
-        },
-    };
+    if (output) {
+        return {
+            source,
+            language: options.language,
+            comments: [],
+            tags,
+            markup,
+            output,
+            runtime: true,
+            task: {
+                outputFile: output,
+                sourcecode,
+                sourceFile: filename,
+                parent,
+            },
+        };
+    } else {
+        return {
+            source: sourcecode,
+            language: "plaintext",
+            comments: [],
+            tags,
+            markup,
+            output: null,
+            runtime: true,
+            task: null,
+        };
+    }
 }
 
 function generateStaticExample(options: ExampleOptions): ExampleResult {
