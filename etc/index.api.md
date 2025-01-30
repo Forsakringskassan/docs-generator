@@ -460,10 +460,7 @@ export type VendorDefinition = string | VendorDefinitionDescriptor;
 // @public
 export interface VendorDefinitionDescriptor {
     alias?: string;
-    expose?: "named" | "default";
-    global?: string;
     package: string;
-    subpaths?: string[];
 }
 
 // @public @deprecated
