@@ -16,6 +16,22 @@ exports[`smoketest 1`] = `
           "children": [
             {
               "external": false,
+              "id": "fs:docs/markdown/api/vue.md",
+              "path": "./markdown/api/vue.html",
+              "sortorder": Infinity,
+              "title": "Vue Components",
+            },
+          ],
+          "key": "./markdown/api",
+          "path": "",
+          "sortorder": Infinity,
+          "title": "api",
+          "visible": true,
+        },
+        {
+          "children": [
+            {
+              "external": false,
               "id": "fs:docs/markdown/code-preview/code-preview.md",
               "path": "./markdown/code-preview/",
               "sortorder": Infinity,

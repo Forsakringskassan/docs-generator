@@ -1,4 +1,8 @@
-import { frontMatterFileReader, navigationFileReader } from "./dist/index.js";
+import {
+    frontMatterFileReader,
+    navigationFileReader,
+    vueFileReader,
+} from "./dist/index.js";
 
 /**
  * @param {string} name - Prefixed name of css variable.
@@ -111,6 +115,10 @@ export default {
             include: "src/style/css-variables.mjs",
             basePath: "./src/style",
             fileReader: cssVariablesFileReader,
+        },
+        {
+            include: "docs/markdown/api/vue/*.vue",
+            fileReader: vueFileReader,
         },
     ],
 };
