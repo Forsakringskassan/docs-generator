@@ -53,11 +53,29 @@ function getBadge(attrs: DocumentAttributes): DocumentBadge | undefined {
     }
 }
 
-function getComponentAlias(attrs: DocumentAttributes): string[] {
-    if (attrs.component) {
-        return toArray(attrs.component).map((it) => `component:${it}`);
+function normalizeComponent(value: string | Component): Component {
+    if (typeof value === "string") {
+        return {
+            name: value,
+        };
     } else {
-        return [];
+        return value;
+    }
+}
+
+function getComponentAlias(value: string | Component): string {
+    const { name } = normalizeComponent(value);
+    return `component:${name}`;
+}
+
+/**
+ * @internal
+ */
+export function* getDocumentAlias(
+    attrs: DocumentAttributes,
+): Generator<string> {
+    if (attrs.component) {
+        yield* toArray(attrs.component).map(getComponentAlias);
     }
 }
 
@@ -65,15 +83,7 @@ function getComponent(attrs: DocumentAttributes): Component[] | undefined {
     if (!attrs.component) {
         return undefined;
     }
-    return toArray(attrs.component).map((it) => {
-        if (typeof it === "string") {
-            return {
-                name: it,
-            };
-        } else {
-            return it;
-        }
-    });
+    return toArray(attrs.component).map(normalizeComponent);
 }
 
 /**
@@ -99,7 +109,7 @@ export function parseFile(
     return {
         id: `fs:${filePath.replace(/\\/g, "/")}`,
         name,
-        alias: [...getComponentAlias(attributes)],
+        alias: Array.from(getDocumentAlias(attributes)),
         visible: attributes.visible ?? true,
         attributes: {
             title: attributes.title ?? name,

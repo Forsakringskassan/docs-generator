@@ -1,4 +1,66 @@
-import { parseFile } from "./front-matter-file-reader";
+import { DocumentAttributes } from "../document";
+import { getDocumentAlias, parseFile } from "./front-matter-file-reader";
+
+describe("getDocumentAlias()", () => {
+    it("should use component name as alias (string)", () => {
+        expect.assertions(1);
+        const attr: DocumentAttributes = {
+            component: "MyAwesomeComponent",
+        };
+        const alias = Array.from(getDocumentAlias(attr));
+        expect(alias).toEqual(["component:MyAwesomeComponent"]);
+    });
+
+    it("should use component name as alias (string[])", () => {
+        expect.assertions(1);
+        const attr: DocumentAttributes = {
+            component: ["MyAwesomeComponent", "MyOtherComponent"],
+        };
+        const alias = Array.from(getDocumentAlias(attr));
+        expect(alias).toEqual([
+            "component:MyAwesomeComponent",
+            "component:MyOtherComponent",
+        ]);
+    });
+
+    it("should use component name as alias (component)", () => {
+        expect.assertions(1);
+        const attr: DocumentAttributes = {
+            component: {
+                name: "MyAwesomeComponent",
+            },
+        };
+        const alias = Array.from(getDocumentAlias(attr));
+        expect(alias).toEqual(["component:MyAwesomeComponent"]);
+    });
+
+    it("should use component name as alias (component[])", () => {
+        expect.assertions(1);
+        const attr: DocumentAttributes = {
+            component: [
+                { name: "MyAwesomeComponent" },
+                { name: "MyOtherComponent" },
+            ],
+        };
+        const alias = Array.from(getDocumentAlias(attr));
+        expect(alias).toEqual([
+            "component:MyAwesomeComponent",
+            "component:MyOtherComponent",
+        ]);
+    });
+
+    it("should use component name as alias (mixed array)", () => {
+        expect.assertions(1);
+        const attr: DocumentAttributes = {
+            component: ["MyAwesomeComponent", { name: "MyOtherComponent" }],
+        };
+        const alias = Array.from(getDocumentAlias(attr));
+        expect(alias).toEqual([
+            "component:MyAwesomeComponent",
+            "component:MyOtherComponent",
+        ]);
+    });
+});
 
 describe("fileInfo", () => {
     it("should generate fileInfo for index.md", () => {
