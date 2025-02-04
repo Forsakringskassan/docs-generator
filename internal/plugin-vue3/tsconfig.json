@@ -2,6 +2,7 @@
     "extend": "../../tsconfig.json",
     "compilerOptions": {
         "emitDeclarationOnly": true,
+        "lib": ["es2023", "dom", "dom.iterable", "es2018.intl"],
         "declaration": true,
         "rootDir": "src",
         "outDir": "dist",

@@ -15,6 +15,7 @@ layout/plumbing.html
 live-example/example.html
 live-example/index.html
 markdown/api/vue.html
+markdown/code-preview/diff.html
 markdown/code-preview/fullscreen.html
 markdown/code-preview/index.html
 markdown/code-preview/javascript.html
