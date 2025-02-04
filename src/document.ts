@@ -42,6 +42,24 @@ export interface DocumentAttributes {
 }
 
 /**
+ * @internal
+ */
+export const documentAttributeKeys = [
+    "title",
+    "short-title",
+    "layout",
+    "name",
+    "alias",
+    "status",
+    "visible",
+    "include",
+    "component",
+    "href",
+    "sortorder",
+    "redirect_from",
+];
+
+/**
  * @public
  */
 export type DocumentBadge = "success" | "error" | "info";

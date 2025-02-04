@@ -2,12 +2,14 @@ import fs from "node:fs/promises";
 import path, { type ParsedPath } from "node:path";
 import fm from "front-matter";
 import {
-    Component,
-    DocumentBadge,
+    type Component,
+    type DocumentBadge,
     type Document,
     type DocumentAttributes,
+    documentAttributeKeys,
 } from "../document";
 import { getDocumentOutline, normalizePath } from "../utils";
+import { AttributeError } from "./attribute-error";
 
 function toArray<T>(value: T | T[]): T[] {
     return Array.isArray(value) ? value : [value];
@@ -50,6 +52,24 @@ function getBadge(attrs: DocumentAttributes): DocumentBadge | undefined {
             return "info";
         default:
             return "info";
+    }
+}
+
+function validateAttributes(
+    attributes: DocumentAttributes,
+    filePath: string,
+    content: string,
+): void {
+    /* @todo json schema validation would make more sense but for now this is good enough */
+    for (const key of Object.keys(attributes)) {
+        if (documentAttributeKeys.includes(key)) {
+            continue;
+        }
+        throw new AttributeError({
+            attribute: key,
+            filePath,
+            content,
+        });
     }
 }
 
@@ -109,6 +129,9 @@ export function parseFile(
     const urlpath = parsed.dir;
     const outline = getDocumentOutline(blocks.body, "markdown");
     const include = attributes.include ?? true;
+
+    validateAttributes(attributes, filePath, content);
+
     return {
         id: `fs:${filePath.replace(/\\/g, "/")}`,
         name,
