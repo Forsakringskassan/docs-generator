@@ -105,7 +105,13 @@ function translateSlotBindings(slot: SlotDescriptor): string {
     const translatedBindings = [];
 
     for (const binding of slot.bindings) {
-        translatedBindings.push(binding.name ? binding.name : EMPTY_CHAR);
+        console.log(binding);
+        const name = binding.name ?? EMPTY_CHAR;
+        const type = binding.type ? `: ${binding.type.name}` : "";
+        const description = binding.description
+            ? ` ${EM_DASH} ${binding.description}`
+            : "";
+        translatedBindings.push(`${name}${type}${description}`);
     }
 
     return translatedBindings.join("\n");
