@@ -104,6 +104,27 @@ See documentation for {@link fullscreen fullscreen examples}.
 
 ## Tags
 
+### `hidden`
+
+The `hidden` tag hides the example from rendering.
+Typically only used when creating code diffs.
+
+Hidden examples are included when extracting examples but excluded when generating manifests.
+
+**Input:**
+
+````md
+```html hidden
+<p>lorem ipsum</p>
+```
+````
+
+**Output:**
+
+```html hidden
+<p>lorem ipsum</p>
+```
+
 ### `name`
 
 The `name` tag can be used to attach an optional name to an example.
