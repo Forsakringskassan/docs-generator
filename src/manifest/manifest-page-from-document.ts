@@ -1,7 +1,7 @@
 import markdownIt from "markdown-it";
 import { type Document } from "../document";
 import { DocumentOutline } from "../document-outline";
-import { findTag, getFingerprint, getOutputFilePath } from "../utils";
+import { findTag, getFingerprint, getOutputFilePath, hasTag } from "../utils";
 import { parseInfostring } from "../examples";
 import { type Manifest } from "./manifest";
 
@@ -30,6 +30,10 @@ md.renderer.rules.fence = (
 
     if (language === "import") {
         extension = content.split(".").at(-1)?.trim();
+    }
+
+    if (hasTag(tags, "hidden")) {
+        return "";
     }
 
     const name = findTag(tags, "name")?.value ?? undefined;

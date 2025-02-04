@@ -6,7 +6,7 @@ import {
     transformCode,
 } from "../../examples";
 import { type MarkdownEnv } from "../markdown-env";
-import { findTag, getFingerprint } from "../../utils";
+import { findTag, getFingerprint, hasTag } from "../../utils";
 import { findTestId, highlight, htmlencode, replaceAtLink } from "./utils";
 
 /**
@@ -65,6 +65,10 @@ export function codePreview(
                 tags: rawTags,
                 content: source,
             });
+        }
+
+        if (hasTag(rawTags, "hidden")) {
+            return "";
         }
 
         if (language === "mermaid") {
