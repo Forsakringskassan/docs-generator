@@ -39,6 +39,13 @@ exports[`smoketest 1`] = `
             },
             {
               "external": false,
+              "id": "fs:docs/markdown/code-preview/diff.md",
+              "path": "./markdown/code-preview/diff.html",
+              "sortorder": Infinity,
+              "title": "Diff",
+            },
+            {
+              "external": false,
               "id": "fs:docs/markdown/code-preview/fullscreen.md",
               "path": "./markdown/code-preview/fullscreen.html",
               "sortorder": Infinity,

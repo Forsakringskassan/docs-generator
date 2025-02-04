@@ -1,4 +1,5 @@
 import path from "node:path";
+import { createTwoFilesPatch } from "diff";
 import type MarkdownIt from "markdown-it";
 import {
     type ExampleResult,
@@ -37,6 +38,34 @@ function getStandalonePath(output: string | null): string | null {
     return path.join(dir, `${name}.html`);
 }
 
+function getSource(
+    content: string,
+    language: string,
+    tags: string[],
+    { namedExamples }: Pick<MarkdownEnv, "namedExamples">,
+): { source: string; language: string } {
+    const compare = findTag(tags, "compare");
+    if (compare && compare.value !== null) {
+        const reference = namedExamples.get(compare.value);
+        if (!reference) {
+            throw new Error(
+                `Failed to find referenced example "${compare.value}"`,
+            );
+        }
+        const diff = createTwoFilesPatch("a", "b", reference.content, content)
+            .split("\n")
+            .slice(3) // remove header
+            .filter((it) => !it.startsWith("@@")) // remove location
+            .join("\n");
+        return {
+            source: diff,
+            language: "diff",
+        };
+    }
+
+    return { source: content, language };
+}
+
 export function codePreview(
     options: CodePreviewOptions,
 ): (md: MarkdownIt) => void {
@@ -54,8 +83,8 @@ export function codePreview(
         env: MarkdownEnv,
     ): string {
         const { fileInfo } = env;
-        const { content: source, info, map } = tokens[idx];
-        const { language, tags: rawTags } = parseInfostring(info);
+        const { content: rawContent, info, map } = tokens[idx];
+        const { language: rawLanguage, tags: rawTags } = parseInfostring(info);
 
         /* store a named reference to this example */
         const name = findTag(rawTags, "name")?.value;
@@ -63,7 +92,7 @@ export function codePreview(
             env.namedExamples.set(name, {
                 name,
                 tags: rawTags,
-                content: source,
+                content: rawContent,
             });
         }
 
@@ -71,12 +100,18 @@ export function codePreview(
             return "";
         }
 
-        if (language === "mermaid") {
+        if (rawLanguage === "mermaid") {
             return /* HTML */ `
-                <pre class="mermaid">${htmlencode(source)}</pre>
+                <pre class="mermaid">${htmlencode(rawContent)}</pre>
             `;
         }
 
+        const { source, language } = getSource(
+            rawContent,
+            rawLanguage,
+            rawTags,
+            env,
+        );
         const example = generateExample({
             source,
             language,
