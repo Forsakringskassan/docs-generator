@@ -1,5 +1,8 @@
 ---
-name: Extract examples
+title: Extract examples
+name: extractExamplesProcessor
+alias:
+    - extractExamples
 layout: article
 ---
 

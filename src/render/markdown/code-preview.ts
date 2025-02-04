@@ -6,7 +6,7 @@ import {
     transformCode,
 } from "../../examples";
 import { type MarkdownEnv } from "../markdown-env";
-import { getFingerprint } from "../../utils";
+import { findTag, getFingerprint } from "../../utils";
 import { findTestId, highlight, htmlencode, replaceAtLink } from "./utils";
 
 /**
@@ -56,6 +56,16 @@ export function codePreview(
         const { fileInfo } = env;
         const { content: source, info, map } = tokens[idx];
         const { language, tags: rawTags } = parseInfostring(info);
+
+        /* store a named reference to this example */
+        const name = findTag(rawTags, "name")?.value;
+        if (name) {
+            env.namedExamples.set(name, {
+                name,
+                tags: rawTags,
+                content: source,
+            });
+        }
 
         if (language === "mermaid") {
             return /* HTML */ `

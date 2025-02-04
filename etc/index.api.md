@@ -150,6 +150,7 @@ export interface Manifest {
             anchor: string;
         }>;
         examples: Array<{
+            name?: string;
             selector: string;
             language: string;
             tags: string[];

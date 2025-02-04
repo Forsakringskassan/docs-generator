@@ -3,7 +3,7 @@ import path from "node:path/posix";
 import markdownIt from "markdown-it";
 import { type Document } from "../document";
 import { ProcessorOptions, type Processor } from "../processor";
-import { haveOutput, normalizePath } from "../utils";
+import { haveOutput, normalizePath, slugify } from "../utils";
 import { parseInfostring } from "../examples";
 
 /**
@@ -17,6 +17,7 @@ export interface ExtractExamplesOptions extends ProcessorOptions {
 }
 
 interface Example {
+    name: string | undefined;
     content: string;
     language: string;
     tags: string[];
@@ -35,7 +36,11 @@ md.renderer.rules.fence = (tokens, idx, _options, collected: Example[]) => {
         return "";
     }
 
+    const nameTag = tags.find((it) => it.startsWith("name="));
+    const name = nameTag ? slugify(nameTag.slice("name=".length)) : undefined;
+
     collected.push({
+        name,
         content,
         language,
         tags,
@@ -124,7 +129,7 @@ export function extractExamplesProcessor(
                 for (const example of examples) {
                     const suffix = getSuffix(example.tags);
                     const extension = getExtension(example.language);
-                    const filename = `example-${String(n++)}${suffix}.${extension}`;
+                    const filename = `example-${example.name ?? String(n++)}${suffix}.${extension}`;
                     const filePath = path.join(dir, filename);
                     await fs.writeFile(filePath, example.content, "utf-8");
                     total++;

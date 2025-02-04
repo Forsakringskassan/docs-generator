@@ -24,6 +24,7 @@ const context: ContainerContext = {
     env: {
         fileInfo: {} as FileInfo,
         ids: new Set(),
+        namedExamples: new Map(),
     },
     docs: [],
     included: new Set(),

@@ -7,6 +7,11 @@ export interface Manifest {
         title: string;
         redirect: null | string;
         outline: Array<{ heading: string; anchor: string }>;
-        examples: Array<{ selector: string; language: string; tags: string[] }>;
+        examples: Array<{
+            name?: string;
+            selector: string;
+            language: string;
+            tags: string[];
+        }>;
     }>;
 }
