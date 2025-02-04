@@ -11,5 +11,11 @@ defineEmits({
     bar() {
         return true;
     },
+    /**
+     * @deprecated Use `foo` instead
+     */
+    obsolete() {
+        return true;
+    },
 });
 </script>
