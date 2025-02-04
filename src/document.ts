@@ -16,6 +16,9 @@ export interface DocumentAttributes {
     /** sets the `name` property in `Document` */
     name?: string;
 
+    /** document alias for easier linking */
+    alias?: string | string[];
+
     /** component status */
     status?: string;
 

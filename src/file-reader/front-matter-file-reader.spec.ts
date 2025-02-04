@@ -2,6 +2,24 @@ import { DocumentAttributes } from "../document";
 import { getDocumentAlias, parseFile } from "./front-matter-file-reader";
 
 describe("getDocumentAlias()", () => {
+    it("should use explicit alias as alias (string)", () => {
+        expect.assertions(1);
+        const attr: DocumentAttributes = {
+            alias: "foobar",
+        };
+        const alias = Array.from(getDocumentAlias(attr));
+        expect(alias).toEqual(["foobar"]);
+    });
+
+    it("should use explicit alias as alias (string[])", () => {
+        expect.assertions(1);
+        const attr: DocumentAttributes = {
+            alias: ["foo", "bar"],
+        };
+        const alias = Array.from(getDocumentAlias(attr));
+        expect(alias).toEqual(["foo", "bar"]);
+    });
+
     it("should use component name as alias (string)", () => {
         expect.assertions(1);
         const attr: DocumentAttributes = {
@@ -59,6 +77,16 @@ describe("getDocumentAlias()", () => {
             "component:MyAwesomeComponent",
             "component:MyOtherComponent",
         ]);
+    });
+
+    it("should combine sources", () => {
+        expect.assertions(1);
+        const attr: DocumentAttributes = {
+            alias: ["foo"],
+            component: ["bar"],
+        };
+        const alias = Array.from(getDocumentAlias(attr));
+        expect(alias).toEqual(["foo", "component:bar"]);
     });
 });
 

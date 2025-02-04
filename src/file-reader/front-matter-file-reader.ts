@@ -74,6 +74,9 @@ function getComponentAlias(value: string | Component): string {
 export function* getDocumentAlias(
     attrs: DocumentAttributes,
 ): Generator<string> {
+    if (attrs.alias) {
+        yield* toArray(attrs.alias);
+    }
     if (attrs.component) {
         yield* toArray(attrs.component).map(getComponentAlias);
     }
