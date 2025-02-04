@@ -1,5 +1,8 @@
 ---
-name: Manifest
+title: Manifest
+name: manifestProcessor
+alias:
+    - manifest
 layout: content-with-menu
 ---
 

@@ -104,6 +104,20 @@ See documentation for {@link fullscreen fullscreen examples}.
 
 ## Tags
 
+### `name`
+
+The `name` tag can be used to attach an optional name to an example.
+
+The name is used in many contexts such as the {@link manifest}, filename used when {@link extractExamples extracting examples}, etc.
+
+**Input:**
+
+````md
+```html name=foo
+<p>lorem ipsum</p>
+```
+````
+
 ### `static`
 
 Disables rendering the example and only shows the source code with highlighting.
@@ -168,14 +182,14 @@ While generally discouraged to write E2E tests against the generated documentati
 
 There are three supported ways to write selectors:
 
-- Via a unique automatically generated id retrieved from {@link Manifest manifest}.
+- Via a unique automatically generated id retrieved from {@link manifest manifest}.
 - Via a custom author specified `test-id` tag.
 - Via a generic `.code-preview` selector.
 
 ### Unique generated id
 
 Each example gets a unique generated id similar to `id="example-${hash}"`.
-The {@link Manifest manifest} includes each example and its selector.
+The {@link manifest manifest} includes each example and its selector.
 
 Use this when you want to run the same test over each example available on the site, e.g. when testing if each example starts up properly.
 

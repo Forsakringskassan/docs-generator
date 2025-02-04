@@ -88,6 +88,7 @@ export function createMarkdownRenderer(
             outputName: false,
         },
         ids: new Set(),
+        namedExamples: new Map(),
     };
 
     const included = new Set<string>();

@@ -1,7 +1,7 @@
 import markdownIt from "markdown-it";
 import { type Document } from "../document";
 import { DocumentOutline } from "../document-outline";
-import { getFingerprint, getOutputFilePath } from "../utils";
+import { findTag, getFingerprint, getOutputFilePath } from "../utils";
 import { parseInfostring } from "../examples";
 import { type Manifest } from "./manifest";
 
@@ -32,7 +32,10 @@ md.renderer.rules.fence = (
         extension = content.split(".").at(-1)?.trim();
     }
 
+    const name = findTag(tags, "name")?.value ?? undefined;
+
     collected.push({
+        name,
         selector: `#example-${fingerprint}`,
         language: extension ?? language,
         tags,
