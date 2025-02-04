@@ -41,6 +41,7 @@ describe("options API", () => {
                 required: "false",
                 description: HYPHEN,
                 default: HYPHEN,
+                deprecated: HYPHEN,
             },
             {
                 name: "bar",
@@ -48,6 +49,7 @@ describe("options API", () => {
                 required: "true",
                 description: HYPHEN,
                 default: HYPHEN,
+                deprecated: HYPHEN,
             },
             {
                 name: "baz",
@@ -55,6 +57,15 @@ describe("options API", () => {
                 required: "false",
                 description: "Lorem ipsum dolor\nsit amet.",
                 default: expect.stringMatching("function()"),
+                deprecated: HYPHEN,
+            },
+            {
+                name: "obsolete",
+                type: "string",
+                required: "false",
+                description: HYPHEN,
+                default: `""`,
+                deprecated: "Use `foo` instead",
             },
         ]);
     });
@@ -68,11 +79,19 @@ describe("options API", () => {
                 name: "foo",
                 description: "Lorem ipsum",
                 properties: HYPHEN,
+                deprecated: HYPHEN,
             },
             {
                 name: "bar",
                 description: "dolor sit amet",
                 properties: HYPHEN,
+                deprecated: HYPHEN,
+            },
+            {
+                name: "obsolete",
+                description: HYPHEN,
+                properties: HYPHEN,
+                deprecated: "Use `foo` instead",
             },
         ]);
     });
@@ -86,11 +105,13 @@ describe("options API", () => {
                 name: "foo",
                 description: "Lorem ipsum",
                 properties: `name: undefined &#8212; dolor sit amet`,
+                deprecated: HYPHEN,
             },
             {
                 name: "bar",
                 description: HYPHEN,
                 properties: HYPHEN,
+                deprecated: HYPHEN,
             },
         ]);
     });
@@ -130,6 +151,7 @@ describe("composition API", () => {
                 required: "false",
                 description: HYPHEN,
                 default: HYPHEN,
+                deprecated: HYPHEN,
             },
             {
                 name: "bar",
@@ -137,6 +159,7 @@ describe("composition API", () => {
                 required: "true",
                 description: HYPHEN,
                 default: HYPHEN,
+                deprecated: HYPHEN,
             },
             {
                 name: "baz",
@@ -144,6 +167,15 @@ describe("composition API", () => {
                 required: "false",
                 description: "Lorem ipsum dolor\nsit amet.",
                 default: expect.stringMatching("function()"),
+                deprecated: HYPHEN,
+            },
+            {
+                name: "obsolete",
+                type: "string",
+                required: "false",
+                description: HYPHEN,
+                default: `""`,
+                deprecated: "Use `foo` instead",
             },
         ]);
     });
@@ -159,6 +191,7 @@ describe("composition API", () => {
                 required: "false",
                 description: HYPHEN,
                 default: HYPHEN,
+                deprecated: HYPHEN,
             },
             {
                 name: "bar",
@@ -166,6 +199,7 @@ describe("composition API", () => {
                 required: "true",
                 description: HYPHEN,
                 default: HYPHEN,
+                deprecated: HYPHEN,
             },
             {
                 name: "baz",
@@ -173,6 +207,15 @@ describe("composition API", () => {
                 required: "false",
                 description: "Lorem ipsum dolor\nsit amet.",
                 default: HYPHEN,
+                deprecated: HYPHEN,
+            },
+            {
+                name: "obsolete",
+                type: "string",
+                required: "false",
+                description: HYPHEN,
+                default: HYPHEN,
+                deprecated: "Use `foo` instead",
             },
         ]);
     });
@@ -188,6 +231,7 @@ describe("composition API", () => {
                 required: "false",
                 description: HYPHEN,
                 default: HYPHEN,
+                deprecated: HYPHEN,
             },
             {
                 name: "bar",
@@ -195,6 +239,7 @@ describe("composition API", () => {
                 required: "true",
                 description: HYPHEN,
                 default: HYPHEN,
+                deprecated: HYPHEN,
             },
             {
                 name: "baz",
@@ -202,6 +247,15 @@ describe("composition API", () => {
                 required: "false",
                 description: "Lorem ipsum dolor\nsit amet.",
                 default: HYPHEN,
+                deprecated: HYPHEN,
+            },
+            {
+                name: "obsolete",
+                type: "string",
+                required: "false",
+                description: HYPHEN,
+                default: HYPHEN,
+                deprecated: "Use `foo` instead",
             },
         ]);
     });
@@ -217,6 +271,7 @@ describe("composition API", () => {
                 required: "false",
                 description: HYPHEN,
                 default: HYPHEN,
+                deprecated: HYPHEN,
             },
             {
                 name: "bar",
@@ -224,6 +279,7 @@ describe("composition API", () => {
                 required: "true",
                 description: HYPHEN,
                 default: HYPHEN,
+                deprecated: HYPHEN,
             },
             {
                 name: "baz",
@@ -231,6 +287,7 @@ describe("composition API", () => {
                 required: "false",
                 description: "Lorem ipsum dolor\nsit amet.",
                 default: expect.stringMatching("() => "),
+                deprecated: HYPHEN,
             },
         ]);
     });
@@ -244,11 +301,19 @@ describe("composition API", () => {
                 name: "foo",
                 description: "Lorem ipsum",
                 properties: HYPHEN,
+                deprecated: HYPHEN,
             },
             {
                 name: "bar",
                 description: HYPHEN,
                 properties: HYPHEN,
+                deprecated: HYPHEN,
+            },
+            {
+                name: "obsolete",
+                description: HYPHEN,
+                properties: HYPHEN,
+                deprecated: "Use `foo` instead",
             },
         ]);
     });
@@ -263,11 +328,19 @@ describe("composition API", () => {
                 name: "foo",
                 description: "Lorem ipsum",
                 properties: `name: undefined &#8212; dolor sit amet`,
+                deprecated: HYPHEN,
             },
             {
                 name: "bar",
                 description: HYPHEN,
                 properties: HYPHEN,
+                deprecated: HYPHEN,
+            },
+            {
+                name: "obsolete",
+                description: HYPHEN,
+                properties: HYPHEN,
+                deprecated: "Use `foo` instead",
             },
         ]);
     });
@@ -281,11 +354,19 @@ describe("composition API", () => {
                 name: "foo",
                 description: "Lorem ipsum",
                 properties: `name: string &#8212; dolor sit amet`,
+                deprecated: HYPHEN,
             },
             {
                 name: "bar",
                 description: HYPHEN,
                 properties: HYPHEN,
+                deprecated: HYPHEN,
+            },
+            {
+                name: "obsolete",
+                description: HYPHEN,
+                properties: HYPHEN,
+                deprecated: "Use `foo` instead",
             },
         ]);
     });
@@ -299,11 +380,19 @@ describe("composition API", () => {
                 name: "foo",
                 description: "Lorem ipsum",
                 properties: `name: string &#8212; dolor sit amet`,
+                deprecated: HYPHEN,
             },
             {
                 name: "bar",
                 description: HYPHEN,
                 properties: HYPHEN,
+                deprecated: HYPHEN,
+            },
+            {
+                name: "obsolete",
+                description: HYPHEN,
+                properties: HYPHEN,
+                deprecated: "Use `foo` instead",
             },
         ]);
     });
@@ -320,6 +409,7 @@ it("should handle v-model with @model", async () => {
             required: "false",
             description: "Lorem ipsum.",
             default: `""`,
+            deprecated: HYPHEN,
         },
     ]);
 });
@@ -335,6 +425,7 @@ it("should handle v-model with update event", async () => {
             required: "false",
             description: "Lorem ipsum.",
             default: `""`,
+            deprecated: HYPHEN,
         },
     ]);
 });
@@ -350,6 +441,7 @@ it("should handle multiple v-model", async () => {
             required: "false",
             description: "Lorem ipsum.",
             default: `""`,
+            deprecated: HYPHEN,
         },
         {
             name: "v-model:foo",
@@ -357,6 +449,7 @@ it("should handle multiple v-model", async () => {
             required: "false",
             description: HYPHEN,
             default: `0`,
+            deprecated: HYPHEN,
         },
     ]);
 });

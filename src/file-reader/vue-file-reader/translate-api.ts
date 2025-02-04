@@ -11,19 +11,64 @@ import {
     ComponentEvent,
 } from "./component-api";
 
+interface PropDeprecatedTag {
+    description?: string | boolean;
+}
+
+interface EventDeprecatedTag {
+    content?: string | boolean;
+}
+
 const EMPTY_CHAR = "&#8208;";
 const EM_DASH = "&#8212;";
+
+function getPropSlotDeprecated(
+    prop: Pick<PropDescriptor, "tags"> | Pick<SlotDescriptor, "tags">,
+): string {
+    const tags = prop.tags;
+    if (!tags) {
+        return EMPTY_CHAR;
+    }
+    const tag = tags["deprecated"]?.[0] as PropDeprecatedTag | undefined;
+    if (!tag?.description) {
+        return EMPTY_CHAR;
+    }
+    if (tag.description === true) {
+        return "true";
+    } else {
+        return tag.description;
+    }
+}
+
+function getEventDeprecated(event: Pick<EventDescriptor, "tags">): string {
+    const tags = event.tags;
+    if (!tags) {
+        return EMPTY_CHAR;
+    }
+    const tag = tags.find((it) => it.title === "deprecated") as
+        | EventDeprecatedTag
+        | undefined;
+    if (!tag?.content) {
+        return EMPTY_CHAR;
+    }
+    if (tag.content === true) {
+        return "true";
+    } else {
+        return tag.content;
+    }
+}
 
 function translateProps(props: PropDescriptor[]): ComponentProp[] {
     const translatedProps: ComponentProp[] = [];
 
     for (const prop of props) {
-        const translatedProp = {
+        const translatedProp: ComponentProp = {
             name: prop.name,
             description: prop.description ?? EMPTY_CHAR,
             type: prop.type?.name ?? EMPTY_CHAR,
             required: prop.required ? "true" : "false",
             default: prop.defaultValue?.value ?? EMPTY_CHAR,
+            deprecated: getPropSlotDeprecated(prop),
         };
 
         translatedProps.push(translatedProp);
@@ -40,6 +85,7 @@ function translateEvents(events: EventDescriptor[]): ComponentEvent[] {
             name: event.name,
             description: event.description ?? EMPTY_CHAR,
             properties: translateEventProperties(event),
+            deprecated: getEventDeprecated(event),
         };
         translatedEvents.push(translatedEvent);
     }
@@ -85,10 +131,11 @@ function translateSlots(slots: SlotDescriptor[]): ComponentSlot[] {
     const translatedSlots: ComponentSlot[] = [];
 
     for (const slot of slots) {
-        const translatedSlot = {
+        const translatedSlot: ComponentSlot = {
             name: slot.name,
             description: slot.description ?? EMPTY_CHAR,
             bindings: translateSlotBindings(slot),
+            deprecated: getPropSlotDeprecated(slot),
         };
 
         translatedSlots.push(translatedSlot);
@@ -105,7 +152,6 @@ function translateSlotBindings(slot: SlotDescriptor): string {
     const translatedBindings = [];
 
     for (const binding of slot.bindings) {
-        console.log(binding);
         const name = binding.name ?? EMPTY_CHAR;
         const type = binding.type ? `: ${binding.type.name}` : "";
         const description = binding.description

@@ -19,5 +19,12 @@ defineProps({
             return { name: "" };
         },
     },
+    /**
+     * @deprecated Use `foo` instead
+     */
+    obsolete: {
+        type: String,
+        default: "",
+    },
 });
 </script>

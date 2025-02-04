@@ -7,5 +7,9 @@ defineProps<{
      * sit amet.
      */
     baz?: { name: string };
+    /**
+     * @deprecated Use `foo` instead
+     */
+    obsolete?: string;
 }>();
 </script>
