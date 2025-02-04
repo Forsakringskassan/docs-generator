@@ -1,6 +1,7 @@
 export { createMockDocument } from "./create-mock-document";
 export { fileMatcher } from "./file-matcher";
 export { findDocument } from "./find-document";
+export { findTag } from "./find-tag";
 export { formatSize } from "./format-size";
 export { generateId } from "./generate-id";
 export { getDocumentOutline } from "./get-document-outline";
@@ -11,6 +12,7 @@ export { getPullRequestID } from "./get-pull-request-id";
 export { getRepositoryUrl } from "./get-repository-url";
 export { gitCommitHash } from "./git";
 export { haveOutput } from "./have-output";
+export { hasTag } from "./has-tag";
 export { interpolate } from "./interpolate";
 export { normalizePath } from "./normalize-path";
 export { parseImport } from "./parse-import";
