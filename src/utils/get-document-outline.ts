@@ -16,13 +16,17 @@ function getHeadings(text: string): ParsedHeading[] {
     return Array.from(text.matchAll(matchHeading), parseHeading);
 }
 
+function cleanTitle(text: string): string {
+    return text.trim().replaceAll("`", "");
+}
+
 function parseHeading(match: RegExpMatchArray): ParsedHeading {
     const [, prefix, text] = match;
     const rank = prefix.length; // # -> 1, ## -> 2, etc
     const id = generateId(text);
     return {
         rank,
-        title: text.trim(),
+        title: cleanTitle(text),
         anchor: id,
     };
 }

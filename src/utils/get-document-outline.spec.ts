@@ -163,4 +163,28 @@ describe("markdown", () => {
             },
         ]);
     });
+
+    it("should remove unwanted characters from title", () => {
+        expect.assertions(1);
+        const markdown = `
+# \`foo\` and \`bar\`
+## \`baz\`
+`;
+        const outline = getDocumentOutline(markdown, "markdown");
+        expect(outline).toEqual([
+            {
+                anchor: "foo_and_bar",
+                rank: 1,
+                title: "foo and bar",
+                subheadings: [
+                    {
+                        anchor: "baz",
+                        rank: 2,
+                        subheadings: [],
+                        title: "baz",
+                    },
+                ],
+            },
+        ]);
+    });
 });
