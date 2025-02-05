@@ -1,14 +1,14 @@
 import {
-    PropDescriptor,
-    SlotDescriptor,
-    EventDescriptor,
+    type PropDescriptor,
+    type SlotDescriptor,
+    type EventDescriptor,
     parse,
 } from "vue-docgen-api";
 import {
-    ComponentAPI,
-    ComponentProp,
-    ComponentSlot,
-    ComponentEvent,
+    type ComponentAPI,
+    type ComponentProp,
+    type ComponentSlot,
+    type ComponentEvent,
 } from "./component-api";
 
 interface PropDeprecatedTag {
@@ -19,37 +19,36 @@ interface EventDeprecatedTag {
     content?: string | boolean;
 }
 
-const EMPTY_CHAR = "&#8208;";
-const EM_DASH = "&#8212;";
-
 function getPropSlotDeprecated(
     prop: Pick<PropDescriptor, "tags"> | Pick<SlotDescriptor, "tags">,
-): string {
+): string | null {
     const tags = prop.tags;
     if (!tags) {
-        return EMPTY_CHAR;
+        return null;
     }
     const tag = tags["deprecated"]?.[0] as PropDeprecatedTag | undefined;
     if (!tag?.description) {
-        return EMPTY_CHAR;
+        return null;
     }
     if (tag.description === true) {
-        return "true";
+        return "";
     } else {
         return tag.description;
     }
 }
 
-function getEventDeprecated(event: Pick<EventDescriptor, "tags">): string {
+function getEventDeprecated(
+    event: Pick<EventDescriptor, "tags">,
+): string | null {
     const tags = event.tags;
     if (!tags) {
-        return EMPTY_CHAR;
+        return null;
     }
     const tag = tags.find((it) => it.title === "deprecated") as
         | EventDeprecatedTag
         | undefined;
     if (!tag?.content) {
-        return EMPTY_CHAR;
+        return null;
     }
     if (tag.content === true) {
         return "true";
@@ -59,22 +58,19 @@ function getEventDeprecated(event: Pick<EventDescriptor, "tags">): string {
 }
 
 function translateProps(props: PropDescriptor[]): ComponentProp[] {
-    const translatedProps: ComponentProp[] = [];
-
-    for (const prop of props) {
-        const translatedProp: ComponentProp = {
+    return props.map((prop): ComponentProp => {
+        const defaultValue = prop.defaultValue
+            ? { value: prop.defaultValue.value }
+            : null;
+        return {
             name: prop.name,
-            description: prop.description ?? EMPTY_CHAR,
-            type: prop.type?.name ?? EMPTY_CHAR,
-            required: prop.required ? "true" : "false",
-            default: prop.defaultValue?.value ?? EMPTY_CHAR,
+            description: prop.description ?? null,
+            type: prop.type?.name ?? null,
+            required: Boolean(prop.required),
+            default: defaultValue,
             deprecated: getPropSlotDeprecated(prop),
         };
-
-        translatedProps.push(translatedProp);
-    }
-
-    return translatedProps;
+    });
 }
 
 function translateEvents(events: EventDescriptor[]): ComponentEvent[] {
@@ -83,7 +79,7 @@ function translateEvents(events: EventDescriptor[]): ComponentEvent[] {
     for (const event of events) {
         const translatedEvent: ComponentEvent = {
             name: event.name,
-            description: event.description ?? EMPTY_CHAR,
+            description: event.description ?? null,
             properties: translateEventProperties(event),
             deprecated: getEventDeprecated(event),
         };
@@ -93,38 +89,48 @@ function translateEvents(events: EventDescriptor[]): ComponentEvent[] {
     return translatedEvents;
 }
 
-function translateEventProperties(event: EventDescriptor): string {
+function translateEventProperties(event: EventDescriptor): Array<{
+    name: string;
+    type: string;
+    description: string | null;
+}> {
     const properties = event.properties;
     const types = event.type ? Object.values(event.type.names) : [];
 
     if (!properties && !types.length) {
-        return EMPTY_CHAR;
+        return [];
     }
     if (!properties) {
-        return `<anonymous>: ${String(types)}`;
+        return [
+            { name: "<anonymous>", type: String(types), description: null },
+        ];
     }
 
-    const translatedProperties: string[] = [];
+    const translatedProperties: Array<{
+        name: string;
+        type: string;
+        description: string | null;
+    }> = [];
 
     for (let i = 0; i < properties.length; i++) {
         const property = properties[i];
         const name = property.name ?? "<anonymous>";
-
         const eventType = types[i];
         const hasEventType = !eventType || eventType !== "undefined";
-        const resolvedType = hasEventType
-            ? eventType
-            : String(property.type.names);
-        const type = `: ${resolvedType}`;
+        const type = hasEventType ? eventType : String(property.type.names);
+        const description =
+            typeof property.description === "string"
+                ? property.description
+                : null;
 
-        const description = property.description
-            ? ` ${EM_DASH} ${property.description}`
-            : "";
-
-        translatedProperties.push(`${name}${type}${description}`);
+        translatedProperties.push({
+            name,
+            type,
+            description,
+        });
     }
 
-    return translatedProperties.join("\n");
+    return translatedProperties;
 }
 
 function translateSlots(slots: SlotDescriptor[]): ComponentSlot[] {
@@ -133,7 +139,7 @@ function translateSlots(slots: SlotDescriptor[]): ComponentSlot[] {
     for (const slot of slots) {
         const translatedSlot: ComponentSlot = {
             name: slot.name,
-            description: slot.description ?? EMPTY_CHAR,
+            description: slot.description ?? null,
             bindings: translateSlotBindings(slot),
             deprecated: getPropSlotDeprecated(slot),
         };
@@ -144,23 +150,36 @@ function translateSlots(slots: SlotDescriptor[]): ComponentSlot[] {
     return translatedSlots;
 }
 
-function translateSlotBindings(slot: SlotDescriptor): string {
+function translateSlotBindings(slot: SlotDescriptor): Array<{
+    name: string;
+    type: string;
+    description: string | null;
+}> {
     if (!slot.bindings) {
-        return EMPTY_CHAR;
+        return [];
     }
 
-    const translatedBindings = [];
+    const translatedBindings: Array<{
+        name: string;
+        type: string;
+        description: string | null;
+    }> = [];
 
     for (const binding of slot.bindings) {
-        const name = binding.name ?? EMPTY_CHAR;
-        const type = binding.type ? `: ${binding.type.name}` : "";
-        const description = binding.description
-            ? ` ${EM_DASH} ${binding.description}`
-            : "";
-        translatedBindings.push(`${name}${type}${description}`);
+        const name = binding.name ?? "<anonymous>";
+        const type = binding.type?.name ?? "unknown";
+        const description =
+            typeof binding.description === "string"
+                ? binding.description
+                : null;
+        translatedBindings.push({
+            name,
+            type,
+            description,
+        });
     }
 
-    return translatedBindings.join("\n");
+    return translatedBindings;
 }
 
 /**
