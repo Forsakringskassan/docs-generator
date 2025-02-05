@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-7e45a8.css"
+            href="../../assets/docs-85c34e.css"
             crossorigin
-            integrity="sha384-C5Qe00Ud046ZCM0atILlwlqZD2/hHAp2iqgbxEfgOHPYSIbg6vZcn94PwmsJD7/C"
+            integrity="sha384-JXF0X01/51+5yefeQHtu3g1LRstRi2cR0XHDZb5ZMBPDZSv69TV9fBRLu4iyN6pZ"
             
         />
         <link
@@ -89,10 +89,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-6feb9a.json"
+            href="../../search-data-ab24fc.json"
             as="fetch"
             crossorigin
-            integrity="sha384-wbZCr84aD6hzhmtA7DR7nArNmGtKoFXoZzPb2orEVoMjQ2Cpj15uHaacHffd5PpY"
+            integrity="sha384-TANJrMslqYI9enIqNrKzEAi+vzno86w73+9IlvDlusUjITD7d+6MWOHH0oyC1rvG"
             id="search-data"
         />
     </head>
@@ -1073,9 +1073,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-60b632.js"
+                    src="../../assets/vendor-fkui-vue-627963.js"
                     crossorigin
-                    integrity="sha384-L7SQ4cajJPQa5kXU/CC/i6Ru45jaf6mVztQ7N85qw1MOqqrTJXFLSJQc/LPOgxWy"
+                    integrity="sha384-nvTNATUDKTIHm2Z9upZLDIfnKQdf/F8ZkVvLCxP05hJauF4WbxcMUqGpBUySJLSz"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1098,7 +1098,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/cc3fad85ae9059ddf62b82a9df80341befa157a0/packages/vue/src/components/FTextField/FTextField.vue">FTextField</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/2fffda74c12da9326e892fb41d2193ee60e17f09/packages/vue/src/components/FTextField/FTextField.vue">FTextField</a>
             
         </code>
          
@@ -1371,216 +1371,6 @@ If the prop is not set text will be used.</p>
                         </dd>
                     
         </dl>
-
-        <div class="docs-table">
-            <table>
-                <caption>
-                    Props
-                </caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                                <tr>
-                                    <td class="docs-table__prop-name">
-                                        <code>id: string</code>
-                                        <span class="docs-tag docs-tag--default">Optional</span>
-                                        
-                                    </td>
-                                    <td class="docs-table__prop-description">
-                                        <p>The id for the input id attribute.
-The id for the label for attribute.
-If the prop is not set a random value will be generated.</p>
-
-                                        <p>Default: <code>() => ElementIdService.generateElementId()</code></p>
-                                        
-                                    </td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="docs-table__prop-name">
-                                        <code>inline: boolean</code>
-                                        <span class="docs-tag docs-tag--default">Optional</span>
-                                        
-                                    </td>
-                                    <td class="docs-table__prop-description">
-                                        <p>Show the component inline.</p>
-
-                                        <p>Default: <code>false</code></p>
-                                        
-                                    </td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="docs-table__prop-name">
-                                        <code>v-model: string|number</code>
-                                        <span class="docs-tag docs-tag--default">Optional</span>
-                                        
-                                    </td>
-                                    <td class="docs-table__prop-description">
-                                        <p>The value for the input.
-If the prop is not set undefined will be used.</p>
-
-                                        <p>Default: <code>""</code></p>
-                                        
-                                    </td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="docs-table__prop-name">
-                                        <code>type: string</code>
-                                        <span class="docs-tag docs-tag--default">Optional</span>
-                                        
-                                    </td>
-                                    <td class="docs-table__prop-description">
-                                        <p>The type used for the input.
-If the prop is not set text will be used.</p>
-
-                                        <p>Default: <code>"text"</code></p>
-                                        
-                                    </td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="docs-table__prop-name">
-                                        <code>formatter: FormatFunction<any></code>
-                                        <span class="docs-tag docs-tag--default">Optional</span>
-                                        
-                                    </td>
-                                    <td class="docs-table__prop-description">
-                                        <ul>
-<li>The <code>formatter</code> function must only be used on a component that uses validation.</li>
-<li>The <code>formatter</code> function acts differently depending on if the <code>parser</code> function is defined or not.</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>formatter without parser</th>
-<th>formatter with parser</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>modelvalue = parsed viewvalue using formatter function</td>
-<td>modelvalue = parsed viewvalue using parser function</td>
-</tr>
-<tr>
-<td>viewvalue = modelvalue (where modelvalue is already parsed)</td>
-<td>viewvalue = formatted modelvalue using formatter function (where modelvalue is already parsed)</td>
-</tr>
-</tbody>
-</table>
-
-                                        <p>Default: <code>undefined</code></p>
-                                        
-                                    </td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="docs-table__prop-name">
-                                        <code>parser: ParseFunction<any></code>
-                                        <span class="docs-tag docs-tag--default">Optional</span>
-                                        
-                                    </td>
-                                    <td class="docs-table__prop-description">
-                                        <ul>
-<li>The <code>parser</code> function must only be used on a component that uses validation.</li>
-<li>The <code>parser</code> function acts differently depending on if the <code>formatter</code> function is defined or not.
-<ul>
-<li>For parser combined with formatter, refer to formatter prop doc.</li>
-</ul>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>parser without formatter</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>modelvalue = parsed viewvalue using parser function</td>
-</tr>
-<tr>
-<td>viewvalue = never updated except when modelvalue differs from parsed viewvalue</td>
-</tr>
-</tbody>
-</table>
-
-                                        <p>Default: <code>undefined</code></p>
-                                        
-                                    </td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="docs-table__prop-name">
-                                        <code>labelWidth: string</code>
-                                        <span class="docs-tag docs-tag--default">Optional</span>
-                                        
-                                    </td>
-                                    <td class="docs-table__prop-description">
-                                        <p>Set responsive width for label section.</p>
-<pre><code>label-width=&quot;md-9 lg-6&quot;
-</code></pre>
-
-                                        <p>Default: <code>"sm-12"</code></p>
-                                        
-                                    </td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="docs-table__prop-name">
-                                        <code>inputWidth: string</code>
-                                        <span class="docs-tag docs-tag--default">Optional</span>
-                                        
-                                    </td>
-                                    <td class="docs-table__prop-description">
-                                        <p>Set responsive width for input section that wraps input element and icons.</p>
-<pre><code>input-width=&quot;md-6 lg-3&quot;
-</code></pre>
-
-                                        <p>Default: <code>"sm-12"</code></p>
-                                        
-                                    </td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="docs-table__prop-name">
-                                        <code>options: string[] | undefined</code>
-                                        <span class="docs-tag docs-tag--default">Optional</span>
-                                        
-                                    </td>
-                                    <td class="docs-table__prop-description">
-                                        <p>List of options.</p>
-<p>When set, the user can select a value from the list of options and filter while typing.</p>
-<p>If a formatter is used by the component, make sure the options are formatted as well.</p>
-
-                                        <p>Default: <code>() => undefined</code></p>
-                                        
-                                    </td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="docs-table__prop-name">
-                                        <code>disabled: boolean</code>
-                                        <span class="docs-tag docs-tag--default">Optional</span>
-                                        
-                                    </td>
-                                    <td class="docs-table__prop-description">
-                                        <p>Set to <code>true</code>, empty string <code>&quot;&quot;</code> or string <code>&quot;disabled&quot;</code> to disable this field.</p>
-
-                                        <p>Default: <code>false</code></p>
-                                        
-                                    </td>
-                                </tr>
-                            
-                </tbody>
-            </table>
-        </div>
     
         <h3>Events</h3>
         <dl class="docs-api docs-api--events">
@@ -1642,79 +1432,6 @@ If the prop is not set text will be used.</p>
                         </dd>
                     
         </dl>
-
-        <div class="docs-table">
-            <table>
-                <caption>
-                    Events
-                </caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                                <tr>
-                                    <td class="docs-table__event-name">
-                                        <code>blur</code>
-                                        
-                                    </td>
-                                    <td class="docs-table__event-description">
-                                        &#8208;
-                                        <ul>
-                                            <li><code><anonymous>: string</code></li>
-                                        </ul>
-                                        
-                                    </td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="docs-table__event-name">
-                                        <code>change</code>
-                                        
-                                    </td>
-                                    <td class="docs-table__event-description">
-                                        &#8208;
-                                        <ul>
-                                            <li><code><anonymous>: string</code></li>
-                                        </ul>
-                                        
-                                    </td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="docs-table__event-name">
-                                        <code>update</code>
-                                        
-                                    </td>
-                                    <td class="docs-table__event-description">
-                                        &#8208;
-                                        <ul>
-                                            <li><code><anonymous>: undefined</code></li>
-                                        </ul>
-                                        
-                                    </td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="docs-table__event-name">
-                                        <code>update:modelValue</code>
-                                        
-                                    </td>
-                                    <td class="docs-table__event-description">
-                                        &#8208;
-                                        <ul>
-                                            <li><code><anonymous>: undefined</code></li>
-                                        </ul>
-                                        
-                                    </td>
-                                </tr>
-                            
-                </tbody>
-            </table>
-        </div>
     
         <h3>Slots</h3>
         <dl class="docs-api docs-api--slots">
@@ -1825,128 +1542,6 @@ If the prop is not set text will be used.</p>
                         </dd>
                     
         </dl>
-
-        <div class="docs-table">
-            <table>
-                <caption>
-                    Slots
-                </caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                                <tr>
-                                    <td class="docs-table__slot-name">
-                                        <code>default</code>
-                                        
-                                    </td>
-                                    <td class="docs-table__slot-description">
-                                        <p>Slot for label content.</p>
-
-                                        <ul>
-                                            
-                                        </ul>
-                                        
-                                    </td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="docs-table__slot-name">
-                                        <code>tooltip</code>
-                                        
-                                    </td>
-                                    <td class="docs-table__slot-description">
-                                        <p>Slot for tooltip.</p>
-
-                                        <ul>
-                                            
-                                        </ul>
-                                        
-                                    </td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="docs-table__slot-name">
-                                        <code>description</code>
-                                        
-                                    </td>
-                                    <td class="docs-table__slot-description">
-                                        <p>Optional slot for description. See <a href="#/Components/FLabel">FLabel</a> for details.</p>
-
-                                        <ul>
-                                            <li><code>descriptionClass: string[]</code> <span role="presentation">&mdash;</span> CSS classes for primary description content.</li><li><code>discreteDescriptionClass: string[]</code> <span role="presentation">&mdash;</span> CSS classes for format description.</li>
-                                        </ul>
-                                        
-                                    </td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="docs-table__slot-name">
-                                        <code>error-message</code>
-                                        
-                                    </td>
-                                    <td class="docs-table__slot-description">
-                                        <p>Slot for displaying single or several error messages.</p>
-
-                                        <ul>
-                                            <li><code>hasError: boolean</code> <span role="presentation">&mdash;</span> Set to true when a validation error is present</li><li><code>validationMessage: string</code> <span role="presentation">&mdash;</span> Descriptive validation error message for current error</li>
-                                        </ul>
-                                        
-                                    </td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="docs-table__slot-name">
-                                        <code>input-left</code>
-                                        
-                                    </td>
-                                    <td class="docs-table__slot-description">
-                                        <p>Slot for adding content to the left of the input element.</p>
-
-                                        <ul>
-                                            
-                                        </ul>
-                                        
-                                    </td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="docs-table__slot-name">
-                                        <code>append-inner</code>
-                                        
-                                    </td>
-                                    <td class="docs-table__slot-description">
-                                        <p>Slot for add content inside the input to the right</p>
-
-                                        <ul>
-                                            
-                                        </ul>
-                                        
-                                    </td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="docs-table__slot-name">
-                                        <code>input-right</code>
-                                        
-                                    </td>
-                                    <td class="docs-table__slot-description">
-                                        <p>Slot for adding content to the right of the input element.</p>
-
-                                        <ul>
-                                            
-                                        </ul>
-                                        
-                                    </td>
-                                </tr>
-                            
-                </tbody>
-            </table>
-        </div>
     
 
                     </div>
@@ -1968,9 +1563,9 @@ If the prop is not set text will be used.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/better-vue-api-docs (<a href="https://github.com/Forsakringskassan/designsystem/commits/cc3fad85ae9059ddf62b82a9df80341befa157a0">cc3fad8</a>)<br />
+    feature/better-vue-api-docs (<a href="https://github.com/Forsakringskassan/designsystem/commits/2fffda74c12da9326e892fb41d2193ee60e17f09">2fffda7</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/157">PR 157</a><br />
-        2025-02-05 15:32
+        2025-02-05 15:45
 </div>
 <div class="toolbar__item">
     <form id="version">
