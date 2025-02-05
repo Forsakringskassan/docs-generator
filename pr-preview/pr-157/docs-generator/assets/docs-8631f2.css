@@ -11,6 +11,10 @@
   margin-bottom: 0.5rem;
 }
 
+.docs-api__name {
+  font-weight: bold;
+}
+
 .docs-api__deprecated, .docs-api__item, .docs-api__list-title {
   margin: 1rem 0 0;
 }
