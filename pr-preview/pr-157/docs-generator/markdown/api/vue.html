@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-194651.css"
+            href="../../assets/docs-8606cf.css"
             crossorigin
-            integrity="sha384-j0eyg5L6sVdTnKO95Vm3E+DAr+siXMD/RFTX9cP3CPr9f3BOHwCSaFzB+Kkmfzn5"
+            integrity="sha384-4m3WHgiOVrxKmOXlb35GcSeusYTRNiyE9pXMto1YIGsgXciLBbzSwGXttN6WaDpV"
             
         />
         <link
@@ -217,9 +217,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        feature/better-vue-api-docs (<a href="https://github.com/Forsakringskassan/docs-generator/commits/1394d365109a3edce43afd40fed13f0bd78ff898">1394d36</a>)<br />
+        feature/better-vue-api-docs (<a href="https://github.com/Forsakringskassan/docs-generator/commits/c2a92a7cbba035434a7cbe0c60a326fca2c82c7d">c2a92a7</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/157">PR 157</a><br />
-        2025-02-05 07:29
+        2025-02-05 12:59
     </span>
 </div>
 </div>
@@ -475,7 +475,7 @@ vue:AwesomeComponent
             <p>For details about how to document Vue components see <a href="https://vue-styleguidist.github.io/docs/Documenting.html">vue-docgen-api documentation</a>.</p>
 <h2 id="example"><a class="header-anchor" href="#example">Example</a></h2>
         <h3>Props</h3>
-        <dl class="docs-table">
+        <dl class="docs-api docs-api--slots">
             
                         <dt>
                             <code>foo: string</code>
@@ -492,7 +492,7 @@ sit amet.</p>
 <li><code>&quot;c&quot;</code></li>
 </ul>
 
-                            <p>Default: <code>"foobar"</code></p>
+                            <p class="doc-api__item">Default: <code>"foobar"</code></p>
                             
                         </dd>
                     
@@ -518,8 +518,8 @@ euismod massa semper sed.</p>
                         <dd>
                             <p>Lorem ipsum dolor sit amet.</p>
 
-                            <p>Default: <code>42</code></p>
-                            <p>Deprecated: Replaced by something else.</code></p>
+                            <p class="doc-api__item">Default: <code>42</code></p>
+                            <p class="doc-api__item docs-deprecated">Deprecated: Replaced by something else.</code></p>
                         </dd>
                     
         </dl>
@@ -584,7 +584,7 @@ euismod massa semper sed.</p>
                                         <p>Lorem ipsum dolor sit amet.</p>
 
                                         <p>Default: <code>42</code></p>
-                                        <p>Deprecated: Replaced by something else.</code></p>
+                                        <p class="docs-deprecated">Deprecated: Replaced by something else.</code></p>
                                     </td>
                                 </tr>
                             
@@ -593,7 +593,7 @@ euismod massa semper sed.</p>
         </div>
     
         <h3>Events</h3>
-        <dl class="docs-table">
+        <dl class="docs-api docs-api--events">
             
                         <dt>
                             <code>change</code>
@@ -603,8 +603,8 @@ euismod massa semper sed.</p>
                             <p>Lorem ipsum
 dolor sit amet</p>
 
-                            <ul>
-                                <li><code>id: number</code> &#8212; Lorem ipsum</li><li><code>value: undefined</code> &#8212; Lorem ipsum</li>
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>id: number</code> <span role="presentation">&mdash;</span> Lorem ipsum</li><li><code>value: undefined</code> <span role="presentation">&mdash;</span> Lorem ipsum</li>
                             </ul>
                             
                         </dd>
@@ -617,8 +617,8 @@ dolor sit amet</p>
                             <p>Lorem ipsum
 dolor sit amet</p>
 
-                            <ul>
-                                <li><code>value: string</code> &#8212; Lorem ipsum</li>
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>value: string</code> <span role="presentation">&mdash;</span> Lorem ipsum</li>
                             </ul>
                             
                         </dd>
@@ -630,10 +630,10 @@ dolor sit amet</p>
                         <dd>
                             <p>Lorem ipsum dolor sit amet</p>
 
-                            <ul>
-                                <li><code>value: string</code> &#8212; Lorem ipsum</li>
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>value: string</code> <span role="presentation">&mdash;</span> Lorem ipsum</li>
                             </ul>
-                            <p>Deprecated: Will be gone later.</code></p>
+                            <p class="docs-api__deprecated docs-deprecated">Deprecated: Will be gone later.</code></p>
                         </dd>
                     
         </dl>
@@ -661,7 +661,7 @@ dolor sit amet</p>
 dolor sit amet</p>
 
                                         <ul>
-                                            <li><code>id: number</code> &#8212; Lorem ipsum</li><li><code>value: undefined</code> &#8212; Lorem ipsum</li>
+                                            <li><code>id: number</code> <span role="presentation">&mdash;</span> Lorem ipsum</li><li><code>value: undefined</code> <span role="presentation">&mdash;</span> Lorem ipsum</li>
                                         </ul>
                                         
                                     </td>
@@ -677,7 +677,7 @@ dolor sit amet</p>
 dolor sit amet</p>
 
                                         <ul>
-                                            <li><code>value: string</code> &#8212; Lorem ipsum</li>
+                                            <li><code>value: string</code> <span role="presentation">&mdash;</span> Lorem ipsum</li>
                                         </ul>
                                         
                                     </td>
@@ -692,9 +692,9 @@ dolor sit amet</p>
                                         <p>Lorem ipsum dolor sit amet</p>
 
                                         <ul>
-                                            <li><code>value: string</code> &#8212; Lorem ipsum</li>
+                                            <li><code>value: string</code> <span role="presentation">&mdash;</span> Lorem ipsum</li>
                                         </ul>
-                                        <p>Deprecated: Will be gone later.</code></p>
+                                        <p class="docs-deprecated">Deprecated: Will be gone later.</code></p>
                                     </td>
                                 </tr>
                             
@@ -703,7 +703,7 @@ dolor sit amet</p>
         </div>
     
         <h3>Slots</h3>
-        <dl class="docs-table">
+        <dl class="docs-api docs-api--slots">
             
                         <dt>
                             <code>default</code>
@@ -712,9 +712,9 @@ dolor sit amet</p>
                         <dd>
                             <p>Lorem ipsum dolor sit amet</p>
 
-                            <ul>
-                                
-                            </ul>
+                            
+                            
+                            
                             
                         </dd>
                     
@@ -725,9 +725,9 @@ dolor sit amet</p>
                         <dd>
                             <p>Lorem ipsum dolor sit amet</p>
 
-                            <ul>
-                                <li><code>foo: number</code> &#8212; Lorem ipsum dolor sit amet</li><li><code>bar: number</code> &#8212; Lorem ipsum dolor sit amet</li><li><code>baz: unknown</code></li>
-                            </ul>
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>foo: number</code> <span role="presentation">&mdash;</span> Lorem ipsum dolor sit amet</li><li><code>bar: number</code> <span role="presentation">&mdash;</span> Lorem ipsum dolor sit amet</li><li><code>baz: unknown</code></li>
+                            </ul
                             
                         </dd>
                     
@@ -738,10 +738,10 @@ dolor sit amet</p>
                         <dd>
                             <p>Lorem ipsum dolor sit amet.</p>
 
-                            <ul>
-                                
-                            </ul>
-                            <p>Deprecated: Use another slot instead.</code></p>
+                            
+                            
+                            
+                            <p class="docs-api__deprecated docs-deprecated">Deprecated: Use another slot instead.</code></p>
                         </dd>
                     
         </dl>
@@ -783,7 +783,7 @@ dolor sit amet</p>
                                         <p>Lorem ipsum dolor sit amet</p>
 
                                         <ul>
-                                            <li><code>foo: number</code> &#8212; Lorem ipsum dolor sit amet</li><li><code>bar: number</code> &#8212; Lorem ipsum dolor sit amet</li><li><code>baz: unknown</code></li>
+                                            <li><code>foo: number</code> <span role="presentation">&mdash;</span> Lorem ipsum dolor sit amet</li><li><code>bar: number</code> <span role="presentation">&mdash;</span> Lorem ipsum dolor sit amet</li><li><code>baz: unknown</code></li>
                                         </ul>
                                         
                                     </td>
@@ -800,7 +800,7 @@ dolor sit amet</p>
                                         <ul>
                                             
                                         </ul>
-                                        <p>Deprecated: Use another slot instead.</code></p>
+                                        <p class="docs-deprecated">Deprecated: Use another slot instead.</code></p>
                                     </td>
                                 </tr>
                             

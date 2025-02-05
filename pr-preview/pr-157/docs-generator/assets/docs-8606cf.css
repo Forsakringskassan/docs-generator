@@ -1,4 +1,20 @@
 @charset "UTF-8";
+.docs-api dt code {
+  margin-left: -0.25rem;
+}
+
+.docs-api dd {
+  margin-bottom: 2rem;
+}
+
+.docs-api p {
+  margin-bottom: 0.5rem;
+}
+
+.docs-api__deprecated, .docs-api__item, .docs-api__list-title {
+  margin: 1rem 0 0;
+}
+
 :root {
   --docs-breakpoint-sm: 640px;
   --docs-breakpoint-md: 1024px;
@@ -1294,6 +1310,10 @@ kbd {
 
 #search-results .list__item__itempane:focus {
   background-color: #f4f4f4;
+}
+
+.docs-deprecated {
+  color: var(--docs-error-color);
 }
 
 :root {
