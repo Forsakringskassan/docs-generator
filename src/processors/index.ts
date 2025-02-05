@@ -3,6 +3,10 @@ export {
     extractExamplesProcessor,
 } from "./extract-examples-processor";
 export {
+    type FontInterOptions,
+    fontInterProcessor,
+} from "./font-inter-processor";
+export {
     type ManifestProcessorOptions,
     manifestProcessor,
 } from "./manifest-processor";

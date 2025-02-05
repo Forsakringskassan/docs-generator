@@ -4,6 +4,7 @@ import isCI from "is-ci";
 import {
     Generator,
     extractExamplesProcessor,
+    fontInterProcessor,
     htmlRedirectProcessor,
     manifestProcessor,
     motdProcessor,
@@ -40,6 +41,7 @@ const docs = new Generator({
         extractExamplesProcessor({
             outputFolder: "docs/examples/files",
         }),
+        fontInterProcessor(),
         htmlRedirectProcessor(),
         redirectFileProcessor(),
         manifestProcessor({ markdown: "etc/docs-manifest.md" }),

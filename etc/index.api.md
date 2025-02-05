@@ -88,6 +88,14 @@ export interface FileInfo {
 type FileReader_2 = (filePath: string, basePath?: string) => Promise<Document_2[]>;
 export { FileReader_2 as FileReader }
 
+// @public (undocumented)
+export interface FontInterOptions extends ProcessorOptions {
+    url?: string;
+}
+
+// @public
+export function fontInterProcessor(options?: FontInterOptions): Processor;
+
 // @public
 export function frontMatterFileReader(filePath: string, basePath?: string): Promise<Document_2[]>;
 
