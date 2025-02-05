@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.16.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.16.0...v2.16.1) (2025-02-05)
+
+### Bug Fixes
+
+* encode htmlentities in example data tags ([2f75382](https://github.com/Forsakringskassan/docs-generator/commit/2f7538221969ed1116eaa3068633ab1427429319))
+
 ## [2.16.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.15.7...v2.16.0) (2025-02-05)
 
 ### Features
