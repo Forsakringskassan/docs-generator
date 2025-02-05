@@ -96,6 +96,20 @@ h1 code {
     font-weight: 400;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    code {
+        font-size: inherit;
+        margin: 0;
+        padding: 0;
+        text-decoration: inherit;
+    }
+}
+
 #content a:not(.code-preview a) {
     color: var(--docs-text-color-default);
 }
