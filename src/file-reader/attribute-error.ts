@@ -10,6 +10,11 @@ interface AttributeErrorOptions {
 
 const threshold = 3;
 
+/* manual suggestions for attributes where the name is not just a typo */
+const suggestions: Partial<Record<string, string>> = {
+    hidden: "visible",
+};
+
 /**
  * Hack to guess the line in the frontmatter block, it makes horrible
  * assumptions and will break down if anything than a simple flat structure is
@@ -43,6 +48,19 @@ export function findLocation(
     };
 }
 
+function getSuggestion(attribute: string): [suggestion: string, d: number] {
+    /* use manual suggestions if they exists */
+    const manual = suggestions[attribute];
+    if (manual) {
+        return [manual, 0];
+    }
+
+    /* find typos */
+    const closestKey = closest(attribute, documentAttributeKeys);
+    const d = distance(attribute, closestKey);
+    return [closestKey, d];
+}
+
 /**
  * @internal
  */
@@ -61,13 +79,11 @@ export class AttributeError extends Error {
     public prettyError(): string {
         const { attribute, content, message } = this;
 
-        const closestKey = closest(attribute, documentAttributeKeys);
-        const d = distance(attribute, closestKey);
+        const [closestMatch, d] = getSuggestion(attribute);
         const suggestion =
             d <= threshold
-                ? `Did you mean to use "${closestKey}"?`
+                ? `Did you mean to use "${closestMatch}"?`
                 : `Unknown attribute "${attribute}"`;
-
         const location = findLocation(content, attribute);
         if (location) {
             const codeframe = codeFrameColumns(content, location, {
