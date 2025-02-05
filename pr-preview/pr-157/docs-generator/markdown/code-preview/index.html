@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-8631f2.css"
+            href="../../assets/docs-f36dfa.css"
             crossorigin
-            integrity="sha384-CHrGuPZRXHmA0PwH9JtXf+KIBRM1PZAvYxT7YZ6M3dNW0PXWR0aEVJ7SvVHAXzaK"
+            integrity="sha384-VxAdkfk8F4+JQmY1kSpuiOPZ/Cr8b6ZHb4LjLLsJhxlwYLRW8tDZ9ttQhybassXZ"
             
         />
         <link
@@ -35,10 +35,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-0aedec.json"
+            href="../../search-data-be8697.json"
             as="fetch"
             crossorigin
-            integrity="sha384-oplObyt75Pc/sDgVdBSNQRpY0TniZ5jsyhq6LxsVZOyxI9UALb6fnwHh1bV3ltt5"
+            integrity="sha384-xm77dB9qLQB+vpRPZ9IyQ//isPC4dAu0HcsdNjNuwt3VPgTNac/ZA+ER8eHNebJ3"
             id="search-data"
         />
     </head>
@@ -217,9 +217,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        feature/better-vue-api-docs (<a href="https://github.com/Forsakringskassan/docs-generator/commits/bc1f8112b3bf58c964f17c459df301bd896fc8a9">bc1f811</a>)<br />
+        feature/better-vue-api-docs (<a href="https://github.com/Forsakringskassan/docs-generator/commits/a09705e477905a87526c113d9a554b91b43c8a8c">a09705e</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/157">PR 157</a><br />
-        2025-02-05 13:56
+        2025-02-05 15:30
     </span>
 </div>
 </div>
@@ -285,6 +285,16 @@
             
         >
             Code preview
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./diff.html"
+            
+        >
+            Diff
         </a>
     </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <!-- prettier-ignore -->
@@ -632,11 +642,47 @@ my-file.ts
 </code></pre>
                 </div>
             <h2 id="fullscreen"><a class="header-anchor" href="#fullscreen">Fullscreen</a></h2><p>See documentation for <a href="./fullscreen.html">fullscreen examples</a>.</p>
-<h2 id="tags"><a class="header-anchor" href="#tags">Tags</a></h2><h3 id="static"><a class="header-anchor" href="#static"><code>static</code></a></h3><p>Disables rendering the example and only shows the source code with highlighting.</p>
+<h2 id="tags"><a class="header-anchor" href="#tags">Tags</a></h2><h3 id="hidden"><a class="header-anchor" href="#hidden"><code>hidden</code></a></h3><p>The <code>hidden</code> tag hides the example from rendering.
+Typically only used when creating code diffs.</p>
+<p>Hidden examples are included when extracting examples but excluded when generating manifests.</p>
 <p><strong>Input:</strong></p>
 
                 <div
-                    id="example-5612e9"
+                    id="example-fe3290"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="md"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-md" tabindex="0"><span class="hljs-code">```html hidden
+&lt;p&gt;lorem ipsum&lt;/p&gt;
+```</span>
+</code></pre>
+                </div>
+            <p><strong>Output:</strong></p>
+<h3 id="name"><a class="header-anchor" href="#name"><code>name</code></a></h3><p>The <code>name</code> tag can be used to attach an optional name to an example.</p>
+<p>The name is used in many contexts such as the <a href="../../processors/manifest.html">Manifest</a>, filename used when <a href="../../processors/extract-examples.html">extracting examples</a>, etc.</p>
+<p><strong>Input:</strong></p>
+
+                <div
+                    id="example-c6d733"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="md"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-md" tabindex="0"><span class="hljs-code">```html name=foo
+&lt;p&gt;lorem ipsum&lt;/p&gt;
+```</span>
+</code></pre>
+                </div>
+            <h3 id="static"><a class="header-anchor" href="#static"><code>static</code></a></h3><p>Disables rendering the example and only shows the source code with highlighting.</p>
+<p><strong>Input:</strong></p>
+
+                <div
+                    id="example-592ad3"
                     class="code-preview code-preview--default"
                     
                     
@@ -655,7 +701,7 @@ my-file.html
             <p><strong>Output:</strong></p>
 
                 <div
-                    id="example-5ef7a8"
+                    id="example-2ac5d7"
                     class="code-preview code-preview--default"
                     
                     data-tags=static
@@ -667,7 +713,7 @@ my-file.html
                 </div>
             
                 <div
-                    id="example-cdcc1a"
+                    id="example-d7e5ef"
                     class="code-preview code-preview--default"
                     
                     data-tags=static
@@ -681,7 +727,7 @@ my-file.html
 <p><strong>Input:</strong></p>
 
                 <div
-                    id="example-537fe8"
+                    id="example-0d32eb"
                     class="code-preview code-preview--default"
                     
                     
@@ -700,7 +746,7 @@ my-file.html
             <p><strong>Output:</strong>:</p>
 
                 <div
-                    id="example-698759"
+                    id="example-f407de"
                     class="code-preview code-preview--default"
                     
                     data-tags=nomarkup
@@ -712,7 +758,7 @@ my-file.html
                 </div>
             
                 <div
-                    id="example-2b1015"
+                    id="example-57b8b1"
                     class="code-preview code-preview--default"
                     
                     data-tags=nomarkup
@@ -724,7 +770,7 @@ my-file.html
                 </div>
             <h2 id="runnable_examples"><a class="header-anchor" href="#runnable_examples">Runnable examples</a></h2>
             <div
-                id="example-eb5f3a"
+                id="example-b67c28"
                 class="code-preview code-preview--default"
                 
                 
@@ -781,7 +827,7 @@ The <a href="../../processors/manifest.html">manifest</a> includes each example 
 <h3 id="custom_test_id"><a class="header-anchor" href="#custom_test_id">Custom test id</a></h3><p>Examples can be given a custom test id using the <code>test-id=string</code> tag which can be used to write a selector such as <code>[data-test=string]</code>:</p>
 
                 <div
-                    id="example-8e062f"
+                    id="example-e10dc0"
                     class="code-preview code-preview--default"
                     
                     
@@ -802,7 +848,7 @@ Moving examples around on the same page will change the order this selector retu
 <p>Given an example such as:</p>
 
                 <div
-                    id="example-7f1ed8"
+                    id="example-4ceecb"
                     class="code-preview code-preview--default"
                     
                     
@@ -816,7 +862,7 @@ Moving examples around on the same page will change the order this selector retu
                 </div>
             
                 <div
-                    id="example-90fc4c"
+                    id="example-6d0686"
                     class="code-preview code-preview--default"
                     
                     
