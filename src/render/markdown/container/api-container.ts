@@ -38,7 +38,11 @@ export function apiContainer(context: ContainerContext): ContainerCallback {
         included.add(doc.id);
 
         if (doc.format === "html") {
-            return doc.body;
+            return doc.body.replace(
+                /* replace `<next-heading-level>` and `</next-heading-level>` with actual h-tags */
+                /(?<=<\/?)next-heading-level/g,
+                `h${String(env.currentHeading + 1)}`,
+            );
         }
 
         const content = md.render(doc.body, env);

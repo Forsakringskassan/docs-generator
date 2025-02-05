@@ -10,4 +10,10 @@
         border-color: var(--docs-tags-optional-border-color);
         color: var(--docs-tags-optional-text-color);
     }
+
+    &--deprecated {
+        background-color: var(--docs-tags-deprecated-background-color);
+        border-color: var(--docs-tags-deprecated-border-color);
+        color: var(--docs-tags-deprecated-text-color);
+    }
 }

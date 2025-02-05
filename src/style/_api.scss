@@ -1,0 +1,47 @@
+.docs-api {
+    dt code {
+        margin-left: -0.25rem;
+    }
+
+    dd {
+        margin-bottom: 2rem;
+    }
+
+    p {
+        margin-bottom: 0.5rem;
+    }
+
+    &__name {
+        font-weight: bold;
+    }
+
+    &__deprecated,
+    &__item,
+    &__list-title {
+        margin: 1rem 0 0;
+    }
+}
+
+#content a.docs-api__anchor {
+    color: var(--docs-text-color-default);
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    &::before {
+        content: "#";
+        display: inline-block;
+        font-size: 1em;
+        margin-left: -1em;
+        visibility: hidden;
+        width: 1em;
+        color: #9e9e9ea6;
+        text-decoration: none;
+    }
+
+    &:hover::before {
+        visibility: visible;
+    }
+}
