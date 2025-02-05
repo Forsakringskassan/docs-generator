@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-85c34e.css"
+            href="../../assets/docs-dddea1.css"
             crossorigin
-            integrity="sha384-JXF0X01/51+5yefeQHtu3g1LRstRi2cR0XHDZb5ZMBPDZSv69TV9fBRLu4iyN6pZ"
+            integrity="sha384-Ze3Sg9mk+COlIMfr8gi85JGu6tQt4JpBfsLJAjHmdNd9OI9wK2nWUNfvByZ9GIsE"
             
         />
         <link
@@ -1098,7 +1098,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/2fffda74c12da9326e892fb41d2193ee60e17f09/packages/vue/src/components/FList/FList.vue">FList</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/85c18d705b83c41123c7c4c9ed22819a7b712c34/packages/vue/src/components/FList/FList.vue">FList</a>
             
         </code>
          
@@ -1153,14 +1153,18 @@
                 </div>
             <h2 id="anvandning_av_komponent"><a class="header-anchor" href="#anvandning_av_komponent">Användning av komponent</a></h2><p><strong>Komponent motsvarar följande HTML element:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul">Unordered List</a></p>
 <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
-        <h3>Props</h3>
+        <h3 id="flist-props">
+            <a class="header-anchor" href="#flist-props">Props</a>
+        </h3>
         <dl class="docs-api docs-api--slots">
             
                         <dt>
-                            <code>
-                                <span class="docs-api__name">items</span
-                                >: ListArray
-                            </code>
+                            <code id="flist-slot-items"
+                                ><a class="docs-api__anchor" href="#flist-slot-items"
+                                    ><span class="docs-api__name">items</span
+                                    >: ListArray</a
+                                ></code
+                            >
                             
                             
                         </dt>
@@ -1173,10 +1177,12 @@ The items will be listed in the given array order.</p>
                         </dd>
                     
                         <dt>
-                            <code>
-                                <span class="docs-api__name">keyAttribute</span
-                                >: string
-                            </code>
+                            <code id="flist-slot-keyAttribute"
+                                ><a class="docs-api__anchor" href="#flist-slot-keyAttribute"
+                                    ><span class="docs-api__name">keyAttribute</span
+                                    >: string</a
+                                ></code
+                            >
                             
                             
                         </dt>
@@ -1190,10 +1196,12 @@ be able to optimize reuse of components.</p>
                         </dd>
                     
                         <dt>
-                            <code>
-                                <span class="docs-api__name">selectable</span
-                                >: boolean
-                            </code>
+                            <code id="flist-slot-selectable"
+                                ><a class="docs-api__anchor" href="#flist-slot-selectable"
+                                    ><span class="docs-api__name">selectable</span
+                                    >: boolean</a
+                                ></code
+                            >
                             <span class="docs-tag docs-tag--default">Optional</span>
                             
                         </dt>
@@ -1205,10 +1213,12 @@ be able to optimize reuse of components.</p>
                         </dd>
                     
                         <dt>
-                            <code>
-                                <span class="docs-api__name">checkbox</span
-                                >: boolean
-                            </code>
+                            <code id="flist-slot-checkbox"
+                                ><a class="docs-api__anchor" href="#flist-slot-checkbox"
+                                    ><span class="docs-api__name">checkbox</span
+                                    >: boolean</a
+                                ></code
+                            >
                             <span class="docs-tag docs-tag--default">Optional</span>
                             
                         </dt>
@@ -1221,10 +1231,12 @@ Disable checkbox in interactive list and create a &lt;a&gt;-wrapper for each ite
                         </dd>
                     
                         <dt>
-                            <code>
-                                <span class="docs-api__name">v-model</span
-                                >: ListArray | undefined
-                            </code>
+                            <code id="flist-slot-v-model"
+                                ><a class="docs-api__anchor" href="#flist-slot-v-model"
+                                    ><span class="docs-api__name">v-model</span
+                                    >: ListArray | undefined</a
+                                ></code
+                            >
                             <span class="docs-tag docs-tag--default">Optional</span>
                             
                         </dt>
@@ -1236,10 +1248,12 @@ Disable checkbox in interactive list and create a &lt;a&gt;-wrapper for each ite
                         </dd>
                     
                         <dt>
-                            <code>
-                                <span class="docs-api__name">v-model:active</span
-                                >: ListItem | undefined
-                            </code>
+                            <code id="flist-slot-v-model:active"
+                                ><a class="docs-api__anchor" href="#flist-slot-v-model:active"
+                                    ><span class="docs-api__name">v-model:active</span
+                                    >: ListItem | undefined</a
+                                ></code
+                            >
                             <span class="docs-tag docs-tag--default">Optional</span>
                             
                         </dt>
@@ -1251,10 +1265,12 @@ Disable checkbox in interactive list and create a &lt;a&gt;-wrapper for each ite
                         </dd>
                     
                         <dt>
-                            <code>
-                                <span class="docs-api__name">elementId</span
-                                >: string
-                            </code>
+                            <code id="flist-slot-elementId"
+                                ><a class="docs-api__anchor" href="#flist-slot-elementId"
+                                    ><span class="docs-api__name">elementId</span
+                                    >: string</a
+                                ></code
+                            >
                             <span class="docs-tag docs-tag--default">Optional</span>
                             
                         </dt>
@@ -1267,13 +1283,19 @@ Disable checkbox in interactive list and create a &lt;a&gt;-wrapper for each ite
                     
         </dl>
     
-        <h3>Events</h3>
+        <h3 id="flist-events">
+            <a class="header-anchor" href="#flist-events">Events</a>
+        </h3>
         <dl class="docs-api docs-api--events">
             
                         <dt>
-                            <code>
-                                <span class="docs-api__name">change</span>
-                            </code>
+                            <code id="flist-event-change"
+                                ><a class="docs-api__anchor" href="#flist-event-change"
+                                    ><span class="docs-api__name"
+                                        >change</span
+                                    ></a
+                                ></code
+                            >
                             
                         </dt>
                         <dd>
@@ -1286,9 +1308,13 @@ Disable checkbox in interactive list and create a &lt;a&gt;-wrapper for each ite
                         </dd>
                     
                         <dt>
-                            <code>
-                                <span class="docs-api__name">click</span>
-                            </code>
+                            <code id="flist-event-click"
+                                ><a class="docs-api__anchor" href="#flist-event-click"
+                                    ><span class="docs-api__name"
+                                        >click</span
+                                    ></a
+                                ></code
+                            >
                             
                         </dt>
                         <dd>
@@ -1301,9 +1327,13 @@ Disable checkbox in interactive list and create a &lt;a&gt;-wrapper for each ite
                         </dd>
                     
                         <dt>
-                            <code>
-                                <span class="docs-api__name">update</span>
-                            </code>
+                            <code id="flist-event-update"
+                                ><a class="docs-api__anchor" href="#flist-event-update"
+                                    ><span class="docs-api__name"
+                                        >update</span
+                                    ></a
+                                ></code
+                            >
                             <span class="docs-tag docs-tag--deprecated">Deprecated</span>
                         </dt>
                         <dd>
@@ -1316,9 +1346,13 @@ Disable checkbox in interactive list and create a &lt;a&gt;-wrapper for each ite
                         </dd>
                     
                         <dt>
-                            <code>
-                                <span class="docs-api__name">unselect</span>
-                            </code>
+                            <code id="flist-event-unselect"
+                                ><a class="docs-api__anchor" href="#flist-event-unselect"
+                                    ><span class="docs-api__name"
+                                        >unselect</span
+                                    ></a
+                                ></code
+                            >
                             
                         </dt>
                         <dd>
@@ -1331,9 +1365,13 @@ Disable checkbox in interactive list and create a &lt;a&gt;-wrapper for each ite
                         </dd>
                     
                         <dt>
-                            <code>
-                                <span class="docs-api__name">update:modelValue</span>
-                            </code>
+                            <code id="flist-event-update:modelValue"
+                                ><a class="docs-api__anchor" href="#flist-event-update:modelValue"
+                                    ><span class="docs-api__name"
+                                        >update:modelValue</span
+                                    ></a
+                                ></code
+                            >
                             
                         </dt>
                         <dd>
@@ -1346,9 +1384,13 @@ Disable checkbox in interactive list and create a &lt;a&gt;-wrapper for each ite
                         </dd>
                     
                         <dt>
-                            <code>
-                                <span class="docs-api__name">select</span>
-                            </code>
+                            <code id="flist-event-select"
+                                ><a class="docs-api__anchor" href="#flist-event-select"
+                                    ><span class="docs-api__name"
+                                        >select</span
+                                    ></a
+                                ></code
+                            >
                             
                         </dt>
                         <dd>
@@ -1361,9 +1403,13 @@ Disable checkbox in interactive list and create a &lt;a&gt;-wrapper for each ite
                         </dd>
                     
                         <dt>
-                            <code>
-                                <span class="docs-api__name">update:active</span>
-                            </code>
+                            <code id="flist-event-update:active"
+                                ><a class="docs-api__anchor" href="#flist-event-update:active"
+                                    ><span class="docs-api__name"
+                                        >update:active</span
+                                    ></a
+                                ></code
+                            >
                             
                         </dt>
                         <dd>
@@ -1377,13 +1423,19 @@ Disable checkbox in interactive list and create a &lt;a&gt;-wrapper for each ite
                     
         </dl>
     
-        <h3>Slots</h3>
+        <h3 id="flist-slots">
+            <a class="header-anchor" href="#flist-slots">Slots</a>
+        </h3>
         <dl class="docs-api docs-api--slots">
             
                         <dt>
-                            <code>
-                                <span class="docs-api__name">default</span>
-                            </code>
+                            <code id="flist-slot-default"
+                                ><a class="docs-api__anchor" href="#flist-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
                             
                         </dt>
                         <dd>
@@ -1396,9 +1448,13 @@ Disable checkbox in interactive list and create a &lt;a&gt;-wrapper for each ite
                         </dd>
                     
                         <dt>
-                            <code>
-                                <span class="docs-api__name">empty</span>
-                            </code>
+                            <code id="flist-slot-empty"
+                                ><a class="docs-api__anchor" href="#flist-slot-empty"
+                                    ><span class="docs-api__name"
+                                        >empty</span
+                                    ></a
+                                ></code
+                            >
                             
                         </dt>
                         <dd>
@@ -1411,9 +1467,13 @@ Disable checkbox in interactive list and create a &lt;a&gt;-wrapper for each ite
                         </dd>
                     
                         <dt>
-                            <code>
-                                <span class="docs-api__name">screenreader</span>
-                            </code>
+                            <code id="flist-slot-screenreader"
+                                ><a class="docs-api__anchor" href="#flist-slot-screenreader"
+                                    ><span class="docs-api__name"
+                                        >screenreader</span
+                                    ></a
+                                ></code
+                            >
                             
                         </dt>
                         <dd>
@@ -1447,9 +1507,9 @@ Disable checkbox in interactive list and create a &lt;a&gt;-wrapper for each ite
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/better-vue-api-docs (<a href="https://github.com/Forsakringskassan/designsystem/commits/2fffda74c12da9326e892fb41d2193ee60e17f09">2fffda7</a>)<br />
+    feature/better-vue-api-docs (<a href="https://github.com/Forsakringskassan/designsystem/commits/85c18d705b83c41123c7c4c9ed22819a7b712c34">85c18d7</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/157">PR 157</a><br />
-        2025-02-05 15:45
+        2025-02-05 16:19
 </div>
 <div class="toolbar__item">
     <form id="version">

@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-85c34e.css"
+            href="../../assets/docs-dddea1.css"
             crossorigin
-            integrity="sha384-JXF0X01/51+5yefeQHtu3g1LRstRi2cR0XHDZb5ZMBPDZSv69TV9fBRLu4iyN6pZ"
+            integrity="sha384-Ze3Sg9mk+COlIMfr8gi85JGu6tQt4JpBfsLJAjHmdNd9OI9wK2nWUNfvByZ9GIsE"
             
         />
         <link
@@ -1098,7 +1098,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/2fffda74c12da9326e892fb41d2193ee60e17f09/packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue">IPopupMenu</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/85c18d705b83c41123c7c4c9ed22819a7b712c34/packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue">IPopupMenu</a>
             
         </code>
          
@@ -1276,14 +1276,18 @@ Detta kan du göra genom att ange en <code>key</code> i <code>v-model:focused-it
 Komponenten kommer då sätta fokus på det elementet som matchade objektet.</p>
 <p>Se koden för ovan exempel för hur man kan hantera fokus till menyn i samband med tangentbordsnavigering.</p>
 <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
-        <h3>Props</h3>
+        <h3 id="ipopupmenu-props">
+            <a class="header-anchor" href="#ipopupmenu-props">Props</a>
+        </h3>
         <dl class="docs-api docs-api--slots">
             
                         <dt>
-                            <code>
-                                <span class="docs-api__name">v-model</span
-                                >: string
-                            </code>
+                            <code id="ipopupmenu-slot-v-model"
+                                ><a class="docs-api__anchor" href="#ipopupmenu-slot-v-model"
+                                    ><span class="docs-api__name">v-model</span
+                                    >: string</a
+                                ></code
+                            >
                             <span class="docs-tag docs-tag--default">Optional</span>
                             
                         </dt>
@@ -1296,10 +1300,12 @@ Sets focus on matching item element when value changes.</p>
                         </dd>
                     
                         <dt>
-                            <code>
-                                <span class="docs-api__name">isOpen</span
-                                >: boolean
-                            </code>
+                            <code id="ipopupmenu-slot-isOpen"
+                                ><a class="docs-api__anchor" href="#ipopupmenu-slot-isOpen"
+                                    ><span class="docs-api__name">isOpen</span
+                                    >: boolean</a
+                                ></code
+                            >
                             
                             
                         </dt>
@@ -1311,10 +1317,12 @@ Sets focus on matching item element when value changes.</p>
                         </dd>
                     
                         <dt>
-                            <code>
-                                <span class="docs-api__name">anchor</span
-                                >: HTMLElement | undefined
-                            </code>
+                            <code id="ipopupmenu-slot-anchor"
+                                ><a class="docs-api__anchor" href="#ipopupmenu-slot-anchor"
+                                    ><span class="docs-api__name">anchor</span
+                                    >: HTMLElement | undefined</a
+                                ></code
+                            >
                             <span class="docs-tag docs-tag--default">Optional</span>
                             
                         </dt>
@@ -1326,10 +1334,12 @@ Sets focus on matching item element when value changes.</p>
                         </dd>
                     
                         <dt>
-                            <code>
-                                <span class="docs-api__name">items</span
-                                >: MenuItem[]
-                            </code>
+                            <code id="ipopupmenu-slot-items"
+                                ><a class="docs-api__anchor" href="#ipopupmenu-slot-items"
+                                    ><span class="docs-api__name">items</span
+                                    >: MenuItem[]</a
+                                ></code
+                            >
                             
                             
                         </dt>
@@ -1341,10 +1351,12 @@ Sets focus on matching item element when value changes.</p>
                         </dd>
                     
                         <dt>
-                            <code>
-                                <span class="docs-api__name">enableKeyboardNavigation</span
-                                >: boolean
-                            </code>
+                            <code id="ipopupmenu-slot-enableKeyboardNavigation"
+                                ><a class="docs-api__anchor" href="#ipopupmenu-slot-enableKeyboardNavigation"
+                                    ><span class="docs-api__name">enableKeyboardNavigation</span
+                                    >: boolean</a
+                                ></code
+                            >
                             <span class="docs-tag docs-tag--default">Optional</span>
                             
                         </dt>
@@ -1356,10 +1368,12 @@ Sets focus on matching item element when value changes.</p>
                         </dd>
                     
                         <dt>
-                            <code>
-                                <span class="docs-api__name">ariaLabel</span
-                                >: string
-                            </code>
+                            <code id="ipopupmenu-slot-ariaLabel"
+                                ><a class="docs-api__anchor" href="#ipopupmenu-slot-ariaLabel"
+                                    ><span class="docs-api__name">ariaLabel</span
+                                    >: string</a
+                                ></code
+                            >
                             <span class="docs-tag docs-tag--default">Optional</span>
                             
                         </dt>
@@ -1371,10 +1385,12 @@ Sets focus on matching item element when value changes.</p>
                         </dd>
                     
                         <dt>
-                            <code>
-                                <span class="docs-api__name">selectedMenuItemScreenReaderText</span
-                                >: string
-                            </code>
+                            <code id="ipopupmenu-slot-selectedMenuItemScreenReaderText"
+                                ><a class="docs-api__anchor" href="#ipopupmenu-slot-selectedMenuItemScreenReaderText"
+                                    ><span class="docs-api__name">selectedMenuItemScreenReaderText</span
+                                    >: string</a
+                                ></code
+                            >
                             <span class="docs-tag docs-tag--default">Optional</span>
                             
                         </dt>
@@ -1387,13 +1403,19 @@ Sets focus on matching item element when value changes.</p>
                     
         </dl>
     
-        <h3>Events</h3>
+        <h3 id="ipopupmenu-events">
+            <a class="header-anchor" href="#ipopupmenu-events">Events</a>
+        </h3>
         <dl class="docs-api docs-api--events">
             
                         <dt>
-                            <code>
-                                <span class="docs-api__name">close</span>
-                            </code>
+                            <code id="ipopupmenu-event-close"
+                                ><a class="docs-api__anchor" href="#ipopupmenu-event-close"
+                                    ><span class="docs-api__name"
+                                        >close</span
+                                    ></a
+                                ></code
+                            >
                             
                         </dt>
                         <dd>
@@ -1406,9 +1428,13 @@ Sets focus on matching item element when value changes.</p>
                         </dd>
                     
                         <dt>
-                            <code>
-                                <span class="docs-api__name">select</span>
-                            </code>
+                            <code id="ipopupmenu-event-select"
+                                ><a class="docs-api__anchor" href="#ipopupmenu-event-select"
+                                    ><span class="docs-api__name"
+                                        >select</span
+                                    ></a
+                                ></code
+                            >
                             
                         </dt>
                         <dd>
@@ -1421,9 +1447,13 @@ Sets focus on matching item element when value changes.</p>
                         </dd>
                     
                         <dt>
-                            <code>
-                                <span class="docs-api__name">update:modelValue</span>
-                            </code>
+                            <code id="ipopupmenu-event-update:modelValue"
+                                ><a class="docs-api__anchor" href="#ipopupmenu-event-update:modelValue"
+                                    ><span class="docs-api__name"
+                                        >update:modelValue</span
+                                    ></a
+                                ></code
+                            >
                             
                         </dt>
                         <dd>
@@ -1436,9 +1466,13 @@ Sets focus on matching item element when value changes.</p>
                         </dd>
                     
                         <dt>
-                            <code>
-                                <span class="docs-api__name">update:focusedItem</span>
-                            </code>
+                            <code id="ipopupmenu-event-update:focusedItem"
+                                ><a class="docs-api__anchor" href="#ipopupmenu-event-update:focusedItem"
+                                    ><span class="docs-api__name"
+                                        >update:focusedItem</span
+                                    ></a
+                                ></code
+                            >
                             
                         </dt>
                         <dd>
@@ -1472,9 +1506,9 @@ Sets focus on matching item element when value changes.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/better-vue-api-docs (<a href="https://github.com/Forsakringskassan/designsystem/commits/2fffda74c12da9326e892fb41d2193ee60e17f09">2fffda7</a>)<br />
+    feature/better-vue-api-docs (<a href="https://github.com/Forsakringskassan/designsystem/commits/85c18d705b83c41123c7c4c9ed22819a7b712c34">85c18d7</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/157">PR 157</a><br />
-        2025-02-05 15:45
+        2025-02-05 16:19
 </div>
 <div class="toolbar__item">
     <form id="version">

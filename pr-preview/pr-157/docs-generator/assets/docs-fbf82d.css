@@ -19,6 +19,30 @@
   margin: 1rem 0 0;
 }
 
+#content a.docs-api__anchor {
+  color: var(--docs-text-color-default);
+  text-decoration: none;
+}
+
+#content a.docs-api__anchor:hover {
+  text-decoration: underline;
+}
+
+#content a.docs-api__anchor::before {
+  content: "#";
+  display: inline-block;
+  font-size: 1em;
+  margin-left: -1em;
+  visibility: hidden;
+  width: 1em;
+  color: rgba(158, 158, 158, 0.6509803922);
+  text-decoration: none;
+}
+
+#content a.docs-api__anchor:hover::before {
+  visibility: visible;
+}
+
 :root {
   --docs-breakpoint-sm: 640px;
   --docs-breakpoint-md: 1024px;
@@ -927,11 +951,11 @@ h6 code {
   text-decoration: inherit;
 }
 
-#content a:not(.code-preview a) {
+#content a:where(:not(.code-preview a)) {
   color: var(--docs-text-color-default);
 }
 
-#content a:not(.code-preview a, h2 a, h3 a, h4 a, h5 a) {
+#content a:where(:not(.code-preview a, h2 a, h3 a, h4 a, h5 a)) {
   text-decoration: underline;
   text-decoration-thickness: 1px;
   color: var(--f-text-color-link);
@@ -939,7 +963,7 @@ h6 code {
   text-underline-offset: 0.15rem;
 }
 
-#content a:hover:not(.code-preview a, h2 a, h3 a, h4 a, h5 a) {
+#content a:where(:hover:not(.code-preview a, h2 a, h3 a, h4 a, h5 a)) {
   color: var(--f-text-color-default);
   text-decoration-color: var(--docs-text-link-hover);
 }
