@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## [2.16.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.15.7...v2.16.0) (2025-02-05)
+
+### Features
+
+* frontmatter attribute basic validation ([7a95aee](https://github.com/Forsakringskassan/docs-generator/commit/7a95aee01e931ca56f6d8f2451a25de2bd5396e2))
+* generate diff by diffing two examples ([820026a](https://github.com/Forsakringskassan/docs-generator/commit/820026a0ae1ffaa9f1fc8e5ea13267852873ee94))
+* hidden tag for adding hidden examples ([9c26754](https://github.com/Forsakringskassan/docs-generator/commit/9c26754d1c96a6bb50c8cca9a98395b3a676844d))
+* name tag for named code examples ([fa9e795](https://github.com/Forsakringskassan/docs-generator/commit/fa9e79515b3f610a378ebc4a3fb46d92221f2c09))
+* remove unwanted chars from outline ([8d8deff](https://github.com/Forsakringskassan/docs-generator/commit/8d8deff764800e6f5ba3c94cd4e6976e4487c16b))
+* set document alias in frontmatter ([c280237](https://github.com/Forsakringskassan/docs-generator/commit/c2802374310e9e909c626ed91011a8a2ea6c1f8a))
+
+### Bug Fixes
+
+* correct font-size and text-decoration for code block in heading ([e4ed397](https://github.com/Forsakringskassan/docs-generator/commit/e4ed3978f92cfff1dec28c22c8253aa0457c44f5))
+* **deps:** update dependency semver to v7.7.0 ([9d392f4](https://github.com/Forsakringskassan/docs-generator/commit/9d392f4832d4bc71c40e4c266174dc05c4a2186f))
+* proper document alias when setting component to an object ([75cf606](https://github.com/Forsakringskassan/docs-generator/commit/75cf606be78075b44858fbd69bafb60f67429c2d))
+* render descriptions for vue slot bindings ([a157707](https://github.com/Forsakringskassan/docs-generator/commit/a15770771f64c1770491b54a4dbbfc138f224738))
+* show if props, events or slots is deprecated in vue component ([5164b98](https://github.com/Forsakringskassan/docs-generator/commit/5164b98984558d35c4d26b286875de0a5efad049))
+
 ## [2.15.7](https://github.com/Forsakringskassan/docs-generator/compare/v2.15.6...v2.15.7) (2025-01-29)
 
 ### Bug Fixes
