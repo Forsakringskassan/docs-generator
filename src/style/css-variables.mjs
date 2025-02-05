@@ -236,6 +236,21 @@ export default {
                 type: "color",
                 value: "var(--docs-text-color-discrete)",
             },
+            "deprecated-background-color": {
+                description: "Deprecated tag background color",
+                type: "color",
+                value: "var(--docs-error-color)",
+            },
+            "deprecated-border-color": {
+                description: "Deprecated tag border color",
+                type: "color",
+                value: "#1b1e23",
+            },
+            "deprecated-text-color": {
+                description: "Deprecated tag text color",
+                type: "color",
+                value: "var(--docs-error-background)",
+            },
         },
     },
 

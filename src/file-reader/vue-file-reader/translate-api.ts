@@ -4,6 +4,7 @@ import {
     type EventDescriptor,
     parse,
 } from "vue-docgen-api";
+import { slugify } from "../../utils";
 import {
     type ComponentAPI,
     type ComponentProp,
@@ -51,7 +52,7 @@ function getEventDeprecated(
         return null;
     }
     if (tag.content === true) {
-        return "true";
+        return "";
     } else {
         return tag.content;
     }
@@ -207,6 +208,8 @@ export async function translateAPI(filePath: string): Promise<ComponentAPI> {
     }
 
     return {
+        name: api.displayName,
+        slug: slugify(api.displayName),
         props,
         events,
         slots,

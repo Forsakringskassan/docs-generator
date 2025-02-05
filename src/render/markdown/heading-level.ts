@@ -37,6 +37,7 @@ export function headingLevel(options: {
 
             return tag.replace(/h(\d)/, (_, n: string) => {
                 const level = parseInt(n, 10) + offset;
+                env.currentHeading = level;
                 return `<h${level} id="${id}"><a class="header-anchor" href="#${id}">`;
             });
         };

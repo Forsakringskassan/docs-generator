@@ -2,6 +2,8 @@
  * @internal
  */
 export interface ComponentAPI {
+    readonly name: string;
+    readonly slug: string;
     readonly props: ComponentProp[];
     readonly slots: ComponentSlot[];
     readonly events: ComponentEvent[];

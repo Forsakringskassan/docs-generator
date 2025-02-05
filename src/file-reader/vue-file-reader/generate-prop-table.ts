@@ -8,51 +8,53 @@ function render(text: string | null): string {
     return text ? md.render(text) : EMPTY_CHAR;
 }
 
+function renderInline(text: string | null): string {
+    return text ? md.renderInline(text) : EMPTY_CHAR;
+}
+
 /**
  * @internal
  */
-export function generatePropTable(props: ComponentProp[]): string {
+export function generatePropTable(
+    slug: string,
+    props: ComponentProp[],
+): string {
     return /* HTML */ `
-        <div class="docs-table">
-            <table>
-                <caption>
-                    Props
-                </caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Type</th>
-                        <th scope="col">Required</th>
-                        <th scope="col">Default</th>
-                        <th scope="col">Deprecated</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    ${props
-                        .map(
-                            (prop) => /* HTML */ `
-                                <tr>
-                                    <td><code>${prop.name}</code></td>
-                                    <td>${render(prop.description)}</td>
-                                    <td><code>${prop.type}</code></td>
-                                    <td>${prop.required ? "true" : "false"}</td>
-                                    <td>
-                                        ${prop.default
-                                            ? `<code>${prop.default.value}</code>`
-                                            : EMPTY_CHAR}
-                                    </td>
-                                    <td>
-                                        ${prop.deprecated !== null
-                                            ? prop.deprecated
-                                            : EMPTY_CHAR}
-                                    </td>
-                                </tr>
-                            `,
-                        )
-                        .join("")}
-                </tbody>
-            </table>
-        </div>
+        <next-heading-level id="${slug}-props">
+            <a class="header-anchor" href="#${slug}-props">Props</a>
+        </next-heading-level>
+        <dl class="docs-api docs-api--slots">
+            ${props
+                .map((prop) => {
+                    const { name } = prop;
+                    const id = `${slug}-slot-${name}`;
+                    return /* HTML */ `
+                        <dt>
+                            <code id="${id}"
+                                ><a class="docs-api__anchor" href="#${id}"
+                                    ><span class="docs-api__name">${name}</span
+                                    >: ${prop.type}</a
+                                ></code
+                            >
+                            ${prop.required
+                                ? ""
+                                : `<span class="docs-tag docs-tag--default">Optional</span>`}
+                            ${prop.deprecated === null
+                                ? ""
+                                : `<span class="docs-tag docs-tag--deprecated">Deprecated</span>`}
+                        </dt>
+                        <dd>
+                            ${render(prop.description)}
+                            ${prop.default
+                                ? `<p class="doc-api__item">Default: <code>${prop.default.value}</code></p>`
+                                : ""}
+                            ${prop.deprecated
+                                ? `<p class="doc-api__item docs-deprecated">Deprecated: ${renderInline(prop.deprecated)}</p>`
+                                : ""}
+                        </dd>
+                    `;
+                })
+                .join("")}
+        </dl>
     `;
 }

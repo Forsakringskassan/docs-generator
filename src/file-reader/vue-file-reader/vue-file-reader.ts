@@ -14,13 +14,13 @@ function parseAPI(filePath: string, api: ComponentAPI): Document {
 
     let html = "";
     if (api.props.length) {
-        html += generatePropTable(api.props);
+        html += generatePropTable(api.slug, api.props);
     }
     if (api.events.length) {
-        html += generateEventTable(api.events);
+        html += generateEventTable(api.slug, api.events);
     }
     if (api.slots.length) {
-        html += generateSlotTable(api.slots);
+        html += generateSlotTable(api.slug, api.slots);
     }
 
     return {

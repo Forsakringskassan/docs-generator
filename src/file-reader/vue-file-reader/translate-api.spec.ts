@@ -11,6 +11,8 @@ describe("options API", () => {
         const filepath = fixture("options-dummy-js.vue");
         const result = await translateAPI(filepath);
         expect(result).toEqual({
+            name: "options-dummy-js",
+            slug: "options-dummy-js",
             events: [],
             props: [],
             slots: [],
@@ -22,6 +24,8 @@ describe("options API", () => {
         const filepath = fixture("options-dummy-ts.vue");
         const result = await translateAPI(filepath);
         expect(result).toEqual({
+            name: "options-dummy-ts",
+            slug: "options-dummy-ts",
             events: [],
             props: [],
             slots: [],
@@ -127,6 +131,8 @@ describe("composition API", () => {
         const filepath = fixture("composition-dummy-js.vue");
         const result = await translateAPI(filepath);
         expect(result).toEqual({
+            name: "composition-dummy-js",
+            slug: "composition-dummy-js",
             events: [],
             props: [],
             slots: [],
@@ -138,6 +144,8 @@ describe("composition API", () => {
         const filepath = fixture("composition-dummy-ts.vue");
         const result = await translateAPI(filepath);
         expect(result).toEqual({
+            name: "composition-dummy-ts",
+            slug: "composition-dummy-ts",
             events: [],
             props: [],
             slots: [],
