@@ -136,14 +136,18 @@ export function codePreview(
         const showFullscreen = Boolean(standalonePath) && fullscreen;
         const testIdAttr = testId ? `data-test="${testId}"` : "";
         const filteredTags = tags.filter((it) => {
-            if (it.startsWith("test-id=")) {
+            if (
+                it.startsWith("test-id=") ||
+                it.startsWith("name") ||
+                it.startsWith("compare")
+            ) {
                 return false;
             }
             return true;
         });
         const dataTagsAttr =
             filteredTags.length > 0
-                ? `data-tags=${filteredTags.join(" ")}`
+                ? `data-tags="${htmlencode(filteredTags.join(" "))}"`
                 : "";
 
         if (liveExample) {
