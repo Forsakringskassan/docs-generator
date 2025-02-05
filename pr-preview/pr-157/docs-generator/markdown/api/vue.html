@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-ef0e39.css"
+            href="../../assets/docs-194651.css"
             crossorigin
-            integrity="sha384-qbsSBigd0Ya8Ff5mvkpJy95bdAYnj+U46NszFCCMdSKn02Zit4IPlG/+McqrkQsf"
+            integrity="sha384-j0eyg5L6sVdTnKO95Vm3E+DAr+siXMD/RFTX9cP3CPr9f3BOHwCSaFzB+Kkmfzn5"
             
         />
         <link
@@ -217,9 +217,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        feature/better-vue-api-docs (<a href="https://github.com/Forsakringskassan/docs-generator/commits/9e6d020f0f3985c831e3c241d217904117338afc">9e6d020</a>)<br />
+        feature/better-vue-api-docs (<a href="https://github.com/Forsakringskassan/docs-generator/commits/1394d365109a3edce43afd40fed13f0bd78ff898">1394d36</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/157">PR 157</a><br />
-        2025-01-30 18:27
+        2025-02-05 07:29
     </span>
 </div>
 </div>
@@ -439,7 +439,7 @@
 <p>API documentation for Vue components can be enabled using the <a href="../../file-reader/vue-file-reader.html">Vue File Reader</a>:</p>
 
                 <div
-                    id="example-1ebbe2"
+                    id="example-7bb92a"
                     class="code-preview code-preview--default"
                     
                     
@@ -455,13 +455,12 @@
         <span class="hljs-attr">include</span>: [<span class="hljs-string">&quot;./src/**/*.vue&quot;</span>],
         <span class="hljs-attr">fileReader</span>: vueFileReader,
     },
-]);
-</code></pre>
+]);</code></pre>
                 </div>
             <p>This will read each component and generate API documentation which can later be included in markdown with:</p>
 
                 <div
-                    id="example-b53db9"
+                    id="example-efbb2a"
                     class="code-preview code-preview--default"
                     
                     
@@ -475,12 +474,13 @@ vue:AwesomeComponent
                 </div>
             <p>For details about how to document Vue components see <a href="https://vue-styleguidist.github.io/docs/Documenting.html">vue-docgen-api documentation</a>.</p>
 <h2 id="example"><a class="header-anchor" href="#example">Example</a></h2>
-        <strong>Props</strong>
+        <h3>Props</h3>
         <dl class="docs-table">
             
                         <dt>
                             <code>foo: string</code>
                             <span class="docs-tag docs-tag--default">Optional</span>
+                            
                         </dt>
                         <dd>
                             <p>Lorem ipsum dolor
@@ -492,11 +492,13 @@ sit amet.</p>
 <li><code>&quot;c&quot;</code></li>
 </ul>
 
-                            Default: <code>"foobar"</code>
+                            <p>Default: <code>"foobar"</code></p>
+                            
                         </dd>
                     
                         <dt>
                             <code>bar: string</code>
+                            
                             
                         </dt>
                         <dd>
@@ -505,16 +507,19 @@ leo. Fusce eget ullamcorper augue. Aenean sodales fringilla purus, ac
 euismod massa semper sed.</p>
 
                             
+                            
                         </dd>
                     
                         <dt>
-                            <code>baz: number</code>
+                            <code>obsolete: number</code>
                             <span class="docs-tag docs-tag--default">Optional</span>
+                            <span class="docs-tag docs-tag--deprecated">Deprecated</span>
                         </dt>
                         <dd>
                             <p>Lorem ipsum dolor sit amet.</p>
 
-                            Default: <code>42</code>
+                            <p>Default: <code>42</code></p>
+                            <p>Deprecated: Replaced by something else.</code></p>
                         </dd>
                     
         </dl>
@@ -526,10 +531,8 @@ euismod massa semper sed.</p>
                 </caption>
                 <thead>
                     <tr>
-                        <th class="docs-table__prop-name" scope="col">Name</th>
-                        <th class="docs-table__prop-description" scope="col">
-                            Description
-                        </th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -538,6 +541,7 @@ euismod massa semper sed.</p>
                                     <td class="docs-table__prop-name">
                                         <code>foo: string</code>
                                         <span class="docs-tag docs-tag--default">Optional</span>
+                                        
                                     </td>
                                     <td class="docs-table__prop-description">
                                         <p>Lorem ipsum dolor
@@ -549,13 +553,15 @@ sit amet.</p>
 <li><code>&quot;c&quot;</code></li>
 </ul>
 
-                                        Default: <code>"foobar"</code>
+                                        <p>Default: <code>"foobar"</code></p>
+                                        
                                     </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="docs-table__prop-name">
                                         <code>bar: string</code>
+                                        
                                         
                                     </td>
                                     <td class="docs-table__prop-description">
@@ -564,41 +570,244 @@ leo. Fusce eget ullamcorper augue. Aenean sodales fringilla purus, ac
 euismod massa semper sed.</p>
 
                                         
+                                        
                                     </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="docs-table__prop-name">
-                                        <code>baz: number</code>
+                                        <code>obsolete: number</code>
                                         <span class="docs-tag docs-tag--default">Optional</span>
+                                        <span class="docs-tag docs-tag--deprecated">Deprecated</span>
                                     </td>
                                     <td class="docs-table__prop-description">
                                         <p>Lorem ipsum dolor sit amet.</p>
 
-                                        Default: <code>42</code>
+                                        <p>Default: <code>42</code></p>
+                                        <p>Deprecated: Replaced by something else.</code></p>
                                     </td>
                                 </tr>
                             
                 </tbody>
             </table>
         </div>
-    <div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th></tr></thead><tbody><tr><td><p>change</p>
-</td><td><p>Lorem ipsum<br>
+    
+        <h3>Events</h3>
+        <dl class="docs-table">
+            
+                        <dt>
+                            <code>change</code>
+                            
+                        </dt>
+                        <dd>
+                            <p>Lorem ipsum
 dolor sit amet</p>
-</td><td><p>id: number — Lorem ipsum<br>
-value: undefined — Lorem ipsum</p>
-</td></tr><tr><td><p>update</p>
-</td><td><p>Lorem ipsum<br>
+
+                            <ul>
+                                <li><code>id: number</code> &#8212; Lorem ipsum</li><li><code>value: undefined</code> &#8212; Lorem ipsum</li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code>update</code>
+                            
+                        </dt>
+                        <dd>
+                            <p>Lorem ipsum
 dolor sit amet</p>
-</td><td><p>value: string — Lorem ipsum</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th></tr></thead><tbody><tr><td><p>default</p>
-</td><td><p>Lorem ipsum dolor sit amet</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>foo</p>
-</td><td><p>Lorem ipsum dolor sit amet</p>
-</td><td><p>foo<br>
-bar</p>
-</td></tr></tbody></table></div>
+
+                            <ul>
+                                <li><code>value: string</code> &#8212; Lorem ipsum</li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code>obsolete</code>
+                            <span class="docs-tag docs-tag--deprecated">Deprecated</span>
+                        </dt>
+                        <dd>
+                            <p>Lorem ipsum dolor sit amet</p>
+
+                            <ul>
+                                <li><code>value: string</code> &#8212; Lorem ipsum</li>
+                            </ul>
+                            <p>Deprecated: Will be gone later.</code></p>
+                        </dd>
+                    
+        </dl>
+
+        <div class="docs-table">
+            <table>
+                <caption>
+                    Events
+                </caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                                <tr>
+                                    <td class="docs-table__event-name">
+                                        <code>change</code>
+                                        
+                                    </td>
+                                    <td class="docs-table__event-description">
+                                        <p>Lorem ipsum
+dolor sit amet</p>
+
+                                        <ul>
+                                            <li><code>id: number</code> &#8212; Lorem ipsum</li><li><code>value: undefined</code> &#8212; Lorem ipsum</li>
+                                        </ul>
+                                        
+                                    </td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="docs-table__event-name">
+                                        <code>update</code>
+                                        
+                                    </td>
+                                    <td class="docs-table__event-description">
+                                        <p>Lorem ipsum
+dolor sit amet</p>
+
+                                        <ul>
+                                            <li><code>value: string</code> &#8212; Lorem ipsum</li>
+                                        </ul>
+                                        
+                                    </td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="docs-table__event-name">
+                                        <code>obsolete</code>
+                                        <span class="docs-tag docs-tag--deprecated">Deprecated</span>
+                                    </td>
+                                    <td class="docs-table__event-description">
+                                        <p>Lorem ipsum dolor sit amet</p>
+
+                                        <ul>
+                                            <li><code>value: string</code> &#8212; Lorem ipsum</li>
+                                        </ul>
+                                        <p>Deprecated: Will be gone later.</code></p>
+                                    </td>
+                                </tr>
+                            
+                </tbody>
+            </table>
+        </div>
+    
+        <h3>Slots</h3>
+        <dl class="docs-table">
+            
+                        <dt>
+                            <code>default</code>
+                            
+                        </dt>
+                        <dd>
+                            <p>Lorem ipsum dolor sit amet</p>
+
+                            <ul>
+                                
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code>foo</code>
+                            
+                        </dt>
+                        <dd>
+                            <p>Lorem ipsum dolor sit amet</p>
+
+                            <ul>
+                                <li><code>foo: number</code> &#8212; Lorem ipsum dolor sit amet</li><li><code>bar: number</code> &#8212; Lorem ipsum dolor sit amet</li><li><code>baz: unknown</code></li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code>obsolete</code>
+                            <span class="docs-tag docs-tag--deprecated">Deprecated</span>
+                        </dt>
+                        <dd>
+                            <p>Lorem ipsum dolor sit amet.</p>
+
+                            <ul>
+                                
+                            </ul>
+                            <p>Deprecated: Use another slot instead.</code></p>
+                        </dd>
+                    
+        </dl>
+
+        <div class="docs-table">
+            <table>
+                <caption>
+                    Slots
+                </caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                                <tr>
+                                    <td class="docs-table__slot-name">
+                                        <code>default</code>
+                                        
+                                    </td>
+                                    <td class="docs-table__slot-description">
+                                        <p>Lorem ipsum dolor sit amet</p>
+
+                                        <ul>
+                                            
+                                        </ul>
+                                        
+                                    </td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="docs-table__slot-name">
+                                        <code>foo</code>
+                                        
+                                    </td>
+                                    <td class="docs-table__slot-description">
+                                        <p>Lorem ipsum dolor sit amet</p>
+
+                                        <ul>
+                                            <li><code>foo: number</code> &#8212; Lorem ipsum dolor sit amet</li><li><code>bar: number</code> &#8212; Lorem ipsum dolor sit amet</li><li><code>baz: unknown</code></li>
+                                        </ul>
+                                        
+                                    </td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="docs-table__slot-name">
+                                        <code>obsolete</code>
+                                        <span class="docs-tag docs-tag--deprecated">Deprecated</span>
+                                    </td>
+                                    <td class="docs-table__slot-description">
+                                        <p>Lorem ipsum dolor sit amet.</p>
+
+                                        <ul>
+                                            
+                                        </ul>
+                                        <p>Deprecated: Use another slot instead.</code></p>
+                                    </td>
+                                </tr>
+                            
+                </tbody>
+            </table>
+        </div>
+    
 
                     </div>
                 </main>
@@ -720,9 +929,9 @@ bar</p>
             
         ></script>
         <script
-            src="../../assets/processors/selectable-version/select-version-a50f85.js"
+            src="../../assets/processors/selectable-version/select-version-9cb378.js"
             crossorigin
-            integrity="sha384-OZBGGIH8q6TKvyizlAWmc/oI1LxioWrDRX+5pAgwYDss5Km5pZAjvc0fbzZvToL/"
+            integrity="sha384-nqqecMKmImtkAtGouQlnGocGEDD1ynbf7SPQEdQx1m2TUpXSy7Nj6KTId78/09Jq"
             
         ></script>
         <script
