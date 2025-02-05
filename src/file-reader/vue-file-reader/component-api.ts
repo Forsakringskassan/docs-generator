@@ -1,28 +1,42 @@
+/**
+ * @internal
+ */
 export interface ComponentAPI {
-    props: ComponentProp[];
-    slots: ComponentSlot[];
-    events: ComponentEvent[];
+    readonly props: ComponentProp[];
+    readonly slots: ComponentSlot[];
+    readonly events: ComponentEvent[];
 }
 
+/**
+ * @internal
+ */
 export interface ComponentProp {
     name: string;
-    description: string;
-    type: string;
-    required: string;
-    default: string;
-    deprecated: string;
+    readonly description: string | null;
+    readonly type: string | null;
+    readonly required: boolean;
+    readonly default: { value: string } | null;
+    readonly deprecated: string | null;
 }
 
 export interface ComponentSlot {
-    name: string;
-    description: string;
-    bindings: string;
-    deprecated: string;
+    readonly name: string;
+    readonly description: string | null;
+    readonly bindings: Array<{
+        name: string;
+        type: string;
+        description: string | null;
+    }>;
+    readonly deprecated: string | null;
 }
 
 export interface ComponentEvent {
-    name: string;
-    description: string;
-    properties: string;
-    deprecated: string;
+    readonly name: string;
+    readonly description: string | null;
+    readonly properties: Array<{
+        name: string;
+        type: string;
+        description: string | null;
+    }>;
+    readonly deprecated: string | null;
 }

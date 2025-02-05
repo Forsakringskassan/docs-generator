@@ -2,33 +2,10 @@ import path from "node:path";
 import { type Document } from "../../document";
 import { normalizePath } from "../../utils";
 import { translateAPI } from "./translate-api";
-import {
-    ComponentAPI,
-    ComponentProp,
-    ComponentEvent,
-    ComponentSlot,
-} from "./component-api";
-import { generateTable } from "./generate-table";
-
-function capitalize(text: string): string {
-    return `${text.charAt(0).toUpperCase()}${text.slice(1)}`;
-}
-
-function parseAPIToArray(
-    api: ComponentProp[] | ComponentEvent[] | ComponentSlot[],
-): string[][] {
-    const content = [];
-
-    const headers = Object.keys(api[0]);
-    const capitalizedHeaders = headers.map(capitalize);
-    content.push(capitalizedHeaders);
-
-    for (const row of api) {
-        content.push(Object.values(row));
-    }
-
-    return content;
-}
+import { type ComponentAPI } from "./component-api";
+import { generatePropTable } from "./generate-prop-table";
+import { generateEventTable } from "./generate-event-table";
+import { generateSlotTable } from "./generate-slot-table";
 
 function parseAPI(filePath: string, api: ComponentAPI): Document {
     const relative = normalizePath(filePath);
@@ -37,16 +14,13 @@ function parseAPI(filePath: string, api: ComponentAPI): Document {
 
     let html = "";
     if (api.props.length) {
-        const propsArray = parseAPIToArray(api.props);
-        html += generateTable("Props", propsArray[0], propsArray.slice(1));
+        html += generatePropTable(api.props);
     }
     if (api.events.length) {
-        const eventsArray = parseAPIToArray(api.events);
-        html += generateTable("Events", eventsArray[0], eventsArray.slice(1));
+        html += generateEventTable(api.events);
     }
     if (api.slots.length) {
-        const slotsArray = parseAPIToArray(api.slots);
-        html += generateTable("Slots", slotsArray[0], slotsArray.slice(1));
+        html += generateSlotTable(api.slots);
     }
 
     return {
