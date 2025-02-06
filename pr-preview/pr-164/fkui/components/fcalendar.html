@@ -12,24 +12,17 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../assets/docs-77a8c4.css"
+            href="../assets/docs-1e12c3.css"
             crossorigin
-            integrity="sha384-na5g/a/B8tXzkEtF+h1E7D73qUOmICwb9Opv5ilQqH2+pMbEzwV5nmK+8Sl9urg8"
+            integrity="sha384-E071jYzDEnCnvAnlMLw6U+M/t6zkSRCwJaSkHHoSTvfnB+MhPFPjazJEuao67CwW"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-exp-279088.css"
+            href="../assets/docs-fkui-52e1a9.css"
             crossorigin
-            integrity="sha384-W3umVqAEQAgGku+pP8APYrfnpXJkvCVu3pGfT+z8F3EFBw2AO3g38AFHNqRhw5SO"
-            data-theme="exp" disabled
-        />
-        <link
-            rel="stylesheet"
-            href="../assets/docs-int-0f5026.css"
-            crossorigin
-            integrity="sha384-f9PI88lkxzw1GYwKgsrqrVYzJEchP7DDh2lqVo3mC8nJ29J8d2pKQiSwH+nxQtAY"
-            data-theme="int" disabled
+            integrity="sha384-rspiNp3JPP16s0KDSmVa5bF81bgjjE/Wx+e6N4L2/pE1uFjjPEsS/v5sE6Mm7fOu"
+            data-theme="fkui" disabled
         />
 
         <!-- prettier-ignore -->
@@ -42,17 +35,6 @@
 
         <!-- prettier-ignore -->
         <script>
-    function themeRenderBlocker() {
-        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
-        const style = Array.from(document.querySelectorAll("[data-theme]"));
-        for (const el of style) {
-            el.disabled = el.dataset.theme !== theme;
-        }
-    }
-
-    themeRenderBlocker();
-</script>
-<script>
     (() => {
         withCookieConsent(() =>  {
             const allowedHostnames = [
@@ -245,55 +227,6 @@
             >Sök <kbd>ctrl-k</kbd>
         </button>
     </form>
-</div>
-<div class="toolbar__item">
-    <div class="select-field" style="visibility: hidden">
-        <label for="fkds-theme-select" class="label sr-only"> Tema </label>
-        <div class="select-field__icon-wrapper">
-            <select id="fkds-theme-select" class="select-field__select">
-                <option value="exp">Försäkringskassan</option>
-                <option value="int">FK Hapo</option>
-            </select>
-            <svg focusable="false" class="icon select-field__icon">
-                <use xlink:href="#docs-icon-arrow-down"></use>
-            </svg>
-        </div>
-    </div>
-
-    <script>
-        function themeSelector() {
-            function getSelectedTheme(key) {
-                return window.localStorage.getItem(key) ?? "exp";
-            }
-
-            function saveSelectedTheme(key, value) {
-                window.localStorage.setItem(key, value);
-            }
-
-            function enableTheme(theme) {
-                const style = Array.from(document.querySelectorAll("[data-theme]"));
-                for (const el of style) {
-                    el.disabled = el.dataset.theme !== theme;
-                }
-            }
-
-            const el = document.querySelector("#fkds-theme-select");
-            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
-            el.addEventListener("change", () => {
-                const theme = el.value;
-                saveSelectedTheme("fkds-theme", theme);
-                enableTheme(theme);
-            });
-
-            const selected = getSelectedTheme("fkds-theme");
-            enableTheme(selected);
-            el.value = selected;
-
-            wrapper.style.visibility = null;
-        }
-
-        themeSelector();
-    </script>
 </div>
 </div>
             </div>
@@ -1101,13 +1034,13 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/59183c09166fefdd4e3ada6964660fbbe870b296/packages/vue/src/components/FCalendar/FCalendar.vue">FCalendar</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/466cc2eb00bf0222c6f96f64da66f5ce47af9e24/packages/vue/src/components/FCalendar/FCalendar.vue">FCalendar</a>
             
         </code>
         ,  
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/59183c09166fefdd4e3ada6964660fbbe870b296/packages/vue/src/components/FCalendar/FCalendarDay.vue">FCalendarDay</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/466cc2eb00bf0222c6f96f64da66f5ce47af9e24/packages/vue/src/components/FCalendar/FCalendarDay.vue">FCalendarDay</a>
             
         </code>
          
@@ -1237,7 +1170,7 @@
                     id="example-5a051b"
                     class="code-preview code-preview--default"
                     
-                    data-tags=static
+                    data-tags="static"
                     data-language="html"
                 >
                     
@@ -1682,9 +1615,9 @@ is-focused</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/inter (<a href="https://github.com/Forsakringskassan/designsystem/commits/59183c09166fefdd4e3ada6964660fbbe870b296">59183c0</a>)<br />
+    feature/inter (<a href="https://github.com/Forsakringskassan/designsystem/commits/466cc2eb00bf0222c6f96f64da66f5ce47af9e24">466cc2e</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/164">PR 164</a><br />
-        2025-02-05 19:08
+        2025-02-06 07:39
 </div>
 <div class="toolbar__item">
     <form id="version">

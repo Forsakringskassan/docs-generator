@@ -9,24 +9,17 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../assets/docs-77a8c4.css"
+            href="../assets/docs-1e12c3.css"
             crossorigin
-            integrity="sha384-na5g/a/B8tXzkEtF+h1E7D73qUOmICwb9Opv5ilQqH2+pMbEzwV5nmK+8Sl9urg8"
+            integrity="sha384-E071jYzDEnCnvAnlMLw6U+M/t6zkSRCwJaSkHHoSTvfnB+MhPFPjazJEuao67CwW"
             
         />
         <link
             rel="stylesheet"
-            href="../assets/docs-exp-279088.css"
+            href="../assets/docs-fkui-52e1a9.css"
             crossorigin
-            integrity="sha384-W3umVqAEQAgGku+pP8APYrfnpXJkvCVu3pGfT+z8F3EFBw2AO3g38AFHNqRhw5SO"
-            data-theme="exp" disabled
-        />
-        <link
-            rel="stylesheet"
-            href="../assets/docs-int-0f5026.css"
-            crossorigin
-            integrity="sha384-f9PI88lkxzw1GYwKgsrqrVYzJEchP7DDh2lqVo3mC8nJ29J8d2pKQiSwH+nxQtAY"
-            data-theme="int" disabled
+            integrity="sha384-rspiNp3JPP16s0KDSmVa5bF81bgjjE/Wx+e6N4L2/pE1uFjjPEsS/v5sE6Mm7fOu"
+            data-theme="fkui" disabled
         />
 
         <!-- prettier-ignore -->
@@ -39,17 +32,6 @@
 
         <!-- prettier-ignore -->
         <script>
-    function themeRenderBlocker() {
-        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
-        const style = Array.from(document.querySelectorAll("[data-theme]"));
-        for (const el of style) {
-            el.disabled = el.dataset.theme !== theme;
-        }
-    }
-
-    themeRenderBlocker();
-</script>
-<script>
     (() => {
         withCookieConsent(() =>  {
             const allowedHostnames = [

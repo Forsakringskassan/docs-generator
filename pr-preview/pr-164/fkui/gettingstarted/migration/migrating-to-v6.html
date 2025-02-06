@@ -12,24 +12,17 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-77a8c4.css"
+            href="../../assets/docs-1e12c3.css"
             crossorigin
-            integrity="sha384-na5g/a/B8tXzkEtF+h1E7D73qUOmICwb9Opv5ilQqH2+pMbEzwV5nmK+8Sl9urg8"
+            integrity="sha384-E071jYzDEnCnvAnlMLw6U+M/t6zkSRCwJaSkHHoSTvfnB+MhPFPjazJEuao67CwW"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-exp-279088.css"
+            href="../../assets/docs-fkui-52e1a9.css"
             crossorigin
-            integrity="sha384-W3umVqAEQAgGku+pP8APYrfnpXJkvCVu3pGfT+z8F3EFBw2AO3g38AFHNqRhw5SO"
-            data-theme="exp" disabled
-        />
-        <link
-            rel="stylesheet"
-            href="../../assets/docs-int-0f5026.css"
-            crossorigin
-            integrity="sha384-f9PI88lkxzw1GYwKgsrqrVYzJEchP7DDh2lqVo3mC8nJ29J8d2pKQiSwH+nxQtAY"
-            data-theme="int" disabled
+            integrity="sha384-rspiNp3JPP16s0KDSmVa5bF81bgjjE/Wx+e6N4L2/pE1uFjjPEsS/v5sE6Mm7fOu"
+            data-theme="fkui" disabled
         />
 
         <!-- prettier-ignore -->
@@ -42,17 +35,6 @@
 
         <!-- prettier-ignore -->
         <script>
-    function themeRenderBlocker() {
-        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
-        const style = Array.from(document.querySelectorAll("[data-theme]"));
-        for (const el of style) {
-            el.disabled = el.dataset.theme !== theme;
-        }
-    }
-
-    themeRenderBlocker();
-</script>
-<script>
     (() => {
         withCookieConsent(() =>  {
             const allowedHostnames = [
@@ -245,55 +227,6 @@
             >Sök <kbd>ctrl-k</kbd>
         </button>
     </form>
-</div>
-<div class="toolbar__item">
-    <div class="select-field" style="visibility: hidden">
-        <label for="fkds-theme-select" class="label sr-only"> Tema </label>
-        <div class="select-field__icon-wrapper">
-            <select id="fkds-theme-select" class="select-field__select">
-                <option value="exp">Försäkringskassan</option>
-                <option value="int">FK Hapo</option>
-            </select>
-            <svg focusable="false" class="icon select-field__icon">
-                <use xlink:href="#docs-icon-arrow-down"></use>
-            </svg>
-        </div>
-    </div>
-
-    <script>
-        function themeSelector() {
-            function getSelectedTheme(key) {
-                return window.localStorage.getItem(key) ?? "exp";
-            }
-
-            function saveSelectedTheme(key, value) {
-                window.localStorage.setItem(key, value);
-            }
-
-            function enableTheme(theme) {
-                const style = Array.from(document.querySelectorAll("[data-theme]"));
-                for (const el of style) {
-                    el.disabled = el.dataset.theme !== theme;
-                }
-            }
-
-            const el = document.querySelector("#fkds-theme-select");
-            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
-            el.addEventListener("change", () => {
-                const theme = el.value;
-                saveSelectedTheme("fkds-theme", theme);
-                enableTheme(theme);
-            });
-
-            const selected = getSelectedTheme("fkds-theme");
-            enableTheme(selected);
-            el.value = selected;
-
-            wrapper.style.visibility = null;
-        }
-
-        themeSelector();
-    </script>
 </div>
 </div>
             </div>
@@ -601,6 +534,8 @@
                                 
                                 <li><a href="#validationservice">ValidationService</a></li>
                                 
+                                <li><a href="#tillampnings_specifika_leverabler_borttagna">Tillämpnings-specifika leverabler borttagna</a></li>
+                                
                             </ul>
                         </details>
                         
@@ -658,11 +593,16 @@
 <ul>
 <li><code>personnummer</code></li>
 </ul>
+<p>Tillämpnings-specifika leverabler (internt, externt, HAPO) har ersatts av rena FKUI-leverabler:</p>
+<ul>
+<li>paketet <code>@fkui/css-variables</code> har bytt namn till <code>@fkui/theme-default</code> och levererar ett standardtema</li>
+<li>paketet <code>@fkui/design</code> levererar enbart standarddesign</li>
+</ul>
 <h2 id="fkui_logic"><a class="header-anchor" href="#fkui_logic"><code>@fkui/logic</code></a></h2><p>Den deprekerade konstanten <code>DATE_REGEXP_WITH_DASH</code> är borttagen och ersatt med <code>FDate</code> klassen från <code>@fkui/date</code>.</p>
 <p>Exempelvis om du använder konstanten för att testa om ett datum är giltigt format använd <code>.isValid(..)</code> metoden:</p>
 
                 <div
-                    id="example-3d90bc"
+                    id="example-79794b"
                     class="code-preview code-preview--default"
                     
                     
@@ -680,7 +620,7 @@
 <p>Om du använder den för att ta bort whitespace från text ersätt med <code>stripWhitespace</code>:</p>
 
                 <div
-                    id="example-8ac47a"
+                    id="example-1d0091"
                     class="code-preview code-preview--default"
                     
                     
@@ -700,7 +640,7 @@ Funktionen var en placeholder som inte gjorde något och anrop kan därför tas 
 Om du använder denna behöver du implementera logiken själv:</p>
 
                 <div
-                    id="example-573ad7"
+                    id="example-a3833d"
                     class="code-preview code-preview--default"
                     
                     
@@ -718,7 +658,7 @@ Använd <code>timeLimitSeconds</code> istället.</p>
 <h3 id="polyfill"><a class="header-anchor" href="#polyfill">Polyfill</a></h3><p>Den deprekerade entrypointen <code>@fkui/logic/lib/polyfills</code> är borttagen och ersatt med <code>@fkui/logic/polyfills</code>.</p>
 
                 <div
-                    id="example-9fbf11"
+                    id="example-3f7acb"
                     class="code-preview code-preview--default"
                     
                     
@@ -737,7 +677,7 @@ Använd <code>timeLimitSeconds</code> istället.</p>
 <p>Om du använder någon av dessa slottar i din modalkomponent, ersätt dem med propen enligt:</p>
 
                 <div
-                    id="example-be20d4"
+                    id="example-a89191"
                     class="code-preview code-preview--default"
                     
                     
@@ -775,7 +715,7 @@ Använd <code>timeLimitSeconds</code> istället.</p>
 <h2 id="fpageheader_skiplink"><a class="header-anchor" href="#fpageheader_skiplink"><code>FPageHeader</code> skiplink</a></h2><p>Den deprekerade propen <code>skipLinkHref</code> är borttagen och ersatt med propen <code>skipLink</code>.</p>
 
                 <div
-                    id="example-c58f3f"
+                    id="example-9e3814"
                     class="code-preview code-preview--default"
                     
                     
@@ -793,7 +733,7 @@ Detta påverkar endast dig som använder stylingen direkt, använder man <code>@
 Klasserna är ersatta med <code>modal__dialog-container--large</code> respektive <code>modal__dialog-container--fullscreen</code>.</p>
 
                 <div
-                    id="example-9881e9"
+                    id="example-b6e7fc"
                     class="code-preview code-preview--default"
                     
                     
@@ -807,7 +747,7 @@ Klasserna är ersatta med <code>modal__dialog-container--large</code> respektive
             <h2 id="gettextfromscopedslot"><a class="header-anchor" href="#gettextfromscopedslot"><code>getTextFromScopedSlot</code></a></h2><p>Den deprekerade funktionen <code>getTextFromScopedSlot(..)</code> har tagits bort och är ersatt med <a href="../../functions/functions/render-slot-text.html"><code>renderSlotText(..)</code></a>.</p>
 
                 <div
-                    id="example-1255dd"
+                    id="example-4d39fe"
                     class="code-preview code-preview--default"
                     
                     
@@ -827,7 +767,7 @@ Klasserna är ersatta med <code>modal__dialog-container--large</code> respektive
         <h2 id="fkuiconfig_modaltarget_och_fkuiconfig_popuptarget"><a class="header-anchor" href="#fkuiconfig_modaltarget_och_fkuiconfig_popuptarget"><code>FKUIConfig.modalTarget</code> och <code>FKUIConfig.popupTarget</code></a></h2><p>De deprekerade egenskaperna <code>FKUIConfig.modalTarget</code> och <code>FKUIConfig.popupTarget</code> är borttagna och ersatta med den kombinerade <code>FKUIConfig.teleportTarget</code>.</p>
 
                 <div
-                    id="example-4b06b7"
+                    id="example-a2dff4"
                     class="code-preview code-preview--default"
                     
                     
@@ -868,7 +808,7 @@ Ej att förväxla med tredjeparts kommando/assertion med samma namn som med för
 Då metoden inte fungerar i normalfallet finns ingen direkt ersättare, om man använder metoden så ska man rätta sin selector och använda <code>.el()</code>.</p>
 
                 <div
-                    id="example-068288"
+                    id="example-eedf95"
                     class="code-preview code-preview--default"
                     
                     
@@ -885,7 +825,7 @@ Då metoden inte fungerar i normalfallet finns ingen direkt ersättare, om man a
 Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare utan får antingen använda <code>.content()</code> för att hämta ut hela innehållet i slotten eller använda en egen selector.</p>
 
                 <div
-                    id="example-5ef737"
+                    id="example-75912f"
                     class="code-preview code-preview--default"
                     
                     
@@ -899,7 +839,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
             <h3 id="fnavigationmenupageobject_menu_metoden"><a class="header-anchor" href="#fnavigationmenupageobject_menu_metoden"><code>FNavigationMenuPageobject.menu()</code> metoden</a></h3><p>Den deprekerade metoden <code>FNavigationMenuPageobject.menu()</code> är borttagen och ersatt med direkta metoder på <code>FNavigationMenuPageobject</code>.</p>
 
                 <div
-                    id="example-e42496"
+                    id="example-f1b2a0"
                     class="code-preview code-preview--default"
                     
                     
@@ -913,7 +853,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
             <h3 id="ftooltippageobject_content_methoden"><a class="header-anchor" href="#ftooltippageobject_content_methoden"><code>FTooltipPageObject.content()</code> methoden</a></h3><p>Den deprekerade metoden <code>FTooltipPageObject.content()</code> har tagits bort och är ersatt med direkta metoder på <code>FTooltipPageObject</code>.</p>
 
                 <div
-                    id="example-68a1af"
+                    id="example-2faf4e"
                     class="code-preview code-preview--default"
                     
                     
@@ -926,7 +866,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
                 </div>
             
                 <div
-                    id="example-f8165b"
+                    id="example-d04666"
                     class="code-preview code-preview--default"
                     
                     
@@ -939,7 +879,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
                 </div>
             
                 <div
-                    id="example-1f5a6f"
+                    id="example-68c24e"
                     class="code-preview code-preview--default"
                     
                     
@@ -952,7 +892,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
                 </div>
             
                 <div
-                    id="example-03eef0"
+                    id="example-9ae058"
                     class="code-preview code-preview--default"
                     
                     
@@ -972,7 +912,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
         <h2 id="validationservice"><a class="header-anchor" href="#validationservice">ValidationService</a></h2><h3 id="validator_personnummer"><a class="header-anchor" href="#validator_personnummer">Validator <code>personnummer</code></a></h3><p>Den deprekerade validatorn <code>personnummer</code> är borttagen och ersätts med validatorerna <a href="../../components/validation/validators.html#personnummer_format_personnummerformat"><code>personnummerFormat</code></a> och <a href="../../components/validation/validators.html#personnummer_checksumma_personnummerluhn"><code>personnummerLuhn</code></a>.</p>
 
                 <div
-                    id="example-888b28"
+                    id="example-8e9960"
                     class="code-preview code-preview--default"
                     
                     
@@ -984,6 +924,45 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
 <span class="hljs-deletion">-       v-validation.personnummer</span>
 <span class="hljs-addition">+       v-validation.personnummerFormat.personnummerLuhn</span>
     &gt;
+</code></pre>
+                </div>
+            <h2 id="tillampnings_specifika_leverabler_borttagna"><a class="header-anchor" href="#tillampnings_specifika_leverabler_borttagna">Tillämpnings-specifika leverabler borttagna</a></h2><p>FKUI tillhandahåller istället standardleverabler för tema, design.
+Som konsument finns det möjlighet att själv tillhandahålla specifika tillämpningar.</p>
+
+                <div
+                    id="example-424144"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0">@import &quot;@fkui/design/src/fkui-int&quot;;
+@import &quot;@fkui/css-variables/dist/fkui-int-css-variables&quot;;
+
+```diff
+<span class="hljs-deletion">-@use &quot;@fkui/css-variables/dist/fkui-int-css-variables&quot;;</span>
+<span class="hljs-addition">+@use &quot;@fkui/theme-default/dist/fkui-css-variables&quot;;</span>
+
+<span class="hljs-deletion">-@use &quot;@fkui/design/src/fkui-int&quot;;</span>
+<span class="hljs-addition">+@use &quot;@fkui/design/src/fkui&quot;;</span>
+</code></pre>
+                </div>
+            <h3 id="deprekerade_css_variabler_exluderade_fran_standardtema"><a class="header-anchor" href="#deprekerade_css_variabler_exluderade_fran_standardtema">Deprekerade CSS-variabler exluderade från standardtema</a></h3><p>Möjlighet finns att importera separat vid behov.</p>
+
+                <div
+                    id="example-ce372d"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="scss"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-scss" tabindex="0"><span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;@fkui/theme-default/src/deprecated-css-variables&quot;</span> as *;
+
+<span class="hljs-selector-pseudo">:root</span> {
+    <span class="hljs-keyword">@include</span> deprecated-variables;
+}
 </code></pre>
                 </div>
             
@@ -1007,9 +986,9 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/inter (<a href="https://github.com/Forsakringskassan/designsystem/commits/59183c09166fefdd4e3ada6964660fbbe870b296">59183c0</a>)<br />
+    feature/inter (<a href="https://github.com/Forsakringskassan/designsystem/commits/466cc2eb00bf0222c6f96f64da66f5ce47af9e24">466cc2e</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/164">PR 164</a><br />
-        2025-02-05 19:08
+        2025-02-06 07:39
 </div>
 <div class="toolbar__item">
     <form id="version">
