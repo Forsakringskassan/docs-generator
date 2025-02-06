@@ -1,4 +1,5 @@
 import markdownIt from "markdown-it";
+import { htmlencode, slugify } from "../../utils";
 import { type ComponentProp } from "./component-api";
 
 const md = markdownIt();
@@ -27,13 +28,14 @@ export function generatePropTable(
             ${props
                 .map((prop) => {
                     const { name } = prop;
-                    const id = `${slug}-slot-${name}`;
+                    const id = `${slug}-slot-${slugify(name)}`;
                     return /* HTML */ `
                         <dt>
                             <code id="${id}"
                                 ><a class="docs-api__anchor" href="#${id}"
-                                    ><span class="docs-api__name">${name}</span
-                                    >: ${prop.type}</a
+                                    ><span class="docs-api__name"
+                                        >${htmlencode(name)}</span
+                                    >: ${htmlencode(prop.type ?? "unknown")}</a
                                 ></code
                             >
                             ${prop.required
@@ -46,7 +48,7 @@ export function generatePropTable(
                         <dd>
                             ${render(prop.description)}
                             ${prop.default
-                                ? `<p class="doc-api__item">Default: <code>${prop.default.value}</code></p>`
+                                ? `<p class="doc-api__item">Default: <code>${htmlencode(prop.default.value)}</code></p>`
                                 : ""}
                             ${prop.deprecated
                                 ? `<p class="doc-api__item docs-deprecated">Deprecated: ${renderInline(prop.deprecated)}</p>`
