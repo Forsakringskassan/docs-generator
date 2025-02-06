@@ -7,6 +7,9 @@
         <title>{{ doc.attributes.title }} - {{ site.name }}</title>
 
         <!-- prettier-ignore -->
+        {% container "head:early" %}
+
+        <!-- prettier-ignore -->
         {%- for asset in injectHead | take("type", "css") %}
         <link
             rel="stylesheet"

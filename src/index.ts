@@ -49,6 +49,7 @@ export { processorRuntimeName } from "./processor-runtime-name";
 export { type ProcessorStage } from "./processor-stage";
 export {
     type ExtractExamplesOptions,
+    type FontInterOptions,
     type ManifestProcessorOptions,
     type MOTDOptions,
     type TopnavEntry,
@@ -56,6 +57,7 @@ export {
     type SelectableVersionProcessorOptions,
     type SourceUrlProcessorOptions,
     extractExamplesProcessor,
+    fontInterProcessor,
     htmlRedirectProcessor,
     manifestProcessor,
     motdProcessor,
