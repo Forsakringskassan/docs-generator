@@ -46,6 +46,7 @@ function getSource(
 ): { source: string; language: string } {
     const compare = findTag(tags, "compare");
     if (compare && compare.value !== null) {
+        const { value: context } = findTag(tags, "context") ?? {};
         const reference = namedExamples.get(compare.value);
         if (!reference) {
             throw new Error(
@@ -54,7 +55,9 @@ function getSource(
         }
         const a = transformCode(reference.content, reference.language);
         const b = transformCode(content, language);
-        const diff = createTwoFilesPatch("a", "b", a, b)
+        const diff = createTwoFilesPatch("a", "b", a, b, "", "", {
+            context: context ? parseInt(context, 10) : 3,
+        })
             .split("\n")
             .slice(3) // remove header
             .filter((it) => !it.startsWith("@@")) // remove location
