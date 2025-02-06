@@ -28,7 +28,7 @@ export function generatePropTable(
             ${props
                 .map((prop) => {
                     const { name } = prop;
-                    const id = `${slug}-slot-${slugify(name)}`;
+                    const id = `${slug}-prop-${slugify(name)}`;
                     return /* HTML */ `
                         <dt>
                             <code id="${id}"
