@@ -7,6 +7,7 @@ export interface MarkdownNamedExample {
     name: string;
     tags: string[];
     content: string;
+    language: string;
 }
 
 /**
