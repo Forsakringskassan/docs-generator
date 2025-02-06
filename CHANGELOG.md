@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.17.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.16.1...v2.17.0) (2025-02-06)
+
+### Features
+
+* nicer rendering of vue documentation (props, events, slots) ([480b0a5](https://github.com/Forsakringskassan/docs-generator/commit/480b0a53cad730585cb81f7d5e15584408425221))
+
 ## [2.16.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.16.0...v2.16.1) (2025-02-05)
 
 ### Bug Fixes
