@@ -1,0 +1,3 @@
+# contains malformed nested <a> tags, need to fix the changelog generation to
+# output valid markup
+public/changelog.html

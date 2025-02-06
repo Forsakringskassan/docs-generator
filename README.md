@@ -150,13 +150,12 @@ See {@link MyAwesomeComponent} for details or the {@link getting-started getting
 will be rendered as:
 
 ```html
-See
-<a href="./components/my-awesome-component.html"
-    >MyAwesomeComponent<a>
-        for details or the
-        <a href="../guides/getting-started.html">getting started guide</a>.</a
-    ></a
->
+<p>
+    See
+    <a href="./components/my-awesome-component.html">MyAwesomeComponent</a> for
+    details or the
+    <a href="../guides/getting-started.html">getting started guide</a>.
+</p>
 ```
 
 The ID can be either the document identifier, name or one of the aliases.
