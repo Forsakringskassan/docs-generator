@@ -115,7 +115,7 @@ Pages sharing the same `sortorder` or when `sortorder` is omitted are sorted alp
 - `title: Barney`, - Appears last, sorted alphabetically
 - `title: Fred`, - Appears last, sorted alphabetically
 
-## Title
+## Page title
 
 Normally the title shown in the navigation is read from the `title` attribute of the document.
 If the `shortTitle` attribute is set it is used instead.

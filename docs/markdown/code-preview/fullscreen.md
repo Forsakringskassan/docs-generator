@@ -21,7 +21,7 @@ This will render the following:
 <p>Lorem ipsum</p>
 ```
 
-### Template
+## Template
 
 The `template/example.template.html` file can be overridden to wrap the examples in additional elements, e.g:
 
