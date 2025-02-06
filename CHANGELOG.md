@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## [2.18.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.17.1...v2.18.0) (2025-02-06)
+
+### Features
+
+* support custom number of context lines for generated diff ([5bfd6e1](https://github.com/Forsakringskassan/docs-generator/commit/5bfd6e18e1b49f72f51ba03868c443c7d298c807))
+* support manifest verification ([4b31769](https://github.com/Forsakringskassan/docs-generator/commit/4b31769d5a7ec684f584a7b8fb7bede45e20960b))
+
+### Bug Fixes
+
+* handle snippets if generated diffs ([355b0a0](https://github.com/Forsakringskassan/docs-generator/commit/355b0a03f4e2065882b84c99a7f750f3ca6e551f))
+* only remove first chunk marker in generated diffs ([38c8019](https://github.com/Forsakringskassan/docs-generator/commit/38c8019f30b76a824a5467ce6e665b65a706533b))
+
 ## [2.17.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.17.0...v2.17.1) (2025-02-06)
 
 ### Bug Fixes
