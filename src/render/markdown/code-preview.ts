@@ -59,8 +59,7 @@ function getSource(
             context: context ? parseInt(context, 10) : 3,
         })
             .split("\n")
-            .slice(3) // remove header
-            .filter((it) => !it.startsWith("@@")) // remove location
+            .slice(4) // remove header
             .join("\n");
         return {
             source: diff,
