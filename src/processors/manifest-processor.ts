@@ -16,6 +16,10 @@ export interface ManifestProcessorOptions {
 
     /** If set, the manifest will be written as JSON to this destination */
     json?: string;
+
+    /** If set to `true` the markdown manifest will be verified instead of
+     * written (typically enabled during CI) */
+    verify?: boolean;
 }
 
 function line(page: ManifestPage): string {
@@ -42,6 +46,29 @@ function renderJSON(manifest: Manifest): string {
     return JSON.stringify(manifest, null, 2);
 }
 
+function normalize(text: string): string {
+    return text.replace(/\r\n/g, "\n");
+}
+
+class ManifestError extends Error {
+    private readonly filename: string;
+
+    public constructor(filename: string) {
+        super(`Documentation manifest "${filename}" is not up-to-date!`);
+        this.filename = filename;
+    }
+
+    public prettyError(): string {
+        const { filename, message } = this;
+
+        return [
+            message,
+            "",
+            `Run the build locally and commit the content of "${filename}".`,
+        ].join("\n");
+    }
+}
+
 /**
  * Write out a manifest listing all generated documents that will be present in
  * `outputFolder`.
@@ -51,7 +78,7 @@ function renderJSON(manifest: Manifest): string {
 export function manifestProcessor(
     options: ManifestProcessorOptions = {},
 ): Processor {
-    const { markdown, json } = options;
+    const { markdown, json, verify } = options;
     return {
         name: "manifestProcessor",
         before: "render",
@@ -63,8 +90,17 @@ export function manifestProcessor(
             });
             const manifest: Manifest = { pages };
             if (markdown) {
-                const content = renderMarkdown(manifest);
-                await fs.writeFile(markdown, content, "utf-8");
+                const content = normalize(renderMarkdown(manifest));
+                if (verify) {
+                    const actual = normalize(
+                        await fs.readFile(markdown, "utf-8"),
+                    );
+                    if (actual !== content) {
+                        throw new ManifestError(markdown);
+                    }
+                } else {
+                    await fs.writeFile(markdown, content, "utf-8");
+                }
             }
             if (json) {
                 const content = renderJSON(manifest);
