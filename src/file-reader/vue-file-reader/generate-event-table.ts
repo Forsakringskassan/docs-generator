@@ -1,4 +1,5 @@
 import markdownIt from "markdown-it";
+import { htmlencode, slugify } from "../../utils";
 import { type ComponentEvent } from "./component-api";
 
 const md = markdownIt();
@@ -28,14 +29,14 @@ export function generateEventTable(
             ${events
                 .map((event) => {
                     const { name } = event;
-                    const id = `${slug}-event-${name}`;
+                    const id = `${slug}-event-${slugify(name)}`;
                     const haveProperties = event.properties.length > 0;
                     return /* HTML */ `
                         <dt>
                             <code id="${id}"
                                 ><a class="docs-api__anchor" href="#${id}"
                                     ><span class="docs-api__name"
-                                        >${name}</span
+                                        >${htmlencode(name)}</span
                                     ></a
                                 ></code
                             >
@@ -51,9 +52,9 @@ export function generateEventTable(
                             ${event.properties
                                 .map((it) => {
                                     if (it.description) {
-                                        return `<li><code>${it.name}: ${it.type}</code> ${EM_DASH} ${it.description}</li>`;
+                                        return `<li><code>${htmlencode(it.name)}: ${htmlencode(it.type ?? "unknown")}</code> ${EM_DASH} ${renderInline(it.description)}</li>`;
                                     } else {
-                                        return `<li><code>${it.name}: ${it.type}</code></li>`;
+                                        return `<li><code>${htmlencode(it.name)}: ${htmlencode(it.type ?? "unknown")}</code></li>`;
                                     }
                                 })
                                 .join("")}
