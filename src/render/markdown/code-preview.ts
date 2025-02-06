@@ -52,7 +52,9 @@ function getSource(
                 `Failed to find referenced example "${compare.value}"`,
             );
         }
-        const diff = createTwoFilesPatch("a", "b", reference.content, content)
+        const a = transformCode(reference.content, reference.language);
+        const b = transformCode(content, language);
+        const diff = createTwoFilesPatch("a", "b", a, b)
             .split("\n")
             .slice(3) // remove header
             .filter((it) => !it.startsWith("@@")) // remove location
@@ -93,6 +95,7 @@ export function codePreview(
                 name,
                 tags: rawTags,
                 content: rawContent,
+                language: rawLanguage,
             });
         }
 
