@@ -165,6 +165,7 @@ export function manifestProcessor(options?: ManifestProcessorOptions): Processor
 export interface ManifestProcessorOptions {
     json?: string;
     markdown?: string;
+    verify?: boolean;
 }
 
 // @public (undocumented)

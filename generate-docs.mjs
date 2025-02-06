@@ -42,7 +42,10 @@ const docs = new Generator({
         }),
         htmlRedirectProcessor(),
         redirectFileProcessor(),
-        manifestProcessor({ markdown: "etc/docs-manifest.md" }),
+        manifestProcessor({
+            markdown: "etc/docs-manifest.md",
+            verify: isCI,
+        }),
         searchProcessor(),
         versionProcessor(pkg, "toolbar", {
             scm: !isRelease

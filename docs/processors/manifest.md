@@ -59,3 +59,33 @@ const docs = new Generator({
     ],
 });
 ```
+
+## Verification
+
+Manifest verification (requires markdown) can be performed by setting the `verify` flag to true:
+
+```ts name=verify-original
+import { manifestProcessor } from "@forsakringskassan/docs-generator";
+
+/* --- cut above --- */
+
+manifestProcessor({
+    markdown: "etc/docs-manifest.md",
+});
+```
+
+```ts compare=verify-original
+import { manifestProcessor } from "@forsakringskassan/docs-generator";
+
+/* --- cut above --- */
+
+import isCI from "is-ci";
+
+manifestProcessor({
+    markdown: "etc/docs-manifest.md",
+    verify: isCI,
+});
+```
+
+With the flag set to true the manifest file `etc/docs-manifest.md` will not be written but instead verified to ensure it is up-to-date.
+Typically this would be set to `true` in `CI` builds to ensure it is properly commited.
