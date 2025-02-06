@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [2.17.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.17.0...v2.17.1) (2025-02-06)
+
+### Bug Fixes
+
+* fix invalid vue api prop id ([dac6401](https://github.com/Forsakringskassan/docs-generator/commit/dac64010832265cca8ebb0a5b136d299b6f4829c))
+* properly escape html content from vue api ([a92f7fa](https://github.com/Forsakringskassan/docs-generator/commit/a92f7fae534aad0e0d4861bbc7295b55f65f050d))
+
 ## [2.17.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.16.1...v2.17.0) (2025-02-06)
 
 ### Features
