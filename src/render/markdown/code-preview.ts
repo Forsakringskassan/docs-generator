@@ -7,8 +7,8 @@ import {
     transformCode,
 } from "../../examples";
 import { type MarkdownEnv } from "../markdown-env";
-import { findTag, getFingerprint, hasTag } from "../../utils";
-import { findTestId, highlight, htmlencode, replaceAtLink } from "./utils";
+import { findTag, getFingerprint, hasTag, htmlencode } from "../../utils";
+import { findTestId, highlight, replaceAtLink } from "./utils";
 
 /**
  * @internal

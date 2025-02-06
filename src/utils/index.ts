@@ -13,6 +13,7 @@ export { getRepositoryUrl } from "./get-repository-url";
 export { gitCommitHash } from "./git";
 export { haveOutput } from "./have-output";
 export { hasTag } from "./has-tag";
+export { htmlencode } from "./htmlencode";
 export { interpolate } from "./interpolate";
 export { normalizePath } from "./normalize-path";
 export { parseImport } from "./parse-import";
