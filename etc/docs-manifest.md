@@ -4,6 +4,7 @@
 
 ```
 changelog.html
+e2e/code-snippets.html
 example/redirect.html -> markdown/redirects.html
 file-reader/vue-file-reader.html
 index.html
