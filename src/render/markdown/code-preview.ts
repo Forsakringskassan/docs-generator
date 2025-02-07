@@ -131,7 +131,7 @@ export function codePreview(
         const highlightedCode = replaceAtLink(
             highlight({ source: transformedCode, language: example.language }),
         );
-        const testId = findTestId(tags);
+        const testId = findTestId(tags) ?? findTag(tags, "name")?.value;
         const liveExample = tags.includes("live-example");
         const staticCode = example.runtime === false || tags.includes("static");
         const noMarkup = tags.includes("nomarkup");
