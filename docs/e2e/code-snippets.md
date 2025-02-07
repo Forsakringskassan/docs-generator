@@ -6,7 +6,7 @@ visible: false
 
 ## Inline typescript
 
-```ts name=ts-inline test-id=ts-inline
+```ts name=ts-inline
 declare function foo(value: string): string;
 
 /* --- cut above --- */
@@ -16,13 +16,13 @@ foo("bar");
 
 ## Imported typescript
 
-```import name=ts-import test-id=ts-import
+```import name=ts-import
 code-snippets-ts.ts
 ```
 
 ## Inline Vue
 
-```vue name=vue-inline test-id=vue-inline
+```vue name=vue-inline
 <script setup>
 const name = "World";
 </script>
@@ -36,6 +36,6 @@ const name = "World";
 
 ## Imported Vue
 
-```import name=vue-import test-id=vue-import
+```import name=vue-import
 code-snippets-vue.vue
 ```
