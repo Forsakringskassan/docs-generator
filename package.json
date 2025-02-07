@@ -140,7 +140,7 @@
     "@forsakringskassan/eslint-config-vue": "11.7.1",
     "@forsakringskassan/jest-config": "29.6.0",
     "@forsakringskassan/prettier-config": "3.0.0",
-    "@forsakringskassan/stylelint-config": "2.3.3",
+    "@forsakringskassan/stylelint-config": "2.3.4",
     "@html-validate/release-scripts": "6.7.5",
     "@microsoft/api-extractor": "7.49.2",
     "@rollup/plugin-commonjs": "28.0.2",
