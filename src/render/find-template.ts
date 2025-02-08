@@ -1,6 +1,6 @@
 import path from "node:path";
 import fs from "node:fs";
-import { type FileInfo, type Document } from "../document";
+import { type Document, type FileInfo } from "../document";
 
 class MissingTemplateError extends Error {
     private searchDir: string[];

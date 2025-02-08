@@ -3,7 +3,7 @@ export {
     type Document,
     type DocumentAttributes,
     type DocumentBadge,
-    type FileInfo,
     type NormalizedDocumentAttributes,
     documentAttributeKeys,
 } from "./document";
+export { type FileInfo } from "./file-info";
