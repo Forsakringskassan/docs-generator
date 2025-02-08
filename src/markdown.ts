@@ -1,4 +1,5 @@
 export {
+    type ComponentAttribute,
     type Document,
     type DocumentBadge,
     type DocumentOutline,

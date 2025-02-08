@@ -5,6 +5,12 @@
 ```ts
 
 // @public (undocumented)
+export interface ComponentAttribute {
+    name: string;
+    source?: string;
+}
+
+// @public (undocumented)
 export function createMarkdownRenderer(options: MarkdownOptions): MarkdownRenderer;
 
 // @public (undocumented)
@@ -109,10 +115,8 @@ export interface MarkdownRenderer {
 export interface NormalizedDocumentAttributes {
     // (undocumented)
     badge?: DocumentBadge;
-    // Warning: (ae-forgotten-export) The symbol "Component" needs to be exported by the entry point markdown.d.ts
-    //
     // (undocumented)
-    component?: Component[];
+    component?: ComponentAttribute[];
     // (undocumented)
     href?: string;
     // (undocumented)

@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import path, { type ParsedPath } from "node:path";
 import fm from "front-matter";
 import {
-    type Component,
+    type ComponentAttribute,
     type DocumentBadge,
     type Document,
     type DocumentAttributes,
@@ -73,7 +73,9 @@ function validateAttributes(
     }
 }
 
-function normalizeComponent(value: string | Component): Component {
+function normalizeComponent(
+    value: string | ComponentAttribute,
+): ComponentAttribute {
     if (typeof value === "string") {
         return {
             name: value,
@@ -83,7 +85,7 @@ function normalizeComponent(value: string | Component): Component {
     }
 }
 
-function getComponentAlias(value: string | Component): string {
+function getComponentAlias(value: string | ComponentAttribute): string {
     const { name } = normalizeComponent(value);
     return `component:${name}`;
 }
@@ -102,7 +104,9 @@ export function* getDocumentAlias(
     }
 }
 
-function getComponent(attrs: DocumentAttributes): Component[] | undefined {
+function getComponent(
+    attrs: DocumentAttributes,
+): ComponentAttribute[] | undefined {
     if (!attrs.component) {
         return undefined;
     }
