@@ -1,11 +1,11 @@
+export { type Document } from "./document";
 export {
-    type Component,
-    type Document,
+    type ComponentAttribute,
     type DocumentAttributes,
     type DocumentBadge,
     type NormalizedDocumentAttributes,
     documentAttributeKeys,
-} from "./document";
+} from "./document-attributes";
 export {
     type DocumentOutline,
     type DocumentOutlineEntry,

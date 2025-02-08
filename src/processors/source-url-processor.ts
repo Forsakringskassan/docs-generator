@@ -1,5 +1,5 @@
 import { ProcessorOptions, type Processor } from "../processor";
-import { Component } from "../document";
+import { type ComponentAttribute } from "../document";
 import { type PackageJson } from "../package-json";
 import {
     getRepositoryUrl,
@@ -73,7 +73,7 @@ export function sourceUrlProcessor(
             const short = (await gitCommitHash("short")) ?? "";
 
             function componentSourceUrl(
-                component: Component,
+                component: ComponentAttribute,
             ): string | undefined {
                 const { source, name } = component;
                 const filename = source ?? `${name}.${componentFileExtension}`;
