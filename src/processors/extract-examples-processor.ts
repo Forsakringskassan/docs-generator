@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path/posix";
 import markdownIt from "markdown-it";
-import { type Document } from "../document";
+import { isDocumentPage, type DocumentPage } from "../document";
 import { ProcessorOptions, type Processor } from "../processor";
 import { haveOutput, normalizePath, slugify } from "../utils";
 import { parseInfostring } from "../examples";
@@ -23,7 +23,7 @@ interface Example {
     tags: string[];
 }
 
-type DocumentWithOutput = Document & { fileInfo: { outputName: string } };
+type DocumentWithOutput = DocumentPage & { fileInfo: { outputName: string } };
 type DocumentLike = Pick<DocumentWithOutput, "fileInfo" | "body" | "format">;
 
 const md = markdownIt();
@@ -113,8 +113,10 @@ export function extractExamplesProcessor(
             /* clear old folder to remove potential obsolete files */
             await fs.rm(outputFolder, { recursive: true, force: true });
 
+            const docs = context.docs.filter(isDocumentPage).filter(haveOutput);
+
             let total = 0;
-            for (const doc of context.docs.filter(haveOutput)) {
+            for (const doc of docs) {
                 const examples = findExamples(doc).filter(isRelevant);
                 if (examples.length === 0) {
                     continue;

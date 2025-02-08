@@ -1,6 +1,6 @@
 import path from "node:path";
 import { glob } from "glob";
-import { type Document } from "../document";
+import { type DocumentPage } from "../document";
 import { frontMatterFileReader } from "../file-reader";
 import { generateNavtree } from "./generate-navtree";
 import { sortNavigationTree } from "./sort-navigation-tree";
@@ -8,10 +8,11 @@ import { sortNavigationTree } from "./sort-navigation-tree";
 function createDocument(
     filePath: string,
     title: string,
-    doc?: Partial<Document>,
-): Document {
+    doc?: Partial<DocumentPage>,
+): DocumentPage {
     const parsed = path.parse(filePath);
     return {
+        kind: "page",
         id: `mock:${filePath}`,
         name: path.basename(filePath),
         alias: [],
@@ -427,7 +428,7 @@ it("should read title and sortorder from hidden index.md", () => {
 async function getDocsFromGlob(
     pattern: string,
     basePath: string,
-): Promise<Document[]> {
+): Promise<DocumentPage[]> {
     const filenames = await glob(pattern, {
         ignore: ["./docs/node_modules/**", "./docs/examples/**"],
         nodir: true,

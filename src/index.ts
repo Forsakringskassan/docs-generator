@@ -7,6 +7,8 @@ export {
     type DocumentBadge,
     type DocumentOutline,
     type DocumentOutlineEntry,
+    type DocumentPage,
+    type DocumentPartial,
     type FileInfo,
     type NormalizedDocumentAttributes,
 } from "./document";

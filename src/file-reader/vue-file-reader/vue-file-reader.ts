@@ -1,5 +1,5 @@
 import path from "node:path";
-import { type Document } from "../../document";
+import { type DocumentPartial } from "../../document";
 import { normalizePath } from "../../utils";
 import { translateAPI } from "./translate-api";
 import { type ComponentAPI } from "./component-api";
@@ -7,7 +7,7 @@ import { generatePropTable } from "./generate-prop-table";
 import { generateEventTable } from "./generate-event-table";
 import { generateSlotTable } from "./generate-slot-table";
 
-function parseAPI(filePath: string, api: ComponentAPI): Document {
+function parseAPI(filePath: string, api: ComponentAPI): DocumentPartial {
     const relative = normalizePath(filePath);
     const parsedPath = path.parse(relative);
     const componentName = parsedPath.name;
@@ -24,21 +24,14 @@ function parseAPI(filePath: string, api: ComponentAPI): Document {
     }
 
     return {
+        kind: "partial",
         id: `fs:${filePath.replace(/\\/g, "/")}`,
         name: `vue:${componentName}`,
         alias: [],
-        visible: false,
-        attributes: { sortorder: Infinity, redirectFrom: [] },
         body: html,
-        outline: [],
         format: "html",
-        tags: [],
-        template: "",
         fileInfo: {
-            path: "",
-            name: "",
-            fullPath: "",
-            outputName: false,
+            fullPath: filePath,
         },
     };
 }
@@ -48,7 +41,9 @@ function parseAPI(filePath: string, api: ComponentAPI): Document {
  *
  * @public
  */
-export async function vueFileReader(filePath: string): Promise<Document[]> {
+export async function vueFileReader(
+    filePath: string,
+): Promise<DocumentPartial[]> {
     const translated = await translateAPI(filePath);
     const doc = parseAPI(filePath, translated);
     return [doc];

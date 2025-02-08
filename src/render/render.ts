@@ -6,7 +6,7 @@ import { promisify } from "node:util";
 import spawn from "nano-spawn";
 import nunjucks from "nunjucks";
 import { type VendorAsset } from "../vendor";
-import { type Document, type FileInfo } from "../document";
+import { type Document, type DocumentPage, type FileInfo } from "../document";
 import {
     type ExampleBatch,
     generateExample,
@@ -83,7 +83,7 @@ function fillActiveNavigation(
 }
 
 function findSidenav(
-    doc: Document,
+    doc: DocumentPage,
     tree: NavigationSection,
 ): ActiveNavigationNode | undefined {
     const { path, name } = doc.fileInfo;
@@ -196,7 +196,7 @@ export function createTemplateLoader(folders: string[]): TemplateLoader {
  * @internal
  */
 export async function render(
-    doc: Document,
+    doc: DocumentPage,
     docs: Document[],
     nav: { topnav: NavigationSection; sidenav: NavigationSection },
     vendors: VendorAsset[],
@@ -229,7 +229,7 @@ export async function render(
         site: options.site,
         doc,
         topnav,
-        rootUrl(doc: Document) {
+        rootUrl(doc: DocumentPage) {
             const { fileInfo } = doc;
             const relative = pathPosix.relative(fileInfo.path, ".");
             return relative !== "" ? relative : ".";

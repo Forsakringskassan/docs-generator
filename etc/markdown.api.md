@@ -14,23 +14,7 @@ export interface ComponentAttribute {
 export function createMarkdownRenderer(options: MarkdownOptions): MarkdownRenderer;
 
 // @public (undocumented)
-interface Document_2 {
-    alias: string[];
-    // (undocumented)
-    attributes: NormalizedDocumentAttributes;
-    body: string;
-    // (undocumented)
-    fileInfo: FileInfo;
-    format: "markdown" | "html" | "json" | "redirect";
-    id: string;
-    name: string;
-    outline: DocumentOutline;
-    // (undocumented)
-    tags: string[];
-    // (undocumented)
-    template: string;
-    visible: boolean;
-}
+type Document_2 = DocumentPage | DocumentPartial;
 export { Document_2 as Document }
 
 // @public (undocumented)
@@ -45,6 +29,40 @@ export interface DocumentOutlineEntry {
     rank: number;
     subheadings: DocumentOutline;
     title: string;
+}
+
+// @public (undocumented)
+export interface DocumentPage {
+    alias: string[];
+    // (undocumented)
+    attributes: NormalizedDocumentAttributes;
+    body: string;
+    // (undocumented)
+    fileInfo: FileInfo;
+    format: "markdown" | "html" | "json" | "redirect";
+    id: string;
+    kind: "page";
+    name: string;
+    outline: DocumentOutline;
+    // (undocumented)
+    tags: string[];
+    // (undocumented)
+    template: string;
+    visible: boolean;
+}
+
+// @public
+export interface DocumentPartial {
+    alias: string[];
+    body: string;
+    // (undocumented)
+    fileInfo: {
+        fullPath: string | undefined;
+    };
+    format: "markdown" | "html" | "json";
+    id: string;
+    kind: "partial";
+    name: string;
 }
 
 // @public
@@ -108,7 +126,7 @@ export interface MarkdownOptions {
 
 // @public
 export interface MarkdownRenderer {
-    render(doc: Document_2, content: string): string;
+    render(doc: DocumentPage, content: string): string;
 }
 
 // @public (undocumented)
@@ -155,6 +173,12 @@ export interface SoftErrorDetails {
     };
     // (undocumented)
     ELINKFORMAT: undefined;
+    // (undocumented)
+    ELINKPARTIAL: {
+        key: string;
+        hash: string;
+        title: string;
+    };
     // (undocumented)
     ELINKTARGET: {
         key: string;

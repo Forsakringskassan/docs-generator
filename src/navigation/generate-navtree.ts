@@ -1,5 +1,5 @@
 import path from "node:path";
-import { type Document } from "../document";
+import { type DocumentPage } from "../document";
 
 type Mutable<T> = { -readonly [P in keyof T]: T[P] };
 
@@ -42,7 +42,7 @@ export function isNavigationSection(
     return "key" in node;
 }
 
-function pathFromDoc({ fileInfo }: Document): [string, boolean] {
+function pathFromDoc({ fileInfo }: DocumentPage): [string, boolean] {
     if (fileInfo.name === "index") {
         return [fileInfo.path.replace(/\\/g, "/"), true];
     } else {
@@ -57,7 +57,7 @@ function getParentKey(name: string): string {
     return name.split("/").slice(0, -1).join("/");
 }
 
-export function generateNavtree(docs: Document[]): NavigationSection {
+export function generateNavtree(docs: DocumentPage[]): NavigationSection {
     /** Lookup table for sections */
     const section: Record<string, MutableNavigationSection> = {};
 

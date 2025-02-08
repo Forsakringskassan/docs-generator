@@ -1,5 +1,5 @@
 import cliProgress from "cli-progress";
-import { type Document } from "../document";
+import { type DocumentPage, isDocumentPage } from "../document";
 import { type Processor } from "../processor";
 import { render } from "./render";
 import { type RenderOptions } from "./render-options";
@@ -22,7 +22,7 @@ export function nunjucksProcessor(
         stage: "render",
         name: "nunjucks-renderer",
         async handler(context) {
-            function renderDocument(doc: Document): Promise<string | null> {
+            function renderDocument(doc: DocumentPage): Promise<string | null> {
                 const nav = {
                     topnav: context.topnav,
                     sidenav: context.sidenav,
@@ -38,7 +38,7 @@ export function nunjucksProcessor(
             }
 
             const formats = ["markdown", "json"];
-            const docs = context.docs.filter((it) => {
+            const docs = context.docs.filter(isDocumentPage).filter((it) => {
                 /* the nunjucks process primarly renders markdown documents but
                  * for legacy reasons it also renders raw json files */
                 if (!formats.includes(it.format)) {
