@@ -2,6 +2,7 @@ export { type CompileOptions, type ResourceTask } from "./assets";
 export { availableProcessors } from "./available-processors";
 export { defineSources } from "./define-sources";
 export {
+    type ComponentAttribute,
     type Document,
     type DocumentBadge,
     type DocumentOutline,
