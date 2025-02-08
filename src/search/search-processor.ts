@@ -1,10 +1,10 @@
-import { type Document } from "../document";
+import { type DocumentPage, isDocumentPage } from "../document";
 import { type Processor } from "../processor";
 import { getFingerprint, getIntegrity, getOutputFilePath } from "../utils";
 import { SearchEntry } from "./search-entry";
 import { generateIndex } from "./generate-index";
 
-function extractTerms(doc: Document): string[] {
+function extractTerms(doc: DocumentPage): string[] {
     const { title, component } = doc.attributes;
     if (title && component) {
         return component.map((it) => `${title} (${it.name})`);
@@ -17,13 +17,12 @@ function extractTerms(doc: Document): string[] {
     }
 }
 
-function isIndexable(doc: Document): boolean {
-    return Boolean(
-        doc.visible && doc.fileInfo.outputName && doc.format !== "redirect",
-    );
+function isIndexable(doc: DocumentPage): boolean {
+    const { visible, fileInfo, format } = doc;
+    return Boolean(visible && fileInfo.outputName && format !== "redirect");
 }
 
-function getTerms(doc: Document): SearchEntry {
+function getTerms(doc: DocumentPage): SearchEntry {
     return {
         url: getOutputFilePath(".", doc.fileInfo) ?? "",
         title: doc.name,
@@ -39,7 +38,10 @@ export function searchProcessor(): Processor {
         after: "generate-docs",
         name: "search-processor",
         handler(context) {
-            const entries = context.docs.filter(isIndexable).map(getTerms);
+            const entries = context.docs
+                .filter(isDocumentPage)
+                .filter(isIndexable)
+                .map(getTerms);
             const index = generateIndex(entries);
             const body = JSON.stringify(index);
             const fingerprint = getFingerprint(body);
@@ -49,6 +51,7 @@ export function searchProcessor(): Processor {
             context.setTemplateData("searchDataUrl", expandedName);
             context.setTemplateData("searchDataIntegrity", integrity);
             context.addDocument({
+                kind: "page",
                 id: "search:data",
                 name: "search-data",
                 alias: [],

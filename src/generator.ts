@@ -14,7 +14,7 @@ import {
 import { compileProcessorRuntime } from "./compile-processor-runtime";
 import { type SourceFiles, fileReaderProcessor } from "./file-reader";
 import { nunjucksProcessor, TemplateLoader } from "./render";
-import { type Document } from "./document";
+import { isDocumentPage, type Document } from "./document";
 import { manifestPageFromDocument } from "./manifest";
 import { type NavigationSection, navigationProcessor } from "./navigation";
 import {
@@ -391,7 +391,7 @@ export class Generator {
         const context = createContext("", templateLoader);
         await stage("generate-docs", context, processors, { verbose: false });
 
-        const docs = context.docs.filter(haveOutput);
+        const docs = context.docs.filter(isDocumentPage).filter(haveOutput);
         const pages = docs.map(manifestPageFromDocument);
         return { pages };
     }

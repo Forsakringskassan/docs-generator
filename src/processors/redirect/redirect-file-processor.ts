@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path/posix";
 import { type Processor } from "../../processor";
-import { type Document } from "../../document";
+import { type Document, isDocumentPage } from "../../document";
 import { haveOutput, normalizePath } from "../../utils";
 
 function isRedirect(doc: Document): boolean {
@@ -25,6 +25,7 @@ export function redirectFileProcessor(
         async handler(context) {
             const { docs } = context;
             const lines = docs
+                .filter(isDocumentPage)
                 .filter(haveOutput)
                 .filter(isRedirect)
                 .map((doc) => {

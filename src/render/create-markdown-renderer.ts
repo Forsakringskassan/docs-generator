@@ -1,6 +1,6 @@
 import markdownIt from "markdown-it";
 import markdownItDeflist from "markdown-it-deflist";
-import { type Document } from "../document";
+import { type Document, type DocumentPage } from "../document";
 import { type ExampleResult } from "../examples/example-result";
 import { processInlineTags } from "./process-inline-tags";
 import inlineTags from "./inline-tags";
@@ -70,7 +70,7 @@ export interface MarkdownRenderer {
      * @param content - Markdown content to render.
      * @returns HTML rendered from markdown content.
      */
-    render(doc: Document, content: string): string;
+    render(doc: DocumentPage, content: string): string;
 }
 
 /**
@@ -117,7 +117,7 @@ export function createMarkdownRenderer(
     md.use(codeInline());
 
     return {
-        render(doc: Document, content: string): string {
+        render(doc: DocumentPage, content: string): string {
             included.clear();
             included.add(doc.id);
             env.fileInfo = doc.fileInfo;

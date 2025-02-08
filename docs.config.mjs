@@ -42,21 +42,15 @@ async function cssVariablesFileReader(filePath) {
         return [heading, description, table].join("\n\n");
     });
     const doc = {
+        kind: "partial",
         id: `fs:${filePath.replace(/\\/g, "/")}`,
         name: `css-variables:${filePath.replace(/\\/g, "/")}`,
         alias: [],
-        visible: false,
-        attributes: { sortorder: Infinity },
         body: groups.join("\n\n"),
-        outline: [],
         format: "markdown",
         tags: [],
-        template: "",
         fileInfo: {
-            path: "",
-            name: "",
-            fullPath: "",
-            outputName: false,
+            fullPath: null,
         },
     };
     return [doc];

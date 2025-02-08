@@ -1,10 +1,10 @@
 import path from "node:path/posix";
-import { type Document } from "../../document";
+import { type DocumentPage, isDocumentPage } from "../../document";
 import { SoftError } from "../soft-error";
 import { getOutputFilePath, findDocument } from "../../utils";
 import { type InlineTag } from "./inline-tag";
 
-function getRelativeUrl(from: Document, to: Document): string {
+function getRelativeUrl(from: DocumentPage, to: DocumentPage): string {
     const fromResolved = getOutputFilePath(".", from.fileInfo);
     const toResolved = getOutputFilePath(".", to.fileInfo);
     if (!fromResolved || !toResolved) {
@@ -24,7 +24,7 @@ function getRelativeUrl(from: Document, to: Document): string {
 }
 
 function getLinkTitle(
-    doc: Document,
+    doc: DocumentPage,
     key: string,
     explicitTitle?: string,
 ): string {
@@ -68,6 +68,23 @@ export const linkTag: InlineTag = {
                 },
             );
         }
+
+        /* if the document we are trying to linkt to is not a page document we
+         * cannot link to it as we don't know the url (i.e. what page it exists
+         * on or even if it is included on any page at all)
+         */
+        if (!isDocumentPage(linked)) {
+            throw new SoftError(
+                "ELINKPARTIAL",
+                `Cannot link to partial document "${key}"`,
+                {
+                    key,
+                    hash,
+                    title: explicitTitle,
+                },
+            );
+        }
+
         const url = getRelativeUrl(doc, linked);
         const title = getLinkTitle(linked, key, explicitTitle);
         return `<a href="${url}${hash ?? ""}">${title}</a>`;

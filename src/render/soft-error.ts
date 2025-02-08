@@ -4,6 +4,7 @@
 export interface SoftErrorDetails {
     ELINKTARGET: { key: string; hash: string; title: string };
     ELINKFORMAT: undefined;
+    ELINKPARTIAL: { key: string; hash: string; title: string };
     EINCLUDETARGET: { id: string };
     EINCLUDERECURSION: undefined;
     ETAGMISSING: undefined;
