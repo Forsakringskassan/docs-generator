@@ -1,4 +1,4 @@
-import { type DocumentOutline } from "./document-outline";
+import { type DocumentOutline } from "../document-outline";
 
 /**
  * @internal
