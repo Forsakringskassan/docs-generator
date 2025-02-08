@@ -21,6 +21,10 @@ dialog[open] {
     display: block;
 }
 
+dd {
+    margin-bottom: 1rem;
+}
+
 dd > dl {
     border-left: 2px solid var(--docs-text-color-discrete);
     padding-left: 1rem;

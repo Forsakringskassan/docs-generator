@@ -8,34 +8,24 @@ sortorder: 1
 
 A procesor implements the `Processor` interface:
 
-```ts
-import {
-    type ProcessorContext,
-    type ProcessorRuntime,
-    type ProcessorStage,
-} from "@forsakringskassan/docs-generator";
+::: api
+interface:ProcessorHandler
+:::
 
-/* --- cut above --- */
+---
 
-export interface ProcessorHandler {
-    before?: ProcessorStage;
-    stage?: ProcessorStage;
-    after?: ProcessorStage;
-    name: string;
-    enabled?: boolean;
-    runtime?: ProcessorRuntime[];
-    handler(
-        context: ProcessorContext,
-        /* eslint-disable-next-line @typescript-eslint/no-invalid-void-type -- technical debt */
-    ): void | string[] | Promise<void> | Promise<string[]>;
-}
-```
+::: api syntax
+interface:ProcessorHandler
+:::
+
+
+---
 
 One of `before`, `stage` or `after` must be set and decides when the processor is run.
 
-```import
-processor-stage.ts
-```
+::: api
+type:ProcessorStage
+:::
 
 The `handler` callback performs the actual work.
 

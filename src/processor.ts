@@ -43,7 +43,12 @@ export interface ProcessorHandler {
     before?: ProcessorStage;
     stage?: ProcessorStage;
     after?: ProcessorStage;
+
+    /**
+     * Name of this processor. Only used for logging purposes.
+     */
     name: string;
+
     enabled?: boolean;
 
     /** List of runtime client scripts required by this processor */

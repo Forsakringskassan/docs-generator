@@ -6,6 +6,15 @@
 
 import { Component } from 'vue';
 
+// @public
+export function apiExtractorProcessor(options?: ApiExtractorProcessorOptions): Processor;
+
+// @public
+export interface ApiExtractorProcessorOptions extends ProcessorOptions {
+    // (undocumented)
+    apiModel?: string | string[];
+}
+
 // @public (undocumented)
 export type AttributeTable = Record<string, AttributeValue>;
 
@@ -90,9 +99,7 @@ export interface DocumentPartial {
 
 // @public
 export interface ExtractExamplesOptions extends ProcessorOptions {
-    // (undocumented)
     languages?: string[];
-    // (undocumented)
     outputFolder: string;
 }
 
@@ -351,7 +358,6 @@ export interface ProcessorHandler {
     enabled?: boolean;
     // (undocumented)
     handler(context: ProcessorContext): void | string[] | Promise<void> | Promise<string[]>;
-    // (undocumented)
     name: string;
     runtime?: ProcessorRuntime[];
     // (undocumented)

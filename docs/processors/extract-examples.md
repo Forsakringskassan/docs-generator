@@ -66,7 +66,19 @@ const docs = new Generator(import.meta.url, {
 });
 ```
 
-## Configuration
+## Configuration (generated as code)
+
+::: api code
+interface:ExtractExamplesOptions
+:::
+
+## Configuration (generated as table)
+
+::: api table
+interface:ExtractExamplesOptions
+:::
+
+## Configuration (hand-written)
 
 `outputFolder: string`
 : Folder to write examples to. The output folder would typically be git ignored except for configuration files such as `tsconfig.json`.

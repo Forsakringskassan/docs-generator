@@ -12,7 +12,20 @@ import { haveOutput, normalizePath, slugify } from "../utils";
  * @public
  */
 export interface ExtractExamplesOptions extends ProcessorOptions {
+    /**
+     * Folder to write examples to. The output folder would typically be git
+     * ignored except for configuration files such as `tsconfig.json.`
+     */
     outputFolder: string;
+
+    /**
+     * Array of languages to extract.
+     *
+     * - `"javascript"`
+     * - `"typescript"`
+     * - `"css"`
+     * - `"scss"`
+     */
     languages?: string[];
 }
 
