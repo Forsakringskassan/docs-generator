@@ -6,7 +6,7 @@ import { promisify } from "node:util";
 import spawn from "nano-spawn";
 import nunjucks from "nunjucks";
 import { type VendorAsset } from "../vendor";
-import { type FileInfo, type Document } from "../document";
+import { type Document, type FileInfo } from "../document";
 import {
     type ExampleBatch,
     generateExample,
