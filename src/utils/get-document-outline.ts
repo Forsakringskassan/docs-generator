@@ -1,7 +1,4 @@
-import {
-    type DocumentOutline,
-    type DocumentOutlineEntry,
-} from "../document-outline";
+import { type DocumentOutline, type DocumentOutlineEntry } from "../document";
 import { generateId } from "./generate-id";
 
 interface ParsedHeading {

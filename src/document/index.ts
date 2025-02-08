@@ -6,4 +6,8 @@ export {
     type NormalizedDocumentAttributes,
     documentAttributeKeys,
 } from "./document";
+export {
+    type DocumentOutline,
+    type DocumentOutlineEntry,
+} from "./document-outline";
 export { type FileInfo } from "./file-info";

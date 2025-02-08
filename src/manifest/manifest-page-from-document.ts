@@ -1,6 +1,5 @@
 import markdownIt from "markdown-it";
-import { type Document } from "../document";
-import { DocumentOutline } from "../document-outline";
+import { type Document, type DocumentOutline } from "../document";
 import { findTag, getFingerprint, getOutputFilePath, hasTag } from "../utils";
 import { parseInfostring } from "../examples";
 import { type Manifest } from "./manifest";
