@@ -54,7 +54,7 @@ export interface DocumentPage {
 // @public
 export interface DocumentPartial {
     alias: string[];
-    body: string;
+    body: string | ((tags: string[]) => string);
     // (undocumented)
     fileInfo: {
         fullPath: string | undefined;

@@ -20,7 +20,7 @@ export interface DocumentPartial {
     alias: string[];
 
     /** content of this document */
-    body: string;
+    body: string | ((tags: string[]) => string);
 
     /** format of body */
     format: "markdown" | "html" | "json";
