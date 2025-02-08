@@ -1,6 +1,6 @@
 import path from "node:path";
 import fs from "node:fs";
-import { type Document, type FileInfo } from "../document";
+import { type DocumentPage, type FileInfo } from "../document";
 
 class MissingTemplateError extends Error {
     private searchDir: string[];
@@ -41,7 +41,7 @@ function cacheKey(layout: string, extension: "html" | "json"): string {
 export function findTemplate(
     folders: string[],
     from: FileInfo,
-    doc: Document,
+    doc: DocumentPage,
 ): string;
 export function findTemplate(
     folders: string[],
@@ -52,7 +52,7 @@ export function findTemplate(
 export function findTemplate(
     folders: string[],
     from: FileInfo,
-    src: Document | string,
+    src: DocumentPage | string,
     format?: "html" | "json",
 ): string {
     let layout: string;

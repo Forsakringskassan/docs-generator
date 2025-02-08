@@ -16,6 +16,7 @@ export function redirectProcessor(): Processor {
             for (const redirect of redirects) {
                 const { dir, base, name } = path.parse(redirect.from);
                 context.addDocument({
+                    kind: "page",
                     id: `redirect:${redirect.from}-${redirect.to}`,
                     name: `${redirect.from}-${redirect.to}`,
                     alias: [],

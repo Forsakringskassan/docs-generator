@@ -1,6 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import { type Document, type DocumentAttributes } from "../document";
+import { type DocumentPage, type DocumentAttributes } from "../document";
 import { normalizePath } from "../utils";
 
 /**
@@ -10,7 +10,7 @@ export function parseFile(
     filePath: string,
     basePath: string | undefined,
     content: string,
-): Document {
+): DocumentPage {
     const attributes = JSON.parse(content) as DocumentAttributes;
     const { title, href } = attributes;
 
@@ -26,6 +26,7 @@ export function parseFile(
     const name = parsed.name;
     const urlpath = parsed.dir;
     return {
+        kind: "page",
         id: `nav:${filePath.replace(/\\/g, "/")}`,
         name,
         alias: [],
@@ -61,7 +62,7 @@ export function parseFile(
 export async function navigationFileReader(
     filePath: string,
     basePath?: string,
-): Promise<Document[]> {
+): Promise<DocumentPage[]> {
     const content = await fs.readFile(filePath, "utf-8");
     const doc = parseFile(filePath, basePath, content);
     return [doc];

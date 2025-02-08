@@ -1,4 +1,4 @@
-import { type Document } from "../../document";
+import { isDocumentPage, type Document } from "../../document";
 import { normalizePath } from "../../utils";
 
 /**
@@ -14,6 +14,7 @@ export interface Redirect {
  */
 export function getRedirects(docs: Document[]): Redirect[] {
     return docs
+        .filter(isDocumentPage)
         .map((it): Redirect[] => {
             const { fileInfo } = it;
             const { path, outputName } = fileInfo;

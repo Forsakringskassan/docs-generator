@@ -1,4 +1,4 @@
-import { type Document } from "../document";
+import { type Document, type DocumentPage } from "../document";
 import { type InlineTag } from "./inline-tags";
 import { SoftError, type SoftErrorType } from "./soft-error";
 
@@ -7,7 +7,7 @@ import { SoftError, type SoftErrorType } from "./soft-error";
  */
 export function processInlineTags(
     tags: InlineTag[],
-    doc: Document,
+    doc: DocumentPage,
     docs: Document[],
     text: string,
     handleSoftError: (error: SoftErrorType) => string,

@@ -4,7 +4,7 @@ import fm from "front-matter";
 import {
     type ComponentAttribute,
     type DocumentBadge,
-    type Document,
+    type DocumentPage,
     type DocumentAttributes,
     documentAttributeKeys,
 } from "../document";
@@ -120,7 +120,7 @@ export function parseFile(
     filePath: string,
     basePath: string | undefined,
     content: string,
-): Document {
+): DocumentPage {
     const relative = basePath
         ? path.relative(basePath, normalizePath(filePath))
         : normalizePath(filePath);
@@ -137,6 +137,7 @@ export function parseFile(
     validateAttributes(attributes, filePath, content);
 
     return {
+        kind: "page",
         id: `fs:${filePath.replace(/\\/g, "/")}`,
         name,
         alias: Array.from(getDocumentAlias(attributes)),
@@ -176,7 +177,7 @@ export function parseFile(
 export async function frontMatterFileReader(
     filePath: string,
     basePath?: string,
-): Promise<Document[]> {
+): Promise<DocumentPage[]> {
     const content = await fs.readFile(filePath, "utf-8");
     const doc = parseFile(filePath, basePath, content);
     return [doc];

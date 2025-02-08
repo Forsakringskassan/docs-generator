@@ -4,6 +4,7 @@ import dedent from "dedent";
 import { type Processor } from "../../processor";
 import { getOutputFilePath, haveOutput } from "../../utils";
 import { relative } from "../../render/filter";
+import { isDocumentPage } from "../../document";
 
 const template = (dst: string): string => /* HTML */ `
     <!doctype html>
@@ -32,7 +33,7 @@ export function htmlRedirectProcessor(): Processor {
         after: "render",
         async handler(context) {
             const { docs, outputFolder } = context;
-            for (const doc of docs.filter(haveOutput)) {
+            for (const doc of docs.filter(isDocumentPage).filter(haveOutput)) {
                 if (doc.format !== "redirect") {
                     continue;
                 }
