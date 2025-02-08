@@ -4,13 +4,11 @@ export { defineSources } from "./define-sources";
 export {
     type Document,
     type DocumentBadge,
+    type DocumentOutline,
+    type DocumentOutlineEntry,
     type FileInfo,
     type NormalizedDocumentAttributes,
 } from "./document";
-export {
-    type DocumentOutline,
-    type DocumentOutlineEntry,
-} from "./document-outline";
 export {
     type FileReader,
     type SourceFiles,
