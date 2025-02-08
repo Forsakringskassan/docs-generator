@@ -3,6 +3,7 @@ import path from "node:path";
 import isCI from "is-ci";
 import {
     Generator,
+    apiExtractorProcessor,
     extractExamplesProcessor,
     htmlRedirectProcessor,
     manifestProcessor,
@@ -37,6 +38,9 @@ const docs = new Generator({
         "@forsakringskassan/docs-live-example",
     ],
     processors: [
+        apiExtractorProcessor({
+            apiModel: ["temp/*.api.json"],
+        }),
         extractExamplesProcessor({
             outputFolder: "docs/examples/files",
         }),

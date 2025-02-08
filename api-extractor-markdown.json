@@ -1,7 +1,7 @@
 {
     "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
     "extends": "./api-extractor.json",
-    "mainEntryPointFilePath": "<projectFolder>/temp/types/markdown.d.ts",
+    "mainEntryPointFilePath": "<projectFolder>/temp/types/src/markdown.d.ts",
     "apiReport": {
         "reportFileName": "markdown.api.md"
     },

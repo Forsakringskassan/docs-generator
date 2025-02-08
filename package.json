@@ -108,6 +108,7 @@
   "dependencies": {
     "@babel/code-frame": "^7.0.0",
     "@leeoniya/ufuzzy": "1.0.18",
+    "@microsoft/api-extractor-model": "7.30.3",
     "chokidar": "4.0.3",
     "cli-progress": "3.12.0",
     "dedent": "1.5.3",
@@ -143,6 +144,7 @@
     "@forsakringskassan/stylelint-config": "2.3.4",
     "@html-validate/release-scripts": "6.7.5",
     "@microsoft/api-extractor": "7.49.2",
+    "@microsoft/tsdoc": "0.15.1",
     "@rollup/plugin-commonjs": "28.0.2",
     "@rollup/plugin-json": "6.1.0",
     "@rollup/plugin-node-resolve": "16.0.0",
@@ -186,6 +188,7 @@
     "esbuild": "0.x",
     "express": "^4",
     "he": "^1.2",
+    "prettier": "^3.0.0",
     "sass": "^1.71",
     "vue": "^3.0.0"
   },
@@ -199,6 +202,8 @@
   },
   "externalDependencies": [
     "@babel/code-frame",
+    "@microsoft/api-extractor-model",
+    "@microsoft/tsdoc",
     "livereload-js",
     "nunjucks",
     "piscina",
