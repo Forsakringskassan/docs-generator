@@ -12,7 +12,6 @@ interface Document_2 {
     alias: string[];
     // (undocumented)
     attributes: NormalizedDocumentAttributes;
-    // (undocumented)
     body: string;
     // (undocumented)
     fileInfo: FileInfo;
