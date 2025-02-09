@@ -31,9 +31,14 @@ export class TemplateRenderError extends Error {
 
     public prettyError(): string {
         return [
+            "",
             `An error occured when rendering a document.`,
             `  Document: "${this.filename}".`,
             `  Message: ${this.message}`,
+            "",
+            "---",
+            "",
+            this.stack,
         ].join("\n");
     }
 }
