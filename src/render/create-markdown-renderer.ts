@@ -92,7 +92,17 @@ export function createMarkdownRenderer(
         namedExamples: new Map(),
     };
 
-    const included = new Set<string>();
+    let currentDoc: Document | null = null;
+    const getCurrentDocument = (): Document => {
+        if (!currentDoc) {
+            throw new Error(
+                "Internal error: getting current document before rendering has started",
+            );
+        }
+        return currentDoc;
+    };
+
+    const included = new Map<string, string>();
     const md = markdownIt({
         html: true,
     });
@@ -109,17 +119,25 @@ export function createMarkdownRenderer(
         }),
     );
     md.use(
-        containerRenderer(docs, env, included, options.handleSoftError, {
-            messagebox: { title: {}, ...options.messagebox },
-        }),
+        containerRenderer(
+            getCurrentDocument,
+            docs,
+            env,
+            included,
+            options.handleSoftError,
+            {
+                messagebox: { title: {}, ...options.messagebox },
+            },
+        ),
     );
     md.use(table());
     md.use(codeInline());
 
     return {
         render(doc: DocumentPage, content: string): string {
+            currentDoc = doc;
             included.clear();
-            included.add(doc.id);
+            included.set(doc.id, doc.id);
             env.fileInfo = doc.fileInfo;
             env.ids = new Set();
             const html = md.render(content, env);

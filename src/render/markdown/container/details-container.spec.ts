@@ -27,8 +27,17 @@ const context: ContainerContext = {
         currentHeading: 1,
         namedExamples: new Map(),
     },
+    doc: {
+        kind: "partial",
+        id: "mock-document",
+        name: "mock-document",
+        alias: [],
+        body: "",
+        format: "html",
+        fileInfo: { fullPath: undefined },
+    },
     docs: [],
-    included: new Set(),
+    included: new Map(),
     handleSoftError(err) {
         throw err;
     },
