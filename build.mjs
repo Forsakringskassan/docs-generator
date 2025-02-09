@@ -119,6 +119,7 @@ async function build() {
     const { output } = await bundle.write({
         dir: "dist",
         format: "cjs",
+        sourcemap: true,
         manualChunks(id) {
             const fullPath = id.replace(/[?].*/, "").replace("\x00", "");
             const base = path.relative(rootDir, fullPath).replace(/\\/g, "/");
