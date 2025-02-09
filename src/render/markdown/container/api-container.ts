@@ -29,7 +29,8 @@ export function apiContainer(context: ContainerContext): ContainerCallback {
          * provide a better explanation of *why* it happened, not just
          * *that* it happend */
         const key = [doc.id, ...tags].join("|");
-        if (included.has(key)) {
+        const loop = included.get(doc.id);
+        if (loop && loop !== context.doc.id) {
             return handleSoftError(
                 new SoftError(
                     "EINCLUDERECURSION",
@@ -37,7 +38,7 @@ export function apiContainer(context: ContainerContext): ContainerCallback {
                 ),
             );
         }
-        included.add(key);
+        included.set(key, context.doc.id);
 
         const body = typeof doc.body === "string" ? doc.body : doc.body(tags);
 
