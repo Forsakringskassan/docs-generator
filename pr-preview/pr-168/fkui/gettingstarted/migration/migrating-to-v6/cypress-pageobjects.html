@@ -9,16 +9,16 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../../assets/docs-6a45b1.css"
+            href="../../../assets/docs-d5e006.css"
             crossorigin
-            integrity="sha384-28RtVIfDTDHqXpEdNmN4MtHpyHE3bh1HM+qFEMStuWOxe6HVU233ya5qj4sMvOe8"
+            integrity="sha384-Z/JIJRwqAuWvyQ3vaShmy+1gm3L8jBsfpgec4uO9T1LEeQNkVbtB7hm6ln7sSub/"
             
         />
         <link
             rel="stylesheet"
-            href="../../../assets/docs-fkui-52e1a9.css"
+            href="../../../assets/docs-fkui-c47cdf.css"
             crossorigin
-            integrity="sha384-rspiNp3JPP16s0KDSmVa5bF81bgjjE/Wx+e6N4L2/pE1uFjjPEsS/v5sE6Mm7fOu"
+            integrity="sha384-/gy/tu2VxD2pbZgaSFGiucOf72+dYyH2btfHfmA3JkEqwz6tFinVRLdoD1/nx4bo"
             data-theme="fkui" disabled
         />
 
@@ -71,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-0f6ff4.json"
+            href="../../../search-data-5e4a9c.json"
             as="fetch"
             crossorigin
-            integrity="sha384-ziw3kq4eUID9KnABnm8iaMvzht0Ww+2QMIesgQcQILAP+V1kpuy8soQy2lnkx/+V"
+            integrity="sha384-7/ppb6WDMg7xJ417/YsAmcGT1d/Djutod0P1vRRKE9c0FnzB763+B3Dk6ihh2dce"
             id="search-data"
         />
     </head>
@@ -535,9 +535,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../../assets/vendor-fkui-vue-0b465e.js"
+                    src="../../../assets/vendor-fkui-vue-0b31a1.js"
                     crossorigin
-                    integrity="sha384-6LsaSlLyLzyHmnxZufSHkO1D/CO1hid1dUzCs/TFtqcjcOQ50lHPm5vc27yTP/Cl"
+                    integrity="sha384-vF7JA1LHid58I2pQMVJtp1Hw78M+5cOl8FYkYst4liLIr9NfXCw91bX18awxDqwM"
                 ></script>
                 <script
                     src="../../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -569,6 +569,10 @@
                                 <li><a href="#fmessageboxpageobject">FMessageBoxPageObject</a></li>
                                 
                                 <li><a href="#fnavigationmenupageobject">FNavigationMenuPageobject</a></li>
+                                
+                                <li><a href="#fpageheaderpageobject">FPageHeaderPageobject</a></li>
+                                
+                                <li><a href="#fprogressbarpageobject">FProgressbarPageObject</a></li>
                                 
                                 <li><a href="#ftooltippageobject">FTooltipPageObject</a></li>
                                 
@@ -674,10 +678,13 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
 <span class="hljs-addition">+nav.item(0).click();</span>
 </code></pre>
                 </div>
-            <h3 id="fprogressbarpageobject"><a class="header-anchor" href="#fprogressbarpageobject"><code>FProgressbarPageObject</code></a></h3><p>Metoden <code>ariaValueNow()</code> har ändrats till <code>value()</code> och returnerar nu <code>number</code> istället för <code>string</code>.</p>
+            <h2 id="fpageheaderpageobject"><a class="header-anchor" href="#fpageheaderpageobject"><code>FPageHeaderPageobject</code></a></h2><p>Metoden <code>FPageHeaderPageobject.logoRouterLink</code> är borttagen.
+Eftersom <code>FPageHeader</code> inte längre tillhandahåller en <code>router-link</code> så finns det ingen direkt ersättare.
+Du får istället använda selector för egen implementerad <code>router-link</code> i <code>FPageHeader</code> <code>logo</code> slot.</p>
+<h2 id="fprogressbarpageobject"><a class="header-anchor" href="#fprogressbarpageobject"><code>FProgressbarPageObject</code></a></h2><p>Metoden <code>ariaValueNow()</code> har ändrats till <code>value()</code> och returnerar nu <code>number</code> istället för <code>string</code>.</p>
 
                 <div
-                    id="example-996d46"
+                    id="example-f3b0a2"
                     class="code-preview code-preview--default"
                     
                     
@@ -691,7 +698,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
             <h2 id="ftooltippageobject"><a class="header-anchor" href="#ftooltippageobject"><code>FTooltipPageObject</code></a></h2><p>Den deprekerade metoden <code>FTooltipPageObject.content()</code> har tagits bort och är ersatt med direkta metoder på <code>FTooltipPageObject</code>.</p>
 
                 <div
-                    id="example-8c2c19"
+                    id="example-08b412"
                     class="code-preview code-preview--default"
                     
                     
@@ -704,7 +711,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
                 </div>
             
                 <div
-                    id="example-96f671"
+                    id="example-8e2181"
                     class="code-preview code-preview--default"
                     
                     
@@ -717,7 +724,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
                 </div>
             
                 <div
-                    id="example-26b384"
+                    id="example-6ed552"
                     class="code-preview code-preview--default"
                     
                     
@@ -730,7 +737,7 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
                 </div>
             
                 <div
-                    id="example-4f29da"
+                    id="example-539782"
                     class="code-preview code-preview--default"
                     
                     
@@ -768,9 +775,9 @@ Eftersom innehållet i meddelanderutan slottas in finns ingen direkt ersättare 
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    bugfix/vue-snippets (<a href="https://github.com/Forsakringskassan/designsystem/commits/f2baa54cbdb991e689cc4f2410d4ae61f7bbe0b8">f2baa54</a>)<br />
+    bugfix/vue-snippets (<a href="https://github.com/Forsakringskassan/designsystem/commits/70af473c5df53b1f03b0d4c540b339254f021872">70af473</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/168">PR 168</a><br />
-        2025-02-07 17:08
+        2025-02-10 14:31
 </div>
 <div class="toolbar__item">
     <form id="version">

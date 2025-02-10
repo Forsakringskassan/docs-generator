@@ -9,16 +9,16 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-6a45b1.css"
+            href="../../assets/docs-d5e006.css"
             crossorigin
-            integrity="sha384-28RtVIfDTDHqXpEdNmN4MtHpyHE3bh1HM+qFEMStuWOxe6HVU233ya5qj4sMvOe8"
+            integrity="sha384-Z/JIJRwqAuWvyQ3vaShmy+1gm3L8jBsfpgec4uO9T1LEeQNkVbtB7hm6ln7sSub/"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-fkui-52e1a9.css"
+            href="../../assets/docs-fkui-c47cdf.css"
             crossorigin
-            integrity="sha384-rspiNp3JPP16s0KDSmVa5bF81bgjjE/Wx+e6N4L2/pE1uFjjPEsS/v5sE6Mm7fOu"
+            integrity="sha384-/gy/tu2VxD2pbZgaSFGiucOf72+dYyH2btfHfmA3JkEqwz6tFinVRLdoD1/nx4bo"
             data-theme="fkui" disabled
         />
 
@@ -71,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-0f6ff4.json"
+            href="../../search-data-5e4a9c.json"
             as="fetch"
             crossorigin
-            integrity="sha384-ziw3kq4eUID9KnABnm8iaMvzht0Ww+2QMIesgQcQILAP+V1kpuy8soQy2lnkx/+V"
+            integrity="sha384-7/ppb6WDMg7xJ417/YsAmcGT1d/Djutod0P1vRRKE9c0FnzB763+B3Dk6ihh2dce"
             id="search-data"
         />
     </head>
@@ -564,6 +564,16 @@
         </details>
     </li><!-- prettier-ignore -->
     <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../flogo.html"
+            
+        >
+            Logotyp
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <li class="expandable ">
         <details >
             <summary>Länkar</summary>
@@ -1006,9 +1016,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../assets/vendor-fkui-vue-0b465e.js"
+                    src="../../assets/vendor-fkui-vue-0b31a1.js"
                     crossorigin
-                    integrity="sha384-6LsaSlLyLzyHmnxZufSHkO1D/CO1hid1dUzCs/TFtqcjcOQ50lHPm5vc27yTP/Cl"
+                    integrity="sha384-vF7JA1LHid58I2pQMVJtp1Hw78M+5cOl8FYkYst4liLIr9NfXCw91bX18awxDqwM"
                 ></script>
                 <script
                     src="../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -1031,7 +1041,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/f2baa54cbdb991e689cc4f2410d4ae61f7bbe0b8/packages/vue/src/components/FPageHeader/FPageHeader.vue">FPageHeader</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/70af473c5df53b1f03b0d4c540b339254f021872/packages/vue/src/components/FPageHeader/FPageHeader.vue">FPageHeader</a>
             
         </code>
          
@@ -1053,7 +1063,9 @@
                             <summary class="outline__heading">Innehåll</summary>
                             <ul>
                                 
-                                <li><a href="#egen_logotyp_och_brytpunkt">Egen logotyp och brytpunkt</a></li>
+                                <li><a href="#logotyp">Logotyp</a></li>
+                                
+                                <li><a href="#sekundar_information">Sekundär information</a></li>
                                 
                                 <li><a href="#skiplink">Skiplink</a></li>
                                 
@@ -1067,10 +1079,11 @@
 
                     <div id="content">
                         <!-- prettier-ignore -->
-<p>Sidhuvud ska visas längst upp på applikationer som öppnas i ett eget webbläsarfönster. Den innehåller alltid Försäkringskassans logotyp och namnet på applikationen</p>
+<p>Sidhuvud ska visas längst upp på applikationer som öppnas i ett eget webbläsarfönster.
+Den kan innehålla en logotyp, applikationsnamn samt sekundär information.</p>
 
             <div
-                id="example-5e2100"
+                id="example-af6f09"
                 class="code-preview code-preview--default"
                 
                 
@@ -1084,7 +1097,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./FPageHeaderDefault-9b834b.js"></script>
+        <script defer src="./FPageHeaderDefault-41d2f6.js"></script>
     </div>
                 <div>
             <button
@@ -1105,28 +1118,66 @@
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-page-header</span>&gt;</span>
         Exempelapplikation
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">logo</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-logo</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;small&quot;</span>&gt;</span>Example logo text<span class="hljs-tag">&lt;/<span class="hljs-name">f-logo</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">right</span>&gt;</span> Namn Namnsson <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-page-header</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FPageHeader</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FPageHeader</span>, <span class="hljs-title class_">FLogo</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FPageHeaderDefault&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FPageHeader</span> },
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FPageHeader</span>, <span class="hljs-title class_">FLogo</span> },
 });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
-        <p>Vid större skärmstorlekar visas hela Försäkringskassans logotyp med text och vid mindre visas en komprimerad variant med endast symbol.</p>
-<p>I fall där applikationen innehåller flera olika sidor kan logotypen göras till en klickbar länk som leder användaren tillbaka till applikationens förstasida</p>
-<p>Sidhuvudet kan också visa sekundär information till höger.</p>
-<h2 id="egen_logotyp_och_brytpunkt"><a class="header-anchor" href="#egen_logotyp_och_brytpunkt">Egen logotyp och brytpunkt</a></h2>
+        <h2 id="logotyp"><a class="header-anchor" href="#logotyp">Logotyp</a></h2><p>För att lägga till en logotyp använd slot <code>logo</code>.
+Du kan med fördel använda <a href="../flogo.html"><code>FLogo</code></a> för att ange logotyp.</p>
+
+                <div
+                    id="example-f0ddb5"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-page-header&gt;
+<span class="hljs-addition">+    &lt;template #logo&gt;</span>
+<span class="hljs-addition">+        &lt;f-logo&gt;Awesome logo&lt;/f-logo&gt;</span>
+<span class="hljs-addition">+    &lt;/template&gt;</span>
+ &lt;/f-page-header&gt;
+</code></pre>
+                </div>
+            <p>Du kan också göra en länkad logo med att använda en <code>a</code>-tagg (eller <code>router-link</code> om du använder Vue Router).</p>
+
+                <div
+                    id="example-a53490"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-page-header&gt;
+     &lt;template #logo&gt;
+<span class="hljs-addition">+        &lt;a href=&quot;/&quot;&gt;</span>
+             &lt;f-logo&gt;Awesome logo&lt;/f-logo&gt;
+<span class="hljs-addition">+        &lt;/a&gt;</span>
+     &lt;/template&gt;
+ &lt;/f-page-header&gt;
+</code></pre>
+                </div>
+            <p>Se även nedan exempel för hur du kan göra en egen logotyp med brytpunkt utan att använda <code>FLogo</code>.</p>
+
             <div
-                id="example-d2617d"
+                id="example-226737"
                 class="code-preview code-preview--default"
                 
                 
@@ -1222,12 +1273,29 @@
 </code></pre>
                 </div>
             </div>
-        <h2 id="skiplink"><a class="header-anchor" href="#skiplink">Skiplink</a></h2><p>Skiplink är en särskild länk som fungerar som det första tabbningsbara elementet och visas endast när det fokuserats.
+        <h2 id="sekundar_information"><a class="header-anchor" href="#sekundar_information">Sekundär information</a></h2><p>Slotten <code>right</code> kan användas för att visa information som till exempel namn på inloggad användare.</p>
+
+                <div
+                    id="example-205702"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-page-header&gt;
+<span class="hljs-addition">+    &lt;template #right&gt;</span>
+<span class="hljs-addition">+        Namn Namnsson</span>
+<span class="hljs-addition">+    &lt;/template&gt;</span>
+ &lt;/f-page-header&gt;
+</code></pre>
+                </div>
+            <h2 id="skiplink"><a class="header-anchor" href="#skiplink">Skiplink</a></h2><p>Skiplink är en särskild länk som fungerar som det första tabbningsbara elementet och visas endast när det fokuserats.
 Syftet är att snabbt låta en tangenbordsnavigerande användare hoppa till det primära innehållet utan att navigera genom navigeringsmenyer osv.</p>
 <p>Skiplink aktiveras genom att sätta <code>skipLink</code> till det id som innehåller det primära innehållet:</p>
 
                 <div
-                    id="example-f40bb2"
+                    id="example-349387"
                     class="code-preview code-preview--default"
                     
                     
@@ -1252,24 +1320,6 @@ Syftet är att snabbt låta en tangenbordsnavigerande användare hoppa till det 
         <dl class="docs-api docs-api--slots">
             
                         <dt>
-                            <code id="fpageheader-prop-logosize"
-                                ><a class="docs-api__anchor" href="#fpageheader-prop-logosize"
-                                    ><span class="docs-api__name"
-                                        >logoSize</span
-                                    >: string</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <p>Setting the logo sizes small, large or responsive.</p>
-
-                            <p class="doc-api__item">Default: <code>&quot;responsive&quot;</code></p>
-                            
-                        </dd>
-                    
-                        <dt>
                             <code id="fpageheader-prop-skiplink"
                                 ><a class="docs-api__anchor" href="#fpageheader-prop-skiplink"
                                     ><span class="docs-api__name"
@@ -1282,7 +1332,7 @@ Syftet är att snabbt låta en tangenbordsnavigerande användare hoppa till det 
                         </dt>
                         <dd>
                             <p>Render skiplink.</p>
-<p>When set to a non-empty string thethe skiplink feature is enabled.
+<p>When set to a non-empty string the skiplink feature is enabled.
 The string is the id of the element to move focus to.</p>
 <p>When set to empty string (default) the skiplink feature is disabled.</p>
 
@@ -1305,62 +1355,6 @@ The string is the id of the element to move focus to.</p>
                             <p>HTML element type for header.</p>
 
                             <p class="doc-api__item">Default: <code>&quot;span&quot;</code></p>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="fpageheader-prop-routerlinkpath"
-                                ><a class="docs-api__anchor" href="#fpageheader-prop-routerlinkpath"
-                                    ><span class="docs-api__name"
-                                        >routerLinkPath</span
-                                    >: string</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <p>Target for router-link via path.
-(Behaviour from using both name and path in combination is undefined.)</p>
-
-                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="fpageheader-prop-routerlinkname"
-                                ><a class="docs-api__anchor" href="#fpageheader-prop-routerlinkname"
-                                    ><span class="docs-api__name"
-                                        >routerLinkName</span
-                                    >: string</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <p>Target for router-link via name.
-(Behaviour from using both name and path in combination is undefined.)</p>
-
-                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="fpageheader-prop-routerlinklabel"
-                                ><a class="docs-api__anchor" href="#fpageheader-prop-routerlinklabel"
-                                    ><span class="docs-api__name"
-                                        >routerLinkLabel</span
-                                    >: string</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <p>Label to override the router-link label when router-link is present.</p>
-
-                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
                             
                         </dd>
                     
@@ -1469,9 +1463,9 @@ The string is the id of the element to move focus to.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    bugfix/vue-snippets (<a href="https://github.com/Forsakringskassan/designsystem/commits/f2baa54cbdb991e689cc4f2410d4ae61f7bbe0b8">f2baa54</a>)<br />
+    bugfix/vue-snippets (<a href="https://github.com/Forsakringskassan/designsystem/commits/70af473c5df53b1f03b0d4c540b339254f021872">70af473</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/168">PR 168</a><br />
-        2025-02-07 17:08
+        2025-02-10 14:31
 </div>
 <div class="toolbar__item">
     <form id="version">

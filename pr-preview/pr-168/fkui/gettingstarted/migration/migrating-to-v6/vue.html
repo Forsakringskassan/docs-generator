@@ -9,16 +9,16 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../../assets/docs-6a45b1.css"
+            href="../../../assets/docs-d5e006.css"
             crossorigin
-            integrity="sha384-28RtVIfDTDHqXpEdNmN4MtHpyHE3bh1HM+qFEMStuWOxe6HVU233ya5qj4sMvOe8"
+            integrity="sha384-Z/JIJRwqAuWvyQ3vaShmy+1gm3L8jBsfpgec4uO9T1LEeQNkVbtB7hm6ln7sSub/"
             
         />
         <link
             rel="stylesheet"
-            href="../../../assets/docs-fkui-52e1a9.css"
+            href="../../../assets/docs-fkui-c47cdf.css"
             crossorigin
-            integrity="sha384-rspiNp3JPP16s0KDSmVa5bF81bgjjE/Wx+e6N4L2/pE1uFjjPEsS/v5sE6Mm7fOu"
+            integrity="sha384-/gy/tu2VxD2pbZgaSFGiucOf72+dYyH2btfHfmA3JkEqwz6tFinVRLdoD1/nx4bo"
             data-theme="fkui" disabled
         />
 
@@ -71,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-0f6ff4.json"
+            href="../../../search-data-5e4a9c.json"
             as="fetch"
             crossorigin
-            integrity="sha384-ziw3kq4eUID9KnABnm8iaMvzht0Ww+2QMIesgQcQILAP+V1kpuy8soQy2lnkx/+V"
+            integrity="sha384-7/ppb6WDMg7xJ417/YsAmcGT1d/Djutod0P1vRRKE9c0FnzB763+B3Dk6ihh2dce"
             id="search-data"
         />
     </head>
@@ -535,9 +535,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../../assets/vendor-fkui-vue-0b465e.js"
+                    src="../../../assets/vendor-fkui-vue-0b31a1.js"
                     crossorigin
-                    integrity="sha384-6LsaSlLyLzyHmnxZufSHkO1D/CO1hid1dUzCs/TFtqcjcOQ50lHPm5vc27yTP/Cl"
+                    integrity="sha384-vF7JA1LHid58I2pQMVJtp1Hw78M+5cOl8FYkYst4liLIr9NfXCw91bX18awxDqwM"
                 ></script>
                 <script
                     src="../../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -582,7 +582,7 @@
                                 
                                 <li><a href="#fformmodal_slots">FFormModal slots</a></li>
                                 
-                                <li><a href="#fpageheader_skiplink">FPageHeader skiplink</a></li>
+                                <li><a href="#fpageheader">FPageHeader</a></li>
                                 
                                 <li><a href="#ftextfield">FTextField</a></li>
                                 
@@ -598,7 +598,7 @@
 
                     <div id="content">
                         <!-- prettier-ignore -->
-<h2 id="formatbeskrivning_pa_etikett"><a class="header-anchor" href="#formatbeskrivning_pa_etikett">Formatbeskrivning på etikett</a></h2><p>Använder du formatbeskrivning på <a href="../../../components/flabel.html"><code>FLabel</code></a> eller en komponent som nyttjar den (exempelvis <a href="../../../components/input/ftextfield.html"><code>FTextField</code></a> måste du ändra namnet på bindings:</p>
+<h2 id="formatbeskrivning_pa_etikett"><a class="header-anchor" href="#formatbeskrivning_pa_etikett">Formatbeskrivning på etikett</a></h2><p>Använder du formatbeskrivning på <a href="../../../components/flabel.html"><code>FLabel</code></a> eller en komponent som nyttjar den (exempelvis <a href="../../../components/input/ftextfield.html"><code>FTextField</code></a>) måste du ändra namnet på bindings:</p>
 
                 <div
                     id="example-47ccdd"
@@ -645,10 +645,26 @@
 <span class="hljs-addition">+label.formatDescription().should(&quot;have.text&quot;, &quot;...&quot;);</span>
 </code></pre>
                 </div>
-            <h2 id="konfiguration"><a class="header-anchor" href="#konfiguration">Konfiguration</a></h2><p>De deprekerade egenskaperna <code>FKUIConfig.modalTarget</code> och <code>FKUIConfig.popupTarget</code> är borttagna och ersatta med den kombinerade <code>FKUIConfig.teleportTarget</code>.</p>
+            <h2 id="konfiguration"><a class="header-anchor" href="#konfiguration">Konfiguration</a></h2><h3 id="forandrad_knappordning"><a class="header-anchor" href="#forandrad_knappordning">Förändrad knappordning</a></h3><p>Den inbördes ordning som knapparna presenteras i har ändrats, <code>FKUIConfig.buttonOrder</code> byter standardvärde till <code>RIGHT_TO_LEFT</code>. Det innebär att interna system som följer knappordningen enligt windows standard behöver nu aktivt sätta <code>LEFT_TO_RIGHT</code>.</p>
+<p>Görs lämpligtvis i applikationens <code>main.ts</code>.</p>
 
                 <div
-                    id="example-e215c9"
+                    id="example-e7e1a5"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="javascript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-keyword">import</span> { config, <span class="hljs-title class_">FKUIConfigButtonOrder</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+config.<span class="hljs-property">buttonOrder</span> = <span class="hljs-title class_">FKUIConfigButtonOrder</span>.<span class="hljs-property">LEFT_TO_RIGHT</span>;
+</code></pre>
+                </div>
+            <h3 id="teleport_target"><a class="header-anchor" href="#teleport_target">Teleport target</a></h3><p>De deprekerade egenskaperna <code>FKUIConfig.modalTarget</code> och <code>FKUIConfig.popupTarget</code> är borttagna och ersatta med den kombinerade <code>FKUIConfig.teleportTarget</code>.</p>
+
+                <div
+                    id="example-c87612"
                     class="code-preview code-preview--default"
                     
                     
@@ -660,22 +676,6 @@
 <span class="hljs-deletion">-config.modalTarget = &quot;my &gt; selector&quot;;</span>
 <span class="hljs-deletion">-config.popupTarget = &quot;my &gt; selector&quot;;</span>
 <span class="hljs-addition">+config.teleportTarget = &quot;my &gt; selector&quot;;</span>
-</code></pre>
-                </div>
-            <p>Den inbördes ordning som knapparna presenteras i har ändrats, <code>FKUIConfig.buttonOrder</code> byter standardvärde till <code>RIGHT_TO_LEFT</code>. Det innebär att interna system som följer knappordningen enligt windows standard behöver nu aktivt sätta <code>LEFT_TO_RIGHT</code>.</p>
-<p>Görs lämpligtvis i applikationens <code>main.ts</code>.</p>
-
-                <div
-                    id="example-daf606"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="javascript"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-keyword">import</span> { config, <span class="hljs-title class_">FKUIConfigButtonOrder</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-config.<span class="hljs-property">buttonOrder</span> = <span class="hljs-title class_">FKUIConfigButtonOrder</span>.<span class="hljs-property">LEFT_TO_RIGHT</span>;
 </code></pre>
                 </div>
             <h2 id="fcalendar"><a class="header-anchor" href="#fcalendar"><code>FCalendar</code></a></h2><p>Tidigare emittades eventet <code>change</code> när man ändrar månad i kalendern.
@@ -703,7 +703,7 @@ Det eventet är nu borttaget och ersatt med <code>v-model</code>.</p>
 <p>Om du använder någon av dessa slottar i din modalkomponent, ersätt dem med propen enligt:</p>
 
                 <div
-                    id="example-9646dc"
+                    id="example-7c7162"
                     class="code-preview code-preview--default"
                     
                     
@@ -738,10 +738,10 @@ Det eventet är nu borttaget och ersatt med <code>v-model</code>.</p>
                 </div>
             <p>Om du använder <a href="../../../functions/functions/modal-functions/form-modal.html"><code>formModal(..)</code></a> (rekommenderat) för att anropa modalen behövs inga ändringar.</p>
 <p>Om du använder template-syntax för att anropa <code>FFormModal</code> direkt och använder någon av dessa slottar ersätt med propen likt en modalkomponent ovan.</p>
-<h2 id="fpageheader_skiplink"><a class="header-anchor" href="#fpageheader_skiplink"><code>FPageHeader</code> skiplink</a></h2><p>Den deprekerade propen <code>skipLinkHref</code> är borttagen och ersatt med propen <code>skipLink</code>.</p>
+<h2 id="fpageheader"><a class="header-anchor" href="#fpageheader"><code>FPageHeader</code></a></h2><h3 id="skiplink"><a class="header-anchor" href="#skiplink">skiplink</a></h3><p>Den deprekerade propen <code>skipLinkHref</code> är borttagen och ersatt med propen <code>skipLink</code>.</p>
 
                 <div
-                    id="example-e2b7d5"
+                    id="example-7d31e6"
                     class="code-preview code-preview--default"
                     
                     
@@ -754,11 +754,71 @@ Det eventet är nu borttaget och ersatt med <code>v-model</code>.</p>
                 </div>
             <p><code>skipLink</code> kunde tidigare ta ett <code>boolean</code> värde för att stänga av/på skiplink funktionen men accepterar nu bara en sträng (id på elementet att hoppa till).
 Om du behöver stänga av/på skiplink dynamiskt sätt värdet till tom sträng <code>&quot;&quot;</code> för att stänga av.</p>
-<h2 id="ftextfield"><a class="header-anchor" href="#ftextfield"><code>FTextField</code></a></h2><p>Eventet <code>update</code> emittas inte längre.
+<h3 id="logo_slot"><a class="header-anchor" href="#logo_slot"><code>logo</code> slot</a></h3><p><code>FPageHeader</code> tillhandahåller inte längre en logotyp eller <code>router-link</code> inom <code>logo</code> slot som standard.
+Logo och länkning måste därför skapas själv.</p>
+<p>Borttagna props:</p>
+<ul>
+<li><code>logoSize</code></li>
+<li><code>routerLinkPath</code></li>
+<li><code>routerLinkName</code></li>
+<li><code>routerLinkLabel</code></li>
+</ul>
+<p>Om du använt standardlogo med länkning och vill att det ska fungera som tidigare kan du använda <a href="../../../components/flogo.html"><code>FLogo</code></a> och göra följande ändringar:</p>
+
+                <div
+                    id="example-7583d7"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-page-header&gt;
+<span class="hljs-addition">+    &lt;template #logo&gt;</span>
+<span class="hljs-addition">+        &lt;router-link :to=&quot;logoRoute&quot;&gt;</span>
+<span class="hljs-addition">+            &lt;f-logo&gt;{{ logoLabel }}&lt;/f-logo&gt;</span>
+<span class="hljs-addition">+        &lt;/router-link&gt;</span>
+<span class="hljs-addition">+    &lt;/template&gt;</span>
+ &lt;/f-page-header&gt;
+</code></pre>
+                </div>
+            <p>Du behöver också ange url till logo-bilden med CSS variabler:</p>
+
+                <div
+                    id="example-c62e14"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-addition">+--f-logo-image-small: url(path/to/image-small.svg)</span>
+<span class="hljs-addition">+--f-logo-image-large: url(path/to/image-large.svg)</span>
+</code></pre>
+                </div>
+            <p>För att ändra storlek på logotypen som med tidigare <code>logoSize</code>, använd <code>size</code> prop på <code>FLogo</code> med samma värden.</p>
+
+                <div
+                    id="example-56f5f3"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-page-header logoSize=&quot;small&quot;&gt;</span>
+<span class="hljs-addition">+&lt;f-page-header&gt;</span>
+<span class="hljs-addition">+    &lt;template #logo&gt;</span>
+<span class="hljs-addition">+        f-logo size=&quot;small&quot;&gt;{{ logoLabel }}&lt;/f-logo&gt;</span>
+<span class="hljs-addition">+    &lt;/template&gt;</span>
+ &lt;/f-page-header&gt;
+</code></pre>
+                </div>
+            <h2 id="ftextfield"><a class="header-anchor" href="#ftextfield"><code>FTextField</code></a></h2><p>Eventet <code>update</code> emittas inte längre.
 Använd <code>change</code> eventet eller <code>v-model</code> istället.</p>
 
                 <div
-                    id="example-28e37d"
+                    id="example-3bc2f4"
                     class="code-preview code-preview--default"
                     
                     
@@ -772,7 +832,7 @@ Använd <code>change</code> eventet eller <code>v-model</code> istället.</p>
             <h2 id="gettextfromscopedslot"><a class="header-anchor" href="#gettextfromscopedslot"><code>getTextFromScopedSlot</code></a></h2><p>Den deprekerade funktionen <code>getTextFromScopedSlot(..)</code> har tagits bort och är ersatt med <a href="../../../functions/functions/render-slot-text.html"><code>renderSlotText(..)</code></a>.</p>
 
                 <div
-                    id="example-f758a1"
+                    id="example-262d11"
                     class="code-preview code-preview--default"
                     
                     
@@ -825,9 +885,9 @@ Använd <code>change</code> eventet eller <code>v-model</code> istället.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    bugfix/vue-snippets (<a href="https://github.com/Forsakringskassan/designsystem/commits/f2baa54cbdb991e689cc4f2410d4ae61f7bbe0b8">f2baa54</a>)<br />
+    bugfix/vue-snippets (<a href="https://github.com/Forsakringskassan/designsystem/commits/70af473c5df53b1f03b0d4c540b339254f021872">70af473</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/168">PR 168</a><br />
-        2025-02-07 17:08
+        2025-02-10 14:31
 </div>
 <div class="toolbar__item">
     <form id="version">

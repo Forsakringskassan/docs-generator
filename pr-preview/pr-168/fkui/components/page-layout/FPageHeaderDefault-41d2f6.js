@@ -34,16 +34,26 @@
   var import_vue5 = __require("vue");
   var exampleComponent = (0, import_vue3.defineComponent)({
     name: "FPageHeaderDefault",
-    components: { FPageHeader: import_vue4.FPageHeader }
+    components: { FPageHeader: import_vue4.FPageHeader, FLogo: import_vue4.FLogo }
   });
   function render(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_f_logo = (0, import_vue5.resolveComponent)("f-logo");
     const _component_f_page_header = (0, import_vue5.resolveComponent)("f-page-header");
     return (0, import_vue5.openBlock)(), (0, import_vue5.createBlock)(_component_f_page_header, null, {
-      right: (0, import_vue5.withCtx)(() => _cache[0] || (_cache[0] = [
+      logo: (0, import_vue5.withCtx)(() => [
+        (0, import_vue5.createVNode)(_component_f_logo, { size: "small" }, {
+          default: (0, import_vue5.withCtx)(() => _cache[0] || (_cache[0] = [
+            (0, import_vue5.createTextVNode)("Example logo text")
+          ])),
+          _: 1
+          /* STABLE */
+        })
+      ]),
+      right: (0, import_vue5.withCtx)(() => _cache[1] || (_cache[1] = [
         (0, import_vue5.createTextVNode)(" Namn Namnsson ")
       ])),
       default: (0, import_vue5.withCtx)(() => [
-        _cache[1] || (_cache[1] = (0, import_vue5.createTextVNode)(" Exempelapplikation "))
+        _cache[2] || (_cache[2] = (0, import_vue5.createTextVNode)(" Exempelapplikation "))
       ]),
       _: 1
       /* STABLE */
