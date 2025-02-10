@@ -18,7 +18,6 @@ interface:ProcessorHandler
 interface:ProcessorHandler
 :::
 
-
 ---
 
 One of `before`, `stage` or `after` must be set and decides when the processor is run.
