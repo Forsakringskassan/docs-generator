@@ -146,6 +146,7 @@
     "nunjucks": "3.2.4",
     "scroll-into-view-if-needed": "3.1.0",
     "semver": "7.7.3",
+    "synckit": "0.9.2",
     "tiny-lr": "2.0.0",
     "vue-docgen-api": "4.79.2"
   },
@@ -191,6 +192,8 @@
     "http-server": "14.1.1",
     "is-ci": "4.1.0",
     "jest-environment-jsdom": "30.2.0",
+    "lint-staged": "15.5.1",
+    "magic-string": "0.30.17",
     "memfs": "4.56.10",
     "minimatch": "10.1.1",
     "npm-pkg-lint": "4.3.4",
