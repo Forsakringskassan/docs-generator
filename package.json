@@ -91,6 +91,7 @@
       "!**/index.[jt]s",
       "!**/__fixtures__/**"
     ],
+    "globalSetup": "<rootDir>/jest.global.js",
     "preset": "@forsakringskassan/jest-config",
     "projects": [
       {
@@ -102,6 +103,9 @@
         "testPathIgnorePatterns": [
           "/node_modules/",
           "<rootDir>/src/runtime"
+        ],
+        "setupFiles": [
+          "<rootDir>/jest.setup.js"
         ]
       },
       {

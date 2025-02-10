@@ -38,7 +38,9 @@ export default [
         ],
     }),
     vueConfig(),
-    jestConfig(),
+    jestConfig({
+        files: ["**/*.spec.[jt]s", "jest.*.js"],
+    }),
     cypressConfig(),
 
     {
