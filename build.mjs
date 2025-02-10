@@ -12,6 +12,7 @@ import json from "@rollup/plugin-json";
 import { visualizer } from "rollup-plugin-visualizer";
 import * as sass from "sass";
 import { Extractor, ExtractorConfig } from "@microsoft/api-extractor";
+import MagicString from "magic-string";
 
 const pkg = JSON.parse(await fs.readFile("package.json", "utf-8"));
 const { externalDependencies, peerDependencies } = pkg;
@@ -47,6 +48,75 @@ const sassCSSVariableImporter = {
         };
     },
 };
+
+/**
+ * @returns {import("rollup").Plugin}
+ */
+function workerPlugin() {
+    const mapping = new Map();
+    return {
+        name: "fk:worker-plugin",
+        async resolveId(id, importer) {
+            if (id.endsWith("?worker&url")) {
+                const filePath = id.replace("?worker&url", "");
+                const scopedId = `worker:${filePath}`;
+                const { id: resolvedId } = await this.resolve(
+                    filePath,
+                    importer,
+                );
+                mapping.set(scopedId, resolvedId);
+                return scopedId;
+            }
+            return null;
+        },
+        async load(id) {
+            if (id.startsWith("worker:")) {
+                const resolvedId = mapping.get(id);
+                return await fs.readFile(resolvedId, "utf-8");
+            }
+            return null;
+        },
+        transform(_code, id) {
+            if (id.startsWith("worker:")) {
+                const resolvedId = mapping.get(id);
+                const chunkRef = this.emitFile({
+                    id: resolvedId,
+                    type: "chunk",
+                });
+                return {
+                    code: `export default __getWorkerFilename__("${chunkRef}");`,
+                    map: { mappings: "" },
+                };
+            }
+            return null;
+        },
+        renderChunk(code) {
+            const regex = /__getWorkerFilename__\("([^"]+)"\)/g;
+            const matches = [];
+            let match;
+            while ((match = regex.exec(code)) !== null) {
+                const chunkRef = match[1];
+                const filename = this.getFileName(chunkRef);
+                matches.push({
+                    filename,
+                    begin: match.index,
+                    end: regex.lastIndex,
+                });
+            }
+            if (matches.length === 0) {
+                return null;
+            }
+            const ms = new MagicString(code);
+            for (const { filename, begin, end } of matches) {
+                ms.overwrite(begin, end, JSON.stringify(`./${filename}`));
+            }
+            return {
+                code: ms.toString(),
+                map: ms.generateMap({ hires: true }),
+            };
+        },
+    };
+}
 
 /**
  * @param {Array<{ src: string, dst: string }>} entrypoints
@@ -86,7 +156,12 @@ async function build() {
     await fs.rm("dist", { recursive: true, force: true });
 
     const options = defineConfig({
-        input: ["src/index.ts", "src/compile-example.ts", "src/markdown.ts"],
+        input: [
+            "src/index.ts",
+            "src/compile-example.ts",
+            "src/markdown.ts",
+            "src/workers/format-worker.ts",
+        ],
         external: [
             "@babel/core",
             "express",
@@ -113,6 +188,7 @@ async function build() {
             visualizer({
                 filename: "temp/bundle.html",
             }),
+            workerPlugin(),
         ],
     });
     const bundle = await rollup(options);
