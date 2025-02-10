@@ -4,7 +4,7 @@ import {
     type ApiInterface,
     ApiItemKind,
 } from "@microsoft/api-extractor-model";
-import { format } from "./format";
+import { formatCode } from "../../utils";
 import { renderDocNode } from "./render-doc-node";
 
 function isSupported(item: {
@@ -28,7 +28,7 @@ async function renderCode(item: ApiInterface): Promise<string> {
     const source = `${item.excerpt.text.replace(/^export /, "")} { ${members.join("")} }`;
     return [
         "```ts nocompile nolint",
-        await format(source, "interface"),
+        formatCode(source, "docs/api-interface.ts"),
         "```",
     ].join("\n");
 }
