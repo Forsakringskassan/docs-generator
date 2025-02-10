@@ -14,6 +14,7 @@ layout/overriding-templates.html
 layout/plumbing.html
 live-example/example.html
 live-example/index.html
+markdown/api/typescript.html
 markdown/api/vue.html
 markdown/code-preview/diff.html
 markdown/code-preview/fullscreen.html
@@ -38,6 +39,7 @@ navigation/sorted-group/sorted-page-1.html
 navigation/sorted-group/sorted-page-2.html
 navigation/sorted-group/sorted-page-3.html
 navigation/sorted-group/top-page.html
+processors/api-extractor.html
 processors/cookie.html
 processors/extract-examples.html
 processors/index.html

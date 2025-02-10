@@ -1,4 +1,8 @@
 export {
+    type ApiExtractorProcessorOptions,
+    apiExtractorProcessor,
+} from "./api-extractor";
+export {
     type ExtractExamplesOptions,
     extractExamplesProcessor,
 } from "./extract-examples-processor";
