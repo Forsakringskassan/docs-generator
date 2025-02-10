@@ -4,7 +4,7 @@
 
 ```ts
 
-import { Component as Component_2 } from 'vue';
+import { Component } from 'vue';
 
 // @public (undocumented)
 export type AttributeTable = Record<string, AttributeValue>;
@@ -24,6 +24,12 @@ export interface CompileOptions {
     priority: number;
 }
 
+// @public (undocumented)
+export interface ComponentAttribute {
+    name: string;
+    source?: string;
+}
+
 // @public
 export function cookieProcessor(options?: ProcessorOptions): Processor;
 
@@ -31,24 +37,7 @@ export function cookieProcessor(options?: ProcessorOptions): Processor;
 export function defineSources(sources: SourceFiles[]): SourceFiles[];
 
 // @public (undocumented)
-interface Document_2 {
-    alias: string[];
-    // (undocumented)
-    attributes: NormalizedDocumentAttributes;
-    // (undocumented)
-    body: string;
-    // (undocumented)
-    fileInfo: FileInfo;
-    format: "markdown" | "html" | "json" | "redirect";
-    id: string;
-    name: string;
-    outline: DocumentOutline;
-    // (undocumented)
-    tags: string[];
-    // (undocumented)
-    template: string;
-    visible: boolean;
-}
+type Document_2 = DocumentPage | DocumentPartial;
 export { Document_2 as Document }
 
 // @public (undocumented)
@@ -63,6 +52,40 @@ export interface DocumentOutlineEntry {
     rank: number;
     subheadings: DocumentOutline;
     title: string;
+}
+
+// @public (undocumented)
+export interface DocumentPage {
+    alias: string[];
+    // (undocumented)
+    attributes: NormalizedDocumentAttributes;
+    body: string;
+    // (undocumented)
+    fileInfo: FileInfo;
+    format: "markdown" | "html" | "json" | "redirect";
+    id: string;
+    kind: "page";
+    name: string;
+    outline: DocumentOutline;
+    // (undocumented)
+    tags: string[];
+    // (undocumented)
+    template: string;
+    visible: boolean;
+}
+
+// @public
+export interface DocumentPartial {
+    alias: string[];
+    body: string | ((tags: string[]) => string);
+    // (undocumented)
+    fileInfo: {
+        fullPath: string | undefined;
+    };
+    format: "markdown" | "html" | "json";
+    id: string;
+    kind: "partial";
+    name: string;
 }
 
 // @public
@@ -89,7 +112,7 @@ type FileReader_2 = (filePath: string, basePath?: string) => Promise<Document_2[
 export { FileReader_2 as FileReader }
 
 // @public
-export function frontMatterFileReader(filePath: string, basePath?: string): Promise<Document_2[]>;
+export function frontMatterFileReader(filePath: string, basePath?: string): Promise<DocumentPage[]>;
 
 // @public (undocumented)
 class Generator_2 {
@@ -190,7 +213,7 @@ export interface MOTDOptions {
 export function motdProcessor(options?: MOTDOptions): Processor;
 
 // @public
-export function navigationFileReader(filePath: string, basePath?: string): Promise<Document_2[]>;
+export function navigationFileReader(filePath: string, basePath?: string): Promise<DocumentPage[]>;
 
 // @public (undocumented)
 export interface NavigationLeaf {
@@ -229,10 +252,8 @@ export interface NavigationSection {
 export interface NormalizedDocumentAttributes {
     // (undocumented)
     badge?: DocumentBadge;
-    // Warning: (ae-forgotten-export) The symbol "Component" needs to be exported by the entry point index.d.ts
-    //
     // (undocumented)
-    component?: Component[];
+    component?: ComponentAttribute[];
     // (undocumented)
     href?: string;
     // (undocumented)
@@ -375,7 +396,7 @@ export interface SelectableVersionProcessorOptions extends ProcessorOptions {
 
 // @public
 export interface SetupOptions {
-    rootComponent: Component_2;
+    rootComponent: Component;
     selector: string;
 }
 
@@ -490,7 +511,7 @@ export interface VersionProcessorOptions {
 }
 
 // @public
-export function vueFileReader(filePath: string): Promise<Document_2[]>;
+export function vueFileReader(filePath: string): Promise<DocumentPartial[]>;
 
 // (No @packageDocumentation comment for this package)
 

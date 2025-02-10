@@ -76,7 +76,7 @@ const docs = new Generator({
 
     Default:
 
-    - `"javascript"
+    - `"javascript"`
     - `"typescript"`
     - `"css"`
     - `"scss"`

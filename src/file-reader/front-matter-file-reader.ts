@@ -2,9 +2,9 @@ import fs from "node:fs/promises";
 import path, { type ParsedPath } from "node:path";
 import fm from "front-matter";
 import {
-    type Component,
+    type ComponentAttribute,
     type DocumentBadge,
-    type Document,
+    type DocumentPage,
     type DocumentAttributes,
     documentAttributeKeys,
 } from "../document";
@@ -73,7 +73,9 @@ function validateAttributes(
     }
 }
 
-function normalizeComponent(value: string | Component): Component {
+function normalizeComponent(
+    value: string | ComponentAttribute,
+): ComponentAttribute {
     if (typeof value === "string") {
         return {
             name: value,
@@ -83,7 +85,7 @@ function normalizeComponent(value: string | Component): Component {
     }
 }
 
-function getComponentAlias(value: string | Component): string {
+function getComponentAlias(value: string | ComponentAttribute): string {
     const { name } = normalizeComponent(value);
     return `component:${name}`;
 }
@@ -102,7 +104,9 @@ export function* getDocumentAlias(
     }
 }
 
-function getComponent(attrs: DocumentAttributes): Component[] | undefined {
+function getComponent(
+    attrs: DocumentAttributes,
+): ComponentAttribute[] | undefined {
     if (!attrs.component) {
         return undefined;
     }
@@ -116,7 +120,7 @@ export function parseFile(
     filePath: string,
     basePath: string | undefined,
     content: string,
-): Document {
+): DocumentPage {
     const relative = basePath
         ? path.relative(basePath, normalizePath(filePath))
         : normalizePath(filePath);
@@ -133,6 +137,7 @@ export function parseFile(
     validateAttributes(attributes, filePath, content);
 
     return {
+        kind: "page",
         id: `fs:${filePath.replace(/\\/g, "/")}`,
         name,
         alias: Array.from(getDocumentAlias(attributes)),
@@ -172,7 +177,7 @@ export function parseFile(
 export async function frontMatterFileReader(
     filePath: string,
     basePath?: string,
-): Promise<Document[]> {
+): Promise<DocumentPage[]> {
     const content = await fs.readFile(filePath, "utf-8");
     const doc = parseFile(filePath, basePath, content);
     return [doc];

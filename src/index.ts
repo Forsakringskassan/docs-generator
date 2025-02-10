@@ -2,15 +2,16 @@ export { type CompileOptions, type ResourceTask } from "./assets";
 export { availableProcessors } from "./available-processors";
 export { defineSources } from "./define-sources";
 export {
+    type ComponentAttribute,
     type Document,
     type DocumentBadge,
+    type DocumentOutline,
+    type DocumentOutlineEntry,
+    type DocumentPage,
+    type DocumentPartial,
     type FileInfo,
     type NormalizedDocumentAttributes,
 } from "./document";
-export {
-    type DocumentOutline,
-    type DocumentOutlineEntry,
-} from "./document-outline";
 export {
     type FileReader,
     type SourceFiles,

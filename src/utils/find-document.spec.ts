@@ -1,33 +1,11 @@
-import path from "node:path";
-import { type Document } from "../document";
 import { findDocument } from "./find-document";
-
-function createDocument(filePath: string, doc: Partial<Document>): Document {
-    const parsed = path.parse(filePath);
-    return {
-        id: filePath,
-        name: path.basename(filePath),
-        alias: [],
-        visible: true,
-        attributes: { sortorder: Infinity, redirectFrom: [] },
-        body: "",
-        outline: [],
-        format: "markdown",
-        tags: [],
-        template: "mock",
-        fileInfo: {
-            path: parsed.dir !== "" ? `./${parsed.dir}` : ".",
-            name: parsed.name,
-            fullPath: filePath,
-            outputName: false,
-        },
-        ...doc,
-    };
-}
+import { createMockDocument } from "./create-mock-document";
 
 it("should find document by id", () => {
     expect.assertions(1);
-    const docs = [createDocument("foo.html", { id: "mock-id" })];
+    const docs = [
+        createMockDocument("mock-name", "foo.html", { id: "mock-id" }),
+    ];
     const result = findDocument(docs, "mock-id");
     expect(result).toEqual(
         expect.objectContaining({
@@ -38,7 +16,7 @@ it("should find document by id", () => {
 
 it("should find document by name", () => {
     expect.assertions(1);
-    const docs = [createDocument("foo.html", { name: "mock-name" })];
+    const docs = [createMockDocument("mock-name", "foo.html")];
     const result = findDocument(docs, "mock-name");
     expect(result).toEqual(
         expect.objectContaining({
@@ -49,7 +27,11 @@ it("should find document by name", () => {
 
 it("should find document by alias", () => {
     expect.assertions(1);
-    const docs = [createDocument("foo.html", { alias: ["foo", "bar", "baz"] })];
+    const docs = [
+        createMockDocument("mock-name", "foo.html", {
+            alias: ["foo", "bar", "baz"],
+        }),
+    ];
     const result = findDocument(docs, "bar");
     expect(result).toEqual(
         expect.objectContaining({
@@ -60,7 +42,7 @@ it("should find document by alias", () => {
 
 it("should return null if no document matches", () => {
     expect.assertions(1);
-    const docs = [createDocument("foo.html", {})];
+    const docs = [createMockDocument("mock-name", "foo.html")];
     const result = findDocument(docs, "missing");
     expect(result).toBeNull();
 });

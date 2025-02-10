@@ -1,5 +1,5 @@
 import path from "node:path";
-import { type Document } from "../document";
+import { type DocumentPage } from "../document";
 
 /**
  * For use with tests.
@@ -9,15 +9,20 @@ import { type Document } from "../document";
 export function createMockDocument(
     name: string,
     filePath: string,
-    doc?: Partial<Document>,
-): Document {
+    doc?: Partial<DocumentPage>,
+): DocumentPage {
     const parsed = path.parse(filePath);
     return {
+        kind: "page",
         id: `mock:${name}`,
         name,
         alias: [],
         visible: false,
-        attributes: { sortorder: Infinity, redirectFrom: [] },
+        attributes: {
+            sortorder: Infinity,
+            redirectFrom: [],
+            ...doc?.attributes,
+        },
         body: "",
         outline: [],
         format: "html",

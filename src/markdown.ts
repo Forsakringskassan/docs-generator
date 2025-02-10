@@ -1,13 +1,14 @@
 export {
-    type NormalizedDocumentAttributes,
+    type ComponentAttribute,
     type Document,
     type DocumentBadge,
-    type FileInfo,
-} from "./document";
-export {
     type DocumentOutline,
     type DocumentOutlineEntry,
-} from "./document-outline";
+    type DocumentPage,
+    type DocumentPartial,
+    type FileInfo,
+    type NormalizedDocumentAttributes,
+} from "./document";
 export {
     type ExampleCompiledResult,
     type ExampleStaticResult,

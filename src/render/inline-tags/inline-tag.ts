@@ -1,4 +1,4 @@
-import { type Document } from "../../document";
+import { type Document, type DocumentPage } from "../../document";
 
 /**
  * Represents a handler for a `{@NAME CONTENT}` tag.
@@ -34,5 +34,5 @@ export interface InlineTag {
      * @param docs - Document collection.
      * @param content - The tag content with leading and trailing whitespace trimmed.
      */
-    handler(doc: Document, docs: Document[], content: string): string;
+    handler(doc: DocumentPage, docs: Document[], content: string): string;
 }

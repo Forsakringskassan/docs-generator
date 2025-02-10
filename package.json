@@ -39,7 +39,7 @@
   "scripts": {
     "prebuild": "npm run --workspaces --if-present build",
     "build": "tsc && node build.mjs",
-    "postbuild": "node generate-docs.mjs && html-validate public",
+    "postbuild": "node --enable-source-maps generate-docs.mjs && html-validate public",
     "build:docs": "node generate-docs.mjs",
     "eslint": "eslint --cache .",
     "eslint:fix": "eslint --fix .",

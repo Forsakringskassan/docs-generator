@@ -137,10 +137,12 @@ export function containerParser(md: MarkdownIt, options: Options): void {
     }
 }
 
+/* eslint-disable-next-line @typescript-eslint/max-params -- technical debt: should create and interface or similar */
 export function containerRenderer(
+    doc: () => Document,
     docs: Document[],
     env: MarkdownEnv,
-    included: Set<string>,
+    included: Map<string, string>,
     handleSoftError: (error: SoftErrorType) => string,
     options: {
         messagebox: {
@@ -152,6 +154,9 @@ export function containerRenderer(
         const context: ContainerContext = {
             md,
             env,
+            get doc() {
+                return doc();
+            },
             docs,
             included,
             handleSoftError,

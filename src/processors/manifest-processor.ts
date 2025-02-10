@@ -2,6 +2,7 @@ import fs from "node:fs/promises";
 import { type Manifest, manifestPageFromDocument } from "../manifest";
 import { type Processor } from "../processor";
 import { haveOutput } from "../utils";
+import { isDocumentPage } from "../document";
 
 type ManifestPage = Manifest["pages"][number];
 
@@ -83,7 +84,7 @@ export function manifestProcessor(
         name: "manifestProcessor",
         before: "render",
         async handler(context) {
-            const docs = context.docs.filter(haveOutput);
+            const docs = context.docs.filter(isDocumentPage).filter(haveOutput);
             const pages = docs.map(manifestPageFromDocument);
             pages.sort((a, b) => {
                 return a.path.localeCompare(b.path);

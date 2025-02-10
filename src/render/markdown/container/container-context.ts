@@ -18,6 +18,11 @@ export interface ContainerContext {
     env: MarkdownEnv;
 
     /**
+     * Current document being rendered.
+     */
+    doc: Document;
+
+    /**
      * List of all available documents.
      */
     docs: Document[];
@@ -28,7 +33,7 @@ export interface ContainerContext {
      * documents) the current document it should always be compared to this to
      * prevent infinite loops.
      */
-    included: Set<string>;
+    included: Map<string, string>;
 
     /**
      * Called to handle a soft error, i.e. an error that we can recover
