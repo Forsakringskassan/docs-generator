@@ -1,12 +1,12 @@
 import { type ApiFunction } from "@microsoft/api-extractor-model";
-import { format } from "./format";
+import { formatCode } from "../../utils";
 import { renderDocNode } from "./render-doc-node";
 
 async function renderCode(item: ApiFunction): Promise<string> {
     const source = item.excerpt.text.replace(/^export declare /, "");
     return [
         "```ts nocompile nolint",
-        await format(source, "function"),
+        formatCode(source, "docs/api-function.ts"),
         "```",
     ].join("\n");
 }
