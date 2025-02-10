@@ -43,8 +43,6 @@ const name = "World";
 
 ```vue
 <script setup>
-import { ref } from "vue";
-
 const name = "World";
 </script>
 
