@@ -50,7 +50,10 @@ export function apiContainer(context: ContainerContext): ContainerCallback {
             );
         }
 
-        const content = md.render(body, env);
-        return /* HTML */ ` <div>${content}</div> `;
+        const markdown = body.replace(/^(#+) /gm, (m) => {
+            const newLevel = m.length + env.currentHeading - 1;
+            return `${"#".repeat(newLevel)} `;
+        });
+        return md.render(markdown, env);
     };
 }
