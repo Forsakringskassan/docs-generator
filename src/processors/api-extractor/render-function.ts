@@ -2,7 +2,10 @@ import { type ApiFunction } from "@microsoft/api-extractor-model";
 import { formatCode } from "../../utils";
 import { renderDocNode } from "./render-doc-node";
 
-async function renderCode(item: ApiFunction): Promise<string> {
+/**
+ * @internal
+ */
+export function renderPrototype(item: ApiFunction): string {
     const source = item.excerpt.text.replace(/^export declare /, "");
     return [
         "```ts nocompile nolint",
@@ -11,7 +14,10 @@ async function renderCode(item: ApiFunction): Promise<string> {
     ].join("\n");
 }
 
-async function renderTable(item: ApiFunction): Promise<string> {
+/**
+ * @internal
+ */
+export function renderParameters(item: ApiFunction): string {
     return item.parameters
         .map((it) => {
             const optional = it.isOptional ? " {@optional}" : "";
@@ -35,14 +41,32 @@ async function renderTable(item: ApiFunction): Promise<string> {
 /**
  * @internal
  */
-export async function renderFunction(
-    item: ApiFunction,
-): Promise<{ default: string; code: string; table: string }> {
-    const code = await renderCode(item);
-    const table = await renderTable(item);
+export function renderReturnvalue(item: ApiFunction): string {
+    return renderDocNode(item.tsdocComment?.returnsBlock?.content).trim();
+}
+
+/**
+ * @internal
+ */
+/* istanbul ignore next: wrapper doesn't need unittesting */
+export function renderFunction(): {
+    default(this: void, item: ApiFunction): string;
+    prototype(this: void, item: ApiFunction): string;
+    parameters(this: void, item: ApiFunction): string;
+    returnvalue(this: void, item: ApiFunction): string;
+} {
     return {
-        code,
-        table,
-        default: code,
+        default(item) {
+            return renderPrototype(item);
+        },
+        prototype(item) {
+            return renderPrototype(item);
+        },
+        parameters(item) {
+            return renderParameters(item);
+        },
+        returnvalue(item) {
+            return renderReturnvalue(item);
+        },
     };
 }

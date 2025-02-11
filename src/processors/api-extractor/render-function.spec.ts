@@ -5,7 +5,11 @@ import {
     ApiItemKind,
     ApiModel,
 } from "@microsoft/api-extractor-model";
-import { renderFunction } from "./render-function";
+import {
+    renderPrototype,
+    renderParameters,
+    renderReturnvalue,
+} from "./render-function";
 
 const fixture = "temp/docs.api.json";
 
@@ -38,22 +42,22 @@ function findFunction(name: string): ApiFunction | undefined {
         .find((it) => it.name === name);
 }
 
-it("should render function prototype", async () => {
+it("should render function prototype", () => {
     expect.assertions(1);
     const item = findFunction("exampleFunction")!;
-    const { code } = await renderFunction(item);
-    expect(code).toMatchInlineSnapshot(`
+    const output = renderPrototype(item);
+    expect(output).toMatchInlineSnapshot(`
         \`\`\`ts nocompile nolint
         function exampleFunction(a: number, b: number, c?: number): number;
         \`\`\`
     `);
 });
 
-it("should render function parameters", async () => {
+it("should render function parameters", () => {
     expect.assertions(1);
     const item = findFunction("exampleFunction")!;
-    const { table } = await renderFunction(item);
-    expect(table).toMatchInlineSnapshot(`
+    const output = renderParameters(item);
+    expect(output).toMatchInlineSnapshot(`
         \`a: number\`
         : First number to add.
 
@@ -64,4 +68,11 @@ it("should render function parameters", async () => {
         : Optional third number to add.
 
     `);
+});
+
+it("should render function return value", () => {
+    expect.assertions(1);
+    const item = findFunction("exampleFunction")!;
+    const output = renderReturnvalue(item);
+    expect(output).toMatchInlineSnapshot(`The sum of the numbers.`);
 });

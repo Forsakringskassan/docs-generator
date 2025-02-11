@@ -16,7 +16,7 @@ function isSupported(item: {
     ].includes(item.kind);
 }
 
-async function renderCode(item: ApiInterface): Promise<string> {
+function renderCode(item: ApiInterface): string {
     const members = item.members.map((it) => {
         if (!isSupported(it)) {
             throw new Error(
@@ -33,7 +33,7 @@ async function renderCode(item: ApiInterface): Promise<string> {
     ].join("\n");
 }
 
-async function renderTable(item: ApiInterface): Promise<string> {
+function renderProperties(item: ApiInterface): string {
     return item.members
         .map((it) => {
             if (!isSupported(it)) {
@@ -59,14 +59,20 @@ async function renderTable(item: ApiInterface): Promise<string> {
 /**
  * @internal
  */
-export async function renderInterface(
-    item: ApiInterface,
-): Promise<{ default: string; code: string; table: string }> {
-    const code = await renderCode(item);
-    const table = await renderTable(item);
+export function renderInterface(): {
+    default(this: void, item: ApiInterface): string;
+    interface(this: void, item: ApiInterface): string;
+    properties(this: void, item: ApiInterface): string;
+} {
     return {
-        code,
-        table,
-        default: code,
+        default(item) {
+            return renderCode(item);
+        },
+        interface(item) {
+            return renderCode(item);
+        },
+        properties(item) {
+            return renderProperties(item);
+        },
     };
 }

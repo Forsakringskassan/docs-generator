@@ -44,7 +44,7 @@ Interfaces can either be shown as code (default) or as a table.
 `code` (default)
 : Renders interface as code.
 
-`table`
+`properties`
 : Renders interface as a property table.
 
 ### Examples
@@ -66,28 +66,31 @@ interface:ExampleInterface
 **Input:**
 
 ```md
-::: api table
+::: api properties
 interface:ExampleInterface
 :::
 ```
 
 **Output:**
 
-::: api table
+::: api properties
 interface:ExampleInterface
 :::
 
-### Functions
+## Functions
 
-Functions can either be shown as a function prototype or a parameter table.
+Functions can either be shown as a function prototype, a parameter table or return value description.
 
 ### Options
 
-`code` (default)
+`prototype` (default)
 : Renders function as function prototype.
 
-`table`
+`parameters`
 : Renders function as a parameter table.
+
+`returnvalue`
+: Renders function as a return value description.
 
 ### Examples
 
@@ -108,13 +111,27 @@ function:exampleFunction
 **Input:**
 
 ```md
-::: api table
+::: api parameters
 function:exampleFunction
 :::
 ```
 
 **Output:**
 
-::: api table
+::: api parameters
+function:exampleFunction
+:::
+
+**Input:**
+
+```md
+::: api returnvalue
+function:exampleFunction
+:::
+```
+
+**Output:**
+
+::: api returnvalue
 function:exampleFunction
 :::

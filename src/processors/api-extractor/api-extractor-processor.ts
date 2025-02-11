@@ -92,16 +92,16 @@ export function apiExtractorProcessor(
                 });
             }
 
+            const interfaceRenderer = renderInterface();
             for (const item of symbols.interface) {
-                const variants = await renderInterface(item);
                 context.addDocument({
                     kind: "partial",
                     id: item.canonicalReference.toString(),
                     name: `interface:${item.name}`,
                     alias: [],
                     body(tags) {
-                        const variant = getVariant(tags);
-                        return variants[variant];
+                        const variant = getVariant("interface", tags);
+                        return interfaceRenderer[variant](item);
                     },
                     format: "markdown",
                     fileInfo: {
@@ -110,16 +110,16 @@ export function apiExtractorProcessor(
                 });
             }
 
+            const functionRenderer = renderFunction();
             for (const item of symbols.function) {
-                const variants = await renderFunction(item);
                 context.addDocument({
                     kind: "partial",
                     id: item.canonicalReference.toString(),
                     name: `function:${item.name}`,
                     alias: [],
                     body(tags) {
-                        const variant = getVariant(tags);
-                        return variants[variant];
+                        const variant = getVariant("function", tags);
+                        return functionRenderer[variant](item);
                     },
                     format: "markdown",
                     fileInfo: {
