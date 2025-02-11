@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## [2.19.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.18.0...v2.19.0) (2025-02-11)
+
+### Features
+
+* allow partial functions to have a callback as body ([493d8c9](https://github.com/Forsakringskassan/docs-generator/commit/493d8c9600cd21a688b856237f051d25be3e5f50))
+* support creating partial documents ([6b5cab4](https://github.com/Forsakringskassan/docs-generator/commit/6b5cab4afd694999238f1ac950dad90a1f9d9b41))
+
+### Bug Fixes
+
+* **deps:** update dependency esbuild to v0.25.0 [security] ([cfb2593](https://github.com/Forsakringskassan/docs-generator/commit/cfb259311b7f90bc4da1fd375f203647044fe1bb))
+* **deps:** update dependency semver to v7.7.1 ([b236a52](https://github.com/Forsakringskassan/docs-generator/commit/b236a52af5fdf111d57462db9192264e51957691))
+* handle code snippets in imported vue examples ([896e2ac](https://github.com/Forsakringskassan/docs-generator/commit/896e2acfd661cc799ec22ac71c0eb07868149c19))
+* show original stacktrace even for pretty template errors ([8667e80](https://github.com/Forsakringskassan/docs-generator/commit/8667e800cb0c94fddf44af4436f80f393f2ba06a))
+* support including the same partial multiple times on the same page ([185fd1e](https://github.com/Forsakringskassan/docs-generator/commit/185fd1ef38784f5253d87a9e51fba36160c0f353))
+* use example as test-id if not explicitly set ([c157e44](https://github.com/Forsakringskassan/docs-generator/commit/c157e44818baf6cd1eb8c756271b96b3af442ecb))
+
 ## [2.18.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.17.1...v2.18.0) (2025-02-06)
 
 ### Features
