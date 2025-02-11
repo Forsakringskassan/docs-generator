@@ -19,25 +19,24 @@
     app.mount(selector);
   }
 
-  // virtual-entry:./docs/markdown/code-preview/vue.md
+  // virtual-entry:./docs/e2e/code-snippets-vue.vue
   var import_vue2 = __require("vue");
-  var import_vue3 = __require("vue");
   var name = "World";
   var exampleComponent = {
-    __name: "vue",
+    __name: "code-snippets-vue",
     setup(__props, { expose: __expose }) {
       __expose();
-      const __returned__ = { name, ref: import_vue2.ref };
+      const __returned__ = { name };
       Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
       return __returned__;
     }
   };
   function render(_ctx, _cache, $props, $setup, $data, $options) {
-    return (0, import_vue3.openBlock)(), (0, import_vue3.createElementBlock)("p", null, "Hello " + (0, import_vue3.toDisplayString)($setup.name) + "!");
+    return (0, import_vue2.openBlock)(), (0, import_vue2.createElementBlock)("p", null, "Hello " + (0, import_vue2.toDisplayString)($setup.name) + "!");
   }
   exampleComponent.render = render;
   setup({
     rootComponent: exampleComponent,
-    selector: "#vue"
+    selector: "#code-snippets-vue"
   });
 })();

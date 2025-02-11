@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../../assets/docs-8cf0c3.css"
+            href="../../../assets/docs-c44c29.css"
             crossorigin
-            integrity="sha384-RuF0RUpObeEDaA6roXPyI71BIi8B88c+yJlgBWsrjICftzJ5sBjacDe5ZoFMusz6"
+            integrity="sha384-bmOpEVHP9do5wMgS+rsPEXKW2jEQySvRkjyJpXQaPmzSqhWSIFVyXc/FN5wt3wsR"
             
         />
         <link
@@ -71,10 +71,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-0b5684.json"
+            href="../../../search-data-51767f.json"
             as="fetch"
             crossorigin
-            integrity="sha384-F9AMK4fvSiHO0qOYnUyQhvQuiNUtq6l/LzRB4WvsvpgueInOQcHKnMDBbIXFESAs"
+            integrity="sha384-DUxiATGYypO4K4v8oQPJuqpD1DLkBLf8iRjW40K342tdRm7f13kCkPgHux2mJXpv"
             id="search-data"
         />
     </head>
@@ -535,9 +535,9 @@
                     integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
                 ></script>
                 <script
-                    src="../../../assets/vendor-fkui-vue-0b31a1.js"
+                    src="../../../assets/vendor-fkui-vue-d9de5d.js"
                     crossorigin
-                    integrity="sha384-vF7JA1LHid58I2pQMVJtp1Hw78M+5cOl8FYkYst4liLIr9NfXCw91bX18awxDqwM"
+                    integrity="sha384-EyNIVTQNB2lrFjJQp8nMiF4++DHXtIqO6haZVgTcnsxnGzZRKtwY5PZaJQzACT5T"
                 ></script>
                 <script
                     src="../../../assets/vendor-forsakringskassan-docs-live-example-31bc18.js"
@@ -598,7 +598,7 @@
 
                     <div id="content">
                         <!-- prettier-ignore -->
-<h2 id="formatbeskrivning_pa_etikett"><a class="header-anchor" href="#formatbeskrivning_pa_etikett">Formatbeskrivning på etikett</a></h2><p>Använder du formatbeskrivning på <a href="../../../components/flabel.html"><code>FLabel</code></a> eller en komponent som nyttjar den (exempelvis <a href="../../../components/input/ftextfield.html"><code>FTextField</code></a> måste du ändra namnet på bindings:</p>
+<h2 id="formatbeskrivning_pa_etikett"><a class="header-anchor" href="#formatbeskrivning_pa_etikett">Formatbeskrivning på etikett</a></h2><p>Använder du formatbeskrivning på <a href="../../../components/flabel.html"><code>FLabel</code></a> eller en komponent som nyttjar den (exempelvis <a href="../../../components/input/ftextfield.html"><code>FTextField</code></a>) måste du ändra namnet på bindings:</p>
 
                 <div
                     id="example-47ccdd"
@@ -645,10 +645,26 @@
 <span class="hljs-addition">+label.formatDescription().should(&quot;have.text&quot;, &quot;...&quot;);</span>
 </code></pre>
                 </div>
-            <h2 id="konfiguration"><a class="header-anchor" href="#konfiguration">Konfiguration</a></h2><p>De deprekerade egenskaperna <code>FKUIConfig.modalTarget</code> och <code>FKUIConfig.popupTarget</code> är borttagna och ersatta med den kombinerade <code>FKUIConfig.teleportTarget</code>.</p>
+            <h2 id="konfiguration"><a class="header-anchor" href="#konfiguration">Konfiguration</a></h2><h3 id="forandrad_knappordning"><a class="header-anchor" href="#forandrad_knappordning">Förändrad knappordning</a></h3><p>Den inbördes ordning som knapparna presenteras i har ändrats, <code>FKUIConfig.buttonOrder</code> byter standardvärde till <code>RIGHT_TO_LEFT</code>. Det innebär att interna system som följer knappordningen enligt windows standard behöver nu aktivt sätta <code>LEFT_TO_RIGHT</code>.</p>
+<p>Görs lämpligtvis i applikationens <code>main.ts</code>.</p>
 
                 <div
-                    id="example-e215c9"
+                    id="example-e7e1a5"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="javascript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-keyword">import</span> { config, <span class="hljs-title class_">FKUIConfigButtonOrder</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+config.<span class="hljs-property">buttonOrder</span> = <span class="hljs-title class_">FKUIConfigButtonOrder</span>.<span class="hljs-property">LEFT_TO_RIGHT</span>;
+</code></pre>
+                </div>
+            <h3 id="teleport_target"><a class="header-anchor" href="#teleport_target">Teleport target</a></h3><p>De deprekerade egenskaperna <code>FKUIConfig.modalTarget</code> och <code>FKUIConfig.popupTarget</code> är borttagna och ersatta med den kombinerade <code>FKUIConfig.teleportTarget</code>.</p>
+
+                <div
+                    id="example-c87612"
                     class="code-preview code-preview--default"
                     
                     
@@ -660,22 +676,6 @@
 <span class="hljs-deletion">-config.modalTarget = &quot;my &gt; selector&quot;;</span>
 <span class="hljs-deletion">-config.popupTarget = &quot;my &gt; selector&quot;;</span>
 <span class="hljs-addition">+config.teleportTarget = &quot;my &gt; selector&quot;;</span>
-</code></pre>
-                </div>
-            <p>Den inbördes ordning som knapparna presenteras i har ändrats, <code>FKUIConfig.buttonOrder</code> byter standardvärde till <code>RIGHT_TO_LEFT</code>. Det innebär att interna system som följer knappordningen enligt windows standard behöver nu aktivt sätta <code>LEFT_TO_RIGHT</code>.</p>
-<p>Görs lämpligtvis i applikationens <code>main.ts</code>.</p>
-
-                <div
-                    id="example-daf606"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="javascript"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-keyword">import</span> { config, <span class="hljs-title class_">FKUIConfigButtonOrder</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-config.<span class="hljs-property">buttonOrder</span> = <span class="hljs-title class_">FKUIConfigButtonOrder</span>.<span class="hljs-property">LEFT_TO_RIGHT</span>;
 </code></pre>
                 </div>
             <h2 id="fcalendar"><a class="header-anchor" href="#fcalendar"><code>FCalendar</code></a></h2><p>Tidigare emittades eventet <code>change</code> när man ändrar månad i kalendern.
@@ -703,7 +703,7 @@ Det eventet är nu borttaget och ersatt med <code>v-model</code>.</p>
 <p>Om du använder någon av dessa slottar i din modalkomponent, ersätt dem med propen enligt:</p>
 
                 <div
-                    id="example-9646dc"
+                    id="example-7c7162"
                     class="code-preview code-preview--default"
                     
                     
@@ -741,7 +741,7 @@ Det eventet är nu borttaget och ersatt med <code>v-model</code>.</p>
 <h2 id="fpageheader"><a class="header-anchor" href="#fpageheader"><code>FPageHeader</code></a></h2><h3 id="skiplink"><a class="header-anchor" href="#skiplink">skiplink</a></h3><p>Den deprekerade propen <code>skipLinkHref</code> är borttagen och ersatt med propen <code>skipLink</code>.</p>
 
                 <div
-                    id="example-d0f99b"
+                    id="example-7d31e6"
                     class="code-preview code-preview--default"
                     
                     
@@ -766,7 +766,7 @@ Logo och länkning måste därför skapas själv.</p>
 <p>Om du använt standardlogo med länkning och vill att det ska fungera som tidigare kan du använda <a href="../../../components/flogo.html"><code>FLogo</code></a> och göra följande ändringar:</p>
 
                 <div
-                    id="example-c931c2"
+                    id="example-7583d7"
                     class="code-preview code-preview--default"
                     
                     
@@ -785,7 +785,7 @@ Logo och länkning måste därför skapas själv.</p>
             <p>Du behöver också ange url till logo-bilden med CSS variabler:</p>
 
                 <div
-                    id="example-016915"
+                    id="example-c62e14"
                     class="code-preview code-preview--default"
                     
                     
@@ -799,7 +799,7 @@ Logo och länkning måste därför skapas själv.</p>
             <p>För att ändra storlek på logotypen som med tidigare <code>logoSize</code>, använd <code>size</code> prop på <code>FLogo</code> med samma värden.</p>
 
                 <div
-                    id="example-b3fd2a"
+                    id="example-56f5f3"
                     class="code-preview code-preview--default"
                     
                     
@@ -814,11 +814,12 @@ Logo och länkning måste därför skapas själv.</p>
  &lt;/f-page-header&gt;
 </code></pre>
                 </div>
-            <h2 id="ftextfield"><a class="header-anchor" href="#ftextfield"><code>FTextField</code></a></h2><p>Eventet <code>update</code> emittas inte längre.
+            <p>Notera att eftersom <code>@fkui/design</code> inte längre tillhandahåller logotyper i olika storlekar och inga ersättare finns så behövs dessa logotyp-bilder läggas till själv för att bibehålla utseendet.</p>
+<h2 id="ftextfield"><a class="header-anchor" href="#ftextfield"><code>FTextField</code></a></h2><p>Eventet <code>update</code> emittas inte längre.
 Använd <code>change</code> eventet eller <code>v-model</code> istället.</p>
 
                 <div
-                    id="example-d089ed"
+                    id="example-113244"
                     class="code-preview code-preview--default"
                     
                     
@@ -832,7 +833,7 @@ Använd <code>change</code> eventet eller <code>v-model</code> istället.</p>
             <h2 id="gettextfromscopedslot"><a class="header-anchor" href="#gettextfromscopedslot"><code>getTextFromScopedSlot</code></a></h2><p>Den deprekerade funktionen <code>getTextFromScopedSlot(..)</code> har tagits bort och är ersatt med <a href="../../../functions/functions/render-slot-text.html"><code>renderSlotText(..)</code></a>.</p>
 
                 <div
-                    id="example-086604"
+                    id="example-d8a8e7"
                     class="code-preview code-preview--default"
                     
                     
@@ -885,9 +886,7 @@ Använd <code>change</code> eventet eller <code>v-model</code> istället.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/partial-doc (<a href="https://github.com/Forsakringskassan/designsystem/commits/9503e1703f85551dfb81575a0bae59827af6c8eb">9503e17</a>)<br />
-        <a href="https://github.com/Forsakringskassan/designsystem/pull/169">PR 169</a><br />
-        2025-02-09 14:49
+    <div class="heading--h1">FKDS version 6.0.1</div>
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1008,9 +1007,9 @@ Använd <code>change</code> eventet eller <code>v-model</code> istället.</p>
             
         ></script>
         <script
-            src="../../../assets/processors/selectable-version/select-version-a860a6.js"
+            src="../../../assets/processors/selectable-version/select-version-6067be.js"
             crossorigin
-            integrity="sha384-aW1+bn6+fX0+9GcwOG4qnUinT9h9iW1bUGsNNoZwCez8Iuiysasgr59BDXWOZjEy"
+            integrity="sha384-E/Og84gu7LBAeGNUb/iiVGhnaS+MiN8ZGg1YxDflsLJfth715NqUTRijNEaW+V/z"
             
         ></script>
         <script
