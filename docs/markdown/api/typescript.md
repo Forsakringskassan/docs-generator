@@ -92,6 +92,9 @@ Functions can either be shown as a function prototype, a parameter table or retu
 `returnvalue`
 : Renders function as a return value description.
 
+`docs`
+: Render full documentation including headings (prototype, parameters and return value).
+
 ### Examples
 
 **Input:**
@@ -133,5 +136,19 @@ function:exampleFunction
 **Output:**
 
 ::: api returnvalue
+function:exampleFunction
+:::
+
+**Input:**
+
+```md
+::: api docs
+function:exampleFunction
+:::
+```
+
+**Output:**
+
+::: api docs
 function:exampleFunction
 :::

@@ -54,6 +54,7 @@ export function renderFunction(): {
     prototype(this: void, item: ApiFunction): string;
     parameters(this: void, item: ApiFunction): string;
     returnvalue(this: void, item: ApiFunction): string;
+    docs(this: void, item: ApiFunction): string;
 } {
     return {
         default(item) {
@@ -67,6 +68,20 @@ export function renderFunction(): {
         },
         returnvalue(item) {
             return renderReturnvalue(item);
+        },
+        docs(item) {
+            return [
+                "# Syntax",
+                "",
+                renderPrototype(item),
+                "",
+                "## Parameters",
+                renderParameters(item),
+                "",
+                "## Return value",
+                "",
+                renderReturnvalue(item),
+            ].join("\n");
         },
     };
 }

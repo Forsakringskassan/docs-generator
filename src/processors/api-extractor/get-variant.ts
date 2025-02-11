@@ -1,6 +1,6 @@
 const available = {
     interface: ["default", "interface", "properties"],
-    function: ["default", "prototype", "parameters", "returnvalue"],
+    function: ["default", "prototype", "parameters", "returnvalue", "docs"],
 } as const;
 
 type MappedType = typeof available;
