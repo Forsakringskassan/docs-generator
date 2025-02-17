@@ -269,8 +269,8 @@
     --f-border-color-badge-info: #4a52b6;
     --f-box-modal-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     --f-input-shadow-inset: inset 0 2px 3px rgba(0, 0, 0, 0.1);
-    --f-font-family: ExpFont, "Helvetica Neue", Helvetica, Roboto, Arial,
-        sans-serif;
+    --f-font-family:
+        ExpFont, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
     --f-font-family-code: Consolas, "Liberation Mono", Courier, monospace;
     --f-font-size-default-rem: 16px;
     --f-font-size-default-large-up-rem: 16px;
@@ -303,8 +303,8 @@
     --f-margin-component: 0 0 1.5rem;
     --padding-input-fields: 0 2.25rem 0 0.75rem;
     --f-color-focus: #1b1e23;
-    --f-focus-box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #1b1e23,
-        0 0 0 6px #ffffff;
+    --f-focus-box-shadow:
+        0 0 0 2px #ffffff, 0 0 0 4px #1b1e23, 0 0 0 6px #ffffff;
     --f-animation-duration-short: 150ms;
     --f-animation-duration-medium: 350ms;
     --f-animation-duration-long: 500ms;
