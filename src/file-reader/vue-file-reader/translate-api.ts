@@ -59,7 +59,10 @@ function getEventDeprecated(
 }
 
 function translateProps(props: PropDescriptor[]): ComponentProp[] {
-    return props.map((prop): ComponentProp => {
+    const isRelevant = (prop: PropDescriptor): boolean => {
+        return prop.tags?.["ignore"] === undefined;
+    };
+    return props.filter(isRelevant).map((prop): ComponentProp => {
         const defaultValue = prop.defaultValue
             ? { value: prop.defaultValue.value }
             : null;
@@ -78,6 +81,9 @@ function translateEvents(events: EventDescriptor[]): ComponentEvent[] {
     const translatedEvents: ComponentEvent[] = [];
 
     for (const event of events) {
+        if (event.tags?.find((it) => it.title === "ignore")) {
+            continue;
+        }
         const translatedEvent: ComponentEvent = {
             name: event.name,
             description: event.description ?? null,
@@ -138,6 +144,9 @@ function translateSlots(slots: SlotDescriptor[]): ComponentSlot[] {
     const translatedSlots: ComponentSlot[] = [];
 
     for (const slot of slots) {
+        if (slot.tags?.ignore) {
+            continue;
+        }
         const translatedSlot: ComponentSlot = {
             name: slot.name,
             description: slot.description ?? null,
