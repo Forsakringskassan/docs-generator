@@ -477,3 +477,35 @@ it("should handle multiple v-model", async () => {
         },
     ]);
 });
+
+it("should handle @ignore", async () => {
+    expect.assertions(3);
+    const filepath = fixture("ignore.vue");
+    const result = await translateAPI(filepath);
+    expect(result.props).toEqual([
+        {
+            name: "foo",
+            type: "string",
+            required: true,
+            description: null,
+            default: null,
+            deprecated: null,
+        },
+    ]);
+    expect(result.events).toEqual([
+        {
+            name: "foo",
+            description: null,
+            deprecated: null,
+            properties: [],
+        },
+    ]);
+    expect(result.slots).toEqual([
+        {
+            name: "foo",
+            description: null,
+            deprecated: null,
+            bindings: [],
+        },
+    ]);
+});
