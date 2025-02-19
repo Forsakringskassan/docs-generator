@@ -230,9 +230,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        feature/importmap (<a href="https://github.com/Forsakringskassan/docs-generator/commits/9b01ebecef5a641d3efa6d121a45bde8d85b1294">9b01ebe</a>)<br />
+        feature/importmap (<a href="https://github.com/Forsakringskassan/docs-generator/commits/3dfa02afaf156fdb8ae8e891d34b5b516d721ab2">3dfa02a</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/119">PR 119</a><br />
-        2025-02-19 21:30
+        2025-02-19 21:57
     </span>
 </div>
 </div>
@@ -269,9 +269,9 @@
             <h2 id="setup"><a class="header-anchor" href="#setup">Setup</a></h2><h3 id="watch_development_mode"><a class="header-anchor" href="#watch_development_mode">Watch (development mode)</a></h3><p>You can start a development server with watch for incremental builds using <code>.serve()</code>.</p>
 
                 <div
-                    id="example-24650b"
+                    id="example-d0dc09"
                     class="code-preview code-preview--default"
-                    
+                    data-test="watch"
                     
                     data-language="typescript"
                 >
@@ -299,9 +299,9 @@ docs.<span class="hljs-title function_">serve</span>();
             <h3 id="vendor_alias"><a class="header-anchor" href="#vendor_alias">Vendor alias</a></h3><p>Vendor alias is optional, it lets you substitute one package for another when bundling. The example below substitutes the package <code>vue</code> with the package <code>vue/dist/esm.bundle.js</code>. When an alias is given the package can be imported using the given alias as well as the original package name. For instance, when using the following configuration &quot;vue&quot; can be imported and resolved as &quot;vue/dist/esm.bundle.js&quot;.</p>
 
                 <div
-                    id="example-786d0c"
+                    id="example-16b294"
                     class="code-preview code-preview--default"
-                    
+                    data-test="vendor-alias"
                     
                     data-language="typescript"
                 >
@@ -320,8 +320,6 @@ docs.<span class="hljs-title function_">serve</span>();
     <span class="hljs-attr">vendor</span>: [
         {
             <span class="hljs-attr">package</span>: <span class="hljs-string">&quot;vue&quot;</span>,
-            <span class="hljs-attr">expose</span>: <span class="hljs-string">&quot;named&quot;</span>,
-            <span class="hljs-attr">subpaths</span>: [],
             <span class="hljs-attr">alias</span>: <span class="hljs-string">&quot;vue/dist/esm.bundle.js&quot;</span>,
         },
     ],
@@ -331,7 +329,7 @@ docs.<span class="hljs-title function_">serve</span>();
             <h2 id="usage"><a class="header-anchor" href="#usage">Usage</a></h2><h3 id="using_with_vue_2"><a class="header-anchor" href="#using_with_vue_2">Using with Vue 2</a></h3><p>Vue 2 requires an additional dependency to be installed:</p>
 
                 <div
-                    id="example-a18b93"
+                    id="example-9c0018"
                     class="code-preview code-preview--default"
                     
                     
@@ -344,7 +342,7 @@ docs.<span class="hljs-title function_">serve</span>();
             <p>Create the <code>setup</code> callback in <code>docs/src/setup.ts</code>:</p>
 
                 <div
-                    id="example-2cae4c"
+                    id="example-1bba10"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile"
@@ -367,7 +365,7 @@ docs.<span class="hljs-title function_">serve</span>();
             <h3 id="using_with_vue_3"><a class="header-anchor" href="#using_with_vue_3">Using with Vue 3</a></h3><p>Create the <code>setup</code> callback in <code>docs/src/setup.ts</code>:</p>
 
                 <div
-                    id="example-79d6ae"
+                    id="example-19eab2"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile"
@@ -399,7 +397,7 @@ docs.<span class="hljs-title function_">serve</span>();
 <p>Style can be compiled with <code>compileStyle(name, src, [options])</code>:</p>
 
                 <div
-                    id="example-eab270"
+                    id="example-979fdb"
                     class="code-preview code-preview--default"
                     
                     
@@ -423,7 +421,7 @@ docs.<span class="hljs-title function_">compileStyle</span>(<span class="hljs-st
             <p>Where <code>docs/src/style.scss</code> contains:</p>
 
                 <div
-                    id="example-d21b10"
+                    id="example-1dba58"
                     class="code-preview code-preview--default"
                     
                     
@@ -436,7 +434,7 @@ docs.<span class="hljs-title function_">compileStyle</span>(<span class="hljs-st
             <h3 id="markdown"><a class="header-anchor" href="#markdown">Markdown</a></h3><h4 id="links_link"><a class="header-anchor" href="#links_link">Links <code>&lcub;@link ...&rcub;</code></a></h4><p>To create link to a different document use <code>&lcub;@link ID [TITLE]&rcub;</code>, e.g.:</p>
 
                 <div
-                    id="example-28b1d3"
+                    id="example-80ad66"
                     class="code-preview code-preview--default"
                     
                     
@@ -449,7 +447,7 @@ docs.<span class="hljs-title function_">compileStyle</span>(<span class="hljs-st
             <p>will be rendered as:</p>
 
             <div
-                id="example-a58033"
+                id="example-732c88"
                 class="code-preview code-preview--default"
                 
                 
@@ -503,7 +501,7 @@ The following tags can be used:</p>
 <p><code>static</code> and <code>live</code> are used to manually set whenever the code should be run as a live example or not.</p>
 
                 <div
-                    id="example-ecdd0f"
+                    id="example-86a5ce"
                     class="code-preview code-preview--default"
                     
                     
@@ -517,7 +515,7 @@ The following tags can be used:</p>
                 </div>
             
                 <div
-                    id="example-2b863d"
+                    id="example-ef5a05"
                     class="code-preview code-preview--default"
                     
                     
@@ -532,7 +530,7 @@ alert(&quot;This is run in the browser&quot;);
             <p>Examples can be imported using the <code>import</code> directive:</p>
 
                 <div
-                    id="example-13a3f3"
+                    id="example-a7ff72"
                     class="code-preview code-preview--default"
                     
                     
@@ -549,7 +547,7 @@ HTML-comments may be placed before or after the filename.</p>
 <p>To import an example that uses the <a href="https://github.com/Forsakringskassan/docs-live-example">LiveExample</a> component you also need to use the <code>live-example</code> tag.</p>
 
                 <div
-                    id="example-77c119"
+                    id="example-9b133d"
                     class="code-preview code-preview--default"
                     
                     
@@ -580,7 +578,7 @@ Default <code>true</code>.</p>
 <h3 id="inline_tags"><a class="header-anchor" href="#inline_tags">Inline tags</a></h3><h4 id="link"><a class="header-anchor" href="#link"><code>{@link ...}</code></a></h4><p>Implicit title:</p>
 
                 <div
-                    id="example-a791c6"
+                    id="example-6e8973"
                     class="code-preview code-preview--default"
                     
                     
@@ -593,7 +591,7 @@ Default <code>true</code>.</p>
             <p>Explicit title:</p>
 
                 <div
-                    id="example-338a33"
+                    id="example-61229a"
                     class="code-preview code-preview--default"
                     
                     
@@ -607,7 +605,7 @@ Default <code>true</code>.</p>
 <p><strong>Input:</strong></p>
 
                 <div
-                    id="example-6f592b"
+                    id="example-c08437"
                     class="code-preview code-preview--default"
                     
                     
@@ -624,7 +622,7 @@ See <a href="https://mozilla.github.io/nunjucks/templating.html">templating docu
 <p>These custom filters and tags are available:</p>
 <h4 id="container"><a class="header-anchor" href="#container"><code>container</code></a></h4>
                 <div
-                    id="example-d4beb7"
+                    id="example-bbf350"
                     class="code-preview code-preview--default"
                     
                     
@@ -641,7 +639,7 @@ Makes it possible to dynamically load icons and get access to icon metadata.
 The library must have been built using <code>@fkui/icon-lib-builder</code>.</p>
 
                 <div
-                    id="example-9abd37"
+                    id="example-514649"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile"
@@ -657,7 +655,7 @@ The library must have been built using <code>@fkui/icon-lib-builder</code>.</p>
                 </div>
             <h2 id="processors"><a class="header-anchor" href="#processors">Processors</a></h2><h3 id="matomo"><a class="header-anchor" href="#matomo">Matomo</a></h3>
                 <div
-                    id="example-3f4454"
+                    id="example-c022b2"
                     class="code-preview code-preview--default"
                     
                     
@@ -678,7 +676,7 @@ The library must have been built using <code>@fkui/icon-lib-builder</code>.</p>
             <p>Optionally set <code>hostname</code> to limit which hostnames can run Matomo analytics:</p>
 
                 <div
-                    id="example-31ce3c"
+                    id="example-4c9189"
                     class="code-preview code-preview--default"
                     
                     
