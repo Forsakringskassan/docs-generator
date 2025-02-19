@@ -45,7 +45,7 @@ exports[`should generate markup 1`] = `
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script defer src="./mock-example-123456.js"></script>
+        <script type="module" src="./mock-example-123456.js"></script>
     "
 `;
 
