@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.19.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.19.0...v2.19.1) (2025-02-19)
+
+### Bug Fixes
+
+* handle `[@ignore](https://github.com/ignore)` for vue props, events and slots ([f639fd3](https://github.com/Forsakringskassan/docs-generator/commit/f639fd336ca131ebcd548d0db610ceccd2ee960e))
+
 ## [2.19.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.18.0...v2.19.0) (2025-02-11)
 
 ### Features
