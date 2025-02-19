@@ -1957,56 +1957,6 @@ var IFlexItem_default2 = IFlexItem_default;
 // packages/vue/src/utils/ListUtils.ts
 import { isSet } from "@fkui/logic";
 
-// packages/vue/src/utils/render-slot-text.ts
-import {
-  Comment,
-  isVNode
-} from "vue";
-var defaultOptions = {
-  stripClasses: ["sr-only"]
-};
-function collapseWhitespace(text) {
-  return text.replace(/\s+/gm, " ").replace(/(^ | $)/g, "");
-}
-function intersection(a, b) {
-  return a.filter((it) => b.includes(it));
-}
-function excludeClass(exclude) {
-  return (node) => {
-    if (typeof node.props?.class !== "string") {
-      return true;
-    }
-    const classes = node.props.class.split(/\s+/);
-    const matches = intersection(classes, exclude);
-    return matches.length === 0;
-  };
-}
-function excludeComment(node) {
-  return node.type !== Comment;
-}
-function getTextContent(children, options) {
-  return children.filter(isVNode).filter(excludeComment).filter(excludeClass(options.stripClasses)).map((child) => {
-    if (Array.isArray(child.children)) {
-      return getTextContent(child.children, options);
-    }
-    if (typeof child.children === "string") {
-      return child.children;
-    }
-  }).join("");
-}
-function renderSlotText(render14, props = {}, options) {
-  if (!render14) {
-    return void 0;
-  }
-  const nodes = render14(props);
-  if (nodes.length === 0) {
-    return void 0;
-  }
-  return collapseWhitespace(
-    getTextContent(nodes, { ...defaultOptions, ...options })
-  );
-}
-
 // packages/vue/src/utils/VueRefUtils.ts
 import { isSet as isSet2 } from "@fkui/logic";
 function refIsElement(value) {
@@ -2073,10 +2023,8 @@ import { configLogic } from "@fkui/logic";
 var popupContainer = document.body;
 var production = true;
 var config = {
-  buttonOrder: 0 /* LEFT_TO_RIGHT */,
+  buttonOrder: 1 /* RIGHT_TO_LEFT */,
   teleportTarget: document.body,
-  modalTarget: null,
-  popupTarget: null,
   get popupContainer() {
     if (typeof popupContainer === "string") {
       const element = document.querySelector(popupContainer);
@@ -2410,7 +2358,10 @@ var FModal_default = defineComponent6({
       const root = document.documentElement;
       const scroll = root.scrollTop;
       root.style.top = `-${scroll}px`;
-      root.classList.add("modal__open");
+      root.style.left = "0";
+      root.style.right = "0";
+      root.style.overflow = "hidden";
+      root.style.position = "fixed";
       const focusElement3 = this.resolveFocusElement();
       if (this.focus === "on") {
         this.savedFocus = pushFocus(focusElement3);
@@ -2438,11 +2389,14 @@ var FModal_default = defineComponent6({
     },
     restoreState() {
       const root = document.documentElement;
-      root.classList.remove("modal__open");
       root.style.removeProperty("top");
-      root.scrollTop = this.savedScroll ?? 0;
-      this.savedScroll = null;
+      root.style.removeProperty("left");
+      root.style.removeProperty("right");
+      root.style.removeProperty("overflow");
+      root.style.removeProperty("position");
       if (this.focus === "on" && this.savedFocus) {
+        root.scrollTop = this.savedScroll ?? 0;
+        this.savedScroll = null;
         popFocus(this.savedFocus);
         this.savedFocus = null;
       }
@@ -3047,10 +3001,9 @@ var FErrorList_default2 = FErrorList_default;
 
 // sfc-script:/home/runner/work/docs-generator/docs-generator/fkui/packages/vue/src/components/FValidationGroup/FValidationGroup.vue?type=script
 import { defineComponent as defineComponent9 } from "vue";
-import { documentOrderComparator as documentOrderComparator2 } from "@fkui/logic";
+import { documentOrderComparator } from "@fkui/logic";
 
-// packages/vue/src/components/FForm/FormUtils.ts
-import { Reference, documentOrderComparator } from "@fkui/logic";
+// packages/vue/src/components/FValidationGroup/FormUtils.ts
 function cleanUpElements(vm) {
   return new Promise((resolve) => {
     window.setTimeout(() => {
@@ -3118,7 +3071,7 @@ var FValidationGroup_default = defineComponent9({
       const components = Object.values(this.components);
       const isValid = components.every((component) => component.isValid);
       const componentsWithError = components.filter((component) => component.validityMode === "ERROR");
-      componentsWithError.sort((a, b) => documentOrderComparator2(a.target, b.target));
+      componentsWithError.sort((a, b) => documentOrderComparator(a.target, b.target));
       this.$emit("update:modelValue", { isValid, componentsWithError, componentCount: components.length });
       this.$emit("group-validity", { isValid, componentsWithError, componentCount: components.length });
     }
@@ -3460,10 +3413,7 @@ var FFormModal_default = defineComponent11({
   },
   computed: {
     preparedButtons() {
-      return prepareButtonList(this.buttons, 0 /* LEFT_TO_RIGHT */);
-    },
-    hasDeprecatedSlots() {
-      return hasSlot(this, "cancel-button-text") || hasSlot(this, "submit-button-text");
+      return prepareButtonList(this.buttons, 1 /* RIGHT_TO_LEFT */);
     }
   },
   methods: {
@@ -3486,14 +3436,13 @@ var FFormModal_default = defineComponent11({
 });
 
 // sfc-template:/home/runner/work/docs-generator/docs-generator/fkui/packages/vue/src/components/FModal/FFormModal/FFormModal.vue?type=template
-import { createCommentVNode as _createCommentVNode9, renderSlot as _renderSlot10, createElementVNode as _createElementVNode7, resolveComponent as _resolveComponent5, withCtx as _withCtx4, createVNode as _createVNode4, renderList as _renderList3, Fragment as _Fragment4, openBlock as _openBlock11, createElementBlock as _createElementBlock11, toDisplayString as _toDisplayString4, normalizeClass as _normalizeClass6, createTextVNode as _createTextVNode3, createBlock as _createBlock5 } from "vue";
+import { createCommentVNode as _createCommentVNode9, renderSlot as _renderSlot10, createElementVNode as _createElementVNode7, resolveComponent as _resolveComponent5, withCtx as _withCtx4, createVNode as _createVNode4, renderList as _renderList3, Fragment as _Fragment4, openBlock as _openBlock11, createElementBlock as _createElementBlock11, toDisplayString as _toDisplayString4, normalizeClass as _normalizeClass6, createBlock as _createBlock5 } from "vue";
 var _hoisted_17 = { class: "button-group" };
 var _hoisted_26 = ["type", "form", "onClick"];
 var _hoisted_34 = {
   key: 0,
   class: "sr-only"
 };
-var _hoisted_43 = ["form"];
 function render11(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_validation_form = _resolveComponent5("f-validation-form");
   const _component_f_modal = _resolveComponent5("f-modal");
@@ -3535,9 +3484,9 @@ function render11(_ctx, _cache, $props, $setup, $data, $options) {
     ]),
     footer: _withCtx4(() => [
       _createElementVNode7("div", _hoisted_17, [
-        !_ctx.hasDeprecatedSlots ? (_openBlock11(true), _createElementBlock11(
+        (_openBlock11(true), _createElementBlock11(
           _Fragment4,
-          { key: 0 },
+          null,
           _renderList3(_ctx.preparedButtons, (button) => {
             return _openBlock11(), _createElementBlock11("button", {
               key: button.label,
@@ -3564,43 +3513,6 @@ function render11(_ctx, _cache, $props, $setup, $data, $options) {
           }),
           128
           /* KEYED_FRAGMENT */
-        )) : (_openBlock11(), _createElementBlock11(
-          _Fragment4,
-          { key: 1 },
-          [
-            _createElementVNode7("button", {
-              form: _ctx.formId,
-              "data-test": "submit-button",
-              type: "submit",
-              class: "button button--primary button-group__item button--large"
-            }, [
-              _createCommentVNode9(' @slot - @deprecated Slot for submit button text. If you want to modify the footer section, see prop "buttons" '),
-              _renderSlot10(_ctx.$slots, "submit-button-text", {}, () => [
-                _createTextVNode3(
-                  _toDisplayString4(_ctx.$t("fkui.form-modal.button.submit.text", "Spara")),
-                  1
-                  /* TEXT */
-                )
-              ])
-            ], 8, _hoisted_43),
-            _createElementVNode7("button", {
-              "data-test": "cancel-button",
-              type: "button",
-              class: "button button--secondary button-group__item button--large",
-              onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onCancel && _ctx.onCancel(...args))
-            }, [
-              _createCommentVNode9(' @slot - @deprecated Slot for cancel button text. If you want to modify the footer section, see prop "buttons" '),
-              _renderSlot10(_ctx.$slots, "cancel-button-text", {}, () => [
-                _createTextVNode3(
-                  _toDisplayString4(_ctx.$t("fkui.form-modal.button.cancel.text", "Avbryt")),
-                  1
-                  /* TEXT */
-                )
-              ])
-            ])
-          ],
-          64
-          /* STABLE_FRAGMENT */
         ))
       ])
     ]),
@@ -3615,6 +3527,56 @@ FFormModal_default.__file = "packages/vue/src/components/FModal/FFormModal/FForm
 
 // packages/vue/src/utils/focus.ts
 import { focus as focusElement2 } from "@fkui/logic";
+
+// packages/vue/src/utils/render-slot-text.ts
+import {
+  Comment,
+  isVNode
+} from "vue";
+var defaultOptions = {
+  stripClasses: ["sr-only"]
+};
+function collapseWhitespace(text) {
+  return text.replace(/\s+/gm, " ").replace(/(^ | $)/g, "");
+}
+function intersection(a, b) {
+  return a.filter((it) => b.includes(it));
+}
+function excludeClass(exclude) {
+  return (node) => {
+    if (typeof node.props?.class !== "string") {
+      return true;
+    }
+    const classes = node.props.class.split(/\s+/);
+    const matches = intersection(classes, exclude);
+    return matches.length === 0;
+  };
+}
+function excludeComment(node) {
+  return node.type !== Comment;
+}
+function getTextContent(children, options) {
+  return children.filter(isVNode).filter(excludeComment).filter(excludeClass(options.stripClasses)).map((child) => {
+    if (Array.isArray(child.children)) {
+      return getTextContent(child.children, options);
+    }
+    if (typeof child.children === "string") {
+      return child.children;
+    }
+  }).join("");
+}
+function renderSlotText(render14, props = {}, options) {
+  if (!render14) {
+    return void 0;
+  }
+  const nodes = render14(props);
+  if (nodes.length === 0) {
+    return void 0;
+  }
+  return collapseWhitespace(
+    getTextContent(nodes, { ...defaultOptions, ...options })
+  );
+}
 
 // packages/vue/src/utils/has-slot.ts
 function hasSlot(vm, name, props = {}, options = {}) {
@@ -3677,14 +3639,14 @@ var FOffline_default = defineComponent12({
 });
 
 // sfc-template:/home/runner/work/docs-generator/docs-generator/fkui/packages/vue/src/components/FOffline/FOffline.vue?type=template
-import { resolveComponent as _resolveComponent6, createVNode as _createVNode5, createElementVNode as _createElementVNode8, withCtx as _withCtx5, createCommentVNode as _createCommentVNode10, renderSlot as _renderSlot11, createTextVNode as _createTextVNode4, openBlock as _openBlock12, createElementBlock as _createElementBlock12, vShow as _vShow, withDirectives as _withDirectives } from "vue";
+import { resolveComponent as _resolveComponent6, createVNode as _createVNode5, createElementVNode as _createElementVNode8, withCtx as _withCtx5, createCommentVNode as _createCommentVNode10, renderSlot as _renderSlot11, createTextVNode as _createTextVNode3, openBlock as _openBlock12, createElementBlock as _createElementBlock12, vShow as _vShow, withDirectives as _withDirectives } from "vue";
 var _hoisted_18 = ["role"];
 var _hoisted_27 = {
   key: 0,
   class: "offline"
 };
 var _hoisted_35 = { class: "icon-stack icon-stack--error" };
-var _hoisted_44 = { class: "offline__content" };
+var _hoisted_43 = { class: "offline__content" };
 var _hoisted_53 = ["aria-hidden"];
 function render12(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = _resolveComponent6("f-icon");
@@ -3718,10 +3680,10 @@ function render12(_ctx, _cache, $props, $setup, $data, $options) {
             align: "center"
           }, {
             default: _withCtx5(() => [
-              _createElementVNode8("p", _hoisted_44, [
+              _createElementVNode8("p", _hoisted_43, [
                 _createCommentVNode10(" @slot Slot for customizing text message. "),
                 _renderSlot11(_ctx.$slots, "default", {}, () => [
-                  _cache[0] || (_cache[0] = _createTextVNode4(" Det verkar som att du inte har n\xE5gon internetuppkoppling just nu "))
+                  _cache[0] || (_cache[0] = _createTextVNode3(" Det verkar som att du inte har n\xE5gon internetuppkoppling just nu "))
                 ])
               ])
             ]),
@@ -3748,7 +3710,7 @@ FOffline_default.__file = "packages/vue/src/components/FOffline/FOffline.vue";
 var FOffline_default2 = FOffline_default;
 
 // virtual-entry:./packages/vue/src/components/FOffline/examples/FOfflineExample.vue
-import { toDisplayString as _toDisplayString5, createTextVNode as _createTextVNode5, resolveComponent as _resolveComponent7, withCtx as _withCtx6, createVNode as _createVNode6, createElementVNode as _createElementVNode9, resolveDirective as _resolveDirective, openBlock as _openBlock13, createElementBlock as _createElementBlock13, withDirectives as _withDirectives2 } from "vue";
+import { toDisplayString as _toDisplayString5, createTextVNode as _createTextVNode4, resolveComponent as _resolveComponent7, withCtx as _withCtx6, createVNode as _createVNode6, createElementVNode as _createElementVNode9, resolveDirective as _resolveDirective, openBlock as _openBlock13, createElementBlock as _createElementBlock13, withDirectives as _withDirectives2 } from "vue";
 var exampleComponent = defineComponent13({
   name: "FOfflineExample",
   components: { FOffline: FOffline_default2 },
@@ -3776,7 +3738,7 @@ function render13(_ctx, _cache, $props, $setup, $data, $options) {
   return _withDirectives2((_openBlock13(), _createElementBlock13("div", null, [
     _createVNode6(_component_f_offline, null, {
       default: _withCtx6(() => [
-        _createTextVNode5(
+        _createTextVNode4(
           _toDisplayString5(_ctx.offlineMessage),
           1
           /* TEXT */

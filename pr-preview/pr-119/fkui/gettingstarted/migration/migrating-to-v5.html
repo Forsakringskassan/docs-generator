@@ -9,41 +9,34 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-4ad5d0.css"
+            href="../../assets/docs-70a679.css"
             crossorigin
-            integrity="sha384-AvlRQ9e6ED+w5remosnXTKMq5iFtGxtrXScsqiL1094Uy0Q/az8ERg/16e+VuISm"
+            integrity="sha384-P2ir0ybKqVloiYhR7E8h2cyEQimNhtEZ6Zuf0zYPzWA/oDqz6DGPEYF1wkGIZxyl"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-exp-7d254d.css"
+            href="../../assets/docs-fkui-5b626e.css"
             crossorigin
-            integrity="sha384-sqWEQkmH2jAsztk3CxUCrdtK8cYykguMIJd1+UAbp+gh1gaJtO0UEs42tyyIWO//"
-            data-theme="exp" disabled
-        />
-        <link
-            rel="stylesheet"
-            href="../../assets/docs-int-195032.css"
-            crossorigin
-            integrity="sha384-V/ILRCps6g6bgagi33Opo/H/71OfAwkS2GheQp4DazqjuLDf2mlB1OxMd/9mIfzd"
-            data-theme="int" disabled
+            integrity="sha384-wyIvqBEczityL7K81fuXSFDtOYyioQTOBJatxV3nlRbkJNIl+8h8bjBaxBNypRtV"
+            data-theme="fkui" disabled
         />
 
         <script type="importmap">
             {
   "imports": {
     "vue": "../../assets/vendor-vue-fd7b76.js",
-    "@fkui/logic": "../../assets/vendor-fkui-logic-f2e93f.js",
-    "@fkui/date": "../../assets/vendor-fkui-date-9b0ef1.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-ba16e8.js",
-    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-ce5c3f.js"
+    "@fkui/logic": "../../assets/vendor-fkui-logic-53a5b8.js",
+    "@fkui/date": "../../assets/vendor-fkui-date-137268.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-12a46a.js",
+    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-2eb554.js"
   },
   "integrity": {
     "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
-    "../../assets/vendor-fkui-logic-f2e93f.js": "sha384-IPacLgPmCz2jfxV3ZacqrFaVi8T6F/RBcVnVbaRhA6+QS6E7/oLrmTvyNYGNNNom",
-    "../../assets/vendor-fkui-date-9b0ef1.js": "sha384-xBatGNJBE3UYeafnYIcvibBCzT8ADONUBqG8qLOF3XGi35obeRYsHs6DCq/h5j2Y",
-    "../../assets/vendor-fkui-vue-ba16e8.js": "sha384-8Bfw90woQD7IabvLi4rdqrdLrw4RZZ0oONM07NTxFM4OWkqfOC3AwAe4Jf3y1pOL",
-    "../../assets/vendor-forsakringskassan-docs-live-example-ce5c3f.js": "sha384-rLyXeIcpVmwGulMOjBGTYbwDjDcBeKL1gobH2xxZ6C8vR5sin3SBbKOsIo9hCeZO"
+    "../../assets/vendor-fkui-logic-53a5b8.js": "sha384-T9chgQ15ogd6zjYhmGgRdHmhwfpHf+XYNrdxmNJBIjhA6TRWRfKFtDmppFNUlakN",
+    "../../assets/vendor-fkui-date-137268.js": "sha384-UbOEWpOpf24qbX6KkKB4K9LhJsAkmXFVHisfpicUcstiWcZwPwdDm8SUX4z8+bt8",
+    "../../assets/vendor-fkui-vue-12a46a.js": "sha384-boYsSxmR+eF0I2V44l6c0Jp/SJKdd5V9HVptN71XSCCsNcMCANExqrslNqxF4rtU",
+    "../../assets/vendor-forsakringskassan-docs-live-example-2eb554.js": "sha384-QbVSnwLyQZbHRWySH1ZnkoojrReXVYtjl1CPzEZfTGqjJqPQhUViw49/og+4dSQs"
   }
 }
         </script>
@@ -58,17 +51,6 @@
 
         <!-- prettier-ignore -->
         <script>
-    function themeRenderBlocker() {
-        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
-        const style = Array.from(document.querySelectorAll("[data-theme]"));
-        for (const el of style) {
-            el.disabled = el.dataset.theme !== theme;
-        }
-    }
-
-    themeRenderBlocker();
-</script>
-<script>
     (() => {
         withCookieConsent(() =>  {
             const allowedHostnames = [
@@ -108,10 +90,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-206ec1.json"
+            href="../../search-data-3846a3.json"
             as="fetch"
             crossorigin
-            integrity="sha384-qtmkzIMo8jIhaZ11ePXcG2zo3YLrksmCrLxGlIpa1zJKMpVlqUmLJnc2vkkvwFsx"
+            integrity="sha384-NoLoL9NQdEzUjK0Lf2jF5DSs+0DGb3X8Ow2aq4Lr0lBN0J3HazQ6KatjLJVNz+Mk"
             id="search-data"
         />
     </head>
@@ -262,55 +244,6 @@
         </button>
     </form>
 </div>
-<div class="toolbar__item">
-    <div class="select-field" style="visibility: hidden">
-        <label for="fkds-theme-select" class="label sr-only"> Tema </label>
-        <div class="select-field__icon-wrapper">
-            <select id="fkds-theme-select" class="select-field__select">
-                <option value="exp">Försäkringskassan</option>
-                <option value="int">FK Hapo</option>
-            </select>
-            <svg focusable="false" class="icon select-field__icon">
-                <use xlink:href="#docs-icon-arrow-down"></use>
-            </svg>
-        </div>
-    </div>
-
-    <script>
-        function themeSelector() {
-            function getSelectedTheme(key) {
-                return window.localStorage.getItem(key) ?? "exp";
-            }
-
-            function saveSelectedTheme(key, value) {
-                window.localStorage.setItem(key, value);
-            }
-
-            function enableTheme(theme) {
-                const style = Array.from(document.querySelectorAll("[data-theme]"));
-                for (const el of style) {
-                    el.disabled = el.dataset.theme !== theme;
-                }
-            }
-
-            const el = document.querySelector("#fkds-theme-select");
-            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
-            el.addEventListener("change", () => {
-                const theme = el.value;
-                saveSelectedTheme("fkds-theme", theme);
-                enableTheme(theme);
-            });
-
-            const selected = getSelectedTheme("fkds-theme");
-            enableTheme(selected);
-            el.value = selected;
-
-            wrapper.style.visibility = null;
-        }
-
-        themeSelector();
-    </script>
-</div>
 </div>
             </div>
         </div>
@@ -435,6 +368,16 @@
         >
             Commits och commitmeddelanden
         </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../contribute-to-fkds/testverktyg.html"
+            
+        >
+            Testverktyg
+        </a>
     </li><!-- prettier-ignore --></ol>
 
             
@@ -476,7 +419,7 @@
             href="../about/release-plan.html"
             
         >
-            Releaseplan
+            På gång
         </a>
     </li><!-- prettier-ignore --></ol>
 
@@ -521,7 +464,70 @@
         >
             Version 5 migreringsguide
         </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Version 6 migreringsguide</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./migrating-to-v6/overview.html"
+            
+        >
+            Sammanfattning
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./migrating-to-v6/design.html"
+            
+        >
+            @fkui/design
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./migrating-to-v6/logic.html"
+            
+        >
+            @fkui/logic
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./migrating-to-v6/vue.html"
+            
+        >
+            @fkui/vue
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./migrating-to-v6/cypress-pageobjects.html"
+            
+        >
+            Cypress Pageobjects
+        </a>
     </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --></ol>
 
             
         </details>
@@ -776,7 +782,7 @@ If you are creating a GHS-application with the need for the <code>FOffline</code
                     id="example-39b76d"
                     class="code-preview code-preview--default"
                     
-                    data-tags=static
+                    data-tags="static"
                     data-language="html"
                 >
                     
@@ -844,9 +850,9 @@ using former 12-digit display.</p>
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/importmap (<a href="https://github.com/Forsakringskassan/designsystem/commits/a175535e3bb31a6dd6045fe88277d85a687b952f">a175535</a>)<br />
+    feature/importmap (<a href="https://github.com/Forsakringskassan/designsystem/commits/908146a1243663cc540c807433060b8888fca518">908146a</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/119">PR 119</a><br />
-        2024-12-16 14:59
+        2025-02-19 21:31
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -967,15 +973,15 @@ using former 12-digit display.</p>
             
         ></script>
         <script
-            src="../../assets/processors/selectable-version/select-version-e7a130.js"
+            src="../../assets/processors/selectable-version/select-version-6067be.js"
             crossorigin
-            integrity="sha384-ioVz0q+o5e9xzpHcYgIMUjemejWyVXe+hmnsBFa92juxUWJaJ7JTzVMgU6A81Kgt"
+            integrity="sha384-E/Og84gu7LBAeGNUb/iiVGhnaS+MiN8ZGg1YxDflsLJfth715NqUTRijNEaW+V/z"
             
         ></script>
         <script
-            src="../../assets/main-ae3895.js"
+            src="../../assets/main-ce4607.js"
             crossorigin
-            integrity="sha384-WQHGoNOK3Mtld4sHZsBn4R23AII6/VsvSPruKRH/24Ii1yE6h2UVAsD8uX3WeZaN"
+            integrity="sha384-osRWDizm0mC1PcmyAobZqkF0HTBHt8crip0SKuv/l5YC3mvPWeSQvIpcw+BdbafG"
             
         ></script>
     </body>

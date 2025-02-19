@@ -9,41 +9,34 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-4ad5d0.css"
+            href="../../assets/docs-70a679.css"
             crossorigin
-            integrity="sha384-AvlRQ9e6ED+w5remosnXTKMq5iFtGxtrXScsqiL1094Uy0Q/az8ERg/16e+VuISm"
+            integrity="sha384-P2ir0ybKqVloiYhR7E8h2cyEQimNhtEZ6Zuf0zYPzWA/oDqz6DGPEYF1wkGIZxyl"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-exp-7d254d.css"
+            href="../../assets/docs-fkui-5b626e.css"
             crossorigin
-            integrity="sha384-sqWEQkmH2jAsztk3CxUCrdtK8cYykguMIJd1+UAbp+gh1gaJtO0UEs42tyyIWO//"
-            data-theme="exp" disabled
-        />
-        <link
-            rel="stylesheet"
-            href="../../assets/docs-int-195032.css"
-            crossorigin
-            integrity="sha384-V/ILRCps6g6bgagi33Opo/H/71OfAwkS2GheQp4DazqjuLDf2mlB1OxMd/9mIfzd"
-            data-theme="int" disabled
+            integrity="sha384-wyIvqBEczityL7K81fuXSFDtOYyioQTOBJatxV3nlRbkJNIl+8h8bjBaxBNypRtV"
+            data-theme="fkui" disabled
         />
 
         <script type="importmap">
             {
   "imports": {
     "vue": "../../assets/vendor-vue-fd7b76.js",
-    "@fkui/logic": "../../assets/vendor-fkui-logic-f2e93f.js",
-    "@fkui/date": "../../assets/vendor-fkui-date-9b0ef1.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-ba16e8.js",
-    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-ce5c3f.js"
+    "@fkui/logic": "../../assets/vendor-fkui-logic-53a5b8.js",
+    "@fkui/date": "../../assets/vendor-fkui-date-137268.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-12a46a.js",
+    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-2eb554.js"
   },
   "integrity": {
     "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
-    "../../assets/vendor-fkui-logic-f2e93f.js": "sha384-IPacLgPmCz2jfxV3ZacqrFaVi8T6F/RBcVnVbaRhA6+QS6E7/oLrmTvyNYGNNNom",
-    "../../assets/vendor-fkui-date-9b0ef1.js": "sha384-xBatGNJBE3UYeafnYIcvibBCzT8ADONUBqG8qLOF3XGi35obeRYsHs6DCq/h5j2Y",
-    "../../assets/vendor-fkui-vue-ba16e8.js": "sha384-8Bfw90woQD7IabvLi4rdqrdLrw4RZZ0oONM07NTxFM4OWkqfOC3AwAe4Jf3y1pOL",
-    "../../assets/vendor-forsakringskassan-docs-live-example-ce5c3f.js": "sha384-rLyXeIcpVmwGulMOjBGTYbwDjDcBeKL1gobH2xxZ6C8vR5sin3SBbKOsIo9hCeZO"
+    "../../assets/vendor-fkui-logic-53a5b8.js": "sha384-T9chgQ15ogd6zjYhmGgRdHmhwfpHf+XYNrdxmNJBIjhA6TRWRfKFtDmppFNUlakN",
+    "../../assets/vendor-fkui-date-137268.js": "sha384-UbOEWpOpf24qbX6KkKB4K9LhJsAkmXFVHisfpicUcstiWcZwPwdDm8SUX4z8+bt8",
+    "../../assets/vendor-fkui-vue-12a46a.js": "sha384-boYsSxmR+eF0I2V44l6c0Jp/SJKdd5V9HVptN71XSCCsNcMCANExqrslNqxF4rtU",
+    "../../assets/vendor-forsakringskassan-docs-live-example-2eb554.js": "sha384-QbVSnwLyQZbHRWySH1ZnkoojrReXVYtjl1CPzEZfTGqjJqPQhUViw49/og+4dSQs"
   }
 }
         </script>
@@ -58,17 +51,6 @@
 
         <!-- prettier-ignore -->
         <script>
-    function themeRenderBlocker() {
-        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
-        const style = Array.from(document.querySelectorAll("[data-theme]"));
-        for (const el of style) {
-            el.disabled = el.dataset.theme !== theme;
-        }
-    }
-
-    themeRenderBlocker();
-</script>
-<script>
     (() => {
         withCookieConsent(() =>  {
             const allowedHostnames = [
@@ -108,10 +90,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-206ec1.json"
+            href="../../search-data-3846a3.json"
             as="fetch"
             crossorigin
-            integrity="sha384-qtmkzIMo8jIhaZ11ePXcG2zo3YLrksmCrLxGlIpa1zJKMpVlqUmLJnc2vkkvwFsx"
+            integrity="sha384-NoLoL9NQdEzUjK0Lf2jF5DSs+0DGb3X8Ow2aq4Lr0lBN0J3HazQ6KatjLJVNz+Mk"
             id="search-data"
         />
     </head>
@@ -262,55 +244,6 @@
         </button>
     </form>
 </div>
-<div class="toolbar__item">
-    <div class="select-field" style="visibility: hidden">
-        <label for="fkds-theme-select" class="label sr-only"> Tema </label>
-        <div class="select-field__icon-wrapper">
-            <select id="fkds-theme-select" class="select-field__select">
-                <option value="exp">Försäkringskassan</option>
-                <option value="int">FK Hapo</option>
-            </select>
-            <svg focusable="false" class="icon select-field__icon">
-                <use xlink:href="#docs-icon-arrow-down"></use>
-            </svg>
-        </div>
-    </div>
-
-    <script>
-        function themeSelector() {
-            function getSelectedTheme(key) {
-                return window.localStorage.getItem(key) ?? "exp";
-            }
-
-            function saveSelectedTheme(key, value) {
-                window.localStorage.setItem(key, value);
-            }
-
-            function enableTheme(theme) {
-                const style = Array.from(document.querySelectorAll("[data-theme]"));
-                for (const el of style) {
-                    el.disabled = el.dataset.theme !== theme;
-                }
-            }
-
-            const el = document.querySelector("#fkds-theme-select");
-            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
-            el.addEventListener("change", () => {
-                const theme = el.value;
-                saveSelectedTheme("fkds-theme", theme);
-                enableTheme(theme);
-            });
-
-            const selected = getSelectedTheme("fkds-theme");
-            enableTheme(selected);
-            el.value = selected;
-
-            wrapper.style.visibility = null;
-        }
-
-        themeSelector();
-    </script>
-</div>
 </div>
             </div>
         </div>
@@ -441,16 +374,6 @@
         </details>
     </li><!-- prettier-ignore -->
     <!-- prettier-ignore --><!-- prettier-ignore -->
-    <!-- prettier-ignore -->
-    <li class="link ">
-        <!-- prettier-ignore -->
-        <a
-            href="../fform.html"
-            
-        >
-            Formulär
-        </a>
-    </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <li class="expandable ">
         <details >
             <summary>Gruppera</summary>
@@ -540,6 +463,16 @@
             
         >
             Flerradigt inmatningsfält
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../input/combobox.html"
+            
+        >
+            Kombobox
         </a>
     </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <!-- prettier-ignore -->
@@ -650,6 +583,16 @@
         </details>
     </li><!-- prettier-ignore -->
     <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../flogo.html"
+            
+        >
+            Logotyp
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
     <li class="expandable ">
         <details >
             <summary>Länkar</summary>
@@ -1090,7 +1033,7 @@
         
         <code>
             
-            <a href="https://github.com/Forsakringskassan/designsystem/blob/a175535e3bb31a6dd6045fe88277d85a687b952f/packages/vue/src/components/FModal/FModal.vue">FModal</a>
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/908146a1243663cc540c807433060b8888fca518/packages/vue/src/components/FModal/FModal.vue">FModal</a>
             
         </code>
          
@@ -1112,6 +1055,8 @@
                             <summary class="outline__heading">Innehåll</summary>
                             <ul>
                                 
+                                <li><a href="#anvandning">Användning</a></li>
+                                
                                 <li><a href="#storlek">Storlek</a></li>
                                 
                                 <li><a href="#api">API</a></li>
@@ -1130,7 +1075,7 @@
                     id="example-76970b"
                     class="code-preview code-preview--borderless"
                     
-                    data-tags=live-example
+                    data-tags="live-example"
                     data-language="vue"
                 >
                     
@@ -1140,7 +1085,7 @@
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FModalLiveExample-00a457.js"></script>
+        <script type="module" src="./FModalLiveExample-f62408.js"></script>
     
                 </div>
             <p>Använd inte modala dialogrutor för att presentera felmeddelanden eller information som användaren behöver kunna läsa under tiden som hen åtgärdar ett fel eller gör ändringar.</p>
@@ -1156,7 +1101,90 @@
 <li>varning</li>
 <li>fel.</li>
 </ul>
-<h2 id="storlek"><a class="header-anchor" href="#storlek">Storlek</a></h2><p>Modalens höjd anpassas utifrån innehållet. I desktop (&gt;639px) kan modalens bredd anpassas till</p>
+<h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p>Skapa en ny Vue-komponent där <code>f-modal</code> används:</p>
+
+                <div
+                    id="example-d96d54"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="vue"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FModal</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">const</span> emit = defineEmits&lt;{ <span class="hljs-attr">close</span>: [] }&gt;();
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-modal</span> <span class="hljs-attr">is-open</span> @<span class="hljs-attr">close</span>=<span class="hljs-string">&quot;emit(&#x27;close&#x27;)&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">header</span>&gt;</span> My awesome modal <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">content</span>&gt;</span> My awesome content <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">footer</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--primary button-group__item button--large&quot;</span>
+                    @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;emit(&#x27;close&#x27;)&quot;</span>
+                &gt;</span>
+                    Close
+                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-modal</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            <p>Du kan sedan öppna din modal genom att använda <a href="../../functions/functions/use-modal.html"><code>useModal()</code></a> (composition API) eller <a href="../../functions/functions/modal-functions/form-modal.html"><code>openModal()</code></a> (options API).</p>
+
+                <div
+                    id="example-9996d7"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="vue"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { useModal } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">MyAwesomeModal</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./MyAwesomeModal.vue&quot;</span>;
+
+<span class="hljs-keyword">const</span> { openModal } = <span class="hljs-title function_">useModal</span>();
+
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">onClick</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-keyword">void</span>&gt; {
+    <span class="hljs-keyword">await</span> <span class="hljs-title function_">openModal</span>(<span class="hljs-title class_">MyAwesomeModal</span>);
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onClick&quot;</span>&gt;</span>Open<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            <h3 id="anvandning_med_template_deprekerad"><a class="header-anchor" href="#anvandning_med_template_deprekerad">Användning med template (deprekerad)</a></h3><p>Att använda <code>FModal</code> nästlad i template är deprekerat.
+Om du använder detta rekommenderar vi att du flyttar den till en egen Vue komponent och använder API för att öppna den.
+Se <a href="./fmodal.html#anvandning"><code>Användning</code></a> för hur du använder <code>FModal</code> med API.</p>
+
+                <div
+                    id="example-bce030"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;template&gt;
+     &lt;div&gt;
+         &lt;button type=&quot;button&quot; @click=&quot;onClick&quot;&gt;Open modal&lt;/button&gt;
+<span class="hljs-deletion">-        &lt;f-modal&gt;&lt;/f-modal&gt;</span>
+     &lt;/div&gt;
+ &lt;/template&gt;
+</code></pre>
+                </div>
+            <h2 id="storlek"><a class="header-anchor" href="#storlek">Storlek</a></h2><p>Modalens höjd anpassas utifrån innehållet. I desktop (&gt;639px) kan modalens bredd anpassas till</p>
 <ul>
 <li><code>small</code> (standard)</li>
 <li><code>medium</code></li>
@@ -1167,7 +1195,7 @@
 <p>Använd <code>size</code>-prop för att välja storlek på modalen.</p>
 
                 <div
-                    id="example-89eb77"
+                    id="example-28f144"
                     class="code-preview code-preview--default"
                     
                     
@@ -1182,7 +1210,7 @@
 <p>Den här <code>fullscreen</code>-propen påverkar inte modalen i desktop-läge.</p>
 
                 <div
-                    id="example-869b1b"
+                    id="example-1332ef"
                     class="code-preview code-preview--default"
                     
                     
@@ -1196,7 +1224,7 @@
             <h3 id="anpassa_storlek"><a class="header-anchor" href="#anpassa_storlek">Anpassa storlek</a></h3><p>Implementera en CSS-klass enligt följande:</p>
 
                 <div
-                    id="example-7f6c4f"
+                    id="example-c4f75e"
                     class="code-preview code-preview--default"
                     
                     
@@ -1211,7 +1239,7 @@
             <p>Använd inte <code>size</code>-prop utan lägg istället till din klass direkt enligt <code>class=&quot;..&quot;</code>:</p>
 
                 <div
-                    id="example-4acbfd"
+                    id="example-563c65"
                     class="code-preview code-preview--default"
                     
                     
@@ -1234,62 +1262,238 @@
 <li>&quot;off&quot; - komponenten hanterar inte fokus alls.</li>
 <li>&quot;open&quot; - komponenten hanterar enbart fokus vid öppning.</li>
 </ul>
-<h2 id="api"><a class="header-anchor" href="#api">API</a></h2><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody><tr><td><p>id</p>
-</td><td><p>The id for the root element id attribute.<br>
+<h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+        <h3 id="fmodal-props">
+            <a class="header-anchor" href="#fmodal-props">Props</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fmodal-prop-id"
+                                ><a class="docs-api__anchor" href="#fmodal-prop-id"
+                                    ><span class="docs-api__name"
+                                        >id</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The id for the root element id attribute.
 If the prop is not set a random value will be generated.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>() =&gt; ElementIdService.generateElementId()</p>
-</td></tr><tr><td><p>isOpen</p>
-</td><td><p>If the modal is open.<br>
+
+                            <p class="doc-api__item">Default: <code>() =&gt; ElementIdService.generateElementId()</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fmodal-prop-isopen"
+                                ><a class="docs-api__anchor" href="#fmodal-prop-isopen"
+                                    ><span class="docs-api__name"
+                                        >isOpen</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>If the modal is open.
 Use this to toggle if the modal should be visible or not.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>false</p>
-</td></tr><tr><td><p>ariaCloseText</p>
-</td><td><p>The aria-label attribute text for the top right close button.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>undefined</p>
-</td></tr><tr><td><p>fullscreen</p>
-</td><td><p>Enable fullscreen mode in mobile.</p>
-</td><td><p>boolean</p>
-</td><td><p>false</p>
-</td><td><p>false</p>
-</td></tr><tr><td><p>type</p>
-</td><td><p>The type of modal. 'information', 'warning' and 'error' is valid.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;&quot;</p>
-</td></tr><tr><td><p>size</p>
-</td><td><p>The size of modal in desktop mode.</p>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;&quot;</p>
-</td></tr><tr><td><p>focus</p>
-</td><td><p>Default behavior is that the modal will restore focus to previous element once closed.</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fmodal-prop-ariaclosetext"
+                                ><a class="docs-api__anchor" href="#fmodal-prop-ariaclosetext"
+                                    ><span class="docs-api__name"
+                                        >ariaCloseText</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The aria-label attribute text for the top right close button.</p>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fmodal-prop-fullscreen"
+                                ><a class="docs-api__anchor" href="#fmodal-prop-fullscreen"
+                                    ><span class="docs-api__name"
+                                        >fullscreen</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Enable fullscreen mode in mobile.</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fmodal-prop-type"
+                                ><a class="docs-api__anchor" href="#fmodal-prop-type"
+                                    ><span class="docs-api__name"
+                                        >type</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The type of modal. 'information', 'warning' and 'error' is valid.</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fmodal-prop-size"
+                                ><a class="docs-api__anchor" href="#fmodal-prop-size"
+                                    ><span class="docs-api__name"
+                                        >size</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>The size of modal in desktop mode.</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fmodal-prop-focus"
+                                ><a class="docs-api__anchor" href="#fmodal-prop-focus"
+                                    ><span class="docs-api__name"
+                                        >focus</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Default behavior is that the modal will restore focus to previous element once closed.</p>
 <ul>
 <li>&quot;on&quot; (default) - component will set focus both when opened and closed</li>
 <li>&quot;off&quot; - focus strategy disabled</li>
 <li>&quot;open&quot; - focus will only be applied once modal is opened</li>
 </ul>
-</td><td><p>string</p>
-</td><td><p>false</p>
-</td><td><p>&quot;on&quot;</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Events</caption><thead><tr><th>Name</th><th>Description</th><th>Properties</th></tr></thead><tbody><tr><td><p>close</p>
-</td><td><p>Event that is dispatched when the escape button is pressed.<br>
+
+                            <p class="doc-api__item">Default: <code>&quot;on&quot;</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="fmodal-events">
+            <a class="header-anchor" href="#fmodal-events">Events</a>
+        </h3>
+        <dl class="docs-api docs-api--events">
+            
+                        <dt>
+                            <code id="fmodal-event-close"
+                                ><a class="docs-api__anchor" href="#fmodal-event-close"
+                                    ><span class="docs-api__name"
+                                        >close</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Event that is dispatched when the escape button is pressed.
 In most use cases the <code>isOpen</code> prop should be set to false when this event is triggered.</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th></tr></thead><tbody><tr><td><p>header</p>
-</td><td><p>Slot for the header.</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>content</p>
-</td><td><p>Slot for the main content, e.g. paragraphs, input fields, etc.</p>
-</td><td><p>‐</p>
-</td></tr><tr><td><p>footer</p>
-</td><td><p>Slot the footer content, i.e. buttons.</p>
-</td><td><p>‐</p>
-</td></tr></tbody></table></div>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h3 id="fmodal-slots">
+            <a class="header-anchor" href="#fmodal-slots">Slots</a>
+        </h3>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fmodal-slot-header"
+                                ><a class="docs-api__anchor" href="#fmodal-slot-header"
+                                    ><span class="docs-api__name"
+                                        >header</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for the header.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fmodal-slot-content"
+                                ><a class="docs-api__anchor" href="#fmodal-slot-content"
+                                    ><span class="docs-api__name"
+                                        >content</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for the main content, e.g. paragraphs, input fields, etc.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fmodal-slot-footer"
+                                ><a class="docs-api__anchor" href="#fmodal-slot-footer"
+                                    ><span class="docs-api__name"
+                                        >footer</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot the footer content, i.e. buttons.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    
 
                     </div>
                 </main>
@@ -1310,9 +1514,9 @@ In most use cases the <code>isOpen</code> prop should be set to false when this 
     <!-- prettier-ignore -->
     <div class="version">
     <!-- prettier-ignore -->
-    feature/importmap (<a href="https://github.com/Forsakringskassan/designsystem/commits/a175535e3bb31a6dd6045fe88277d85a687b952f">a175535</a>)<br />
+    feature/importmap (<a href="https://github.com/Forsakringskassan/designsystem/commits/908146a1243663cc540c807433060b8888fca518">908146a</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/119">PR 119</a><br />
-        2024-12-16 14:59
+        2025-02-19 21:31
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1433,15 +1637,15 @@ In most use cases the <code>isOpen</code> prop should be set to false when this 
             
         ></script>
         <script
-            src="../../assets/processors/selectable-version/select-version-e7a130.js"
+            src="../../assets/processors/selectable-version/select-version-6067be.js"
             crossorigin
-            integrity="sha384-ioVz0q+o5e9xzpHcYgIMUjemejWyVXe+hmnsBFa92juxUWJaJ7JTzVMgU6A81Kgt"
+            integrity="sha384-E/Og84gu7LBAeGNUb/iiVGhnaS+MiN8ZGg1YxDflsLJfth715NqUTRijNEaW+V/z"
             
         ></script>
         <script
-            src="../../assets/main-ae3895.js"
+            src="../../assets/main-ce4607.js"
             crossorigin
-            integrity="sha384-WQHGoNOK3Mtld4sHZsBn4R23AII6/VsvSPruKRH/24Ii1yE6h2UVAsD8uX3WeZaN"
+            integrity="sha384-osRWDizm0mC1PcmyAobZqkF0HTBHt8crip0SKuv/l5YC3mvPWeSQvIpcw+BdbafG"
             
         ></script>
     </body>
