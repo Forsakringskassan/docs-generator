@@ -19,6 +19,10 @@
         />
         {%- endfor %}
 
+        <script type="importmap">
+            {{ importmap(doc) }}
+        </script>
+
         <!-- prettier-ignore -->
         {%- for asset in injectHead | take("type", "js") %}
         <script
@@ -57,15 +61,6 @@
                 <!-- prettier-ignore -->
                 {%- block sidenav %}
                 {%- endblock %}
-
-                <!-- prettier-ignore -->
-                {%- for asset in vendors %}
-                <script
-                    src="{{ asset.publicPath | relative(doc) }}"
-                    crossorigin
-                    integrity="{{ asset.integrity }}"
-                ></script>
-                {%- endfor %}
 
                 <!-- prettier-ignore -->
                 {%- for asset in injectBody | take("type", "css") %}

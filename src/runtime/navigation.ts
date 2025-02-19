@@ -38,14 +38,22 @@ function closeNested(details: HTMLDetailsElement): void {
  * @param href - The url which the src attribute should be relative to.
  */
 function cloneScripts(element: HTMLElement, href: string): void {
+    const ts = String(new Date().getTime());
     for (const script of element.querySelectorAll("script")) {
         const copy = document.createElement("script");
         const src = script.getAttribute("src");
+        const type = script.getAttribute("type");
+
+        if (type) {
+            copy.setAttribute("type", type);
+        }
 
         /* script.src is normalized but in wrong folder so we rewrite the url
          * based on the new updated href */
         if (src) {
-            copy.src = new URL(src, href).toString();
+            const url = new URL(src, href);
+            url.searchParams.append("ts", ts);
+            copy.src = url.toString();
         }
 
         /* if the <script> have text content we clone it as well */

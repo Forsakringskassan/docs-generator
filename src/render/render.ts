@@ -236,6 +236,20 @@ export async function render(
         },
         sidenav,
         vendors,
+        importmap(doc: DocumentPage): string {
+            const imports = Object.fromEntries(
+                vendors.map((it) => {
+                    return [it.package, filter.relative(it.publicPath, doc)];
+                }),
+            );
+            const integrity = Object.fromEntries(
+                vendors.map((it) => {
+                    return [filter.relative(it.publicPath, doc), it.integrity];
+                }),
+            );
+            const importmap = { imports, integrity };
+            return JSON.stringify(importmap, null, 2);
+        },
     };
 
     const generatedExamples: ExampleCompileTask[] = [];

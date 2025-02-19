@@ -10,7 +10,7 @@ npm install --save-dev --save-exact @forsakringskassan/docs-generator
 
 You can start a development server with watch for incremental builds using `.serve()`.
 
-```ts
+```ts name=watch
 import {
     Generator,
     livereloadProcessor,
@@ -35,7 +35,7 @@ docs.serve();
 
 Vendor alias is optional, it lets you substitute one package for another when bundling. The example below substitutes the package `vue` with the package `vue/dist/esm.bundle.js`. When an alias is given the package can be imported using the given alias as well as the original package name. For instance, when using the following configuration "vue" can be imported and resolved as "vue/dist/esm.bundle.js".
 
-```ts
+```ts name=vendor-alias
 import {
     Generator,
     livereloadProcessor,
@@ -50,8 +50,6 @@ const docs = new Generator({
     vendor: [
         {
             package: "vue",
-            expose: "named",
-            subpaths: [],
             alias: "vue/dist/esm.bundle.js",
         },
     ],
