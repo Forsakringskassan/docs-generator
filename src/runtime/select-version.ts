@@ -42,7 +42,8 @@ function clickOutside(event: MouseEvent): void {
 }
 
 async function fetchVersions(): Promise<VersionResponse> {
-    const url = getUrl(document, "../versions.json");
+    const url = getUrl(document, `../versions.json?v=${current}`);
+
     const response = await fetch(url);
 
     if (!response.ok) {
