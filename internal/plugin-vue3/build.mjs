@@ -20,6 +20,7 @@ try {
             "@vue/compiler-sfc",
             "cheerio",
             "he",
+            "html-minifier",
             "pug",
             "source-map",
             "typescript",
