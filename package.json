@@ -205,6 +205,9 @@
     "vue-docgen-api"
   ],
   "overrides": {
+    "esbuild-plugin-vue3": {
+      "esbuild": "$esbuild"
+    },
     "nunjucks": {
       "chokidar": "$chokidar"
     }
