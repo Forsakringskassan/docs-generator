@@ -404,11 +404,6 @@ var ColorTable_default = defineComponent({
       type: Array,
       required: true
     }
-  },
-  computed: {
-    typeWorkaround() {
-      return this.colors;
-    }
   }
 });
 
@@ -418,7 +413,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_table_column = _resolveComponent("f-table-column");
   const _component_f_data_table = _resolveComponent("f-data-table");
   return _openBlock(), _createBlock(_component_f_data_table, {
-    rows: _ctx.typeWorkaround,
+    rows: _ctx.colors,
     "key-attribute": "name"
   }, {
     caption: _withCtx(() => _cache[0] || (_cache[0] = [
