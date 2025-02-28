@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [2.20.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.19.1...v2.20.0) (2025-02-28)
+
+### Features
+
+* use esm and importmap for examples ([ede3778](https://github.com/Forsakringskassan/docs-generator/commit/ede37782ab95a6d384ff51d3657a6b7c8bf862cf))
+
+### Bug Fixes
+
+* cachebusting for versions.json to avoid message about newer version for recently released site ([5b85762](https://github.com/Forsakringskassan/docs-generator/commit/5b857626fb02c3d5b20e92ce8b7478e08cb9ffcb))
+* handle nested comments ([5c5c25a](https://github.com/Forsakringskassan/docs-generator/commit/5c5c25a4458052a0759c81be64276be8622b0bdf))
+
 ## [2.19.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.19.0...v2.19.1) (2025-02-19)
 
 ### Bug Fixes
