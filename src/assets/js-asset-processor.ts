@@ -1,6 +1,7 @@
 import { type BuildOptions } from "esbuild";
 import { type Processor } from "../processor";
 import { formatSize, serializeAttrs } from "../utils";
+import { VendorDefinition } from "../vendor";
 import { type CompileOptions } from "./compile-options";
 import { compileScript } from "./compile-script";
 
@@ -31,6 +32,7 @@ function toSorted<T>(values: T[], comparator: (a: T, b: T) => number): T[] {
 export function jsAssetProcessor(
     assetFolder: string,
     assets: JSAsset[],
+    vendor: VendorDefinition[],
 ): Processor {
     return {
         name: "js-asset-processor",
@@ -44,6 +46,7 @@ export function jsAssetProcessor(
                     assetFolder,
                     name: asset.name,
                     src: asset.src,
+                    vendor,
                     buildOptions: asset.buildOptions,
                 });
                 const attrs = serializeAttrs(asset.options.attributes);
