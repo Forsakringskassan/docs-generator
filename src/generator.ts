@@ -26,6 +26,7 @@ import { type Processor } from "./processor";
 import {
     type ProcessorContext,
     type TemplateBlockData,
+    type TemplateData,
 } from "./processor-context";
 import { type ProcessorStage } from "./processor-stage";
 import { redirectProcessor } from "./processors";
@@ -197,7 +198,7 @@ function createContext(
         children: [],
         visible: true,
     };
-    const templateData: Record<string, unknown> = {};
+    const templateData = new Map<string, unknown>();
     return {
         get docs(): Document[] {
             return docs;
@@ -263,15 +264,23 @@ function createContext(
         },
 
         getAllTemplateData() {
-            return templateData;
+            return Object.fromEntries(templateData.entries()) as TemplateData &
+                Record<string, unknown>;
         },
 
-        getTemplateData(key: string): unknown {
-            return templateData[key];
+        getTemplateData(key: string, defaultValue?: unknown): unknown {
+            if (templateData.has(key)) {
+                return templateData.get(key);
+            } else if (defaultValue) {
+                templateData.set(key, defaultValue);
+                return defaultValue;
+            } else {
+                return undefined;
+            }
         },
 
         setTemplateData(key: string, value: unknown) {
-            templateData[key] = value;
+            templateData.set(key, value);
         },
     };
 }
@@ -418,7 +427,7 @@ export class Generator {
             redirectProcessor(),
             vendorProcessor(assetFolder, this.vendor),
             cssAssetProcessor(assetFolder, this.styles, { cwd }),
-            jsAssetProcessor(assetFolder, this.scripts),
+            jsAssetProcessor(assetFolder, this.scripts, this.vendor),
             staticResourcesProcessor(assetFolder, this.resources),
             navigationProcessor(),
             nunjucksProcessor({

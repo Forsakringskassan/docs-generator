@@ -9,7 +9,7 @@ export interface CompileOptions {
      *
      * - `head` - the asset is injected in `<head>`
      * - `body` - the asset is injected in `<body>`
-     * - `none` (default) - the asset is not injected.
+     * - `none` (default) - the asset is not injected (but is available in importmap)
      */
     appendTo: "none" | "head" | "body";
 

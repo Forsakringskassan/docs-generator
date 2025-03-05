@@ -1,6 +1,6 @@
 declare module "../processor-context" {
     export interface TemplateData {
-        assets: Record<string, AssetInfo>;
+        assets: Record<string, AssetInfo & AssetImportmap>;
         injectHead: InjectedAssetInfo[];
         injectBody: InjectedAssetInfo[];
     }
@@ -24,7 +24,18 @@ export interface AssetInfo {
     readonly type: "css" | "js";
 }
 
+/**
+ * @internal
+ */
 export interface InjectedAssetInfo extends AssetInfo {
     /** asset html attributes (serialized as `key="value"` already) */
     readonly attrs: string;
+}
+
+/**
+ * @internal
+ */
+export interface AssetImportmap {
+    /** true if asset should be written to importmap */
+    readonly importmap: boolean;
 }

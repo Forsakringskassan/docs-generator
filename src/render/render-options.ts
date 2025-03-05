@@ -1,4 +1,7 @@
-import { type TemplateBlockData } from "../processor-context";
+import {
+    type TemplateBlockData,
+    type TemplateData,
+} from "../processor-context";
 
 /**
  * @internal
@@ -14,7 +17,7 @@ export interface RenderOptions {
     templateFolders: string[];
     setupPath: string;
     templateBlocks: Map<string, Array<TemplateBlockData<unknown>>>;
-    templateData: Record<string, unknown>;
+    templateData: TemplateData & Record<string, unknown>;
 
     markdown: {
         messagebox?: {

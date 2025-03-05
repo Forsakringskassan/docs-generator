@@ -297,9 +297,11 @@ export interface ProcessorContext {
     // @internal (undocumented)
     getAllTemplateBlocks(): Map<string, Array<TemplateBlockData<unknown>>>;
     // (undocumented)
-    getAllTemplateData(): Record<string, unknown>;
+    getAllTemplateData(): TemplateData & Record<string, unknown>;
     // (undocumented)
     getTemplateData<K extends keyof TemplateData>(key: K): TemplateData[K] | undefined;
+    // (undocumented)
+    getTemplateData<K extends keyof TemplateData>(key: K, defaultValue: TemplateData[K]): TemplateData[K];
     // (undocumented)
     getTemplateData(key: string): unknown;
     // @internal
