@@ -3,6 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { type BuildOptions } from "esbuild";
 import { getFingerprint, getIntegrity } from "../utils";
+import { VendorDefinition } from "../vendor";
 import { AssetInfo } from "./asset-info";
 import { esbuild } from "./esbuild-wrapper";
 
@@ -23,8 +24,13 @@ export interface CompileScriptOptions {
     assetFolder: string;
     name: string;
     src: string | URL;
+    vendor: VendorDefinition[];
     buildOptions: BuildOptions;
     fs?: FSLike;
+}
+
+function toExternal(vendor: VendorDefinition): string {
+    return typeof vendor === "string" ? vendor : vendor.package;
 }
 
 /**
@@ -37,6 +43,7 @@ export async function compileScript(
         assetFolder,
         name,
         src,
+        vendor,
         buildOptions,
         fs = nodeFS as FSLike,
     } = options;
@@ -52,7 +59,7 @@ export async function compileScript(
             bundle: true,
             format: "esm",
             platform: "browser",
-            external: ["vue", "@fkui/vue"],
+            external: vendor.map(toExternal),
             tsconfig: path.join(__dirname, "../tsconfig-examples.json"),
             ...buildOptions,
             define: {
