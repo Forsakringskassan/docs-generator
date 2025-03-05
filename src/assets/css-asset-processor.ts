@@ -39,9 +39,9 @@ export function cssAssetProcessor(
         name: "css-asset-processor",
         after: "assets",
         async handler(context) {
-            const assetInfo = context.getTemplateData("assets") ?? {};
-            const head = context.getTemplateData("injectHead") ?? [];
-            const body = context.getTemplateData("injectBody") ?? [];
+            const assetInfo = context.getTemplateData("assets", {});
+            const head = context.getTemplateData("injectHead", []);
+            const body = context.getTemplateData("injectBody", []);
             for (const asset of toSorted(assets, byPriority)) {
                 const info = await compileStyle(
                     assetFolder,
@@ -62,11 +62,8 @@ export function cssAssetProcessor(
                         body.push(inject);
                         break;
                 }
-                context.setTemplateData("injectHead", head);
-                context.setTemplateData("injectBody", body);
                 context.log(info.filename, formatSize(info.size));
             }
-            context.setTemplateData("assets", assetInfo);
         },
     };
 }

@@ -88,6 +88,10 @@ export interface ProcessorContext {
     getTemplateData<K extends keyof TemplateData>(
         key: K,
     ): TemplateData[K] | undefined;
+    getTemplateData<K extends keyof TemplateData>(
+        key: K,
+        defaultValue: TemplateData[K],
+    ): TemplateData[K];
     getTemplateData(key: string): unknown;
 
     setTemplateData<K extends keyof TemplateData>(
