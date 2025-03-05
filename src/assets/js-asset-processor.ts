@@ -26,6 +26,10 @@ function toSorted<T>(values: T[], comparator: (a: T, b: T) => number): T[] {
     return [...values].sort(comparator);
 }
 
+function isExternal(asset: JSAsset): boolean {
+    return asset.options.appendTo === "none";
+}
+
 /**
  * @internal
  */
@@ -34,6 +38,7 @@ export function jsAssetProcessor(
     assets: JSAsset[],
     vendor: VendorDefinition[],
 ): Processor {
+    const externalAssets = assets.filter(isExternal).map((it) => it.name);
     return {
         name: "js-asset-processor",
         after: "assets",
@@ -46,12 +51,16 @@ export function jsAssetProcessor(
                     assetFolder,
                     name: asset.name,
                     src: asset.src,
+                    assets: externalAssets,
                     vendor,
                     buildOptions: asset.buildOptions,
                 });
                 const attrs = serializeAttrs(asset.options.attributes);
                 const inject = { ...info, attrs: Array.from(attrs).join(" ") };
-                assetInfo[asset.name] = info;
+                assetInfo[asset.name] = {
+                    ...info,
+                    importmap: externalAssets.includes(asset.name),
+                };
                 switch (asset.options.appendTo) {
                     case "none":
                         break;

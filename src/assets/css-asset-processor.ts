@@ -51,7 +51,10 @@ export function cssAssetProcessor(
                 );
                 const attrs = serializeAttrs(asset.options.attributes);
                 const inject = { ...info, attrs: Array.from(attrs).join(" ") };
-                assetInfo[asset.name] = info;
+                assetInfo[asset.name] = {
+                    ...info,
+                    importmap: false,
+                };
                 switch (asset.options.appendTo) {
                     case "none":
                         break;
