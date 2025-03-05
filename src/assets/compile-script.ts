@@ -50,7 +50,7 @@ export async function compileScript(
             entryPoints,
             outfile,
             bundle: true,
-            format: "iife",
+            format: "esm",
             platform: "browser",
             external: ["vue", "@fkui/vue"],
             tsconfig: path.join(__dirname, "../tsconfig-examples.json"),
