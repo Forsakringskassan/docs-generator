@@ -52,6 +52,7 @@ it("should compile and create asset in assets folder", async () => {
         name: "asset-name",
         src: "src/my-file.ts",
         buildOptions: {},
+        vendor: [],
         fs: volume.promises as unknown as FSLike,
     });
     const expectedFilename = `asset-name-${fingerprint}.js`;
@@ -62,6 +63,24 @@ it("should compile and create asset in assets folder", async () => {
     expect(volume.existsSync(expectedFilePath)).toBeTruthy();
 });
 
+it("should set all vendor libraries as external", async () => {
+    expect.assertions(1);
+    volume = Volume.fromJSON({});
+    await compileScript({
+        assetFolder: "public/assets",
+        name: "asset-name",
+        src: "src/my-file.ts",
+        vendor: ["foo", { package: "bar" }],
+        buildOptions: {},
+        fs: volume.promises as unknown as FSLike,
+    });
+    expect(esbuild).toHaveBeenCalledWith(
+        expect.objectContaining({
+            external: ["foo", "bar"],
+        }),
+    );
+});
+
 it("should set additional build options", async () => {
     expect.assertions(1);
     volume = Volume.fromJSON({});
@@ -69,6 +88,7 @@ it("should set additional build options", async () => {
         assetFolder: "public/assets",
         name: "asset-name",
         src: "src/my-file.ts",
+        vendor: [],
         buildOptions: {
             logLevel: "info",
             define: {

@@ -418,7 +418,7 @@ export class Generator {
             redirectProcessor(),
             vendorProcessor(assetFolder, this.vendor),
             cssAssetProcessor(assetFolder, this.styles, { cwd }),
-            jsAssetProcessor(assetFolder, this.scripts),
+            jsAssetProcessor(assetFolder, this.scripts, this.vendor),
             staticResourcesProcessor(assetFolder, this.resources),
             navigationProcessor(),
             nunjucksProcessor({
