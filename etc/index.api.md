@@ -301,6 +301,8 @@ export interface ProcessorContext {
     // (undocumented)
     getTemplateData<K extends keyof TemplateData>(key: K): TemplateData[K] | undefined;
     // (undocumented)
+    getTemplateData<K extends keyof TemplateData>(key: K, defaultValue: TemplateData[K]): TemplateData[K];
+    // (undocumented)
     getTemplateData(key: string): unknown;
     // @internal
     hasTemplate(name: string): boolean;
