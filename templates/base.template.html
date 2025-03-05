@@ -27,6 +27,7 @@
         {%- for asset in injectHead | take("type", "js") %}
         <script
             src="{{ asset.publicPath | relative(doc) }}"
+            type="module"
             crossorigin
             integrity="{{ asset.integrity }}"
             {{
@@ -122,6 +123,7 @@
         {%- for asset in injectBody | take("type", "js") %}
         <script
             src="{{ asset.publicPath | relative(doc) }}"
+            type="module"
             crossorigin
             integrity="{{ asset.integrity }}"
             {{
