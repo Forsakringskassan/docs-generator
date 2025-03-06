@@ -23,6 +23,7 @@ export interface ProcessorRuntime {
 
     /** Build options (passed to compileScript) */
     buildOptions?: {
+        format?: "iife" | "cjs" | "esm";
         define?: Record<string, string>;
     };
 }

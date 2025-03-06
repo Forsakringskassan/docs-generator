@@ -25,9 +25,10 @@
 
         <!-- prettier-ignore -->
         {%- for asset in injectHead | take("type", "js") %}
+        <!-- prettier-ignore -->
         <script
             src="{{ asset.publicPath | relative(doc) }}"
-            type="module"
+            {% if asset.format === "esm" %}type="module"{% endif %}
             crossorigin
             integrity="{{ asset.integrity }}"
             {{
@@ -121,9 +122,10 @@
 
         <!-- prettier-ignore -->
         {%- for asset in injectBody | take("type", "js") %}
+        <!-- prettier-ignore -->
         <script
             src="{{ asset.publicPath | relative(doc) }}"
-            type="module"
+            {% if asset.format === "esm" %}type="module"{% endif %}
             crossorigin
             integrity="{{ asset.integrity }}"
             {{
