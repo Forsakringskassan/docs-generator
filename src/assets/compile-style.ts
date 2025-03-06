@@ -30,6 +30,7 @@ export async function compileStyle(
             filename,
             publicPath: `./assets/${filename}`,
             integrity,
+            format: "stylesheet",
             size: stat.size,
             type: "css",
         };

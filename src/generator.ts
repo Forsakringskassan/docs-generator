@@ -325,17 +325,27 @@ export class Generator {
         this.markdownOptions = options.markdown;
 
         const bootstrapUrl = new URL("runtime-bootstrap.js", import.meta.url);
-        this.compileScript("bootstrap", bootstrapUrl, {
-            appendTo: "head",
-            priority: 100,
-        });
+        this.compileScript(
+            "bootstrap",
+            bootstrapUrl,
+            {
+                appendTo: "head",
+                priority: 100,
+            },
+            {
+                format: "iife",
+            },
+        );
     }
 
     public compileScript(
         name: string,
         src: string | URL,
         options?: Partial<CompileOptions>,
-        buildOptions?: { define?: Record<string, string> },
+        buildOptions?: {
+            format?: "iife" | "cjs" | "esm";
+            define?: Record<string, string>;
+        },
     ): void {
         this.scripts.push({
             name,

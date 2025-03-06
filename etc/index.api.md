@@ -121,6 +121,7 @@ class Generator_2 {
     build(sourceFiles: SourceFiles[]): Promise<string[]>;
     // (undocumented)
     compileScript(name: string, src: string | URL, options?: Partial<CompileOptions>, buildOptions?: {
+        format?: "iife" | "cjs" | "esm";
         define?: Record<string, string>;
     }): void;
     // (undocumented)
@@ -361,6 +362,7 @@ export interface ProcessorOptions {
 // @public
 export interface ProcessorRuntime {
     buildOptions?: {
+        format?: "iife" | "cjs" | "esm";
         define?: Record<string, string>;
     };
     name?: string;

@@ -56,11 +56,12 @@ export async function compileScript(
         const entryPoints = [src instanceof URL ? fileURLToPath(src) : src];
         const outfile = path.join("temp", `asset-${name}.js`);
         const external = [...assets, ...vendor.map(toExternalVendor)];
+        const format = buildOptions.format ?? "esm";
         await esbuild({
             entryPoints,
             outfile,
             bundle: true,
-            format: "esm",
+            format,
             platform: "browser",
             external,
             tsconfig: path.join(__dirname, "../tsconfig-examples.json"),
@@ -83,6 +84,7 @@ export async function compileScript(
             filename,
             publicPath: `./assets/${filename}`,
             integrity,
+            format,
             size: stat.size,
             type: "js",
         };

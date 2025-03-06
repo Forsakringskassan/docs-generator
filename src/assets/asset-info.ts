@@ -18,6 +18,8 @@ export interface AssetInfo {
     readonly publicPath: string;
     /** subresource integrity (SRI) */
     readonly integrity: string;
+    /** output format */
+    readonly format: "iife" | "cjs" | "esm" | "stylesheet";
     /** size in bytes */
     readonly size: number;
     /** asset type */
