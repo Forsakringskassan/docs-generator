@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [2.21.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.20.0...v2.21.0) (2025-03-06)
+
+### Features
+
+* compiled scripts not appended to document goes into importmap for usage in other scripts ([b72d64b](https://github.com/Forsakringskassan/docs-generator/commit/b72d64bb8d2278bd42ca12cbedb49db93dc7e6be))
+* scripts compiled with `compileScript()` is also esm ([2ba4d67](https://github.com/Forsakringskassan/docs-generator/commit/2ba4d67eb6ca5c1298c49ed085187523affa65f7))
+
+### Bug Fixes
+
+* all vendor libraries set to external when compiling scripts ([2b2db41](https://github.com/Forsakringskassan/docs-generator/commit/2b2db41dc57e1d3edf89b65646f169922a8fcaaf))
+
 ## [2.20.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.19.1...v2.20.0) (2025-02-28)
 
 ### Features
