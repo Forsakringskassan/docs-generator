@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.21.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.21.0...v2.21.1) (2025-03-06)
+
+### Bug Fixes
+
+* fix missing `withCookieConsent()` function ([103e1a3](https://github.com/Forsakringskassan/docs-generator/commit/103e1a3b31283630f47de983e7f2ff57eada3ffd))
+
 ## [2.21.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.20.0...v2.21.0) (2025-03-06)
 
 ### Features
