@@ -237,16 +237,25 @@ export async function render(
         sidenav,
         vendors,
         importmap(doc: DocumentPage): string {
-            const imports = Object.fromEntries(
-                vendors.map((it) => {
+            const assets = Object.values(templateData.assets).filter(
+                (it) => it.importmap,
+            );
+            const imports = Object.fromEntries([
+                ...vendors.map((it) => {
                     return [it.package, filter.relative(it.publicPath, doc)];
                 }),
-            );
-            const integrity = Object.fromEntries(
-                vendors.map((it) => {
+                ...assets.map((it) => {
+                    return [it.name, filter.relative(it.publicPath, doc)];
+                }),
+            ]);
+            const integrity = Object.fromEntries([
+                ...vendors.map((it) => {
                     return [filter.relative(it.publicPath, doc), it.integrity];
                 }),
-            );
+                ...assets.map((it) => {
+                    return [filter.relative(it.publicPath, doc), it.integrity];
+                }),
+            ]);
             const importmap = { imports, integrity };
             return JSON.stringify(importmap, null, 2);
         },
