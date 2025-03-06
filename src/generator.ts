@@ -26,6 +26,7 @@ import { type Processor } from "./processor";
 import {
     type ProcessorContext,
     type TemplateBlockData,
+    type TemplateData,
 } from "./processor-context";
 import { type ProcessorStage } from "./processor-stage";
 import { redirectProcessor } from "./processors";
@@ -263,7 +264,8 @@ function createContext(
         },
 
         getAllTemplateData() {
-            return Object.fromEntries(templateData.entries());
+            return Object.fromEntries(templateData.entries()) as TemplateData &
+                Record<string, unknown>;
         },
 
         getTemplateData(key: string, defaultValue?: unknown): unknown {

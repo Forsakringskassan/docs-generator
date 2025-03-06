@@ -83,7 +83,7 @@ export interface ProcessorContext {
     setTopNavigation(root: NavigationSection): void;
     setSideNavigation(root: NavigationSection): void;
 
-    getAllTemplateData(): Record<string, unknown>;
+    getAllTemplateData(): TemplateData & Record<string, unknown>;
 
     getTemplateData<K extends keyof TemplateData>(
         key: K,
