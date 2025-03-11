@@ -5,6 +5,7 @@ import pathPosix from "node:path/posix";
 import { promisify } from "node:util";
 import spawn from "nano-spawn";
 import nunjucks from "nunjucks";
+import { type AssetInfo } from "../assets";
 import { type VendorAsset } from "../vendor";
 import { type Document, type DocumentPage, type FileInfo } from "../document";
 import {
@@ -118,13 +119,18 @@ async function compileExamples(options: {
     cacheFolder: string;
     outputFolder: string;
     tasks: ExampleCompileTask[];
+    assets: AssetInfo[];
     vendors: VendorAsset[];
 }): Promise<void> {
-    const { fileInfo, tasks, vendors } = options;
+    const { fileInfo, tasks, assets, vendors } = options;
     if (tasks.length === 0) {
         return;
     }
 
+    const external = [
+        ...assets.map((it) => it.name),
+        ...vendors.map((it) => it.package),
+    ];
     const cacheFolder = path.posix.join(options.cacheFolder, fileInfo.path);
     const outputFolder = path.posix.join(options.outputFolder, fileInfo.path);
     const cacheMiss = cache(cacheFolder, outputFolder);
@@ -137,7 +143,7 @@ async function compileExamples(options: {
 
     const batch: ExampleBatch = {
         outputFolder,
-        external: vendors.map((it) => it.package),
+        external,
         tasks: dirtyTasks,
     };
     const result = await spawn("node", [scriptPath], {
@@ -372,11 +378,15 @@ export async function render(
     const writeFile = fs.writeFile(expandedDst, content ?? "null", "utf-8");
 
     try {
+        const assets = Object.values(templateData.assets).filter(
+            (it) => it.importmap,
+        );
         await compileExamples({
             fileInfo,
             cacheFolder,
             outputFolder,
             tasks: generatedExamples,
+            assets,
             vendors,
         });
     } catch (err: unknown) {
