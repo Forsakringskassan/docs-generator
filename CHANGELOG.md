@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.21.2](https://github.com/Forsakringskassan/docs-generator/compare/v2.21.1...v2.21.2) (2025-03-11)
+
+### Bug Fixes
+
+* properly pass assets from importmap to compiled examples ([4b15eb7](https://github.com/Forsakringskassan/docs-generator/commit/4b15eb707fe0332fe75d1b6f28bc8469d4f43569))
+
 ## [2.21.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.21.0...v2.21.1) (2025-03-06)
 
 ### Bug Fixes
