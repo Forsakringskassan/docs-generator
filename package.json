@@ -145,7 +145,7 @@
     "@microsoft/api-extractor": "7.52.1",
     "@rollup/plugin-commonjs": "28.0.3",
     "@rollup/plugin-json": "6.1.0",
-    "@rollup/plugin-node-resolve": "16.0.0",
+    "@rollup/plugin-node-resolve": "16.0.1",
     "@types/babel__code-frame": "7.0.6",
     "@types/cli-progress": "3.11.6",
     "@types/d3": "7.4.3",
