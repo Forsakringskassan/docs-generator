@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [2.21.3](https://github.com/Forsakringskassan/docs-generator/compare/v2.21.2...v2.21.3) (2025-03-21)
+
+### Bug Fixes
+
+* **deps:** update dependency mermaid to v11.5.0 ([2dd9bbe](https://github.com/Forsakringskassan/docs-generator/commit/2dd9bbec6d77fabeb3a891ce86aa2f45e7beb4e8))
+* **deps:** update dependency piscina to v4.9.0 ([f2d1dd2](https://github.com/Forsakringskassan/docs-generator/commit/f2d1dd287ad2837c4df48c5ef3337d8b1489c57a))
+
 ## [2.21.2](https://github.com/Forsakringskassan/docs-generator/compare/v2.21.1...v2.21.2) (2025-03-11)
 
 ### Bug Fixes
