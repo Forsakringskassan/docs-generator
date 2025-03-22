@@ -151,7 +151,7 @@
     "@types/d3": "7.4.3",
     "@types/dedent": "0.7.2",
     "@types/diff": "7.0.1",
-    "@types/express": "5.0.0",
+    "@types/express": "5.0.1",
     "@types/fs-extra": "11.0.4",
     "@types/glob": "8.1.0",
     "@types/jest": "29.5.14",
