@@ -416,8 +416,6 @@ export class Generator {
     }
 
     public async build(sourceFiles: SourceFiles[]): Promise<string[]> {
-        const cwd = process.cwd();
-
         this.sourceFiles = sourceFiles;
         const {
             site,
@@ -436,7 +434,7 @@ export class Generator {
             fileReaderProcessor(sourceFiles),
             redirectProcessor(),
             vendorProcessor(assetFolder, this.vendor),
-            cssAssetProcessor(assetFolder, this.styles, { cwd }),
+            cssAssetProcessor(assetFolder, this.styles),
             jsAssetProcessor(assetFolder, this.scripts, this.vendor),
             staticResourcesProcessor(assetFolder, this.resources),
             navigationProcessor(),
