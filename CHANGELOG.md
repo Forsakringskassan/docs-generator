@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.21.4](https://github.com/Forsakringskassan/docs-generator/compare/v2.21.3...v2.21.4) (2025-03-28)
+
+### Bug Fixes
+
+* **deps:** update dependency piscina to v4.9.2 ([6a2d2ec](https://github.com/Forsakringskassan/docs-generator/commit/6a2d2ec1d83f42d25fff07ef58f3bf0d592e16a3))
+
 ## [2.21.3](https://github.com/Forsakringskassan/docs-generator/compare/v2.21.2...v2.21.3) (2025-03-21)
 
 ### Bug Fixes
