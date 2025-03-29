@@ -32,9 +32,7 @@ function toSorted<T>(values: T[], comparator: (a: T, b: T) => number): T[] {
 export function cssAssetProcessor(
     assetFolder: string,
     assets: CSSAsset[],
-    options: { cwd: string },
 ): Processor {
-    const { cwd } = options;
     return {
         name: "css-asset-processor",
         after: "assets",
@@ -47,7 +45,6 @@ export function cssAssetProcessor(
                     assetFolder,
                     asset.name,
                     asset.src,
-                    { cwd },
                 );
                 const attrs = serializeAttrs(asset.options.attributes);
                 const inject = { ...info, attrs: Array.from(attrs).join(" ") };
