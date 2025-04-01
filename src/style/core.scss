@@ -423,6 +423,7 @@ kbd {
 #search-results a,
 #search-results a:visited {
     color: var(--f-text-color-default);
+    text-decoration: none;
 }
 
 #search-results .list__item--active {

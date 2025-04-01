@@ -11,6 +11,10 @@
 #version-dialog {
     width: 30rem;
     max-height: 45rem;
+
+    a {
+        text-decoration: none;
+    }
 }
 
 #version-dialog-head {
