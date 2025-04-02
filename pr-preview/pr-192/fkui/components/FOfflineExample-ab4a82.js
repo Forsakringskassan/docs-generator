@@ -2071,6 +2071,7 @@ var TranslationMixin = {
 // packages/vue/src/plugins/validation/ValidationPlugin.ts
 var import_isEqual = __toESM(require_isEqual());
 import {
+  availableValidators,
   isValidatableHTMLElement,
   ValidationService
 } from "@fkui/logic";
