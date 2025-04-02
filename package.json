@@ -162,7 +162,7 @@
     "@types/semver": "7.7.0",
     "cypress": "14.2.1",
     "cypress-html-validate": "7.1.0",
-    "esbuild": "0.25.1",
+    "esbuild": "0.25.2",
     "express": "5.0.1",
     "html-validate": "9.5.2",
     "http-server": "14.1.1",
