@@ -132,11 +132,11 @@
   "devDependencies": {
     "@forsakringskassan/commitlint-config": "1.4.2",
     "@forsakringskassan/docs-live-example": "1.5.6",
-    "@forsakringskassan/eslint-config": "11.8.2",
+    "@forsakringskassan/eslint-config": "11.8.4",
     "@forsakringskassan/eslint-config-cli": "11.8.0",
     "@forsakringskassan/eslint-config-cypress": "11.8.0",
-    "@forsakringskassan/eslint-config-jest": "11.8.1",
-    "@forsakringskassan/eslint-config-typescript": "11.8.1",
+    "@forsakringskassan/eslint-config-jest": "11.8.4",
+    "@forsakringskassan/eslint-config-typescript": "11.8.4",
     "@forsakringskassan/eslint-config-vue": "11.8.1",
     "@forsakringskassan/jest-config": "29.6.1",
     "@forsakringskassan/prettier-config": "3.0.5",
@@ -163,7 +163,7 @@
     "cypress": "14.2.1",
     "cypress-html-validate": "7.1.0",
     "esbuild": "0.25.1",
-    "express": "4.21.2",
+    "express": "5.0.1",
     "html-validate": "9.5.2",
     "http-server": "14.1.1",
     "husky": "9.1.7",
@@ -183,7 +183,7 @@
   },
   "peerDependencies": {
     "esbuild": "0.x",
-    "express": "^4",
+    "express": "^4 || ^5.0.0",
     "he": "^1.2",
     "sass": "^1.71",
     "vue": "^3.0.0"

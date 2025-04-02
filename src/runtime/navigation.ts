@@ -106,10 +106,10 @@ async function replaceContent(href: string): Promise<void> {
         document.querySelectorAll<HTMLAnchorElement>(anchorSelector);
     for (const link of anchorLinks) {
         const { rel } = link;
-        if (rel !== "external") {
+        const { path } = link.dataset;
+        if (rel !== "external" || !path) {
             continue;
         }
-        const path = link.dataset.path ?? ".";
         link.setAttribute("href", [rootUrl, path].join("/"));
     }
 
