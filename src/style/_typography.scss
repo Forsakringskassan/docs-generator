@@ -45,6 +45,17 @@ h6 {
     color: var(--f-text-color-heading-6);
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    > a {
+        text-decoration: none;
+    }
+}
+
 * + h1,
 * + h2,
 * + h3,
@@ -86,7 +97,7 @@ h6 {
     }
 }
 
-p {
+.docs-paragraph {
     font-size: var(--f-font-size-standard);
     font-weight: var(--f-font-weight-normal);
     line-height: var(--f-line-height-large);

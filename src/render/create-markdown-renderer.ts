@@ -11,6 +11,7 @@ import {
     imageResources,
     containerRenderer,
     table,
+    paragraph,
 } from "./markdown";
 import { MarkdownEnv } from "./markdown-env";
 import { SoftErrorType } from "./soft-error";
@@ -130,6 +131,7 @@ export function createMarkdownRenderer(
             },
         ),
     );
+    md.use(paragraph());
     md.use(table());
     md.use(codeInline());
 
