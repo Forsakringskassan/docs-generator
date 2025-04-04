@@ -28,14 +28,14 @@ exampleComponent.render = render;
 
 setup({
   rootComponent: exampleComponent,
-  selector: "#mock-example"
+  selector: "#example-d661fd"
 });
 "
 `;
 
 exports[`should generate markup 1`] = `
 "
-        <div id="mock-example"></div>
+        <div id="example-a92dca"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -45,7 +45,7 @@ exports[`should generate markup 1`] = `
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./mock-example-123456.js"></script>
+        <script type="module" src="./mock-example-a92dca.js"></script>
     "
 `;
 
@@ -65,7 +65,7 @@ exampleComponent.render = render;
 
 setup({
   rootComponent: exampleComponent,
-  selector: "#no-script"
+  selector: "#example-1877f3"
 });
 "
 `;

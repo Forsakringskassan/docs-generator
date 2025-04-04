@@ -1,3 +1,4 @@
+import crypto from "node:crypto";
 import isCI from "is-ci";
 import {
     type BindingMetadata,
@@ -46,12 +47,26 @@ function escapeHtml(str: string): string {
     return str.replace(HTML_ESCAPE_REPLACE_RE, (ch) => HTML_REPLACEMENTS[ch]);
 }
 
+let counter = 1;
+
+export function getUniqueId(slug: string, fingerprint: string): string {
+    return crypto
+        .createHash("md5")
+        .update(slug)
+        .update(fingerprint)
+        .update(String(counter++))
+        .digest("hex")
+        .slice(0, 6);
+}
+
 export function generateCode(options: ExampleOptions): ExampleResult {
     const { slug, fingerprint, code, filename, setupPath } = options;
-    const selector = `#${slug}`;
-    const asset = `${slug}-${fingerprint}.js`;
+    const id = getUniqueId(slug, fingerprint);
+    const exampleId = `example-${id}`;
+    const selector = `#${exampleId}`;
+    const asset = `${slug}-${id}.js`;
     const { descriptor, errors } = parse(code, { filename });
-    const scopeId = `data-v-${fingerprint}`;
+    const scopeId = `data-v-${id}`;
 
     if (errors.length > 0) {
         if (isCI) {
@@ -143,7 +158,7 @@ export function generateCode(options: ExampleOptions): ExampleResult {
     sourcecode += `\nsetup({\n  rootComponent: exampleComponent,\n  selector: "${selector}"\n});\n`;
 
     const markup = /* HTML */ `
-        <div id="${slug}"></div>
+        <div id="${exampleId}"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             ${styleContent}
