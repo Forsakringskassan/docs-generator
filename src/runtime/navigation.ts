@@ -86,7 +86,9 @@ async function replaceContent(href: string): Promise<void> {
 
     /* eslint-disable @typescript-eslint/no-non-null-assertion -- let it crash at runtime if these doesn't actually exist */
     const header = doc.querySelector("header")!;
+    const footer = doc.querySelector("footer")!;
     const headerTarget = document.querySelector("header")!;
+    const footerTarget = document.querySelector("footer")!;
     const target = document.querySelector(selector)!;
     const foreign = doc.querySelector(selector)!;
     /* eslint-enable @typescript-eslint/no-non-null-assertion */
@@ -98,6 +100,7 @@ async function replaceContent(href: string): Promise<void> {
         const importedHeader = document.importNode(header, true);
         cloneScripts(importedHeader, href);
         headerTarget.replaceWith(importedHeader);
+        footerTarget.replaceWith(footer);
     }
 
     /* update external urls in sidenav */
