@@ -22,9 +22,12 @@
             {% if item.external %}
             target="_blank"
             rel="external"
+            {% endif %}
             {% if item.path.startsWith('/') %}
             data-path="{{ item.path.slice(1) }}"
             {% endif %}
+            {% if item.path.startsWith('./') %}
+            data-path="{{ item.path.slice(2) }}"
             {% endif %}
         >
             {{ item.title }}
