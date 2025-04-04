@@ -143,6 +143,10 @@ function getParentElement(el: HTMLElement, depth: number): HTMLElement | null {
     return el?.parentElement?.closest("li.link, li.expandable") ?? null;
 }
 
+function hasModifierkey(event: MouseEvent): boolean {
+    return event.ctrlKey || event.altKey || event.metaKey || event.shiftKey;
+}
+
 /**
  * Installs a click handler to dynamically replace the content of `<main>`
  * instead of navigation as usual. This preserves the state of expanded groups,
@@ -159,6 +163,11 @@ function replaceContentOnClick(
 ): void {
     const { href } = link;
     link.addEventListener("click", async (event) => {
+        /* ignore clicks with a modifier */
+        if (hasModifierkey(event)) {
+            return;
+        }
+
         event.preventDefault();
         await replaceContent(href);
         history.pushState("", "", href);
