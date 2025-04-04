@@ -7,6 +7,7 @@ changelog.html
 configuration/index.html
 configuration/scripts.html
 e2e/code-snippets.html
+e2e/examples.html
 example/redirect.html -> markdown/redirects.html
 file-reader/vue-file-reader.html
 index.html

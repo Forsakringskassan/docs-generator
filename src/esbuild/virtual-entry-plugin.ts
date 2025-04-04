@@ -28,11 +28,13 @@ export function virtualEntryPlugin(entries: VirtualEntries): Plugin {
                 }
             });
             build.onLoad({ filter: /.*/, namespace: pluginName }, (args) => {
+                /* args.path is "virtual:${sourceFile}:${outputFile}" */
+                const [, resolveFrom] = args.path.split(":");
                 const contents = getEntry(args.path);
                 return {
                     contents,
                     loader: "ts",
-                    resolveDir: path.dirname(args.path),
+                    resolveDir: path.dirname(resolveFrom),
                 };
             });
         },
