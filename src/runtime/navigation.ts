@@ -108,12 +108,15 @@ async function replaceContent(href: string): Promise<void> {
     const anchorLinks =
         document.querySelectorAll<HTMLAnchorElement>(anchorSelector);
     for (const link of anchorLinks) {
-        const { rel } = link;
         const { path } = link.dataset;
-        if (rel !== "external" || !path) {
+        if (!path) {
             continue;
         }
-        link.setAttribute("href", [rootUrl, path].join("/"));
+        const element = doc.querySelector(`#sidenav a[data-path="${path}"]`);
+        const href = element?.getAttribute("href");
+        if (href) {
+            link.setAttribute("href", href);
+        }
     }
 
     /* update rootUrl on document root */

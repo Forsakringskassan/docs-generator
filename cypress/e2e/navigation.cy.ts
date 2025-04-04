@@ -9,6 +9,56 @@ beforeEach(() => {
     cy.viewport(1280, 720);
 });
 
+it("internal links in sidebar should remain correct while navigating", () => {
+    cy.visit("/navigation");
+    cy.get(groupExpandable).click();
+    cy.get(linkChild2).should("have.attr", "href", "./child-page-2.html");
+    cy.get(linkNested3).should(
+        "have.attr",
+        "href",
+        "./group/nested-page-3.html",
+    );
+
+    cy.get(linkChild2).click();
+    cy.get(linkChild2).should("have.attr", "href", "./child-page-2.html");
+    cy.get(linkNested3).should(
+        "have.attr",
+        "href",
+        "./group/nested-page-3.html",
+    );
+
+    cy.get(linkNested3).click();
+    cy.get(linkChild2).should("have.attr", "href", "../child-page-2.html");
+    cy.get(linkNested3).should("have.attr", "href", "./nested-page-3.html");
+});
+
+it("internal links in sidebar should remain correct while navigating (hard reload)", () => {
+    cy.visit("/navigation");
+    cy.get(groupExpandable).click();
+    cy.get(linkChild2).should("have.attr", "href", "./child-page-2.html");
+    cy.get(linkNested3).should(
+        "have.attr",
+        "href",
+        "./group/nested-page-3.html",
+    );
+
+    cy.get(linkChild2).click();
+    cy.reload();
+    cy.get(groupExpandable).click();
+    cy.get(linkChild2).should("have.attr", "href", "./child-page-2.html");
+    cy.get(linkNested3).should(
+        "have.attr",
+        "href",
+        "./group/nested-page-3.html",
+    );
+
+    cy.get(linkNested3).click();
+    cy.reload();
+    cy.get(groupExpandable).click();
+    cy.get(linkChild2).should("have.attr", "href", "../child-page-2.html");
+    cy.get(linkNested3).should("have.attr", "href", "./nested-page-3.html");
+});
+
 it("external links in sidebar should remain correct while navigating", () => {
     cy.visit("/navigation");
     cy.get(linkChangelog).should("have.attr", "href", "../changelog.html");
