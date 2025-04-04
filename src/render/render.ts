@@ -198,6 +198,10 @@ export function createTemplateLoader(folders: string[]): TemplateLoader {
     return loader;
 }
 
+function stripPrettierComments(content: string): string {
+    return content.replace(/\s*<!-- prettier-ignore -->\s*/gm, "");
+}
+
 /**
  * @internal
  */
@@ -356,7 +360,9 @@ export async function render(
 
     let content;
     try {
-        content = await renderTemplate(template, templateData);
+        content = stripPrettierComments(
+            await renderTemplate(template, templateData),
+        );
     } catch (err: unknown) {
         const filename = fileInfo.fullPath;
         if (err instanceof Error && err.name === "Template render error") {
