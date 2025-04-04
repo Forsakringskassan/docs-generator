@@ -81,10 +81,17 @@
     }
 }
 
-.footer {
+.docs-footer {
     background-color: #fff;
     border-top: 1px solid #ddddde;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
+    justify-content: space-between;
     padding: 2rem;
+}
+
+.docs-footer__link-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
