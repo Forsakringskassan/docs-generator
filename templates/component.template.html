@@ -13,7 +13,8 @@
             <a href="{{ componentSourceUrl(component) }}">{{ component.name }}</a>
             {% else %} {{ component.name }} {% endif %}
         </code>
-        {% if not loop.last %}, {% endif %} {% endfor %}
+        {% if not loop.last %}<br />
+        {% endif %} {% endfor %}
     </dd>
     {% endif %}
 
