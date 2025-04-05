@@ -142,6 +142,10 @@ export interface NormalizedDocumentAttributes {
     // (undocumented)
     redirectFrom: string[];
     // (undocumented)
+    search: {
+        terms: string[];
+    };
+    // (undocumented)
     shortTitle?: string;
     sortorder: number;
     // (undocumented)

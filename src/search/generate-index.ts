@@ -14,6 +14,7 @@ export function generateIndex(entries: SearchEntry[]): SearchIndex {
         index.results.push({
             url: entry.url,
             title: entry.title,
+            terms: entry.terms,
         });
         const resultIndex = index.results.length - 1;
         for (const word of entry.words) {

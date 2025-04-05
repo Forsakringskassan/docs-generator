@@ -36,6 +36,7 @@ export function parseFile(
             href,
             sortorder: attributes.sortorder ?? Infinity,
             redirectFrom: [],
+            search: { terms: [] },
         },
         body: content,
         outline: [],

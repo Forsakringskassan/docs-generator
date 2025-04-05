@@ -24,6 +24,7 @@ export function redirectProcessor(): Processor {
                     attributes: {
                         sortorder: Infinity,
                         redirectFrom: [],
+                        search: { terms: [] },
                     },
                     body: redirect.to,
                     outline: [],

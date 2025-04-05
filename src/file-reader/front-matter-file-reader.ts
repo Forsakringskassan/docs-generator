@@ -150,6 +150,9 @@ export function parseFile(
             badge: getBadge(attributes),
             component: getComponent(attributes),
             redirectFrom: toArray(attributes.redirect_from ?? []),
+            search: {
+                terms: toArray(attributes.search?.terms ?? []),
+            },
             sortorder: attributes.sortorder ?? Infinity,
         },
         body: blocks.body,

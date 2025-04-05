@@ -49,13 +49,17 @@ function setup(): void {
             const infoIdx = order[i];
             const termIdx = info.idx[infoIdx];
             const resultIdx = index.mapping[termIdx];
+            const term = index.terms[termIdx];
+            const result = index.results[resultIdx];
             const li = document.createElement("li");
             const a = document.createElement("a");
-            a.innerHTML = uFuzzy.highlight(
-                index.terms[termIdx],
-                info.ranges[infoIdx],
-            );
-            a.href = [rootUrl, index.results[resultIdx].url].join("/");
+            const highlighted = uFuzzy.highlight(term, info.ranges[infoIdx]);
+            if (result.terms.includes(term)) {
+                a.innerHTML = `${result.title} (${highlighted})`;
+            } else {
+                a.innerHTML = highlighted;
+            }
+            a.href = [rootUrl, result.url].join("/");
             a.classList.add("list__item__itempane");
             li.classList.add("list__item");
             li.classList.toggle("list__item--active", i === active);
