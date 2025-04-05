@@ -1,0 +1,17 @@
+{
+    "translation": {
+        "component": {
+            "component": "Komponent",
+            "status": "Status"
+        },
+        "outline": {
+            "in-this-article": "Innehåll"
+        },
+        "search": {
+            "button": "Sök",
+            "instructions": "<kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja",
+            "title": "Sök",
+            "placeholder": "Skriv för att börja söka"
+        }
+    }
+}
