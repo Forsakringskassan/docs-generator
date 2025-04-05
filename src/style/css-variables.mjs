@@ -65,6 +65,22 @@ export default {
         },
     },
 
+    badge: {
+        description: "Component badges",
+        variables: {
+            "component-color": {
+                description: "Component badge text color",
+                type: "color",
+                value: "var(--docs-text-color-default)",
+            },
+            "component-background": {
+                description: "Component badge background color",
+                type: "color",
+                value: "#ddddde",
+            },
+        },
+    },
+
     contextmenu: {
         description: "Style related to contextual menus",
         variables: {
@@ -342,6 +358,7 @@ export default {
             },
         },
     },
+
     code: {
         description: "Code mark-up",
         variables: {
