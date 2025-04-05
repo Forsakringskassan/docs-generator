@@ -218,6 +218,22 @@ export default {
         },
     },
 
+    outline: {
+        description: "Style related to outline",
+        variables: {
+            "active-border-color": {
+                description: "Border color for the current active item",
+                type: "color",
+                value: "#116a3e",
+            },
+            "hover-background-color": {
+                description: "Background color during hover",
+                type: "color",
+                value: "#ddddde",
+            },
+        },
+    },
+
     tags: {
         description: "Style for documentation tags",
         variables: {

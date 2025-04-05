@@ -2,12 +2,13 @@
 
 // palette
 $fk-black-15: #ddddde;
+$fk-green-a-100: #116a3e !default;
 
 // variables
 $outline-border-size: 4px;
 $outline-border-duration: 300ms;
-$outline-active-border: var(--f-color-brand-a-strong);
-$outline-active-background: $fk-black-15;
+$outline-active-border: var(--docs-outline-active-border-color);
+$outline-hover-background: var(--docs-outline-hover-background-color);
 
 #outline {
     margin-bottom: 1rem;
@@ -119,7 +120,7 @@ $outline-active-background: $fk-black-15;
             }
 
             a {
-                background: $outline-active-background;
+                background: $outline-hover-background;
             }
         }
     }
@@ -131,5 +132,6 @@ $outline-active-background: $fk-black-15;
         line-height: 20px;
         color: var(--f-font-color-primary);
         padding: 0.5rem;
+        text-decoration: none;
     }
 }
