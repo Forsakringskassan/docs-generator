@@ -239,6 +239,9 @@ export async function render(
         $t: i18n.t,
         site: options.site,
         doc,
+        get layoutClass() {
+            return `layout--${doc.template.replace(/[.]/g, "--")}`;
+        },
         topnav,
         rootUrl(doc: DocumentPage) {
             const { fileInfo } = doc;
