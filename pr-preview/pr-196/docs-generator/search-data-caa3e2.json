@@ -1,0 +1,383 @@
+{
+  "terms": [
+    "Todo",
+    "Theme",
+    "Smoketest: tables",
+    "Version",
+    "Topnav",
+    "Source url",
+    "Foo",
+    "Bar",
+    "Nunjucks",
+    "MOTD",
+    "Manifest",
+    "Processors",
+    "Extract examples",
+    "Cookie",
+    "Navigation",
+    "Child Page 3",
+    "Child Page 2",
+    "Child Page 1",
+    "Redirects",
+    "Mermaid",
+    "Markdown",
+    "Definition lists",
+    "Example",
+    "Plumbing",
+    "Overriding templates",
+    "Layout",
+    "Custom layout",
+    "Scripts",
+    "Configuration",
+    "Top page",
+    "Sorted Page 3",
+    "Sorted Page 2",
+    "Sorted Page 1",
+    "Nested Page 3",
+    "Nested Page 2",
+    "Nested Page 1",
+    "Messagebox",
+    "Details",
+    "Alternative text",
+    "Vue examples",
+    "Javascript and Typescript",
+    "Fullscreen examples",
+    "Diff",
+    "Code preview",
+    "Documenting Vue components",
+    "README",
+    "Live example",
+    "Changelog"
+  ],
+  "results": [
+    {
+      "url": "index.html",
+      "title": "Todo",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "theme/index.html",
+      "title": "Theme",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "smoketest/table.html",
+      "title": "Smoketest: tables",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "processors/version.html",
+      "title": "Version",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "processors/topnav.html",
+      "title": "Topnav",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "processors/source-url.html",
+      "title": "Source url",
+      "type": "component",
+      "terms": [
+        "Foo",
+        "Bar"
+      ]
+    },
+    {
+      "url": "processors/nunjucks.html",
+      "title": "Nunjucks",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "processors/motd.html",
+      "title": "MOTD",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "processors/manifest.html",
+      "title": "Manifest",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "processors/index.html",
+      "title": "Processors",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "processors/extract-examples.html",
+      "title": "Extract examples",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "processors/cookie.html",
+      "title": "Cookie",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "navigation/index.html",
+      "title": "Navigation",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "navigation/child-page-3.html",
+      "title": "Child Page 3",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "navigation/child-page-2.html",
+      "title": "Child Page 2",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "navigation/child-page-1.html",
+      "title": "Child Page 1",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "markdown/redirects.html",
+      "title": "Redirects",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "markdown/mermaid.html",
+      "title": "Mermaid",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "markdown/index.html",
+      "title": "Markdown",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "markdown/definition-lists.html",
+      "title": "Definition lists",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "live-example/example.html",
+      "title": "Example",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "layout/plumbing.html",
+      "title": "Plumbing",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "layout/overriding-templates.html",
+      "title": "Overriding templates",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "layout/index.html",
+      "title": "Layout",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "layout/custom-layout.html",
+      "title": "Custom layout",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "configuration/scripts.html",
+      "title": "Scripts",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "configuration/index.html",
+      "title": "Configuration",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "navigation/sorted-group/top-page.html",
+      "title": "Top page",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "navigation/sorted-group/sorted-page-3.html",
+      "title": "Sorted Page 3",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "navigation/sorted-group/sorted-page-2.html",
+      "title": "Sorted Page 2",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "navigation/sorted-group/sorted-page-1.html",
+      "title": "Sorted Page 1",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "navigation/group/nested-page-3.html",
+      "title": "Nested Page 3",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "navigation/group/nested-page-2.html",
+      "title": "Nested Page 2",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "navigation/group/nested-page-1.html",
+      "title": "Nested Page 1",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "markdown/containers/messagebox.html",
+      "title": "Messagebox",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "markdown/containers/details.html",
+      "title": "Details",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "markdown/containers/alt-text.html",
+      "title": "Alternative text",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "markdown/code-preview/vue.html",
+      "title": "Vue examples",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "markdown/code-preview/javascript.html",
+      "title": "Javascript and Typescript",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "markdown/code-preview/fullscreen.html",
+      "title": "Fullscreen examples",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "markdown/code-preview/diff.html",
+      "title": "Diff",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "markdown/code-preview/index.html",
+      "title": "Code preview",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "markdown/api/vue.html",
+      "title": "Documenting Vue components",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "index.html",
+      "title": "README",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "live-example/index.html",
+      "title": "Live example",
+      "type": "article",
+      "terms": []
+    },
+    {
+      "url": "changelog.html",
+      "title": "Changelog",
+      "type": "article",
+      "terms": []
+    }
+  ],
+  "mapping": {
+    "0": 0,
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 5,
+    "6": 5,
+    "7": 5,
+    "8": 6,
+    "9": 7,
+    "10": 8,
+    "11": 9,
+    "12": 10,
+    "13": 11,
+    "14": 12,
+    "15": 13,
+    "16": 14,
+    "17": 15,
+    "18": 16,
+    "19": 17,
+    "20": 18,
+    "21": 19,
+    "22": 20,
+    "23": 21,
+    "24": 22,
+    "25": 23,
+    "26": 24,
+    "27": 25,
+    "28": 26,
+    "29": 27,
+    "30": 28,
+    "31": 29,
+    "32": 30,
+    "33": 31,
+    "34": 32,
+    "35": 33,
+    "36": 34,
+    "37": 35,
+    "38": 36,
+    "39": 37,
+    "40": 38,
+    "41": 39,
+    "42": 40,
+    "43": 41,
+    "44": 42,
+    "45": 43,
+    "46": 44,
+    "47": 45
+  }
+}
