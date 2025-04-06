@@ -138,12 +138,27 @@ function setup(): void {
             /* eslint-disable @typescript-eslint/no-non-null-assertion -- let it crash at runtime if these doesn't actually exist */
             const li = row.querySelector("li")!;
             const a = row.querySelector("a")!;
+            const typeElement = row.querySelector(".docs-searchresult__type")!;
+            const matchElement = row.querySelector("[data-bind=match]")!;
             /* eslint-enable @typescript-eslint/no-non-null-assertion */
-            if (matchType === "term") {
-                a.innerHTML = `${doc.title} (${highlighted})`;
-            } else {
-                a.innerHTML = highlighted;
+
+            for (const child of Array.from(typeElement.children)) {
+                const svg = child as SVGElement;
+                if (svg.dataset.type !== result.type) {
+                    svg.remove();
+                }
             }
+            typeElement.querySelector(`[data-type=${result.type}]`);
+            typeElement.classList.add(
+                `docs-searchresult__type--${result.type}`,
+            );
+
+            if (matchType === "term") {
+                matchElement.innerHTML = `${doc.title} (${highlighted})`;
+            } else {
+                matchElement.innerHTML = highlighted;
+            }
+
             a.href = [rootUrl, doc.url].join("/");
             li.classList.toggle("list__item--active", i === active);
             ul.appendChild(row);

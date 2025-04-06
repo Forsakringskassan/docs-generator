@@ -4,6 +4,7 @@
 @use "cookie-warning";
 @use "motd";
 @use "breakpoints" as *;
+@use "search";
 @use "version";
 
 html {

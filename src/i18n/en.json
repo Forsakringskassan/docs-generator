@@ -11,7 +11,12 @@
             "button": "Search",
             "instructions": "<kbd>Esc</kbd> to close <kbd>Arrow up/down</kbd> to navigate <kbd>Enter</kbd> to select",
             "title": "Search",
-            "placeholder": "Type to begin searching"
+            "placeholder": "Type to begin searching",
+            "result": {
+                "component": "Component documentation",
+                "api": "API documentation",
+                "article": "Article"
+            }
         }
     }
 }
