@@ -60,13 +60,28 @@ function setup(): void {
             /* eslint-disable @typescript-eslint/no-non-null-assertion -- let it crash at runtime if these doesn't actually exist */
             const li = row.querySelector("li")!;
             const a = row.querySelector("a")!;
+            const typeElement = row.querySelector(".docs-searchresult__type")!;
+            const matchElement = row.querySelector("[data-bind=match]")!;
             /* eslint-enable @typescript-eslint/no-non-null-assertion */
+
+            for (const child of Array.from(typeElement.children)) {
+                const svg = child as SVGElement;
+                if (svg.dataset.type !== result.type) {
+                    svg.remove();
+                }
+            }
+            typeElement.querySelector(`[data-type=${result.type}]`);
+            typeElement.classList.add(
+                `docs-searchresult__type--${result.type}`,
+            );
+
             const highlighted = uFuzzy.highlight(term, info.ranges[infoIdx]);
             if (result.terms.includes(term)) {
-                a.innerHTML = `${result.title} (${highlighted})`;
+                matchElement.innerHTML = `${result.title} (${highlighted})`;
             } else {
-                a.innerHTML = highlighted;
+                matchElement.innerHTML = highlighted;
             }
+
             a.href = [rootUrl, result.url].join("/");
             li.classList.toggle("list__item--active", i === active);
             ul.appendChild(row);
