@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [2.22.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.21.4...v2.22.0) (2025-04-04)
+
+### Features
+
+* **deps:** support express v5 ([a43fc79](https://github.com/Forsakringskassan/docs-generator/commit/a43fc792d31c93257b732c398cee48766e8a3482))
+
+### Bug Fixes
+
+* **deps:** update dependency mermaid to v11.6.0 ([9180240](https://github.com/Forsakringskassan/docs-generator/commit/918024041c5607f68338e77f27cfc2f0a4696dee))
+* fix external links pointing to wrong target ([edfab59](https://github.com/Forsakringskassan/docs-generator/commit/edfab59af0086038b34433195bba275d327389ae)), closes [#189](https://github.com/Forsakringskassan/docs-generator/issues/189)
+
 ## [2.21.4](https://github.com/Forsakringskassan/docs-generator/compare/v2.21.3...v2.21.4) (2025-03-28)
 
 ### Bug Fixes

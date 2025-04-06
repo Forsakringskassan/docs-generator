@@ -1,6 +1,6 @@
-@use "@forsakringskassan/docs-generator/style/core";
-@use "@forsakringskassan/docs-generator/style/site";
-@use "@forsakringskassan/docs-live-example/dist/main";
+@use "@forsakringskassan/docs-generator/style/core.css";
+@use "@forsakringskassan/docs-generator/style/site.css";
+@use "@forsakringskassan/docs-live-example/dist/main.css";
 
 .mermaid p {
     margin-bottom: 0;
