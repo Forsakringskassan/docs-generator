@@ -1836,7 +1836,7 @@ var motdProxy = {
     }
   }
 };
-var current = "v2.21.4";
+var current = "v2.22.0";
 var message = "Det finns en nyare version";
 var dialog = document.querySelector("#version-dialog");
 var dialogCloseButton = dialog?.querySelector("button");
