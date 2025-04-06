@@ -238,6 +238,9 @@ export async function render(
         ...options.templateData,
         site: options.site,
         doc,
+        get layoutClass() {
+            return `layout--${doc.template.replace(/[.]/g, "--")}`;
+        },
         topnav,
         rootUrl(doc: DocumentPage) {
             const { fileInfo } = doc;
