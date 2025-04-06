@@ -34,7 +34,7 @@ $outline-hover-background: var(--docs-outline-hover-background-color);
 
     @media (width < #{bp.$breakpoint-lg}) {
         summary {
-            width: min-content;
+            width: fit-content;
             cursor: pointer;
 
             &::after {
