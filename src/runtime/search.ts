@@ -16,6 +16,9 @@ function setup(): void {
     const form = document.querySelector<HTMLButtonElement>("#search-form")!;
     const results =
         document.querySelector<HTMLButtonElement>("#search-results")!;
+    const resultTemplate = document.querySelector<HTMLTemplateElement>(
+        "#search-result-template",
+    )!;
     /* eslint-enable @typescript-eslint/no-non-null-assertion */
 
     let index: SearchIndex | null = null;
@@ -51,8 +54,13 @@ function setup(): void {
             const resultIdx = index.mapping[termIdx];
             const term = index.terms[termIdx];
             const result = index.results[resultIdx];
-            const li = document.createElement("li");
-            const a = document.createElement("a");
+            const row = resultTemplate.content.cloneNode(
+                true,
+            ) as DocumentFragment;
+            /* eslint-disable @typescript-eslint/no-non-null-assertion -- let it crash at runtime if these doesn't actually exist */
+            const li = row.querySelector("li")!;
+            const a = row.querySelector("a")!;
+            /* eslint-enable @typescript-eslint/no-non-null-assertion */
             const highlighted = uFuzzy.highlight(term, info.ranges[infoIdx]);
             if (result.terms.includes(term)) {
                 a.innerHTML = `${result.title} (${highlighted})`;
@@ -60,11 +68,8 @@ function setup(): void {
                 a.innerHTML = highlighted;
             }
             a.href = [rootUrl, result.url].join("/");
-            a.classList.add("list__item__itempane");
-            li.classList.add("list__item");
             li.classList.toggle("list__item--active", i === active);
-            li.appendChild(a);
-            ul.appendChild(li);
+            ul.appendChild(row);
         }
         results.innerHTML = "";
         results.appendChild(ul);
