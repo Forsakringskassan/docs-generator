@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## [2.23.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.22.0...v2.23.0) (2025-04-07)
+
+### Features
+
+* using sass-module-importer to find sass files ([3d8d7af](https://github.com/Forsakringskassan/docs-generator/commit/3d8d7af52fa775b06d2c01adb2375e2e62e6856b))
+
+### Bug Fixes
+
+* fix active outline color ([c5a19fa](https://github.com/Forsakringskassan/docs-generator/commit/c5a19fac8cf655c1b71a49caa18b70736367d373))
+* fix ctrl+click on links ([d0f4d5f](https://github.com/Forsakringskassan/docs-generator/commit/d0f4d5f767a3a5d92f5a1705515edd266bda8e00))
+* fix issue with line wrapping when outline heading has spaces ([01c6635](https://github.com/Forsakringskassan/docs-generator/commit/01c6635f9665b61637660a1362ea81896adb6dca))
+* fix links in footer after navigation ([b07ca42](https://github.com/Forsakringskassan/docs-generator/commit/b07ca4295771e3926c8b8e7f69c6072d75067ccd)), closes [Forsakringskassan/designsystem#391](https://github.com/Forsakringskassan/designsystem/issues/391)
+* fix opening links in new tab (broken href attribute) ([33bf1ec](https://github.com/Forsakringskassan/docs-generator/commit/33bf1ec3c540d2ff825fd191a694fd7f93c66d6e)), closes [#190](https://github.com/Forsakringskassan/docs-generator/issues/190)
+* generate unique app id even when the same example file is used multiple times ([975cbea](https://github.com/Forsakringskassan/docs-generator/commit/975cbea131d753e463461f1e041c837cad43e9fa))
+* handle compiling multiple examples with same virtual entrypoint ([fc49a4b](https://github.com/Forsakringskassan/docs-generator/commit/fc49a4b386079398df34867a7125416eee926064))
+* remove reset on anchor tags ([0fe71ac](https://github.com/Forsakringskassan/docs-generator/commit/0fe71ac2a7337671bef6259b607c3a97ab331656))
+
 ## [2.22.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.21.4...v2.22.0) (2025-04-04)
 
 ### Features
