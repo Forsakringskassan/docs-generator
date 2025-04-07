@@ -745,15 +745,15 @@ main {
 
 @media not (prefers-reduced-motion: reduce) {
   #outline li.active::before {
-    background: #116a3e;
+    background: var(--docs-outline-active-border-color);
   }
 }
 #outline li:hover::after {
-  background: #116a3e;
+  background: var(--docs-outline-active-border-color);
 }
 
 #outline li:hover a {
-  background: #ddddde;
+  background: var(--docs-outline-hover-background-color);
 }
 
 #outline a {
@@ -763,6 +763,7 @@ main {
   line-height: 20px;
   color: var(--f-font-color-primary);
   padding: 0.5rem;
+  text-decoration: none;
 }
 
 #version button {
@@ -1444,6 +1445,8 @@ kbd {
   --docs-motd-info-background-color: #f5f6fa;
   --docs-motd-link-color: var(--docs-text-color-discrete);
   --docs-motd-hover-color: var(--docs-text-color-default);
+  --docs-outline-active-border-color: #116a3e;
+  --docs-outline-hover-background-color: #ddddde;
   --docs-tags-optional-background-color: transparent;
   --docs-tags-optional-border-color: #5f6165;
   --docs-tags-optional-text-color: var(--docs-text-color-discrete);
