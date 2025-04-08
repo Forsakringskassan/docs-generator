@@ -1,25 +1,29 @@
-{% set showAside = true %} {% extends "content-with-menu.template.html" %}
+{% set showAside = true %}
+{% extends "content-with-menu.template.html" %}
 
-<!-- prettier-ignore -->
 {% block aside %}
 <dl>
-    <!-- prettier-ignore -->
     {% if doc.attributes.component %}
-    <dt>Komponent</dt>
+    <dt>{{ $t('component.component') }}</dt>
     <dd>
-        {% for component in doc.attributes.component %}
-        <code>
+        <div class="docs-badge-list">
+            {% for component in doc.attributes.component %}
             {% if componentSourceUrl and componentSourceUrl(component) %}
-            <a href="{{ componentSourceUrl(component) }}">{{ component.name }}</a>
-            {% else %} {{ component.name }} {% endif %}
-        </code>
-        {% if not loop.last %}, {% endif %} {% endfor %}
+            <a class="docs-badge docs-badge--component docs-badge-link" href="{{ componentSourceUrl(component) }}">
+                {{ component.name }}
+            </a>
+            {% else %}
+            <div class="docs-badge docs-badge--component">
+                {{ component.name }}
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
     </dd>
     {% endif %}
 
-    <!-- prettier-ignore -->
     {% if doc.attributes.status %}
-    <dt>Status</dt>
+    <dt>{{ $t('component.status') }}</dt>
     <dd>
         <div class="badge badge--{{ doc.attributes.badge }}">{{ doc.attributes.status }}</div>
     </dd>
@@ -27,7 +31,6 @@
 </dl>
 {% endblock %}
 
-<!-- prettier-ignore -->
 {% block content %}
 {{ doc.body | marked }}
 {% endblock %}

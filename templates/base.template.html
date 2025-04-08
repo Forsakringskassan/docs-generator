@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ site.lang }}" class="layout--{{ doc.template }}" data-root-url="{{ rootUrl(doc) }}">
+<html lang="{{ site.lang }}" class="{{ layoutClass }}" data-root-url="{{ rootUrl(doc) }}">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -89,7 +89,7 @@
 
                         {% if doc.outline | length %}
                         <details id="outline">
-                            <summary class="outline__heading">Innehåll</summary>
+                            <summary class="outline__heading">{{ $t('outline.in-this-article') }}</summary>
                             <ul>
                                 {% for heading in doc.outline %}
                                 <li><a href="#{{ heading.anchor }}">{{ heading.title | escape }}</a></li>

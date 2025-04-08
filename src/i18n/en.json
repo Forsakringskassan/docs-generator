@@ -1,0 +1,22 @@
+{
+    "translation": {
+        "component": {
+            "component": "Component",
+            "status": "Status"
+        },
+        "outline": {
+            "in-this-article": "In this article"
+        },
+        "search": {
+            "button": "Search",
+            "instructions": "<kbd>Esc</kbd> to close <kbd>Arrow up/down</kbd> to navigate <kbd>Enter</kbd> to select",
+            "title": "Search",
+            "placeholder": "Type to start searching",
+            "result": {
+                "component": "Component documentation",
+                "api": "API documentation",
+                "article": "Article"
+            }
+        }
+    }
+}

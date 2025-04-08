@@ -16,6 +16,9 @@ function setup(): void {
     const form = document.querySelector<HTMLButtonElement>("#search-form")!;
     const results =
         document.querySelector<HTMLButtonElement>("#search-results")!;
+    const resultTemplate = document.querySelector<HTMLTemplateElement>(
+        "#search-result-template",
+    )!;
     /* eslint-enable @typescript-eslint/no-non-null-assertion */
 
     let index: SearchIndex | null = null;
@@ -49,18 +52,39 @@ function setup(): void {
             const infoIdx = order[i];
             const termIdx = info.idx[infoIdx];
             const resultIdx = index.mapping[termIdx];
-            const li = document.createElement("li");
-            const a = document.createElement("a");
-            a.innerHTML = uFuzzy.highlight(
-                index.terms[termIdx],
-                info.ranges[infoIdx],
+            const term = index.terms[termIdx];
+            const result = index.results[resultIdx];
+            const row = resultTemplate.content.cloneNode(
+                true,
+            ) as DocumentFragment;
+            /* eslint-disable @typescript-eslint/no-non-null-assertion -- let it crash at runtime if these doesn't actually exist */
+            const li = row.querySelector("li")!;
+            const a = row.querySelector("a")!;
+            const typeElement = row.querySelector(".docs-searchresult__type")!;
+            const matchElement = row.querySelector("[data-bind=match]")!;
+            /* eslint-enable @typescript-eslint/no-non-null-assertion */
+
+            for (const child of Array.from(typeElement.children)) {
+                const svg = child as SVGElement;
+                if (svg.dataset.type !== result.type) {
+                    svg.remove();
+                }
+            }
+            typeElement.querySelector(`[data-type=${result.type}]`);
+            typeElement.classList.add(
+                `docs-searchresult__type--${result.type}`,
             );
-            a.href = [rootUrl, index.results[resultIdx].url].join("/");
-            a.classList.add("list__item__itempane");
-            li.classList.add("list__item");
+
+            const highlighted = uFuzzy.highlight(term, info.ranges[infoIdx]);
+            if (result.terms.includes(term)) {
+                matchElement.innerHTML = `${result.title} (${highlighted})`;
+            } else {
+                matchElement.innerHTML = highlighted;
+            }
+
+            a.href = [rootUrl, result.url].join("/");
             li.classList.toggle("list__item--active", i === active);
-            li.appendChild(a);
-            ul.appendChild(li);
+            ul.appendChild(row);
         }
         results.innerHTML = "";
         results.appendChild(ul);

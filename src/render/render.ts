@@ -198,6 +198,10 @@ export function createTemplateLoader(folders: string[]): TemplateLoader {
     return loader;
 }
 
+function stripPrettierComments(content: string): string {
+    return content.replace(/^\s*<!-- prettier-ignore -->\s*$/gm, "");
+}
+
 /**
  * @internal
  */
@@ -209,7 +213,7 @@ export async function render(
     options: RenderOptions,
 ): Promise<string | null> {
     const { fileInfo } = doc;
-    const { outputFolder, cacheFolder, templateFolders } = options;
+    const { i18n, outputFolder, cacheFolder, templateFolders } = options;
 
     /* skip rendering files which have no output */
     if (!haveOutputFile(fileInfo)) {
@@ -232,8 +236,12 @@ export async function render(
     const template = findTemplate(templateFolders, doc.fileInfo, doc);
     const templateData = {
         ...options.templateData,
+        $t: i18n.t,
         site: options.site,
         doc,
+        get layoutClass() {
+            return `layout--${doc.template.replace(/[.]/g, "--")}`;
+        },
         topnav,
         rootUrl(doc: DocumentPage) {
             const { fileInfo } = doc;
@@ -356,7 +364,9 @@ export async function render(
 
     let content;
     try {
-        content = await renderTemplate(template, templateData);
+        content = stripPrettierComments(
+            await renderTemplate(template, templateData),
+        );
     } catch (err: unknown) {
         const filename = fileInfo.fullPath;
         if (err instanceof Error && err.name === "Template render error") {

@@ -50,6 +50,12 @@ export interface DocumentAttributes {
     /** link to external page in navigation */
     href?: string;
 
+    /** Search options */
+    search?: {
+        /* Optional list of additional search terms for this page */
+        terms?: string | string[];
+    };
+
     /** navigation sortorder */
     sortorder?: number;
 
@@ -68,6 +74,9 @@ export interface NormalizedDocumentAttributes {
     badge?: DocumentBadge;
     component?: ComponentAttribute[];
     href?: string;
+    search: {
+        terms: string[];
+    };
     /** normalized sortorder (defaults to Infinity) */
     sortorder: number;
     redirectFrom: string[];
@@ -87,6 +96,7 @@ export const documentAttributeKeys = [
     "include",
     "component",
     "href",
+    "search",
     "sortorder",
     "redirect_from",
 ];

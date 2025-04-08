@@ -1,3 +1,4 @@
+import { type i18n } from "i18next";
 import {
     type TemplateBlockData,
     type TemplateData,
@@ -14,6 +15,7 @@ export interface RenderOptions {
     outputFolder: string;
     cacheFolder: string;
     exampleFolders: string[];
+    i18n: i18n;
     templateFolders: string[];
     setupPath: string;
     templateBlocks: Map<string, Array<TemplateBlockData<unknown>>>;

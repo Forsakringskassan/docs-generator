@@ -21,6 +21,9 @@ export function createMockDocument(
         attributes: {
             sortorder: Infinity,
             redirectFrom: [],
+            search: {
+                terms: [],
+            },
             ...doc?.attributes,
         },
         body: "",

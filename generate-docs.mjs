@@ -22,7 +22,7 @@ const pkg = JSON.parse(await fs.readFile("./package.json", "utf-8"));
 const docs = new Generator({
     site: {
         name: "FK Documentation generator",
-        lang: "sv",
+        lang: "en",
     },
     outputFolder: "./public",
     cacheFolder: "./temp/docs",

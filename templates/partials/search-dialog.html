@@ -2,7 +2,7 @@
     <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
     <form id="search-form">
         <div class="text-field">
-            <label for="search-field" class="label"> Sök </label>
+            <label for="search-field" class="label">{{ $t('search.title') }}</label>
             <div class="text-field__input-wrapper">
                 <div class="text-field__icon-wrapper">
                     <input
@@ -14,12 +14,35 @@
                         type="text"
                         class="text-field__input"
                         maxlength="50"
-                        placeholder="Skriv för att börja söka"
+                        placeholder="{{ $t('search.placeholder') }}"
                     />
                 </div>
             </div>
         </div>
         <div id="search-results"></div>
-        <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
+        <template id="search-result-template">
+            <li class="list__item">
+                <a class="docs-searchresult list__item__itempane">
+                    <div class="docs-searchresult__type">
+                        <svg focusable="false" class="docs-searchresult__icon" data-type="api">
+                            <title>{{ $t('search.result.api') }}</title>
+                            <use xlink:href="#docs-icon-searchresult-api"></use>
+                        </svg>
+                        <svg focusable="false" class="docs-searchresult__icon" data-type="article">
+                            <title>{{ $t('search.result.article') }}</title>
+                            <use xlink:href="#docs-icon-searchresult-article"></use>
+                        </svg>
+                        <svg focusable="false" class="docs-searchresult__icon" data-type="component">
+                            <title>{{ $t('search.result.component') }}</title>
+                            <use xlink:href="#docs-icon-searchresult-component"></use>
+                        </svg>
+                    </div>
+                    <div class="docs-searchresult__match">
+                        <div class="docs-searchresult__title" data-bind="match"></div>
+                    </div>
+                </a>
+            </li>
+        </template>
+        <p>{{ $t('search.instructions') }}</p>
     </form>
 </dialog>

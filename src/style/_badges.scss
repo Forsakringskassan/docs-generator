@@ -1,0 +1,37 @@
+@use "breakpoints" as bp;
+
+.docs-badge {
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+    display: inline-block;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: normal;
+    padding: 0 0.5rem;
+    width: fit-content;
+
+    &--component {
+        background: var(--docs-badge-component-background);
+        border-color: var(--docs-badge-component-background);
+        color: var(--docs-badge-component-color);
+    }
+}
+
+a.docs-badge {
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.docs-badge-list {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 0.5rem;
+
+    @media (width >= #{bp.$breakpoint-lg}) {
+        flex-direction: column;
+    }
+}
