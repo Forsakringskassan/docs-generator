@@ -182,7 +182,7 @@
     "rollup-plugin-visualizer": "5.14.0",
     "sass": "1.86.3",
     "ts-node": "10.9.2",
-    "typescript": "5.8.2"
+    "typescript": "5.8.3"
   },
   "peerDependencies": {
     "esbuild": "0.x",
