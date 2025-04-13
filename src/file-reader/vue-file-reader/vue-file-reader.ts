@@ -1,3 +1,4 @@
+import fs from "node:fs/promises";
 import path from "node:path";
 import { type DocumentPartial } from "../../document";
 import { normalizePath } from "../../utils";
@@ -6,6 +7,8 @@ import { type ComponentAPI } from "./component-api";
 import { generatePropTable } from "./generate-prop-table";
 import { generateEventTable } from "./generate-event-table";
 import { generateSlotTable } from "./generate-slot-table";
+import { findTranslations } from "./find-translations";
+import { generateTranslationTable } from "./generate-translation-table";
 
 function parseAPI(filePath: string, api: ComponentAPI): DocumentPartial {
     const relative = normalizePath(filePath);
@@ -25,10 +28,34 @@ function parseAPI(filePath: string, api: ComponentAPI): DocumentPartial {
 
     return {
         kind: "partial",
-        id: `fs:${filePath.replace(/\\/g, "/")}`,
+        id: `fs:${filePath.replace(/\\/g, "/")}:api`,
         name: `vue:${componentName}`,
         alias: [],
         body: html,
+        format: "html",
+        fileInfo: {
+            fullPath: filePath,
+        },
+    };
+}
+
+async function parseTranslation(
+    slug: string,
+    filePath: string,
+): Promise<DocumentPartial> {
+    const relative = normalizePath(filePath);
+    const parsedPath = path.parse(relative);
+    const componentName = parsedPath.name;
+    const content = await fs.readFile(filePath, "utf-8");
+    return {
+        kind: "partial",
+        id: `fs:${filePath.replace(/\\/g, "/")}:translation`,
+        name: `translation:${componentName}`,
+        alias: [],
+        get body() {
+            const translations = findTranslations(filePath, content);
+            return generateTranslationTable(slug, translations);
+        },
         format: "html",
         fileInfo: {
             fullPath: filePath,
@@ -45,6 +72,7 @@ export async function vueFileReader(
     filePath: string,
 ): Promise<DocumentPartial[]> {
     const translated = await translateAPI(filePath);
-    const doc = parseAPI(filePath, translated);
-    return [doc];
+    const vueApi = parseAPI(filePath, translated);
+    const vueTranslation = await parseTranslation(translated.slug, filePath);
+    return [vueApi, vueTranslation];
 }

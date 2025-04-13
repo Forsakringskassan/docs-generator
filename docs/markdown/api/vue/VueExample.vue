@@ -1,4 +1,8 @@
 <script setup lang="ts">
+function $t(_key: string, defaultText: string, _params: Record<string, unknown>): string {
+    return defaultText;
+}
+
 defineProps({
     /**
      * Lorem ipsum dolor
@@ -35,6 +39,7 @@ defineProps({
         default: 42,
     },
 });
+
 defineEmits<{
     /**
      * Lorem ipsum
@@ -59,9 +64,24 @@ defineEmits<{
      */
     obsolete: [value: string];
 }>();
+
+const text = $t("translation.key.foo", "foo default text");
 </script>
 
 <template>
+    <p>{{ text }}</p>
+    <p>
+        {{
+            /** something something... */
+            $t("translation.key.bar", "bar default text", {
+                /** A thingamajig */
+                foo: 1,
+                /** A doodad */
+                bar: "baz",
+            })
+        }}
+    </p>
+
     <!-- @slot Lorem ipsum dolor sit amet -->
     <slot name="default"></slot>
 
