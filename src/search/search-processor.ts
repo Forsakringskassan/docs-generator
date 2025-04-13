@@ -4,16 +4,20 @@ import { getFingerprint, getIntegrity, getOutputFilePath } from "../utils";
 import { SearchEntry } from "./search-entry";
 import { generateIndex } from "./generate-index";
 
-function extractTerms(doc: DocumentPage): string[] {
+function* extractTerms(doc: DocumentPage): Generator<string> {
     const { title, component } = doc.attributes;
-    if (title && component) {
-        return component.map((it) => `${title} (${it.name})`);
-    } else if (component) {
-        return component.map((it) => it.name);
-    } else if (title) {
-        return [title];
+    if (title) {
+        yield title;
     } else {
-        return [];
+        yield doc.name;
+    }
+    if (component) {
+        for (const name of component.map((it) => it.name)) {
+            yield name;
+        }
+    }
+    for (const term of doc.attributes.search.terms) {
+        yield term;
     }
 }
 
@@ -25,8 +29,12 @@ function isIndexable(doc: DocumentPage): boolean {
 function getTerms(doc: DocumentPage): SearchEntry {
     return {
         url: getOutputFilePath(".", doc.fileInfo) ?? "",
-        title: doc.name,
-        words: extractTerms(doc),
+        title: doc.attributes.title ?? doc.name,
+        terms: [
+            ...doc.attributes.search.terms,
+            ...(doc.attributes.component?.map((it) => it.name) ?? []),
+        ],
+        words: Array.from(extractTerms(doc)),
     };
 }
 
@@ -43,7 +51,7 @@ export function searchProcessor(): Processor {
                 .filter(isIndexable)
                 .map(getTerms);
             const index = generateIndex(entries);
-            const body = JSON.stringify(index);
+            const body = JSON.stringify(index, null, 2);
             const fingerprint = getFingerprint(body);
             const integrity = getIntegrity(body);
             const outputName = `search-data-[hash].json`;
@@ -59,6 +67,9 @@ export function searchProcessor(): Processor {
                 attributes: {
                     sortorder: Infinity,
                     redirectFrom: [],
+                    search: {
+                        terms: [],
+                    },
                 },
                 body,
                 outline: [],

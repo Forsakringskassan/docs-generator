@@ -317,6 +317,13 @@ exports[`smoketest 1`] = `
         },
         {
           "external": false,
+          "id": "fs:docs/processors/search.md",
+          "path": "./processors/search.html",
+          "sortorder": Infinity,
+          "title": "Search processor",
+        },
+        {
+          "external": false,
           "id": "fs:docs/processors/source-url.md",
           "path": "./processors/source-url.html",
           "sortorder": Infinity,

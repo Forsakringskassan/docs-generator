@@ -141,6 +141,9 @@ export interface NormalizedDocumentAttributes {
     layout?: string;
     // (undocumented)
     redirectFrom: string[];
+    search: {
+        terms: string[];
+    };
     // (undocumented)
     shortTitle?: string;
     sortorder: number;
