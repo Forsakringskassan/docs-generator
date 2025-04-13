@@ -2,6 +2,22 @@ import scrollIntoView from "scroll-into-view-if-needed";
 import uFuzzy from "@leeoniya/ufuzzy";
 import { type SearchIndex } from "../search";
 
+interface SearchResult {
+    /** what the search result matched */
+    type: "title" | "term";
+    /** html markup with a highlighted text */
+    highlighted: string;
+    /** the literal word the search result matched */
+    term: string;
+    /** matched document */
+    doc: {
+        /** document title */
+        title: string;
+        /** document url (relative to root) */
+        url: string;
+    };
+}
+
 function setup(): void {
     const searchData = document.querySelector("#search-data");
     if (!searchData) {
@@ -25,47 +41,73 @@ function setup(): void {
         intraIns: Infinity,
     });
 
-    function updateResults(): void {
+    /**
+     * @param searchTerm - The user-inputted text to search for
+     */
+    function getSearchResults(searchTerm: string): SearchResult[] {
         if (!index || searchTerm === "") {
-            results.innerHTML = "";
-            return;
+            return [];
         }
 
         const idxs = uf.filter(index.terms, searchTerm);
         if (!idxs) {
-            results.innerHTML = "";
-            return;
+            return [];
         }
 
         const info = uf.info(idxs, index.terms, searchTerm);
         const order = uf.sort(info, index.terms, searchTerm);
+        const results: SearchResult[] = [];
+
+        for (const infoIdx of order) {
+            const termIdx = info.idx[infoIdx];
+            const resultIdx = index.mapping[termIdx];
+            const term = index.terms[termIdx];
+            const result = index.results[resultIdx];
+            const highlighted = uFuzzy.highlight(term, info.ranges[infoIdx]);
+            results.push({
+                type: result.terms.includes(term) ? "term" : "title",
+                highlighted,
+                term,
+                doc: {
+                    title: result.title,
+                    url: result.url,
+                },
+            });
+        }
+
+        return results;
+    }
+
+    function updateResults(): void {
+        const searchResults = getSearchResults(searchTerm);
+        if (searchResults.length === 0) {
+            results.innerHTML = "";
+            return;
+        }
 
         active = 0;
 
         const rootUrl = document.documentElement.dataset.rootUrl ?? ".";
         const ul = document.createElement("ul");
         ul.classList.add("list");
-        for (let i = 0; i < order.length; i++) {
-            const infoIdx = order[i];
-            const termIdx = info.idx[infoIdx];
-            const resultIdx = index.mapping[termIdx];
-            const term = index.terms[termIdx];
-            const result = index.results[resultIdx];
+
+        for (let i = 0; i < searchResults.length; i++) {
+            const { type, highlighted, doc } = searchResults[i];
             const li = document.createElement("li");
             const a = document.createElement("a");
-            const highlighted = uFuzzy.highlight(term, info.ranges[infoIdx]);
-            if (result.terms.includes(term)) {
-                a.innerHTML = `${result.title} (${highlighted})`;
+            if (type === "term") {
+                a.innerHTML = `${doc.title} (${highlighted})`;
             } else {
                 a.innerHTML = highlighted;
             }
-            a.href = [rootUrl, result.url].join("/");
+            a.href = [rootUrl, doc.url].join("/");
             a.classList.add("list__item__itempane");
             li.classList.add("list__item");
             li.classList.toggle("list__item--active", i === active);
             li.appendChild(a);
             ul.appendChild(li);
         }
+
         results.innerHTML = "";
         results.appendChild(ul);
     }
