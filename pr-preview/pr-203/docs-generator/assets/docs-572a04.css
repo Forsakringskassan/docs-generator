@@ -318,6 +318,15 @@ main {
 }
 
 .layout--content-with-menu #primary,
+.layout--api #primary,
+.layout--api--class #primary,
+.layout--api--composable #primary,
+.layout--api--constant #primary,
+.layout--api--enum #primary,
+.layout--api--function #primary,
+.layout--api--interface #primary,
+.layout--api--method #primary,
+.layout--api--type #primary,
 .layout--article #primary,
 .layout--component #primary,
 .layout--pattern #primary {
@@ -328,6 +337,15 @@ main {
 
 @media screen and (width >= 1280px) {
   .layout--content-with-menu #primary,
+  .layout--api #primary,
+  .layout--api--class #primary,
+  .layout--api--composable #primary,
+  .layout--api--constant #primary,
+  .layout--api--enum #primary,
+  .layout--api--function #primary,
+  .layout--api--interface #primary,
+  .layout--api--method #primary,
+  .layout--api--type #primary,
   .layout--article #primary,
   .layout--component #primary,
   .layout--pattern #primary {
@@ -335,6 +353,15 @@ main {
   }
 }
 .layout--content-with-menu main,
+.layout--api main,
+.layout--api--class main,
+.layout--api--composable main,
+.layout--api--constant main,
+.layout--api--enum main,
+.layout--api--function main,
+.layout--api--interface main,
+.layout--api--method main,
+.layout--api--type main,
 .layout--article main,
 .layout--component main,
 .layout--pattern main {
@@ -345,6 +372,24 @@ main {
 
 .layout--content-with-menu #title,
 .layout--content-with-menu #content,
+.layout--api #title,
+.layout--api #content,
+.layout--api--class #title,
+.layout--api--class #content,
+.layout--api--composable #title,
+.layout--api--composable #content,
+.layout--api--constant #title,
+.layout--api--constant #content,
+.layout--api--enum #title,
+.layout--api--enum #content,
+.layout--api--function #title,
+.layout--api--function #content,
+.layout--api--interface #title,
+.layout--api--interface #content,
+.layout--api--method #title,
+.layout--api--method #content,
+.layout--api--type #title,
+.layout--api--type #content,
 .layout--article #title,
 .layout--article #content,
 .layout--component #title,
@@ -356,6 +401,15 @@ main {
 
 @media screen and (width < 1280px) {
   .layout--content-with-menu #aside,
+  .layout--api #aside,
+  .layout--api--class #aside,
+  .layout--api--composable #aside,
+  .layout--api--constant #aside,
+  .layout--api--enum #aside,
+  .layout--api--function #aside,
+  .layout--api--interface #aside,
+  .layout--api--method #aside,
+  .layout--api--type #aside,
   .layout--article #aside,
   .layout--component #aside,
   .layout--pattern #aside {
