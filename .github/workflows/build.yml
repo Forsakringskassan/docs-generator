@@ -68,4 +68,6 @@ jobs:
             - name: npm-pkg-lint
               run: |
                   npm pack
-                  npm exec npm-pkg-lint
+                  npm exec npm-pkg-lint -- \
+                      --allow-dependency @babel/parser \
+                      --allow-dependency @babel/traverse
