@@ -48,6 +48,7 @@ processors/index.html
 processors/manifest.html
 processors/motd.html
 processors/nunjucks.html
+processors/search.html
 processors/source-url.html
 processors/topnav.html
 processors/version.html
