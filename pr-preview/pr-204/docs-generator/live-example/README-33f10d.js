@@ -10,7 +10,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:node_modules/@forsakringskassan/docs-live-example/README.md:README-93d39e.js
+// virtual-entry:virtual:node_modules/@forsakringskassan/docs-live-example/README.md:README-33f10d.js
 import { defineComponent } from "vue";
 import {
   LiveExample,
@@ -107,7 +107,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-93d39e"
+  selector: "#example-33f10d"
 });
 export {
   render

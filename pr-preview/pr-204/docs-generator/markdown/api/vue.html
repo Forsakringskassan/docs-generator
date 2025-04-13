@@ -221,9 +221,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        feature/search-terms (<a href="https://github.com/Forsakringskassan/docs-generator/commits/42d7bfd425a555a8ff0ce760f5250261023101d7">42d7bfd</a>)<br />
+        feature/search-terms (<a href="https://github.com/Forsakringskassan/docs-generator/commits/9c2e8d8e83daf8f326b7aa5d0761af267fd563b1">9c2e8d8</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/204">PR 204</a><br />
-        2025-04-13 13:38
+        2025-04-13 13:56
     </span>
 </div>
 </div>
@@ -423,6 +423,8 @@
                                 
                                 <li><a href="#example">Example</a></li>
                                 
+                                <li><a href="#translation">Translation</a></li>
+                                
                             </ul>
                         </details>
                         
@@ -463,7 +465,46 @@ vue:AwesomeComponent
 :::
 </code></pre>
                 </div>
-            <p class="docs-paragraph">For details about how to document Vue components see <a href="https://vue-styleguidist.github.io/docs/Documenting.html">vue-docgen-api documentation</a>.</p><h2 id="example"><a class="header-anchor" href="#example">Example</a></h2>
+            <p class="docs-paragraph">For details about how to document Vue components see <a href="https://vue-styleguidist.github.io/docs/Documenting.html">vue-docgen-api documentation</a>.</p><p class="docs-paragraph">Translations can be generated with:</p>
+                <div
+                    id="example-800e90"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="md"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-md" tabindex="0">:::api
+translation:AwesomeComponent
+:::
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Calls to <code>$t()</code> will be read from the source component.
+If the call has a leading jsdoc-style comment it is used as the description of the translation, for example:</p>
+                <div
+                    id="example-e6157c"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="vue"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+        {{
+            /** something something... */
+            $t(&quot;translation.key.bar&quot;, &quot;bar default text&quot;, {
+                /** A thingamajig */
+                foo: 1,
+                /** A doodad */
+                bar: &quot;baz&quot;,
+            })
+        }}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            <h2 id="example"><a class="header-anchor" href="#example">Example</a></h2>
         <h3 id="vueexample-props">
             <a class="header-anchor" href="#vueexample-props">Props</a>
         </h3>
@@ -660,6 +701,45 @@ dolor sit amet</p>
                             
                             
                             <p class="docs-api__deprecated docs-deprecated">Deprecated: Use another slot instead.</p>
+                        </dd>
+                    
+        </dl>
+    <h2 id="translation"><a class="header-anchor" href="#translation">Translation</a></h2>
+        <dl class="docs-api docs-api--translation">
+            
+                        <dt>
+                            <code id="vueexample-translation-translation-key-foo"
+                                ><a class="docs-api__anchor" href="#vueexample-translation-translation-key-foo"
+                                    ><span class="docs-api__name"
+                                        >translation.key.foo</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            &#8208;
+                            <p class="doc-api__item">Default: "foo default text"</p>
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="vueexample-translation-translation-key-bar"
+                                ><a class="docs-api__anchor" href="#vueexample-translation-translation-key-bar"
+                                    ><span class="docs-api__name"
+                                        >translation.key.bar</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            <p>something something...</p>
+
+                            <p class="doc-api__item">Default: "bar default text"</p>
+                            <p class="docs-api__list-title">Parameters:</p><ul class="docs-api__list">
+                            <li><code>foo</code> <span role="presentation">&mdash;</span> A thingamajig</li><li><code>bar</code> <span role="presentation">&mdash;</span> A doodad</li>
+                            </ul>
                         </dd>
                     
         </dl>

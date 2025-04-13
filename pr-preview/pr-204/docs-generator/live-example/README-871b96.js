@@ -10,7 +10,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:node_modules/@forsakringskassan/docs-live-example/README.md:README-c7a443.js
+// virtual-entry:virtual:node_modules/@forsakringskassan/docs-live-example/README.md:README-871b96.js
 import { defineComponent } from "vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
 import { resolveComponent as _resolveComponent, openBlock as _openBlock, createBlock as _createBlock } from "vue";
@@ -50,7 +50,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-c7a443"
+  selector: "#example-871b96"
 });
 export {
   render
