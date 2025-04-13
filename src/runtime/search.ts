@@ -4,7 +4,7 @@ import { type SearchIndex } from "../search";
 
 interface SearchResult {
     /** what the search result matched */
-    type: "title" | "term";
+    matchType: "title" | "term";
     /** html markup with a highlighted text */
     highlighted: string;
     /** the literal word the search result matched */
@@ -16,6 +16,16 @@ interface SearchResult {
         /** document url (relative to root) */
         url: string;
     };
+}
+
+/**
+ * Returns `true` if `a` is more specific than `b`
+ */
+function isMoreSpecific(a: SearchResult, b: SearchResult | null): boolean {
+    if (b === null) {
+        return true;
+    }
+    return a.matchType === "title" && b.matchType === "term";
 }
 
 function setup(): void {
@@ -42,6 +52,8 @@ function setup(): void {
     });
 
     /**
+     * Get a list of search results for given text.
+     *
      * @param searchTerm - The user-inputted text to search for
      */
     function getSearchResults(searchTerm: string): SearchResult[] {
@@ -56,7 +68,10 @@ function setup(): void {
 
         const info = uf.info(idxs, index.terms, searchTerm);
         const order = uf.sort(info, index.terms, searchTerm);
-        const results: SearchResult[] = [];
+        const results: Array<SearchResult | null> = [];
+
+        /* maps document url to result index */
+        const documentMapping = new Map<string, number>();
 
         for (const infoIdx of order) {
             const termIdx = info.idx[infoIdx];
@@ -64,18 +79,40 @@ function setup(): void {
             const term = index.terms[termIdx];
             const result = index.results[resultIdx];
             const highlighted = uFuzzy.highlight(term, info.ranges[infoIdx]);
-            results.push({
-                type: result.terms.includes(term) ? "term" : "title",
+
+            const searchResult: SearchResult = {
+                matchType: result.terms.includes(term) ? "term" : "title",
                 highlighted,
                 term,
                 doc: {
                     title: result.title,
                     url: result.url,
                 },
-            });
+            };
+
+            /* if there is a previous result for this document we see if this
+             * match is more specific, only keeping the more specific one around
+             * to avoid duplicates */
+            if (documentMapping.has(result.url)) {
+                /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- false positive, we just checked that it exists */
+                const previousIndex = documentMapping.get(result.url)!;
+                const previousResult = results[previousIndex];
+                if (isMoreSpecific(searchResult, previousResult)) {
+                    /* more specific than previous one, remove that one */
+                    results[previousIndex] = null;
+                } else {
+                    /* less specific than previous result, skip this one */
+                    continue;
+                }
+            }
+
+            const resultIndex = results.length;
+            documentMapping.set(result.url, resultIndex);
+
+            results.push(searchResult);
         }
 
-        return results;
+        return results.filter((it) => it !== null);
     }
 
     function updateResults(): void {
@@ -92,10 +129,10 @@ function setup(): void {
         ul.classList.add("list");
 
         for (let i = 0; i < searchResults.length; i++) {
-            const { type, highlighted, doc } = searchResults[i];
+            const { matchType, highlighted, doc } = searchResults[i];
             const li = document.createElement("li");
             const a = document.createElement("a");
-            if (type === "term") {
+            if (matchType === "term") {
                 a.innerHTML = `${doc.title} (${highlighted})`;
             } else {
                 a.innerHTML = highlighted;
