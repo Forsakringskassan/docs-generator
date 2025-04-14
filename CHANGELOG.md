@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## [2.24.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.23.0...v2.24.0) (2025-04-14)
+
+### Features
+
+* new api templates ([a3ea4fb](https://github.com/Forsakringskassan/docs-generator/commit/a3ea4fb230b4c2daf5eeb5f777ae15610f4a800c))
+* support search.terms to provide additional search terms ([ec36099](https://github.com/Forsakringskassan/docs-generator/commit/ec360993b631b733f6dea72ddb5154be4c205580))
+* support showing vue component translations ([6ecf414](https://github.com/Forsakringskassan/docs-generator/commit/6ecf41440f812147cdd07bd101bb1ef1f9af6707))
+
+### Bug Fixes
+
+* strip prettier comments from output ([29780a1](https://github.com/Forsakringskassan/docs-generator/commit/29780a1d77976023d79732ca794a6be83699ee24))
+
 ## [2.23.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.22.0...v2.23.0) (2025-04-07)
 
 ### Features
