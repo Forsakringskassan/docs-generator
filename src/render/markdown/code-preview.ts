@@ -57,6 +57,7 @@ function getSource(
         const b = transformCode(content, language);
         const diff = createTwoFilesPatch("a", "b", a, b, "", "", {
             context: context ? parseInt(context, 10) : 3,
+            ignoreWhitespace: true,
         })
             .split("\n")
             .slice(4) // remove header
