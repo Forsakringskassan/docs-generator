@@ -390,3 +390,30 @@ it("should find description", () => {
         },
     ]);
 });
+
+it("should find description from variable declaration", () => {
+    expect.assertions(1);
+    const content = dedent(/* HTML */ `
+        <script setup>
+            import { useTranslate } from "@fkui/vue";
+
+            const $t = useTranslate();
+
+            /** lorem ipsum */
+            const text = $t("my.awesome.key");
+        </script>
+
+        <template>
+            <pre>{{ text }}</pre>
+        </template>
+    `);
+    const result = findTranslations("AwesomeComponent.vue", content);
+    expect(result).toEqual([
+        {
+            name: "my.awesome.key",
+            defaultTranslation: null,
+            description: "lorem ipsum",
+            parameters: [],
+        },
+    ]);
+});
