@@ -142,6 +142,19 @@ function findDocComment(
         }
     }
 
+    /* find comment from variable declaration */
+    const grandparent = path.parentPath?.parent;
+    if (
+        parent.type === "VariableDeclarator" &&
+        grandparent &&
+        grandparent.leadingComments
+    ) {
+        const doc = grandparent.leadingComments.find(isDocComment);
+        if (doc) {
+            return doc;
+        }
+    }
+
     return null;
 }
 
