@@ -213,7 +213,7 @@ export async function render(
     options: RenderOptions,
 ): Promise<string | null> {
     const { fileInfo } = doc;
-    const { outputFolder, cacheFolder, templateFolders } = options;
+    const { i18n, outputFolder, cacheFolder, templateFolders } = options;
 
     /* skip rendering files which have no output */
     if (!haveOutputFile(fileInfo)) {
@@ -236,6 +236,7 @@ export async function render(
     const template = findTemplate(templateFolders, doc.fileInfo, doc);
     const templateData = {
         ...options.templateData,
+        $t: i18n.t,
         site: options.site,
         doc,
         get layoutClass() {

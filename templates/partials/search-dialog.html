@@ -2,7 +2,7 @@
     <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
     <form id="search-form">
         <div class="text-field">
-            <label for="search-field" class="label"> Sök </label>
+            <label for="search-field" class="label">{{ $t('search.title') }}</label>
             <div class="text-field__input-wrapper">
                 <div class="text-field__icon-wrapper">
                     <input
@@ -14,12 +14,12 @@
                         type="text"
                         class="text-field__input"
                         maxlength="50"
-                        placeholder="Skriv för att börja söka"
+                        placeholder="{{ $t('search.placeholder') }}"
                     />
                 </div>
             </div>
         </div>
         <div id="search-results"></div>
-        <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
+        <p>{{ $t('search.instructions') }}</p>
     </form>
 </dialog>
