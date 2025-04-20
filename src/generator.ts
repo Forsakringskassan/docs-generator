@@ -2,6 +2,7 @@ import { existsSync } from "node:fs";
 import fs from "node:fs/promises";
 import path from "node:path";
 import fse from "fs-extra";
+import { createInstance as i18next } from "i18next";
 import {
     type CompileOptions,
     type CSSAsset,
@@ -15,6 +16,8 @@ import { compileProcessorRuntime } from "./compile-processor-runtime";
 import { type SourceFiles, fileReaderProcessor } from "./file-reader";
 import { nunjucksProcessor, TemplateLoader } from "./render";
 import { isDocumentPage, type Document } from "./document";
+import langEn from "./i18n/en.json";
+import langSv from "./i18n/sv.json";
 import { manifestPageFromDocument } from "./manifest";
 import { type NavigationSection, navigationProcessor } from "./navigation";
 import {
@@ -428,6 +431,17 @@ export class Generator {
             markdownOptions,
         } = this;
 
+        const i18n = i18next({
+            lng: site.lang,
+            fallbackLng: "en",
+            resources: {
+                en: langEn,
+                sv: langSv,
+            },
+        });
+
+        await i18n.init();
+
         await this._prepareFolders();
 
         const processors: Processor[] = [
@@ -445,6 +459,7 @@ export class Generator {
                 },
                 outputFolder,
                 cacheFolder,
+                i18n,
                 exampleFolders,
                 templateFolders,
                 setupPath,

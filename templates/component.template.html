@@ -4,7 +4,7 @@
 {% block aside %}
 <dl>
     {% if doc.attributes.component %}
-    <dt>Komponent</dt>
+    <dt>{{ $t('component.component') }}</dt>
     <dd>
         <div class="docs-badge-list">
             {% for component in doc.attributes.component %}
@@ -23,7 +23,7 @@
     {% endif %}
 
     {% if doc.attributes.status %}
-    <dt>Status</dt>
+    <dt>{{ $t('component.status') }}</dt>
     <dd>
         <div class="badge badge--{{ doc.attributes.badge }}">{{ doc.attributes.status }}</div>
     </dd>
