@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## [2.25.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.24.0...v2.25.0) (2025-04-21)
+
+### Features
+
+* **deps:** update dependency i18next to v25 ([1e903ed](https://github.com/Forsakringskassan/docs-generator/commit/1e903ed79386c9b63959a5383535f69bcbd0f07d))
+* support translation with i18next ([59452dc](https://github.com/Forsakringskassan/docs-generator/commit/59452dc304410d92b78ac92e7f0668bd07fa21a0))
+
+### Bug Fixes
+
+* better styling of component badges ([a497d34](https://github.com/Forsakringskassan/docs-generator/commit/a497d3469f0498a6a11a13d8af9ea16f0786a7ba))
+* component badges on separate lines instead of a single long line ([27a060d](https://github.com/Forsakringskassan/docs-generator/commit/27a060ddf572d779c177cdb640f9f9aa5d8239da))
+
 ## [2.24.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.23.0...v2.24.0) (2025-04-14)
 
 ### Features
