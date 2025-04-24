@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should not add paragraph to list items 1`] = `
+"<ul>
+<li>foo</li>
+<li>bar</li>
+<li>baz</li>
+</ul>
+<p class="docs-paragraph">lorem ipsum</p>
+<ul>
+<li>spam</li>
+<li>ham</li>
+</ul>
+"
+`;
+
+exports[`should render paragraph with class 1`] = `
+"<p class="docs-paragraph">lorem ipsum
+dolor sit amet</p>
+<p class="docs-paragraph">foo bar baz
+spam ham</p>
+"
+`;
