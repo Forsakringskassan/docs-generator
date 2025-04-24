@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [2.25.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.25.0...v2.25.1) (2025-04-24)
+
+### Bug Fixes
+
+* **deps:** update dependency i18next to v25.0.1 ([1506b94](https://github.com/Forsakringskassan/docs-generator/commit/1506b9434317ab34b9f2b8743ae00129d031449c))
+* find doccomment attached to variable from `$t()` ([52d4ea3](https://github.com/Forsakringskassan/docs-generator/commit/52d4ea317e7af5db3dfcc0b8ef7cd740e206e38e)), closes [#205](https://github.com/Forsakringskassan/docs-generator/issues/205)
+* ignore whitespace in generated diffs ([2d73314](https://github.com/Forsakringskassan/docs-generator/commit/2d7331425fc06f866f3b1ff4816df376dcb8b968))
+
 ## [2.25.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.24.0...v2.25.0) (2025-04-21)
 
 ### Features
