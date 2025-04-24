@@ -215,7 +215,7 @@ function getVisibleHeight(el: HTMLElement): number {
     } else {
         const top = Math.max(-rect.top, 0);
         const bottom = rect.height - Math.max(rect.bottom - clientHeight, 0);
-        return bottom - top;
+        return Math.floor(bottom - top);
     }
 }
 
