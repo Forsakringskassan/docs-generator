@@ -49,6 +49,43 @@
   --docs-breakpoint-lg: 1280px;
 }
 
+.docs-badge {
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  display: inline-block;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: normal;
+  padding: 0 0.5rem;
+  width: fit-content;
+}
+
+.docs-badge--component {
+  background: var(--docs-badge-component-background);
+  border-color: var(--docs-badge-component-background);
+  color: var(--docs-badge-component-color);
+}
+
+a.docs-badge {
+  text-decoration: none;
+}
+
+a.docs-badge:hover {
+  text-decoration: underline;
+}
+
+.docs-badge-list {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 0.5rem;
+}
+
+@media (width >= 1280px) {
+  .docs-badge-list {
+    flex-direction: column;
+  }
+}
 h1:not(.code-preview h1),
 h2:not(.code-preview h2),
 h3:not(.code-preview h3),
@@ -1381,6 +1418,8 @@ kbd {
   --docs-warning-background: #fffcf3;
   --docs-error-color: #ca1515;
   --docs-error-background: #fcf3f3;
+  --docs-badge-component-color: var(--docs-text-color-default);
+  --docs-badge-component-background: #ddddde;
   --docs-contextmenu-background-color: #ffffff;
   --docs-contextmenu-border-color: #ddddde;
   --docs-contextmenu-highlight-color: #e7f0e9;
