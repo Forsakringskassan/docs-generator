@@ -6,6 +6,7 @@
 
     overflow: auto;
     max-height: calc(100vh - var(--header-footer-visible-height));
+    scrollbar-gutter: stable;
     position: sticky;
     top: 0;
 }
