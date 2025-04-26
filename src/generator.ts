@@ -35,7 +35,7 @@ import { type ProcessorStage } from "./processor-stage";
 import { redirectProcessor } from "./processors";
 import { type Manifest } from "./manifest";
 import { serve } from "./serve";
-import { haveOutput } from "./utils";
+import { fileMatcher, haveOutput } from "./utils";
 import { createTemplateLoader } from "./render/render";
 
 /**
@@ -430,6 +430,7 @@ export class Generator {
             setupPath,
             markdownOptions,
         } = this;
+        const examplePatterns = this.exampleFolders.map((it) => `${it}/**/*`);
 
         const i18n = i18next({
             lng: site.lang,
@@ -464,6 +465,7 @@ export class Generator {
                 templateFolders,
                 setupPath,
                 markdown: markdownOptions ?? {},
+                fileMatcher: fileMatcher(examplePatterns),
             }),
             ...this.processors,
         ];

@@ -4,7 +4,6 @@ import { generateCode as vue3 } from "plugin-vue3";
 import { getFingerprint, parseImport } from "../utils";
 import { type ExampleOptions } from "./example-options";
 import { type ExampleResult } from "./example-result";
-import { getExampleImport } from "./get-example-import";
 import { getExampleName } from "./get-example-name";
 
 const vueMajor = parseInt(version.split(".", 2)[0], 10) as 2 | 3;
@@ -24,14 +23,11 @@ function vueGenerator(): typeof vue3 {
  * @internal
  */
 export function generateExample(options: ExampleOptions): ExampleResult {
-    const { language } = options;
+    const { language, fileMatcher } = options;
 
     if (language === "import") {
         const parsed = parseImport(options.source);
-        const filename = getExampleImport(
-            options.exampleFolders,
-            parsed.filename,
-        );
+        const filename = fileMatcher(parsed.filename, "when importing example");
         const language = parsed.extension;
         const comments = parsed.comments;
         const content = fs.readFileSync(filename, "utf-8");

@@ -213,7 +213,8 @@ export async function render(
     options: RenderOptions,
 ): Promise<string | null> {
     const { fileInfo } = doc;
-    const { i18n, outputFolder, cacheFolder, templateFolders } = options;
+    const { i18n, outputFolder, cacheFolder, templateFolders, fileMatcher } =
+        options;
 
     /* skip rendering files which have no output */
     if (!haveOutputFile(fileInfo)) {
@@ -289,6 +290,7 @@ export async function render(
                 setupPath: options.setupPath,
                 exampleFolders: options.exampleFolders,
                 tags,
+                fileMatcher,
             });
 
             if (example.output) {

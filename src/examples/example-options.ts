@@ -16,4 +16,7 @@ export interface ExampleOptions {
     exampleFolders: string[];
     /** Tags */
     tags: string[];
+
+    /** A previously constructed fileMatcher() for matching imported files */
+    fileMatcher(filename: string, context?: string): string;
 }
