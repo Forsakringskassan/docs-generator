@@ -47,6 +47,14 @@ function getStandalonePath(output: string | null): string | null {
     return path.join(dir, `${name}.html`);
 }
 
+function ensureTrailingNewline(text: string): string {
+    if (text.endsWith("\n")) {
+        return text;
+    } else {
+        return `${text}\n`;
+    }
+}
+
 export function codePreview(
     options: CodePreviewOptions,
 ): (md: MarkdownIt) => void {
@@ -79,8 +87,10 @@ export function codePreview(
                     `Failed to find referenced example "${compare.value}"`,
                 );
             }
-            const a = transformCode(reference.content, reference.language);
-            const b = transformCode(content, language);
+            const a = ensureTrailingNewline(
+                transformCode(reference.content, reference.language),
+            );
+            const b = ensureTrailingNewline(transformCode(content, language));
             const diff = createTwoFilesPatch("a", "b", a, b, "", "", {
                 context: context ? parseInt(context, 10) : 3,
                 ignoreWhitespace: true,
