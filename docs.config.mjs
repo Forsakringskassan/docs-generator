@@ -91,6 +91,7 @@ export default {
                 doc.attributes.title = "Live example";
                 doc.attributes.sortorder = 1;
                 doc.fileInfo.path = "./live-example";
+                doc.body = doc.body.replace(/^# .*$/m, "");
                 return doc;
             },
         },
