@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [2.26.2](https://github.com/Forsakringskassan/docs-generator/compare/v2.26.1...v2.26.2) (2025-04-27)
+
+### Bug Fixes
+
+* fix example manifest mismatching id ([17435ee](https://github.com/Forsakringskassan/docs-generator/commit/17435ee1a7eae1fa5e3d6b0443def3fab3a65af5))
+* fix search button after navigation ([a4aab38](https://github.com/Forsakringskassan/docs-generator/commit/a4aab38edccd53e96de828c21e8b6b80f597c34a)), closes [#221](https://github.com/Forsakringskassan/docs-generator/issues/221)
+
 ## [2.26.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.26.0...v2.26.1) (2025-04-27)
 
 ### Bug Fixes
