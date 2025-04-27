@@ -24,10 +24,15 @@ md.renderer.rules.fence = (
     collected: ManifestExamples,
 ) => {
     const { content, info, map } = tokens[idx];
-    const { language, tags } = parseInfostring(info);
+    const { language: rawLanguage, tags } = parseInfostring(info);
     const hashContent = `${map?.[0]}:${map?.[1]}:${info}:${content}`;
     const fingerprint = getFingerprint(hashContent);
     let extension = undefined;
+    let language = rawLanguage;
+
+    if (hasTag(tags, "compare")) {
+        language = "diff";
+    }
 
     if (language === "import") {
         extension = content.split(".").at(-1)?.trim();
