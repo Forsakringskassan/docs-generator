@@ -19,6 +19,7 @@ jobs:
                   node-version: 20.x
             - name: Install and build
               if: github.event.action != 'closed'
+              id: prerelease
               run: |
                   npm ci
                   npm run build
@@ -26,10 +27,12 @@ jobs:
                   npm pack
                   mkdir -p ./temp/pr-preview/docs-generator
                   cp -r ./public/* ./temp/pr-preview/docs-generator
-                  echo "{ \"versions\": [\"v$(npm pkg get version | jq -r)\"], \"latest\": \"v$(npm pkg get version | jq -r)\" }" | tee ./temp/pr-preview/versions.json
-            - name: Determine docs-generator version
-              run: |
-                  echo "VERSION=$(npm pkg get version | jq -r)" | tee -a $GITHUB_ENV
+                  export VERSION=$(npm pkg get version | jq -r)
+                  echo "{ \"versions\": [\"v${VERSION}\"], \"latest\": \"v${VERSION}\" }" | tee ./temp/pr-preview/versions.json
+                  echo "version=${VERSION}" | tee -a $GITHUB_OUTPUT
+                  echo "pkg=forsakringskassan-docs-generator-${VERSION}.tgz" | tee -a $GITHUB_OUTPUT
+            - name: Clear node_modules
+              run: rm -rf node_modules
             #FKUI
             - uses: actions/checkout@v4
               with:
@@ -37,18 +40,18 @@ jobs:
                   repository: "Forsakringskassan/designsystem"
             - name: Build FKUI documentation
               if: github.event.action != 'closed'
+              working-directory: ./fkui
               run: |
-                  cd fkui
                   npm ci
-                  npm install "../forsakringskassan-docs-generator-${VERSION}.tgz"
-                  npm install --workspaces "../forsakringskassan-docs-generator-${VERSION}.tgz"
+                  npm install "${GITHUB_WORKSPACE}/${{ steps.prerelease.outputs.pkg }}"
+                  npm install --workspaces "${GITHUB_WORKSPACE}/${{ steps.prerelease.outputs.pkg }}"
                   npm run build || true
                   npm run build:docs || true
                   mkdir -p ../temp/pr-preview/fkui/
                   cp -r ./public/* ../temp/pr-preview/fkui/ || true
                   cat << EOF > ../temp/pr-preview/index.html
                   <style>
-                    body { 
+                    body {
                       padding: 2rem;
                       font-family: sans-serif;
                     }
