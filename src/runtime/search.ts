@@ -37,7 +37,6 @@ function setup(): void {
     /* eslint-disable @typescript-eslint/no-non-null-assertion -- let it crash at runtime if these doesn't actually exist */
     const url = searchData.getAttribute("href")!;
     const dialog = document.querySelector<HTMLDialogElement>("#search-dialog")!;
-    const button = document.querySelector<HTMLButtonElement>("#search")!;
     const input = document.querySelector<HTMLButtonElement>("#search-field")!;
     const form = document.querySelector<HTMLButtonElement>("#search-form")!;
     const results =
@@ -195,13 +194,6 @@ function setup(): void {
             updateResults();
         });
 
-    button.addEventListener("submit", (event) => {
-        event.preventDefault();
-        input.value = searchTerm = "";
-        dialog.showModal();
-        document.body.addEventListener("click", clickOutside);
-    });
-
     input.addEventListener("input", () => {
         searchTerm = input.value.toLowerCase();
         updateResults();
@@ -250,6 +242,26 @@ function setup(): void {
             document.body.addEventListener("click", clickOutside);
         }
     });
+
+    window.addEventListener("docs:navigation", () => {
+        initButton();
+    });
+
+    initButton();
+
+    return;
+
+    function initButton(): void {
+        const button = document.querySelector("#search");
+        if (button) {
+            button.addEventListener("submit", (event) => {
+                event.preventDefault();
+                input.value = searchTerm = "";
+                dialog.showModal();
+                document.body.addEventListener("click", clickOutside);
+            });
+        }
+    }
 }
 
 setup();
