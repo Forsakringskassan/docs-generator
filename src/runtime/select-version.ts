@@ -13,11 +13,6 @@ declare const __MESSAGE__: string;
 const current = __PKG_VERSION__;
 const message = __MESSAGE__;
 
-const dialog = document.querySelector<HTMLDialogElement>("#version-dialog");
-const dialogCloseButton = dialog?.querySelector<HTMLDialogElement>("button");
-const form = document.querySelector<HTMLFormElement>("#version");
-const versionList = document.querySelector<HTMLUListElement>("#version-list");
-
 function isOutside(rect: DOMRect, point: { x: number; y: number }): boolean {
     if (point.y < rect.top || point.y > rect.top + rect.height) {
         return true;
@@ -28,7 +23,10 @@ function isOutside(rect: DOMRect, point: { x: number; y: number }): boolean {
     return false;
 }
 
-function clickOutside(event: MouseEvent): void {
+function clickOutside(
+    dialog: HTMLDialogElement | null,
+    event: MouseEvent,
+): void {
     if (!dialog) {
         return;
     }
@@ -62,6 +60,10 @@ async function fetchVersions(): Promise<VersionResponse> {
 const getVersions = memoize(fetchVersions);
 
 async function initVersionProcessor(): Promise<void> {
+    const dialog = document.querySelector<HTMLDialogElement>("#version-dialog");
+    const form = document.querySelector("#version");
+    const dialogCloseButton = dialog?.querySelector("button");
+
     const { latest } = await getVersions();
 
     if (motd.enabled && latest !== current) {
@@ -72,8 +74,12 @@ async function initVersionProcessor(): Promise<void> {
         return;
     }
 
+    function clickListener(event: MouseEvent): void {
+        clickOutside(dialog, event);
+    }
+
     dialog.addEventListener("close", () => {
-        document.body.removeEventListener("click", clickOutside);
+        document.body.removeEventListener("click", clickListener);
     });
 
     dialogCloseButton.addEventListener("click", () => {
@@ -82,19 +88,20 @@ async function initVersionProcessor(): Promise<void> {
 
     form.addEventListener("submit", async (event) => {
         event.preventDefault();
+        const versionList = document.querySelector("#version-list");
         try {
             const { versions } = await getVersions();
-            updateVersionList(versions);
+            updateVersionList(versionList, versions);
         } catch {
-            setErrorMessage();
+            setErrorMessage(versionList);
         }
         dialog.showModal();
-        document.body.addEventListener("click", clickOutside);
+        document.body.addEventListener("click", clickListener);
     });
 }
 
-function updateVersionList(versions: string[]): void {
-    if (!versionList) {
+function updateVersionList(element: Element | null, versions: string[]): void {
+    if (!element) {
         return;
     }
 
@@ -113,18 +120,18 @@ function updateVersionList(versions: string[]): void {
     }
     /* eslint-enable @typescript-eslint/no-non-null-assertion */
 
-    versionList.innerHTML = "";
-    versionList.appendChild(ul);
+    element.innerHTML = "";
+    element.appendChild(ul);
 }
 
-function setErrorMessage(): void {
-    if (!versionList) {
+function setErrorMessage(element: Element | null): void {
+    if (!element) {
         return;
     }
     const p = document.createElement("p");
     p.innerText = "Det gick inte att hitta några tidigare versioner!";
-    versionList.innerHTML = "";
-    versionList.appendChild(p);
+    element.innerHTML = "";
+    element.appendChild(p);
 }
 
 initVersionProcessor();
