@@ -147,9 +147,14 @@ export function codePreview(
             `;
         }
 
+        /* pass original raw content for imported examples as the original
+         * context is needed to resolve paths */
+        const needOriginalSource =
+            language !== "diff" && rawLanguage === "import";
+
         const example = generateExample({
-            source,
-            language,
+            source: needOriginalSource ? rawContent : source,
+            language: needOriginalSource ? rawLanguage : language,
             filename: fileInfo.fullPath,
             tags: rawTags,
         });
