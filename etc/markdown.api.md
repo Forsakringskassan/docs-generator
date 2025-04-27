@@ -118,6 +118,7 @@ export interface MarkdownOptions {
         filename: string;
         tags: string[];
     }): ExampleResult;
+    getImportedSource(filename: string): string;
     handleSoftError(error: SoftErrorType): string;
     messagebox?: {
         title?: Record<string, string>;

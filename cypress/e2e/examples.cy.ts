@@ -25,4 +25,28 @@ describe("examples", () => {
         cy.get(selector2).should("contain.text", "foo");
         cy.get(selector3).should("contain.text", "bar");
     });
+
+    it("inline diff (compare)", () => {
+        const selector1 = "[data-test=diff-base-inline]";
+        const selector2 = "[data-test=diff-inline]";
+        const expectedMarkup = [
+            `+<div class="wrapper">`,
+            `     <p>lorem ipsum</p>`,
+            `+</div>`,
+        ].join("\n");
+        cy.get(selector1).should("not.exist");
+        cy.get(selector2).should("exist").and("contain.text", expectedMarkup);
+    });
+
+    it("imported diff (compare)", () => {
+        const selector1 = "[data-test=diff-base-imported]";
+        const selector2 = "[data-test=diff-imported]";
+        const expectedMarkup = [
+            `+<div class="wrapper">`,
+            `     <p>lorem ipsum</p>`,
+            `+</div>`,
+        ].join("\n");
+        cy.get(selector1).should("not.exist");
+        cy.get(selector2).should("exist").and("contain.text", expectedMarkup);
+    });
 });

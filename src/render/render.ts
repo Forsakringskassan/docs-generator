@@ -1,5 +1,5 @@
 import fs from "node:fs/promises";
-import { existsSync, copyFileSync } from "node:fs";
+import { existsSync, copyFileSync, readFileSync } from "node:fs";
 import path from "node:path";
 import pathPosix from "node:path/posix";
 import { promisify } from "node:util";
@@ -305,6 +305,11 @@ export async function render(
             }
 
             return example;
+        },
+        getImportedSource(filename) {
+            const context = `when importing example from "${fileInfo.fullPath}"`;
+            const match = fileMatcher(filename, context);
+            return readFileSync(match, "utf-8");
         },
         addResource(dst, src) {
             if (!existsSync(src)) {

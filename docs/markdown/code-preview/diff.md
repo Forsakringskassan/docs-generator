@@ -72,6 +72,30 @@ export function foo(value: string, param: number): string {
 }
 ```
 
+Comparision can also be used with imported sources:
+
+**Input:**
+
+````md
+```import name=original-imported hidden
+diff-original.ts
+```
+
+```import compare=original-imported
+diff-updated.ts
+```
+````
+
+**Output:**
+
+```import name=original-imported hidden
+diff-original.ts
+```
+
+```import compare=original-imported
+diff-updated.ts
+```
+
 ### Context lines
 
 To control the number of context lines use `context=N` where `N` is an integer greater than zero.

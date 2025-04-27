@@ -7,7 +7,13 @@ import {
     transformCode,
 } from "../../examples";
 import { type MarkdownEnv } from "../markdown-env";
-import { findTag, getFingerprint, hasTag, htmlencode } from "../../utils";
+import {
+    findTag,
+    getFingerprint,
+    hasTag,
+    htmlencode,
+    parseImport,
+} from "../../utils";
 import { findTestId, highlight, replaceAtLink } from "./utils";
 
 /**
@@ -21,6 +27,9 @@ export interface CodePreviewOptions {
         filename: string;
         tags: string[];
     }): ExampleResult;
+
+    /** Callback to get source for an imported filename */
+    getImportedSource(filename: string): string;
 }
 
 function getClassModifier(tags: string[]): string {
@@ -38,47 +47,55 @@ function getStandalonePath(output: string | null): string | null {
     return path.join(dir, `${name}.html`);
 }
 
-function getSource(
-    content: string,
-    language: string,
-    tags: string[],
-    { namedExamples }: Pick<MarkdownEnv, "namedExamples">,
-): { source: string; language: string } {
-    const compare = findTag(tags, "compare");
-    if (compare && compare.value !== null) {
-        const { value: context } = findTag(tags, "context") ?? {};
-        const reference = namedExamples.get(compare.value);
-        if (!reference) {
-            throw new Error(
-                `Failed to find referenced example "${compare.value}"`,
-            );
-        }
-        const a = transformCode(reference.content, reference.language);
-        const b = transformCode(content, language);
-        const diff = createTwoFilesPatch("a", "b", a, b, "", "", {
-            context: context ? parseInt(context, 10) : 3,
-            ignoreWhitespace: true,
-        })
-            .split("\n")
-            .slice(4) // remove header
-            .join("\n");
-        return {
-            source: diff,
-            language: "diff",
-        };
-    }
-
-    return { source: content, language };
-}
-
 export function codePreview(
     options: CodePreviewOptions,
 ): (md: MarkdownIt) => void {
-    const { generateExample } = options;
+    const { generateExample, getImportedSource } = options;
 
     return (md: MarkdownIt): void => {
         md.renderer.rules.fence = fence.bind(undefined, md);
     };
+
+    function getSource(
+        content: string,
+        language: string,
+        tags: string[],
+        env: Pick<MarkdownEnv, "namedExamples">,
+    ): { source: string; language: string } {
+        const { namedExamples } = env;
+
+        if (language === "import") {
+            const parsed = parseImport(content);
+            const importedContent = getImportedSource(parsed.filename);
+            return getSource(importedContent, parsed.extension, tags, env);
+        }
+
+        const compare = findTag(tags, "compare");
+        if (compare && compare.value !== null) {
+            const { value: context } = findTag(tags, "context") ?? {};
+            const reference = namedExamples.get(compare.value);
+            if (!reference) {
+                throw new Error(
+                    `Failed to find referenced example "${compare.value}"`,
+                );
+            }
+            const a = transformCode(reference.content, reference.language);
+            const b = transformCode(content, language);
+            const diff = createTwoFilesPatch("a", "b", a, b, "", "", {
+                context: context ? parseInt(context, 10) : 3,
+                ignoreWhitespace: true,
+            })
+                .split("\n")
+                .slice(4) // remove header
+                .join("\n");
+            return {
+                source: diff,
+                language: "diff",
+            };
+        }
+
+        return { source: content, language };
+    }
 
     function fence(
         _md: MarkdownIt,
@@ -91,14 +108,22 @@ export function codePreview(
         const { content: rawContent, info, map } = tokens[idx];
         const { language: rawLanguage, tags: rawTags } = parseInfostring(info);
 
+        const { source, language } = getSource(
+            rawContent,
+            rawLanguage,
+            rawTags,
+            env,
+        );
+
         /* store a named reference to this example */
         const name = findTag(rawTags, "name")?.value;
         if (name) {
             env.namedExamples.set(name, {
                 name,
                 tags: rawTags,
-                content: rawContent,
-                language: rawLanguage,
+                /* store original raw content unless it is an imported example */
+                content: rawLanguage === "import" ? source : rawContent,
+                language: rawLanguage === "import" ? language : rawLanguage,
             });
         }
 
@@ -112,12 +137,6 @@ export function codePreview(
             `;
         }
 
-        const { source, language } = getSource(
-            rawContent,
-            rawLanguage,
-            rawTags,
-            env,
-        );
         const example = generateExample({
             source,
             language,
