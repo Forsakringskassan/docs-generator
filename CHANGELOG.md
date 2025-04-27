@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## [2.26.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.25.1...v2.26.0) (2025-04-27)
+
+### Features
+
+* support comparing imported examples ([c0fa709](https://github.com/Forsakringskassan/docs-generator/commit/c0fa70930474e0716a6263787afd80c28a45bdff))
+
+### Bug Fixes
+
+* **deps:** update dependency glob to v11.0.2 ([ba91b4d](https://github.com/Forsakringskassan/docs-generator/commit/ba91b4d42f3586c4b96c3dd44576a39b56220388))
+* fix list items being rendered with paragraph tag ([c7d41ff](https://github.com/Forsakringskassan/docs-generator/commit/c7d41ff07c72aa9e0f1b86a460841fd7104806d0))
+* fix sidenav scrollbar pushing content vertically ([8d1d4a5](https://github.com/Forsakringskassan/docs-generator/commit/8d1d4a56dfe9bc5961c8ee54b3275675e2aed8b8))
+* ignore missing trailing newline in generated diffs ([fb26018](https://github.com/Forsakringskassan/docs-generator/commit/fb260183183c93b148d5907afa66362ac485680f))
+* round header/footer size for more stable sticky sidenav when scrolling ([8b012bb](https://github.com/Forsakringskassan/docs-generator/commit/8b012bbbf0552a5a014592e48163a6fa77fc267e))
+
 ## [2.25.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.25.0...v2.25.1) (2025-04-24)
 
 ### Bug Fixes
