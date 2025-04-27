@@ -221,9 +221,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        bugfix/subdir-import (<a href="https://github.com/Forsakringskassan/docs-generator/commits/6699aac152b9364bb4e0932313b021f5bbb38fd0">6699aac</a>)<br />
+        bugfix/subdir-import (<a href="https://github.com/Forsakringskassan/docs-generator/commits/c07c02c2b10eae8a08581bf0eb68dc91167ecfa7">c07c02c</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/216">PR 216</a><br />
-        2025-04-27 11:03
+        2025-04-27 12:00
     </span>
 </div>
 </div>
@@ -544,12 +544,13 @@ diff-updated.ts
                     class="code-preview code-preview--default"
                     
                     
-                    data-language="ts"
+                    data-language="diff"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">foo</span>(<span class="hljs-params"><span class="hljs-attr">value</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">param</span>: <span class="hljs-built_in">number</span></span>): <span class="hljs-built_in">string</span> {
-    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;bar&quot;</span>;
-}
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-export function foo(value: string): string {</span>
+<span class="hljs-addition">+export function foo(value: string, param: number): string {</span>
+     return &quot;bar&quot;;
+ }
 </code></pre>
                 </div>
             <h3 id="context_lines"><a class="header-anchor" href="#context_lines">Context lines</a></h3><p class="docs-paragraph">To control the number of context lines use <code>context=N</code> where <code>N</code> is an integer greater than zero.
