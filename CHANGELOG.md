@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.26.3](https://github.com/Forsakringskassan/docs-generator/compare/v2.26.2...v2.26.3) (2025-04-27)
+
+### Bug Fixes
+
+* fix issue with imported diff getting wrong language in manifest ([e4a9849](https://github.com/Forsakringskassan/docs-generator/commit/e4a9849ae110bc1b1eb54d566ad9dc39ca68be7d))
+
 ## [2.26.2](https://github.com/Forsakringskassan/docs-generator/compare/v2.26.1...v2.26.2) (2025-04-27)
 
 ### Bug Fixes
