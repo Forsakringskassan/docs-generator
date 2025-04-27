@@ -160,7 +160,7 @@ export function codePreview(
         });
         const { tags } = example;
 
-        const hashContent = `${map?.[0]}:${map?.[1]}:${info}:${source}`;
+        const hashContent = `${map?.[0]}:${map?.[1]}:${info}:${rawContent}`;
         const fingerprint = getFingerprint(hashContent);
         const transformedCode = transformCode(example.source, example.language);
         const highlightedCode = replaceAtLink(
