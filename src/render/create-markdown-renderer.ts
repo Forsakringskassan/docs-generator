@@ -36,6 +36,9 @@ export interface MarkdownOptions {
         tags: string[];
     }): ExampleResult;
 
+    /** Callback to get source for an imported filename */
+    getImportedSource(filename: string): string;
+
     /**
      * Handle error which can be recovered from.
      *
@@ -111,6 +114,7 @@ export function createMarkdownRenderer(
     md.use(
         codePreview({
             generateExample: options.generateExample,
+            getImportedSource: options.getImportedSource,
         }),
     );
     md.use(headingLevel({ initialLevel: 1 }));

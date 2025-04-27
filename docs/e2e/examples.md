@@ -43,3 +43,25 @@ examples-imported-foo.vue
 ```import nomarkup name=imported-3
 examples-imported-bar.vue
 ```
+
+## Diff inline
+
+```html name=diff-base-inline hidden
+<p>lorem ipsum</p>
+```
+
+```html static compare=diff-base-inline name=diff-inline
+<div class="wrapper">
+    <p>lorem ipsum</p>
+</div>
+```
+
+## Diff imported
+
+```import name=diff-base-imported hidden
+examples-imported-base.html
+```
+
+```import static compare=diff-base-imported name=diff-imported
+examples-imported-updated.html
+```
