@@ -45,10 +45,10 @@ jobs:
                   npm ci
                   npm install "${GITHUB_WORKSPACE}/${{ steps.prerelease.outputs.pkg }}"
                   npm install --workspaces "${GITHUB_WORKSPACE}/${{ steps.prerelease.outputs.pkg }}"
-                  npm run build || true
-                  npm run build:docs || true
+                  npm run build
+                  npm run build:docs
                   mkdir -p ../temp/pr-preview/fkui/
-                  cp -r ./public/* ../temp/pr-preview/fkui/ || true
+                  cp -r ./public/* ../temp/pr-preview/fkui/
                   cat << EOF > ../temp/pr-preview/index.html
                   <style>
                     body {
