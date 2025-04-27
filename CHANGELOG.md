@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [2.26.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.26.0...v2.26.1) (2025-04-27)
+
+### Bug Fixes
+
+* changed max height of version dialog (fixes SFKUI-0000) ([e28852f](https://github.com/Forsakringskassan/docs-generator/commit/e28852f1d68791e4b11dd56e01e1400c3dcc2a9b))
+* fix regression bug with examples imported from subdirectories ([52e6404](https://github.com/Forsakringskassan/docs-generator/commit/52e64044721d04e4ceea74c48353b2d5e29b8d35))
+* fix version selector after navigation ([cf3e9c0](https://github.com/Forsakringskassan/docs-generator/commit/cf3e9c097f6eed0aba6ca20598134b20997a33cc)), closes [#200](https://github.com/Forsakringskassan/docs-generator/issues/200)
+
 ## [2.26.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.25.1...v2.26.0) (2025-04-27)
 
 ### Features
