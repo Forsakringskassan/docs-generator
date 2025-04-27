@@ -135,3 +135,7 @@ function setErrorMessage(element: Element | null): void {
 }
 
 initVersionProcessor();
+
+window.addEventListener("docs:navigation", () => {
+    initVersionProcessor();
+});
