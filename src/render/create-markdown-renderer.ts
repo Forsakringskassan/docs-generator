@@ -74,7 +74,7 @@ export interface MarkdownRenderer {
      * @param content - Markdown content to render.
      * @returns HTML rendered from markdown content.
      */
-    render(doc: DocumentPage, content: string): string;
+    render(doc: DocumentPage, content: string): { content: string };
 }
 
 /**
@@ -140,20 +140,21 @@ export function createMarkdownRenderer(
     md.use(codeInline());
 
     return {
-        render(doc: DocumentPage, content: string): string {
+        render(doc: DocumentPage, content: string) {
             currentDoc = doc;
             included.clear();
             included.set(doc.id, doc.id);
             env.fileInfo = doc.fileInfo;
             env.ids = new Set();
             const html = md.render(content, env);
-            return processInlineTags(
+            const rendered = processInlineTags(
                 inlineTags,
                 doc,
                 docs,
                 html,
                 options.handleSoftError,
             );
+            return { content: rendered };
         },
     };
 }

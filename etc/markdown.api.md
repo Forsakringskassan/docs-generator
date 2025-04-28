@@ -127,7 +127,9 @@ export interface MarkdownOptions {
 
 // @public
 export interface MarkdownRenderer {
-    render(doc: DocumentPage, content: string): string;
+    render(doc: DocumentPage, content: string): {
+        content: string;
+    };
 }
 
 // @public (undocumented)

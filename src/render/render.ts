@@ -344,7 +344,8 @@ export async function render(
     });
 
     njk.addFilter("marked", (content: string) => {
-        return markdownRenderer.render(doc, content);
+        const result = markdownRenderer.render(doc, content);
+        return result.content;
     });
     njk.addFilter("json", filter.json);
     njk.addFilter("dump", filter.dump);
