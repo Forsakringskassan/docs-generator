@@ -38,6 +38,7 @@ const context: ContainerContext = {
     },
     docs: [],
     included: new Map(),
+    dependencies: new Set(),
     handleSoftError(err) {
         throw err;
     },

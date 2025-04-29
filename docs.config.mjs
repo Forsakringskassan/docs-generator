@@ -50,7 +50,7 @@ async function cssVariablesFileReader(filePath) {
         format: "markdown",
         tags: [],
         fileInfo: {
-            fullPath: null,
+            fullPath: filePath.replace(/\\/g, "/"),
         },
     };
     return [doc];

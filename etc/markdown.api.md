@@ -118,7 +118,10 @@ export interface MarkdownOptions {
         filename: string;
         tags: string[];
     }): ExampleResult;
-    getImportedSource(filename: string): string;
+    getImportedSource(filename: string): {
+        filePath: string;
+        content: string;
+    };
     handleSoftError(error: SoftErrorType): string;
     messagebox?: {
         title?: Record<string, string>;
@@ -129,6 +132,7 @@ export interface MarkdownOptions {
 export interface MarkdownRenderer {
     render(doc: DocumentPage, content: string): {
         content: string;
+        dependencies: Set<string>;
     };
 }
 

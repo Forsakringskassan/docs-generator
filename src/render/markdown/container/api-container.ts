@@ -9,7 +9,7 @@ import { type ContainerContext } from "./container-context";
  * @internal
  */
 export function apiContainer(context: ContainerContext): ContainerCallback {
-    const { md, env, docs, included, handleSoftError } = context;
+    const { md, env, docs, included, dependencies, handleSoftError } = context;
     return (tokens, index) => {
         const token = tokens[index];
         const needle = token.content.trim();
@@ -39,6 +39,11 @@ export function apiContainer(context: ContainerContext): ContainerCallback {
             );
         }
         included.set(key, context.doc.id);
+
+        /* record that the included document is a dependency of this document */
+        if (doc.fileInfo.fullPath) {
+            dependencies.add(doc.fileInfo.fullPath);
+        }
 
         const body = typeof doc.body === "string" ? doc.body : doc.body(tags);
 

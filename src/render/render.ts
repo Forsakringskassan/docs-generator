@@ -126,25 +126,17 @@ async function compileExamples(options: {
     tasks: ExampleCompileTask[];
     assets: AssetInfo[];
     vendors: VendorAsset[];
-}): Promise<void> {
+}): Promise<Map<string, Set<string>>> {
     const { fileInfo, tasks, assets, vendors } = options;
     if (tasks.length === 0) {
-        return;
+        return new Map();
     }
 
     const external = [
         ...assets.map((it) => it.name),
         ...vendors.map((it) => it.package),
     ];
-    const cacheFolder = path.posix.join(options.cacheFolder, fileInfo.path);
     const outputFolder = path.posix.join(options.outputFolder, fileInfo.path);
-    const cacheMiss = cache(cacheFolder, outputFolder);
-    const dirtyTasks = tasks.filter(cacheMiss);
-
-    /* skip forking if there are no tasks to be run anyway */
-    if (dirtyTasks.length === 0) {
-        return;
-    }
 
     const ref = taskRef++;
     const message: CompileMessage = {
@@ -152,7 +144,7 @@ async function compileExamples(options: {
         ref,
         outputFolder,
         external,
-        tasks: dirtyTasks,
+        tasks,
     };
 
     return new Promise((resolve, reject) => {
@@ -160,7 +152,12 @@ async function compileExamples(options: {
             if (message.ref === ref) {
                 exampleWorker.off("message", onmessage);
                 exampleWorker.off("error", onerror);
-                resolve();
+                const entries = message.results.map(
+                    (it): [string, Set<string>] => {
+                        return [it.sourceFile, it.dependencies];
+                    },
+                );
+                resolve(new Map(entries));
             }
         }
 
@@ -230,7 +227,10 @@ export async function render(
     nav: { topnav: NavigationSection; sidenav: NavigationSection },
     vendors: VendorAsset[],
     options: RenderOptions,
-): Promise<string | null> {
+): Promise<{
+    filePath: string;
+    dependencies: Map<string, Set<string>>;
+} | null> {
     const { fileInfo } = doc;
     const { i18n, outputFolder, cacheFolder, templateFolders, fileMatcher } =
         options;
@@ -327,8 +327,9 @@ export async function render(
         },
         getImportedSource(filename) {
             const context = `when importing example from "${fileInfo.fullPath}"`;
-            const match = fileMatcher(filename, context);
-            return readFileSync(match, "utf-8");
+            const filePath = fileMatcher(filename, context);
+            const content = readFileSync(filePath, "utf-8");
+            return { filePath, content };
         },
         addResource(dst, src) {
             if (!existsSync(src)) {
@@ -343,8 +344,15 @@ export async function render(
         messagebox: options.markdown.messagebox,
     });
 
+    const dependencies = new Map<string, Set<string>>();
+
     njk.addFilter("marked", (content: string) => {
         const result = markdownRenderer.render(doc, content);
+        const s = dependencies.get(dst) ?? new Set();
+        for (const dependency of result.dependencies) {
+            s.add(dependency);
+        }
+        dependencies.set(dst, s);
         return result.content;
     });
     njk.addFilter("json", filter.json);
@@ -418,7 +426,7 @@ export async function render(
         const assets = Object.values(templateData.assets).filter(
             (it) => it.importmap,
         );
-        await compileExamples({
+        const results = await compileExamples({
             fileInfo,
             cacheFolder,
             outputFolder,
@@ -426,6 +434,14 @@ export async function render(
             assets,
             vendors,
         });
+        const cwd = process.cwd();
+        for (const [filePath, inputs] of results.entries()) {
+            const s = dependencies.get(filePath) ?? new Set();
+            for (const dependency of inputs) {
+                s.add(pathPosix.relative(cwd, dependency));
+            }
+            dependencies.set(filePath, s);
+        }
     } catch (err: unknown) {
         const prefix = `Failed to compile examples from "${fileInfo.fullPath}"`;
         const message = err instanceof Error ? err.message : String(err);
@@ -449,5 +465,8 @@ export async function render(
     }
 
     await writeFile;
-    return dst;
+    return {
+        filePath: dst,
+        dependencies,
+    };
 }

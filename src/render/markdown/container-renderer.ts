@@ -143,6 +143,7 @@ export function containerRenderer(
     docs: Document[],
     env: MarkdownEnv,
     included: Map<string, string>,
+    dependencies: Set<string>,
     handleSoftError: (error: SoftErrorType) => string,
     options: {
         messagebox: {
@@ -159,6 +160,7 @@ export function containerRenderer(
             },
             docs,
             included,
+            dependencies,
             handleSoftError,
         };
         md.use(containerParser, {

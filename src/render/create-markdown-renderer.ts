@@ -37,7 +37,7 @@ export interface MarkdownOptions {
     }): ExampleResult;
 
     /** Callback to get source for an imported filename */
-    getImportedSource(filename: string): string;
+    getImportedSource(filename: string): { filePath: string; content: string };
 
     /**
      * Handle error which can be recovered from.
@@ -74,7 +74,10 @@ export interface MarkdownRenderer {
      * @param content - Markdown content to render.
      * @returns HTML rendered from markdown content.
      */
-    render(doc: DocumentPage, content: string): { content: string };
+    render(
+        doc: DocumentPage,
+        content: string,
+    ): { content: string; dependencies: Set<string> };
 }
 
 /**
@@ -107,6 +110,7 @@ export function createMarkdownRenderer(
     };
 
     const included = new Map<string, string>();
+    const dependencies = new Set<string>();
     const md = markdownIt({
         html: true,
     });
@@ -115,6 +119,7 @@ export function createMarkdownRenderer(
         codePreview({
             generateExample: options.generateExample,
             getImportedSource: options.getImportedSource,
+            dependencies,
         }),
     );
     md.use(headingLevel({ initialLevel: 1 }));
@@ -129,6 +134,7 @@ export function createMarkdownRenderer(
             docs,
             env,
             included,
+            dependencies,
             options.handleSoftError,
             {
                 messagebox: { title: {}, ...options.messagebox },
@@ -144,6 +150,8 @@ export function createMarkdownRenderer(
             currentDoc = doc;
             included.clear();
             included.set(doc.id, doc.id);
+            dependencies.clear();
+            dependencies.add(doc.fileInfo.fullPath);
             env.fileInfo = doc.fileInfo;
             env.ids = new Set();
             const html = md.render(content, env);
@@ -154,7 +162,7 @@ export function createMarkdownRenderer(
                 html,
                 options.handleSoftError,
             );
-            return { content: rendered };
+            return { content: rendered, dependencies: new Set(dependencies) };
         },
     };
 }

@@ -3,6 +3,7 @@ import { type DocumentPage, isDocumentPage } from "../document";
 import { type Processor } from "../processor";
 import { render } from "./render";
 import { type RenderOptions } from "./render-options";
+import { DependencyTree } from "./dependency-tree";
 
 const progressbar = new cliProgress.SingleBar({
     format: " {bar} {percentage}% | {value}/{total} documents | {filename}",
@@ -22,7 +23,10 @@ export function nunjucksProcessor(
         stage: "render",
         name: "nunjucks-renderer",
         async handler(context) {
-            function renderDocument(doc: DocumentPage): Promise<string | null> {
+            function renderDocument(doc: DocumentPage): Promise<{
+                filePath: string;
+                dependencies: Map<string, Set<string>>;
+            } | null> {
                 const nav = {
                     topnav: context.topnav,
                     sidenav: context.sidenav,
@@ -51,12 +55,16 @@ export function nunjucksProcessor(
                 filename: docs.length > 0 ? docs[0].fileInfo.fullPath : "",
             });
 
+            const dt = new DependencyTree(options);
+            await dt.load();
+
             const generatedFiles: string[] = [];
             try {
                 for (const doc of docs) {
-                    const filePath = await renderDocument(doc);
-                    if (filePath) {
-                        generatedFiles.push(filePath);
+                    const result = await renderDocument(doc);
+                    if (result) {
+                        generatedFiles.push(result.filePath);
+                        dt.merge(result.dependencies);
                     }
                     progressbar.increment(1, {
                         filename: doc.fileInfo.fullPath,
@@ -65,6 +73,8 @@ export function nunjucksProcessor(
             } finally {
                 progressbar.stop();
             }
+
+            await dt.save();
 
             context.log(docs.length, "documents rendered");
             return generatedFiles;

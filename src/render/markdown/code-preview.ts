@@ -29,7 +29,9 @@ export interface CodePreviewOptions {
     }): ExampleResult;
 
     /** Callback to get source for an imported filename */
-    getImportedSource(filename: string): string;
+    getImportedSource(filename: string): { filePath: string; content: string };
+
+    dependencies: Set<string>;
 }
 
 function getClassModifier(tags: string[]): string {
@@ -58,7 +60,7 @@ function ensureTrailingNewline(text: string): string {
 export function codePreview(
     options: CodePreviewOptions,
 ): (md: MarkdownIt) => void {
-    const { generateExample, getImportedSource } = options;
+    const { dependencies, generateExample, getImportedSource } = options;
 
     return (md: MarkdownIt): void => {
         md.renderer.rules.fence = fence.bind(undefined, md);
@@ -74,8 +76,9 @@ export function codePreview(
 
         if (language === "import") {
             const parsed = parseImport(content);
-            const importedContent = getImportedSource(parsed.filename);
-            return getSource(importedContent, parsed.extension, tags, env);
+            const imported = getImportedSource(parsed.filename);
+            dependencies.add(imported.filePath);
+            return getSource(imported.content, parsed.extension, tags, env);
         }
 
         const compare = findTag(tags, "compare");

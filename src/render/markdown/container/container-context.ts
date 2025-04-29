@@ -36,6 +36,11 @@ export interface ContainerContext {
     included: Map<string, string>;
 
     /**
+     * A set of filePaths which this markdown document has included.
+     */
+    dependencies: Set<string>;
+
+    /**
      * Called to handle a soft error, i.e. an error that we can recover
      * from. The implementation of this will decide what should happen and can
      * return a HTML-string with replacement content (or stop processing by
