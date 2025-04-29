@@ -27,7 +27,7 @@ export function apiContainer(context: ContainerContext): ContainerCallback {
 
         /* @todo here we should instead detect the chain of includes to
          * provide a better explanation of *why* it happened, not just
-         * *that* it happend */
+         * *that* it happened */
         const key = [doc.id, ...tags].join("|");
         const loop = included.get(doc.id);
         if (loop && loop !== context.doc.id) {

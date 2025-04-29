@@ -28,7 +28,7 @@ export interface ContainerContext {
     docs: Document[];
 
     /**
-     * A set of doucment ids which has been processed during this cycle. If the
+     * A set of document ids which has been processed during this cycle. If the
      * block handles recursive content (e.g. including content from other
      * documents) the current document it should always be compared to this to
      * prevent infinite loops.
