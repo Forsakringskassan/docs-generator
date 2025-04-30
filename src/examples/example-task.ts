@@ -27,14 +27,3 @@ export interface ExampleStandaloneTask {
     /** example markup */
     content: string;
 }
-
-export interface ExampleBatch {
-    /** directory where output files will be written */
-    outputFolder: string;
-
-    /** external libraries */
-    external: string[];
-
-    /** jobs to compile in this batch */
-    tasks: ExampleCompileTask[];
-}

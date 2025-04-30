@@ -1,3 +1,5 @@
+/// <reference types="@sidvind/rollup-plugin-worker/dist/client-types" />
+
 export { type CompileOptions, type ResourceTask } from "./assets";
 export { availableProcessors } from "./available-processors";
 export { defineSources } from "./define-sources";

@@ -10,6 +10,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import json from "@rollup/plugin-json";
 import { visualizer } from "rollup-plugin-visualizer";
+import { workerPlugin } from "@sidvind/rollup-plugin-worker";
 import * as sass from "sass";
 import { Extractor, ExtractorConfig } from "@microsoft/api-extractor";
 
@@ -86,7 +87,7 @@ async function build() {
     await fs.rm("dist", { recursive: true, force: true });
 
     const options = defineConfig({
-        input: ["src/index.ts", "src/compile-example.ts", "src/markdown.ts"],
+        input: ["src/index.ts", "src/markdown.ts"],
         external: [
             "@babel/core",
             "express",
@@ -106,6 +107,7 @@ async function build() {
                 preferBuiltins: true,
             }),
             json(),
+            workerPlugin(),
             esbuildPlugin({
                 platform: "node",
                 format: "esm",
