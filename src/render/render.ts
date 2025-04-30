@@ -2,18 +2,19 @@ import fs from "node:fs/promises";
 import { existsSync, copyFileSync, readFileSync } from "node:fs";
 import path from "node:path";
 import pathPosix from "node:path/posix";
-import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
-import spawn from "nano-spawn";
+import { Worker } from "node:worker_threads";
 import nunjucks from "nunjucks";
 import { type AssetInfo } from "../assets";
 import { type VendorAsset } from "../vendor";
 import { type Document, type DocumentPage, type FileInfo } from "../document";
 import {
-    type ExampleBatch,
+    type CompileMessage,
+    type CompileResponse,
+    type ExampleCompileTask,
+    type ExampleStandaloneTask,
     generateExample,
-    ExampleCompileTask,
-    ExampleStandaloneTask,
+    workerUrl as exampleWorkerUrl,
 } from "../examples";
 import {
     type NavigationLeaf,
@@ -40,8 +41,10 @@ interface ActiveNavigationSection extends NavigationSection {
 
 type ActiveNavigationNode = ActiveNavigationLeaf | ActiveNavigationSection;
 
-const scriptUrl = new URL("./compile-example.mjs", import.meta.url);
-const scriptPath = fileURLToPath(scriptUrl);
+const exampleWorker = new Worker(exampleWorkerUrl);
+exampleWorker.unref();
+
+let taskRef = 1;
 let loader: TemplateLoader | null = null;
 
 function haveOutputFile(
@@ -143,18 +146,32 @@ async function compileExamples(options: {
         return;
     }
 
-    const batch: ExampleBatch = {
+    const ref = taskRef++;
+    const message: CompileMessage = {
+        message: "compile",
+        ref,
         outputFolder,
         external,
         tasks: dirtyTasks,
     };
-    const result = await spawn("node", [scriptPath], {
-        stdin: { string: JSON.stringify(batch) },
+
+    return new Promise((resolve, reject) => {
+        function onmessage(message: CompileResponse<number>): void {
+            if (message.ref === ref) {
+                exampleWorker.off("message", onmessage);
+                exampleWorker.off("error", onerror);
+                resolve();
+            }
+        }
+
+        function onerror(err: Error): void {
+            reject(err);
+        }
+
+        exampleWorker.on("message", onmessage);
+        exampleWorker.on("error", onerror);
+        exampleWorker.postMessage(message);
     });
-    if (result.output.length > 0) {
-        /* eslint-disable-next-line no-console -- We don't want to hide how it went  */
-        console.log(result.output);
-    }
 }
 
 async function compileStandalones(options: {
