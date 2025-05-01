@@ -327,7 +327,7 @@ export class Generator {
         this.sourceFiles = [];
         this.markdownOptions = options.markdown;
 
-        const bootstrapUrl = new URL("runtime-bootstrap.js", import.meta.url);
+        const bootstrapUrl = new URL("runtime-bootstrap.mjs", import.meta.url);
         this.compileScript(
             "bootstrap",
             bootstrapUrl,

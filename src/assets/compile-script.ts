@@ -2,6 +2,7 @@ import nodeFS from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { type BuildOptions } from "esbuild";
+import { tsconfigPath as tsconfig } from "../tsconfig-path";
 import { getFingerprint, getIntegrity } from "../utils";
 import { VendorDefinition } from "../vendor";
 import { AssetInfo } from "./asset-info";
@@ -64,7 +65,7 @@ export async function compileScript(
             format,
             platform: "browser",
             external,
-            tsconfig: path.join(__dirname, "../tsconfig-examples.json"),
+            tsconfig,
             ...buildOptions,
             define: {
                 "process.env.DOCS_ICON_LIB": JSON.stringify(iconLib),

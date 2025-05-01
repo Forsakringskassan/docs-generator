@@ -13,7 +13,7 @@ import {
     sourceUrlProcessor,
     cookieProcessor,
     selectableVersionProcessor,
-} from "./dist/index.js";
+} from "./dist/index.mjs";
 import config from "./docs.config.mjs";
 
 const isRelease = Boolean(process.env.RELEASE);

@@ -2,7 +2,7 @@ import {
     frontMatterFileReader,
     navigationFileReader,
     vueFileReader,
-} from "./dist/index.js";
+} from "./dist/index.mjs";
 
 /**
  * @param {string} name - Prefixed name of css variable.
