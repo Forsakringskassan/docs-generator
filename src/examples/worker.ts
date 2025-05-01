@@ -1,5 +1,7 @@
 import { parentPort } from "node:worker_threads";
+import { fileURLToPath } from "node:url";
 import { type Plugin, build as esbuild } from "esbuild";
+import { resolve } from "import-meta-resolve";
 import { version } from "vue";
 import { vuePlugin as Vue3Plugin } from "plugin-vue3";
 import { virtualEntryPlugin } from "../esbuild";
@@ -39,7 +41,10 @@ export interface CompileResponse<T = unknown> {
 /**
  * @internal
  */
-export type CompileResult = ExampleCompileTask;
+export interface CompileResult extends ExampleCompileTask {
+    /** files that was used during the compilation of this task */
+    dependencies: Set<string>;
+}
 
 /**
  * @internal
@@ -80,6 +85,7 @@ async function compileExample(
     ];
     const virtualEntries = { [virtualEntryPoint(task)]: task.sourcecode };
     const iconLib = process.env.DOCS_ICON_LIB ?? "@fkui/icon-lib-default";
+    const dependencies = new Set<string>();
     await esbuild({
         entryPoints,
         outdir,
@@ -92,9 +98,32 @@ async function compileExample(
             "process.env.NODE_ENV": JSON.stringify("development"),
             "process.env.DOCS_ICON_LIB": JSON.stringify(iconLib),
         },
-        plugins: [virtualEntryPlugin(virtualEntries), VuePlugin()],
+        plugins: [
+            virtualEntryPlugin(virtualEntries),
+            VuePlugin(),
+            {
+                name: "dependency-tracker",
+                setup(build) {
+                    build.onResolve({ filter: /^[^.].*/ }, (arg) => {
+                        try {
+                            const from = `file://${arg.resolveDir}/noop.js`;
+                            const resolved = resolve(arg.path, from);
+                            const filePath = fileURLToPath(resolved);
+                            dependencies.add(filePath);
+                        } catch {
+                            /* do nothing */
+                        }
+                        return null;
+                    });
+                    build.onLoad({ filter: /.*/, namespace: "file" }, (arg) => {
+                        dependencies.add(arg.path);
+                        return null;
+                    });
+                },
+            },
+        ],
     });
-    return { ...task };
+    return { ...task, dependencies };
 }
 
 async function compileExampleMultiple(
