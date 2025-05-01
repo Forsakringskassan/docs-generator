@@ -121,7 +121,7 @@
     "fs-extra": "11.3.0",
     "glob": "11.0.2",
     "highlight.js": "11.11.1",
-    "i18next": "25.0.1",
+    "i18next": "25.0.2",
     "livereload-js": "4.0.2",
     "markdown-it": "14.1.0",
     "markdown-it-deflist": "3.0.0",
