@@ -2,6 +2,7 @@ import fs from "node:fs/promises";
 import { existsSync, copyFileSync, readFileSync } from "node:fs";
 import path from "node:path";
 import pathPosix from "node:path/posix";
+import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
 import spawn from "nano-spawn";
 import nunjucks from "nunjucks";
@@ -39,7 +40,8 @@ interface ActiveNavigationSection extends NavigationSection {
 
 type ActiveNavigationNode = ActiveNavigationLeaf | ActiveNavigationSection;
 
-const scriptPath = path.join(__dirname, "compile-example.js");
+const scriptUrl = new URL("./compile-example.mjs", import.meta.url);
+const scriptPath = fileURLToPath(scriptUrl);
 let loader: TemplateLoader | null = null;
 
 function haveOutputFile(

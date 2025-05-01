@@ -14,21 +14,32 @@
   "license": "MIT",
   "author": "Försäkringskassan",
   "sideEffects": [
-    "dist/runtime-bootstrap.js",
-    "dist/runtime.js",
+    "dist/runtime-bootstrap.mjs",
+    "dist/runtime.mjs",
     "src/runtime/**/*"
   ],
+  "type": "module",
   "exports": {
-    ".": "./dist/index.js",
-    "./markdown": "./dist/markdown.js",
-    "./runtime": "./dist/runtime.js",
+    ".": {
+      "types": "./dist/index.d.mts",
+      "default": "./dist/index.mjs"
+    },
+    "./markdown": {
+      "types": "./dist/markdown.d.mts",
+      "default": "./dist/markdown.mjs"
+    },
+    "./runtime": {
+      "types": "./dist/runtime.d.mts",
+      "default": "./dist/runtime.mjs"
+    },
     "./docs": "./dist/style/index.css",
     "./docs.css": "./dist/style/index.css",
     "./style": "./dist/style/index.css",
     "./style.css": "./dist/style/index.css",
     "./style/*.css": "./dist/style/*.css"
   },
-  "main": "dist/index.js",
+  "main": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "files": [
     "dist",
     "tsconfig-examples.json",
@@ -92,6 +103,9 @@
       {
         "displayName": "node",
         "preset": "@forsakringskassan/jest-config",
+        "setupFiles": [
+          "<rootDir>/jest.setup.ts"
+        ],
         "testPathIgnorePatterns": [
           "/node_modules/",
           "<rootDir>/src/runtime"

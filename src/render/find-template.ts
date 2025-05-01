@@ -1,6 +1,7 @@
 import path from "node:path";
 import fs from "node:fs";
 import { type DocumentPage, type FileInfo } from "../document";
+import { templateDirectory } from "./template-directory";
 
 class MissingTemplateError extends Error {
     private searchDir: string[];
@@ -27,7 +28,6 @@ class MissingTemplateError extends Error {
     }
 }
 
-const templateDirectory = path.join(__dirname, "../templates");
 const cache = new Map<string, string>();
 
 function cacheKey(layout: string, extension: "html" | "json"): string {

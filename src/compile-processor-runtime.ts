@@ -26,7 +26,7 @@ export function compileProcessorRuntime(
                 entry.name ?? path.parse(entry.src).name,
             ].join("/");
             const name = processorRuntimeName(processor, entry);
-            const bundled = new URL(`${name}.js`, distDir);
+            const bundled = new URL(`${name}.mjs`, distDir);
             const scriptPath = existsSync(bundled) ? bundled : entry.src;
             generator.compileScript(
                 assetName,

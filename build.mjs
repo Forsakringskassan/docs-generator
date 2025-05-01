@@ -67,7 +67,7 @@ async function buildStyle(entrypoints) {
 
 async function getProcessorScripts() {
     const { availableProcessors, processorRuntimeName } = await import(
-        "./dist/index.js"
+        "./dist/index.mjs"
     );
     return availableProcessors
         .filter((processor) => {
@@ -108,6 +108,7 @@ async function build() {
             json(),
             esbuildPlugin({
                 platform: "node",
+                format: "esm",
                 target: ["node20"],
             }),
             visualizer({
@@ -118,8 +119,16 @@ async function build() {
     const bundle = await rollup(options);
     const { output } = await bundle.write({
         dir: "dist",
-        format: "cjs",
+        format: "esm",
         sourcemap: true,
+        entryFileNames: "[name].mjs",
+        chunkFileNames: "[name]-[hash].mjs",
+        banner: [
+            `import { createRequire as $createRequire } from "node:module";`,
+            ``,
+            `const require = $createRequire(import.meta.url);`,
+            ``,
+        ].join("\n"),
         manualChunks(id) {
             const fullPath = id.replace(/[?].*/, "").replace("\x00", "");
             const base = path.relative(rootDir, fullPath).replace(/\\/g, "/");
@@ -151,8 +160,11 @@ async function build() {
         ],
         bundle: true,
         metafile: true,
-        format: "cjs",
+        format: "esm",
         platform: "browser",
+        outExtension: {
+            ".js": ".mjs",
+        },
         logLevel: "info",
         outdir: "dist",
     });

@@ -6,6 +6,6 @@
         "reportFileName": "markdown.api.md"
     },
     "dtsRollup": {
-        "publicTrimmedFilePath": "<projectFolder>/dist/markdown.d.ts"
+        "publicTrimmedFilePath": "<projectFolder>/dist/markdown.d.mts"
     }
 }

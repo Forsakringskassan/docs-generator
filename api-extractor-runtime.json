@@ -6,6 +6,6 @@
         "reportFileName": "runtime.api.md"
     },
     "dtsRollup": {
-        "publicTrimmedFilePath": "<projectFolder>/dist/runtime.d.ts"
+        "publicTrimmedFilePath": "<projectFolder>/dist/runtime.d.mts"
     }
 }

@@ -2,6 +2,7 @@ import fs from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
 import { type Callback, type ILoaderAsync, type LoaderSource } from "nunjucks";
+import { templateDirectory } from "./template-directory";
 
 interface ResolvedTemplate {
     filePath: string;
@@ -17,7 +18,7 @@ export class TemplateLoader implements ILoaderAsync {
     private readonly templateCache: Map<string, ResolvedTemplate>;
 
     public constructor(folders: string[] = []) {
-        this.folders = [...folders, path.join(__dirname, "../templates")];
+        this.folders = [...folders, templateDirectory];
         this.templateCache = new Map();
     }
 

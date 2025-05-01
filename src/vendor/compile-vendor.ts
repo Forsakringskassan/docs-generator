@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import esbuild, { type BuildOptions } from "esbuild";
+import { tsconfigPath as tsconfig } from "../tsconfig-path";
 import { getFingerprint, getIntegrity, slugify } from "../utils";
 import { type VendorAsset } from "./vendor-asset";
 import { type NormalizedVendorDefinition } from "./vendor-definition";
@@ -29,7 +30,6 @@ export async function compileVendor(
     const outfile = `temp/vendor-${slug}.out.js`;
     const tmpfile = `temp/vendor-${slug}.in.js`;
     const source = getAssetSource(vendor);
-    const tsconfig = path.resolve(__dirname, "../tsconfig-examples.json");
     await fs.writeFile(tmpfile, source, "utf-8");
     await esbuild.build({
         entryPoints: [tmpfile],

@@ -1,12 +1,11 @@
-import path from "node:path";
 import { type Plugin, build as esbuild } from "esbuild";
 import { version } from "vue";
 import { vuePlugin as Vue3Plugin } from "plugin-vue3";
 import { virtualEntryPlugin } from "./esbuild";
 import { type ExampleCompileTask, type ExampleBatch } from "./examples";
+import { tsconfigPath as tsconfig } from "./tsconfig-path";
 
 const vueMajor = parseInt(version.split(".", 2)[0], 10) as 2 | 3;
-const tsconfig = path.join(__dirname, "../tsconfig-examples.json");
 
 function stripExtension(filename: string): string {
     return filename.replace(".js", "");

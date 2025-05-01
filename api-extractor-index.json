@@ -6,6 +6,6 @@
         "reportFileName": "index.api.md"
     },
     "dtsRollup": {
-        "publicTrimmedFilePath": "<projectFolder>/dist/index.d.ts"
+        "publicTrimmedFilePath": "<projectFolder>/dist/index.d.mts"
     }
 }
