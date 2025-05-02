@@ -31,7 +31,7 @@ import {
     navigationFileReader,
 } from "@forsakringskassan/docs-generator";
 
-const docs = new Generator({
+const docs = new Generator(import.meta.url, {
     site: { name: "" },
     setupPath: "docs/src/setup.ts",
 });

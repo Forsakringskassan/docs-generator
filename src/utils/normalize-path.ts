@@ -5,5 +5,8 @@ import path from "node:path/posix";
  */
 export function normalizePath(...pathSegments: string[]): string {
     const filePath = path.join(...pathSegments);
-    return path.normalize(filePath).replace(/\\/g, "/");
+    return path
+        .normalize(filePath)
+        .replace(/^([A-Z]):\\/, "/")
+        .replace(/\\/g, "/");
 }

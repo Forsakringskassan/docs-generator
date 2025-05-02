@@ -13,7 +13,7 @@ import {
     vueFileReader,
 } from "@forsakringskassan/docs-generator";
 
-const docs = new Generator({
+const docs = new Generator(import.meta.url, {
     site: { name: "My Awesome Site" },
     setupPath: "setup.ts",
 });

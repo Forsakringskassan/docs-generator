@@ -116,7 +116,9 @@ export function frontMatterFileReader(filePath: string, basePath?: string): Prom
 
 // @public (undocumented)
 class Generator_2 {
+    // @deprecated
     constructor(options: GeneratorOptions);
+    constructor(importMetaUrl: string | URL, options: GeneratorOptions);
     // (undocumented)
     build(sourceFiles: SourceFiles[]): Promise<string[]>;
     // (undocumented)
