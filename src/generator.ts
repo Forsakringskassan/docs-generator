@@ -1,6 +1,7 @@
 import { existsSync } from "node:fs";
 import fs from "node:fs/promises";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import fse from "fs-extra";
 import { createInstance as i18next } from "i18next";
 import {
@@ -35,7 +36,7 @@ import { type ProcessorStage } from "./processor-stage";
 import { redirectProcessor } from "./processors";
 import { type Manifest } from "./manifest";
 import { serve } from "./serve";
-import { fileMatcher, haveOutput } from "./utils";
+import { fileMatcher, haveOutput, normalizePath } from "./utils";
 import { createTemplateLoader } from "./render/render";
 
 /**
@@ -288,10 +289,21 @@ function createContext(
     };
 }
 
+function getWorkingDir(value: string | URL | null): string {
+    if (value) {
+        const url = typeof value === "string" ? new URL(value) : value;
+        const normalized = normalizePath(fileURLToPath(url));
+        return path.posix.dirname(normalized);
+    } else {
+        return normalizePath(process.cwd());
+    }
+}
+
 /**
  * @public
  */
 export class Generator {
+    private cwd: string;
     private site: GeneratorSiteOptions;
     private outputFolder: string;
     private cacheFolder: string;
@@ -307,11 +319,35 @@ export class Generator {
     private sourceFiles: SourceFiles[];
     private markdownOptions: GeneratorOptions["markdown"];
 
-    public constructor(options: GeneratorOptions) {
+    /**
+     * @deprecated Pass in `import.meta.url` as first argument instead.
+     */
+    public constructor(options: GeneratorOptions);
+
+    /**
+     * Create a new Generator instance.
+     */
+    public constructor(importMetaUrl: string | URL, options: GeneratorOptions);
+    public constructor(
+        ...args:
+            | [options: GeneratorOptions]
+            | [importMetaUrl: string | URL, options: GeneratorOptions]
+    ) {
+        const cwd = getWorkingDir(args.length === 2 ? args[0] : null);
+        const options = args.length === 2 ? args[1] : args[0];
+
+        if (args.length === 1) {
+            /* eslint-disable-next-line no-console -- expected to log */
+            console.error(
+                "[docs-generator] deprecated: not passing import.meta.url as the first argument is deprecated, assuming `process.cwd()`.",
+            );
+        }
+
         if (typeof options.site === "undefined") {
             throw new Error("site metadata not set in configuration");
         }
 
+        this.cwd = cwd;
         this.site = options.site;
         this.outputFolder = options.outputFolder ?? "./public";
         this.cacheFolder = options.cacheFolder ?? "./temp/docs";

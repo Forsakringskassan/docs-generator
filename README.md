@@ -16,7 +16,7 @@ import {
     livereloadProcessor,
 } from "@forsakringskassan/docs-generator";
 
-const docs = new Generator({
+const docs = new Generator(import.meta.url, {
     site: {
         name: "My Awesome Site",
     },
@@ -41,7 +41,7 @@ import {
     livereloadProcessor,
 } from "@forsakringskassan/docs-generator";
 
-const docs = new Generator({
+const docs = new Generator(import.meta.url, {
     site: {
         name: "My Awesome Site",
     },
@@ -117,7 +117,7 @@ Style can be compiled with `compileStyle(name, src, [options])`:
 ```ts
 import { Generator } from "@forsakringskassan/docs-generator";
 
-const docs = new Generator({
+const docs = new Generator(import.meta.url, {
     site: {
         name: "My Awesome Site",
     },
@@ -304,7 +304,7 @@ for (const entry of Object.values(icons)) {
 ### Matomo
 
 ```diff
- const docs = new Generator({
+ const docs = new Generator(import.meta.url, {
      processors: [
 +        matomoProcessor({
 +            siteId: "1",
@@ -318,7 +318,7 @@ for (const entry of Object.values(icons)) {
 Optionally set `hostname` to limit which hostnames can run Matomo analytics:
 
 ```diff
- const docs = new Generator({
+ const docs = new Generator(import.meta.url, {
      processors: [
          matomoProcessor({
              siteId: "1",

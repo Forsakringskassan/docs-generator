@@ -15,7 +15,7 @@ import { Generator, versionProcessor } from "@forsakringskassan/docs-generator";
 
 const pkg = JSON.parse(await fs.readFile("package.json", "utf-8"));
 
-const docs = new Generator({
+const docs = new Generator(import.meta.url, {
     /* --- cut begin --- */
     site: { name: ".." },
     setupPath: "..",

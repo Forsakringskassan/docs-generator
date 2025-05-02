@@ -6,7 +6,7 @@ import { type Manifest, Generator } from "./dist";
 import config from "./docs.config.mjs";
 
 async function getDocsPages(): Promise<Manifest["pages"]> {
-    const docs = new Generator({
+    const docs = new Generator(import.meta.url, {
         site: {
             name: "FK Documentation generator",
             lang: "en",

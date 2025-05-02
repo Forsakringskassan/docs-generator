@@ -24,7 +24,7 @@ const config = {
         /* ... */
     ],
 };
-const docs = new Generator({
+const docs = new Generator(import.meta.url, {
     /* --- cut begin --- */
     site: { name: ".." },
     setupPath: "..",
@@ -45,7 +45,7 @@ import {
 
 /* --- cut above --- */
 
-const docs = new Generator({
+const docs = new Generator(import.meta.url, {
     /* --- cut begin --- */
     site: { name: ".." },
     setupPath: "..",

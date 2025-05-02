@@ -19,7 +19,7 @@ import config from "./docs.config.mjs";
 const isRelease = Boolean(process.env.RELEASE);
 const pkg = JSON.parse(await fs.readFile("./package.json", "utf-8"));
 
-const docs = new Generator({
+const docs = new Generator(import.meta.url, {
     site: {
         name: "FK Documentation generator",
         lang: "en",

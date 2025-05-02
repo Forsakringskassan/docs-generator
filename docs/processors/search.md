@@ -21,7 +21,7 @@ import { Generator, searchProcessor } from "@forsakringskassan/docs-generator";
 
 /* --- cut above --- */
 
-const docs = new Generator({
+const docs = new Generator(import.meta.url, {
     /* --- cut begin --- */
     site: { name: ".." },
     setupPath: "..",
