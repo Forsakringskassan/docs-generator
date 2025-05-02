@@ -51,13 +51,13 @@
     "Skapa eget ikonbibliotek",
     "Kom igång",
     "Ta fram applikation",
-    "Version 5 migreringsguide",
-    "Fieldset migreringsguide",
     "Testverktyg",
     "Releaseprocess",
     "För utvecklare",
     "Commits och commitmeddelanden",
     "Checklista vid publicering",
+    "Version 5 migreringsguide",
+    "Fieldset migreringsguide",
     "På gång",
     "Nyheter",
     "Designsystemet",
@@ -462,16 +462,6 @@
       "terms": []
     },
     {
-      "url": "gettingstarted/migration/migrating-to-v5.html",
-      "title": "Version 5 migreringsguide",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-fieldset.html",
-      "title": "Fieldset migreringsguide",
-      "terms": []
-    },
-    {
       "url": "gettingstarted/contribute-to-fkds/testverktyg.html",
       "title": "Testverktyg",
       "terms": []
@@ -494,6 +484,16 @@
     {
       "url": "gettingstarted/contribute-to-fkds/checklist-publication.html",
       "title": "Checklista vid publicering",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v5.html",
+      "title": "Version 5 migreringsguide",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-fieldset.html",
+      "title": "Fieldset migreringsguide",
       "terms": []
     },
     {
