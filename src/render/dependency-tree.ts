@@ -58,6 +58,7 @@ export class DependencyTree {
 
     public constructor(options: Pick<RenderOptions, "cacheFolder">) {
         this.filePath = path.join(options.cacheFolder, filename);
+        console.log(this.filePath);
         this.tree = new Map();
     }
 
@@ -73,8 +74,11 @@ export class DependencyTree {
 
     public async load(): Promise<void> {
         if (existsSync(this.filePath)) {
+            console.log("loading existing dependency tree");
             const content = await fs.readFile(this.filePath, "utf-8");
             this.tree = parse(content);
+        } else {
+            console.log("skipping loading existing dependency tree");
         }
     }
 
@@ -82,5 +86,27 @@ export class DependencyTree {
         const content = serialize(this.tree);
         await fs.mkdir(path.dirname(this.filePath), { recursive: true });
         await fs.writeFile(this.filePath, content, "utf-8");
+    }
+
+    public getDependenciesFor(
+        filePath: string | null,
+        options: { recursive?: boolean } = {},
+    ): Set<string> {
+        const { recursive = false } = options;
+        if (!filePath) {
+            return new Set();
+        }
+        const dependencies = new Set(this.tree.get(filePath));
+        if (recursive) {
+            for (const dependency of dependencies) {
+                for (const nested of this.getDependenciesFor(
+                    dependency,
+                    options,
+                )) {
+                    dependencies.add(nested);
+                }
+            }
+        }
+        return dependencies;
     }
 }

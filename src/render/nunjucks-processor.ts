@@ -4,6 +4,7 @@ import { type Processor } from "../processor";
 import { render } from "./render";
 import { type RenderOptions } from "./render-options";
 import { DependencyTree } from "./dependency-tree";
+import { getOutputFilePath } from "../utils";
 
 const progressbar = new cliProgress.SingleBar({
     format: " {bar} {percentage}% | {value}/{total} documents | {filename}",
@@ -61,6 +62,9 @@ export function nunjucksProcessor(
             const generatedFiles: string[] = [];
             try {
                 for (const doc of docs) {
+                    const dst = getOutputFilePath(options.outputFolder, doc.fileInfo);
+                    console.log(dst, dt.getDependenciesFor(dst, { recursive: true }));
+
                     const result = await renderDocument(doc);
                     if (result) {
                         generatedFiles.push(result.filePath);

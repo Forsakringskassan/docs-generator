@@ -536,7 +536,6 @@ export class Generator {
 
     private async _prepareFolders(): Promise<void> {
         const { outputFolder, cacheFolder, assetFolder } = this;
-        await fs.rm(cacheFolder, { force: true, recursive: true });
         if (existsSync(outputFolder)) {
             await fs.mkdir(path.dirname(cacheFolder), { recursive: true });
 
@@ -548,6 +547,6 @@ export class Generator {
         }
         await fs.mkdir(outputFolder, { recursive: true });
         await fs.mkdir(assetFolder, { recursive: true });
-        await fs.mkdir("temp", { recursive: true });
+        await fs.mkdir(cacheFolder, { recursive: true });
     }
 }
