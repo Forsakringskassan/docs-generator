@@ -536,15 +536,7 @@ export class Generator {
 
     private async _prepareFolders(): Promise<void> {
         const { outputFolder, cacheFolder, assetFolder } = this;
-        if (existsSync(outputFolder)) {
-            await fs.mkdir(path.dirname(cacheFolder), { recursive: true });
-
-            /* `fs.rename(..)` does not work on windows when subdirectories are
-             * involved, these two operations are ofcourse much slower and not
-             * atomic but better than crashing */
-            await fse.copy(outputFolder, cacheFolder);
-            await fs.rm(outputFolder, { recursive: true });
-        }
+        await fs.rm(outputFolder, { force: true, recursive: true });
         await fs.mkdir(outputFolder, { recursive: true });
         await fs.mkdir(assetFolder, { recursive: true });
         await fs.mkdir(cacheFolder, { recursive: true });
