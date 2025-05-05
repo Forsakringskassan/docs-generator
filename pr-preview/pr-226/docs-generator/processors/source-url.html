@@ -38,10 +38,10 @@
             
         ></script><link
             rel="preload"
-            href="../search-data-3ef4d6.json"
+            href="../search-data-ae92cc.json"
             as="fetch"
             crossorigin
-            integrity="sha384-1gJbgtQpnfLPdTcJj1PCEV8r7IT2qM7p+0RdoID+3mRvMFuYmU0Qp058nzwFoN2G"
+            integrity="sha384-s1BTQrzKkqZOKiSzpP4p89D2fNEUKbULBW90no5H7Y6MgE6Xw1AclYtF2kJ0Nu6p"
             id="search-data"
         />
     </head>
@@ -111,14 +111,14 @@
         
         
         <li class="docs-topnav__item ">
-            <a class="docs-topnav__anchor" href="../markdown/"> Markdown </a>
+            <a class="docs-topnav__anchor" href="../navigation/"> Navigation </a>
         </li>
         
         
         
         
         <li class="docs-topnav__item ">
-            <a class="docs-topnav__anchor" href="../navigation/"> Navigation </a>
+            <a class="docs-topnav__anchor" href="../markdown/"> Markdown </a>
         </li>
         
         
@@ -170,14 +170,14 @@
                     
                     
                     <li class="docs-contextmenu__item " style="display: none">
-                        <a class="docs-contextmenu__anchor" href="../markdown/"> Markdown </a>
+                        <a class="docs-contextmenu__anchor" href="../navigation/"> Navigation </a>
                     </li>
                     
                     
                     
                     
                     <li class="docs-contextmenu__item " style="display: none">
-                        <a class="docs-contextmenu__anchor" href="../navigation/"> Navigation </a>
+                        <a class="docs-contextmenu__anchor" href="../markdown/"> Markdown </a>
                     </li>
                     
                     
@@ -221,9 +221,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        feature/compiler-worker (<a href="https://github.com/Forsakringskassan/docs-generator/commits/5e84e3bd4dea4394a1e049d53c4279290c8b1de0">5e84e3b</a>)<br />
+        feature/compiler-worker (<a href="https://github.com/Forsakringskassan/docs-generator/commits/85a7f98e2d15d66b9b46922acf365421ec7f2406">85a7f98</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/226">PR 226</a><br />
-        2025-05-02 10:58
+        2025-05-05 13:48
     </span>
 </div>
 </div>
@@ -398,7 +398,7 @@
 template for generating links at the upper right menu.</p>
 <h2 id="usage"><a class="header-anchor" href="#usage">Usage</a></h2>
                 <div
-                    id="example-e246af"
+                    id="example-16eeb3"
                     class="code-preview code-preview--default"
                     
                     
@@ -407,7 +407,7 @@ template for generating links at the upper right menu.</p>
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> pkg = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(<span class="hljs-keyword">await</span> fs.<span class="hljs-title function_">readFile</span>(<span class="hljs-string">&quot;package.json&quot;</span>, <span class="hljs-string">&quot;utf-8&quot;</span>));
 
-<span class="hljs-keyword">const</span> docs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Generator</span>({
+<span class="hljs-keyword">const</span> docs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Generator</span>(<span class="hljs-keyword">import</span>.<span class="hljs-property">meta</span>.<span class="hljs-property">url</span>, {
     <span class="hljs-attr">processors</span>: [
         <span class="hljs-title function_">sourceUrlProcessor</span>(pkg, {
             <span class="hljs-attr">urlFormat</span>: <span class="hljs-string">&quot;{{ repository }}/tree/main/{{ path }}&quot;</span>,

@@ -38,10 +38,10 @@
             
         ></script><link
             rel="preload"
-            href="../search-data-3ef4d6.json"
+            href="../search-data-ae92cc.json"
             as="fetch"
             crossorigin
-            integrity="sha384-1gJbgtQpnfLPdTcJj1PCEV8r7IT2qM7p+0RdoID+3mRvMFuYmU0Qp058nzwFoN2G"
+            integrity="sha384-s1BTQrzKkqZOKiSzpP4p89D2fNEUKbULBW90no5H7Y6MgE6Xw1AclYtF2kJ0Nu6p"
             id="search-data"
         />
     </head>
@@ -111,14 +111,14 @@
         
         
         <li class="docs-topnav__item ">
-            <a class="docs-topnav__anchor" href="../markdown/"> Markdown </a>
+            <a class="docs-topnav__anchor" href="../navigation/"> Navigation </a>
         </li>
         
         
         
         
         <li class="docs-topnav__item ">
-            <a class="docs-topnav__anchor" href="../navigation/"> Navigation </a>
+            <a class="docs-topnav__anchor" href="../markdown/"> Markdown </a>
         </li>
         
         
@@ -170,14 +170,14 @@
                     
                     
                     <li class="docs-contextmenu__item " style="display: none">
-                        <a class="docs-contextmenu__anchor" href="../markdown/"> Markdown </a>
+                        <a class="docs-contextmenu__anchor" href="../navigation/"> Navigation </a>
                     </li>
                     
                     
                     
                     
                     <li class="docs-contextmenu__item " style="display: none">
-                        <a class="docs-contextmenu__anchor" href="../navigation/"> Navigation </a>
+                        <a class="docs-contextmenu__anchor" href="../markdown/"> Markdown </a>
                     </li>
                     
                     
@@ -221,9 +221,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        feature/compiler-worker (<a href="https://github.com/Forsakringskassan/docs-generator/commits/5e84e3bd4dea4394a1e049d53c4279290c8b1de0">5e84e3b</a>)<br />
+        feature/compiler-worker (<a href="https://github.com/Forsakringskassan/docs-generator/commits/85a7f98e2d15d66b9b46922acf365421ec7f2406">85a7f98</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/226">PR 226</a><br />
-        2025-05-02 10:58
+        2025-05-05 13:48
     </span>
 </div>
 </div>
@@ -363,7 +363,7 @@ The manifest can be written in:</p>
 <p class="docs-paragraph">This page describes the processor for writing the manifest as a file on disk, for programmatical usage use:</p>
 
                 <div
-                    id="example-337821"
+                    id="example-9374e7"
                     class="code-preview code-preview--default"
                     
                     
@@ -375,7 +375,7 @@ The manifest can be written in:</p>
         <span class="hljs-comment">/* ... */</span>
     ],
 };
-<span class="hljs-keyword">const</span> docs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Generator</span>({
+<span class="hljs-keyword">const</span> docs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Generator</span>(<span class="hljs-keyword">import</span>.<span class="hljs-property">meta</span>.<span class="hljs-property">url</span>, {
     <span class="hljs-comment">/* ... */</span>
 });
 <span class="hljs-keyword">const</span> manifest = <span class="hljs-keyword">await</span> docs.<span class="hljs-title function_">manifest</span>(config.<span class="hljs-property">sourceFiles</span>);
@@ -383,14 +383,14 @@ The manifest can be written in:</p>
                 </div>
             <h2 id="usage"><a class="header-anchor" href="#usage">Usage</a></h2>
                 <div
-                    id="example-7a05a5"
+                    id="example-b8966d"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> docs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Generator</span>({
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> docs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Generator</span>(<span class="hljs-keyword">import</span>.<span class="hljs-property">meta</span>.<span class="hljs-property">url</span>, {
     <span class="hljs-attr">processors</span>: [
         <span class="hljs-title function_">manifestProcessor</span>({
             <span class="hljs-attr">markdown</span>: <span class="hljs-string">&quot;etc/docs-manifest.md&quot;</span>,

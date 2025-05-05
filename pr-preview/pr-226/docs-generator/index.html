@@ -38,10 +38,10 @@
             
         ></script><link
             rel="preload"
-            href="./search-data-3ef4d6.json"
+            href="./search-data-ae92cc.json"
             as="fetch"
             crossorigin
-            integrity="sha384-1gJbgtQpnfLPdTcJj1PCEV8r7IT2qM7p+0RdoID+3mRvMFuYmU0Qp058nzwFoN2G"
+            integrity="sha384-s1BTQrzKkqZOKiSzpP4p89D2fNEUKbULBW90no5H7Y6MgE6Xw1AclYtF2kJ0Nu6p"
             id="search-data"
         />
     </head>
@@ -111,14 +111,14 @@
         
         
         <li class="docs-topnav__item ">
-            <a class="docs-topnav__anchor" href="./markdown/"> Markdown </a>
+            <a class="docs-topnav__anchor" href="./navigation/"> Navigation </a>
         </li>
         
         
         
         
         <li class="docs-topnav__item ">
-            <a class="docs-topnav__anchor" href="./navigation/"> Navigation </a>
+            <a class="docs-topnav__anchor" href="./markdown/"> Markdown </a>
         </li>
         
         
@@ -170,14 +170,14 @@
                     
                     
                     <li class="docs-contextmenu__item " style="display: none">
-                        <a class="docs-contextmenu__anchor" href="./markdown/"> Markdown </a>
+                        <a class="docs-contextmenu__anchor" href="./navigation/"> Navigation </a>
                     </li>
                     
                     
                     
                     
                     <li class="docs-contextmenu__item " style="display: none">
-                        <a class="docs-contextmenu__anchor" href="./navigation/"> Navigation </a>
+                        <a class="docs-contextmenu__anchor" href="./markdown/"> Markdown </a>
                     </li>
                     
                     
@@ -221,9 +221,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        feature/compiler-worker (<a href="https://github.com/Forsakringskassan/docs-generator/commits/5e84e3bd4dea4394a1e049d53c4279290c8b1de0">5e84e3b</a>)<br />
+        feature/compiler-worker (<a href="https://github.com/Forsakringskassan/docs-generator/commits/85a7f98e2d15d66b9b46922acf365421ec7f2406">85a7f98</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/226">PR 226</a><br />
-        2025-05-02 10:58
+        2025-05-05 13:48
     </span>
 </div>
 </div>
@@ -254,7 +254,7 @@
             <h2 id="setup"><a class="header-anchor" href="#setup">Setup</a></h2><h3 id="watch_development_mode"><a class="header-anchor" href="#watch_development_mode">Watch (development mode)</a></h3><p class="docs-paragraph">You can start a development server with watch for incremental builds using <code>.serve()</code>.</p>
 
                 <div
-                    id="example-d0dc09"
+                    id="example-58b7c2"
                     class="code-preview code-preview--default"
                     data-test="watch"
                     
@@ -266,7 +266,7 @@
     livereloadProcessor,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@forsakringskassan/docs-generator&quot;</span>;
 
-<span class="hljs-keyword">const</span> docs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Generator</span>({
+<span class="hljs-keyword">const</span> docs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Generator</span>(<span class="hljs-keyword">import</span>.<span class="hljs-property">meta</span>.<span class="hljs-property">url</span>, {
     <span class="hljs-attr">site</span>: {
         <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;My Awesome Site&quot;</span>,
     },
@@ -284,7 +284,7 @@ docs.<span class="hljs-title function_">serve</span>();
             <h3 id="vendor_alias"><a class="header-anchor" href="#vendor_alias">Vendor alias</a></h3><p class="docs-paragraph">Vendor alias is optional, it lets you substitute one package for another when bundling. The example below substitutes the package <code>vue</code> with the package <code>vue/dist/esm.bundle.js</code>. When an alias is given the package can be imported using the given alias as well as the original package name. For instance, when using the following configuration &quot;vue&quot; can be imported and resolved as &quot;vue/dist/esm.bundle.js&quot;.</p>
 
                 <div
-                    id="example-16b294"
+                    id="example-6b2bf7"
                     class="code-preview code-preview--default"
                     data-test="vendor-alias"
                     
@@ -296,7 +296,7 @@ docs.<span class="hljs-title function_">serve</span>();
     livereloadProcessor,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@forsakringskassan/docs-generator&quot;</span>;
 
-<span class="hljs-keyword">const</span> docs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Generator</span>({
+<span class="hljs-keyword">const</span> docs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Generator</span>(<span class="hljs-keyword">import</span>.<span class="hljs-property">meta</span>.<span class="hljs-property">url</span>, {
     <span class="hljs-attr">site</span>: {
         <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;My Awesome Site&quot;</span>,
     },
@@ -382,7 +382,7 @@ docs.<span class="hljs-title function_">serve</span>();
 <p class="docs-paragraph">Style can be compiled with <code>compileStyle(name, src, [options])</code>:</p>
 
                 <div
-                    id="example-979fdb"
+                    id="example-d12e3d"
                     class="code-preview code-preview--default"
                     
                     
@@ -391,7 +391,7 @@ docs.<span class="hljs-title function_">serve</span>();
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">Generator</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@forsakringskassan/docs-generator&quot;</span>;
 
-<span class="hljs-keyword">const</span> docs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Generator</span>({
+<span class="hljs-keyword">const</span> docs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Generator</span>(<span class="hljs-keyword">import</span>.<span class="hljs-property">meta</span>.<span class="hljs-property">url</span>, {
     <span class="hljs-attr">site</span>: {
         <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;My Awesome Site&quot;</span>,
     },
@@ -640,14 +640,14 @@ The library must have been built using <code>@fkui/icon-lib-builder</code>.</p>
                 </div>
             <h2 id="processors"><a class="header-anchor" href="#processors">Processors</a></h2><h3 id="matomo"><a class="header-anchor" href="#matomo">Matomo</a></h3>
                 <div
-                    id="example-c022b2"
+                    id="example-4ed1fb"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="diff"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> const docs = new Generator({
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> const docs = new Generator(import.meta.url, {
      processors: [
 <span class="hljs-addition">+        matomoProcessor({</span>
 <span class="hljs-addition">+            siteId: &quot;1&quot;,</span>
@@ -661,14 +661,14 @@ The library must have been built using <code>@fkui/icon-lib-builder</code>.</p>
             <p class="docs-paragraph">Optionally set <code>hostname</code> to limit which hostnames can run Matomo analytics:</p>
 
                 <div
-                    id="example-4c9189"
+                    id="example-f596e9"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="diff"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> const docs = new Generator({
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> const docs = new Generator(import.meta.url, {
      processors: [
          matomoProcessor({
              siteId: &quot;1&quot;,
