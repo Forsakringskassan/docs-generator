@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [2.27.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.26.4...v2.27.0) (2025-05-05)
+
+### Features
+
+* `Generator()` constructor takes `import.meta.url` ([6631c3f](https://github.com/Forsakringskassan/docs-generator/commit/6631c3f5ef78897caa89f6976d6c99be26392722))
+* convert package to esm ([6b7501a](https://github.com/Forsakringskassan/docs-generator/commit/6b7501aa2ea202156111981d41468eb084973867))
+
+### Bug Fixes
+
+* **deps:** update dependency dedent to v1.6.0 ([47762dc](https://github.com/Forsakringskassan/docs-generator/commit/47762dcd39831c6b1dae8f7604a93ea73a1406fd))
+
 ## [2.26.4](https://github.com/Forsakringskassan/docs-generator/compare/v2.26.3...v2.26.4) (2025-05-02)
 
 ### Bug Fixes
