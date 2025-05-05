@@ -128,7 +128,7 @@
     "@leeoniya/ufuzzy": "1.0.18",
     "chokidar": "4.0.3",
     "cli-progress": "3.12.0",
-    "dedent": "1.5.3",
+    "dedent": "1.6.0",
     "diff": "7.0.0",
     "fastest-levenshtein": "1.0.16",
     "front-matter": "4.0.2",
@@ -149,7 +149,7 @@
     "vue-docgen-api": "4.79.2"
   },
   "devDependencies": {
-    "@babel/types": "7.27.0",
+    "@babel/types": "7.27.1",
     "@forsakringskassan/commitlint-config": "1.4.2",
     "@forsakringskassan/docs-live-example": "2.0.0",
     "@forsakringskassan/eslint-config": "11.9.3",
@@ -163,7 +163,7 @@
     "@forsakringskassan/sass-module-importer": "1.1.4",
     "@forsakringskassan/stylelint-config": "2.5.1",
     "@html-validate/release-scripts": "6.8.0",
-    "@microsoft/api-extractor": "7.52.5",
+    "@microsoft/api-extractor": "7.52.7",
     "@rollup/plugin-commonjs": "28.0.3",
     "@rollup/plugin-json": "6.1.0",
     "@rollup/plugin-node-resolve": "16.0.1",
