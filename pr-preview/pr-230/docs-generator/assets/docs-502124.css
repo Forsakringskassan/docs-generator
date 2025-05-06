@@ -1250,6 +1250,7 @@ main #aside dd {
 .code-preview--default .code-preview__preview {
   border-bottom: 1px solid #ddddde;
   padding: 1.5rem;
+  overflow: auto;
 }
 
 .code-preview--borderless {
