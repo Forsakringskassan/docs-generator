@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.27.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.27.0...v2.27.1) (2025-05-09)
+
+### Bug Fixes
+
+* handle overflow in code preview ([bf5cecb](https://github.com/Forsakringskassan/docs-generator/commit/bf5cecb5c6d11d41c9daf23a012584107cb07b47))
+
 ## [2.27.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.26.4...v2.27.0) (2025-05-05)
 
 ### Features
