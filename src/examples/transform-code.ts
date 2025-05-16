@@ -157,7 +157,12 @@ function maybeDedent(value: string): string {
 /* transformations to apply based on language, transforms are run from left to right */
 const transformations: Record<string, Array<(code: string) => string>> = {
     html: [cutSnippets, stripHtmlValidateComments, maybeDedent],
-    vue: [cutSnippets, stripHtmlValidateComments, maybeDedent],
+    vue: [
+        cutSnippets,
+        stripEslintComments,
+        stripHtmlValidateComments,
+        maybeDedent,
+    ],
     javascript: [cutSnippets, stripEslintComments, maybeDedent],
     typescript: [cutSnippets, stripEslintComments, maybeDedent],
 };
