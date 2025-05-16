@@ -80,6 +80,24 @@ it("should remove eslint // comments", () => {
     `);
 });
 
+it("should remove html-validate comments", () => {
+    expect.assertions(1);
+    const source = dedent`
+        <!-- [html-validate-disable-block foo -- bar] -->
+        <div>
+            <!-- [html-validate-disable-next foo -- bar] -->
+            <!-- regular comment -->
+            <p>lorem <!-- [html-validate-disable-asdf foo -- bar] --> ipsum</p>
+        </div>
+    `;
+    expect(transformCode(source, "html")).toMatchInlineSnapshot(`
+        <div>
+            <!-- regular comment -->
+            <p>lorem ipsum</p>
+        </div>
+    `);
+});
+
 it("should cut above marker (js)", () => {
     expect.assertions(1);
     const source = dedent`
