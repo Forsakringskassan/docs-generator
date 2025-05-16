@@ -109,6 +109,18 @@ function stripEslintComments(code: string): string {
     return code.replace(matchLine, "").replace(matchEmbedded, "");
 }
 
+function stripHtmlValidateComments(code: string): string {
+    /* matches an html-validate comment occupying the whole line (entire line
+     * including newline is removed) */
+    const matchLine = /^[ \t]*(<!--\s*\[html-validate-[^\]]+]\s*-->)\n/gm;
+
+    /* matches an html-validate comment embedded with other elements (only the
+     * commend and whitespace before it is removed) */
+    const matchEmbedded = /[ \t]*(<!--\s*\[html-validate-[^\]]+]\s*-->)/g;
+
+    return code.replace(matchLine, "").replace(matchEmbedded, "");
+}
+
 function maybeDedent(value: string): string {
     /* if the string is only whitespace we preserve it exactly as is */
     if (/^\s*$/.test(value)) {
@@ -144,8 +156,8 @@ function maybeDedent(value: string): string {
 
 /* transformations to apply based on language, transforms are run from left to right */
 const transformations: Record<string, Array<(code: string) => string>> = {
-    html: [cutSnippets, maybeDedent],
-    vue: [cutSnippets, maybeDedent],
+    html: [cutSnippets, stripHtmlValidateComments, maybeDedent],
+    vue: [cutSnippets, stripHtmlValidateComments, maybeDedent],
     javascript: [cutSnippets, stripEslintComments, maybeDedent],
     typescript: [cutSnippets, stripEslintComments, maybeDedent],
 };
