@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [2.28.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.27.2...v2.28.0) (2025-05-16)
+
+### Features
+
+* **deps:** update dependency diff to v8 ([eb40ef9](https://github.com/Forsakringskassan/docs-generator/commit/eb40ef9f353571f7a16cc006c6f16aa3e0cfe7b9))
+
+### Bug Fixes
+
+* strip eslint comments from vue examples ([4268c34](https://github.com/Forsakringskassan/docs-generator/commit/4268c34436b56e2a7ab39b02ccb81a5ae1997153))
+* strip html-validate comments from code examples ([0d7cd5e](https://github.com/Forsakringskassan/docs-generator/commit/0d7cd5ee97060287dbef9d4163d842f038d99043))
+
 ## [2.27.2](https://github.com/Forsakringskassan/docs-generator/compare/v2.27.1...v2.27.2) (2025-05-16)
 
 ### Bug Fixes
