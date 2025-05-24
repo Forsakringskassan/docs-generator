@@ -20604,6 +20604,7 @@ const _hoisted_6$a = ["value"];
     emit: __emit
   }) {
     const $t2 = useTranslate();
+    const useDefaultSortOrder = ref(true);
     const searchString = ref("");
     const defaultSortValue = {
       attribute: "",
@@ -20677,7 +20678,7 @@ const _hoisted_6$a = ["value"];
       tableCallbackSortableColumns(Object.keys(props.sortableAttributes));
     });
     watch(() => props.data, () => {
-      if (props.defaultSortAttribute !== "") {
+      if (props.defaultSortAttribute !== "" && useDefaultSortOrder.value) {
         const foundAttribute = sortOrders.value.find((item) => {
           return item.attribute === props.defaultSortAttribute && item.ascending === props.defaultSortAscending;
         });
@@ -20703,6 +20704,7 @@ const _hoisted_6$a = ["value"];
       emit2("datasetSorted", sortFilterResult.value);
     }
     function onChangeSortAttribute() {
+      useDefaultSortOrder.value = false;
       sortFilterData();
       emit2("usedSortAttributes", sortAttribute.value);
     }

@@ -1,7 +1,6 @@
 {
   "terms": [
     "Todo",
-    "Theme",
     "Smoketest: tables",
     "Version",
     "Topnav",
@@ -31,6 +30,7 @@
     "Custom layout",
     "Scripts",
     "Configuration",
+    "Theme",
     "Top page",
     "Sorted Page 3",
     "Sorted Page 2",
@@ -55,11 +55,6 @@
     {
       "url": "index.html",
       "title": "Todo",
-      "terms": []
-    },
-    {
-      "url": "theme/index.html",
-      "title": "Theme",
       "terms": []
     },
     {
@@ -198,6 +193,11 @@
       "terms": []
     },
     {
+      "url": "theme/index.html",
+      "title": "Theme",
+      "terms": []
+    },
+    {
       "url": "navigation/sorted-group/top-page.html",
       "title": "Top page",
       "terms": []
@@ -299,10 +299,10 @@
     "2": 2,
     "3": 3,
     "4": 4,
-    "5": 5,
-    "6": 5,
+    "5": 4,
+    "6": 4,
     "7": 5,
-    "8": 6,
+    "8": 5,
     "9": 6,
     "10": 7,
     "11": 8,

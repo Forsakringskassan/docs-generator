@@ -1,4 +1,4 @@
-// ../vue/dist/esm/index.esm.js
+// packages/vue/dist/esm/index.esm.js
 import { defineComponent, computed, createElementBlock, openBlock, normalizeClass, renderSlot, mergeProps, createTextVNode, createElementVNode, createApp, resolveComponent, createCommentVNode, withKeys, createVNode, toDisplayString, createBlock, withCtx, Fragment, renderList, withModifiers, isVNode, Comment, getCurrentInstance, resolveDynamicComponent, capitalize, onMounted, toValue, onUnmounted, useSlots, ref, normalizeProps, guardReactiveProps, unref, Transition, Teleport, normalizeStyle, useTemplateRef, watchEffect, watch, nextTick, withDirectives, vShow, readonly, inject, toRef, provide, createSlots, vModelSelect, vModelDynamic, toHandlers, shallowRef, getCurrentScope, onScopeDispose, hasInjectionContext, defineCustomElement, effectScope, onUpdated, toRefs } from "vue";
 import { TranslationService, isSet, configLogic, focus as focus$1, ElementIdService, findTabbableElements, popFocus, pushFocus, scrollTo, documentOrderComparator, ValidationService, availableValidators, isValidatableHTMLElement, parsePostalCode, parsePlusgiro, parsePersonnummer, parseOrganisationsnummer, formatNumber as formatNumber$1, parseDate, parseBankgiro, alertScreenReader, debounce, handleTab, isEmpty, deepClone, parseNumber, parseBankAccountNumber, parseClearingNumber, formatPersonnummer as formatPersonnummer$1, formatPostalCode, parsePercent, formatPercent, isInvalidDatesConfig, isInvalidWeekdaysConfig, waitForScreenReader, focusFirst, removeFocusListener, restoreFocus, saveFocus, addFocusListener, DomUtils } from "@fkui/logic";
 import { FDate, DateFormat, groupByWeek, getWeekdayNamings } from "@fkui/date";
@@ -13235,6 +13235,7 @@ var _sfc_main$z = /* @__PURE__ */ defineComponent({
     emit: __emit
   }) {
     const $t2 = useTranslate();
+    const useDefaultSortOrder = ref(true);
     const searchString = ref("");
     const defaultSortValue = {
       attribute: "",
@@ -13308,7 +13309,7 @@ var _sfc_main$z = /* @__PURE__ */ defineComponent({
       tableCallbackSortableColumns(Object.keys(props.sortableAttributes));
     });
     watch(() => props.data, () => {
-      if (props.defaultSortAttribute !== "") {
+      if (props.defaultSortAttribute !== "" && useDefaultSortOrder.value) {
         const foundAttribute = sortOrders.value.find((item) => {
           return item.attribute === props.defaultSortAttribute && item.ascending === props.defaultSortAscending;
         });
@@ -13334,6 +13335,7 @@ var _sfc_main$z = /* @__PURE__ */ defineComponent({
       emit("datasetSorted", sortFilterResult.value);
     }
     function onChangeSortAttribute() {
+      useDefaultSortOrder.value = false;
       sortFilterData();
       emit("usedSortAttributes", sortAttribute.value);
     }
