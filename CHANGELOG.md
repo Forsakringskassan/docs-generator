@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [2.28.2](https://github.com/Forsakringskassan/docs-generator/compare/v2.28.1...v2.28.2) (2025-05-26)
+
+### Bug Fixes
+
+* **deps:** update dependency diff to v8.0.2 ([7081d46](https://github.com/Forsakringskassan/docs-generator/commit/7081d461488a7e4f4e4196ea5add123873b609f5))
+* handle pipe in `{[@link](https://github.com/link)}` tags for tsdoc compatibility ([4cb158a](https://github.com/Forsakringskassan/docs-generator/commit/4cb158ad8a64b4235ec91fbc5186be7ee0d44457))
+
 ## [2.28.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.28.0...v2.28.1) (2025-05-23)
 
 ### Bug Fixes
