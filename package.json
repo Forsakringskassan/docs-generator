@@ -114,6 +114,14 @@
       }
     ]
   },
+  "overrides": {
+    "esbuild-plugin-vue3": {
+      "esbuild": "$esbuild"
+    },
+    "nunjucks": {
+      "chokidar": "$chokidar"
+    }
+  },
   "dependencies": {
     "@babel/code-frame": "^7.0.0",
     "@babel/parser": "^7.0.0",
@@ -208,6 +216,10 @@
   "engines": {
     "node": ">= 20.5"
   },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "externalDependencies": [
     "@babel/code-frame",
     "@babel/parser",
@@ -216,13 +228,5 @@
     "nunjucks",
     "piscina",
     "vue-docgen-api"
-  ],
-  "overrides": {
-    "esbuild-plugin-vue3": {
-      "esbuild": "$esbuild"
-    },
-    "nunjucks": {
-      "chokidar": "$chokidar"
-    }
-  }
+  ]
 }
