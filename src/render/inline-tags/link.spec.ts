@@ -3,6 +3,15 @@ import { processInlineTags } from "../process-inline-tags";
 import { type SoftErrorType } from "../soft-error";
 import { linkTag } from "./link";
 
+expect.addSnapshotSerializer({
+    test() {
+        return true;
+    },
+    serialize(value: string) {
+        return value;
+    },
+});
+
 const rethrow = (err: SoftErrorType): never => {
     throw err;
 };
@@ -42,7 +51,7 @@ it("should replace inline tag with processed content", () => {
     const text = "{@link foo}";
     expect(
         processInlineTags(tags, doc, docs, text, rethrow),
-    ).toMatchInlineSnapshot(`"<a href="./foo.html">foo</a>"`);
+    ).toMatchInlineSnapshot(`<a href="./foo.html">foo</a>`);
 });
 
 it("should create relative links", () => {
@@ -50,7 +59,7 @@ it("should create relative links", () => {
     const text = "{@link bar}";
     expect(
         processInlineTags(tags, doc, docs, text, rethrow),
-    ).toMatchInlineSnapshot(`"<a href="../other/bar.html">bar</a>"`);
+    ).toMatchInlineSnapshot(`<a href="../other/bar.html">bar</a>`);
 });
 
 it("should strip index.html and link directly to folder", () => {
@@ -58,7 +67,7 @@ it("should strip index.html and link directly to folder", () => {
     const text = "{@link baz}";
     expect(
         processInlineTags(tags, doc, docs, text, rethrow),
-    ).toMatchInlineSnapshot(`"<a href="../other">baz</a>"`);
+    ).toMatchInlineSnapshot(`<a href="../other">baz</a>`);
 });
 
 it("should handle linking to index.html in its own folder", () => {
@@ -66,7 +75,7 @@ it("should handle linking to index.html in its own folder", () => {
     const text = "{@link index}";
     expect(
         processInlineTags(tags, doc, docs, text, rethrow),
-    ).toMatchInlineSnapshot(`"<a href="./">index</a>"`);
+    ).toMatchInlineSnapshot(`<a href="./">index</a>`);
 });
 
 it("should use document title as link title", () => {
@@ -75,7 +84,7 @@ it("should use document title as link title", () => {
     expect(
         processInlineTags(tags, doc, docs, text, rethrow),
     ).toMatchInlineSnapshot(
-        `"<a href="./with-title.html">Document with title</a>"`,
+        `<a href="./with-title.html">Document with title</a>`,
     );
 });
 
@@ -84,7 +93,7 @@ it("should use document name as link title", () => {
     const text = "{@link with-name}";
     expect(
         processInlineTags(tags, doc, docs, text, rethrow),
-    ).toMatchInlineSnapshot(`"<a href="./with-name.html">with-name</a>"`);
+    ).toMatchInlineSnapshot(`<a href="./with-name.html">with-name</a>`);
 });
 
 it("should use matching component as link title", () => {
@@ -92,8 +101,8 @@ it("should use matching component as link title", () => {
     const text = "{@link FFirst}\n{@link FSecond}";
     expect(processInlineTags(tags, doc, docs, text, rethrow))
         .toMatchInlineSnapshot(`
-        "<a href="./f-components.html"><code>FFirst</code></a>
-        <a href="./f-components.html"><code>FSecond</code></a>"
+        <a href="./f-components.html"><code>FFirst</code></a>
+        <a href="./f-components.html"><code>FSecond</code></a>
     `);
 });
 
@@ -102,9 +111,7 @@ it("should use explicit title when given", () => {
     const text = "{@link with-title My awesome title}";
     expect(
         processInlineTags(tags, doc, docs, text, rethrow),
-    ).toMatchInlineSnapshot(
-        `"<a href="./with-title.html">My awesome title</a>"`,
-    );
+    ).toMatchInlineSnapshot(`<a href="./with-title.html">My awesome title</a>`);
 });
 
 it("should handle hash", () => {
@@ -112,7 +119,7 @@ it("should handle hash", () => {
     const text = "{@link foo#bar}";
     expect(
         processInlineTags(tags, doc, docs, text, rethrow),
-    ).toMatchInlineSnapshot(`"<a href="./foo.html#bar">foo</a>"`);
+    ).toMatchInlineSnapshot(`<a href="./foo.html#bar">foo</a>`);
 });
 
 it("should handle hash and title", () => {
@@ -120,7 +127,7 @@ it("should handle hash and title", () => {
     const text = "{@link foo#bar Bar at foo}";
     expect(
         processInlineTags(tags, doc, docs, text, rethrow),
-    ).toMatchInlineSnapshot(`"<a href="./foo.html#bar">Bar at foo</a>"`);
+    ).toMatchInlineSnapshot(`<a href="./foo.html#bar">Bar at foo</a>`);
 });
 
 it("should handle absolute url (http)", () => {
@@ -128,7 +135,7 @@ it("should handle absolute url (http)", () => {
     const text = "{@link http://example.net foo}";
     expect(
         processInlineTags(tags, doc, docs, text, rethrow),
-    ).toMatchInlineSnapshot(`"<a href="http://example.net">foo</a>"`);
+    ).toMatchInlineSnapshot(`<a href="http://example.net">foo</a>`);
 });
 
 it("should handle absolute url (https)", () => {
@@ -136,7 +143,7 @@ it("should handle absolute url (https)", () => {
     const text = "{@link https://example.net foo}";
     expect(
         processInlineTags(tags, doc, docs, text, rethrow),
-    ).toMatchInlineSnapshot(`"<a href="https://example.net">foo</a>"`);
+    ).toMatchInlineSnapshot(`<a href="https://example.net">foo</a>`);
 });
 
 it("should handle absolute url with hash", () => {
@@ -144,7 +151,7 @@ it("should handle absolute url with hash", () => {
     const text = "{@link https://example.net/foo#bar baz}";
     expect(
         processInlineTags(tags, doc, docs, text, rethrow),
-    ).toMatchInlineSnapshot(`"<a href="https://example.net/foo#bar">baz</a>"`);
+    ).toMatchInlineSnapshot(`<a href="https://example.net/foo#bar">baz</a>`);
 });
 
 it("should handle absolute url without title", () => {
@@ -153,7 +160,7 @@ it("should handle absolute url without title", () => {
     expect(
         processInlineTags(tags, doc, docs, text, rethrow),
     ).toMatchInlineSnapshot(
-        `"<a href="https://example.net">https://example.net</a>"`,
+        `<a href="https://example.net">https://example.net</a>`,
     );
 });
 
