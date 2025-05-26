@@ -63,4 +63,6 @@ jobs:
     deploy-documentation:
         needs: [release]
         name: Deploy new documentation
+        permissions:
+            contents: write
         uses: ./.github/workflows/docs.yml
