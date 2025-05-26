@@ -111,6 +111,19 @@ it("should use explicit title when given", () => {
     );
 });
 
+it("should trim pipe from explicit title (tsdoc compatibility)", () => {
+    expect.assertions(1);
+    const text = [
+        "{@link with-title | My awesome title}",
+        "{@link with-title   |   My awesome title}",
+    ].join("\n");
+    const result = processInlineTags(tags, doc, docs, text, rethrow);
+    expect(result).toMatchInlineSnapshot(`
+        <a href="./with-title.html">My awesome title</a>
+        <a href="./with-title.html">My awesome title</a>
+    `);
+});
+
 it("should handle hash", () => {
     expect.assertions(1);
     const text = "{@link foo#bar}";
