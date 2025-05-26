@@ -49,41 +49,36 @@ const docs = [
 it("should replace inline tag with processed content", () => {
     expect.assertions(1);
     const text = "{@link foo}";
-    expect(
-        processInlineTags(tags, doc, docs, text, rethrow),
-    ).toMatchInlineSnapshot(`<a href="./foo.html">foo</a>`);
+    const result = processInlineTags(tags, doc, docs, text, rethrow);
+    expect(result).toMatchInlineSnapshot(`<a href="./foo.html">foo</a>`);
 });
 
 it("should create relative links", () => {
     expect.assertions(1);
     const text = "{@link bar}";
-    expect(
-        processInlineTags(tags, doc, docs, text, rethrow),
-    ).toMatchInlineSnapshot(`<a href="../other/bar.html">bar</a>`);
+    const result = processInlineTags(tags, doc, docs, text, rethrow);
+    expect(result).toMatchInlineSnapshot(`<a href="../other/bar.html">bar</a>`);
 });
 
 it("should strip index.html and link directly to folder", () => {
     expect.assertions(1);
     const text = "{@link baz}";
-    expect(
-        processInlineTags(tags, doc, docs, text, rethrow),
-    ).toMatchInlineSnapshot(`<a href="../other">baz</a>`);
+    const result = processInlineTags(tags, doc, docs, text, rethrow);
+    expect(result).toMatchInlineSnapshot(`<a href="../other">baz</a>`);
 });
 
 it("should handle linking to index.html in its own folder", () => {
     expect.assertions(1);
     const text = "{@link index}";
-    expect(
-        processInlineTags(tags, doc, docs, text, rethrow),
-    ).toMatchInlineSnapshot(`<a href="./">index</a>`);
+    const result = processInlineTags(tags, doc, docs, text, rethrow);
+    expect(result).toMatchInlineSnapshot(`<a href="./">index</a>`);
 });
 
 it("should use document title as link title", () => {
     expect.assertions(1);
     const text = "{@link with-title}";
-    expect(
-        processInlineTags(tags, doc, docs, text, rethrow),
-    ).toMatchInlineSnapshot(
+    const result = processInlineTags(tags, doc, docs, text, rethrow);
+    expect(result).toMatchInlineSnapshot(
         `<a href="./with-title.html">Document with title</a>`,
     );
 });
@@ -91,16 +86,17 @@ it("should use document title as link title", () => {
 it("should use document name as link title", () => {
     expect.assertions(1);
     const text = "{@link with-name}";
-    expect(
-        processInlineTags(tags, doc, docs, text, rethrow),
-    ).toMatchInlineSnapshot(`<a href="./with-name.html">with-name</a>`);
+    const result = processInlineTags(tags, doc, docs, text, rethrow);
+    expect(result).toMatchInlineSnapshot(
+        `<a href="./with-name.html">with-name</a>`,
+    );
 });
 
 it("should use matching component as link title", () => {
     expect.assertions(1);
     const text = "{@link FFirst}\n{@link FSecond}";
-    expect(processInlineTags(tags, doc, docs, text, rethrow))
-        .toMatchInlineSnapshot(`
+    const result = processInlineTags(tags, doc, docs, text, rethrow);
+    expect(result).toMatchInlineSnapshot(`
         <a href="./f-components.html"><code>FFirst</code></a>
         <a href="./f-components.html"><code>FSecond</code></a>
     `);
@@ -109,57 +105,60 @@ it("should use matching component as link title", () => {
 it("should use explicit title when given", () => {
     expect.assertions(1);
     const text = "{@link with-title My awesome title}";
-    expect(
-        processInlineTags(tags, doc, docs, text, rethrow),
-    ).toMatchInlineSnapshot(`<a href="./with-title.html">My awesome title</a>`);
+    const result = processInlineTags(tags, doc, docs, text, rethrow);
+    expect(result).toMatchInlineSnapshot(
+        `<a href="./with-title.html">My awesome title</a>`,
+    );
 });
 
 it("should handle hash", () => {
     expect.assertions(1);
     const text = "{@link foo#bar}";
-    expect(
-        processInlineTags(tags, doc, docs, text, rethrow),
-    ).toMatchInlineSnapshot(`<a href="./foo.html#bar">foo</a>`);
+    const result = processInlineTags(tags, doc, docs, text, rethrow);
+    expect(result).toMatchInlineSnapshot(`<a href="./foo.html#bar">foo</a>`);
 });
 
 it("should handle hash and title", () => {
     expect.assertions(1);
     const text = "{@link foo#bar Bar at foo}";
-    expect(
-        processInlineTags(tags, doc, docs, text, rethrow),
-    ).toMatchInlineSnapshot(`<a href="./foo.html#bar">Bar at foo</a>`);
+    const result = processInlineTags(tags, doc, docs, text, rethrow);
+    expect(result).toMatchInlineSnapshot(
+        `<a href="./foo.html#bar">Bar at foo</a>`,
+    );
 });
 
 it("should handle absolute url (http)", () => {
     expect.assertions(1);
     const text = "{@link http://example.net foo}";
-    expect(
-        processInlineTags(tags, doc, docs, text, rethrow),
-    ).toMatchInlineSnapshot(`<a href="http://example.net">foo</a>`);
+    const result = processInlineTags(tags, doc, docs, text, rethrow);
+    expect(result).toMatchInlineSnapshot(
+        `<a href="http://example.net">foo</a>`,
+    );
 });
 
 it("should handle absolute url (https)", () => {
     expect.assertions(1);
     const text = "{@link https://example.net foo}";
-    expect(
-        processInlineTags(tags, doc, docs, text, rethrow),
-    ).toMatchInlineSnapshot(`<a href="https://example.net">foo</a>`);
+    const result = processInlineTags(tags, doc, docs, text, rethrow);
+    expect(result).toMatchInlineSnapshot(
+        `<a href="https://example.net">foo</a>`,
+    );
 });
 
 it("should handle absolute url with hash", () => {
     expect.assertions(1);
     const text = "{@link https://example.net/foo#bar baz}";
-    expect(
-        processInlineTags(tags, doc, docs, text, rethrow),
-    ).toMatchInlineSnapshot(`<a href="https://example.net/foo#bar">baz</a>`);
+    const result = processInlineTags(tags, doc, docs, text, rethrow);
+    expect(result).toMatchInlineSnapshot(
+        `<a href="https://example.net/foo#bar">baz</a>`,
+    );
 });
 
 it("should handle absolute url without title", () => {
     expect.assertions(1);
     const text = "{@link https://example.net}";
-    expect(
-        processInlineTags(tags, doc, docs, text, rethrow),
-    ).toMatchInlineSnapshot(
+    const result = processInlineTags(tags, doc, docs, text, rethrow);
+    expect(result).toMatchInlineSnapshot(
         `<a href="https://example.net">https://example.net</a>`,
     );
 });
