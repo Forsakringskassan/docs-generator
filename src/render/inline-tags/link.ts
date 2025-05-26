@@ -29,7 +29,8 @@ function getLinkTitle(
     explicitTitle?: string,
 ): string {
     if (explicitTitle) {
-        return explicitTitle;
+        /* trim leading pipe (tsdoc compatibility) if present */
+        return explicitTitle.replace(/^[\\|]\s*/, "");
     }
     const { title, component } = doc.attributes;
     if (component && component.some((it) => it.name === key)) {
