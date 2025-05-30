@@ -242,18 +242,18 @@
     "FProgressbarPageObject: value() method",
     "FProgressbarPageObject: progressStatus() method",
     "FProgressbarPageObject: el() method",
-    "FMinimizablePanelPageObject: constructor",
-    "FMinimizablePanelPageObject: toggleButton() method",
-    "FMinimizablePanelPageObject: header() method",
-    "FMinimizablePanelPageObject: footer() method",
-    "FMinimizablePanelPageObject: el() method",
-    "FMinimizablePanelPageObject: content() method",
     "FLabelPageObject: FLabelPageObject() constructor",
     "FLabelPageObject: formatDescription() method",
     "FLabelPageObject: errorMessage() method",
     "FLabelPageObject: errorIcon() method",
     "FLabelPageObject: description() method",
     "FInteractiveTablePageObject: cell() method",
+    "FMinimizablePanelPageObject: constructor",
+    "FMinimizablePanelPageObject: toggleButton() method",
+    "FMinimizablePanelPageObject: header() method",
+    "FMinimizablePanelPageObject: footer() method",
+    "FMinimizablePanelPageObject: el() method",
+    "FMinimizablePanelPageObject: content() method",
     "FFileItemPageObject: FFileItemPageObject() constructor",
     "FFileItemPageObject: typeOfFile() method",
     "FFileItemPageObject: fileName() method",
@@ -1228,36 +1228,6 @@
       "terms": []
     },
     {
-      "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject.html",
-      "title": "FMinimizablePanelPageObject: constructor",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-toggle-button.html",
-      "title": "FMinimizablePanelPageObject: toggleButton() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-header.html",
-      "title": "FMinimizablePanelPageObject: header() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-footer.html",
-      "title": "FMinimizablePanelPageObject: footer() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-el.html",
-      "title": "FMinimizablePanelPageObject: el() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-content.html",
-      "title": "FMinimizablePanelPageObject: content() method",
-      "terms": []
-    },
-    {
       "url": "functions/cypress/pageobjects/FLabelPageObject/index.html",
       "title": "FLabelPageObject: FLabelPageObject() constructor",
       "terms": []
@@ -1285,6 +1255,36 @@
     {
       "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
       "title": "FInteractiveTablePageObject: cell() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject.html",
+      "title": "FMinimizablePanelPageObject: constructor",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-toggle-button.html",
+      "title": "FMinimizablePanelPageObject: toggleButton() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-header.html",
+      "title": "FMinimizablePanelPageObject: header() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-footer.html",
+      "title": "FMinimizablePanelPageObject: footer() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-el.html",
+      "title": "FMinimizablePanelPageObject: el() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-content.html",
+      "title": "FMinimizablePanelPageObject: content() method",
       "terms": []
     },
     {
