@@ -1880,7 +1880,7 @@ var motdProxy = {
     }
   }
 };
-var current = "v2.28.2";
+var current = "v2.28.3";
 var message = "Det finns en nyare version";
 function isOutside(rect, point) {
   if (point.y < rect.top || point.y > rect.top + rect.height) {
