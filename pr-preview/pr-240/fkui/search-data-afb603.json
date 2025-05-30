@@ -61,15 +61,15 @@
     "Fieldset migreringsguide",
     "FCrudButton migreringsguide",
     "FCrudButton",
-    "På gång",
-    "Nyheter",
-    "Designsystemet",
     "Testverktyg",
     "Releaseprocess",
     "För utvecklare",
     "Commits och commitmeddelanden",
     "Riktlinjer för kod",
     "Checklista vid publicering",
+    "På gång",
+    "Nyheter",
+    "Designsystemet",
     "Vue.js",
     "Om testverktyg",
     "Generella funktioner",
@@ -505,21 +505,6 @@
       ]
     },
     {
-      "url": "gettingstarted/about/release-plan.html",
-      "title": "På gång",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/about/news.html",
-      "title": "Nyheter",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/about/index.html",
-      "title": "Designsystemet",
-      "terms": []
-    },
-    {
       "url": "gettingstarted/contribute-to-fkds/testverktyg.html",
       "title": "Testverktyg",
       "terms": []
@@ -547,6 +532,21 @@
     {
       "url": "gettingstarted/contribute-to-fkds/checklist-publication.html",
       "title": "Checklista vid publicering",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/about/release-plan.html",
+      "title": "På gång",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/about/news.html",
+      "title": "Nyheter",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/about/index.html",
+      "title": "Designsystemet",
       "terms": []
     },
     {
