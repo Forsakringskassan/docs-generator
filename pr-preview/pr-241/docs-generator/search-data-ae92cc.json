@@ -41,12 +41,12 @@
     "Messagebox",
     "Details",
     "Alternative text",
-    "Documenting Vue components",
     "Vue examples",
     "Javascript and Typescript",
     "Fullscreen examples",
     "Diff",
     "Code preview",
+    "Documenting Vue components",
     "README",
     "Live example",
     "Changelog"
@@ -248,11 +248,6 @@
       "terms": []
     },
     {
-      "url": "markdown/api/vue.html",
-      "title": "Documenting Vue components",
-      "terms": []
-    },
-    {
       "url": "markdown/code-preview/vue.html",
       "title": "Vue examples",
       "terms": []
@@ -275,6 +270,11 @@
     {
       "url": "markdown/code-preview/index.html",
       "title": "Code preview",
+      "terms": []
+    },
+    {
+      "url": "markdown/api/vue.html",
+      "title": "Documenting Vue components",
       "terms": []
     },
     {
