@@ -148,7 +148,7 @@
     "vue-docgen-api": "4.79.2"
   },
   "devDependencies": {
-    "@babel/types": "7.27.3",
+    "@babel/types": "7.27.6",
     "@forsakringskassan/commitlint-config": "2.0.2",
     "@forsakringskassan/docs-live-example": "2.0.0",
     "@forsakringskassan/eslint-config": "11.9.10",
