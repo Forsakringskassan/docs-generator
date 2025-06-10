@@ -171,7 +171,7 @@
     "@types/cli-progress": "3.11.6",
     "@types/d3": "7.4.3",
     "@types/dedent": "0.7.2",
-    "@types/express": "5.0.2",
+    "@types/express": "5.0.3",
     "@types/fs-extra": "11.0.4",
     "@types/glob": "8.1.0",
     "@types/jest": "29.5.14",
