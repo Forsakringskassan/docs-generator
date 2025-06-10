@@ -31,22 +31,22 @@
     "Custom layout",
     "Scripts",
     "Configuration",
-    "Nested Page 3",
-    "Nested Page 2",
-    "Nested Page 1",
     "Top page",
     "Sorted Page 3",
     "Sorted Page 2",
     "Sorted Page 1",
+    "Nested Page 3",
+    "Nested Page 2",
+    "Nested Page 1",
+    "Messagebox",
+    "Details",
+    "Alternative text",
     "Vue examples",
     "Javascript and Typescript",
     "Fullscreen examples",
     "Diff",
     "Code preview",
     "Documenting Vue components",
-    "Messagebox",
-    "Details",
-    "Alternative text",
     "README",
     "Live example",
     "Changelog"
@@ -198,21 +198,6 @@
       "terms": []
     },
     {
-      "url": "navigation/group/nested-page-3.html",
-      "title": "Nested Page 3",
-      "terms": []
-    },
-    {
-      "url": "navigation/group/nested-page-2.html",
-      "title": "Nested Page 2",
-      "terms": []
-    },
-    {
-      "url": "navigation/group/nested-page-1.html",
-      "title": "Nested Page 1",
-      "terms": []
-    },
-    {
       "url": "navigation/sorted-group/top-page.html",
       "title": "Top page",
       "terms": []
@@ -230,6 +215,36 @@
     {
       "url": "navigation/sorted-group/sorted-page-1.html",
       "title": "Sorted Page 1",
+      "terms": []
+    },
+    {
+      "url": "navigation/group/nested-page-3.html",
+      "title": "Nested Page 3",
+      "terms": []
+    },
+    {
+      "url": "navigation/group/nested-page-2.html",
+      "title": "Nested Page 2",
+      "terms": []
+    },
+    {
+      "url": "navigation/group/nested-page-1.html",
+      "title": "Nested Page 1",
+      "terms": []
+    },
+    {
+      "url": "markdown/containers/messagebox.html",
+      "title": "Messagebox",
+      "terms": []
+    },
+    {
+      "url": "markdown/containers/details.html",
+      "title": "Details",
+      "terms": []
+    },
+    {
+      "url": "markdown/containers/alt-text.html",
+      "title": "Alternative text",
       "terms": []
     },
     {
@@ -260,21 +275,6 @@
     {
       "url": "markdown/api/vue.html",
       "title": "Documenting Vue components",
-      "terms": []
-    },
-    {
-      "url": "markdown/containers/messagebox.html",
-      "title": "Messagebox",
-      "terms": []
-    },
-    {
-      "url": "markdown/containers/details.html",
-      "title": "Details",
-      "terms": []
-    },
-    {
-      "url": "markdown/containers/alt-text.html",
-      "title": "Alternative text",
       "terms": []
     },
     {
