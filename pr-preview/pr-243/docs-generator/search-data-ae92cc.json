@@ -16,14 +16,14 @@
     "Processors",
     "Extract examples",
     "Cookie",
-    "Redirects",
-    "Mermaid",
-    "Markdown",
-    "Definition lists",
     "Navigation",
     "Child Page 3",
     "Child Page 2",
     "Child Page 1",
+    "Redirects",
+    "Mermaid",
+    "Markdown",
+    "Definition lists",
     "Example",
     "Plumbing",
     "Overriding templates",
@@ -31,6 +31,13 @@
     "Custom layout",
     "Scripts",
     "Configuration",
+    "Top page",
+    "Sorted Page 3",
+    "Sorted Page 2",
+    "Sorted Page 1",
+    "Nested Page 3",
+    "Nested Page 2",
+    "Nested Page 1",
     "Messagebox",
     "Details",
     "Alternative text",
@@ -40,13 +47,6 @@
     "Diff",
     "Code preview",
     "Documenting Vue components",
-    "Nested Page 3",
-    "Nested Page 2",
-    "Nested Page 1",
-    "Top page",
-    "Sorted Page 3",
-    "Sorted Page 2",
-    "Sorted Page 1",
     "README",
     "Live example",
     "Changelog"
@@ -123,26 +123,6 @@
       "terms": []
     },
     {
-      "url": "markdown/redirects.html",
-      "title": "Redirects",
-      "terms": []
-    },
-    {
-      "url": "markdown/mermaid.html",
-      "title": "Mermaid",
-      "terms": []
-    },
-    {
-      "url": "markdown/index.html",
-      "title": "Markdown",
-      "terms": []
-    },
-    {
-      "url": "markdown/definition-lists.html",
-      "title": "Definition lists",
-      "terms": []
-    },
-    {
       "url": "navigation/index.html",
       "title": "Navigation",
       "terms": []
@@ -160,6 +140,26 @@
     {
       "url": "navigation/child-page-1.html",
       "title": "Child Page 1",
+      "terms": []
+    },
+    {
+      "url": "markdown/redirects.html",
+      "title": "Redirects",
+      "terms": []
+    },
+    {
+      "url": "markdown/mermaid.html",
+      "title": "Mermaid",
+      "terms": []
+    },
+    {
+      "url": "markdown/index.html",
+      "title": "Markdown",
+      "terms": []
+    },
+    {
+      "url": "markdown/definition-lists.html",
+      "title": "Definition lists",
       "terms": []
     },
     {
@@ -195,6 +195,41 @@
     {
       "url": "configuration/index.html",
       "title": "Configuration",
+      "terms": []
+    },
+    {
+      "url": "navigation/sorted-group/top-page.html",
+      "title": "Top page",
+      "terms": []
+    },
+    {
+      "url": "navigation/sorted-group/sorted-page-3.html",
+      "title": "Sorted Page 3",
+      "terms": []
+    },
+    {
+      "url": "navigation/sorted-group/sorted-page-2.html",
+      "title": "Sorted Page 2",
+      "terms": []
+    },
+    {
+      "url": "navigation/sorted-group/sorted-page-1.html",
+      "title": "Sorted Page 1",
+      "terms": []
+    },
+    {
+      "url": "navigation/group/nested-page-3.html",
+      "title": "Nested Page 3",
+      "terms": []
+    },
+    {
+      "url": "navigation/group/nested-page-2.html",
+      "title": "Nested Page 2",
+      "terms": []
+    },
+    {
+      "url": "navigation/group/nested-page-1.html",
+      "title": "Nested Page 1",
       "terms": []
     },
     {
@@ -240,41 +275,6 @@
     {
       "url": "markdown/api/vue.html",
       "title": "Documenting Vue components",
-      "terms": []
-    },
-    {
-      "url": "navigation/group/nested-page-3.html",
-      "title": "Nested Page 3",
-      "terms": []
-    },
-    {
-      "url": "navigation/group/nested-page-2.html",
-      "title": "Nested Page 2",
-      "terms": []
-    },
-    {
-      "url": "navigation/group/nested-page-1.html",
-      "title": "Nested Page 1",
-      "terms": []
-    },
-    {
-      "url": "navigation/sorted-group/top-page.html",
-      "title": "Top page",
-      "terms": []
-    },
-    {
-      "url": "navigation/sorted-group/sorted-page-3.html",
-      "title": "Sorted Page 3",
-      "terms": []
-    },
-    {
-      "url": "navigation/sorted-group/sorted-page-2.html",
-      "title": "Sorted Page 2",
-      "terms": []
-    },
-    {
-      "url": "navigation/sorted-group/sorted-page-1.html",
-      "title": "Sorted Page 1",
       "terms": []
     },
     {
