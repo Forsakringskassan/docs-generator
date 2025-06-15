@@ -188,7 +188,7 @@
     "http-server": "14.1.1",
     "husky": "9.1.7",
     "is-ci": "4.1.0",
-    "jest-environment-jsdom": "29.7.0",
+    "jest-environment-jsdom": "30.0.0",
     "memfs": "4.17.2",
     "minimatch": "10.0.3",
     "npm-pkg-lint": "4.0.0",
