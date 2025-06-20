@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.28.4](https://github.com/Forsakringskassan/docs-generator/compare/v2.28.3...v2.28.4) (2025-06-20)
+
+### Bug Fixes
+
+* **deps:** update dependency glob to v11.0.3 ([241735a](https://github.com/Forsakringskassan/docs-generator/commit/241735a649fbfb6f65b3f43ac64663bbcadc98c6))
+
 ## [2.28.3](https://github.com/Forsakringskassan/docs-generator/compare/v2.28.2...v2.28.3) (2025-05-30)
 
 ### Bug Fixes
