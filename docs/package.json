@@ -15,7 +15,7 @@
   "devDependencies": {
     "@forsakringskassan/docs-generator": "file:..",
     "@forsakringskassan/docs-live-example": "2.0.0",
-    "vue": "3.5.16"
+    "vue": "3.5.17"
   },
   "engines": {
     "node": ">= 16"
