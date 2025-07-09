@@ -47,6 +47,7 @@ function setup(): void {
     let searchTerm = "";
     let active = 0;
     const uf = new uFuzzy({
+        alpha: "a-zåäö",
         intraIns: Infinity,
     });
 
