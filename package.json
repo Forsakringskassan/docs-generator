@@ -158,7 +158,7 @@
     "@forsakringskassan/eslint-config-typescript": "11.9.14",
     "@forsakringskassan/eslint-config-vue": "11.9.14",
     "@forsakringskassan/jest-config": "29.6.4",
-    "@forsakringskassan/prettier-config": "3.1.4",
+    "@forsakringskassan/prettier-config": "3.1.6",
     "@forsakringskassan/sass-module-importer": "1.1.4",
     "@forsakringskassan/stylelint-config": "2.5.3",
     "@html-validate/release-scripts": "6.9.0",
