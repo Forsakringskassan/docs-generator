@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## [2.28.7](https://github.com/Forsakringskassan/docs-generator/compare/v2.28.6...v2.28.7) (2025-07-11)
+
+### Bug Fixes
+
+* **deps:** update dependency i18next to v25.3.1 ([e3ad8c6](https://github.com/Forsakringskassan/docs-generator/commit/e3ad8c66e09f439e98ca57dc09d539f94e1e9400))
+* **deps:** update dependency mermaid to v11.8.0 ([5d4fce4](https://github.com/Forsakringskassan/docs-generator/commit/5d4fce4df6125301c6b7dd2282c70a5af87b783f))
+* **deps:** update dependency mermaid to v11.8.1 ([a12f091](https://github.com/Forsakringskassan/docs-generator/commit/a12f09186e61a36b9a6964c1a4b7e505e5e2bcf5))
+* search not supporting swedish letters (fixes SFKUI-7301) ([9f137a8](https://github.com/Forsakringskassan/docs-generator/commit/9f137a8778a76209f0925bd81640a6b5fc9dca19))
+
 ## [2.28.6](https://github.com/Forsakringskassan/docs-generator/compare/v2.28.5...v2.28.6) (2025-07-04)
 
 ### Bug Fixes
