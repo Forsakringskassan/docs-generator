@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.28.9](https://github.com/Forsakringskassan/docs-generator/compare/v2.28.8...v2.28.9) (2025-07-25)
+
+### Bug Fixes
+
+* **deps:** update dependency mermaid to v11.9.0 ([4f6db78](https://github.com/Forsakringskassan/docs-generator/commit/4f6db78b9488de4d9e8e0a9fe884e1431be47720))
+
 ## [2.28.8](https://github.com/Forsakringskassan/docs-generator/compare/v2.28.7...v2.28.8) (2025-07-18)
 
 ### Bug Fixes
