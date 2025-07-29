@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.28.10](https://github.com/Forsakringskassan/docs-generator/compare/v2.28.9...v2.28.10) (2025-07-29)
+
+### Bug Fixes
+
+* make express actually optional ([435bf23](https://github.com/Forsakringskassan/docs-generator/commit/435bf2343e73a13c75b9c999fa5d5d6d121de3db))
+
 ## [2.28.9](https://github.com/Forsakringskassan/docs-generator/compare/v2.28.8...v2.28.9) (2025-07-25)
 
 ### Bug Fixes
