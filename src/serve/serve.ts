@@ -1,7 +1,6 @@
 import path from "node:path/posix";
 import { type AddressInfo } from "net";
 import { watch } from "chokidar";
-import express from "express";
 import tinylr from "tiny-lr";
 import { keypress } from "./keypress";
 import { printMenu } from "./print-menu";
@@ -67,10 +66,31 @@ function createRebuilder(
     return rebuild;
 }
 
+function isImportError(err: unknown): err is Error & { code: string } {
+    return Boolean(err && typeof err === "object" && "code" in err);
+}
+
+async function importExpress(): Promise<typeof import("express")> {
+    try {
+        const { default: express } = await import("express");
+        return express;
+    } catch (err: unknown) {
+        if (isImportError(err) && err.code === "ERR_MODULE_NOT_FOUND") {
+            throw new Error(
+                "docs-generator serve() requires the optional peerDependency express to be installed",
+                { cause: err },
+            );
+        } else {
+            throw err;
+        }
+    }
+}
+
 /**
  * @internal
  */
 export async function serve(options: ServeOptions): Promise<void> {
+    const express = await importExpress();
     const app = express();
     app.use(express.static(options.outputFolder));
     const server = app.listen(8080);
