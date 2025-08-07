@@ -1,0 +1,917 @@
+<!doctype html>
+<html lang="en" class="layout--default" data-root-url=".">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Changelog - FK Documentation generator</title><link
+            rel="stylesheet"
+            href="./assets/docs-502124.css"
+            crossorigin
+            integrity="sha384-b9yOMG40GWRJks0Uhe4d9HaiHck83cQJ/9Vg4s7NWCL7Vzyn2IGLS55NGv15O6JI"
+            
+        />
+        <link
+            rel="stylesheet"
+            href="./assets/fkui-1ed4af.css"
+            crossorigin
+            integrity="sha384-jnSjTYwUXMACmMVNQsJ3ic3Q6Y2ZxJTpGAiB0UnlRFw/OJPb8A7TmAMed6yn/rCc"
+            
+        />
+
+        <script type="importmap">
+            {
+  "imports": {
+    "vue": "./assets/vendor-vue-3f4a69.js",
+    "@forsakringskassan/docs-live-example": "./assets/vendor-forsakringskassan-docs-live-example-cd0a92.js"
+  },
+  "integrity": {
+    "./assets/vendor-vue-3f4a69.js": "sha384-9kC/iBWoAZc9mkm5u7Py1FGId8/adts8z1xdK4GztRyr61P7RiB/1GXTXyEVIU6i",
+    "./assets/vendor-forsakringskassan-docs-live-example-cd0a92.js": "sha384-+ytYxTVX2pqx9YmX3DG6AjvU6MKa+nwiMe2/wgRw8vjsWe2S3ukrvVqwESMNT4f5"
+  }
+}
+        </script><script
+            src="./assets/bootstrap-70dfe7.js"
+            
+            crossorigin
+            integrity="sha384-qeeMMOAV8mIJBDpYIxI9+o1OYYBiPirDLapMJBSFBtgBH1J663eUBI9SfBjmIWoq"
+            
+        ></script><link
+            rel="preload"
+            href="./search-data-ae92cc.json"
+            as="fetch"
+            crossorigin
+            integrity="sha384-s1BTQrzKkqZOKiSzpP4p89D2fNEUKbULBW90no5H7Y6MgE6Xw1AclYtF2kJ0Nu6p"
+            id="search-data"
+        />
+    </head>
+    <body><div class="cookie-warning">
+    <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
+    <h1>Kakor på webbplatsen</h1>
+    <p>
+        Vi använder kakor (cookies) för att webbplatsen ska fungera så bra som möjligt för dig.<br />
+        Vi använder också kakor för webbanalys för att göra webbplatsen bättre.
+    </p>
+    <p>Godkänner du att vi också använder kakor för webbanalys?</p>
+
+    <div class="button-group">
+        <button id="consent-all-button" class="button button-group__item button--primary" type="button">
+            Ja, jag godkänner alla kakor
+        </button>
+
+        <button id="consent-functional-button" class="button button-group__item button--secondary" type="button">
+            Nej, jag godkänner bara nödvändiga kakor
+        </button>
+    </div>
+</div>
+
+<template id="motd-message">
+<div class="docs-motd docs-motd--info">
+    <span class="docs-motd__icon">
+        <span class="icon-stack icon-stack--info">
+            <svg class="icon icon--circle" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-circle"></use>
+            </svg>
+            <svg class="icon icon--i" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-i"></use>
+            </svg>
+        </span>
+    </span><span data-bind="screenreader" class="sr-only"></span>
+    <p data-bind="message"></p></div>
+</template>
+
+
+<div id="motd-container">
+    </div>
+
+
+        <div class="layout-wrapper">
+            <header><div class="page-header__root">
+    <div class="page-header">
+        <a class="page-header__logo" href="./index.html">
+            <span aria-label="FK Documentation generator" role="img" class="page-header__logo--small"> </span>
+        </a>
+        <a class="page-header__app-name" href="./index.html"> FK Documentation generator </a>
+        <div class="page-header__right"><nav id="topnav" class="docs-topnav" aria-label="Primär">
+    <ul class="docs-topnav__list"><li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="./theme/"> Theme </a>
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="./processors/"> Processors </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="./navigation/"> Navigation </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="./markdown/"> Markdown </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="./live-example/"> Live example </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="./layout/"> Layout </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="./configuration/"> Configuration </a>
+        </li>
+        
+        
+        
+        <li class="docs-topnav__item docs-topnav__item--more" style="visibility: hidden">
+            <button type="button" class="docs-topnav__anchor" aria-expanded="false">
+                <span>Mer</span>
+                <svg class="icon" focusable="false" aria-hidden="true">
+                    <use xlink:href="#docs-icon-arrow-down"></use>
+                </svg>
+            </button>
+            <div class="docs-contextmenu">
+                <ul class="docs-contextmenu__list"><li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="./theme/"> Theme </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="./processors/"> Processors </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="./navigation/"> Navigation </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="./markdown/"> Markdown </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="./live-example/"> Live example </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="./layout/"> Layout </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="./configuration/"> Configuration </a>
+                    </li>
+                    
+                    
+                    
+                    </ul>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+            <div class="page-header__right-slot">
+                <div class="toolbar"><div class="toolbar__item">
+    <form id="search" role="search">
+        <button class="text-field__input" type="submit">
+            <svg focusable="false" class="icon button__icon">
+                <use xlink:href="#docs-icon-search"></use></svg
+            >Search <kbd>ctrl-k</kbd>
+        </button>
+    </form>
+</div>
+<div class="toolbar__item">
+    <span class="version">
+        renovate/typescript-5.x (<a href="https://github.com/Forsakringskassan/docs-generator/commits/13c3c9487bbdd15f7bdfcb42734c2bf9702672a0">13c3c94</a>)<br />
+        <a href="https://github.com/Forsakringskassan/docs-generator/pull/250">PR 250</a><br />
+        2025-08-07 18:00
+    </span>
+</div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+</header>
+
+            <div id="primary"><main>
+                    <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
+                    <h1 id="title">Changelog</h1>
+
+                    
+
+                    <div id="content"><h2 id="v2-28-10"><a class="header-anchor" href="#v2-28-10"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.28.9...v2.28.10">2.28.10</a> (2025-07-29)</a></h2><h3 id="bug_fixes"><a class="header-anchor" href="#bug_fixes">Bug Fixes</a></h3><ul>
+<li>make express actually optional (<a href="https://github.com/Forsakringskassan/docs-generator/commit/435bf2343e73a13c75b9c999fa5d5d6d121de3db">435bf23</a>)</li>
+</ul>
+<h2 id="v2-28-9"><a class="header-anchor" href="#v2-28-9"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.28.8...v2.28.9">2.28.9</a> (2025-07-25)</a></h2><h3 id="bug_fixes--1"><a class="header-anchor" href="#bug_fixes--1">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency mermaid to v11.9.0 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/4f6db78b9488de4d9e8e0a9fe884e1431be47720">4f6db78</a>)</li>
+</ul>
+<h2 id="v2-28-8"><a class="header-anchor" href="#v2-28-8"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.28.7...v2.28.8">2.28.8</a> (2025-07-18)</a></h2><h3 id="bug_fixes--2"><a class="header-anchor" href="#bug_fixes--2">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency i18next to v25.3.2 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/63d5a20349e24de3a16d42b7e85f8d896a93b1d4">63d5a20</a>)</li>
+</ul>
+<h2 id="v2-28-7"><a class="header-anchor" href="#v2-28-7"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.28.6...v2.28.7">2.28.7</a> (2025-07-11)</a></h2><h3 id="bug_fixes--3"><a class="header-anchor" href="#bug_fixes--3">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency i18next to v25.3.1 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/e3ad8c66e09f439e98ca57dc09d539f94e1e9400">e3ad8c6</a>)</li>
+<li><strong>deps:</strong> update dependency mermaid to v11.8.0 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/5d4fce4df6125301c6b7dd2282c70a5af87b783f">5d4fce4</a>)</li>
+<li><strong>deps:</strong> update dependency mermaid to v11.8.1 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/a12f09186e61a36b9a6964c1a4b7e505e5e2bcf5">a12f091</a>)</li>
+<li>search not supporting swedish letters (fixes SFKUI-7301) (<a href="https://github.com/Forsakringskassan/docs-generator/commit/9f137a8778a76209f0925bd81640a6b5fc9dca19">9f137a8</a>)</li>
+</ul>
+<h2 id="v2-28-6"><a class="header-anchor" href="#v2-28-6"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.28.5...v2.28.6">2.28.6</a> (2025-07-04)</a></h2><h3 id="bug_fixes--4"><a class="header-anchor" href="#bug_fixes--4">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency i18next to v25.3.0 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/db0999f1f8b802960d1c04e36329e333c22ad270">db0999f</a>)</li>
+</ul>
+<h2 id="v2-28-5"><a class="header-anchor" href="#v2-28-5"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.28.4...v2.28.5">2.28.5</a> (2025-06-27)</a></h2><h3 id="bug_fixes--5"><a class="header-anchor" href="#bug_fixes--5">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency mermaid to v11.7.0 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/43207eb22951fd909a5cea48de4a28d37c37a99d">43207eb</a>)</li>
+</ul>
+<h2 id="v2-28-4"><a class="header-anchor" href="#v2-28-4"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.28.3...v2.28.4">2.28.4</a> (2025-06-20)</a></h2><h3 id="bug_fixes--6"><a class="header-anchor" href="#bug_fixes--6">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency glob to v11.0.3 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/241735a649fbfb6f65b3f43ac64663bbcadc98c6">241735a</a>)</li>
+</ul>
+<h2 id="v2-28-3"><a class="header-anchor" href="#v2-28-3"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.28.2...v2.28.3">2.28.3</a> (2025-05-30)</a></h2><h3 id="bug_fixes--7"><a class="header-anchor" href="#bug_fixes--7">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency i18next to v25.2.1 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/464a2c51b5b368589a13a3415c1efc20a0ad6c10">464a2c5</a>)</li>
+</ul>
+<h2 id="v2-28-2"><a class="header-anchor" href="#v2-28-2"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.28.1...v2.28.2">2.28.2</a> (2025-05-26)</a></h2><h3 id="bug_fixes--8"><a class="header-anchor" href="#bug_fixes--8">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency diff to v8.0.2 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/7081d461488a7e4f4e4196ea5add123873b609f5">7081d46</a>)</li>
+<li>handle pipe in <code>{[@link](https://github.com/link)}</code> tags for tsdoc compatibility (<a href="https://github.com/Forsakringskassan/docs-generator/commit/4cb158ad8a64b4235ec91fbc5186be7ee0d44457">4cb158a</a>)</li>
+</ul>
+<h2 id="v2-28-1"><a class="header-anchor" href="#v2-28-1"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.28.0...v2.28.1">2.28.1</a> (2025-05-23)</a></h2><h3 id="bug_fixes--9"><a class="header-anchor" href="#bug_fixes--9">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency diff to v8.0.1 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/6139cffc62354886289522ae0c126626f01b06d7">6139cff</a>)</li>
+<li><strong>deps:</strong> update dependency i18next to v25.1.3 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/5d365a8a6d5abed73fa8a6f28da9a28b775f7d89">5d365a8</a>)</li>
+<li><strong>deps:</strong> update dependency i18next to v25.2.0 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/545df1765005641fb477e329fed21a9a6bc55d2f">545df17</a>)</li>
+</ul>
+<h2 id="v2-28-0"><a class="header-anchor" href="#v2-28-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.27.2...v2.28.0">2.28.0</a> (2025-05-16)</a></h2><h3 id="features"><a class="header-anchor" href="#features">Features</a></h3><ul>
+<li><strong>deps:</strong> update dependency diff to v8 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/eb40ef9f353571f7a16cc006c6f16aa3e0cfe7b9">eb40ef9</a>)</li>
+</ul>
+<h3 id="bug_fixes--10"><a class="header-anchor" href="#bug_fixes--10">Bug Fixes</a></h3><ul>
+<li>strip eslint comments from vue examples (<a href="https://github.com/Forsakringskassan/docs-generator/commit/4268c34436b56e2a7ab39b02ccb81a5ae1997153">4268c34</a>)</li>
+<li>strip html-validate comments from code examples (<a href="https://github.com/Forsakringskassan/docs-generator/commit/0d7cd5ee97060287dbef9d4163d842f038d99043">0d7cd5e</a>)</li>
+</ul>
+<h2 id="v2-27-2"><a class="header-anchor" href="#v2-27-2"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.27.1...v2.27.2">2.27.2</a> (2025-05-16)</a></h2><h3 id="bug_fixes--11"><a class="header-anchor" href="#bug_fixes--11">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency i18next to v25.1.1 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/c01147cf0d0415675dc3bb3170ddd554ead85b87">c01147c</a>)</li>
+<li><strong>deps:</strong> update dependency i18next to v25.1.2 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/132cc60245da8a8897202eb14f84f58dc9339a13">132cc60</a>)</li>
+<li><strong>deps:</strong> update dependency semver to v7.7.2 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/ef923545e49101826c5d1b4f52731f6b5ffe0758">ef92354</a>)</li>
+</ul>
+<h2 id="v2-27-1"><a class="header-anchor" href="#v2-27-1"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.27.0...v2.27.1">2.27.1</a> (2025-05-09)</a></h2><h3 id="bug_fixes--12"><a class="header-anchor" href="#bug_fixes--12">Bug Fixes</a></h3><ul>
+<li>handle overflow in code preview (<a href="https://github.com/Forsakringskassan/docs-generator/commit/bf5cecb5c6d11d41c9daf23a012584107cb07b47">bf5cecb</a>)</li>
+</ul>
+<h2 id="v2-27-0"><a class="header-anchor" href="#v2-27-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.26.4...v2.27.0">2.27.0</a> (2025-05-05)</a></h2><h3 id="features--13"><a class="header-anchor" href="#features--13">Features</a></h3><ul>
+<li><code>Generator()</code> constructor takes <code>import.meta.url</code> (<a href="https://github.com/Forsakringskassan/docs-generator/commit/6631c3f5ef78897caa89f6976d6c99be26392722">6631c3f</a>)</li>
+<li>convert package to esm (<a href="https://github.com/Forsakringskassan/docs-generator/commit/6b7501aa2ea202156111981d41468eb084973867">6b7501a</a>)</li>
+</ul>
+<h3 id="bug_fixes--14"><a class="header-anchor" href="#bug_fixes--14">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency dedent to v1.6.0 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/47762dcd39831c6b1dae8f7604a93ea73a1406fd">47762dc</a>)</li>
+</ul>
+<h2 id="v2-26-4"><a class="header-anchor" href="#v2-26-4"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.26.3...v2.26.4">2.26.4</a> (2025-05-02)</a></h2><h3 id="bug_fixes--15"><a class="header-anchor" href="#bug_fixes--15">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency i18next to v25.0.2 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/af09e94af8ecc62206ccaba2b0158d8ac75da707">af09e94</a>)</li>
+</ul>
+<h2 id="v2-26-3"><a class="header-anchor" href="#v2-26-3"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.26.2...v2.26.3">2.26.3</a> (2025-04-27)</a></h2><h3 id="bug_fixes--16"><a class="header-anchor" href="#bug_fixes--16">Bug Fixes</a></h3><ul>
+<li>fix issue with imported diff getting wrong language in manifest (<a href="https://github.com/Forsakringskassan/docs-generator/commit/e4a9849ae110bc1b1eb54d566ad9dc39ca68be7d">e4a9849</a>)</li>
+</ul>
+<h2 id="v2-26-2"><a class="header-anchor" href="#v2-26-2"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.26.1...v2.26.2">2.26.2</a> (2025-04-27)</a></h2><h3 id="bug_fixes--17"><a class="header-anchor" href="#bug_fixes--17">Bug Fixes</a></h3><ul>
+<li>fix example manifest mismatching id (<a href="https://github.com/Forsakringskassan/docs-generator/commit/17435ee1a7eae1fa5e3d6b0443def3fab3a65af5">17435ee</a>)</li>
+<li>fix search button after navigation (<a href="https://github.com/Forsakringskassan/docs-generator/commit/a4aab38edccd53e96de828c21e8b6b80f597c34a">a4aab38</a>), closes <a href="https://github.com/Forsakringskassan/docs-generator/issues/221">#221</a></li>
+</ul>
+<h2 id="v2-26-1"><a class="header-anchor" href="#v2-26-1"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.26.0...v2.26.1">2.26.1</a> (2025-04-27)</a></h2><h3 id="bug_fixes--18"><a class="header-anchor" href="#bug_fixes--18">Bug Fixes</a></h3><ul>
+<li>changed max height of version dialog (fixes SFKUI-0000) (<a href="https://github.com/Forsakringskassan/docs-generator/commit/e28852f1d68791e4b11dd56e01e1400c3dcc2a9b">e28852f</a>)</li>
+<li>fix regression bug with examples imported from subdirectories (<a href="https://github.com/Forsakringskassan/docs-generator/commit/52e64044721d04e4ceea74c48353b2d5e29b8d35">52e6404</a>)</li>
+<li>fix version selector after navigation (<a href="https://github.com/Forsakringskassan/docs-generator/commit/cf3e9c097f6eed0aba6ca20598134b20997a33cc">cf3e9c0</a>), closes <a href="https://github.com/Forsakringskassan/docs-generator/issues/200">#200</a></li>
+</ul>
+<h2 id="v2-26-0"><a class="header-anchor" href="#v2-26-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.25.1...v2.26.0">2.26.0</a> (2025-04-27)</a></h2><h3 id="features--19"><a class="header-anchor" href="#features--19">Features</a></h3><ul>
+<li>support comparing imported examples (<a href="https://github.com/Forsakringskassan/docs-generator/commit/c0fa70930474e0716a6263787afd80c28a45bdff">c0fa709</a>)</li>
+</ul>
+<h3 id="bug_fixes--20"><a class="header-anchor" href="#bug_fixes--20">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency glob to v11.0.2 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/ba91b4d42f3586c4b96c3dd44576a39b56220388">ba91b4d</a>)</li>
+<li>fix list items being rendered with paragraph tag (<a href="https://github.com/Forsakringskassan/docs-generator/commit/c7d41ff07c72aa9e0f1b86a460841fd7104806d0">c7d41ff</a>)</li>
+<li>fix sidenav scrollbar pushing content vertically (<a href="https://github.com/Forsakringskassan/docs-generator/commit/8d1d4a56dfe9bc5961c8ee54b3275675e2aed8b8">8d1d4a5</a>)</li>
+<li>ignore missing trailing newline in generated diffs (<a href="https://github.com/Forsakringskassan/docs-generator/commit/fb260183183c93b148d5907afa66362ac485680f">fb26018</a>)</li>
+<li>round header/footer size for more stable sticky sidenav when scrolling (<a href="https://github.com/Forsakringskassan/docs-generator/commit/8b012bbbf0552a5a014592e48163a6fa77fc267e">8b012bb</a>)</li>
+</ul>
+<h2 id="v2-25-1"><a class="header-anchor" href="#v2-25-1"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.25.0...v2.25.1">2.25.1</a> (2025-04-24)</a></h2><h3 id="bug_fixes--21"><a class="header-anchor" href="#bug_fixes--21">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency i18next to v25.0.1 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/1506b9434317ab34b9f2b8743ae00129d031449c">1506b94</a>)</li>
+<li>find doccomment attached to variable from <code>$t()</code> (<a href="https://github.com/Forsakringskassan/docs-generator/commit/52d4ea317e7af5db3dfcc0b8ef7cd740e206e38e">52d4ea3</a>), closes <a href="https://github.com/Forsakringskassan/docs-generator/issues/205">#205</a></li>
+<li>ignore whitespace in generated diffs (<a href="https://github.com/Forsakringskassan/docs-generator/commit/2d7331425fc06f866f3b1ff4816df376dcb8b968">2d73314</a>)</li>
+</ul>
+<h2 id="v2-25-0"><a class="header-anchor" href="#v2-25-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.24.0...v2.25.0">2.25.0</a> (2025-04-21)</a></h2><h3 id="features--22"><a class="header-anchor" href="#features--22">Features</a></h3><ul>
+<li><strong>deps:</strong> update dependency i18next to v25 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/1e903ed79386c9b63959a5383535f69bcbd0f07d">1e903ed</a>)</li>
+<li>support translation with i18next (<a href="https://github.com/Forsakringskassan/docs-generator/commit/59452dc304410d92b78ac92e7f0668bd07fa21a0">59452dc</a>)</li>
+</ul>
+<h3 id="bug_fixes--23"><a class="header-anchor" href="#bug_fixes--23">Bug Fixes</a></h3><ul>
+<li>better styling of component badges (<a href="https://github.com/Forsakringskassan/docs-generator/commit/a497d3469f0498a6a11a13d8af9ea16f0786a7ba">a497d34</a>)</li>
+<li>component badges on separate lines instead of a single long line (<a href="https://github.com/Forsakringskassan/docs-generator/commit/27a060ddf572d779c177cdb640f9f9aa5d8239da">27a060d</a>)</li>
+</ul>
+<h2 id="v2-24-0"><a class="header-anchor" href="#v2-24-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.23.0...v2.24.0">2.24.0</a> (2025-04-14)</a></h2><h3 id="features--24"><a class="header-anchor" href="#features--24">Features</a></h3><ul>
+<li>new api templates (<a href="https://github.com/Forsakringskassan/docs-generator/commit/a3ea4fb230b4c2daf5eeb5f777ae15610f4a800c">a3ea4fb</a>)</li>
+<li>support search.terms to provide additional search terms (<a href="https://github.com/Forsakringskassan/docs-generator/commit/ec360993b631b733f6dea72ddb5154be4c205580">ec36099</a>)</li>
+<li>support showing vue component translations (<a href="https://github.com/Forsakringskassan/docs-generator/commit/6ecf41440f812147cdd07bd101bb1ef1f9af6707">6ecf414</a>)</li>
+</ul>
+<h3 id="bug_fixes--25"><a class="header-anchor" href="#bug_fixes--25">Bug Fixes</a></h3><ul>
+<li>strip prettier comments from output (<a href="https://github.com/Forsakringskassan/docs-generator/commit/29780a1d77976023d79732ca794a6be83699ee24">29780a1</a>)</li>
+</ul>
+<h2 id="v2-23-0"><a class="header-anchor" href="#v2-23-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.22.0...v2.23.0">2.23.0</a> (2025-04-07)</a></h2><h3 id="features--26"><a class="header-anchor" href="#features--26">Features</a></h3><ul>
+<li>using sass-module-importer to find sass files (<a href="https://github.com/Forsakringskassan/docs-generator/commit/3d8d7af52fa775b06d2c01adb2375e2e62e6856b">3d8d7af</a>)</li>
+</ul>
+<h3 id="bug_fixes--27"><a class="header-anchor" href="#bug_fixes--27">Bug Fixes</a></h3><ul>
+<li>fix active outline color (<a href="https://github.com/Forsakringskassan/docs-generator/commit/c5a19fac8cf655c1b71a49caa18b70736367d373">c5a19fa</a>)</li>
+<li>fix ctrl+click on links (<a href="https://github.com/Forsakringskassan/docs-generator/commit/d0f4d5f767a3a5d92f5a1705515edd266bda8e00">d0f4d5f</a>)</li>
+<li>fix issue with line wrapping when outline heading has spaces (<a href="https://github.com/Forsakringskassan/docs-generator/commit/01c6635f9665b61637660a1362ea81896adb6dca">01c6635</a>)</li>
+<li>fix links in footer after navigation (<a href="https://github.com/Forsakringskassan/docs-generator/commit/b07ca4295771e3926c8b8e7f69c6072d75067ccd">b07ca42</a>), closes <a href="https://github.com/Forsakringskassan/designsystem/issues/391">Forsakringskassan/designsystem#391</a></li>
+<li>fix opening links in new tab (broken href attribute) (<a href="https://github.com/Forsakringskassan/docs-generator/commit/33bf1ec3c540d2ff825fd191a694fd7f93c66d6e">33bf1ec</a>), closes <a href="https://github.com/Forsakringskassan/docs-generator/issues/190">#190</a></li>
+<li>generate unique app id even when the same example file is used multiple times (<a href="https://github.com/Forsakringskassan/docs-generator/commit/975cbea131d753e463461f1e041c837cad43e9fa">975cbea</a>)</li>
+<li>handle compiling multiple examples with same virtual entrypoint (<a href="https://github.com/Forsakringskassan/docs-generator/commit/fc49a4b386079398df34867a7125416eee926064">fc49a4b</a>)</li>
+<li>remove reset on anchor tags (<a href="https://github.com/Forsakringskassan/docs-generator/commit/0fe71ac2a7337671bef6259b607c3a97ab331656">0fe71ac</a>)</li>
+</ul>
+<h2 id="v2-22-0"><a class="header-anchor" href="#v2-22-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.21.4...v2.22.0">2.22.0</a> (2025-04-04)</a></h2><h3 id="features--28"><a class="header-anchor" href="#features--28">Features</a></h3><ul>
+<li><strong>deps:</strong> support express v5 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/a43fc792d31c93257b732c398cee48766e8a3482">a43fc79</a>)</li>
+</ul>
+<h3 id="bug_fixes--29"><a class="header-anchor" href="#bug_fixes--29">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency mermaid to v11.6.0 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/918024041c5607f68338e77f27cfc2f0a4696dee">9180240</a>)</li>
+<li>fix external links pointing to wrong target (<a href="https://github.com/Forsakringskassan/docs-generator/commit/edfab59af0086038b34433195bba275d327389ae">edfab59</a>), closes <a href="https://github.com/Forsakringskassan/docs-generator/issues/189">#189</a></li>
+</ul>
+<h2 id="v2-21-4"><a class="header-anchor" href="#v2-21-4"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.21.3...v2.21.4">2.21.4</a> (2025-03-28)</a></h2><h3 id="bug_fixes--30"><a class="header-anchor" href="#bug_fixes--30">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency piscina to v4.9.2 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/6a2d2ec1d83f42d25fff07ef58f3bf0d592e16a3">6a2d2ec</a>)</li>
+</ul>
+<h2 id="v2-21-3"><a class="header-anchor" href="#v2-21-3"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.21.2...v2.21.3">2.21.3</a> (2025-03-21)</a></h2><h3 id="bug_fixes--31"><a class="header-anchor" href="#bug_fixes--31">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency mermaid to v11.5.0 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/2dd9bbec6d77fabeb3a891ce86aa2f45e7beb4e8">2dd9bbe</a>)</li>
+<li><strong>deps:</strong> update dependency piscina to v4.9.0 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/f2d1dd287ad2837c4df48c5ef3337d8b1489c57a">f2d1dd2</a>)</li>
+</ul>
+<h2 id="v2-21-2"><a class="header-anchor" href="#v2-21-2"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.21.1...v2.21.2">2.21.2</a> (2025-03-11)</a></h2><h3 id="bug_fixes--32"><a class="header-anchor" href="#bug_fixes--32">Bug Fixes</a></h3><ul>
+<li>properly pass assets from importmap to compiled examples (<a href="https://github.com/Forsakringskassan/docs-generator/commit/4b15eb707fe0332fe75d1b6f28bc8469d4f43569">4b15eb7</a>)</li>
+</ul>
+<h2 id="v2-21-1"><a class="header-anchor" href="#v2-21-1"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.21.0...v2.21.1">2.21.1</a> (2025-03-06)</a></h2><h3 id="bug_fixes--33"><a class="header-anchor" href="#bug_fixes--33">Bug Fixes</a></h3><ul>
+<li>fix missing <code>withCookieConsent()</code> function (<a href="https://github.com/Forsakringskassan/docs-generator/commit/103e1a3b31283630f47de983e7f2ff57eada3ffd">103e1a3</a>)</li>
+</ul>
+<h2 id="v2-21-0"><a class="header-anchor" href="#v2-21-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.20.0...v2.21.0">2.21.0</a> (2025-03-06)</a></h2><h3 id="features--34"><a class="header-anchor" href="#features--34">Features</a></h3><ul>
+<li>compiled scripts not appended to document goes into importmap for usage in other scripts (<a href="https://github.com/Forsakringskassan/docs-generator/commit/b72d64bb8d2278bd42ca12cbedb49db93dc7e6be">b72d64b</a>)</li>
+<li>scripts compiled with <code>compileScript()</code> is also esm (<a href="https://github.com/Forsakringskassan/docs-generator/commit/2ba4d67eb6ca5c1298c49ed085187523affa65f7">2ba4d67</a>)</li>
+</ul>
+<h3 id="bug_fixes--35"><a class="header-anchor" href="#bug_fixes--35">Bug Fixes</a></h3><ul>
+<li>all vendor libraries set to external when compiling scripts (<a href="https://github.com/Forsakringskassan/docs-generator/commit/2b2db41dc57e1d3edf89b65646f169922a8fcaaf">2b2db41</a>)</li>
+</ul>
+<h2 id="v2-20-0"><a class="header-anchor" href="#v2-20-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.19.1...v2.20.0">2.20.0</a> (2025-02-28)</a></h2><h3 id="features--36"><a class="header-anchor" href="#features--36">Features</a></h3><ul>
+<li>use esm and importmap for examples (<a href="https://github.com/Forsakringskassan/docs-generator/commit/ede37782ab95a6d384ff51d3657a6b7c8bf862cf">ede3778</a>)</li>
+</ul>
+<h3 id="bug_fixes--37"><a class="header-anchor" href="#bug_fixes--37">Bug Fixes</a></h3><ul>
+<li>cachebusting for versions.json to avoid message about newer version for recently released site (<a href="https://github.com/Forsakringskassan/docs-generator/commit/5b857626fb02c3d5b20e92ce8b7478e08cb9ffcb">5b85762</a>)</li>
+<li>handle nested comments (<a href="https://github.com/Forsakringskassan/docs-generator/commit/5c5c25a4458052a0759c81be64276be8622b0bdf">5c5c25a</a>)</li>
+</ul>
+<h2 id="v2-19-1"><a class="header-anchor" href="#v2-19-1"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.19.0...v2.19.1">2.19.1</a> (2025-02-19)</a></h2><h3 id="bug_fixes--38"><a class="header-anchor" href="#bug_fixes--38">Bug Fixes</a></h3><ul>
+<li>handle <code>[@ignore](https://github.com/ignore)</code> for vue props, events and slots (<a href="https://github.com/Forsakringskassan/docs-generator/commit/f639fd336ca131ebcd548d0db610ceccd2ee960e">f639fd3</a>)</li>
+</ul>
+<h2 id="v2-19-0"><a class="header-anchor" href="#v2-19-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.18.0...v2.19.0">2.19.0</a> (2025-02-11)</a></h2><h3 id="features--39"><a class="header-anchor" href="#features--39">Features</a></h3><ul>
+<li>allow partial functions to have a callback as body (<a href="https://github.com/Forsakringskassan/docs-generator/commit/493d8c9600cd21a688b856237f051d25be3e5f50">493d8c9</a>)</li>
+<li>support creating partial documents (<a href="https://github.com/Forsakringskassan/docs-generator/commit/6b5cab4afd694999238f1ac950dad90a1f9d9b41">6b5cab4</a>)</li>
+</ul>
+<h3 id="bug_fixes--40"><a class="header-anchor" href="#bug_fixes--40">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency esbuild to v0.25.0 [security] (<a href="https://github.com/Forsakringskassan/docs-generator/commit/cfb259311b7f90bc4da1fd375f203647044fe1bb">cfb2593</a>)</li>
+<li><strong>deps:</strong> update dependency semver to v7.7.1 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/b236a52af5fdf111d57462db9192264e51957691">b236a52</a>)</li>
+<li>handle code snippets in imported vue examples (<a href="https://github.com/Forsakringskassan/docs-generator/commit/896e2acfd661cc799ec22ac71c0eb07868149c19">896e2ac</a>)</li>
+<li>show original stacktrace even for pretty template errors (<a href="https://github.com/Forsakringskassan/docs-generator/commit/8667e800cb0c94fddf44af4436f80f393f2ba06a">8667e80</a>)</li>
+<li>support including the same partial multiple times on the same page (<a href="https://github.com/Forsakringskassan/docs-generator/commit/185fd1ef38784f5253d87a9e51fba36160c0f353">185fd1e</a>)</li>
+<li>use example as test-id if not explicitly set (<a href="https://github.com/Forsakringskassan/docs-generator/commit/c157e44818baf6cd1eb8c756271b96b3af442ecb">c157e44</a>)</li>
+</ul>
+<h2 id="v2-18-0"><a class="header-anchor" href="#v2-18-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.17.1...v2.18.0">2.18.0</a> (2025-02-06)</a></h2><h3 id="features--41"><a class="header-anchor" href="#features--41">Features</a></h3><ul>
+<li>support custom number of context lines for generated diff (<a href="https://github.com/Forsakringskassan/docs-generator/commit/5bfd6e18e1b49f72f51ba03868c443c7d298c807">5bfd6e1</a>)</li>
+<li>support manifest verification (<a href="https://github.com/Forsakringskassan/docs-generator/commit/4b31769d5a7ec684f584a7b8fb7bede45e20960b">4b31769</a>)</li>
+</ul>
+<h3 id="bug_fixes--42"><a class="header-anchor" href="#bug_fixes--42">Bug Fixes</a></h3><ul>
+<li>handle snippets if generated diffs (<a href="https://github.com/Forsakringskassan/docs-generator/commit/355b0a03f4e2065882b84c99a7f750f3ca6e551f">355b0a0</a>)</li>
+<li>only remove first chunk marker in generated diffs (<a href="https://github.com/Forsakringskassan/docs-generator/commit/38c8019f30b76a824a5467ce6e665b65a706533b">38c8019</a>)</li>
+</ul>
+<h2 id="v2-17-1"><a class="header-anchor" href="#v2-17-1"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.17.0...v2.17.1">2.17.1</a> (2025-02-06)</a></h2><h3 id="bug_fixes--43"><a class="header-anchor" href="#bug_fixes--43">Bug Fixes</a></h3><ul>
+<li>fix invalid vue api prop id (<a href="https://github.com/Forsakringskassan/docs-generator/commit/dac64010832265cca8ebb0a5b136d299b6f4829c">dac6401</a>)</li>
+<li>properly escape html content from vue api (<a href="https://github.com/Forsakringskassan/docs-generator/commit/a92f7fae534aad0e0d4861bbc7295b55f65f050d">a92f7fa</a>)</li>
+</ul>
+<h2 id="v2-17-0"><a class="header-anchor" href="#v2-17-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.16.1...v2.17.0">2.17.0</a> (2025-02-06)</a></h2><h3 id="features--44"><a class="header-anchor" href="#features--44">Features</a></h3><ul>
+<li>nicer rendering of vue documentation (props, events, slots) (<a href="https://github.com/Forsakringskassan/docs-generator/commit/480b0a53cad730585cb81f7d5e15584408425221">480b0a5</a>)</li>
+</ul>
+<h2 id="v2-16-1"><a class="header-anchor" href="#v2-16-1"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.16.0...v2.16.1">2.16.1</a> (2025-02-05)</a></h2><h3 id="bug_fixes--45"><a class="header-anchor" href="#bug_fixes--45">Bug Fixes</a></h3><ul>
+<li>encode htmlentities in example data tags (<a href="https://github.com/Forsakringskassan/docs-generator/commit/2f7538221969ed1116eaa3068633ab1427429319">2f75382</a>)</li>
+</ul>
+<h2 id="v2-16-0"><a class="header-anchor" href="#v2-16-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.15.7...v2.16.0">2.16.0</a> (2025-02-05)</a></h2><h3 id="features--46"><a class="header-anchor" href="#features--46">Features</a></h3><ul>
+<li>frontmatter attribute basic validation (<a href="https://github.com/Forsakringskassan/docs-generator/commit/7a95aee01e931ca56f6d8f2451a25de2bd5396e2">7a95aee</a>)</li>
+<li>generate diff by diffing two examples (<a href="https://github.com/Forsakringskassan/docs-generator/commit/820026a0ae1ffaa9f1fc8e5ea13267852873ee94">820026a</a>)</li>
+<li>hidden tag for adding hidden examples (<a href="https://github.com/Forsakringskassan/docs-generator/commit/9c26754d1c96a6bb50c8cca9a98395b3a676844d">9c26754</a>)</li>
+<li>name tag for named code examples (<a href="https://github.com/Forsakringskassan/docs-generator/commit/fa9e79515b3f610a378ebc4a3fb46d92221f2c09">fa9e795</a>)</li>
+<li>remove unwanted chars from outline (<a href="https://github.com/Forsakringskassan/docs-generator/commit/8d8deff764800e6f5ba3c94cd4e6976e4487c16b">8d8deff</a>)</li>
+<li>set document alias in frontmatter (<a href="https://github.com/Forsakringskassan/docs-generator/commit/c2802374310e9e909c626ed91011a8a2ea6c1f8a">c280237</a>)</li>
+</ul>
+<h3 id="bug_fixes--47"><a class="header-anchor" href="#bug_fixes--47">Bug Fixes</a></h3><ul>
+<li>correct font-size and text-decoration for code block in heading (<a href="https://github.com/Forsakringskassan/docs-generator/commit/e4ed3978f92cfff1dec28c22c8253aa0457c44f5">e4ed397</a>)</li>
+<li><strong>deps:</strong> update dependency semver to v7.7.0 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/9d392f4832d4bc71c40e4c266174dc05c4a2186f">9d392f4</a>)</li>
+<li>proper document alias when setting component to an object (<a href="https://github.com/Forsakringskassan/docs-generator/commit/75cf606be78075b44858fbd69bafb60f67429c2d">75cf606</a>)</li>
+<li>render descriptions for vue slot bindings (<a href="https://github.com/Forsakringskassan/docs-generator/commit/a15770771f64c1770491b54a4dbbfc138f224738">a157707</a>)</li>
+<li>show if props, events or slots is deprecated in vue component (<a href="https://github.com/Forsakringskassan/docs-generator/commit/5164b98984558d35c4d26b286875de0a5efad049">5164b98</a>)</li>
+</ul>
+<h2 id="v2-15-7"><a class="header-anchor" href="#v2-15-7"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.15.6...v2.15.7">2.15.7</a> (2025-01-29)</a></h2><h3 id="bug_fixes--48"><a class="header-anchor" href="#bug_fixes--48">Bug Fixes</a></h3><ul>
+<li>more readable and usable error message when a render error occurs (<a href="https://github.com/Forsakringskassan/docs-generator/commit/6b42cd495b975213565152699c272620ada6181d">6b42cd4</a>)</li>
+<li>show original cause when a vue parse error occurs (<a href="https://github.com/Forsakringskassan/docs-generator/commit/0097db73b300cad66bbfb2f02fd1059dc4812c78">0097db7</a>)</li>
+<li>show vue compiler errors runtime during local builds (<a href="https://github.com/Forsakringskassan/docs-generator/commit/6d7ff9e7a8ea0939f8fa3e2d67b500223a1ab757">6d7ff9e</a>)</li>
+</ul>
+<h2 id="v2-15-6"><a class="header-anchor" href="#v2-15-6"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.15.5...v2.15.6">2.15.6</a> (2025-01-29)</a></h2><h3 id="bug_fixes--49"><a class="header-anchor" href="#bug_fixes--49">Bug Fixes</a></h3><ul>
+<li>add title to html-redirect template (<a href="https://github.com/Forsakringskassan/docs-generator/commit/bb53073a31912d1a336bcc3a97faacd2ac95b236">bb53073</a>)</li>
+</ul>
+<h2 id="v2-15-5"><a class="header-anchor" href="#v2-15-5"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.15.4...v2.15.5">2.15.5</a> (2025-01-24)</a></h2><h3 id="bug_fixes--50"><a class="header-anchor" href="#bug_fixes--50">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency fs-extra to v11.3.0 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/86ac1d41679b82ca5f0aaa5b9531ad9bd49b9aac">86ac1d4</a>)</li>
+</ul>
+<h2 id="v2-15-4"><a class="header-anchor" href="#v2-15-4"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.15.3...v2.15.4">2.15.4</a> (2025-01-17)</a></h2><h3 id="bug_fixes--51"><a class="header-anchor" href="#bug_fixes--51">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency @leeoniya/ufuzzy to v1.0.18 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/9eb00f33956c413f59c850b46b860f1872bba294">9eb00f3</a>)</li>
+<li><strong>deps:</strong> update dependency glob to v11.0.1 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/7957f627e02671dde16a60f23dcf63cdd6ed1dc9">7957f62</a>)</li>
+</ul>
+<h2 id="v2-15-3"><a class="header-anchor" href="#v2-15-3"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.15.2...v2.15.3">2.15.3</a> (2025-01-09)</a></h2><h3 id="bug_fixes--52"><a class="header-anchor" href="#bug_fixes--52">Bug Fixes</a></h3><ul>
+<li>properly pass markdown options to markdown renderer (<a href="https://github.com/Forsakringskassan/docs-generator/commit/f11e5d9569b0551bfaaa06626fd4e24e73cb183d">f11e5d9</a>)</li>
+</ul>
+<h2 id="v2-15-2"><a class="header-anchor" href="#v2-15-2"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.15.1...v2.15.2">2.15.2</a> (2025-01-03)</a></h2><h3 id="bug_fixes--53"><a class="header-anchor" href="#bug_fixes--53">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency highlight.js to v11.11.1 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/f15cd388ef3a68e694fd294231deb08b1247df39">f15cd38</a>)</li>
+</ul>
+<h2 id="v2-15-1"><a class="header-anchor" href="#v2-15-1"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.15.0...v2.15.1">2.15.1</a> (2024-12-27)</a></h2><h3 id="bug_fixes--54"><a class="header-anchor" href="#bug_fixes--54">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency chokidar to v4.0.3 (<a href="https://github.com/Forsakringskassan/docs-generator/issues/142">#142</a>) (<a href="https://github.com/Forsakringskassan/docs-generator/commit/929dcdc07e3a6d8477af9ac7d6fe86feab260956">929dcdc</a>)</li>
+</ul>
+<h2 id="v2-15-0"><a class="header-anchor" href="#v2-15-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.14.5...v2.15.0">2.15.0</a> (2024-12-20)</a></h2><h3 id="features--55"><a class="header-anchor" href="#features--55">Features</a></h3><ul>
+<li>support snippets in html and vue examples (<a href="https://github.com/Forsakringskassan/docs-generator/commit/c58f410835dec51d5705b31eb70fb80f3dcaa040">c58f410</a>)</li>
+</ul>
+<h3 id="bug_fixes--56"><a class="header-anchor" href="#bug_fixes--56">Bug Fixes</a></h3><ul>
+<li>fix missing root url on fullscreen example (<a href="https://github.com/Forsakringskassan/docs-generator/commit/4842d58f829a3481fac327bc6761dce591f4a248">4842d58</a>)</li>
+<li>fix search error in fullscreen example (<a href="https://github.com/Forsakringskassan/docs-generator/commit/ef4aad44b1d27bb0bb3d6e35b08f246680909a4b">ef4aad4</a>)</li>
+<li>fullscreen example extranous padding (<a href="https://github.com/Forsakringskassan/docs-generator/commit/988bc95365cbf13cc2a21ef4ce2979f1c69ca3eb">988bc95</a>)</li>
+<li>normalize imported example language (<a href="https://github.com/Forsakringskassan/docs-generator/commit/e0890ebc31f372d1370a3038fedee2589a2e558f">e0890eb</a>)</li>
+</ul>
+<h2 id="v2-14-5"><a class="header-anchor" href="#v2-14-5"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.14.4...v2.14.5">2.14.5</a> (2024-12-20)</a></h2><h3 id="bug_fixes--57"><a class="header-anchor" href="#bug_fixes--57">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency highlight.js to v11.11.0 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/66071e8ac2214b18737209184e480a03768bd6d7">66071e8</a>)</li>
+</ul>
+<h2 id="v2-14-4"><a class="header-anchor" href="#v2-14-4"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.14.3...v2.14.4">2.14.4</a> (2024-12-16)</a></h2><h3 id="bug_fixes--58"><a class="header-anchor" href="#bug_fixes--58">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency piscina to v4.8.0 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/7d56d0171dbee2cd2f11b1f4a026ceb022387348">7d56d01</a>)</li>
+</ul>
+<h2 id="v2-14-3"><a class="header-anchor" href="#v2-14-3"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.14.2...v2.14.3">2.14.3</a> (2024-12-07)</a></h2><h3 id="bug_fixes--59"><a class="header-anchor" href="#bug_fixes--59">Bug Fixes</a></h3><ul>
+<li>fix mismatched example fingerprints (<a href="https://github.com/Forsakringskassan/docs-generator/commit/77e7293b6247a910b79b19169366f96def84b9de">77e7293</a>)</li>
+</ul>
+<h2 id="v2-14-2"><a class="header-anchor" href="#v2-14-2"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.14.1...v2.14.2">2.14.2</a> (2024-12-06)</a></h2><h3 id="bug_fixes--60"><a class="header-anchor" href="#bug_fixes--60">Bug Fixes</a></h3><ul>
+<li>support snippets in imported examples (<a href="https://github.com/Forsakringskassan/docs-generator/commit/70b25eaae661e7fb8a68d5032b203eed36a98a3d">70b25ea</a>)</li>
+</ul>
+<h2 id="v2-14-1"><a class="header-anchor" href="#v2-14-1"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.14.0...v2.14.1">2.14.1</a> (2024-12-06)</a></h2><h3 id="bug_fixes--61"><a class="header-anchor" href="#bug_fixes--61">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency @leeoniya/ufuzzy to v1.0.17 (<a href="https://github.com/Forsakringskassan/docs-generator/issues/135">#135</a>) (<a href="https://github.com/Forsakringskassan/docs-generator/commit/022df8cc0c2dbb0f495df3e012ec0d5aa0b2a97e">022df8c</a>)</li>
+<li><strong>deps:</strong> update dependency mermaid to v11.4.1 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/8d060a36076ded677919a3b76cb422539f28a3e6">8d060a3</a>)</li>
+</ul>
+<h2 id="v2-14-0"><a class="header-anchor" href="#v2-14-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.13.0...v2.14.0">2.14.0</a> (2024-11-05)</a></h2><h3 id="features--62"><a class="header-anchor" href="#features--62">Features</a></h3><ul>
+<li>dedent code after transforming (<a href="https://github.com/Forsakringskassan/docs-generator/commit/744f9c57abb5dbed7ef783a81b920afe8394e2a5">744f9c5</a>)</li>
+</ul>
+<h2 id="v2-13-0"><a class="header-anchor" href="#v2-13-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.12.0...v2.13.0">2.13.0</a> (2024-11-04)</a></h2><h3 id="features--63"><a class="header-anchor" href="#features--63">Features</a></h3><ul>
+<li>allow to cut snippets from examples (<a href="https://github.com/Forsakringskassan/docs-generator/commit/db07585e5b345ce7aecc7023e0b5b46beac0531e">db07585</a>)</li>
+<li>new <code>extractExamplesProcessor</code> (<a href="https://github.com/Forsakringskassan/docs-generator/commit/2559b069450362d1006df887087aaaafa912e05b">2559b06</a>), closes <a href="https://github.com/Forsakringskassan/docs-generator/issues/59">#59</a></li>
+<li>strip eslint comments from examples (<a href="https://github.com/Forsakringskassan/docs-generator/commit/5dd604e17e8c67e59c38b110455b5ee00aa0086a">5dd604e</a>)</li>
+</ul>
+<h3 id="bug_fixes--64"><a class="header-anchor" href="#bug_fixes--64">Bug Fixes</a></h3><ul>
+<li><code>cacheFolder</code> is optional (<a href="https://github.com/Forsakringskassan/docs-generator/commit/e4ad9188bde5cd919f699c3b718c2ca1f5f485aa">e4ad918</a>)</li>
+<li><code>exampleFolders</code> is optional (<a href="https://github.com/Forsakringskassan/docs-generator/commit/bf4893d6ad7e52d8512b837c564d3a507a31d33c">bf4893d</a>)</li>
+<li><code>markdown.messagebox</code> is optional (<a href="https://github.com/Forsakringskassan/docs-generator/commit/d558a90eaa28b58ce4b87a33a17b8f691a366db3">d558a90</a>)</li>
+<li><code>motdProcessor</code> options is optional (<a href="https://github.com/Forsakringskassan/docs-generator/commit/d43c0cbe684e01236b5010c5da693207e132ad8c">d43c0cb</a>)</li>
+<li><code>outputFolder</code> is optional (<a href="https://github.com/Forsakringskassan/docs-generator/commit/53dde23d340dd5c6f14f5ee3c38ac7fb0a6baa32">53dde23</a>)</li>
+<li>only match filenames when matching source files (<a href="https://github.com/Forsakringskassan/docs-generator/commit/aec08fa318eb1fd828849fcb2648e7b68c3b841d">aec08fa</a>)</li>
+</ul>
+<h3 id="performance_improvements"><a class="header-anchor" href="#performance_improvements">Performance Improvements</a></h3><ul>
+<li>reuse same manifest <code>md</code> instance for all calls (<a href="https://github.com/Forsakringskassan/docs-generator/commit/616f226aa895c0595918f7fafa6785637d80d55c">616f226</a>)</li>
+</ul>
+<h2 id="v2-12-0"><a class="header-anchor" href="#v2-12-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.11.4...v2.12.0">2.12.0</a> (2024-11-03)</a></h2><h3 id="features--65"><a class="header-anchor" href="#features--65">Features</a></h3><ul>
+<li>new processor <code>fileRedirctProcessor</code> for html based redirects (<a href="https://github.com/Forsakringskassan/docs-generator/commit/17c18cc7236afdaa3571ad037d81a972b40f07ee">17c18cc</a>), closes <a href="https://github.com/Forsakringskassan/docs-generator/issues/77">#77</a></li>
+<li>new processor <code>redirctFileProcessor</code> for netlify-style redirects (<a href="https://github.com/Forsakringskassan/docs-generator/commit/a326b5f3d9db1a0cbe8628707fcce33613cf11bb">a326b5f</a>), closes <a href="https://github.com/Forsakringskassan/docs-generator/issues/77">#77</a></li>
+<li>support tagging redirects on documents (<a href="https://github.com/Forsakringskassan/docs-generator/commit/e695ec60c9cfcb0a1f71019a6bee69a7e6f2b4e1">e695ec6</a>), closes <a href="https://github.com/Forsakringskassan/docs-generator/issues/76">#76</a></li>
+</ul>
+<h3 id="bug_fixes--66"><a class="header-anchor" href="#bug_fixes--66">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency mermaid to v11.4.0 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/b408d94e21bf6f7c75e9284d076952086cbdc3c3">b408d94</a>)</li>
+</ul>
+<h2 id="v2-11-4"><a class="header-anchor" href="#v2-11-4"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.11.3...v2.11.4">2.11.4</a> (2024-11-01)</a></h2><h3 id="bug_fixes--67"><a class="header-anchor" href="#bug_fixes--67">Bug Fixes</a></h3><ul>
+<li>code in messagebox and messagebox styling (<a href="https://github.com/Forsakringskassan/docs-generator/commit/7ea1600b5bae3830b7ffeed1b2239a420cddb67b">7ea1600</a>)</li>
+<li><strong>deps:</strong> update dependency nano-spawn to v0.2.0 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/b041385a9ebf655290bf4fd2cbfb5f329ff3fdfa">b041385</a>)</li>
+</ul>
+<h2 id="v2-11-3"><a class="header-anchor" href="#v2-11-3"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.11.2...v2.11.3">2.11.3</a> (2024-10-29)</a></h2><h3 id="bug_fixes--68"><a class="header-anchor" href="#bug_fixes--68">Bug Fixes</a></h3><ul>
+<li>set correct language in manifest (<a href="https://github.com/Forsakringskassan/docs-generator/commit/d1f1e0fbde666737466db00ae0d52a4c02ba5b6d">d1f1e0f</a>)</li>
+</ul>
+<h2 id="v2-11-2"><a class="header-anchor" href="#v2-11-2"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.11.1...v2.11.2">2.11.2</a> (2024-10-28)</a></h2><h3 id="bug_fixes--69"><a class="header-anchor" href="#bug_fixes--69">Bug Fixes</a></h3><ul>
+<li>add latest version prefix (<a href="https://github.com/Forsakringskassan/docs-generator/commit/762e9c377f0424ebb8f62093aa7098ed0ca2ffd2">762e9c3</a>)</li>
+</ul>
+<h2 id="v2-11-1"><a class="header-anchor" href="#v2-11-1"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.11.0...v2.11.1">2.11.1</a> (2024-10-28)</a></h2><h3 id="bug_fixes--70"><a class="header-anchor" href="#bug_fixes--70">Bug Fixes</a></h3><ul>
+<li>resolve latest version properly (<a href="https://github.com/Forsakringskassan/docs-generator/commit/d496835f15035f23f7bb0221bbf17ab4310cbfa1">d496835</a>)</li>
+</ul>
+<h2 id="v2-11-0"><a class="header-anchor" href="#v2-11-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.10.0...v2.11.0">2.11.0</a> (2024-10-28)</a></h2><h3 id="features--71"><a class="header-anchor" href="#features--71">Features</a></h3><ul>
+<li>motd API (<a href="https://github.com/Forsakringskassan/docs-generator/commit/a4ed61d075ae3d85a1e57968ba6a1d0a73d53edc">a4ed61d</a>)</li>
+</ul>
+<h3 id="bug_fixes--72"><a class="header-anchor" href="#bug_fixes--72">Bug Fixes</a></h3><ul>
+<li>selectable version (<a href="https://github.com/Forsakringskassan/docs-generator/commit/f12db4d3a0d25294b13b4975d2264275f61bfc51">f12db4d</a>)</li>
+</ul>
+<h2 id="v2-10-0"><a class="header-anchor" href="#v2-10-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.9.2...v2.10.0">2.10.0</a> (2024-10-23)</a></h2><h3 id="features--73"><a class="header-anchor" href="#features--73">Features</a></h3><ul>
+<li>support vue composition and scoped styling in examples (<a href="https://github.com/Forsakringskassan/docs-generator/commit/8f00924064fb5c7171a74fe5fecb0f1f0c9f01b0">8f00924</a>)</li>
+</ul>
+<h3 id="bug_fixes--74"><a class="header-anchor" href="#bug_fixes--74">Bug Fixes</a></h3><ul>
+<li>dont print exceptions twice (<a href="https://github.com/Forsakringskassan/docs-generator/commit/e8c93a91230320d99deb69a88209f6866a9f280d">e8c93a9</a>)</li>
+<li>ensure compiling sass works when package is linked with <code>npm link</code> (<a href="https://github.com/Forsakringskassan/docs-generator/commit/59f3753286f1b786aab28054652b5ea9faec6342">59f3753</a>)</li>
+<li>load layout templates from custom directories (<a href="https://github.com/Forsakringskassan/docs-generator/commit/c2f37d541dbccbccd9e2ee206ba2c4baae9c7297">c2f37d5</a>)</li>
+</ul>
+<h2 id="v2-9-2"><a class="header-anchor" href="#v2-9-2"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.9.1...v2.9.2">2.9.2</a> (2024-10-15)</a></h2><h3 id="bug_fixes--75"><a class="header-anchor" href="#bug_fixes--75">Bug Fixes</a></h3><ul>
+<li>build examples in development mode (<a href="https://github.com/Forsakringskassan/docs-generator/commit/8d8f0c3a2f3c24f612d606bd3c242e6a3a54360c">8d8f0c3</a>)</li>
+<li>hide hidden sections (<code>index.md</code>) in topmenu (<a href="https://github.com/Forsakringskassan/docs-generator/commit/2d55a07696a26e722679bd72290769aff38ed3c1">2d55a07</a>)</li>
+</ul>
+<h2 id="v2-9-1"><a class="header-anchor" href="#v2-9-1"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.9.0...v2.9.1">2.9.1</a> (2024-10-14)</a></h2><h3 id="bug_fixes--76"><a class="header-anchor" href="#bug_fixes--76">Bug Fixes</a></h3><ul>
+<li><strong>vue:</strong> handle multiple <code>v-model</code> (<a href="https://github.com/Forsakringskassan/docs-generator/commit/5fc40d90fceabf84041aba951df5f38b20b8e6c0">5fc40d9</a>), closes <a href="https://github.com/Forsakringskassan/docs-generator/issues/112">#112</a></li>
+</ul>
+<h2 id="v2-9-0"><a class="header-anchor" href="#v2-9-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.8.0...v2.9.0">2.9.0</a> (2024-10-11)</a></h2><h3 id="features--77"><a class="header-anchor" href="#features--77">Features</a></h3><ul>
+<li>add styling for mermaid git graph (<a href="https://github.com/Forsakringskassan/docs-generator/commit/770bbc93e7a97b39cfb09a55a570ab72a0091478">770bbc9</a>)</li>
+<li>new <code>sourceFiles</code> parameter to limit <code>sourceUrlProcessor</code> results (<a href="https://github.com/Forsakringskassan/docs-generator/commit/30c7906852533247a1c62f4710bbb3eb8bd9f876">30c7906</a>)</li>
+</ul>
+<h3 id="bug_fixes--78"><a class="header-anchor" href="#bug_fixes--78">Bug Fixes</a></h3><ul>
+<li>fix performance regression when using <code>sourceUrlProcessor</code> (<a href="https://github.com/Forsakringskassan/docs-generator/commit/d02457409d9e647179bd2f78aa553213e58984c8">d024574</a>)</li>
+</ul>
+<h2 id="v2-8-0"><a class="header-anchor" href="#v2-8-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.7.0...v2.8.0">2.8.0</a> (2024-10-09)</a></h2><h3 id="features--79"><a class="header-anchor" href="#features--79">Features</a></h3><ul>
+<li>support <code>&lt;details&gt;</code> element in markdown content (<a href="https://github.com/Forsakringskassan/docs-generator/commit/ec2a9cde9c2fcc5d8bd8143187d52e1dad4b4511">ec2a9cd</a>)</li>
+<li>support markdown content in messagebox titles (<a href="https://github.com/Forsakringskassan/docs-generator/commit/36be401259809ef62857ee1fe1495bdcc3b2b2c9">36be401</a>)</li>
+</ul>
+<h3 id="bug_fixes--80"><a class="header-anchor" href="#bug_fixes--80">Bug Fixes</a></h3><ul>
+<li>fix <code>cannot read property of null</code> when clicking on topnav (<a href="https://github.com/Forsakringskassan/docs-generator/commit/6744894d84b441bfca17e0988f9c795eccaeebe2">6744894</a>)</li>
+</ul>
+<h2 id="v2-7-0"><a class="header-anchor" href="#v2-7-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.6.0...v2.7.0">2.7.0</a> (2024-10-08)</a></h2><h3 id="features--81"><a class="header-anchor" href="#features--81">Features</a></h3><ul>
+<li>bundle highlight styling (refs SB-4982) (<a href="https://github.com/Forsakringskassan/docs-generator/commit/be29bb1d8cc3c12d51e20470f4f35cbece0d877d">be29bb1</a>)</li>
+<li><strong>deps:</strong> update dependency chokidar to v4 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/b56cde23f50a3ddb6eaaf063c80771cbf1186d62">b56cde2</a>)</li>
+</ul>
+<h3 id="bug_fixes--82"><a class="header-anchor" href="#bug_fixes--82">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency mermaid to v11.3.0 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/1e8e72cbf81fa6ac102eb144d2295c47aa0d569d">1e8e72c</a>)</li>
+<li>make responsive menu hidden while page is loading (<a href="https://github.com/Forsakringskassan/docs-generator/commit/5512b720f8b24ed70a076838ab00984803b1e0ce">5512b72</a>)</li>
+<li>move responsive topnav styling to layout styling (<a href="https://github.com/Forsakringskassan/docs-generator/commit/46c9c24dc933441eb0e9959901c82641ab2e0af9">46c9c24</a>), closes <a href="https://github.com/Forsakringskassan/docs-generator/issues/101">#101</a> <a href="https://github.com/Forsakringskassan/docs-generator/issues/102">#102</a></li>
+<li>reload responsive menu on site navigation (<a href="https://github.com/Forsakringskassan/docs-generator/commit/a613d6d8828c69c781b6336726dbb6146589787e">a613d6d</a>), closes <a href="https://github.com/Forsakringskassan/docs-generator/issues/100">#100</a></li>
+<li>rewrite moduleImporter (refs SB-4982) (<a href="https://github.com/Forsakringskassan/docs-generator/commit/8ad44fcf3e79396c486625452b1007b8b52f3aba">8ad44fc</a>)</li>
+</ul>
+<h2 id="v2-6-0"><a class="header-anchor" href="#v2-6-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.5.0...v2.6.0">2.6.0</a> (2024-10-05)</a></h2><h3 id="features--83"><a class="header-anchor" href="#features--83">Features</a></h3><ul>
+<li>add debounce method (refs SFKUI-6794) (<a href="https://github.com/Forsakringskassan/docs-generator/commit/86ba7974075bb3df2fa6f96544bba67b109cd514">86ba797</a>)</li>
+<li>add ipopupmenu styling (refs SFKUI-6794) (<a href="https://github.com/Forsakringskassan/docs-generator/commit/98545d9f41c17968dfebad13f5a3df73748c2564">98545d9</a>)</li>
+<li>new <code><span class="docs-tag docs-tag--default">Optional</span></code> tag (<a href="https://github.com/Forsakringskassan/docs-generator/commit/428e68525290791e655a07a2c369d4c921707982">428e685</a>)</li>
+<li>new layout <code>article</code> (<a href="https://github.com/Forsakringskassan/docs-generator/commit/e55727f70eecd5f2be559b265aa2db1bcae53a10">e55727f</a>)</li>
+<li>new messagebox container for rendering messageboxes (<a href="https://github.com/Forsakringskassan/docs-generator/commit/d75c97e9db35dc3b3ee878c60cdd975a2323873b">d75c97e</a>)</li>
+<li>responsive navbar (fixes SFKUI-6794) (<a href="https://github.com/Forsakringskassan/docs-generator/commit/ce862474e667f4c611cc0ce19467df7257317380">ce86247</a>)</li>
+<li>support <code>short-title</code> attribute (<a href="https://github.com/Forsakringskassan/docs-generator/commit/863154b4865b79791d5496b0d8f309c14cf804c6">863154b</a>)</li>
+<li>support definition lists (<a href="https://github.com/Forsakringskassan/docs-generator/commit/63fd90b1adf7a051fb8d0ef6d1df701efee1c170">63fd90b</a>)</li>
+</ul>
+<h3 id="bug_fixes--84"><a class="header-anchor" href="#bug_fixes--84">Bug Fixes</a></h3><ul>
+<li>branch name when running on github actions (<a href="https://github.com/Forsakringskassan/docs-generator/commit/d4bbca5a5586cafb43ad87df155267623e0e400e">d4bbca5</a>)</li>
+<li>fix clipped bullet in lists (<a href="https://github.com/Forsakringskassan/docs-generator/commit/7519d60782330ccb4e5de480c68c021859853a3f">7519d60</a>), closes <a href="https://github.com/Forsakringskassan/docs-generator/issues/89">#89</a></li>
+<li>fix redos issue with inline tags (<a href="https://github.com/Forsakringskassan/docs-generator/commit/8b7b92bc72118cab8974ef731a234007f6b90f1f">8b7b92b</a>)</li>
+<li>handle inline tags with not content and multiple brackets (<a href="https://github.com/Forsakringskassan/docs-generator/commit/568231946c71e383b2ff679a11f6754bb31e98bc">5682319</a>)</li>
+</ul>
+<h2 id="v2-5-0"><a class="header-anchor" href="#v2-5-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.4.0...v2.5.0">2.5.0</a> (2024-10-04)</a></h2><h3 id="features--85"><a class="header-anchor" href="#features--85">Features</a></h3><ul>
+<li>expose <code>onContentReady</code> to consumers (<a href="https://github.com/Forsakringskassan/docs-generator/commit/7330ac573751da61818378b37ea139144a984d4d">7330ac5</a>)</li>
+</ul>
+<h2 id="v2-4-0"><a class="header-anchor" href="#v2-4-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.3.0...v2.4.0">2.4.0</a> (2024-09-23)</a></h2><h3 id="features--86"><a class="header-anchor" href="#features--86">Features</a></h3><ul>
+<li>expose a limited set of esbuild options to js assets (<a href="https://github.com/Forsakringskassan/docs-generator/commit/aeb8f819f4dde8431d1d83998d56bc2d45b6eb89">aeb8f81</a>)</li>
+<li>fullscreen support for html examples (<a href="https://github.com/Forsakringskassan/docs-generator/commit/aa92d6e64fbb196bba23993a828941c4689da5e6">aa92d6e</a>)</li>
+<li>sass module importer (refs SB-4982) (<a href="https://github.com/Forsakringskassan/docs-generator/commit/592dd06ed257741b1922a605793cc4db35a5a996">592dd06</a>)</li>
+</ul>
+<h3 id="bug_fixes--87"><a class="header-anchor" href="#bug_fixes--87">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency piscina to v4.7.0 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/66cca41ff2524487584507757fa5a15ecdbea20e">66cca41</a>)</li>
+<li><strong>vue:</strong> handle when vue component is missing <code>&lt;script&gt;</code> (<a href="https://github.com/Forsakringskassan/docs-generator/commit/5daa4ebe02c975087b871ecff4e5ad936eb2160f">5daa4eb</a>)</li>
+</ul>
+<h2 id="v2-3-0"><a class="header-anchor" href="#v2-3-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.2.2...v2.3.0">2.3.0</a> (2024-09-20)</a></h2><h3 id="features--88"><a class="header-anchor" href="#features--88">Features</a></h3><ul>
+<li><code>repository</code> placeholder in format strings (<a href="https://github.com/Forsakringskassan/docs-generator/commit/3d582087cea0e047b19653b59b6e176c3b281331">3d58208</a>)</li>
+<li>added support for NodePackageImporter (refs SB-4982) (<a href="https://github.com/Forsakringskassan/docs-generator/commit/dd6c0c0f4c04cdd198fd65367473d15352297a8c">dd6c0c0</a>)</li>
+<li>asset priority settings for sorting the order they run in (<a href="https://github.com/Forsakringskassan/docs-generator/commit/e93ec8360740fdd513a2408cb9164bf0bfa4a7e7">e93ec83</a>)</li>
+<li>detect github pull requests (<a href="https://github.com/Forsakringskassan/docs-generator/commit/3c1073d1f1caeab349aca975842552d7b7ac8b35">3c1073d</a>)</li>
+</ul>
+<h3 id="bug_fixes--89"><a class="header-anchor" href="#bug_fixes--89">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency mermaid to v11.2.1 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/7e0d68962182dff0cb382a6d72b500b5b9084a0d">7e0d689</a>)</li>
+<li>fix vulnerable regexp (<a href="https://github.com/Forsakringskassan/docs-generator/commit/63fb562cb5f707d1e92bde25fe27e1eaec728552">63fb562</a>)</li>
+</ul>
+<h2 id="v2-2-2"><a class="header-anchor" href="#v2-2-2"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.2.1...v2.2.2">2.2.2</a> (2024-09-13)</a></h2><h3 id="bug_fixes--90"><a class="header-anchor" href="#bug_fixes--90">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency express to v4.20.0 [security] (<a href="https://github.com/Forsakringskassan/docs-generator/commit/dd9d77bc2bd394d7f147466fa428d7ff5e16d1d0">dd9d77b</a>)</li>
+<li><strong>deps:</strong> update dependency mermaid to v11.2.0 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/e5b84b98dcd2391aa695daec7e522a4e9c4bc16d">e5b84b9</a>)</li>
+</ul>
+<h2 id="v2-2-1"><a class="header-anchor" href="#v2-2-1"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.2.0...v2.2.1">2.2.1</a> (2024-09-11)</a></h2><h3 id="bug_fixes--91"><a class="header-anchor" href="#bug_fixes--91">Bug Fixes</a></h3><ul>
+<li>invalid layout when mobile and expanded menu (refs SFKUI-6794) (<a href="https://github.com/Forsakringskassan/docs-generator/commit/72840253c6980ceaee69699ecc1f16cecb017881">7284025</a>)</li>
+</ul>
+<h2 id="v2-2-0"><a class="header-anchor" href="#v2-2-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.1.0...v2.2.0">2.2.0</a> (2024-09-10)</a></h2><h3 id="features--92"><a class="header-anchor" href="#features--92">Features</a></h3><ul>
+<li>hide sidenav on click (fixes SFKUI-6767) (<a href="https://github.com/Forsakringskassan/docs-generator/commit/0256f7bb649234df4dd782c0bb51c2002d9418f4">0256f7b</a>)</li>
+</ul>
+<h3 id="bug_fixes--93"><a class="header-anchor" href="#bug_fixes--93">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency mermaid to v11.1.1 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/13d79bc5fbed67ab5e6f804041ef505585988e1f">13d79bc</a>)</li>
+<li>hide details marker on Safari (refs SFKUI-6764) (<a href="https://github.com/Forsakringskassan/docs-generator/commit/c4da3bb1147a8d726f384171aaf8ad6bd75a5354">c4da3bb</a>)</li>
+</ul>
+<h2 id="v2-1-0"><a class="header-anchor" href="#v2-1-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v2.0.0...v2.1.0">2.1.0</a> (2024-09-09)</a></h2><h3 id="features--94"><a class="header-anchor" href="#features--94">Features</a></h3><ul>
+<li><strong>api:</strong> <code>compileScript</code> and <code>compileStyle</code> accepts URL parameter (<a href="https://github.com/Forsakringskassan/docs-generator/commit/a8440049f7162dec7ee99ef1f9cd20f53d1d01bb">a844004</a>)</li>
+<li><strong>deps:</strong> update dependency execa to v9 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/1735bbdd3f38ea9c07e018374af6a9eabeab2dc1">1735bbd</a>)</li>
+<li><strong>deps:</strong> update dependency glob to v11 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/9417f08f3f6111e839723fb4ea8d80001cd78dad">9417f08</a>)</li>
+<li>processors may contain optional runtime scripts (<a href="https://github.com/Forsakringskassan/docs-generator/commit/bcf51d78858c3fb50559db3be12154c8faf3aa04">bcf51d7</a>)</li>
+<li>skeleton element for mermaid diagrams (<a href="https://github.com/Forsakringskassan/docs-generator/commit/bed00fb0782b071b319d1344a7aa02f2abee4d34">bed00fb</a>)</li>
+<li>support <code>hash</code> and <code>short</code> placeholders for <code>urlFormat</code> in <code>sourceUrlProcessor</code> (<a href="https://github.com/Forsakringskassan/docs-generator/commit/174dd9739598e49895b18caf0ab42374cca10ee6">174dd97</a>)</li>
+</ul>
+<h3 id="bug_fixes--95"><a class="header-anchor" href="#bug_fixes--95">Bug Fixes</a></h3><ul>
+<li>ensure asset directory exists before moving script assets (<a href="https://github.com/Forsakringskassan/docs-generator/commit/5767e2f92e7bd497800fed69de93aa725ba9ba2f">5767e2f</a>)</li>
+<li>fix broken mermaid diagrams after navigation (<a href="https://github.com/Forsakringskassan/docs-generator/commit/91490fc0ca6907ed4c962449430e5059c8a4b3d4">91490fc</a>)</li>
+<li>hide seconds from buildinfo (<a href="https://github.com/Forsakringskassan/docs-generator/commit/9b0fec5aec1553c5b4efb44136795483e5f3798e">9b0fec5</a>)</li>
+<li>include original error message when <code>compileScript</code> fails (<a href="https://github.com/Forsakringskassan/docs-generator/commit/122aea32307fb3ec1937fa36ff9ca981ece3095e">122aea3</a>)</li>
+<li>remove non-working support for arrays to <code>compileScript</code> (<a href="https://github.com/Forsakringskassan/docs-generator/commit/c30803aaf229910eb0229e5d6921817b5ca81da2">c30803a</a>)</li>
+<li>resolve <code>versions.json</code> proper when site is in a subdirectory (<a href="https://github.com/Forsakringskassan/docs-generator/commit/ae44ab7764acf803a016a54593f2aeb450b7238a">ae44ab7</a>)</li>
+</ul>
+<h2 id="v2-0-0"><a class="header-anchor" href="#v2-0-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v1.33.1...v2.0.0">2.0.0</a> (2024-09-07)</a></h2><h3 id="breaking_changes"><a class="header-anchor" href="#breaking_changes">⚠ BREAKING CHANGES</a></h3><ul>
+<li>drop vue 2 support</li>
+<li><strong>deps:</strong> NodeJS v20 or later is now required.</li>
+</ul>
+<h3 id="features--96"><a class="header-anchor" href="#features--96">Features</a></h3><ul>
+<li><strong>deps:</strong> require nodejs v20 or later (<a href="https://github.com/Forsakringskassan/docs-generator/commit/59d81724384c5ce325a8085ff93c855825c0f6ad">59d8172</a>)</li>
+<li>drop vue 2 support (<a href="https://github.com/Forsakringskassan/docs-generator/commit/27a8d7e3ad6de593f4d1247ad0cdd7b9d327aa36">27a8d7e</a>)</li>
+</ul>
+<h3 id="bug_fixes--97"><a class="header-anchor" href="#bug_fixes--97">Bug Fixes</a></h3><ul>
+<li>try to fix nav icon size on older mobile devices (<a href="https://github.com/Forsakringskassan/docs-generator/commit/b3e601dc9bada479b6a42a395fa197a4099f5d38">b3e601d</a>)</li>
+</ul>
+<h2 id="v1-33-1"><a class="header-anchor" href="#v1-33-1"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v1.33.0...v1.33.1">1.33.1</a> (2024-09-06)</a></h2><h3 id="bug_fixes--98"><a class="header-anchor" href="#bug_fixes--98">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency mermaid to v11.1.0 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/fca5fa2fcbff55bdd910bd4227079ed179087f29">fca5fa2</a>)</li>
+</ul>
+<h2 id="v1-33-0"><a class="header-anchor" href="#v1-33-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v1.32.0...v1.33.0">1.33.0</a> (2024-09-05)</a></h2><h3 id="features--99"><a class="header-anchor" href="#features--99">Features</a></h3><ul>
+<li>cookie processor (fixes SFKUI-6728) (<a href="https://github.com/Forsakringskassan/docs-generator/commit/85c730dae73c0649c04a15a9ca37779821c2f3cb">85c730d</a>)</li>
+<li>optional <code>apiUrl</code> in <code>MatomoOptions</code> (<a href="https://github.com/Forsakringskassan/docs-generator/commit/c1281d2765fb15d1e565b8346c3865dc92c60e30">c1281d2</a>)</li>
+</ul>
+<h3 id="bug_fixes--100"><a class="header-anchor" href="#bug_fixes--100">Bug Fixes</a></h3><ul>
+<li>do not render empty outline (<a href="https://github.com/Forsakringskassan/docs-generator/commit/4f06652a0efad66138407b964e3fa216f5605dff">4f06652</a>)</li>
+<li>heading size in examples (<a href="https://github.com/Forsakringskassan/docs-generator/commit/fc5e08755e4fc82326979ed8c327bc0f789e2f59">fc5e087</a>)</li>
+<li>responsive table of contents (<a href="https://github.com/Forsakringskassan/docs-generator/commit/a478f56d61f612c000a2b52592fee5479145312d">a478f56</a>)</li>
+</ul>
+<h2 id="v1-32-0"><a class="header-anchor" href="#v1-32-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v1.31.0...v1.32.0">1.32.0</a> (2024-08-30)</a></h2><h3 id="features--101"><a class="header-anchor" href="#features--101">Features</a></h3><ul>
+<li><strong>deps:</strong> update dependency mermaid to v11 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/984c4687bfa12e63fc8f35780be5b1863320c610">984c468</a>)</li>
+</ul>
+<h2 id="v1-31-0"><a class="header-anchor" href="#v1-31-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v1.30.10...v1.31.0">1.31.0</a> (2024-08-22)</a></h2><h3 id="features--102"><a class="header-anchor" href="#features--102">Features</a></h3><ul>
+<li>add option enabled to <code>selectableVersionProcessor</code> (<a href="https://github.com/Forsakringskassan/docs-generator/commit/27d9ff216513cca23b6aed9053d32d53fc3641a2">27d9ff2</a>)</li>
+<li>generate component links (fixes SFKUI-6698) (<a href="https://github.com/Forsakringskassan/docs-generator/commit/90165d591910f3387792fe33216f4785686ffb17">90165d5</a>)</li>
+</ul>
+<h2 id="v1-30-10"><a class="header-anchor" href="#v1-30-10"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v1.30.9...v1.30.10">1.30.10</a> (2024-08-16)</a></h2><h3 id="bug_fixes--103"><a class="header-anchor" href="#bug_fixes--103">Bug Fixes</a></h3><ul>
+<li>show active header in outline (<a href="https://github.com/Forsakringskassan/docs-generator/commit/7293119ee29d08a4138aa34f7705a2a8f2b43d7c">7293119</a>)</li>
+</ul>
+<h2 id="v1-30-9"><a class="header-anchor" href="#v1-30-9"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v1.30.8...v1.30.9">1.30.9</a> (2024-08-09)</a></h2><h3 id="bug_fixes--104"><a class="header-anchor" href="#bug_fixes--104">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency vue-docgen-api to v4.79.2 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/f8c3494c30522da84cd5b6b958346b838ed437e9">f8c3494</a>)</li>
+</ul>
+<h2 id="v1-30-8"><a class="header-anchor" href="#v1-30-8"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v1.30.7...v1.30.8">1.30.8</a> (2024-07-26)</a></h2><h3 id="bug_fixes--105"><a class="header-anchor" href="#bug_fixes--105">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency semver to v7.6.3 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/05ad04ad0fab05a13091228bf9e94b48e82b4149">05ad04a</a>)</li>
+</ul>
+<h2 id="v1-30-7"><a class="header-anchor" href="#v1-30-7"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v1.30.6...v1.30.7">1.30.7</a> (2024-07-19)</a></h2><h3 id="bug_fixes--106"><a class="header-anchor" href="#bug_fixes--106">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency glob to v10.4.5 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/d6006a23cc78fcdb6db97750cc93c4cfcc95acab">d6006a2</a>)</li>
+</ul>
+<h2 id="v1-30-6"><a class="header-anchor" href="#v1-30-6"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v1.30.5...v1.30.6">1.30.6</a> (2024-07-12)</a></h2><h3 id="bug_fixes--107"><a class="header-anchor" href="#bug_fixes--107">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency highlight.js to v11.10.0 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/818dd66b1d6123fe9f5dfa74e9021b9e99df4b0c">818dd66</a>)</li>
+<li><strong>deps:</strong> update dependency vue-docgen-api to v4.79.1 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/56930081e9a70f608dcdf33ddf8c878c181b039e">5693008</a>)</li>
+</ul>
+<h2 id="v1-30-5"><a class="header-anchor" href="#v1-30-5"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v1.30.4...v1.30.5">1.30.5</a> (2024-07-05)</a></h2><h3 id="bug_fixes--108"><a class="header-anchor" href="#bug_fixes--108">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency piscina to v4.6.1 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/c967c07ef49c40d17852574adef4e6fc34579ba1">c967c07</a>)</li>
+</ul>
+<h2 id="v1-30-4"><a class="header-anchor" href="#v1-30-4"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v1.30.3...v1.30.4">1.30.4</a> (2024-06-28)</a></h2><h3 id="bug_fixes--109"><a class="header-anchor" href="#bug_fixes--109">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency glob to v10.4.2 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/0581866dbcb02af3c859ac7dcd0b658011e321b1">0581866</a>)</li>
+<li><strong>deps:</strong> update dependency piscina to v4.6.0 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/65ad2c3d2d736f2b6407ec817857961800e1ee9c">65ad2c3</a>)</li>
+</ul>
+<h2 id="v1-30-3"><a class="header-anchor" href="#v1-30-3"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v1.30.2...v1.30.3">1.30.3</a> (2024-06-16)</a></h2><h3 id="bug_fixes--110"><a class="header-anchor" href="#bug_fixes--110">Bug Fixes</a></h3><ul>
+<li>fix fullscreen button link (<a href="https://github.com/Forsakringskassan/docs-generator/commit/28a62acf8170c4d80062a132b08c38424edaf911">28a62ac</a>)</li>
+</ul>
+<h2 id="v1-30-2"><a class="header-anchor" href="#v1-30-2"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v1.30.1...v1.30.2">1.30.2</a> (2024-06-12)</a></h2><h3 id="bug_fixes--111"><a class="header-anchor" href="#bug_fixes--111">Bug Fixes</a></h3><ul>
+<li>fix jenkins pull request id incorrectly including <code>PR-</code> prefix (<a href="https://github.com/Forsakringskassan/docs-generator/commit/739b9b15b25a6e0acee79c8b1a255ce1899daff1">739b9b1</a>)</li>
+<li>move <code>scmInfo</code> to importable macro in separate file (<a href="https://github.com/Forsakringskassan/docs-generator/commit/893b315516a8e512962e1c6b5bf9d33bf6e515b8">893b315</a>)</li>
+<li>move PR info on it's own line in version info (<a href="https://github.com/Forsakringskassan/docs-generator/commit/d5f6e54b7d3567077e94e50c2de8eeb81cf2e609">d5f6e54</a>)</li>
+</ul>
+<h2 id="v1-30-1"><a class="header-anchor" href="#v1-30-1"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v1.30.0...v1.30.1">1.30.1</a> (2024-06-12)</a></h2><h3 id="bug_fixes--112"><a class="header-anchor" href="#bug_fixes--112">Bug Fixes</a></h3><ul>
+<li>fix broken external links after navigating to subfolder (<a href="https://github.com/Forsakringskassan/docs-generator/commit/9d3ed2b126c24cb933c90ed23d4ab623d6f5069b">9d3ed2b</a>)</li>
+<li>fix broken search results when navigating from subdirectory (<a href="https://github.com/Forsakringskassan/docs-generator/commit/6e23db64dd5395d99156dcb5ebaa3114cb0158c4">6e23db6</a>)</li>
+<li>fix theme selector being stored per directory instead of globally (<a href="https://github.com/Forsakringskassan/docs-generator/commit/90e90e57f2cc4aeb954e39f234138e37fe881fa8">90e90e5</a>)</li>
+<li>prevent theme from flickering when loading page (<a href="https://github.com/Forsakringskassan/docs-generator/commit/89339c140d9815eeff7de274c6ee728982772438">89339c1</a>)</li>
+</ul>
+<h2 id="v1-30-0"><a class="header-anchor" href="#v1-30-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v1.29.2...v1.30.0">1.30.0</a> (2024-05-28)</a></h2><h3 id="features--113"><a class="header-anchor" href="#features--113">Features</a></h3><ul>
+<li>new <code>motdProcessor</code> replacing now deprecated <code>versionBannerProcessor</code> (<a href="https://github.com/Forsakringskassan/docs-generator/commit/c96aaed87128d3d98954b6f77a5fc5b1d2657b60">c96aaed</a>)</li>
+</ul>
+<h3 id="bug_fixes--114"><a class="header-anchor" href="#bug_fixes--114">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency glob to v10.3.16 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/60aea609bc0a342c431bbd660eebbf318d2c8f33">60aea60</a>)</li>
+<li><strong>deps:</strong> update dependency glob to v10.4.1 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/381a6c1615cf19710f7b7a2ce44d3d5307f0b5c1">381a6c1</a>)</li>
+<li><strong>deps:</strong> update dependency piscina to v4.5.1 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/7339a0859b04296155ef0d12eb53210e01d06523">7339a08</a>)</li>
+</ul>
+<h2 id="v1-29-2"><a class="header-anchor" href="#v1-29-2"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v1.29.1...v1.29.2">1.29.2</a> (2024-05-24)</a></h2><h3 id="bug_fixes--115"><a class="header-anchor" href="#bug_fixes--115">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency mermaid to v10.9.1 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/1dffc555c099474484fd1a6db7c916a81c81cf44">1dffc55</a>)</li>
+<li><strong>deps:</strong> update dependency piscina to v4.5.0 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/4e378bb2fe1adc53a51a1aeb067665a0f6a3473d">4e378bb</a>)</li>
+</ul>
+<h2 id="v1-29-1"><a class="header-anchor" href="#v1-29-1"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v1.29.0...v1.29.1">1.29.1</a> (2024-05-17)</a></h2><h3 id="bug_fixes--116"><a class="header-anchor" href="#bug_fixes--116">Bug Fixes</a></h3><ul>
+<li><strong>deps:</strong> update dependency glob to v10.3.14 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/ccadc6565a644825f46be7a4d0f32c3829a3c862">ccadc65</a>)</li>
+<li><strong>deps:</strong> update dependency glob to v10.3.15 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/491605556769cca5e7aab71acabc5b9312eeea8f">4916055</a>)</li>
+<li><strong>deps:</strong> update dependency semver to v7.6.1 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/4f02106e1394245359d87a6aba4d185759e3fec4">4f02106</a>)</li>
+<li><strong>deps:</strong> update dependency semver to v7.6.2 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/d77d8e490b69186753f6d4287d458c8b48b18d53">d77d8e4</a>)</li>
+</ul>
+<h2 id="v1-29-0"><a class="header-anchor" href="#v1-29-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v1.28.0...v1.29.0">1.29.0</a> (2024-05-08)</a></h2><h3 id="features--117"><a class="header-anchor" href="#features--117">Features</a></h3><ul>
+<li>add alternative text markdown container (<a href="https://github.com/Forsakringskassan/docs-generator/commit/4afc5bf6ea3afe64a83e6ee5b1b78d6528af02e4">4afc5bf</a>)</li>
+<li>add frontmatter <code>include</code> (<a href="https://github.com/Forsakringskassan/docs-generator/commit/77b762fe8ac412bc9e4fc37c70b1d52c8330a699">77b762f</a>)</li>
+</ul>
+<h3 id="performance_improvements--118"><a class="header-anchor" href="#performance_improvements--118">Performance Improvements</a></h3><ul>
+<li>skip running example compiler when there are no examples to compile (<a href="https://github.com/Forsakringskassan/docs-generator/commit/67800d8d224f926da367b424d4a63d16504e58c6">67800d8</a>)</li>
+</ul>
+<h2 id="v1-28-0"><a class="header-anchor" href="#v1-28-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v1.27.0...v1.28.0">1.28.0</a> (2024-05-06)</a></h2><h3 id="features--119"><a class="header-anchor" href="#features--119">Features</a></h3><ul>
+<li>add new <code>defineSources</code> helper (<a href="https://github.com/Forsakringskassan/docs-generator/commit/5b4b9ad5efa3e522324e54c28a1c1ed97948054b">5b4b9ad</a>)</li>
+<li>backport topnav processor (<a href="https://github.com/Forsakringskassan/docs-generator/commit/bf1e7595088a1f092180efdfa11b353e8d1e0759">bf1e759</a>)</li>
+<li>new css-variables for text colors (<a href="https://github.com/Forsakringskassan/docs-generator/commit/b5d9c57220be1316fa215f13560bd089cafd4834">b5d9c57</a>)</li>
+<li>queryable example metadata (<a href="https://github.com/Forsakringskassan/docs-generator/commit/15e01a541b9bfa2ac30e8e7c544612a79b317c3e">15e01a5</a>)</li>
+<li>version processor can optionally include scm information (<a href="https://github.com/Forsakringskassan/docs-generator/commit/0680cd81b1c7f302d690c42cb2bffd4d6861978f">0680cd8</a>)</li>
+</ul>
+<h2 id="v1-27-0"><a class="header-anchor" href="#v1-27-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v1.26.0...v1.27.0">1.27.0</a> (2024-04-25)</a></h2><h3 id="features--120"><a class="header-anchor" href="#features--120">Features</a></h3><ul>
+<li><strong>deps:</strong> make <code>express</code> an optional peer dependency (<a href="https://github.com/Forsakringskassan/docs-generator/commit/c6f1ea1975c20c35ad3552ddb610df11306ee7d1">c6f1ea1</a>)</li>
+</ul>
+<h3 id="bug_fixes--121"><a class="header-anchor" href="#bug_fixes--121">Bug Fixes</a></h3><ul>
+<li>fix relative urls appending extra trailing <code>/</code> (<a href="https://github.com/Forsakringskassan/docs-generator/commit/f9493968640f2c0dfc20da6a08348711170b5cd2">f949396</a>)</li>
+</ul>
+<h2 id="v1-26-0"><a class="header-anchor" href="#v1-26-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v1.25.3...v1.26.0">1.26.0</a> (2024-04-24)</a></h2><h3 id="features--122"><a class="header-anchor" href="#features--122">Features</a></h3><ul>
+<li>add a unique id to each example (<a href="https://github.com/Forsakringskassan/docs-generator/commit/4413f26c0309b4a144c5699c5f573ab9b90c1903">4413f26</a>)</li>
+<li><strong>api:</strong> new <code>manifest()</code> method for programmatically retrieving maniest (<a href="https://github.com/Forsakringskassan/docs-generator/commit/b3020f26794f8f5dca44867b0fe0630563bd19a1">b3020f2</a>)</li>
+<li><strong>api:</strong> new <code>manifestProcessor</code> (<a href="https://github.com/Forsakringskassan/docs-generator/commit/c5029b479d3c126c304a8d2a97c06460c80a9ddc">c5029b4</a>)</li>
+<li><strong>api:</strong> support <code>[hash]</code> in <code>outputName</code> (<a href="https://github.com/Forsakringskassan/docs-generator/commit/9e257e03165e295710a4ed3eddf52d94d2349ca2">9e257e0</a>)</li>
+</ul>
+<h3 id="bug_fixes--123"><a class="header-anchor" href="#bug_fixes--123">Bug Fixes</a></h3><ul>
+<li>correct css-variables filepath for windows (<a href="https://github.com/Forsakringskassan/docs-generator/commit/f267b9172450688e21bffb47a960e4a4573fb91a">f267b91</a>)</li>
+</ul>
+<h2 id="v1-25-3"><a class="header-anchor" href="#v1-25-3"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v1.25.2...v1.25.3">1.25.3</a> (2024-04-20)</a></h2><h3 id="bug_fixes--124"><a class="header-anchor" href="#bug_fixes--124">Bug Fixes</a></h3><ul>
+<li>balanced header text wrapping (<a href="https://github.com/Forsakringskassan/docs-generator/commit/7a11c4670a286aad166691461c6f8a708ccb381e">7a11c46</a>)</li>
+<li>separate variables for default font-weight and headings (<a href="https://github.com/Forsakringskassan/docs-generator/commit/e94126013d2b0f6f5f6b0c6896d06f2eaff231ae">e941260</a>)</li>
+</ul>
+<h2 id="v1-25-2"><a class="header-anchor" href="#v1-25-2"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v1.25.1...v1.25.2">1.25.2</a> (2024-04-17)</a></h2><h3 id="bug_fixes--125"><a class="header-anchor" href="#bug_fixes--125">Bug Fixes</a></h3><ul>
+<li>fix EPERM error when renaming output folder on Windows (<a href="https://github.com/Forsakringskassan/docs-generator/commit/c82f5f18beed8462bacbb711da0103e90842c8e4">c82f5f1</a>)</li>
+</ul>
+<h2 id="v1-25-1"><a class="header-anchor" href="#v1-25-1"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v1.25.0...v1.25.1">1.25.1</a> (2024-04-16)</a></h2><h3 id="bug_fixes--126"><a class="header-anchor" href="#bug_fixes--126">Bug Fixes</a></h3><ul>
+<li><strong>style:</strong> adjust font-weight on headings (<a href="https://github.com/Forsakringskassan/docs-generator/commit/5a2fb8519655986c9c9100f896ad2ad16d60598b">5a2fb85</a>)</li>
+<li><strong>style:</strong> change font (<a href="https://github.com/Forsakringskassan/docs-generator/commit/83c033f35be6b0e6dbac2e4ec928991a99f95d5d">83c033f</a>)</li>
+</ul>
+<h2 id="v1-25-0"><a class="header-anchor" href="#v1-25-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v1.24.0...v1.25.0">1.25.0</a> (2024-04-15)</a></h2><h3 id="features--127"><a class="header-anchor" href="#features--127">Features</a></h3><ul>
+<li><strong>deps:</strong> update dependency piscina to v4 (<a href="https://github.com/Forsakringskassan/docs-generator/commit/5e7d50dfb674f58268fb0ed908dbd767e8cec2ee">5e7d50d</a>)</li>
+</ul>
+<h3 id="bug_fixes--128"><a class="header-anchor" href="#bug_fixes--128">Bug Fixes</a></h3><ul>
+<li>add sri for most resources currently missing it (<a href="https://github.com/Forsakringskassan/docs-generator/commit/336e3091ac9a1527e72ff6820e2dd6163791d678">336e309</a>)</li>
+</ul>
+<h2 id="v1-24-0"><a class="header-anchor" href="#v1-24-0"><a href="https://github.com/Forsakringskassan/docs-generator/compare/v1.23.1...v1.24.0">1.24.0</a> (2024-04-12)</a></h2><h3 id="features--129"><a class="header-anchor" href="#features--129">Features</a></h3><ul>
+<li>initial public version (<a href="https://github.com/Forsakringskassan/docs-generator/commit/6352bbc097a5920181753f4980d6236d352c494a">6352bbc</a>)</li>
+</ul>
+
+
+                    </div>
+                </main>
+            </div>
+
+            <footer><div class="docs-footer">
+    <ul class="docs-footer__link-list">
+        <li><a class="anchor" href="./changelog.html">Changelog</a></li>
+    </ul>
+
+    <div class="docs-footer__content"><div class="toolbar__item">
+    <form id="version">
+        <button type="submit" class="anchor">
+            <span id="version-info" class="version"> Byt version </span>
+        </button>
+    </form>
+
+    <dialog id="version-dialog">
+        <div id="version-dialog-head">
+            <h1>Välj version</h1>
+            <button type="button" class="button button--discrete button--discrete--black">
+                <span>Stäng</span>
+                <svg class="button__icon icon" focusable="false" aria-hidden>
+                    <use xlink:href="#docs-icon-close"></use>
+                </svg>
+            </button>
+        </div>
+        <div id="version-list">
+            <p>Var god vänta, laddar versionsdata...</p>
+        </div>
+    </dialog>
+</div>
+
+<template id="version-list-item">
+    <li class="list__item">
+        <a class="list__item__itempane">template</a>
+    </li>
+</template>
+
+    </div>
+</div>
+</footer>
+        </div><div aria-hidden="true" style="display: none">
+    <svg xmlns="http://www.w3.org/2000/svg" focusable="false">
+        <symbol id="docs-icon-search" viewBox="0 0 512 512">
+            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+                fill="currentColor"
+                d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34M208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-close" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="m322.72 256 100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L256 189.28 155.93 89.21c-12.28-12.28-32.19-12.28-44.48 0l-22.24 22.24c-12.28 12.28-12.28 32.19 0 44.48L189.28 256 89.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L256 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48z"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-arrow-down" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="M239.373 380.982 45.03 186.638c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04l154.746 154.021L411.089 129.99c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L273.315 380.982c-9.373 9.372-24.569 9.372-33.942 0"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-circle" xml:space="preserve" viewBox="0 0 512 512">
+            <path
+                d="M489.5 256c0 129-104.6 233.5-233.5 233.5C127 489.5 22.5 385 22.5 256S127 22.5 256 22.5 489.5 127 489.5 256"
+                style="fill: currentColor"
+            ></path>
+            <path
+                d="M512 256c0 141.4-114.6 256-256 256S0 397.4 0 256 114.6 0 256 0s256 114.6 256 256M256 469.3c117.8 0 213.3-95.5 213.3-213.3S373.8 42.7 256 42.7 42.7 138.2 42.7 256 138.2 469.3 256 469.3"
+                style="fill-rule: evenodd; clip-rule: evenodd"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-i" xml:space="preserve" x="0" y="0" version="1.1" viewBox="0 0 512 512">
+            <style>
+                .i {
+                    fill: currentColor;
+                }
+            </style>
+            <path
+                d="M228.25 243.12c0-15.33 12.42-27.75 27.75-27.75s27.75 12.43 27.75 27.75v117.19c0 15.33-12.43 27.75-27.75 27.75-15.33 0-27.75-12.43-27.75-27.75zM285.09 153.03c0 16.07-13.02 29.09-29.09 29.09s-29.09-13.02-29.09-29.09 13.02-29.09 29.09-29.09 29.09 13.02 29.09 29.09"
+                class="i"
+            ></path>
+        </symbol>
+    </svg>
+</div><dialog id="search-dialog">
+    <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
+    <form id="search-form">
+        <div class="text-field">
+            <label for="search-field" class="label">Search</label>
+            <div class="text-field__input-wrapper">
+                <div class="text-field__icon-wrapper">
+                    <input
+                        autofocus
+                        autocomplete="off"
+                        autocapitalize="off"
+                        autocorrect="off"
+                        id="search-field"
+                        type="text"
+                        class="text-field__input"
+                        maxlength="50"
+                        placeholder="Type to begin searching"
+                    />
+                </div>
+            </div>
+        </div>
+        <div id="search-results"></div>
+        <p><kbd>Esc</kbd> to close <kbd>Arrow up/down</kbd> to navigate <kbd>Enter</kbd> to select</p>
+    </form>
+</dialog><script
+            src="./assets/processors/motd/index-ba3f5e.js"
+            type="module"
+            crossorigin
+            integrity="sha384-jsr28RyOgA4bPH0z41i7339cdmEoAkrg0PocqU4kn3HIhH8nZlQ/HD1fZd674I8r"
+            
+        ></script><script
+            src="./assets/processors/selectable-version/select-version-004783.js"
+            type="module"
+            crossorigin
+            integrity="sha384-JI3pmHgItVp4YbJsghIFAzyA9szHlgx5sQLNatmkvhAySGeJzvhbeh+xnUj5cO9C"
+            
+        ></script><script
+            src="./assets/main-514be9.js"
+            type="module"
+            crossorigin
+            integrity="sha384-YTbUMBOIb00BmaI5lkPx5cFLL8ujMlIOV4aIeVvL571bz2+onD2uDcBZJmsE1upz"
+            
+        ></script>
+    </body>
+
+    <!--
+
+         Source file: CHANGELOG.md
+         Document ID: fs:CHANGELOG.md
+         Document name: changelog
+         Document alias: 
+
+    -->
+</html>
