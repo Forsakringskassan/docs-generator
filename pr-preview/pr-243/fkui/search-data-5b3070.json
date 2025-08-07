@@ -120,11 +120,6 @@
     "modellvärde",
     "modell-värde",
     "modelValue",
-    "Version 5 migreringsguide",
-    "Vue 3",
-    "Fieldset migreringsguide",
-    "FCrudButton migreringsguide",
-    "FCrudButton",
     "Anpassa och översätt text",
     "translate",
     "translation",
@@ -144,6 +139,11 @@
     "scss",
     "css",
     "ikonbibliotek",
+    "Version 5 migreringsguide",
+    "Vue 3",
+    "Fieldset migreringsguide",
+    "FCrudButton migreringsguide",
+    "FCrudButton",
     "Testverktyg",
     "testfall",
     "jest",
@@ -259,13 +259,6 @@
     "TranslationService",
     "I18nextProvider",
     "TranslationService",
-    "Hjälpklasser",
-    "helpers",
-    "h-no-margin",
-    "h-root-size",
-    "h-display-flex",
-    "Skärmläsare",
-    "NVDA",
     "useResize() composable",
     "justerbar yta",
     "useModal() composable",
@@ -287,6 +280,13 @@
     "dispatchComponentValidityEvent",
     "clamp() function",
     "datum",
+    "Hjälpklasser",
+    "helpers",
+    "h-no-margin",
+    "h-root-size",
+    "h-display-flex",
+    "Skärmläsare",
+    "NVDA",
     "Validatorer",
     "identisk",
     "matches",
@@ -899,25 +899,6 @@
       ]
     },
     {
-      "url": "gettingstarted/migration/migrating-to-v5.html",
-      "title": "Version 5 migreringsguide",
-      "terms": [
-        "Vue 3"
-      ]
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-fieldset.html",
-      "title": "Fieldset migreringsguide",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-crud-button.html",
-      "title": "FCrudButton migreringsguide",
-      "terms": [
-        "FCrudButton"
-      ]
-    },
-    {
       "url": "gettingstarted/use-design-system/translate-text.html",
       "title": "Anpassa och översätt text",
       "terms": [
@@ -954,6 +935,25 @@
         "scss",
         "css",
         "ikonbibliotek"
+      ]
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v5.html",
+      "title": "Version 5 migreringsguide",
+      "terms": [
+        "Vue 3"
+      ]
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-fieldset.html",
+      "title": "Fieldset migreringsguide",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-crud-button.html",
+      "title": "FCrudButton migreringsguide",
+      "terms": [
+        "FCrudButton"
       ]
     },
     {
@@ -1195,23 +1195,6 @@
       ]
     },
     {
-      "url": "functions/helpers/index.html",
-      "title": "Hjälpklasser",
-      "terms": [
-        "helpers",
-        "h-no-margin",
-        "h-root-size",
-        "h-display-flex"
-      ]
-    },
-    {
-      "url": "functions/helpers/accessibility.html",
-      "title": "Skärmläsare",
-      "terms": [
-        "NVDA"
-      ]
-    },
-    {
       "url": "functions/functions/use-resize.html",
       "title": "useResize() composable",
       "terms": [
@@ -1290,6 +1273,23 @@
       "title": "clamp() function",
       "terms": [
         "datum"
+      ]
+    },
+    {
+      "url": "functions/helpers/index.html",
+      "title": "Hjälpklasser",
+      "terms": [
+        "helpers",
+        "h-no-margin",
+        "h-root-size",
+        "h-display-flex"
+      ]
+    },
+    {
+      "url": "functions/helpers/accessibility.html",
+      "title": "Skärmläsare",
+      "terms": [
+        "NVDA"
       ]
     },
     {
@@ -2341,26 +2341,26 @@
     "119": 31,
     "120": 32,
     "121": 32,
-    "122": 33,
-    "123": 34,
-    "124": 34,
-    "125": 35,
-    "126": 35,
-    "127": 35,
-    "128": 35,
-    "129": 35,
-    "130": 35,
-    "131": 36,
-    "132": 36,
-    "133": 36,
-    "134": 37,
-    "135": 37,
-    "136": 37,
-    "137": 37,
-    "138": 38,
-    "139": 38,
-    "140": 38,
-    "141": 38,
+    "122": 32,
+    "123": 32,
+    "124": 32,
+    "125": 32,
+    "126": 33,
+    "127": 33,
+    "128": 33,
+    "129": 34,
+    "130": 34,
+    "131": 34,
+    "132": 34,
+    "133": 35,
+    "134": 35,
+    "135": 35,
+    "136": 35,
+    "137": 35,
+    "138": 35,
+    "139": 36,
+    "140": 36,
+    "141": 37,
     "142": 38,
     "143": 38,
     "144": 39,
@@ -2480,29 +2480,29 @@
     "258": 63,
     "259": 64,
     "260": 64,
-    "261": 64,
-    "262": 64,
-    "263": 64,
+    "261": 65,
+    "262": 65,
+    "263": 65,
     "264": 65,
     "265": 65,
     "266": 66,
     "267": 66,
     "268": 67,
-    "269": 67,
-    "270": 67,
-    "271": 67,
-    "272": 67,
-    "273": 68,
-    "274": 68,
-    "275": 69,
-    "276": 70,
-    "277": 71,
-    "278": 72,
-    "279": 73,
-    "280": 74,
-    "281": 75,
-    "282": 76,
-    "283": 77,
+    "269": 68,
+    "270": 69,
+    "271": 70,
+    "272": 71,
+    "273": 72,
+    "274": 73,
+    "275": 74,
+    "276": 75,
+    "277": 76,
+    "278": 77,
+    "279": 77,
+    "280": 78,
+    "281": 78,
+    "282": 78,
+    "283": 78,
     "284": 78,
     "285": 79,
     "286": 79,

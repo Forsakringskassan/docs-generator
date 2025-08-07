@@ -4133,6 +4133,12 @@ input[type=search]:focus,
     font-size: var(--f-font-size-large);
   }
 }
+.message-box__icon {
+  line-height: var(--f-line-height-large);
+}
+.message-box__content {
+  text-align: left;
+}
 .message-box--info {
   border: var(--f-border-width-medium) solid;
   border-color: var(--fkds-color-feedback-border-info);
