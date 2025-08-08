@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>renderSlotText - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-aae330.css"
+            href="../../assets/docs-ca34e3.css"
             crossorigin
-            integrity="sha384-Eq9GD2tjB7w4y+EbjTsryI1WrUO0brUUEkoLzt+2EPmQdN7ejSO+ir33tmPT1Zzb"
+            integrity="sha384-Rr8IVOgTPmF3TDG9QZ8TRDOmfKbPmn2QdMLmp/Zd3+1Y9T0SRqdhCRfY+HMLm99l"
             
         />
         <link
@@ -23,17 +23,17 @@
             {
   "imports": {
     "vue": "../../assets/vendor-vue-99b838.js",
-    "@fkui/logic": "../../assets/vendor-fkui-logic-f26798.js",
+    "@fkui/logic": "../../assets/vendor-fkui-logic-be9657.js",
     "@fkui/date": "../../assets/vendor-fkui-date-843385.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-face99.js",
-    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-cd0a92.js"
+    "@fkui/vue": "../../assets/vendor-fkui-vue-c27e28.js",
+    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js"
   },
   "integrity": {
     "../../assets/vendor-vue-99b838.js": "sha384-WLcTEmSIWUTQzGsLJ+mgB2IKVnd2uL3r7coTfYBpxpHlHdqMkkKmwxrbEzzqStYH",
-    "../../assets/vendor-fkui-logic-f26798.js": "sha384-VoYS/Aq6jNp0G4gyTUUp7e7cRZ6D4h19wa0kdfAbEtvAnlhSaIF2hPMEVs0H/Mci",
+    "../../assets/vendor-fkui-logic-be9657.js": "sha384-bkKGakh4v6/CgdwB01sdh34vfdJbt2LHohIrIK3ZJ8wi24DvQdRXEvzwEpd+I+eM",
     "../../assets/vendor-fkui-date-843385.js": "sha384-RdJkZ5djH9APu4MOntBwaarpQ4Llm852lXsUHxekX+AerxuNfFoqhrIxDhg5kgR0",
-    "../../assets/vendor-fkui-vue-face99.js": "sha384-DkYDn6ZBk/a7IvmKDV9jZ28TDUTvAMUil52kq6/+G4Fwyd00bminWOMgClXe8ObB",
-    "../../assets/vendor-forsakringskassan-docs-live-example-cd0a92.js": "sha384-+ytYxTVX2pqx9YmX3DG6AjvU6MKa+nwiMe2/wgRw8vjsWe2S3ukrvVqwESMNT4f5"
+    "../../assets/vendor-fkui-vue-c27e28.js": "sha384-efM1gt3TjQE+OIivrhTEwA0WhIbRTRilYi0J8koUzQsoJw/tyEJAIHeHqUeTAyRP",
+    "../../assets/vendor-forsakringskassan-docs-live-example-3d7c23.js": "sha384-FgSrr2Un4Zw+ux1/hr1Vg6ARE4Q7ksVwSzClSDut1CIzP871/n8WCSO6XEUpC1wH"
   }
 }
         </script><script
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-4ca8af.json"
+            href="../../search-data-817a65.json"
             as="fetch"
             crossorigin
-            integrity="sha384-Pv6B/vNMg4QxxyUB0rtYECrwO7p4DFn7bpoiq+CiFtJf6T4X77qOFGNc2sOXW2ku"
+            integrity="sha384-DmeuQExvw5jTwjIsbg0dKNjCuk5Vwh7v4FzgOAvsixTB3eKglX9HuZyRgE0vnY/L"
             id="search-data"
         />
     </head>
@@ -861,6 +861,17 @@
             
 <ol><li class="link ">
         <a
+            href="./assert-set.html"
+            
+            
+            
+            data-path="functions/functions/assert-set.html"
+            
+        >
+            assertSet()
+        </a>
+    </li><li class="link ">
+        <a
             href="./dispatch-component-validity-event.html"
             
             
@@ -1601,7 +1612,7 @@ Leading and trailing whitespace is trimmed and internal whitespace is collapsed.
 Any elements with the <code>sr-only</code> class will be ignored.</p>
 
                 <div
-                    id="example-c6dcdf"
+                    id="example-ee7848"
                     class="code-preview code-preview--default"
                     
                     
@@ -1615,12 +1626,18 @@ Any elements with the <code>sr-only</code> class will be ignored.</p>
      * Default: `[&quot;sr-only&quot;]`
      */</span>
     <span class="hljs-attr">stripClasses</span>: <span class="hljs-built_in">string</span>[];
+
+    <span class="hljs-comment">/**
+     * By default nested components will not be rendered. When this option is
+     * enabled components will be rendered as `&lt;ComponentName /&gt;`.
+     */</span>
+    <span class="hljs-attr">componentPlaceholder</span>: <span class="hljs-built_in">boolean</span>;
 }
 </code></pre>
                 </div>
             
                 <div
-                    id="example-fdc4c8"
+                    id="example-d18f1d"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile"
@@ -1637,7 +1654,7 @@ Any elements with the <code>sr-only</code> class will be ignored.</p>
             <h2 id="usage"><a class="header-anchor" href="#usage">Usage</a></h2><p class="docs-paragraph">Given the following markup:</p>
 
                 <div
-                    id="example-dacce0"
+                    id="example-8debc5"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1651,7 +1668,7 @@ Any elements with the <code>sr-only</code> class will be ignored.</p>
                 </div>
             
                 <div
-                    id="example-0600fb"
+                    id="example-d21a98"
                     class="code-preview code-preview--default"
                     
                     
@@ -1666,7 +1683,7 @@ Any elements with the <code>sr-only</code> class will be ignored.</p>
             <p class="docs-paragraph">If you use scoped slots you need to pass in the scope:</p>
 
                 <div
-                    id="example-a0f106"
+                    id="example-925081"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1680,7 +1697,7 @@ Any elements with the <code>sr-only</code> class will be ignored.</p>
                 </div>
             
                 <div
-                    id="example-7e67c3"
+                    id="example-59c63a"
                     class="code-preview code-preview--default"
                     
                     
@@ -1717,9 +1734,9 @@ Any elements with the <code>sr-only</code> class will be ignored.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">renovate/major-jest-monorepo (<a href="https://github.com/Forsakringskassan/designsystem/commits/521dd743c17c0595098db0d7ac3b5add691972f0">521dd74</a>)<br />
+<div class="footer__right"><div class="version">renovate/major-jest-monorepo (<a href="https://github.com/Forsakringskassan/designsystem/commits/c544b2660020f5071af58e93b81e77c2efdfaf54">c544b26</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/243">PR 243</a><br />
-        2025-08-08 09:43
+        2025-08-08 21:46
 </div>
 <div class="toolbar__item">
     <form id="version">
