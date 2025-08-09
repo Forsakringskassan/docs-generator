@@ -4,6 +4,7 @@
 export interface ComponentAPI {
     readonly name: string;
     readonly slug: string;
+    readonly models: ComponentProp[];
     readonly props: ComponentProp[];
     readonly slots: ComponentSlot[];
     readonly events: ComponentEvent[];
