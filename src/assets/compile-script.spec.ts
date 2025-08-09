@@ -1,6 +1,6 @@
 import path from "node:path";
 import { type BuildResult } from "esbuild";
-import { Volume } from "memfs/lib/volume";
+import { Volume } from "memfs";
 import { type FSLike, compileScript } from "./compile-script";
 import * as esbuildWrapper from "./esbuild-wrapper";
 
