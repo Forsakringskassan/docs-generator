@@ -200,25 +200,44 @@ function translateSlotBindings(slot: SlotDescriptor): Array<{
  */
 export async function translateAPI(filePath: string): Promise<ComponentAPI> {
     const api = await parse(filePath);
-    const props = api.props ? translateProps(api.props) : [];
-    const events = api.events ? translateEvents(api.events) : [];
+    let props = api.props ? translateProps(api.props) : [];
+    let events = api.events ? translateEvents(api.events) : [];
     const slots = api.slots ? translateSlots(api.slots) : [];
 
-    /* remap v-model props */
-    for (const event of events) {
+    /* remap v-model props/events */
+    const models: ComponentProp[] = [];
+    events = events.filter((event) => {
         if (!event.name.startsWith("update:")) {
-            continue;
+            return true;
         }
         const prop = event.name.slice("update:".length);
-        const entry = props.find((it) => it.name === prop);
-        if (entry) {
-            entry.name = prop === "modelValue" ? "v-model" : `v-model:${prop}`;
+        const index = props.findIndex((it) => it.name === prop);
+        if (index < 0) {
+            return false;
         }
-    }
+        const model = props.splice(index, 1)[0];
+        model.name = prop === "modelValue" ? "v-model" : `v-model:${prop}`;
+        models.push(model);
+        return false;
+    });
+
+    /* handle v-model with @model */
+    props = props.filter((prop) => {
+        if (!prop.name.startsWith("v-model")) {
+            return true;
+        }
+        const model = models.find((model) => model.name === prop.name);
+        if (model) {
+            return false;
+        }
+        models.push(prop);
+        return false;
+    });
 
     return {
         name: api.displayName,
         slug: slugify(api.displayName),
+        models,
         props,
         events,
         slots,

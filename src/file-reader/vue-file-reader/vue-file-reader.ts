@@ -4,6 +4,7 @@ import { type DocumentPartial } from "../../document";
 import { normalizePath } from "../../utils";
 import { translateAPI } from "./translate-api";
 import { type ComponentAPI } from "./component-api";
+import { generateModelTable } from "./generate-model-table";
 import { generatePropTable } from "./generate-prop-table";
 import { generateEventTable } from "./generate-event-table";
 import { generateSlotTable } from "./generate-slot-table";
@@ -16,6 +17,9 @@ function parseAPI(filePath: string, api: ComponentAPI): DocumentPartial {
     const componentName = parsedPath.name;
 
     let html = "";
+    if (api.models.length) {
+        html += generateModelTable(api.slug, api.models);
+    }
     if (api.props.length) {
         html += generatePropTable(api.slug, api.props);
     }
