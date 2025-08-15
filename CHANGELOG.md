@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [2.28.11](https://github.com/Forsakringskassan/docs-generator/compare/v2.28.10...v2.28.11) (2025-08-15)
+
+### Bug Fixes
+
+* **deps:** update dependency fs-extra to v11.3.1 ([ccc9d93](https://github.com/Forsakringskassan/docs-generator/commit/ccc9d93102769f6782dbf46c6a982bff74d1bfa2))
+* **deps:** update dependency i18next to v25.3.4 ([9a0bf4f](https://github.com/Forsakringskassan/docs-generator/commit/9a0bf4f9aa6be519b3e778e0d22d29bc99ea56e1))
+
 ## [2.28.10](https://github.com/Forsakringskassan/docs-generator/compare/v2.28.9...v2.28.10) (2025-07-29)
 
 ### Bug Fixes
