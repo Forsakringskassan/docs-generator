@@ -7,6 +7,15 @@ defineProps({
     /**
      * Lorem ipsum dolor
      * sit amet.
+     */
+    modelValue: {
+        type: String,
+        required: false,
+        default: "",
+    },
+    /**
+     * Lorem ipsum dolor
+     * sit amet.
      *
      * Must be one of:
      *
@@ -41,6 +50,7 @@ defineProps({
 });
 
 defineEmits<{
+    "update:modelValue": [value: string];
     /**
      * Lorem ipsum
      * dolor sit amet
