@@ -13,6 +13,7 @@ describe("options API", () => {
         expect(result).toEqual({
             name: "options-dummy-js",
             slug: "options-dummy-js",
+            models: [],
             events: [],
             props: [],
             slots: [],
@@ -26,10 +27,55 @@ describe("options API", () => {
         expect(result).toEqual({
             name: "options-dummy-ts",
             slug: "options-dummy-ts",
+            models: [],
             events: [],
             props: [],
             slots: [],
         });
+    });
+
+    it("should handle v-model with update event", async () => {
+        expect.assertions(3);
+        const filepath = fixture("options-vmodel-emit.vue");
+        const result = await translateAPI(filepath);
+        expect(result.models).toEqual([
+            {
+                name: "v-model",
+                type: "string",
+                required: false,
+                description: "Lorem ipsum.",
+                default: { value: `""` },
+                deprecated: null,
+            },
+        ]);
+        expect(result.props).toEqual([]);
+        expect(result.events).toEqual([]);
+    });
+
+    it("should handle multiple v-model", async () => {
+        expect.assertions(3);
+        const filepath = fixture("options-vmodel-multiple.vue");
+        const result = await translateAPI(filepath);
+        expect(result.models).toEqual([
+            {
+                name: "v-model",
+                type: "string",
+                required: false,
+                description: "Lorem ipsum.",
+                default: { value: `""` },
+                deprecated: null,
+            },
+            {
+                name: "v-model:foo",
+                type: "number",
+                required: false,
+                description: null,
+                default: { value: `0` },
+                deprecated: null,
+            },
+        ]);
+        expect(result.props).toEqual([]);
+        expect(result.events).toEqual([]);
     });
 
     it("should parse props", async () => {
@@ -133,6 +179,7 @@ describe("composition API", () => {
         expect(result).toEqual({
             name: "composition-dummy-js",
             slug: "composition-dummy-js",
+            models: [],
             events: [],
             props: [],
             slots: [],
@@ -146,10 +193,74 @@ describe("composition API", () => {
         expect(result).toEqual({
             name: "composition-dummy-ts",
             slug: "composition-dummy-ts",
+            models: [],
             events: [],
             props: [],
             slots: [],
         });
+    });
+
+    it("should handle v-model with update event", async () => {
+        expect.assertions(3);
+        const filepath = fixture("composition-vmodel-emit.vue");
+        const result = await translateAPI(filepath);
+        expect(result.models).toEqual([
+            {
+                name: "v-model",
+                type: "string",
+                required: false,
+                description: "Lorem ipsum.",
+                default: { value: `""` },
+                deprecated: null,
+            },
+        ]);
+        expect(result.props).toEqual([]);
+        expect(result.events).toEqual([]);
+    });
+
+    it("should handle multiple v-model", async () => {
+        expect.assertions(3);
+        const filepath = fixture("options-vmodel-multiple.vue");
+        const result = await translateAPI(filepath);
+        expect(result.models).toEqual([
+            {
+                name: "v-model",
+                type: "string",
+                required: false,
+                description: "Lorem ipsum.",
+                default: { value: `""` },
+                deprecated: null,
+            },
+            {
+                name: "v-model:foo",
+                type: "number",
+                required: false,
+                description: null,
+                default: { value: `0` },
+                deprecated: null,
+            },
+        ]);
+        expect(result.props).toEqual([]);
+        expect(result.events).toEqual([]);
+    });
+
+    /* eslint-disable-next-line jest/no-disabled-tests -- vue-docgen-api fails to recognize this */
+    it.skip("should handle v-model with `defineModel`", async () => {
+        expect.assertions(3);
+        const filepath = fixture("composition-vmodel-define.vue");
+        const result = await translateAPI(filepath);
+        expect(result.models).toEqual([
+            {
+                name: "v-model",
+                type: "string",
+                required: false,
+                description: "Lorem ipsum.",
+                default: { value: `""` },
+                deprecated: null,
+            },
+        ]);
+        expect(result.props).toEqual([]);
+        expect(result.events).toEqual([]);
     });
 
     it("should parse object props", async () => {
@@ -420,62 +531,6 @@ describe("composition API", () => {
             },
         ]);
     });
-});
-
-it("should handle v-model with @model", async () => {
-    expect.assertions(1);
-    const filepath = fixture("options-vmodel.vue");
-    const result = await translateAPI(filepath);
-    expect(result.props).toEqual([
-        {
-            name: "v-model",
-            type: "string",
-            required: false,
-            description: "Lorem ipsum.",
-            default: { value: `""` },
-            deprecated: null,
-        },
-    ]);
-});
-
-it("should handle v-model with update event", async () => {
-    expect.assertions(1);
-    const filepath = fixture("options-vmodel-emit.vue");
-    const result = await translateAPI(filepath);
-    expect(result.props).toEqual([
-        {
-            name: "v-model",
-            type: "string",
-            required: false,
-            description: "Lorem ipsum.",
-            default: { value: `""` },
-            deprecated: null,
-        },
-    ]);
-});
-
-it("should handle multiple v-model", async () => {
-    expect.assertions(1);
-    const filepath = fixture("options-vmodel-multiple.vue");
-    const result = await translateAPI(filepath);
-    expect(result.props).toEqual([
-        {
-            name: "v-model",
-            type: "string",
-            required: false,
-            description: "Lorem ipsum.",
-            default: { value: `""` },
-            deprecated: null,
-        },
-        {
-            name: "v-model:foo",
-            type: "number",
-            required: false,
-            description: null,
-            default: { value: `0` },
-            deprecated: null,
-        },
-    ]);
 });
 
 it("should handle @ignore", async () => {

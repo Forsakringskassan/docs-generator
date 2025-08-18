@@ -7,6 +7,7 @@ import {
 import { slugify } from "../../utils";
 import {
     type ComponentAPI,
+    type ComponentModel,
     type ComponentProp,
     type ComponentSlot,
     type ComponentEvent,
@@ -193,6 +194,48 @@ function translateSlotBindings(slot: SlotDescriptor): Array<{
 }
 
 /**
+ * Filter v-models by comparing component props and events.
+ *
+ * @internal
+ * @param rawProps - Translated props.
+ * @param rawEvents - Translated events.
+ * @returns Object with array of only models as well as props and events without models.
+ */
+function filterModels(
+    rawProps: ComponentProp[],
+    rawEvents: ComponentEvent[],
+): {
+    models: ComponentModel[];
+    props: ComponentProp[];
+    events: ComponentEvent[];
+} {
+    const modelEvents = rawEvents.filter((it) => it.name.startsWith("update:"));
+    const rawModels = modelEvents.map((it) => {
+        const propName = it.name.slice("update:".length);
+        const prop = rawProps.find((it) => it.name === propName);
+        if (!prop) {
+            return null;
+        }
+
+        return {
+            ...prop,
+            name: propName === "modelValue" ? "v-model" : `v-model:${propName}`,
+        };
+    });
+
+    const models = rawModels.filter((model) => model !== null);
+    const events = rawEvents.filter((it) => !it.name.startsWith("update:"));
+    const props = rawProps.filter((prop) => {
+        const hasModelName = models.some(
+            (model) => model.name.slice("v-model:".length) === prop.name,
+        );
+        return !(hasModelName || prop.name.startsWith("modelValue"));
+    });
+
+    return { models, props, events };
+}
+
+/**
  * Translates output from a vue component parser to general interface.
  * If the parser is changed the translation functions need to be updated to match its interface.
  *
@@ -200,25 +243,16 @@ function translateSlotBindings(slot: SlotDescriptor): Array<{
  */
 export async function translateAPI(filePath: string): Promise<ComponentAPI> {
     const api = await parse(filePath);
-    const props = api.props ? translateProps(api.props) : [];
-    const events = api.events ? translateEvents(api.events) : [];
-    const slots = api.slots ? translateSlots(api.slots) : [];
+    const rawProps = api.props ? translateProps(api.props) : [];
+    const rawEvents = api.events ? translateEvents(api.events) : [];
 
-    /* remap v-model props */
-    for (const event of events) {
-        if (!event.name.startsWith("update:")) {
-            continue;
-        }
-        const prop = event.name.slice("update:".length);
-        const entry = props.find((it) => it.name === prop);
-        if (entry) {
-            entry.name = prop === "modelValue" ? "v-model" : `v-model:${prop}`;
-        }
-    }
+    const { models, props, events } = filterModels(rawProps, rawEvents);
+    const slots = api.slots ? translateSlots(api.slots) : [];
 
     return {
         name: api.displayName,
         slug: slugify(api.displayName),
+        models,
         props,
         events,
         slots,
