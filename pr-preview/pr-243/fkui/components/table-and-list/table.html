@@ -2578,6 +2578,50 @@ width numbers).</p>
                     
         </dl>
     <h3 id="finteractivetable"><a class="header-anchor" href="#finteractivetable">FInteractiveTable</a></h3>
+        <h4 id="finteractivetable-models">
+            <a class="header-anchor" href="#finteractivetable-models">Models</a>
+        </h4>
+        <dl class="docs-api docs-api--models">
+            
+                        <dt>
+                            <code id="finteractivetable-model-v-model"
+                                ><a class="docs-api__anchor" href="#finteractivetable-model-v-model"
+                                    ><span class="docs-api__name"
+                                        >v-model</span
+                                    >: T[] | undefined</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Currently selected rows.
+Requires <code>selectable</code> to be set.</p>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-model-v-model-active"
+                                ><a class="docs-api__anchor" href="#finteractivetable-model-v-model-active"
+                                    ><span class="docs-api__name"
+                                        >v-model:active</span
+                                    >: T | undefined</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Current active row.</p>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
         <h4 id="finteractivetable-props">
             <a class="header-anchor" href="#finteractivetable-props">Props</a>
         </h4>
@@ -2757,43 +2801,6 @@ or deselected.</p>
                             
                         </dd>
                     
-                        <dt>
-                            <code id="finteractivetable-prop-v-model"
-                                ><a class="docs-api__anchor" href="#finteractivetable-prop-v-model"
-                                    ><span class="docs-api__name"
-                                        >v-model</span
-                                    >: T[] | undefined</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <p>Currently selected rows.
-Requires <code>selectable</code> to be set.</p>
-
-                            <p class="doc-api__item">Default: <code>undefined</code></p>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="finteractivetable-prop-v-model-active"
-                                ><a class="docs-api__anchor" href="#finteractivetable-prop-v-model-active"
-                                    ><span class="docs-api__name"
-                                        >v-model:active</span
-                                    >: T | undefined</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <p>Current active row.</p>
-
-                            <p class="doc-api__item">Default: <code>undefined</code></p>
-                            
-                        </dd>
-                    
         </dl>
     
         <h4 id="finteractivetable-events">
@@ -2915,44 +2922,6 @@ Requires <code>selectable</code> to be set.</p>
 
                             <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
                             <li><code>row: T</code> <span role="presentation">&mdash;</span> The parent row holding rows to be collapsed.</li>
-                            </ul>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="finteractivetable-event-update-modelvalue"
-                                ><a class="docs-api__anchor" href="#finteractivetable-event-update-modelvalue"
-                                    ><span class="docs-api__name"
-                                        >update:modelValue</span
-                                    ></a
-                                ></code
-                            >
-                            
-                        </dt>
-                        <dd>
-                            <p>V-momdel event for selected rows.</p>
-
-                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
-                            <li><code>rows: Array</code> <span role="presentation">&mdash;</span> Array of all currently selected rows.</li>
-                            </ul>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="finteractivetable-event-update-active"
-                                ><a class="docs-api__anchor" href="#finteractivetable-event-update-active"
-                                    ><span class="docs-api__name"
-                                        >update:active</span
-                                    ></a
-                                ></code
-                            >
-                            
-                        </dt>
-                        <dd>
-                            <p>V-model event for active row.</p>
-
-                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
-                            <li><code>row: union</code> <span role="presentation">&mdash;</span> Current active row or <code>undefined</code> if no row is active.</li>
                             </ul>
                             
                         </dd>
@@ -3105,7 +3074,7 @@ Requires <code>selectable</code> to be set.</p>
 
 <div class="footer__right"><div class="version">renovate/major-jest-monorepo (<a href="https://github.com/Forsakringskassan/designsystem/commits/096fbf48f49520ffaddd35f93867f5c4bc4b0ed2">096fbf4</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/243">PR 243</a><br />
-        2025-08-20 05:17
+        2025-08-20 08:36
 </div>
 <div class="toolbar__item">
     <form id="version">

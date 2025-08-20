@@ -1172,6 +1172,49 @@ Men om det är tänkt att objekten ska laddas om från REST-api eller liknande s
                 </div>
             <h2 id="anvandning_av_komponent"><a class="header-anchor" href="#anvandning_av_komponent">Användning av komponent</a></h2><p class="docs-paragraph"><strong>Komponent motsvarar följande HTML element:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul">Unordered List</a></p>
 <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+        <h3 id="flist-models">
+            <a class="header-anchor" href="#flist-models">Models</a>
+        </h3>
+        <dl class="docs-api docs-api--models">
+            
+                        <dt>
+                            <code id="flist-model-v-model-active"
+                                ><a class="docs-api__anchor" href="#flist-model-v-model-active"
+                                    ><span class="docs-api__name"
+                                        >v-model:active</span
+                                    >: T | undefined</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>V-model will bind to value containing the current active item.</p>
+
+                            <p class="doc-api__item">Default: <code>() =&gt; undefined</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="flist-model-v-model"
+                                ><a class="docs-api__anchor" href="#flist-model-v-model"
+                                    ><span class="docs-api__name"
+                                        >v-model</span
+                                    >: T[] | undefined</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>V-model will bind to value containing selected items.</p>
+
+                            <p class="doc-api__item">Default: <code>() =&gt; undefined</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
         <h3 id="flist-props">
             <a class="header-anchor" href="#flist-props">Props</a>
         </h3>
@@ -1250,42 +1293,6 @@ be able to optimize reuse of components.</p>
 Disable checkbox in interactive list and create a &lt;a&gt;-wrapper for each item, making them clickable</p>
 
                             <p class="doc-api__item">Default: <code>true</code></p>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="flist-prop-v-model"
-                                ><a class="docs-api__anchor" href="#flist-prop-v-model"
-                                    ><span class="docs-api__name"
-                                        >v-model</span
-                                    >: T[] | undefined</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <p>V-model will bind to value containing selected items.</p>
-
-                            <p class="doc-api__item">Default: <code>() =&gt; undefined</code></p>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="flist-prop-v-model-active"
-                                ><a class="docs-api__anchor" href="#flist-prop-v-model-active"
-                                    ><span class="docs-api__name"
-                                        >v-model:active</span
-                                    >: T | undefined</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <p>V-model will bind to value containing the current active item.</p>
-
-                            <p class="doc-api__item">Default: <code>() =&gt; undefined</code></p>
                             
                         </dd>
                     
@@ -1390,44 +1397,6 @@ Disable checkbox in interactive list and create a &lt;a&gt;-wrapper for each ite
                             
                         </dd>
                     
-                        <dt>
-                            <code id="flist-event-update-active"
-                                ><a class="docs-api__anchor" href="#flist-event-update-active"
-                                    ><span class="docs-api__name"
-                                        >update:active</span
-                                    ></a
-                                ></code
-                            >
-                            
-                        </dt>
-                        <dd>
-                            <p>V-model active event.</p>
-
-                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
-                            <li><code>&lt;anonymous&gt;: T</code></li>
-                            </ul>
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="flist-event-update-modelvalue"
-                                ><a class="docs-api__anchor" href="#flist-event-update-modelvalue"
-                                    ><span class="docs-api__name"
-                                        >update:modelValue</span
-                                    ></a
-                                ></code
-                            >
-                            
-                        </dt>
-                        <dd>
-                            <p>V-model event to update value property.</p>
-
-                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
-                            <li><code>&lt;anonymous&gt;: Array</code></li>
-                            </ul>
-                            
-                        </dd>
-                    
         </dl>
     
         <h3 id="flist-slots">
@@ -1519,7 +1488,7 @@ Disable checkbox in interactive list and create a &lt;a&gt;-wrapper for each ite
 
 <div class="footer__right"><div class="version">renovate/major-jest-monorepo (<a href="https://github.com/Forsakringskassan/designsystem/commits/096fbf48f49520ffaddd35f93867f5c4bc4b0ed2">096fbf4</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/243">PR 243</a><br />
-        2025-08-20 05:17
+        2025-08-20 08:36
 </div>
 <div class="toolbar__item">
     <form id="version">
