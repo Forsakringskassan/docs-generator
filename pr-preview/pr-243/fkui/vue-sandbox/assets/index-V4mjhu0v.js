@@ -20855,6 +20855,7 @@ const _hoisted_6$a = ["value"];
         if (foundAttribute) {
           sortAttribute.value = foundAttribute;
         }
+        useDefaultSortOrder.value = false;
       }
       sortFilterData();
     }, {
@@ -20874,7 +20875,6 @@ const _hoisted_6$a = ["value"];
       emit2("datasetSorted", sortFilterResult.value);
     }
     function onChangeSortAttribute() {
-      useDefaultSortOrder.value = false;
       sortFilterData();
       emit2("usedSortAttributes", sortAttribute.value);
     }
