@@ -24,13 +24,13 @@
     "Mermaid",
     "Markdown",
     "Definition lists",
-    "Example",
-    "Scripts",
-    "Configuration",
     "Plumbing",
     "Overriding templates",
     "Layout",
     "Custom layout",
+    "Example",
+    "Scripts",
+    "Configuration",
     "Top page",
     "Sorted Page 3",
     "Sorted Page 2",
@@ -163,21 +163,6 @@
       "terms": []
     },
     {
-      "url": "live-example/example.html",
-      "title": "Example",
-      "terms": []
-    },
-    {
-      "url": "configuration/scripts.html",
-      "title": "Scripts",
-      "terms": []
-    },
-    {
-      "url": "configuration/index.html",
-      "title": "Configuration",
-      "terms": []
-    },
-    {
       "url": "layout/plumbing.html",
       "title": "Plumbing",
       "terms": []
@@ -195,6 +180,21 @@
     {
       "url": "layout/custom-layout.html",
       "title": "Custom layout",
+      "terms": []
+    },
+    {
+      "url": "live-example/example.html",
+      "title": "Example",
+      "terms": []
+    },
+    {
+      "url": "configuration/scripts.html",
+      "title": "Scripts",
+      "terms": []
+    },
+    {
+      "url": "configuration/index.html",
+      "title": "Configuration",
       "terms": []
     },
     {
