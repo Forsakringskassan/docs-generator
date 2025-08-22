@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [2.29.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.28.11...v2.29.0) (2025-08-22)
+
+### Features
+
+* add separate v-model table (refs SFKUI-7107) ([f032f12](https://github.com/Forsakringskassan/docs-generator/commit/f032f12b2bb939937b02c1ba2a3e14daaca7e18b))
+
+### Bug Fixes
+
+* **deps:** update dependency i18next to v25.3.6 ([1c4418a](https://github.com/Forsakringskassan/docs-generator/commit/1c4418a2b622f9c458e73a18ae4171c920aec9a4))
+* **deps:** update dependency mermaid to v11.10.0 [security] ([ee6f078](https://github.com/Forsakringskassan/docs-generator/commit/ee6f078c28370d9bea9ae988c8b7405bcfbf9039))
+
 ## [2.28.11](https://github.com/Forsakringskassan/docs-generator/compare/v2.28.10...v2.28.11) (2025-08-15)
 
 ### Bug Fixes
