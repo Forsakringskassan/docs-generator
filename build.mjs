@@ -92,6 +92,7 @@ async function build() {
             "@babel/core",
             "express",
             "vue",
+            "vue/compiler-sfc",
             "vue-template-compiler",
             "@vue/compiler-core",
             "@vue/compiler-sfc",
