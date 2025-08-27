@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path/posix";
+import nativePath from "node:path";
 import { URL, fileURLToPath } from "node:url";
 import esbuild from "esbuild";
 import isCI from "is-ci";
@@ -134,7 +135,9 @@ async function build() {
         ].join("\n"),
         manualChunks(id) {
             const fullPath = id.replace(/[?].*/, "").replace("\x00", "");
-            const base = path.relative(rootDir, fullPath).replace(/\\/g, "/");
+            const base = nativePath
+                .relative(rootDir, fullPath)
+                .replace(/\\/g, "/");
             if (base.startsWith("node_modules/")) {
                 return "vendor";
             }
