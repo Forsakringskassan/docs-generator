@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [2.29.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.29.0...v2.29.1) (2025-08-27)
+
+### Bug Fixes
+
+* **build:** fix `registerTS()` call incorrectly being bundled in package ([7ee1590](https://github.com/Forsakringskassan/docs-generator/commit/7ee1590c7720bed99bd0c675ec8bce25be1ab9dc))
+* **deps:** update dependency @leeoniya/ufuzzy to v1.0.19 ([#262](https://github.com/Forsakringskassan/docs-generator/issues/262)) ([976b89c](https://github.com/Forsakringskassan/docs-generator/commit/976b89cbab00be73d959c750860634e936f45588))
+* **deps:** update dependency i18next to v25.4.0 ([5c992c1](https://github.com/Forsakringskassan/docs-generator/commit/5c992c1d62146adb8ca47c88632e63f18ac8d360))
+* **deps:** update dependency i18next to v25.4.1 ([44c1beb](https://github.com/Forsakringskassan/docs-generator/commit/44c1bebb847cd593f361ca52a834a4de4b4394f5))
+* **deps:** update dependency mermaid to v11.10.1 ([#263](https://github.com/Forsakringskassan/docs-generator/issues/263)) ([d0270b5](https://github.com/Forsakringskassan/docs-generator/commit/d0270b57b3c762a2de63abcaf0c4ab96d2e30b06))
+
 ## [2.29.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.28.11...v2.29.0) (2025-08-22)
 
 ### Features
