@@ -177,7 +177,7 @@
     "@types/node": "20.19.12",
     "@types/nunjucks": "3.2.6",
     "@types/pug": "2.0.10",
-    "@types/semver": "7.7.0",
+    "@types/semver": "7.7.1",
     "cypress": "15.1.0",
     "cypress-html-validate": "8.1.0",
     "esbuild": "0.25.9",
