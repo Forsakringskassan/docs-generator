@@ -1,4 +1,3 @@
-/* eslint-env browser */
 export default window.Vue;
 export const defineComponent = window.Vue.defineComponent;
 export const toDisplayString = window.Vue.toDisplayString;
