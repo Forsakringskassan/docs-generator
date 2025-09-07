@@ -1,5 +1,4 @@
 # owned by tooling
-package.json
 package-lock.json
 etc/*.md
 
