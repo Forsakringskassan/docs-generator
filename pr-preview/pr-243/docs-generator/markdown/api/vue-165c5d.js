@@ -10,7 +10,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/markdown/api/vue.md:vue-8168a4.js
+// virtual-entry:virtual:docs/markdown/api/vue.md:vue-165c5d.js
 import { toDisplayString as _toDisplayString, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
 var exampleComponent = {};
 function render(_ctx, _cache) {
@@ -33,7 +33,7 @@ function render(_ctx, _cache) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-8168a4"
+  selector: "#example-165c5d"
 });
 export {
   render

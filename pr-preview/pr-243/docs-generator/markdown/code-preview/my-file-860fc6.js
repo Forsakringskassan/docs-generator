@@ -10,7 +10,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/markdown/files/my-file.vue:my-file-bbf037.js
+// virtual-entry:virtual:docs/markdown/files/my-file.vue:my-file-860fc6.js
 import { ref } from "vue";
 import { toDisplayString as _toDisplayString, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
 var exampleComponent = {
@@ -35,7 +35,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-bbf037"
+  selector: "#example-860fc6"
 });
 export {
   render
