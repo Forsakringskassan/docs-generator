@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## [2.29.3](https://github.com/Forsakringskassan/docs-generator/compare/v2.29.2...v2.29.3) (2025-09-12)
+
+### Bug Fixes
+
+* **deps:** update dependency dedent to v1.7.0 ([c91c0c6](https://github.com/Forsakringskassan/docs-generator/commit/c91c0c6e2d72c950a927b0649702c6128d5877c9))
+* **deps:** update dependency i18next to v25.5.0 ([5561333](https://github.com/Forsakringskassan/docs-generator/commit/55613337eb60b695257c632a47cfca15cf263ee4))
+* **deps:** update dependency i18next to v25.5.2 ([85ec94b](https://github.com/Forsakringskassan/docs-generator/commit/85ec94bc29265109788442124ef3d2af6d2652fe))
+* **deps:** update dependency mermaid to v11.11.0 ([defc9ad](https://github.com/Forsakringskassan/docs-generator/commit/defc9ad15f333737fb5c07beba54cc9cca701f87))
+
 ## [2.29.2](https://github.com/Forsakringskassan/docs-generator/compare/v2.29.1...v2.29.2) (2025-08-29)
 
 ### Bug Fixes

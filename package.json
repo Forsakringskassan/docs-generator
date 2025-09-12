@@ -1,6 +1,6 @@
 {
   "name": "@forsakringskassan/docs-generator",
-  "version": "2.29.2",
+  "version": "2.29.3",
   "description": "Documentation generator",
   "keywords": [
     "documentation"
