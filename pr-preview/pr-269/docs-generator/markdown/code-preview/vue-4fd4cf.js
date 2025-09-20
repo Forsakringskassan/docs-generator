@@ -10,7 +10,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/markdown/code-preview/vue.md:vue-58a640.js
+// virtual-entry:virtual:docs/markdown/code-preview/vue.md:vue-4fd4cf.js
 import { toDisplayString as _toDisplayString, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
 var name = "World";
 var exampleComponent = {
@@ -28,7 +28,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-58a640"
+  selector: "#example-4fd4cf"
 });
 export {
   render
