@@ -16,7 +16,7 @@ function hideCookieWarning(el: HTMLElement): void {
 
 function setCookie(name: string): void {
     const expires = new Date(Date.now() + 1000 * 60 * 60 * 24 * 400);
-    document.cookie = `${name}=;expires=${expires};path=/`;
+    document.cookie = `${name}=;expires=${expires.toString()};path=/`;
 }
 
 onContentReady(() => {

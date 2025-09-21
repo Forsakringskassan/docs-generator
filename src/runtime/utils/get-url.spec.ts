@@ -1,5 +1,5 @@
 import path from "node:path";
-import { DocumentLike, getUrl } from "./get-url";
+import { type DocumentLike, getUrl } from "./get-url";
 
 interface Entry {
     fromPath: string;

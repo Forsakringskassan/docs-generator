@@ -1,13 +1,13 @@
 import fs from "node:fs";
 import path from "node:path";
-import { ExampleOptions, generateCode } from "./generate-code";
+import { type ExampleOptions, generateCode } from "./generate-code";
 
 const fixturePath = path.join(__dirname, "__fixtures__");
 
 function readFixture(filename: string): ExampleOptions {
     const slug = filename
         .replace(".vue", "")
-        .replace(/(^|.)([A-Z])/g, (_, p1, p2) => {
+        .replace(/(^|.)([A-Z])/g, (_, p1: string, p2: string) => {
             return `${p1}${p1 ? "-" : ""}${p2.toLowerCase()}`;
         });
     const fingerprint = "123456";

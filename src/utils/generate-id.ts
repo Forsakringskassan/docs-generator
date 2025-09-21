@@ -5,7 +5,7 @@ const replacements = {
 };
 
 function findVersion(text: string): [number, number, number] | null {
-    const match = text.match(/(\d+)\.(\d+)\.(\d+) \(\d+-\d+-\d+\)/);
+    const match = /(\d+)\.(\d+)\.(\d+) \(\d+-\d+-\d+\)/.exec(text);
     if (match) {
         return [
             parseInt(match[1], 10),

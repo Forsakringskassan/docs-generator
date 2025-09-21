@@ -1,4 +1,4 @@
-import { ProcessorOptions, type Processor } from "../processor";
+import { type ProcessorOptions, type Processor } from "../processor";
 
 /**
  * Processor that displays cookie warning.
@@ -11,7 +11,7 @@ export function cookieProcessor(options: ProcessorOptions = {}): Processor {
     return {
         after: "generate-docs",
         name: "cookie-processor",
-        async handler(context) {
+        handler(context) {
             if (!enabled) {
                 return;
             }

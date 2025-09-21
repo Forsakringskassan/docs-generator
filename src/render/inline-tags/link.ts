@@ -33,7 +33,7 @@ function getLinkTitle(
         return explicitTitle.replace(/^[\\|]\s*/, "");
     }
     const { title, component } = doc.attributes;
-    if (component && component.some((it) => it.name === key)) {
+    if (component?.some((it) => it.name === key)) {
         return `<code>${key}</code>`;
     } else {
         return title ?? doc.name;
@@ -44,14 +44,16 @@ export const linkTag: InlineTag = {
     name: "link",
     description: "Create a link to another document",
     handler(doc, docs, content) {
-        const match = content.match(/^([^\s#]+)(#\S+)?\s*(.+)?$/);
+        const match = /^([^\s#]+)(#\S+)?\s*(.+)?$/.exec(content);
         if (!match) {
             throw new SoftError(
                 "ELINKFORMAT",
                 `Failed to parse link "${content}"`,
             );
         }
-        const [, key, hash, explicitTitle] = match;
+        const key = match[1];
+        const hash = match[2] as string | undefined;
+        const explicitTitle = match[3] as string | undefined;
 
         if (key.startsWith("http://") || key.startsWith("https://")) {
             return `<a href="${key}${hash ?? ""}">${explicitTitle ?? key}</a>`;

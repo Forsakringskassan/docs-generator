@@ -15,7 +15,7 @@ import {
 } from "./assets";
 import { compileProcessorRuntime } from "./compile-processor-runtime";
 import { type SourceFiles, fileReaderProcessor } from "./file-reader";
-import { nunjucksProcessor, TemplateLoader } from "./render";
+import { type TemplateLoader, nunjucksProcessor } from "./render";
 import { isDocumentPage, type Document } from "./document";
 import langEn from "./i18n/en.json";
 import langSv from "./i18n/sv.json";
@@ -256,7 +256,7 @@ function createContext(
         },
 
         hasTemplate(name: string): boolean {
-            return Boolean(templateLoader?.hasTemplate(name));
+            return templateLoader.hasTemplate(name);
         },
 
         setTopNavigation(root: NavigationSection) {

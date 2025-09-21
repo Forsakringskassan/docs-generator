@@ -18,14 +18,14 @@ export function getPullRequestID(
     /* jenkins */
     if (env.JOB_BASE_NAME) {
         const name = env.JOB_BASE_NAME;
-        const match = name.match(/^PR-(\d+)$/);
+        const match = /^PR-(\d+)$/.exec(name);
         return match ? match[1] : undefined;
     }
 
     /* github actions */
     if (env.GITHUB_REF) {
         const name = env.GITHUB_REF;
-        const match = name.match(/^refs\/pull\/([^/]+)\/merge$/);
+        const match = /^refs\/pull\/([^/]+)\/merge$/.exec(name);
         return match ? match[1] : undefined;
     }
 

@@ -18,5 +18,5 @@ export interface ExampleOptions {
     tags: string[];
 
     /** A previously constructed fileMatcher() for matching imported files */
-    fileMatcher(filename: string, context?: string): string;
+    fileMatcher(this: void, filename: string, context?: string): string;
 }

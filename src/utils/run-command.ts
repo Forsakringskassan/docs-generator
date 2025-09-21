@@ -14,6 +14,7 @@ export function runCommand<T>(
     defaultValue?: T,
 ): Promise<string | undefined | T> {
     return new Promise((resolve) => {
+        /* eslint-disable-next-line sonarjs/os-command -- expected to run from PATH */
         exec(cmd, { encoding: "utf-8" }, (error, stdout) => {
             if (error) {
                 /* eslint-disable-next-line no-console -- expected to log */

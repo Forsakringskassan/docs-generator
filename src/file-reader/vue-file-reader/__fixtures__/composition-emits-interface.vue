@@ -1,6 +1,4 @@
 <script setup lang="ts">
-/* eslint-disable @typescript-eslint/unified-signatures -- testcase, should literally do this */
-
 interface Emits {
     /**
      * Lorem ipsum
@@ -12,6 +10,7 @@ interface Emits {
     /**
      * @deprecated Use `foo` instead
      */
+    /* eslint-disable-next-line @typescript-eslint/unified-signatures -- testcase, should literally do this */
     (e: "obsolete"): void;
 }
 

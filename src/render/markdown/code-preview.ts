@@ -21,15 +21,18 @@ import { findTestId, highlight, replaceAtLink } from "./utils";
  */
 export interface CodePreviewOptions {
     /** Callback when an example should be generated */
-    generateExample(options: {
-        source: string;
-        language: string;
-        filename: string;
-        tags: string[];
-    }): ExampleResult;
+    generateExample(
+        this: void,
+        options: {
+            source: string;
+            language: string;
+            filename: string;
+            tags: string[];
+        },
+    ): ExampleResult;
 
     /** Callback to get source for an imported filename */
-    getImportedSource(filename: string): string;
+    getImportedSource(this: void, filename: string): string;
 }
 
 function getClassModifier(tags: string[]): string {
@@ -107,6 +110,7 @@ export function codePreview(
         return { source: content, language };
     }
 
+    /* eslint-disable-next-line complexity -- technical debt */
     function fence(
         _md: MarkdownIt,
         tokens: MarkdownIt.Token[],
@@ -160,7 +164,7 @@ export function codePreview(
         });
         const { tags } = example;
 
-        const hashContent = `${map?.[0]}:${map?.[1]}:${info}:${rawContent}`;
+        const hashContent = `${String(map?.[0])}:${String(map?.[1])}:${info}:${rawContent}`;
         const fingerprint = getFingerprint(hashContent);
         const transformedCode = transformCode(example.source, example.language);
         const highlightedCode = replaceAtLink(
@@ -248,7 +252,10 @@ export function codePreview(
 
         const toggleFullscreen = showFullscreen
             ? /* HTML */ `
-                  <a href="${standalonePath}" class="code-preview__fullscreen">
+                  <a
+                      href="${standalonePath ?? ""}"
+                      class="code-preview__fullscreen"
+                  >
                       <i class="icon icon--fullscreen"></i>
                       Helskärm
                   </a>

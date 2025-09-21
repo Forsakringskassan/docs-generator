@@ -1,4 +1,4 @@
-import { ProcessorOptions, type Processor } from "../processor";
+import { type ProcessorOptions, type Processor } from "../processor";
 import { type ComponentAttribute } from "../document";
 import { type PackageJson } from "../package-json";
 import {

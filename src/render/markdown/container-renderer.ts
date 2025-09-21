@@ -120,7 +120,7 @@ export function containerParser(md: MarkdownIt, options: Options): void {
         state.line = nextLine + (haveEndMarker ? 1 : 0);
 
         const token = state.push(`doc_${kind}`, "div", 0);
-        token.info = info?.trim();
+        token.info = info.trim();
         token.content = state.getLines(startLine + 1, nextLine, len, true);
         token.markup = markup;
         token.map = [startLine, state.line];

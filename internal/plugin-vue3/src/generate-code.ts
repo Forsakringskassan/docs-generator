@@ -50,6 +50,7 @@ function escapeHtml(str: string): string {
 let counter = 1;
 
 export function getUniqueId(slug: string, fingerprint: string): string {
+    /* eslint-disable-next-line sonarjs/hashing -- technical debt, not used in a sensitive context but could still be replaced */
     return crypto
         .createHash("md5")
         .update(slug)

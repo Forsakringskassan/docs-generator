@@ -143,7 +143,7 @@ function getParentElement(el: HTMLElement, depth: number): HTMLElement | null {
     if (depth === 0) {
         return null;
     }
-    return el?.parentElement?.closest("li.link, li.expandable") ?? null;
+    return el.parentElement?.closest("li.link, li.expandable") ?? null;
 }
 
 function hasModifierkey(event: MouseEvent): boolean {
@@ -241,7 +241,7 @@ function updateSidenavHeight(navigation: HTMLElement): void {
     })();
     variableBlock.innerText = /* CSS */ `
         #sidenav {
-            --header-footer-visible-height: ${offset}px;
+            --header-footer-visible-height: ${String(offset)}px;
         }
     `;
 }
@@ -272,6 +272,7 @@ if (toggle && navigation) {
 
     window.addEventListener("popstate", () => {
         if (previousPath !== location.pathname) {
+            /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
             replaceContent(location.href);
         }
 

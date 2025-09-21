@@ -26,7 +26,7 @@ export function getRepositoryUrl(
     value = value.replace(/^git[+]/, "");
 
     /* convert ssh://user@host:org/repo to https://host/org/repo */
-    const ssh = value.match(RE_MATCH_SSH);
+    const ssh = RE_MATCH_SSH.exec(value);
     if (ssh) {
         /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- it will exist with this regex */
         const { host, path } = ssh.groups!;

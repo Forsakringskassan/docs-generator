@@ -11,7 +11,7 @@ export function redirectProcessor(): Processor {
     return {
         name: "redirect-processor",
         after: "generate-docs",
-        async handler(context) {
+        handler(context) {
             const redirects = getRedirects(context.docs);
             for (const redirect of redirects) {
                 const { dir, base, name } = path.parse(redirect.from);

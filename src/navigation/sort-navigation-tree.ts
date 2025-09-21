@@ -1,4 +1,7 @@
-import { NavigationSection, isNavigationSection } from "./generate-navtree";
+import {
+    type NavigationSection,
+    isNavigationSection,
+} from "./generate-navtree";
 
 /**
  * @internal

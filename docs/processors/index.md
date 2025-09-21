@@ -26,7 +26,7 @@ export interface ProcessorHandler {
     runtime?: ProcessorRuntime[];
     handler(
         context: ProcessorContext,
-        /* eslint-disable-next-line @typescript-eslint/no-invalid-void-type */
+        /* eslint-disable-next-line @typescript-eslint/no-invalid-void-type -- technical debt */
     ): void | string[] | Promise<void> | Promise<string[]>;
 }
 ```

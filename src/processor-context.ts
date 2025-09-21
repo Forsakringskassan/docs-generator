@@ -95,10 +95,10 @@ export interface ProcessorContext {
     getTemplateData(key: string): unknown;
 
     setTemplateData<K extends keyof TemplateData>(
-        key: string,
+        key: K,
         value: TemplateData[K],
     ): void;
     setTemplateData(key: string, value: unknown): void;
 
-    log<TArgs extends unknown[]>(...args: TArgs): void;
+    log(...args: unknown[]): void;
 }

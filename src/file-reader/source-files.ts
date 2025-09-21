@@ -15,5 +15,5 @@ export interface SourceFiles {
      *
      * Typical use-case is modifying attributes, name or aliases.
      */
-    transform?(doc: Document): Document;
+    transform?(this: void, doc: Document): Document;
 }

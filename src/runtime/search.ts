@@ -188,6 +188,7 @@ function setup(): void {
         document.body.removeEventListener("click", clickOutside);
     });
 
+    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
     fetch(url)
         .then((response) => response.json())
         .then((value: SearchIndex) => {

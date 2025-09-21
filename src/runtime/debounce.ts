@@ -31,9 +31,9 @@
  * @param immediate - Whether the function should be called at the beginning of the delay (Before the timeout) instead of the end.
  * Default is false.
  */
-export function debounce<TThis, TArgs extends unknown[], TReturn>(
+export function debounce<TThis, TArgs extends unknown[]>(
     this: TThis,
-    func: (this: TThis, ...args: TArgs) => TReturn,
+    func: (this: TThis, ...args: TArgs) => void,
     delay: number,
     immediate = false,
 ): (...args: TArgs) => void {

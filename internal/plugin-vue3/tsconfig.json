@@ -6,6 +6,7 @@
         "declaration": true,
         "rootDir": "src",
         "outDir": "dist",
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "strict": true
     }
 }

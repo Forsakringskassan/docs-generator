@@ -4,8 +4,8 @@ import { fileURLToPath } from "node:url";
 import { type BuildOptions } from "esbuild";
 import { tsconfigPath as tsconfig } from "../tsconfig-path";
 import { getFingerprint, getIntegrity } from "../utils";
-import { VendorDefinition } from "../vendor";
-import { AssetInfo } from "./asset-info";
+import { type VendorDefinition } from "../vendor";
+import { type AssetInfo } from "./asset-info";
 import { esbuild } from "./esbuild-wrapper";
 
 /**
@@ -69,7 +69,7 @@ export async function compileScript(
             ...buildOptions,
             define: {
                 "process.env.DOCS_ICON_LIB": JSON.stringify(iconLib),
-                ...buildOptions?.define,
+                ...buildOptions.define,
             },
         });
         const content = await fs.readFile(outfile, "utf-8");

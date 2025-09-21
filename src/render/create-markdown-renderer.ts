@@ -13,8 +13,8 @@ import {
     table,
     paragraph,
 } from "./markdown";
-import { MarkdownEnv } from "./markdown-env";
-import { SoftErrorType } from "./soft-error";
+import { type MarkdownEnv } from "./markdown-env";
+import { type SoftErrorType } from "./soft-error";
 
 /**
  * Options for [[createMarkdownRenderer]].
@@ -26,18 +26,21 @@ export interface MarkdownOptions {
     readonly docs: Document[];
 
     /** Callback for adding a static resource */
-    addResource(dst: string, src: string): void;
+    addResource(this: void, dst: string, src: string): void;
 
     /** Callback when an example should be generated */
-    generateExample(options: {
-        source: string;
-        language: string;
-        filename: string;
-        tags: string[];
-    }): ExampleResult;
+    generateExample(
+        this: void,
+        options: {
+            source: string;
+            language: string;
+            filename: string;
+            tags: string[];
+        },
+    ): ExampleResult;
 
     /** Callback to get source for an imported filename */
-    getImportedSource(filename: string): string;
+    getImportedSource(this: void, filename: string): string;
 
     /**
      * Handle error which can be recovered from.
@@ -50,7 +53,7 @@ export interface MarkdownOptions {
      * @param error - The error to be handled.
      * @returns A replacement string or rethrows error.
      */
-    handleSoftError(error: SoftErrorType): string;
+    handleSoftError(this: void, error: SoftErrorType): string;
 
     /**
      * Options for messagebox container.
@@ -107,6 +110,8 @@ export function createMarkdownRenderer(
     };
 
     const included = new Map<string, string>();
+
+    /* eslint-disable-next-line sonarjs/disabled-auto-escaping -- this is not rendering user data */
     const md = markdownIt({
         html: true,
     });

@@ -5,6 +5,7 @@ import { type FileInfo } from "../../document";
 import { type MarkdownEnv } from "../markdown-env";
 
 function computeHash(source: string): string {
+    /* eslint-disable-next-line sonarjs/hashing -- technical debt, not used in a sensitive context but could still be replaced */
     return crypto.createHash("md5").update(source).digest("hex");
 }
 
@@ -16,7 +17,7 @@ function getFilename(fileInfo: FileInfo, src: string): string {
 }
 
 export function imageResources(options: {
-    addResource(dst: string, src: string): void;
+    addResource(this: void, dst: string, src: string): void;
 }): (md: MarkdownIt) => void {
     const { addResource } = options;
     function imageResource(

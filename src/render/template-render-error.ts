@@ -1,3 +1,4 @@
+/* eslint-disable-next-line sonarjs/single-char-in-character-classes -- technically the ) does not need to be escaped but is used for consistency here */
 const messageRegex = /^[(][^)]+[)] \[Line \d+, Column \d+\]\n\s+Error: (.*)$/;
 
 /**
@@ -9,7 +10,7 @@ const messageRegex = /^[(][^)]+[)] \[Line \d+, Column \d+\]\n\s+Error: (.*)$/;
  * @internal
  */
 export function getActualMessage(message: string): string {
-    const match = message.match(messageRegex);
+    const match = messageRegex.exec(message);
     if (match) {
         return match[1].trim();
     } else {

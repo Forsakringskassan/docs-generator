@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path/posix";
 import { compileSassString } from "../sass";
 import { getFingerprint, getIntegrity } from "../utils";
-import { AssetInfo } from "./asset-info";
+import { type AssetInfo } from "./asset-info";
 
 /**
  * @internal

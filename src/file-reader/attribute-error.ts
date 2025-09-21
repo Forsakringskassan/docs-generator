@@ -28,7 +28,7 @@ export function findLocation(
     content: string,
     attr: string,
 ): SourceLocation | null {
-    const match = content.match(/^---\n(.*?)^---/ms);
+    const match = /^---\n(.*?)^---/ms.exec(content);
     if (!match || match.index !== 0) {
         return null;
     }

@@ -1,11 +1,10 @@
-import defaultConfig, {
-    globals,
-} from "@forsakringskassan/eslint-config/flat.mjs";
-import cliConfig from "@forsakringskassan/eslint-config-cli/flat.mjs";
-import cypressConfig from "@forsakringskassan/eslint-config-cypress/flat.mjs";
-import jestConfig from "@forsakringskassan/eslint-config-jest/flat.mjs";
-import typescriptConfig from "@forsakringskassan/eslint-config-typescript/flat.mjs";
-import vueConfig from "@forsakringskassan/eslint-config-vue/flat.mjs";
+import defaultConfig, { globals } from "@forsakringskassan/eslint-config";
+import cliConfig from "@forsakringskassan/eslint-config-cli";
+import cypressConfig from "@forsakringskassan/eslint-config-cypress";
+import jestConfig from "@forsakringskassan/eslint-config-jest";
+import typescriptConfig from "@forsakringskassan/eslint-config-typescript";
+import typeinfoConfig from "@forsakringskassan/eslint-config-typescript-typeinfo";
+import vueConfig from "@forsakringskassan/eslint-config-vue";
 
 export default [
     {
@@ -30,6 +29,14 @@ export default [
         ],
     }),
     typescriptConfig(),
+    typeinfoConfig(import.meta.dirname, {
+        ignores: [
+            "cypress.config.ts",
+            "jest.setup.ts",
+            "cypress/**",
+            "docs/**",
+        ],
+    }),
     vueConfig(),
     jestConfig(),
     cypressConfig(),
@@ -61,6 +68,13 @@ export default [
             "@typescript-eslint/no-unused-vars": "off",
             "eslint-comments/require-description": "off",
             "import/no-extraneous-dependencies": "off",
+        },
+    },
+
+    {
+        name: "local/technical-debt",
+        rules: {
+            "sonarjs/slow-regex": "off",
         },
     },
 ];

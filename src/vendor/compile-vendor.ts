@@ -44,9 +44,7 @@ export async function compileVendor(
             __VUE_PROD_DEVTOOLS__: "true",
             __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: "false",
         },
-        alias: vendor.alias
-            ? { [`${vendor.package}`]: vendor.alias }
-            : undefined,
+        alias: vendor.alias ? { [vendor.package]: vendor.alias } : undefined,
         ...options,
     });
     const content = await fs.readFile(outfile, "utf-8");

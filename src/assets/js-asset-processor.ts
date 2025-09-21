@@ -1,7 +1,7 @@
 import { type BuildOptions } from "esbuild";
 import { type Processor } from "../processor";
 import { formatSize, serializeAttrs } from "../utils";
-import { VendorDefinition } from "../vendor";
+import { type VendorDefinition } from "../vendor";
 import { type CompileOptions } from "./compile-options";
 import { compileScript } from "./compile-script";
 

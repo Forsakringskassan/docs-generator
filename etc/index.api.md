@@ -313,7 +313,7 @@ export interface ProcessorContext {
     // @internal
     hasTemplate(name: string): boolean;
     // (undocumented)
-    log<TArgs extends unknown[]>(...args: TArgs): void;
+    log(...args: unknown[]): void;
     // (undocumented)
     readonly outputFolder: string;
     // (undocumented)
@@ -321,7 +321,7 @@ export interface ProcessorContext {
     // (undocumented)
     setSideNavigation(root: NavigationSection): void;
     // (undocumented)
-    setTemplateData<K extends keyof TemplateData>(key: string, value: TemplateData[K]): void;
+    setTemplateData<K extends keyof TemplateData>(key: K, value: TemplateData[K]): void;
     // (undocumented)
     setTemplateData(key: string, value: unknown): void;
     // (undocumented)
@@ -419,7 +419,7 @@ export interface SourceFiles {
     fileReader: FileReader_2;
     // (undocumented)
     include: string | string[];
-    transform?(doc: Document_2): Document_2;
+    transform?(this: void, doc: Document_2): Document_2;
 }
 
 // @public

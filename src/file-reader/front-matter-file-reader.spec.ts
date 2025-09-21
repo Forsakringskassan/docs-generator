@@ -1,4 +1,4 @@
-import { DocumentAttributes } from "../document";
+import { type DocumentAttributes } from "../document";
 import { getDocumentAlias, parseFile } from "./front-matter-file-reader";
 
 describe("getDocumentAlias()", () => {

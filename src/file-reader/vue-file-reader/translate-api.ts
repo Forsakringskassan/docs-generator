@@ -25,10 +25,10 @@ function getPropSlotDeprecated(
     prop: Pick<PropDescriptor, "tags"> | Pick<SlotDescriptor, "tags">,
 ): string | null {
     const tags = prop.tags;
-    if (!tags) {
+    if (!tags?.deprecated) {
         return null;
     }
-    const tag = tags["deprecated"]?.[0] as PropDeprecatedTag | undefined;
+    const tag = tags.deprecated[0] as PropDeprecatedTag | undefined;
     if (!tag?.description) {
         return null;
     }
@@ -61,7 +61,7 @@ function getEventDeprecated(
 
 function translateProps(props: PropDescriptor[]): ComponentProp[] {
     const isRelevant = (prop: PropDescriptor): boolean => {
-        return prop.tags?.["ignore"] === undefined;
+        return prop.tags?.ignore === undefined;
     };
     return props.filter(isRelevant).map((prop): ComponentProp => {
         const defaultValue = prop.defaultValue
@@ -124,8 +124,8 @@ function translateEventProperties(event: EventDescriptor): Array<{
         const property = properties[i];
         const name = property.name ?? "<anonymous>";
         const eventType = types[i];
-        const hasEventType = !eventType || eventType !== "undefined";
-        const type = hasEventType ? eventType : String(property.type.names);
+        const hasEventType = Boolean(eventType) && eventType !== "undefined";
+        const type = hasEventType ? eventType : property.type.names.join(" ");
         const description =
             typeof property.description === "string"
                 ? property.description
@@ -242,19 +242,26 @@ function filterModels(
  * @internal
  */
 export async function translateAPI(filePath: string): Promise<ComponentAPI> {
-    const api = await parse(filePath);
-    const rawProps = api.props ? translateProps(api.props) : [];
-    const rawEvents = api.events ? translateEvents(api.events) : [];
+    try {
+        const api = await parse(filePath);
+        const rawProps = api.props ? translateProps(api.props) : [];
+        const rawEvents = api.events ? translateEvents(api.events) : [];
 
-    const { models, props, events } = filterModels(rawProps, rawEvents);
-    const slots = api.slots ? translateSlots(api.slots) : [];
+        const { models, props, events } = filterModels(rawProps, rawEvents);
+        const slots = api.slots ? translateSlots(api.slots) : [];
 
-    return {
-        name: api.displayName,
-        slug: slugify(api.displayName),
-        models,
-        props,
-        events,
-        slots,
-    };
+        return {
+            name: api.displayName,
+            slug: slugify(api.displayName),
+            models,
+            props,
+            events,
+            slots,
+        };
+    } catch (err) {
+        throw new Error(
+            `Failed to generate API description from "${filePath}"`,
+            { cause: err },
+        );
+    }
 }
