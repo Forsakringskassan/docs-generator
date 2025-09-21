@@ -1408,7 +1408,7 @@ kbd {
 }
 
 :root {
-  --docs-font-family: InterVariable, sans-serif;
+  --docs-font-family: "Inter Variable", sans-serif;
   --docs-font-weight: normal;
   --docs-text-color-default: #1b1e23;
   --docs-text-color-discrete: #5f6165;
