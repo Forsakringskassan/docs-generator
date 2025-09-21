@@ -1,6 +1,7 @@
 @use "css-variables";
 @use "reset";
 
+@use "fonts";
 @use "cookie-warning";
 @use "motd";
 @use "breakpoints" as *;
@@ -15,6 +16,9 @@ body {
     font-family: var(--docs-font-family);
     font-weight: var(--docs-font-weight);
     font-size: var(--f-font-size-default-rem);
+    font-feature-settings:
+        "liga" 1,
+        "calt" 1;
     min-width: 400px;
 
     @media (width >= $breakpoint-md) {
