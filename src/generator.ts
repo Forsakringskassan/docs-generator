@@ -2,6 +2,7 @@ import { existsSync } from "node:fs";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import inter from "@fontsource-variable/inter/metadata.json";
 import fse from "fs-extra";
 import { createInstance as i18next } from "i18next";
 import {
@@ -480,6 +481,7 @@ export class Generator {
         await i18n.init();
 
         await this._prepareFolders();
+        await this._copyFonts();
 
         const processors: Processor[] = [
             fileReaderProcessor(sourceFiles),
@@ -549,5 +551,17 @@ export class Generator {
         await fs.mkdir(outputFolder, { recursive: true });
         await fs.mkdir(assetFolder, { recursive: true });
         await fs.mkdir("temp", { recursive: true });
+    }
+
+    private async _copyFonts(): Promise<void> {
+        const { assetFolder } = this;
+        const files = inter.subsets.map((subset) => {
+            const filename = `inter-${subset}-wght-normal.woff2`;
+            const module = `@fontsource-variable/inter/files/${filename}`;
+            const src = fileURLToPath(import.meta.resolve(module));
+            const dst = path.join(assetFolder, filename);
+            return fs.copyFile(src, dst);
+        });
+        await Promise.all(files);
     }
 }

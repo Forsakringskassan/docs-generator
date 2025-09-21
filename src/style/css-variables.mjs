@@ -5,7 +5,7 @@ export default {
             "font-family": {
                 description: "Default `font-family`.",
                 type: "font",
-                value: `arial, "Helvetica Neue", sans-serif`,
+                value: `"Inter Variable", sans-serif`,
             },
             "font-weight": {
                 description: "Default `font-weight`.",

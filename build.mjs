@@ -50,6 +50,21 @@ const sassCSSVariableImporter = {
     },
 };
 
+async function buildFonts() {
+    const moduleId = "@fontsource-variable/inter";
+    const preamble = `// This file is generated from "${moduleId}", changes will be overwritten.\n// stylelint-disable`;
+    const url = import.meta.resolve(moduleId);
+    const src = fileURLToPath(url);
+    const dst = "src/style/_fonts.scss";
+
+    console.log();
+    console.log("Generating", dst);
+
+    const content = await fs.readFile(src, "utf-8");
+    const updated = [preamble, content].join("\n\n").replace(/files\//g, "");
+    await fs.writeFile(dst, updated, "utf-8");
+}
+
 /**
  * @param {Array<{ src: string, dst: string }>} entrypoints
  */
@@ -203,6 +218,7 @@ async function build() {
     }
     console.groupEnd();
 
+    await buildFonts();
     await buildStyle([
         { src: "src/style/core.scss", dst: "dist/style/core.css" },
         { src: "src/style/site.scss", dst: "dist/style/site.css" },

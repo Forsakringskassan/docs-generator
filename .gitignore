@@ -8,6 +8,7 @@ cypress/fixtures/
 dist/
 docs/examples/files/
 node_modules/
+src/style/_fonts.scss
 test-results/
 temp/
 public/
