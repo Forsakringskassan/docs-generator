@@ -54,7 +54,7 @@ async function fetchVersions(): Promise<VersionResponse> {
         };
     }
 
-    return await response.json();
+    return (await response.json()) as VersionResponse;
 }
 
 const getVersions = memoize(fetchVersions);
@@ -134,8 +134,10 @@ function setErrorMessage(element: Element | null): void {
     element.appendChild(p);
 }
 
+/* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
 initVersionProcessor();
 
 window.addEventListener("docs:navigation", () => {
+    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
     initVersionProcessor();
 });

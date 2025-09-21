@@ -17,7 +17,7 @@ export interface ServeOptions {
      *
      * @returns A promise resolving to a list of all output files affected.
      */
-    rebuild(filePath: string[]): Promise<string[]>;
+    rebuild(this: void, filePath: string[]): Promise<string[]>;
 }
 
 function sleep(ms: number): Promise<void> {
@@ -63,6 +63,7 @@ function createRebuilder(
         }
     }
 
+    /* eslint-disable-next-line @typescript-eslint/no-misused-promises -- technical debt */
     return rebuild;
 }
 
@@ -70,6 +71,7 @@ function isImportError(err: unknown): err is Error & { code: string } {
     return Boolean(err && typeof err === "object" && "code" in err);
 }
 
+/* eslint-disable-next-line @typescript-eslint/consistent-type-imports -- technical debt */
 async function importExpress(): Promise<typeof import("express")> {
     try {
         const { default: express } = await import("express");
@@ -107,7 +109,7 @@ export async function serve(options: ServeOptions): Promise<void> {
         livereload.changed({ body: { files } });
     });
 
-    watcher.on("change", async (filePath: string) => {
+    watcher.on("change", (filePath: string) => {
         rebuild(filePath);
     });
 
@@ -119,6 +121,7 @@ export async function serve(options: ServeOptions): Promise<void> {
                 /* eslint-disable-next-line no-console -- expected to log */
                 console.log("Shutting down gracefully");
                 server.close();
+                /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
                 watcher.close();
                 livereload.close();
                 process.stdin.unref();

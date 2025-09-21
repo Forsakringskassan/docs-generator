@@ -110,16 +110,16 @@ export interface FileInfo {
 
 // @public
 export interface MarkdownOptions {
-    addResource(dst: string, src: string): void;
+    addResource(this: void, dst: string, src: string): void;
     readonly docs: Document_2[];
-    generateExample(options: {
+    generateExample(this: void, options: {
         source: string;
         language: string;
         filename: string;
         tags: string[];
     }): ExampleResult;
-    getImportedSource(filename: string): string;
-    handleSoftError(error: SoftErrorType): string;
+    getImportedSource(this: void, filename: string): string;
+    handleSoftError(this: void, error: SoftErrorType): string;
     messagebox?: {
         title?: Record<string, string>;
     };
@@ -180,14 +180,14 @@ export interface SoftErrorDetails {
     // (undocumented)
     ELINKPARTIAL: {
         key: string;
-        hash: string;
-        title: string;
+        hash: string | undefined;
+        title: string | undefined;
     };
     // (undocumented)
     ELINKTARGET: {
         key: string;
-        hash: string;
-        title: string;
+        hash: string | undefined;
+        title: string | undefined;
     };
     // (undocumented)
     ETAGMISSING: undefined;

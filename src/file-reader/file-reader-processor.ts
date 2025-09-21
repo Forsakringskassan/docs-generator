@@ -1,8 +1,8 @@
 import { glob } from "glob";
-import { Document } from "../document";
-import { Processor } from "../processor";
+import { type Document } from "../document";
+import { type Processor } from "../processor";
 import { difference } from "../utils";
-import { SourceFiles } from "./source-files";
+import { type SourceFiles } from "./source-files";
 
 async function globAll(
     pattern: string | string[] | undefined,

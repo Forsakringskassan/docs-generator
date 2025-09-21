@@ -1,4 +1,7 @@
-import { NavigationLeaf, NavigationSection } from "./generate-navtree";
+import {
+    type NavigationLeaf,
+    type NavigationSection,
+} from "./generate-navtree";
 import { sortNavigationTree } from "./sort-navigation-tree";
 
 function capitalize(value: string): string {

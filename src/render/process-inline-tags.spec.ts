@@ -1,5 +1,5 @@
 import { createMockDocument } from "../utils";
-import { InlineTag } from "./inline-tags";
+import { type InlineTag } from "./inline-tags";
 import { processInlineTags } from "./process-inline-tags";
 import { type SoftErrorType } from "./soft-error";
 

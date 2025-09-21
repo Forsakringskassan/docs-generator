@@ -1,5 +1,5 @@
 import { isDocumentPage } from "../document";
-import { Processor } from "../processor";
+import { type Processor } from "../processor";
 import { generateNavtree } from "./generate-navtree";
 
 export function navigationProcessor(): Processor {

@@ -129,7 +129,7 @@ export function parseFile(
     const attributes = blocks.attributes;
     const isIndex = isIndexPage(parsed);
     const filename = isIndex ? "index" : parsed.name.toLowerCase();
-    const name = attributes.name ? attributes.name : parsed.name;
+    const name = attributes.name ?? parsed.name;
     const urlpath = parsed.dir;
     const outline = getDocumentOutline(blocks.body, "markdown");
     const include = attributes.include ?? true;

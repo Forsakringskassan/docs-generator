@@ -3,11 +3,11 @@
 import { promisify } from "node:util";
 import nunjucks from "nunjucks";
 import { TemplateLoader } from "../render/template-loader";
-import { MOTDProcessorTemplateData as TemplateData } from "./motd-processor";
+import { type MOTDProcessorTemplateData as TemplateData } from "./motd-processor";
 
 const loader = new TemplateLoader(["templates"]);
 const njk = new nunjucks.Environment(loader, { autoescape: false });
-const asyncRender = promisify<string, object, string>(njk.render);
+const asyncRender = promisify<string, object, string>(njk.render); // eslint-disable-line @typescript-eslint/unbound-method -- technical debt */
 const renderTemplate = asyncRender.bind(njk);
 const template = "partials/motd-container.njk.html";
 

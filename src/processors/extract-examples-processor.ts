@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path/posix";
 import markdownIt from "markdown-it";
 import { isDocumentPage, type DocumentPage } from "../document";
-import { ProcessorOptions, type Processor } from "../processor";
+import { type ProcessorOptions, type Processor } from "../processor";
 import { haveOutput, normalizePath, slugify } from "../utils";
 import { parseInfostring } from "../examples";
 
@@ -28,6 +28,7 @@ type DocumentLike = Pick<DocumentWithOutput, "fileInfo" | "body" | "format">;
 
 const md = markdownIt();
 
+/* eslint-disable-next-line sonarjs/no-invariant-returns -- function works as intended */
 md.renderer.rules.fence = (tokens, idx, _options, collected: Example[]) => {
     const { content, info } = tokens[idx];
     const { language, tags } = parseInfostring(info);

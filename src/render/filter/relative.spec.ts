@@ -38,6 +38,7 @@ it("should handle when url is the same as the current path", () => {
 
 it("should return url as-is when url is external", () => {
     expect.assertions(3);
+    /* eslint-disable-next-line sonarjs/no-clear-text-protocols -- to ensure that any of them works */
     const url = ["http://example.net", "https://example.net", "//example.net"];
     const doc = { fileInfo: { path: "./foo" } };
     expect(relative(url[0], doc)).toBe(url[0]);

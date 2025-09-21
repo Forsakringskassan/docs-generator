@@ -20,5 +20,5 @@ it.each`
     ${2345678900} | ${"2.35 GB"}
 `("should format $input", ({ input, output }) => {
     expect.assertions(1);
-    expect(formatSize(input)).toBe(output);
+    expect(formatSize(input as number)).toBe(output);
 });

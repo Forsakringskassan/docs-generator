@@ -1,7 +1,7 @@
 import { type DocumentPage, isDocumentPage } from "../document";
 import { type Processor } from "../processor";
 import { getFingerprint, getIntegrity, getOutputFilePath } from "../utils";
-import { SearchEntry } from "./search-entry";
+import { type SearchEntry } from "./search-entry";
 import { generateIndex } from "./generate-index";
 
 function* extractTerms(doc: DocumentPage): Generator<string> {

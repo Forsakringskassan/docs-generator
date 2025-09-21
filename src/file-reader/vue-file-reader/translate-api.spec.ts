@@ -155,7 +155,7 @@ describe("options API", () => {
                 properties: [
                     {
                         name: "name",
-                        type: undefined,
+                        type: "mixed",
                         description: `dolor sit amet`,
                     },
                 ],

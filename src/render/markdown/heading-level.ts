@@ -30,7 +30,7 @@ export function headingLevel(options: {
 
             /* handles duplicate id's */
             if (ids.has(id)) {
-                id += `--${counter++}`;
+                id += `--${String(counter++)}`;
             }
 
             ids.add(id);
@@ -38,7 +38,7 @@ export function headingLevel(options: {
             return tag.replace(/h(\d)/, (_, n: string) => {
                 const level = parseInt(n, 10) + offset;
                 env.currentHeading = level;
-                return `<h${level} id="${id}"><a class="header-anchor" href="#${id}">`;
+                return `<h${String(level)} id="${id}"><a class="header-anchor" href="#${id}">`;
             });
         };
         /* eslint-disable-next-line camelcase -- upstream library uses snake_case */
@@ -46,7 +46,7 @@ export function headingLevel(options: {
             const { tag } = tokens[idx];
             return tag.replace(/h(\d)/, (_, n: string) => {
                 const level = parseInt(n, 10) + offset;
-                return `</a></h${level}>`;
+                return `</a></h${String(level)}>`;
             });
         };
     };

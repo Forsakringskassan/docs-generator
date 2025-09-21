@@ -22,10 +22,11 @@ md.renderer.rules.fence = (
     idx,
     _options,
     collected: ManifestExamples,
+    /* eslint-disable-next-line sonarjs/no-invariant-returns -- function works as intended */
 ) => {
     const { content, info, map } = tokens[idx];
     const { language: rawLanguage, tags } = parseInfostring(info);
-    const hashContent = `${map?.[0]}:${map?.[1]}:${info}:${content}`;
+    const hashContent = `${String(map?.[0])}:${String(map?.[1])}:${info}:${content}`;
     const fingerprint = getFingerprint(hashContent);
     let extension = undefined;
     let language = rawLanguage;
@@ -78,7 +79,7 @@ export function manifestPageFromDocument(doc: DocumentPageLike): ManifestPage {
     const { body, fileInfo, format } = doc;
     return {
         path: getOutputFilePath("", fileInfo),
-        title: doc.attributes.title ?? doc.name ?? "",
+        title: doc.attributes.title ?? doc.name,
         redirect: format === "redirect" ? body : null,
         outline: flattenOutline(doc.outline),
         examples: findExamples(doc),

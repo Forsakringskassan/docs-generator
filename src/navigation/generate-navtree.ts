@@ -67,7 +67,7 @@ export function generateNavtree(docs: DocumentPage[]): NavigationSection {
         sortorder: number,
         { visible }: { visible?: boolean } = {},
     ): void {
-        const existing = section[key];
+        const existing = section[key] as MutableNavigationSection | undefined;
         if (existing) {
             existing.title = title;
             existing.sortorder = sortorder;
@@ -91,7 +91,7 @@ export function generateNavtree(docs: DocumentPage[]): NavigationSection {
 
     function attach(key: string): MutableNavigationSection {
         const parentKey = getParentKey(key);
-        let parent = section[parentKey];
+        let parent = section[parentKey] as MutableNavigationSection | undefined;
 
         /* parent exists and is attached */
         if (parent) {
@@ -112,7 +112,7 @@ export function generateNavtree(docs: DocumentPage[]): NavigationSection {
         let current = parent;
         while (anchestor !== ".") {
             anchestor = getParentKey(anchestor);
-            if (section[anchestor]) {
+            if (section[anchestor] as MutableNavigationSection | undefined) {
                 section[anchestor].children.push(current);
                 break;
             }
@@ -192,7 +192,9 @@ export function generateNavtree(docs: DocumentPage[]): NavigationSection {
                 external: false,
             };
 
-            const existing = section[name];
+            const existing = section[name] as
+                | MutableNavigationSection
+                | undefined;
             if (existing) {
                 existing.title = title;
                 existing.path = leafNode.path;
@@ -223,7 +225,7 @@ export function generateNavtree(docs: DocumentPage[]): NavigationSection {
         }
     }
 
-    const root = section["."];
+    const root = section["."] as MutableNavigationSection | undefined;
     if (root) {
         return root;
     } else {

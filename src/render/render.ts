@@ -180,7 +180,7 @@ async function compileStandalones(options: {
     outputFolder: string;
     templateFolders: string[];
     tasks: ExampleStandaloneTask[];
-    renderTemplate(name: string, context: object): Promise<string>;
+    renderTemplate(this: void, name: string, context: object): Promise<string>;
     templateData: Record<string, unknown>;
 }): Promise<void> {
     const { fileInfo, tasks, renderTemplate, templateData, templateFolders } =
@@ -251,7 +251,7 @@ export async function render(
     }
 
     const njk = new nunjucks.Environment(loader, { autoescape: false });
-    const asyncRender = promisify<string, object, string>(njk.render);
+    const asyncRender = promisify<string, object, string>(njk.render); // eslint-disable-line @typescript-eslint/unbound-method -- technical debt */
     const renderTemplate = asyncRender.bind(njk);
     const template = findTemplate(templateFolders, doc.fileInfo, doc);
     const templateData = {
@@ -275,18 +275,18 @@ export async function render(
                 (it) => it.importmap,
             );
             const imports = Object.fromEntries([
-                ...vendors.map((it) => {
+                ...vendors.map((it): [PropertyKey, string] => {
                     return [it.package, filter.relative(it.publicPath, doc)];
                 }),
-                ...assets.map((it) => {
+                ...assets.map((it): [PropertyKey, string] => {
                     return [it.name, filter.relative(it.publicPath, doc)];
                 }),
             ]);
             const integrity = Object.fromEntries([
-                ...vendors.map((it) => {
+                ...vendors.map((it): [PropertyKey, string] => {
                     return [filter.relative(it.publicPath, doc), it.integrity];
                 }),
-                ...assets.map((it) => {
+                ...assets.map((it): [PropertyKey, string] => {
                     return [filter.relative(it.publicPath, doc), it.integrity];
                 }),
             ]);
@@ -353,10 +353,12 @@ export async function render(
     njk.addExtension("BlockContainer", {
         tags: ["container"],
         parse(parser, nodes) {
+            /* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call -- upstream api is untyped */
             const tok = parser.nextToken();
             const args = parser.parseSignature(null, true);
             parser.advanceAfterBlockEnd(tok.value);
             return new nodes.CallExtensionAsync(this, "run", args, []);
+            /* eslint-enable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call */
         },
         async run(
             { ctx }: { ctx: Record<string, unknown> },
@@ -382,7 +384,7 @@ export async function render(
             });
             const content = await Promise.all(promises);
             const markup = content.join("");
-            return callback(null, new nunjucks.runtime.SafeString(markup));
+            callback(null, new nunjucks.runtime.SafeString(markup));
         },
     } as nunjucks.Extension);
 
@@ -411,7 +413,7 @@ export async function render(
             return match;
         }
     });
-    const writeFile = fs.writeFile(expandedDst, content ?? "null", "utf-8");
+    const writeFile = fs.writeFile(expandedDst, content, "utf-8");
 
     try {
         const assets = Object.values(templateData.assets).filter(

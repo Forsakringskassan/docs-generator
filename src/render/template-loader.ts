@@ -22,6 +22,7 @@ export class TemplateLoader implements ILoaderAsync {
         this.templateCache = new Map();
     }
 
+    /* eslint-disable-next-line @typescript-eslint/no-misused-promises -- technical debt */
     public async getSource(
         name: string,
         callback: Callback<Error, LoaderSource>,

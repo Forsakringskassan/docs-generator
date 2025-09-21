@@ -65,7 +65,7 @@ export {
     redirectFileProcessor,
     selectableVersionProcessor,
     themeSelectProcessor,
-    versionBannerProcessor,
+    versionBannerProcessor, // eslint-disable-line @typescript-eslint/no-deprecated -- intentional, we still want to export it
     versionProcessor,
     topnavProcessor,
     sourceUrlProcessor,

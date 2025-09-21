@@ -17,7 +17,7 @@ const build = {
 describe("should render correctly", () => {
     const loader = new TemplateLoader(["templates"]);
     const njk = new nunjucks.Environment(loader, { autoescape: false });
-    const asyncRender = promisify<string, object, string>(njk.render);
+    const asyncRender = promisify<string, object, string>(njk.render); // eslint-disable-line @typescript-eslint/unbound-method -- technical debt */
     const renderTemplate = asyncRender.bind(njk);
     const template = "partials/version.njk.html";
 

@@ -32,7 +32,7 @@ ESLint comments will be stripped from the rendered source code.
 ````md
 ```js
 function foo(value) {
-    /* eslint-disable-next-line eqeqeq */
+    /* eslint-disable-next-line eqeqeq -- description of why this is needed */
     return value == "foo";
 }
 ```
@@ -42,7 +42,7 @@ function foo(value) {
 
 ```js nocompile
 function foo(value) {
-    /* eslint-disable-next-line eqeqeq */
+    /* eslint-disable-next-line eqeqeq -- description of why this is needed */
     return value == "foo";
 }
 ```

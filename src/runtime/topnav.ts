@@ -99,7 +99,9 @@ function calculateVisibility(refs: Refs): void {
     let overflowIndex = menuItems.findIndex((it) => hasOverflow(refs.nav, it));
 
     if (overflowIndex === -1) {
-        refs.itemPairs.forEach((it) => setMenuItemVisibility(it, true));
+        refs.itemPairs.forEach((it) => {
+            setMenuItemVisibility(it, true);
+        });
         refs.moreItem.style.visibility = "hidden";
         setPopoverVisibility(false, refs);
         return;
@@ -115,19 +117,19 @@ function calculateVisibility(refs: Refs): void {
         overflowIndex--;
     }
 
-    refs.itemPairs.forEach((it, index) =>
-        setMenuItemVisibility(it, index < overflowIndex),
-    );
+    refs.itemPairs.forEach((it, index) => {
+        setMenuItemVisibility(it, index < overflowIndex);
+    });
 
     refs.moreItem.classList.toggle(
         "highlight",
         refs.highlightIndex >= overflowIndex,
     );
-    refs.moreItem.style.left = `${menuItems[overflowIndex].offsetLeft}px`;
+    refs.moreItem.style.left = `${String(menuItems[overflowIndex].offsetLeft)}px`;
     refs.moreItem.style.visibility = "visible";
 
     const popupTop = refs.moreItem.offsetHeight + 16;
-    refs.popover.style.top = `${popupTop}px`;
+    refs.popover.style.top = `${String(popupTop)}px`;
 }
 
 function setup(): Refs | undefined {
@@ -136,8 +138,12 @@ function setup(): Refs | undefined {
         return;
     }
 
-    refs.moreItem.addEventListener("click", (e) => togglePopover(e, refs));
-    refs.moreItem.addEventListener("keyup", (e) => closePopoverOnEsc(e, refs));
+    refs.moreItem.addEventListener("click", (e) => {
+        togglePopover(e, refs);
+    });
+    refs.moreItem.addEventListener("keyup", (e) => {
+        closePopoverOnEsc(e, refs);
+    });
     refs.popoverContainer.addEventListener("click", onClickPopover);
 
     return refs;
@@ -166,7 +172,9 @@ onContentReady(() => {
         calculateVisibility(refs);
     });
 
-    document.addEventListener("click", () => setPopoverVisibility(false, refs));
+    document.addEventListener("click", () => {
+        setPopoverVisibility(false, refs);
+    });
 
     setPopoverVisibility(false, refs);
     calculateVisibility(refs);

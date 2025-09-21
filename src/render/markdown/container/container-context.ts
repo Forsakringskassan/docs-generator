@@ -41,5 +41,5 @@ export interface ContainerContext {
      * return a HTML-string with replacement content (or stop processing by
      * rethrowing the exception).
      */
-    handleSoftError(error: SoftErrorType): string;
+    handleSoftError(this: void, error: SoftErrorType): string;
 }

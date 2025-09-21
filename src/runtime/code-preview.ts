@@ -29,7 +29,7 @@ export function toggleMarkup(button: HTMLElement): void {
 
     if (isOpen) {
         button.setAttribute("aria-expanded", "false");
-        expand.style.height = `${rect.height}px`;
+        expand.style.height = `${String(rect.height)}px`;
         expand.classList.add("animate-expand");
         expand.classList.add("animate-expand--expanded");
         setTimeout(() => {
@@ -41,7 +41,7 @@ export function toggleMarkup(button: HTMLElement): void {
         }, 500);
     } else {
         button.setAttribute("aria-expanded", "true");
-        expand.style.height = `${rect.height}px`;
+        expand.style.height = `${String(rect.height)}px`;
         expand.classList.add("animate-expand");
         expand.classList.add("animate-expand--expanded");
         setTimeout(() => {

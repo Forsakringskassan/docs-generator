@@ -16,8 +16,9 @@ export const motdProxy: MOTDApi = {
         return Boolean(window[motdSymbol]);
     },
     showMessage(...args) {
-        if (window[motdSymbol]) {
-            window[motdSymbol].showMessage(...args);
+        const api = window[motdSymbol] as MOTDApi | undefined;
+        if (api) {
+            api.showMessage(...args);
         } else {
             throw new Error(
                 "motdProcessor(..) not enabled, cannot call showMessage(..)!",

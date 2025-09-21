@@ -18,7 +18,7 @@ export function detailsContainer(
         if (customTitle.length > 0) {
             return customTitle.join(" ");
         } else {
-            return options.title["details"] || "Details";
+            return options.title.details ?? "Details";
         }
     }
 
