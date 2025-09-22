@@ -24,7 +24,7 @@ export function generateNavigation(
     const children = entries.map((it, index): NavigationSection => {
         const key = path.parse(it.path).name;
         return {
-            key: key,
+            key,
             sortorder: index,
             children: [],
             visible: true,

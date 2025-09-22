@@ -33,7 +33,7 @@ export function redirectProcessor(): Processor {
                     template: "redirect",
                     fileInfo: {
                         path: dir,
-                        name: name,
+                        name,
                         fullPath: "virtual:redirect",
                         outputName: base,
                     },
