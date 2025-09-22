@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [2.30.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.29.3...v2.30.0) (2025-09-22)
+
+### Features
+
+* use inter as default font ([7b3c7de](https://github.com/Forsakringskassan/docs-generator/commit/7b3c7decdf5ddb9fed0e5c1faa0ddc02d7f95b68))
+
+### Bug Fixes
+
+* **deps:** update dependency fs-extra to v11.3.2 ([33be41d](https://github.com/Forsakringskassan/docs-generator/commit/33be41dea1553e1d6ab604f1be32a0b5550469f7))
+* **deps:** update dependency mermaid to v11.12.0 ([16ce6a6](https://github.com/Forsakringskassan/docs-generator/commit/16ce6a6b15a9e057a0a4912cd6792ecf8912abaa))
+
 ## [2.29.3](https://github.com/Forsakringskassan/docs-generator/compare/v2.29.2...v2.29.3) (2025-09-12)
 
 ### Bug Fixes
