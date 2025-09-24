@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`should escape html in plaintext 1`] = `"<code>&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;</code>"`;
 
