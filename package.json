@@ -176,7 +176,7 @@
     "@types/fs-extra": "11.0.4",
     "@types/jest": "30.0.0",
     "@types/markdown-it": "14.1.2",
-    "@types/node": "20.19.17",
+    "@types/node": "20.19.18",
     "@types/nunjucks": "3.2.6",
     "@types/pug": "2.0.10",
     "@types/semver": "7.7.1",
