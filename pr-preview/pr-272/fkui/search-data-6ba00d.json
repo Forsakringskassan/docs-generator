@@ -43,6 +43,7 @@
     "production",
     "globala inställningar",
     "config",
+    "CHANGELOG v5",
     "Chip",
     "chip",
     "Knapp",
@@ -85,7 +86,6 @@
     "kalenderdag",
     "Bricka",
     "FBadge",
-    "CHANGELOG v5",
     "Validering och felhantering",
     "obligatoriska fält",
     "submit",
@@ -193,16 +193,6 @@
     "produktionsklar",
     "beta",
     "experimentell",
-    "EventBus",
-    "EventBus",
-    "services",
-    "focus-indicator() mixin",
-    "fokus",
-    "fokusindikator",
-    "sass",
-    "densify() function",
-    "densitet",
-    "sass",
     "Vue.js",
     "testverktyg",
     "cypress",
@@ -216,6 +206,16 @@
     "testverktyg",
     "Jest",
     "testverktyg",
+    "EventBus",
+    "EventBus",
+    "services",
+    "focus-indicator() mixin",
+    "fokus",
+    "fokusindikator",
+    "sass",
+    "densify() function",
+    "densitet",
+    "sass",
     "Validation Plugin",
     "validering",
     "v-validation",
@@ -415,6 +415,12 @@
     "FFixedPane",
     "Detaljpanel",
     "FDetailsPanel",
+    "Modal dialogruta",
+    "FModal",
+    "Formulärsmodal",
+    "FFormModal",
+    "Bekräftelsemodal",
+    "FConfirmModal",
     "Förloppsindikator",
     "FProgressbar",
     "ladda",
@@ -423,12 +429,6 @@
     "FLoader",
     "ladda",
     "laddning",
-    "Modal dialogruta",
-    "FModal",
-    "Formulärsmodal",
-    "FFormModal",
-    "Bekräftelsemodal",
-    "FConfirmModal",
     "Startpunkt",
     "entrypoint",
     "länk",
@@ -715,6 +715,11 @@
       ]
     },
     {
+      "url": "changelog/v5.html",
+      "title": "CHANGELOG v5",
+      "terms": []
+    },
+    {
       "url": "components/chip.html",
       "title": "Chip",
       "terms": [
@@ -825,11 +830,6 @@
       "terms": [
         "FBadge"
       ]
-    },
-    {
-      "url": "changelog/v5.html",
-      "title": "CHANGELOG v5",
-      "terms": []
     },
     {
       "url": "guides/validation-and-error-handling/validation.html",
@@ -1056,31 +1056,6 @@
       ]
     },
     {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "services",
-        "EventBus"
-      ]
-    },
-    {
-      "url": "functions/sass/focus-indicator.html",
-      "title": "focus-indicator() mixin",
-      "terms": [
-        "fokus",
-        "fokusindikator",
-        "sass"
-      ]
-    },
-    {
-      "url": "functions/sass/densify.html",
-      "title": "densify() function",
-      "terms": [
-        "densitet",
-        "sass"
-      ]
-    },
-    {
       "url": "functions/test-utils/vue.html",
       "title": "Vue.js",
       "terms": [
@@ -1111,6 +1086,31 @@
       "title": "Jest",
       "terms": [
         "testverktyg"
+      ]
+    },
+    {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "services",
+        "EventBus"
+      ]
+    },
+    {
+      "url": "functions/sass/focus-indicator.html",
+      "title": "focus-indicator() mixin",
+      "terms": [
+        "fokus",
+        "fokusindikator",
+        "sass"
+      ]
+    },
+    {
+      "url": "functions/sass/densify.html",
+      "title": "densify() function",
+      "terms": [
+        "densitet",
+        "sass"
       ]
     },
     {
@@ -1526,24 +1526,6 @@
       ]
     },
     {
-      "url": "components/load/fprogressbar.html",
-      "title": "Förloppsindikator",
-      "terms": [
-        "ladda",
-        "laddning",
-        "FProgressbar"
-      ]
-    },
-    {
-      "url": "components/load/floader.html",
-      "title": "Laddningsindikator",
-      "terms": [
-        "ladda",
-        "laddning",
-        "FLoader"
-      ]
-    },
-    {
       "url": "components/modal/fmodal.html",
       "title": "Modal dialogruta",
       "terms": [
@@ -1562,6 +1544,24 @@
       "title": "Bekräftelsemodal",
       "terms": [
         "FConfirmModal"
+      ]
+    },
+    {
+      "url": "components/load/fprogressbar.html",
+      "title": "Förloppsindikator",
+      "terms": [
+        "ladda",
+        "laddning",
+        "FProgressbar"
+      ]
+    },
+    {
+      "url": "components/load/floader.html",
+      "title": "Laddningsindikator",
+      "terms": [
+        "ladda",
+        "laddning",
+        "FLoader"
       ]
     },
     {
@@ -2275,47 +2275,47 @@
     "41": 9,
     "42": 9,
     "43": 10,
-    "44": 10,
+    "44": 11,
     "45": 11,
-    "46": 11,
+    "46": 12,
     "47": 12,
-    "48": 12,
-    "49": 12,
-    "50": 12,
-    "51": 12,
+    "48": 13,
+    "49": 13,
+    "50": 13,
+    "51": 13,
     "52": 13,
-    "53": 13,
+    "53": 14,
     "54": 14,
-    "55": 14,
+    "55": 15,
     "56": 15,
-    "57": 15,
-    "58": 15,
-    "59": 15,
-    "60": 15,
-    "61": 15,
+    "57": 16,
+    "58": 16,
+    "59": 16,
+    "60": 16,
+    "61": 16,
     "62": 16,
-    "63": 16,
+    "63": 17,
     "64": 17,
-    "65": 17,
-    "66": 17,
+    "65": 18,
+    "66": 18,
     "67": 18,
-    "68": 18,
-    "69": 18,
+    "68": 19,
+    "69": 19,
     "70": 19,
-    "71": 19,
+    "71": 20,
     "72": 20,
-    "73": 20,
-    "74": 20,
+    "73": 21,
+    "74": 21,
     "75": 21,
-    "76": 21,
+    "76": 22,
     "77": 22,
-    "78": 22,
-    "79": 22,
-    "80": 22,
-    "81": 22,
-    "82": 22,
+    "78": 23,
+    "79": 23,
+    "80": 23,
+    "81": 23,
+    "82": 23,
     "83": 23,
-    "84": 23,
+    "84": 24,
     "85": 24,
     "86": 25,
     "87": 25,
@@ -2427,24 +2427,24 @@
     "193": 49,
     "194": 49,
     "195": 49,
-    "196": 50,
+    "196": 49,
     "197": 50,
     "198": 50,
     "199": 50,
-    "200": 51,
+    "200": 50,
     "201": 51,
     "202": 51,
-    "203": 52,
+    "203": 51,
     "204": 52,
     "205": 52,
-    "206": 52,
+    "206": 53,
     "207": 53,
     "208": 53,
-    "209": 53,
-    "210": 53,
+    "209": 54,
+    "210": 54,
     "211": 54,
     "212": 54,
-    "213": 54,
+    "213": 55,
     "214": 55,
     "215": 55,
     "216": 56,
@@ -2648,16 +2648,16 @@
     "414": 100,
     "415": 101,
     "416": 101,
-    "417": 101,
-    "418": 101,
-    "419": 102,
-    "420": 102,
-    "421": 102,
-    "422": 102,
-    "423": 103,
-    "424": 103,
-    "425": 104,
-    "426": 104,
+    "417": 102,
+    "418": 102,
+    "419": 103,
+    "420": 103,
+    "421": 104,
+    "422": 104,
+    "423": 104,
+    "424": 104,
+    "425": 105,
+    "426": 105,
     "427": 105,
     "428": 105,
     "429": 106,
