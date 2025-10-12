@@ -1,12 +1,11 @@
+import { copyFileSync, existsSync, readFileSync } from "node:fs";
 import fs from "node:fs/promises";
-import { existsSync, copyFileSync, readFileSync } from "node:fs";
 import path from "node:path";
 import pathPosix from "node:path/posix";
 import { promisify } from "node:util";
 import { Worker } from "node:worker_threads";
 import nunjucks from "nunjucks";
 import { type AssetInfo } from "../assets";
-import { type VendorAsset } from "../vendor";
 import { type Document, type DocumentPage, type FileInfo } from "../document";
 import {
     type CompileMessage,
@@ -18,17 +17,18 @@ import {
 } from "../examples";
 import {
     type NavigationLeaf,
-    type NavigationSection,
     type NavigationNode,
+    type NavigationSection,
     isNavigationSection,
     sortNavigationTree,
 } from "../navigation";
 import { getFingerprint, getOutputFilePath } from "../utils";
-import { type RenderOptions } from "./render-options";
-import { TemplateLoader } from "./template-loader";
+import { type VendorAsset } from "../vendor";
+import { createMarkdownRenderer } from "./create-markdown-renderer";
 import * as filter from "./filter";
 import { findTemplate } from "./find-template";
-import { createMarkdownRenderer } from "./create-markdown-renderer";
+import { type RenderOptions } from "./render-options";
+import { TemplateLoader } from "./template-loader";
 import { TemplateRenderError } from "./template-render-error";
 
 interface ActiveNavigationLeaf extends NavigationLeaf {

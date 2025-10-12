@@ -1,7 +1,7 @@
 import path from "node:path/posix";
 import { type DocumentPage, isDocumentPage } from "../../document";
+import { findDocument, getOutputFilePath } from "../../utils";
 import { SoftError } from "../soft-error";
-import { getOutputFilePath, findDocument } from "../../utils";
 import { type InlineTag } from "./inline-tag";
 
 function getRelativeUrl(from: DocumentPage, to: DocumentPage): string {

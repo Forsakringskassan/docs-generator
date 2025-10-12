@@ -6,7 +6,6 @@ import {
     parseInfostring,
     transformCode,
 } from "../../examples";
-import { type MarkdownEnv } from "../markdown-env";
 import {
     findTag,
     getFingerprint,
@@ -14,6 +13,7 @@ import {
     htmlencode,
     parseImport,
 } from "../../utils";
+import { type MarkdownEnv } from "../markdown-env";
 import { findTestId, highlight, replaceAtLink } from "./utils";
 
 /**

@@ -1,5 +1,5 @@
-import path from "node:path/posix";
 import { type AddressInfo } from "net";
+import path from "node:path/posix";
 import { watch } from "chokidar";
 import tinylr from "tiny-lr";
 import { keypress } from "./keypress";

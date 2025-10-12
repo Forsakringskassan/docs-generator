@@ -1,11 +1,11 @@
-import { type ProcessorOptions, type Processor } from "../processor";
 import { type ComponentAttribute } from "../document";
 import { type PackageJson } from "../package-json";
+import { type Processor, type ProcessorOptions } from "../processor";
 import {
+    fileMatcher,
     getRepositoryUrl,
     gitCommitHash,
     interpolate,
-    fileMatcher,
 } from "../utils";
 
 /**

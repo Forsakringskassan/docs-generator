@@ -1,10 +1,10 @@
 import fs from "node:fs/promises";
 import path from "node:path/posix";
 import dedent from "dedent";
-import { type Processor } from "../../processor";
-import { getOutputFilePath, haveOutput } from "../../utils";
-import { relative } from "../../render/filter";
 import { isDocumentPage } from "../../document";
+import { type Processor } from "../../processor";
+import { relative } from "../../render/filter";
+import { getOutputFilePath, haveOutput } from "../../utils";
 
 const template = (dst: string): string => /* HTML */ `
     <!doctype html>

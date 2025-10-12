@@ -1,8 +1,4 @@
 <script setup lang="ts">
-defineOptions({
-    name: "IgnoreFixture",
-});
-
 defineProps({
     foo: {
         type: String,
@@ -25,6 +21,10 @@ defineEmits<{
      */
     bar: [];
 }>();
+
+defineOptions({
+    name: "IgnoreFixture",
+});
 </script>
 
 <template>

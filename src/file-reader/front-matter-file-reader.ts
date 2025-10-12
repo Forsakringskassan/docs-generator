@@ -3,9 +3,9 @@ import path, { type ParsedPath } from "node:path";
 import fm from "front-matter";
 import {
     type ComponentAttribute,
+    type DocumentAttributes,
     type DocumentBadge,
     type DocumentPage,
-    type DocumentAttributes,
     documentAttributeKeys,
 } from "../document";
 import { getDocumentOutline, normalizePath } from "../utils";

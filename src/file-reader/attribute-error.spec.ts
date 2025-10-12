@@ -1,4 +1,4 @@
-import { findLocation, AttributeError } from "./attribute-error";
+import { AttributeError, findLocation } from "./attribute-error";
 
 expect.addSnapshotSerializer({
     test() {

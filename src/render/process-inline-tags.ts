@@ -1,6 +1,6 @@
 import { type Document, type DocumentPage } from "../document";
 import { type InlineTag } from "./inline-tags";
-import { SoftError, type SoftErrorType } from "./soft-error";
+import { type SoftErrorType, SoftError } from "./soft-error";
 
 /**
  * @internal

@@ -2,18 +2,18 @@ import markdownIt from "markdown-it";
 import markdownItDeflist from "markdown-it-deflist";
 import { type Document, type DocumentPage } from "../document";
 import { type ExampleResult } from "../examples/example-result";
-import { processInlineTags } from "./process-inline-tags";
 import inlineTags from "./inline-tags";
 import {
     codeInline,
     codePreview,
+    containerRenderer,
     headingLevel,
     imageResources,
-    containerRenderer,
-    table,
     paragraph,
+    table,
 } from "./markdown";
 import { type MarkdownEnv } from "./markdown-env";
+import { processInlineTags } from "./process-inline-tags";
 import { type SoftErrorType } from "./soft-error";
 
 /**

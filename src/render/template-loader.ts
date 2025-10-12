@@ -1,5 +1,5 @@
-import fs from "node:fs/promises";
 import { existsSync } from "node:fs";
+import fs from "node:fs/promises";
 import path from "node:path";
 import { type Callback, type ILoaderAsync, type LoaderSource } from "nunjucks";
 import { templateDirectory } from "./template-directory";

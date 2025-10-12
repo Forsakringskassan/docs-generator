@@ -1,16 +1,16 @@
 import {
+    type EventDescriptor,
     type PropDescriptor,
     type SlotDescriptor,
-    type EventDescriptor,
     parse,
 } from "vue-docgen-api";
 import { slugify } from "../../utils";
 import {
     type ComponentAPI,
+    type ComponentEvent,
     type ComponentModel,
     type ComponentProp,
     type ComponentSlot,
-    type ComponentEvent,
 } from "./component-api";
 
 interface PropDeprecatedTag {

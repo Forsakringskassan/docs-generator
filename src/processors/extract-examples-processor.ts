@@ -1,10 +1,10 @@
 import fs from "node:fs/promises";
 import path from "node:path/posix";
 import markdownIt from "markdown-it";
-import { isDocumentPage, type DocumentPage } from "../document";
-import { type ProcessorOptions, type Processor } from "../processor";
-import { haveOutput, normalizePath, slugify } from "../utils";
+import { type DocumentPage, isDocumentPage } from "../document";
 import { parseInfostring } from "../examples";
+import { type Processor, type ProcessorOptions } from "../processor";
+import { haveOutput, normalizePath, slugify } from "../utils";
 
 /**
  * Options for `extractExamplesProcessor`.

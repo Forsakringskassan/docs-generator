@@ -1,7 +1,7 @@
 import markdownIt from "markdown-it";
 import { type DocumentOutline, type DocumentPage } from "../document";
-import { findTag, getFingerprint, getOutputFilePath, hasTag } from "../utils";
 import { parseInfostring } from "../examples";
+import { findTag, getFingerprint, getOutputFilePath, hasTag } from "../utils";
 import { type Manifest } from "./manifest";
 
 type DocumentPageWithOutput = DocumentPage & {

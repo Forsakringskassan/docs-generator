@@ -1,12 +1,12 @@
 export { type ExampleOptions } from "./example-options";
 export {
     type ExampleCompiledResult,
-    type ExampleStaticResult,
     type ExampleResult,
+    type ExampleStaticResult,
 } from "./example-result";
 export {
-    type ExampleStandaloneTask,
     type ExampleCompileTask,
+    type ExampleStandaloneTask,
 } from "./example-task";
 export { generateExample } from "./generate-example";
 export { parseInfostring } from "./parse-infostring";

@@ -1,4 +1,4 @@
-import { type ProcessorRuntime, type Processor } from "./processor";
+import { type Processor, type ProcessorRuntime } from "./processor";
 
 /**
  * Derive default runtime script name from processor.

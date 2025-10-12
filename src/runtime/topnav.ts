@@ -1,5 +1,5 @@
-import { onContentReady } from "./on-content-ready";
 import { debounce } from "./debounce";
+import { onContentReady } from "./on-content-ready";
 
 interface ItemPair {
     menu: HTMLElement;

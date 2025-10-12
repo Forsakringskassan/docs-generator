@@ -1,5 +1,5 @@
-import { onContentReady } from "./on-content-ready";
 import { BREAKPOINT_LARGE } from "./breakpoints";
+import { onContentReady } from "./on-content-ready";
 
 export function tableOfContents(
     toc: Element,

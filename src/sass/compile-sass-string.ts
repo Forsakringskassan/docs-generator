@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import { compileStringAsync, NodePackageImporter } from "sass";
 import { moduleImporter } from "@forsakringskassan/sass-module-importer";
+import { NodePackageImporter, compileStringAsync } from "sass";
 
 /**
  * @public

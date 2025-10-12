@@ -1,8 +1,4 @@
 <script setup lang="ts">
-function $t(_key: string, defaultText: string, _params: Record<string, unknown>): string {
-    return defaultText;
-}
-
 defineProps({
     /**
      * Lorem ipsum dolor
@@ -74,6 +70,10 @@ defineEmits<{
      */
     obsolete: [value: string];
 }>();
+
+function $t(_key: string, defaultText: string, _params: Record<string, unknown>): string {
+    return defaultText;
+}
 
 const text = $t("translation.key.foo", "foo default text");
 </script>

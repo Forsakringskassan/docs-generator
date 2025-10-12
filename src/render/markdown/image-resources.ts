@@ -1,5 +1,5 @@
-import path from "node:path/posix";
 import crypto from "node:crypto";
+import path from "node:path/posix";
 import type MarkdownIt from "markdown-it";
 import { type FileInfo } from "../../document";
 import { type MarkdownEnv } from "../markdown-env";

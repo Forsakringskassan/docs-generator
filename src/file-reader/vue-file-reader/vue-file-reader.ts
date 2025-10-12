@@ -2,14 +2,14 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { type DocumentPartial } from "../../document";
 import { normalizePath } from "../../utils";
-import { translateAPI } from "./translate-api";
 import { type ComponentAPI } from "./component-api";
+import { findTranslations } from "./find-translations";
+import { generateEventTable } from "./generate-event-table";
 import { generateModelTable } from "./generate-model-table";
 import { generatePropTable } from "./generate-prop-table";
-import { generateEventTable } from "./generate-event-table";
 import { generateSlotTable } from "./generate-slot-table";
-import { findTranslations } from "./find-translations";
 import { generateTranslationTable } from "./generate-translation-table";
+import { translateAPI } from "./translate-api";
 
 function parseAPI(filePath: string, api: ComponentAPI): DocumentPartial {
     const relative = normalizePath(filePath);

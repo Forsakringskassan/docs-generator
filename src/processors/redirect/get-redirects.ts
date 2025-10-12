@@ -1,4 +1,4 @@
-import { isDocumentPage, type Document } from "../../document";
+import { type Document, isDocumentPage } from "../../document";
 import { normalizePath } from "../../utils";
 
 /**

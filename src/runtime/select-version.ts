@@ -1,6 +1,6 @@
 import semver from "semver";
-import { getUrl, memoize } from "./utils";
 import { motdProxy as motd } from "./motd/motd-proxy";
+import { getUrl, memoize } from "./utils";
 
 interface VersionResponse {
     latest: string;

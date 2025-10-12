@@ -1,5 +1,5 @@
-import scrollIntoView from "scroll-into-view-if-needed";
 import uFuzzy from "@leeoniya/ufuzzy";
+import scrollIntoView from "scroll-into-view-if-needed";
 import { type SearchIndex } from "../search";
 
 interface SearchResult {

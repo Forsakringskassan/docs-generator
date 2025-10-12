@@ -11,8 +11,8 @@ export {
 } from "./document";
 export {
     type ExampleCompiledResult,
-    type ExampleStaticResult,
     type ExampleResult,
+    type ExampleStaticResult,
 } from "./examples/example-result";
 export { type ExampleCompileTask } from "./examples/example-task";
 export {
