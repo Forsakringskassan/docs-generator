@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path/posix";
-import { type Processor } from "../../processor";
 import { type Document, isDocumentPage } from "../../document";
+import { type Processor } from "../../processor";
 import { haveOutput, normalizePath } from "../../utils";
 
 function isRedirect(doc: Document): boolean {

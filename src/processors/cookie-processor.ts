@@ -1,4 +1,4 @@
-import { type ProcessorOptions, type Processor } from "../processor";
+import { type Processor, type ProcessorOptions } from "../processor";
 
 /**
  * Processor that displays cookie warning.

@@ -1,8 +1,8 @@
 import { type DocumentPage, isDocumentPage } from "../document";
 import { type Processor } from "../processor";
 import { getFingerprint, getIntegrity, getOutputFilePath } from "../utils";
-import { type SearchEntry } from "./search-entry";
 import { generateIndex } from "./generate-index";
+import { type SearchEntry } from "./search-entry";
 
 function* extractTerms(doc: DocumentPage): Generator<string> {
     const { title, component } = doc.attributes;

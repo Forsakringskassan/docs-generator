@@ -1,19 +1,19 @@
-import fs from "node:fs/promises";
 import { existsSync } from "node:fs";
-import path from "node:path/posix";
+import fs from "node:fs/promises";
 import nativePath from "node:path";
+import path from "node:path/posix";
 import { URL, fileURLToPath } from "node:url";
+import { Extractor, ExtractorConfig } from "@microsoft/api-extractor";
+import commonjs from "@rollup/plugin-commonjs";
+import json from "@rollup/plugin-json";
+import { nodeResolve } from "@rollup/plugin-node-resolve";
+import { workerPlugin } from "@sidvind/rollup-plugin-worker";
 import esbuild from "esbuild";
 import isCI from "is-ci";
-import { rollup, defineConfig } from "rollup";
+import { defineConfig, rollup } from "rollup";
 import esbuildPlugin from "rollup-plugin-esbuild";
-import commonjs from "@rollup/plugin-commonjs";
-import { nodeResolve } from "@rollup/plugin-node-resolve";
-import json from "@rollup/plugin-json";
 import { visualizer } from "rollup-plugin-visualizer";
-import { workerPlugin } from "@sidvind/rollup-plugin-worker";
 import * as sass from "sass";
-import { Extractor, ExtractorConfig } from "@microsoft/api-extractor";
 
 const pkg = JSON.parse(await fs.readFile("package.json", "utf-8"));
 const { externalDependencies, peerDependencies } = pkg;

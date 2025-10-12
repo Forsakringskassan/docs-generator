@@ -6,8 +6,8 @@ import inter from "@fontsource-variable/inter/metadata.json";
 import fse from "fs-extra";
 import { createInstance as i18next } from "i18next";
 import {
-    type CompileOptions,
     type CSSAsset,
+    type CompileOptions,
     type JSAsset,
     type ResourceTask,
     cssAssetProcessor,
@@ -15,18 +15,13 @@ import {
     staticResourcesProcessor,
 } from "./assets";
 import { compileProcessorRuntime } from "./compile-processor-runtime";
+import { type Document, isDocumentPage } from "./document";
 import { type SourceFiles, fileReaderProcessor } from "./file-reader";
-import { type TemplateLoader, nunjucksProcessor } from "./render";
-import { isDocumentPage, type Document } from "./document";
 import langEn from "./i18n/en.json";
 import langSv from "./i18n/sv.json";
 import { manifestPageFromDocument } from "./manifest";
+import { type Manifest } from "./manifest";
 import { type NavigationSection, navigationProcessor } from "./navigation";
-import {
-    type VendorAsset,
-    type VendorDefinition,
-    vendorProcessor,
-} from "./vendor";
 import { type Processor } from "./processor";
 import {
     type ProcessorContext,
@@ -35,10 +30,15 @@ import {
 } from "./processor-context";
 import { type ProcessorStage } from "./processor-stage";
 import { redirectProcessor } from "./processors";
-import { type Manifest } from "./manifest";
+import { type TemplateLoader, nunjucksProcessor } from "./render";
+import { createTemplateLoader } from "./render/render";
 import { serve } from "./serve";
 import { fileMatcher, haveOutput, normalizePath } from "./utils";
-import { createTemplateLoader } from "./render/render";
+import {
+    type VendorAsset,
+    type VendorDefinition,
+    vendorProcessor,
+} from "./vendor";
 
 /**
  * @public

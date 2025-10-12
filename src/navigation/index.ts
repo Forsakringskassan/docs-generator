@@ -1,7 +1,7 @@
 export {
     type NavigationLeaf,
-    type NavigationSection,
     type NavigationNode,
+    type NavigationSection,
     isNavigationSection,
 } from "./generate-navtree";
 export { navigationProcessor } from "./navigation-processor";

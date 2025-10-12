@@ -1,5 +1,5 @@
 import { type PackageJson } from "../package-json";
-import { type ProcessorOptions, type Processor } from "../processor";
+import { type Processor, type ProcessorOptions } from "../processor";
 
 /**
  * Options for {@link selectableVersionProcessor#}.

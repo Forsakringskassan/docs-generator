@@ -19,8 +19,8 @@ export { normalizePath } from "./normalize-path";
 export { parseImport } from "./parse-import";
 export { runCommand } from "./run-command";
 export {
-    type AttributeValue,
     type AttributeTable,
+    type AttributeValue,
     serializeAttrs,
 } from "./serialize-attrs";
 export { difference } from "./set-utils";

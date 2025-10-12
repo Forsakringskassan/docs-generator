@@ -1,5 +1,5 @@
-import { findDocument } from "./find-document";
 import { createMockDocument } from "./create-mock-document";
+import { findDocument } from "./find-document";
 
 it("should find document by id", () => {
     expect.assertions(1);

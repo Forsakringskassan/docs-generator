@@ -29,8 +29,8 @@ export {
 export { type Manifest } from "./manifest";
 export { type MatomoOptions, matomoProcessor } from "./matomo";
 export {
-    type NavigationNode,
     type NavigationLeaf,
+    type NavigationNode,
     type NavigationSection,
 } from "./navigation";
 export { type PackageJson } from "./package-json";
@@ -52,24 +52,24 @@ export { processorRuntimeName } from "./processor-runtime-name";
 export { type ProcessorStage } from "./processor-stage";
 export {
     type ExtractExamplesOptions,
-    type ManifestProcessorOptions,
     type MOTDOptions,
-    type TopnavEntry,
-    type VersionProcessorOptions,
+    type ManifestProcessorOptions,
     type SelectableVersionProcessorOptions,
     type SourceUrlProcessorOptions,
+    type TopnavEntry,
+    type VersionProcessorOptions,
+    cookieProcessor,
     extractExamplesProcessor,
     htmlRedirectProcessor,
     manifestProcessor,
     motdProcessor,
     redirectFileProcessor,
     selectableVersionProcessor,
+    sourceUrlProcessor,
     themeSelectProcessor,
+    topnavProcessor,
     versionBannerProcessor, // eslint-disable-line @typescript-eslint/no-deprecated -- intentional, we still want to export it
     versionProcessor,
-    topnavProcessor,
-    sourceUrlProcessor,
-    cookieProcessor,
 } from "./processors";
 export { searchProcessor } from "./search";
 export { livereloadProcessor } from "./serve";

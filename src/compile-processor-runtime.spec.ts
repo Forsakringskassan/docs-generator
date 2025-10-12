@@ -1,5 +1,5 @@
-import { type Generator } from "./generator";
 import { compileProcessorRuntime } from "./compile-processor-runtime";
+import { type Generator } from "./generator";
 
 const docs: Pick<Generator, "compileScript"> = {
     compileScript() {

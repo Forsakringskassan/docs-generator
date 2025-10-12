@@ -1,8 +1,8 @@
 import fs from "node:fs/promises";
+import { isDocumentPage } from "../document";
 import { type Manifest, manifestPageFromDocument } from "../manifest";
 import { type Processor } from "../processor";
 import { haveOutput } from "../utils";
-import { isDocumentPage } from "../document";
 
 type ManifestPage = Manifest["pages"][number];
 

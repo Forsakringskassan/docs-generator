@@ -60,6 +60,18 @@ export default [
     },
 
     {
+        name: "local/docs",
+        files: ["docs/**/*.vue"],
+        rules: {
+            "vue/define-emits-declaration": "off",
+            "vue/define-props-declaration": "off",
+            "vue/no-restricted-block": "off",
+            "vue/no-unused-emit-declarations": "off",
+            "vue/no-unused-properties": "off",
+        },
+    },
+
+    {
         name: "local/examples",
         files: ["docs/examples/**/*.{js,ts}"],
         rules: {
@@ -68,6 +80,18 @@ export default [
             "@typescript-eslint/no-unused-vars": "off",
             "eslint-comments/require-description": "off",
             "import/no-extraneous-dependencies": "off",
+        },
+    },
+
+    {
+        name: "local/fixtures",
+        files: ["**/__fixtures__/*.vue"],
+        rules: {
+            "vue/define-emits-declaration": "off",
+            "vue/define-props-declaration": "off",
+            "vue/no-restricted-block": "off",
+            "vue/no-unused-emit-declarations": "off",
+            "vue/no-unused-properties": "off",
         },
     },
 

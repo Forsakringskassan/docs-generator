@@ -3,16 +3,16 @@ import path from "node:path";
 import isCI from "is-ci";
 import {
     Generator,
+    cookieProcessor,
     extractExamplesProcessor,
     htmlRedirectProcessor,
     manifestProcessor,
     motdProcessor,
-    versionProcessor,
     redirectFileProcessor,
     searchProcessor,
-    sourceUrlProcessor,
-    cookieProcessor,
     selectableVersionProcessor,
+    sourceUrlProcessor,
+    versionProcessor,
 } from "./dist/index.mjs";
 import config from "./docs.config.mjs";
 

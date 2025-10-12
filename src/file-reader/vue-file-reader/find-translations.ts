@@ -9,13 +9,13 @@ import {
     type ObjectExpression,
     type StringLiteral,
 } from "@babel/types";
+import isCI from "is-ci";
 import {
     type BindingMetadata,
     compileScript,
     compileTemplate,
     parse,
 } from "vue/compiler-sfc";
-import isCI from "is-ci";
 import { type TranslationKey } from "./translation-key";
 
 type BabelTraverse = typeof traverseModule;

@@ -1,6 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import { type DocumentPage, type DocumentAttributes } from "../document";
+import { type DocumentAttributes, type DocumentPage } from "../document";
 import { normalizePath } from "../utils";
 
 /**
