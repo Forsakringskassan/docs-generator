@@ -120,6 +120,11 @@
     "modellvärde",
     "modell-värde",
     "modelValue",
+    "Version 5 migreringsguide",
+    "Vue 3",
+    "Fieldset migreringsguide",
+    "FCrudButton migreringsguide",
+    "FCrudButton",
     "Anpassa och översätt text",
     "translate",
     "translation",
@@ -139,11 +144,6 @@
     "scss",
     "css",
     "ikonbibliotek",
-    "Version 5 migreringsguide",
-    "Vue 3",
-    "Fieldset migreringsguide",
-    "FCrudButton migreringsguide",
-    "FCrudButton",
     "Testverktyg",
     "testfall",
     "jest",
@@ -193,6 +193,16 @@
     "produktionsklar",
     "beta",
     "experimentell",
+    "EventBus",
+    "EventBus",
+    "services",
+    "focus-indicator() mixin",
+    "fokus",
+    "fokusindikator",
+    "sass",
+    "densify() function",
+    "densitet",
+    "sass",
     "Vue.js",
     "testverktyg",
     "cypress",
@@ -206,16 +216,6 @@
     "testverktyg",
     "Jest",
     "testverktyg",
-    "EventBus",
-    "EventBus",
-    "services",
-    "focus-indicator() mixin",
-    "fokus",
-    "fokusindikator",
-    "sass",
-    "densify() function",
-    "densitet",
-    "sass",
     "Validation Plugin",
     "validering",
     "v-validation",
@@ -253,6 +253,12 @@
     "captureWarnings",
     "logToConsole",
     "errorHandler",
+    "i18next",
+    "TranslationService",
+    "i18nextProvider",
+    "TranslationService",
+    "I18nextProvider",
+    "TranslationService",
     "Hjälpklasser",
     "helpers",
     "h-no-margin",
@@ -283,12 +289,6 @@
     "assertRef() function",
     "clamp() function",
     "datum",
-    "i18next",
-    "TranslationService",
-    "i18nextProvider",
-    "TranslationService",
-    "I18nextProvider",
-    "TranslationService",
     "Validatorer",
     "identisk",
     "matches",
@@ -902,6 +902,25 @@
       ]
     },
     {
+      "url": "gettingstarted/migration/migrating-to-v5.html",
+      "title": "Version 5 migreringsguide",
+      "terms": [
+        "Vue 3"
+      ]
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-fieldset.html",
+      "title": "Fieldset migreringsguide",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-crud-button.html",
+      "title": "FCrudButton migreringsguide",
+      "terms": [
+        "FCrudButton"
+      ]
+    },
+    {
       "url": "gettingstarted/use-design-system/translate-text.html",
       "title": "Anpassa och översätt text",
       "terms": [
@@ -938,25 +957,6 @@
         "scss",
         "css",
         "ikonbibliotek"
-      ]
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-v5.html",
-      "title": "Version 5 migreringsguide",
-      "terms": [
-        "Vue 3"
-      ]
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-fieldset.html",
-      "title": "Fieldset migreringsguide",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-crud-button.html",
-      "title": "FCrudButton migreringsguide",
-      "terms": [
-        "FCrudButton"
       ]
     },
     {
@@ -1057,6 +1057,31 @@
       ]
     },
     {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "services",
+        "EventBus"
+      ]
+    },
+    {
+      "url": "functions/sass/focus-indicator.html",
+      "title": "focus-indicator() mixin",
+      "terms": [
+        "fokus",
+        "fokusindikator",
+        "sass"
+      ]
+    },
+    {
+      "url": "functions/sass/densify.html",
+      "title": "densify() function",
+      "terms": [
+        "densitet",
+        "sass"
+      ]
+    },
+    {
       "url": "functions/test-utils/vue.html",
       "title": "Vue.js",
       "terms": [
@@ -1087,31 +1112,6 @@
       "title": "Jest",
       "terms": [
         "testverktyg"
-      ]
-    },
-    {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "services",
-        "EventBus"
-      ]
-    },
-    {
-      "url": "functions/sass/focus-indicator.html",
-      "title": "focus-indicator() mixin",
-      "terms": [
-        "fokus",
-        "fokusindikator",
-        "sass"
-      ]
-    },
-    {
-      "url": "functions/sass/densify.html",
-      "title": "densify() function",
-      "terms": [
-        "densitet",
-        "sass"
       ]
     },
     {
@@ -1174,6 +1174,27 @@
         "errorHandler",
         "ErrorPlugin",
         "FErrorHandlingApp"
+      ]
+    },
+    {
+      "url": "functions/i18next-translate/i18next.html",
+      "title": "i18next",
+      "terms": [
+        "TranslationService"
+      ]
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider.html",
+      "title": "i18nextProvider",
+      "terms": [
+        "TranslationService"
+      ]
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider-interface.html",
+      "title": "I18nextProvider",
+      "terms": [
+        "TranslationService"
       ]
     },
     {
@@ -1282,27 +1303,6 @@
       "title": "clamp() function",
       "terms": [
         "datum"
-      ]
-    },
-    {
-      "url": "functions/i18next-translate/i18next.html",
-      "title": "i18next",
-      "terms": [
-        "TranslationService"
-      ]
-    },
-    {
-      "url": "functions/i18next-translate/i18next-provider.html",
-      "title": "i18nextProvider",
-      "terms": [
-        "TranslationService"
-      ]
-    },
-    {
-      "url": "functions/i18next-translate/i18next-provider-interface.html",
-      "title": "I18nextProvider",
-      "terms": [
-        "TranslationService"
       ]
     },
     {
@@ -2355,26 +2355,26 @@
     "119": 31,
     "120": 32,
     "121": 32,
-    "122": 32,
-    "123": 32,
-    "124": 32,
-    "125": 32,
-    "126": 33,
-    "127": 33,
-    "128": 33,
-    "129": 34,
-    "130": 34,
-    "131": 34,
-    "132": 34,
-    "133": 35,
-    "134": 35,
-    "135": 35,
-    "136": 35,
-    "137": 35,
-    "138": 35,
-    "139": 36,
-    "140": 36,
-    "141": 37,
+    "122": 33,
+    "123": 34,
+    "124": 34,
+    "125": 35,
+    "126": 35,
+    "127": 35,
+    "128": 35,
+    "129": 35,
+    "130": 35,
+    "131": 36,
+    "132": 36,
+    "133": 36,
+    "134": 37,
+    "135": 37,
+    "136": 37,
+    "137": 37,
+    "138": 38,
+    "139": 38,
+    "140": 38,
+    "141": 38,
     "142": 38,
     "143": 38,
     "144": 39,
@@ -2429,24 +2429,24 @@
     "193": 49,
     "194": 49,
     "195": 49,
-    "196": 49,
+    "196": 50,
     "197": 50,
     "198": 50,
     "199": 50,
-    "200": 50,
+    "200": 51,
     "201": 51,
     "202": 51,
-    "203": 51,
+    "203": 52,
     "204": 52,
     "205": 52,
-    "206": 53,
+    "206": 52,
     "207": 53,
     "208": 53,
-    "209": 54,
-    "210": 54,
+    "209": 53,
+    "210": 53,
     "211": 54,
     "212": 54,
-    "213": 55,
+    "213": 54,
     "214": 55,
     "215": 55,
     "216": 56,
@@ -2488,37 +2488,37 @@
     "252": 60,
     "253": 61,
     "254": 61,
-    "255": 61,
-    "256": 61,
-    "257": 61,
-    "258": 62,
-    "259": 62,
-    "260": 63,
-    "261": 63,
+    "255": 62,
+    "256": 62,
+    "257": 63,
+    "258": 63,
+    "259": 64,
+    "260": 64,
+    "261": 64,
     "262": 64,
     "263": 64,
-    "264": 64,
-    "265": 64,
-    "266": 64,
-    "267": 65,
-    "268": 65,
-    "269": 66,
+    "264": 65,
+    "265": 65,
+    "266": 66,
+    "267": 66,
+    "268": 67,
+    "269": 67,
     "270": 67,
-    "271": 68,
-    "272": 69,
-    "273": 70,
-    "274": 71,
-    "275": 72,
-    "276": 73,
-    "277": 74,
-    "278": 75,
-    "279": 76,
-    "280": 77,
-    "281": 78,
-    "282": 78,
-    "283": 79,
-    "284": 79,
-    "285": 80,
+    "271": 67,
+    "272": 67,
+    "273": 68,
+    "274": 68,
+    "275": 69,
+    "276": 70,
+    "277": 71,
+    "278": 72,
+    "279": 73,
+    "280": 74,
+    "281": 75,
+    "282": 76,
+    "283": 77,
+    "284": 78,
+    "285": 79,
     "286": 80,
     "287": 81,
     "288": 81,
