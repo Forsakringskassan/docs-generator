@@ -15,7 +15,7 @@ export function altContainer(context: ContainerContext): ContainerCallback {
         const tags = token.info.trim().split(/\s+/);
         const doc = findDocument(docs, needle);
 
-        if (doc && doc.format === "markdown") {
+        if (doc?.format === "markdown") {
             const body =
                 typeof doc.body === "string" ? doc.body : doc.body(tags);
             return md.render(body, env);

@@ -29,7 +29,7 @@ export function findLocation(
     attr: string,
 ): SourceLocation | null {
     const match = /^---\n(.*?)^---/ms.exec(content);
-    if (!match || match.index !== 0) {
+    if (match?.index !== 0) {
         return null;
     }
 
