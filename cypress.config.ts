@@ -1,9 +1,10 @@
 import { defineConfig } from "cypress";
 import htmlvalidate from "cypress-html-validate/plugin";
-import { type Manifest, Generator } from "./dist";
 
-/* eslint-disable-next-line import/extensions -- extension is needed in this case */
+/* eslint-disable import/extensions -- extension is needed in this case */
+import { type Manifest, Generator } from "./dist/index.mjs";
 import config from "./docs.config.mjs";
+/* eslint-enable import/extensions */
 
 async function getDocsPages(): Promise<Manifest["pages"]> {
     const docs = new Generator(import.meta.url, {
