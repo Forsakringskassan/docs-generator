@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [2.30.2](https://github.com/Forsakringskassan/docs-generator/compare/v2.30.1...v2.30.2) (2025-10-17)
+
+### Bug Fixes
+
+* **deps:** update dependency i18next to v25.6.0 ([2f909e3](https://github.com/Forsakringskassan/docs-generator/commit/2f909e367534712dc97681fb69c9759bede9bb99))
+* **deps:** update dependency semver to v7.7.3 ([ea97d73](https://github.com/Forsakringskassan/docs-generator/commit/ea97d73d783bfffce60dd80db9984787933fcc5d))
+
 ## [2.30.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.30.0...v2.30.1) (2025-10-10)
 
 ### Bug Fixes
