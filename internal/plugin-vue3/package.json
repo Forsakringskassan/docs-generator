@@ -22,7 +22,7 @@
     "build": "node build.mjs"
   },
   "dependencies": {
-    "esbuild-plugin-vue3": "0.5.0",
+    "esbuild-plugin-vue3": "0.5.1",
     "is-ci": "4.1.0"
   },
   "devDependencies": {
