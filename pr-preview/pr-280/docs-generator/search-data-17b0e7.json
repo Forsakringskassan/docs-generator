@@ -20,11 +20,11 @@
     "Child Page 3",
     "Child Page 2",
     "Child Page 1",
+    "Example",
     "Redirects",
     "Mermaid",
     "Markdown",
     "Definition lists",
-    "Example",
     "Plumbing",
     "Overriding templates",
     "Layout",
@@ -143,6 +143,11 @@
       "terms": []
     },
     {
+      "url": "live-example/example.html",
+      "title": "Example",
+      "terms": []
+    },
+    {
       "url": "markdown/redirects.html",
       "title": "Redirects",
       "terms": []
@@ -160,11 +165,6 @@
     {
       "url": "markdown/definition-lists.html",
       "title": "Definition lists",
-      "terms": []
-    },
-    {
-      "url": "live-example/example.html",
-      "title": "Example",
       "terms": []
     },
     {
