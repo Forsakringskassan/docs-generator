@@ -55,5 +55,6 @@ processors/version.html
 search-data-[hash].json
 smoketest/index.html
 smoketest/table.html
+theme/font.html
 theme/index.html
 ```

@@ -137,6 +137,7 @@ export { Generator_2 as Generator }
 
 // @public (undocumented)
 export interface GeneratorOptions {
+    bundleDefaultFont?: boolean;
     cacheFolder?: string;
     exampleFolders?: string[];
     markdown?: {

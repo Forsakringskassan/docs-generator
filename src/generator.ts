@@ -58,6 +58,11 @@ export interface GeneratorOptions {
     /** Site options */
     site: GeneratorSiteOptions;
 
+    /** If `true` the default font will be included in the generated bundle. Set
+     * this to `false` if you change or otherwize manage the font assets
+     * yourself. */
+    bundleDefaultFont?: boolean;
+
     /** Output folder. Default: `public` */
     outputFolder?: string;
 
@@ -306,6 +311,7 @@ function getWorkingDir(value: string | URL | null): string {
 export class Generator {
     private cwd: string;
     private site: GeneratorSiteOptions;
+    private bundleDefaultFont: boolean;
     private outputFolder: string;
     private cacheFolder: string;
     private assetFolder: string;
@@ -350,6 +356,7 @@ export class Generator {
 
         this.cwd = cwd;
         this.site = options.site;
+        this.bundleDefaultFont = options.bundleDefaultFont ?? true;
         this.outputFolder = options.outputFolder ?? "./public";
         this.cacheFolder = options.cacheFolder ?? "./temp/docs";
         this.assetFolder = path.posix.join(this.outputFolder, "assets");
@@ -554,7 +561,10 @@ export class Generator {
     }
 
     private async _copyFonts(): Promise<void> {
-        const { assetFolder } = this;
+        const { assetFolder, bundleDefaultFont } = this;
+        if (!bundleDefaultFont) {
+            return;
+        }
         const files = inter.subsets.map((subset) => {
             const filename = `inter-${subset}-wght-normal.woff2`;
             const module = `@fontsource-variable/inter/files/${filename}`;
