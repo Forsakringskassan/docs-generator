@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [2.31.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.30.2...v2.31.0) (2025-10-28)
+
+### Features
+
+* support disabling bundling of default font ([dc28362](https://github.com/Forsakringskassan/docs-generator/commit/dc283625c400a10dfe166b918304cfb3861358a6))
+
+### Bug Fixes
+
+* **deps:** update dependency esbuild-plugin-vue3 to v0.5.0 ([4e6511c](https://github.com/Forsakringskassan/docs-generator/commit/4e6511c0fea4c3107287aedb835fea66c6ae7e76))
+* **deps:** update dependency esbuild-plugin-vue3 to v0.5.1 ([812c38a](https://github.com/Forsakringskassan/docs-generator/commit/812c38a254faf1f493e80706beede9c729dbc5ad))
+
 ## [2.30.2](https://github.com/Forsakringskassan/docs-generator/compare/v2.30.1...v2.30.2) (2025-10-17)
 
 ### Bug Fixes
