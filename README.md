@@ -108,9 +108,11 @@ Three CSS files are provided:
 - `@forsakringskassan/docs-generator/style/index.css` (aliased as `@forsakringskassan/docs-generator/style`)
 - `@forsakringskassan/docs-generator/style/core.css`
 - `@forsakringskassan/docs-generator/style/site.css`
+- `@forsakringskassan/docs-generator/style/theme-fk`
 
 `core` contains the necessary styling for components and elements and `site` contains the layout, typography etc required for a documentation site to work.
 `index` is a combination of the two and should be used in most cases.
+`theme-fk` is using [FKUI Colors](https://designsystem.forsakringskassan.se/latest/styles/colors.html).
 
 Style can be compiled with `compileStyle(name, src, [options])`:
 
