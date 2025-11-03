@@ -3,9 +3,6 @@ html {
 }
 
 .code-preview__preview {
-  --f-text-color-default: #1b1e23;
-  --f-text-color-default-inverted: #ffffff;
-  --f-text-color-discrete: #5f6165;
   --f-text-color-link: #4a52b6;
   --f-text-color-link-hover: #1b1e23;
   --f-text-color-link-discrete: #1b1e23;
@@ -17,23 +14,15 @@ html {
   --f-text-color-heading-5: inherit;
   --f-text-color-heading-6: inherit;
   --f-text-color-heading-expandable-panel: #ffffff;
-  --f-text-color-button-discrete-hover: #3b4292;
-  --f-text-color-button-discrete-inverted-hover: #ffffff;
   --f-text-color-menu: #1b1e23;
   --f-text-color-menu-hover: #1b1e23;
   --f-text-color-menu-horizontal-highlight: #1b1e23;
   --f-text-color-popupmenu: #1b1e23;
   --f-text-color-popupmenu-hover: #1b1e23;
   --f-icon-color-white: #ffffff;
-  --f-icon-color-primary: #4a52b6;
   --f-icon-color-success: #35805b;
   --f-icon-color-notice: #d34503;
-  --f-icon-color-loader: #35805b;
   --f-icon-color-expandable-panel: #ffffff;
-  --f-icon-color-table-header: #1b1e23;
-  --f-icon-color-table-header-discrete: #8d8e91;
-  --f-icon-color-sort-filter-dataset-close: #1b1e23;
-  --f-icon-color-sort-filter-dataset-search: #8d8e91;
   --f-icon-color-success-background: #dbe9e2;
   --f-background-overlay: rgba(0, 0, 0, 0.75);
   --f-background-pageheader-primary: #116a3e;
@@ -42,17 +31,7 @@ html {
   --f-background-heading-expandable-panel-hover: #35805b;
   --f-background-expandable-panel: #ffffff;
   --f-background-heading-static-panel: #afcfb5;
-  --f-background-code: #f4f4f4;
-  --f-background-button-discrete-hover: none;
   --f-background-sidepanel-button-tertiary-hover: #e5e5f5;
-  --f-background-grid-default: #ffffff;
-  --f-background-grid-active: #e5e5f5;
-  --f-background-grid-hover: #f5f6fa;
-  --f-background-grid-striped: #f4f4f4;
-  --f-background-grid-header: #f4f4f4;
-  --f-background-grid-focus-inner: #f5f6fa;
-  --f-background-tab-active: #ffffff;
-  --f-background-tab-inactive: #f5f6fa;
   --f-background-menu: #f4f4f4;
   --f-background-menu-vertical-hover: #ddddde;
   --f-background-menu-vertical-highlight: #e7f0e9;
@@ -69,10 +48,6 @@ html {
   --f-border-color-link-hover: #8d8e91;
   --f-border-color-link-discrete: #8d8e91;
   --f-border-color-link-discrete-hover: #4a52b6;
-  --f-border-color-grid: #8d8e91;
-  --f-border-color-grid-header: #8d8e91;
-  --f-border-color-grid-hover: #8d8e91;
-  --f-border-color-grid-expanded: #ddddde;
   --f-border-color-expandable-panel-closed: none;
   --f-border-color-menu-horizontal: #116a3e;
   --f-border-color-menu-horizontal-hover: #afcfb5;
