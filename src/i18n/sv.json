@@ -11,7 +11,12 @@
             "button": "Sök",
             "instructions": "<kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja",
             "title": "Sök",
-            "placeholder": "Skriv för att börja söka"
+            "placeholder": "Skriv för att börja söka",
+            "result": {
+                "component": "Komponentbeskrivning",
+                "api": "API dokumentation",
+                "article": "Artikel"
+            }
         }
     }
 }
