@@ -1,0 +1,9 @@
+/**
+    Re map Docs variables to FKUI theme variable
+    https://designsystem.forsakringskassan.se/latest/styles/colors.html
+*/
+:root {
+    --docs-color-text-primary: var(--fkds-color-text-primary);
+    --docs-header-background-color: var(--fkds-color-background-primary);
+    --docs-header-border-color: var(--fkds-color-border-weak);
+}

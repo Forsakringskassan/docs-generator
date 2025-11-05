@@ -144,6 +144,16 @@ export default {
                 type: "color",
                 value: "#5f6165",
             },
+            "background-color": {
+                type: "color",
+                value: "#ffffff",
+                description: "Background color for page header.",
+            },
+            "border-color": {
+                type: "color",
+                value: "#ddddde",
+                description: "Border color for page header.",
+            },
         },
     },
 

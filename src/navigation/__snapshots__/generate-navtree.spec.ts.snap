@@ -366,6 +366,13 @@ exports[`smoketest 1`] = `
           "sortorder": Infinity,
           "title": "Font",
         },
+        {
+          "external": false,
+          "id": "fs:docs/theme/predefined-themes.md",
+          "path": "./theme/predefined-themes.html",
+          "sortorder": Infinity,
+          "title": "Predefined themes",
+        },
       ],
       "key": "./theme",
       "path": "./theme/",

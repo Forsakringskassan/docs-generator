@@ -36,7 +36,8 @@
     "./docs.css": "./dist/style/index.css",
     "./style": "./dist/style/index.css",
     "./style.css": "./dist/style/index.css",
-    "./style/*.css": "./dist/style/*.css"
+    "./style/*.css": "./dist/style/*.css",
+    "./theme/fkui": "./dist/style/theme/fkui.css"
   },
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
