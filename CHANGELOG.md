@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [2.32.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.31.0...v2.32.0) (2025-11-05)
+
+### Features
+
+* init fkui theme (refs SB-4982) ([6dcfb27](https://github.com/Forsakringskassan/docs-generator/commit/6dcfb2702e5d066596e7eebf1fe459e2d9110f52))
+
+### Bug Fixes
+
+* **deps:** update dependency mermaid to v11.12.1 ([987d9cf](https://github.com/Forsakringskassan/docs-generator/commit/987d9cf4c6f06423686a2465e6db7abc42abf3fa))
+
 ## [2.31.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.30.2...v2.31.0) (2025-10-28)
 
 ### Features
