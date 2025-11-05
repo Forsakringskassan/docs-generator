@@ -223,6 +223,7 @@ async function build() {
         { src: "src/style/core.scss", dst: "dist/style/core.css" },
         { src: "src/style/site.scss", dst: "dist/style/site.css" },
         { src: "src/style/style.scss", dst: "dist/style/index.css" },
+        { src: "src/style/theme/fkui.scss", dst: "dist/style/theme/fkui.css" },
     ]);
 }
 

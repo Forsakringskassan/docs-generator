@@ -136,10 +136,9 @@ h6 {
 
 /* Page header - inverted */
 header .page-header {
-    background-color: #fff;
+    background-color: var(--docs-header-background-color);
     padding: 0.5rem 1.2rem;
-    border-bottom: 1px solid #ddddde;
-    flex-wrap: wrap;
+    border-bottom: 1px solid var(--docs-header-border-color);
 }
 
 header .page-header__logo--small {

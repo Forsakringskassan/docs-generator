@@ -1,5 +1,6 @@
 ---
 title: Theme
+name: Theme
 sortorder: 1
 layout: article
 ---
