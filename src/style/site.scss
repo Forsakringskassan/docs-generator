@@ -13,24 +13,18 @@ html {
 
 html,
 body {
-    font-family: var(--docs-font-family);
-    font-weight: var(--docs-font-weight);
-    font-size: var(--f-font-size-default-rem);
-    font-feature-settings:
-        "liga" 1,
-        "calt" 1;
     min-width: 400px;
-
-    @media (width >= $breakpoint-md) {
-        font-size: var(--f-font-size-default-large-up-rem);
-    }
 }
 
 body {
-    color: var(--f-text-color-default);
-    font-size: var(--f-font-size-standard);
+    color: var(--docs-text-color-default);
+    font-family: var(--docs-font-family);
+    font-feature-settings:
+        "liga" 1,
+        "calt" 1;
+    font-size: var(--docs-font-size);
     font-weight: var(--docs-font-weight);
-    line-height: var(--f-line-height-large);
+    line-height: var(--docs-line-height);
 }
 
 .page-header {

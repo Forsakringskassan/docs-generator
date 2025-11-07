@@ -7,6 +7,15 @@ export default {
                 type: "font",
                 value: `"Inter Variable", sans-serif`,
             },
+            "font-line-height": {
+                description: "Default `font-line-height`.",
+                value: "1.5",
+            },
+            "font-size": {
+                description: "Default `font-size`.",
+                type: "length",
+                value: "16px",
+            },
             "font-weight": {
                 description: "Default `font-weight`.",
                 value: "normal",
