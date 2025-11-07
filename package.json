@@ -181,7 +181,7 @@
     "@types/nunjucks": "3.2.6",
     "@types/pug": "2.0.10",
     "@types/semver": "7.7.1",
-    "cypress": "15.5.0",
+    "cypress": "15.6.0",
     "cypress-html-validate": "8.1.0",
     "esbuild": "0.25.12",
     "express": "5.1.0",
