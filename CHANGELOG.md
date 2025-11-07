@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.32.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.32.0...v2.32.1) (2025-11-07)
+
+### Bug Fixes
+
+* remove `margin-left` for `kbd` element ([9401459](https://github.com/Forsakringskassan/docs-generator/commit/94014593ae40842536dcf08e0f51bf9d3d78b40c))
+
 ## [2.32.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.31.0...v2.32.0) (2025-11-05)
 
 ### Features
