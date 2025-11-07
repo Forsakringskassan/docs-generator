@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.32.2](https://github.com/Forsakringskassan/docs-generator/compare/v2.32.1...v2.32.2) (2025-11-07)
+
+### Bug Fixes
+
+* fix dark mode text color ([cea3ddb](https://github.com/Forsakringskassan/docs-generator/commit/cea3ddbb31a17e738c2ade2035d31be525f1056b))
+
 ## [2.32.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.32.0...v2.32.1) (2025-11-07)
 
 ### Bug Fixes
