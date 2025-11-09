@@ -185,7 +185,7 @@
     "cypress-html-validate": "8.1.0",
     "esbuild": "0.25.12",
     "express": "5.1.0",
-    "html-validate": "10.3.0",
+    "html-validate": "10.3.1",
     "http-server": "14.1.1",
     "is-ci": "4.1.0",
     "jest-environment-jsdom": "30.2.0",
