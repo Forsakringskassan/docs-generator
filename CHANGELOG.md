@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## [2.33.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.32.2...v2.33.0) (2025-11-10)
+
+### Features
+
+* **style:** additional theme css-variables for search modal ([c530705](https://github.com/Forsakringskassan/docs-generator/commit/c530705498004238aa5253094c5fe0cc2e619fea))
+* **style:** additional theme css-variables for site background colors ([975b14f](https://github.com/Forsakringskassan/docs-generator/commit/975b14f18fe314fc2283f7a582cd012a071f1bd7))
+* **style:** additional theme css-variables for version modal ([b5934de](https://github.com/Forsakringskassan/docs-generator/commit/b5934de6873c8f05292c9ca3fb7e92b894310847))
+* **style:** apply light/dark checkerboard pattern to all user examples ([c0c029b](https://github.com/Forsakringskassan/docs-generator/commit/c0c029b6521e2794529c8910fe40e1ae8e0ca588))
+
+### Bug Fixes
+
+* **deps:** update dependency i18next to v25.6.1 ([bebdfa3](https://github.com/Forsakringskassan/docs-generator/commit/bebdfa37a23d6891b5981447819c489a2cbc8b46))
+
 ## [2.32.2](https://github.com/Forsakringskassan/docs-generator/compare/v2.32.1...v2.32.2) (2025-11-07)
 
 ### Bug Fixes
