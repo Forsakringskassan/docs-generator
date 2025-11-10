@@ -379,6 +379,28 @@ export default {
         },
     },
 
+    search: {
+        description: "Style related to search processor",
+        variables: {
+            "text-color": {
+                description:
+                    "`--docs-text-color-default` is overridden with this value.",
+                type: "color",
+                value: "inherit",
+            },
+            "background-color": {
+                description: "Background color for search dialog",
+                type: "color",
+                value: "var(--docs-background-color)",
+            },
+            "border-color": {
+                description: "Border color for search dialog",
+                type: "color",
+                value: "#000",
+            },
+        },
+    },
+
     version: {
         description: "Version processor",
         variables: {
