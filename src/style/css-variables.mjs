@@ -405,7 +405,8 @@ export default {
         description: "Version processor",
         variables: {
             "text-color": {
-                description: "Text color",
+                description:
+                    "`--docs-text-color-default` is overridden with this value.",
                 type: "color",
                 value: "var(--docs-text-color-discrete)",
             },
@@ -418,6 +419,16 @@ export default {
                 description: "Link color",
                 type: "color",
                 value: "var(--docs-text-color-default)",
+            },
+            "background-color": {
+                description: "Background color for version dialog",
+                type: "color",
+                value: "var(--docs-background-color)",
+            },
+            "border-color": {
+                description: "Border color for version dialog",
+                type: "color",
+                value: "#000",
             },
         },
     },

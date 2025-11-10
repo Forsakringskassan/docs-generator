@@ -9,8 +9,13 @@
 }
 
 #version-dialog {
+    --docs-text-color-default: var(--docs-version-text-color);
+
     width: 30rem;
     max-height: 80vh;
+    background: var(--docs-version-background-color);
+    border: 1px solid var(--docs-version-border-color);
+    color: var(--docs-text-color-default);
 
     a {
         text-decoration: none;
