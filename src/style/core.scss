@@ -131,7 +131,7 @@ h6 {
 
 .layout-wrapper {
     font-family: var(--docs-font-family);
-    background: #fff;
+    background: var(--docs-background-color);
 }
 
 /* Page header - inverted */
@@ -217,7 +217,7 @@ header .label {
 /* navigering vänster */
 
 #sidenav {
-    background-color: #f4f4f4;
+    background-color: var(--docs-menu-background-color);
     width: auto;
     display: flex;
     justify-content: space-between;
