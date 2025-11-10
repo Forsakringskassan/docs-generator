@@ -33,13 +33,13 @@
     "Custom layout",
     "Scripts",
     "Configuration",
-    "Nested Page 3",
-    "Nested Page 2",
-    "Nested Page 1",
     "Top page",
     "Sorted Page 3",
     "Sorted Page 2",
     "Sorted Page 1",
+    "Nested Page 3",
+    "Nested Page 2",
+    "Nested Page 1",
     "Messagebox",
     "Details",
     "Alternative text",
@@ -210,21 +210,6 @@
       "terms": []
     },
     {
-      "url": "navigation/group/nested-page-3.html",
-      "title": "Nested Page 3",
-      "terms": []
-    },
-    {
-      "url": "navigation/group/nested-page-2.html",
-      "title": "Nested Page 2",
-      "terms": []
-    },
-    {
-      "url": "navigation/group/nested-page-1.html",
-      "title": "Nested Page 1",
-      "terms": []
-    },
-    {
       "url": "navigation/sorted-group/top-page.html",
       "title": "Top page",
       "terms": []
@@ -242,6 +227,21 @@
     {
       "url": "navigation/sorted-group/sorted-page-1.html",
       "title": "Sorted Page 1",
+      "terms": []
+    },
+    {
+      "url": "navigation/group/nested-page-3.html",
+      "title": "Nested Page 3",
+      "terms": []
+    },
+    {
+      "url": "navigation/group/nested-page-2.html",
+      "title": "Nested Page 2",
+      "terms": []
+    },
+    {
+      "url": "navigation/group/nested-page-1.html",
+      "title": "Nested Page 1",
       "terms": []
     },
     {

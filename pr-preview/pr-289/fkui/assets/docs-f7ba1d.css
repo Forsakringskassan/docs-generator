@@ -7692,12 +7692,15 @@ kbd {
 }
 
 #search button {
-  padding: 0 0.75rem;
-  cursor: text;
-  border: 0;
-  box-shadow: none;
   background: transparent;
   color: var(--docs-text-color-discrete);
+  border-radius: 4px;
+  border: 0;
+  box-shadow: none;
+  cursor: text;
+  min-height: 2.5rem;
+  padding: 0 0.75rem;
+  width: 100%;
 }
 
 #search button:hover {
@@ -7708,8 +7711,14 @@ kbd {
   box-shadow: var(--f-focus-box-shadow);
 }
 
-#search button .icon {
+#search .search__icon {
+  display: inline-block;
+  height: 1rem;
   margin-right: 0.5rem;
+  max-height: 100%;
+  max-width: 100%;
+  pointer-events: none;
+  width: 1rem;
 }
 
 #search-dialog {
