@@ -385,7 +385,8 @@ kbd {
     cursor: text;
     border: 0;
     box-shadow: none;
-    color: var(--f-text-color-default);
+    background: transparent;
+    color: var(--docs-text-color-discrete);
 }
 
 #search button:hover {
@@ -401,8 +402,12 @@ kbd {
 }
 
 #search-dialog {
+    --docs-text-color-default: var(--docs-search-text-color);
+
     margin-top: 80px;
-    border: 1px solid var(--f-border-color-modal);
+    background: var(--docs-search-background-color);
+    border: 1px solid var(--docs-search-border-color);
+    color: var(--docs-text-color-default);
     width: 580px;
 }
 
