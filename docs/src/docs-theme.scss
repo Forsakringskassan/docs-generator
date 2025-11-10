@@ -93,3 +93,13 @@
     margin: 0;
     padding: 0;
 }
+
+.user-background {
+    @media (prefers-color-scheme: light) {
+        color: var(--docs-text-color-default);
+    }
+
+    @media (prefers-color-scheme: dark) {
+        color: #fff;
+    }
+}
