@@ -2,6 +2,11 @@ export default {
     "*": {
         description: "Global styling, e.g. default values.",
         variables: {
+            "background-color": {
+                description: "Default background color",
+                type: "color",
+                value: "#ffffff",
+            },
             "font-family": {
                 description: "Default `font-family`.",
                 type: "font",
@@ -155,7 +160,7 @@ export default {
             },
             "background-color": {
                 type: "color",
-                value: "#ffffff",
+                value: "transparent",
                 description: "Background color for page header.",
             },
             "border-color": {
@@ -166,9 +171,42 @@ export default {
         },
     },
 
+    footer: {
+        description: "Style related to page footer",
+        variables: {
+            "text-color-default": {
+                description:
+                    "`--docs-text-color-default` is overridden with this value.",
+                type: "color",
+                value: "#1b1e23",
+            },
+            "text-color-discrete": {
+                description:
+                    "`--docs-text-color-discrete` is overridden with this value.",
+                type: "color",
+                value: "#5f6165",
+            },
+            "background-color": {
+                type: "color",
+                value: "transparent",
+                description: "Background color for page footer.",
+            },
+            "border-color": {
+                type: "color",
+                value: "#ddddde",
+                description: "Border color for page footer.",
+            },
+        },
+    },
+
     menu: {
         description: "Style related to the sidebar menu.",
         variables: {
+            "background-color": {
+                type: "color",
+                value: "transparent",
+                description: "Background color for sidebar.",
+            },
             "width-expanded": {
                 description: "Width of sidebar in desktop resolution.",
                 value: "230px",

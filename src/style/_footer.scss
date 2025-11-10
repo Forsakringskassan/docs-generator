@@ -1,0 +1,7 @@
+.docs-footer {
+    --docs-text-color-default: var(--docs-footer-text-color-default);
+    --docs-text-color-discrete: var(--docs-footer-text-color-discrete);
+
+    background-color: var(--docs-footer-background-color);
+    border-top: 1px solid var(--docs-footer-border-color);
+}
