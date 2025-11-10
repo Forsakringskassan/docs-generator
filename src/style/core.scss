@@ -290,6 +290,16 @@ main #aside dd {
     margin: 0 0 1.5rem;
 }
 
+.user-background {
+    @media (prefers-color-scheme: light) {
+        background: repeating-conic-gradient(#fff 0 90deg, rgb(235 235 235) 0 180deg) 0 0/20px 20px round;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        background: repeating-conic-gradient(#1b1e23 0 90deg, #313438 0 180deg) 0 0/20px 20px round;
+    }
+}
+
 .code-preview {
     main,
     header,
@@ -319,7 +329,6 @@ main #aside dd {
 }
 
 .code-preview__preview {
-    background-color: #fff;
     flex: 1 1 auto;
 }
 

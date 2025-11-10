@@ -233,7 +233,9 @@ export function codePreview(
                     data-language="${example.language}"
                 >
                     ${example.comments.join("\n")}
-                    <div class="code-preview__preview">${example.markup}</div>
+                    <div class="code-preview__preview user-background">
+                        ${example.markup}
+                    </div>
                 </div>
             `;
         }
@@ -271,7 +273,9 @@ export function codePreview(
                 data-language="${example.language}"
             >
                 ${example.comments.join("\n")}
-                <div class="code-preview__preview">${example.markup}</div>
+                <div class="code-preview__preview user-background">
+                    ${example.markup}
+                </div>
                 <div>${toggleMarkup} ${toggleFullscreen}</div>
                 <div
                     class="code-preview__expand animate-expand"
