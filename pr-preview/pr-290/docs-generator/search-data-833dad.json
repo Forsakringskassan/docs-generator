@@ -33,21 +33,21 @@
     "Custom layout",
     "Scripts",
     "Configuration",
-    "Nested Page 3",
-    "Nested Page 2",
-    "Nested Page 1",
     "Top page",
     "Sorted Page 3",
     "Sorted Page 2",
     "Sorted Page 1",
-    "Messagebox",
-    "Details",
-    "Alternative text",
+    "Nested Page 3",
+    "Nested Page 2",
+    "Nested Page 1",
     "Vue examples",
     "Javascript and Typescript",
     "Fullscreen examples",
     "Diff",
     "Code preview",
+    "Messagebox",
+    "Details",
+    "Alternative text",
     "Documenting Vue components",
     "README",
     "Live example",
@@ -210,21 +210,6 @@
       "terms": []
     },
     {
-      "url": "navigation/group/nested-page-3.html",
-      "title": "Nested Page 3",
-      "terms": []
-    },
-    {
-      "url": "navigation/group/nested-page-2.html",
-      "title": "Nested Page 2",
-      "terms": []
-    },
-    {
-      "url": "navigation/group/nested-page-1.html",
-      "title": "Nested Page 1",
-      "terms": []
-    },
-    {
       "url": "navigation/sorted-group/top-page.html",
       "title": "Top page",
       "terms": []
@@ -245,18 +230,18 @@
       "terms": []
     },
     {
-      "url": "markdown/containers/messagebox.html",
-      "title": "Messagebox",
+      "url": "navigation/group/nested-page-3.html",
+      "title": "Nested Page 3",
       "terms": []
     },
     {
-      "url": "markdown/containers/details.html",
-      "title": "Details",
+      "url": "navigation/group/nested-page-2.html",
+      "title": "Nested Page 2",
       "terms": []
     },
     {
-      "url": "markdown/containers/alt-text.html",
-      "title": "Alternative text",
+      "url": "navigation/group/nested-page-1.html",
+      "title": "Nested Page 1",
       "terms": []
     },
     {
@@ -282,6 +267,21 @@
     {
       "url": "markdown/code-preview/index.html",
       "title": "Code preview",
+      "terms": []
+    },
+    {
+      "url": "markdown/containers/messagebox.html",
+      "title": "Messagebox",
+      "terms": []
+    },
+    {
+      "url": "markdown/containers/details.html",
+      "title": "Details",
+      "terms": []
+    },
+    {
+      "url": "markdown/containers/alt-text.html",
+      "title": "Alternative text",
       "terms": []
     },
     {
