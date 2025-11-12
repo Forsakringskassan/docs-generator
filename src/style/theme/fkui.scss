@@ -3,21 +3,57 @@
    https://designsystem.forsakringskassan.se/latest/styles/colors.html
  */
 :root {
-    // default
+    // Global
+    --docs-background-color: var(--fkds-color-background-primary);
+    --docs-text-color-default: var(--fkds-color-text-primary);
+    --docs-text-color-discrete: var(--fkds-color-text-secondary);
+    --docs-text-color-link: var(--fkds-color-action-text-primary-default);
+    --docs-text-color-link-hover: var(--fkds-color-action-text-primary-hover);
+    --docs-info-color: var(--fkds-color-feedback-border-info);
+    --docs-info-background: var(--fkds-color-feedback-background-info);
+    --docs-warning-color: var(--fkds-color-feedback-border-warning);
+    --docs-warning-background: var(--fkds-color-feedback-background-warning);
+    --docs-error-color: var(--fkds-color-feedback-border-negative);
+    --docs-error-background: var(--fkds-color-feedback-background-negative);
     --docs-font-line-height: var(--f-line-height-large);
     --docs-font-size: var(--f-font-size-default-rem);
-    --docs-text-color-default: var(--fkds-color-text-primary);
+
+    // Badge
+    --docs-badge-component-color: var(--fkds-color-text-primary);
+    --docs-badge-component-background: var(--fkds-color-feedback-background-neutral);
+    --docs-badge-component-border: var(--fkds-color-feedback-border-neutral);
+
+    // Context menu
+    --docs-contextmenu-background-color: var(--fkds-color-background-primary);
+    --docs-contextmenu-border-color: var(--fkds-color-border-weak);
+    --docs-contextmenu-highlight-color: var(--fkds-color-select-background-secondary-active); // Needs to be updated once navigation colors exists in FKUI
+    --docs-contextmenu-link-color-default: var(--fkds-color-text-primary);
+    --docs-contextmenu-link-color-hover: var(--fkds-color-text-primary);
+    --docs-contextmenu-link-background-hover: var(--fkds-color-select-background-secondary-active); // Needs to be updated once navigation colors exists in FKUI
 
     // header
+    --docs-header-text-color-default: var(--fkds-color-text-primary);
+    --docs-header-text-color-discrete: var(--fkds-color-text-secondary);
     --docs-header-background-color: var(--fkds-color-background-primary);
     --docs-header-border-color: var(--fkds-color-border-weak);
 
+    // Top-nav
+    --docs-topnav-background-color: var(--fkds-color-background-primary);
+
     // menu
     --docs-menu-background-color: var(--fkds-color-background-secondary);
+    --docs-topnav-link-color-default: var(--fkds-color-text-primary);
+    --docs-topnav-link-color-hover: var(--fkds-color-text-primary);
+    --docs-topnav-link-color-highlight: var(--fkds-color-text-primary);
+    --docs-topnav-border-color-hover: var(--fkds-color-select-background-secondary-hover);
+    --docs-topnav-border-color-highlighr: var(--fkds-color-select-background-secondary-default);
 
     // code
-    --docs-code-background-color: var(--f-background-code);
+    --docs-code-background-color: var(--fkds-color-background-primary);
+    --docs-code-optional-background-color: var(--fkds-color-background-tertiary);
 
     // search
-    --docs-search-border-color: var(--f-border-color-modal);
+    --docs-search-border-color: var(--fkds-color-border-primary);
+    --docs-search-background-color: var(--fkds-color-background-primary);
+    --docs-search-text-color: var(--fkds-color-text-primary);
 }
