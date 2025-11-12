@@ -92,6 +92,11 @@ export default {
                 type: "color",
                 value: "#ddddde",
             },
+            "component-border": {
+                description: "Component badge border color",
+                type: "color",
+                value: "#ddddde",
+            },
         },
     },
 
