@@ -40,7 +40,7 @@
     "./theme/fkui": "./dist/style/theme/fkui.css"
   },
   "main": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "types": "dist/index.d.mts",
   "files": [
     "dist",
     "tsconfig-examples.json",
@@ -191,7 +191,7 @@
     "jest-environment-jsdom": "30.2.0",
     "memfs": "4.50.0",
     "minimatch": "10.1.1",
-    "npm-pkg-lint": "4.2.0",
+    "npm-pkg-lint": "4.3.0",
     "npm-run-all2": "8.0.4",
     "rollup": "4.53.2",
     "rollup-plugin-esbuild": "6.2.1",
