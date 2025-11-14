@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [2.33.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.33.0...v2.33.1) (2025-11-14)
+
+### Bug Fixes
+
+* add variable for badge border ([9a79417](https://github.com/Forsakringskassan/docs-generator/commit/9a79417d581f5a62debd9315c2f7ad28f5e6ca17))
+* added more variable mappings in FKUI theme ([548d9df](https://github.com/Forsakringskassan/docs-generator/commit/548d9dfaf7421d53fb69654c587a1cb736bda9de))
+
 ## [2.33.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.32.2...v2.33.0) (2025-11-10)
 
 ### Features
