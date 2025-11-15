@@ -164,7 +164,7 @@
     "@forsakringskassan/sass-module-importer": "1.1.6",
     "@forsakringskassan/stylelint-config": "3.2.2",
     "@html-validate/release-scripts": "7.1.0",
-    "@microsoft/api-extractor": "7.54.0",
+    "@microsoft/api-extractor": "7.55.0",
     "@rollup/plugin-commonjs": "29.0.0",
     "@rollup/plugin-json": "6.1.0",
     "@rollup/plugin-node-resolve": "16.0.3",
