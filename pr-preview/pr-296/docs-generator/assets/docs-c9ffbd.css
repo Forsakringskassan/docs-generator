@@ -997,15 +997,6 @@ main h4:not(.code-preview h4) {
   font-size: 1rem;
 }
 
-h1 .header-anchor,
-h2 .header-anchor,
-h3 .header-anchor,
-h4 .header-anchor,
-h5 .header-anchor,
-h6 .header-anchor {
-  color: var(--docs-text-color-default);
-}
-
 .header-anchor:hover {
   text-decoration: underline;
 }
@@ -1030,6 +1021,15 @@ h1 code {
   font-family: var(--docs-font-family);
   background-color: transparent;
   font-weight: 400;
+}
+
+h1 .header-anchor,
+h2 .header-anchor,
+h3 .header-anchor,
+h4 .header-anchor,
+h5 .header-anchor,
+h6 .header-anchor {
+  color: var(--docs-text-color-default);
 }
 
 h1 code,
