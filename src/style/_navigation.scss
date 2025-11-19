@@ -12,10 +12,7 @@
 }
 
 .navigation {
-    --active-background: #ddd;
-    --highlight-color: #116a3e;
     --highlight-width: 4px;
-    --hover-color: #ddd;
 
     display: none;
     padding: 1.5rem;
@@ -39,13 +36,13 @@
         border-left: var(--highlight-width) solid transparent;
 
         &.link.active {
-            border-color: var(--highlight-color);
-            background: var(--active-background);
+            border-color: var(--docs-navigation-highlight-color);
+            background: var(--docs-navigation-active-background);
         }
 
         &.link a {
             display: block;
-            color: var(--f-text-color-default);
+            color: var(--docs-text-color-default);
             padding: 0.5rem calc(0.25rem + var(--highlight-width)) 0.5rem 0.25rem;
             line-height: 1.2;
             text-decoration: none;
@@ -53,8 +50,8 @@
             overflow: hidden;
 
             &:hover {
-                background: var(--hover-color);
-                border-color: var(--highlight-color);
+                background: var(--docs-navigation-hover-color);
+                border-color: var(--docs-navigation-highlight-color);
             }
         }
     }
@@ -67,8 +64,8 @@
         padding: 0.5rem calc(0.25rem + var(--highlight-width)) 0.5rem 0.25rem;
 
         &:hover {
-            background: var(--hover-color);
-            border-color: var(--highlight-color);
+            background: var(--docs-navigation-hover-color);
+            border-color: var(--docs-navigation-highlight-color);
         }
 
         &::after {

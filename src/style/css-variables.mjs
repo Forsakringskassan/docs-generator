@@ -469,4 +469,24 @@ export default {
             },
         },
     },
+    navigation: {
+        description: "Style related to navigation",
+        variables: {
+            "active-background": {
+                description: "Link active background color",
+                type: "color",
+                value: "#ddd",
+            },
+            "highlight-color": {
+                description: "Link highlight color",
+                type: "color",
+                value: "#116a3e",
+            },
+            "hover-color": {
+                description: "Link hover color",
+                type: "color",
+                value: "#ddd",
+            },
+        },
+    },
 };
