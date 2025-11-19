@@ -48,30 +48,6 @@ main h4:not(.code-preview h4) {
     font-size: 1rem;
 }
 
-h1 .header-anchor {
-    color: var(--f-text-color-heading-1);
-}
-
-h2 .header-anchor {
-    color: var(--f-text-color-heading-2);
-}
-
-h3 .header-anchor {
-    color: var(--f-text-color-heading-3);
-}
-
-h4 .header-anchor {
-    color: var(--f-text-color-heading-4);
-}
-
-h5 .header-anchor {
-    color: var(--f-text-color-heading-5);
-}
-
-h6 .header-anchor {
-    color: var(--f-text-color-heading-6);
-}
-
 .header-anchor:hover {
     text-decoration: underline;
 }
@@ -104,6 +80,9 @@ h3,
 h4,
 h5,
 h6 {
+    .header-anchor {
+        color: var(--docs-text-color-default);
+    }
     code {
         font-size: inherit;
         margin: 0;
