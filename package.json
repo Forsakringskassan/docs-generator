@@ -135,7 +135,7 @@
     "fastest-levenshtein": "1.0.16",
     "front-matter": "4.0.2",
     "fs-extra": "11.3.2",
-    "glob": "11.1.0",
+    "glob": "12.0.0",
     "highlight.js": "11.11.1",
     "i18next": "25.6.2",
     "livereload-js": "4.0.2",
