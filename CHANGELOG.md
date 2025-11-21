@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## [2.34.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.33.1...v2.34.0) (2025-11-21)
+
+### Features
+
+* **deps:** update dependency glob to v12 ([d28a43d](https://github.com/Forsakringskassan/docs-generator/commit/d28a43db64681dea962a7d344ff3653a07ec3f75))
+
+### Bug Fixes
+
+* all headers uses text-color-default ([d5686e2](https://github.com/Forsakringskassan/docs-generator/commit/d5686e233d1ffc87f68828c4f4e363a6e10c9f09))
+* **deps:** update dependency i18next to v25.6.2 ([83e8b07](https://github.com/Forsakringskassan/docs-generator/commit/83e8b073beca604063e26a39570fcdd5bda075cb))
+* h1 uses text-color-default variable ([6edf40d](https://github.com/Forsakringskassan/docs-generator/commit/6edf40d3a1d1abbf02a2d693edc98eb5e5a14d92))
+* move navigation variables into variable file ([0d7e3f8](https://github.com/Forsakringskassan/docs-generator/commit/0d7e3f89a27f007274b3c6f55ea544603093fa70))
+
 ## [2.33.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.33.0...v2.33.1) (2025-11-14)
 
 ### Bug Fixes
