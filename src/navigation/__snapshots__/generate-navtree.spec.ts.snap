@@ -111,6 +111,13 @@ exports[`smoketest 1`] = `
         },
         {
           "external": false,
+          "id": "fs:docs/markdown/images.md",
+          "path": "./markdown/images.html",
+          "sortorder": Infinity,
+          "title": "Images",
+        },
+        {
+          "external": false,
           "id": "fs:docs/markdown/mermaid.md",
           "path": "./markdown/mermaid.html",
           "sortorder": Infinity,
