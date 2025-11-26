@@ -299,6 +299,16 @@ export default {
     outline: {
         description: "Style related to outline",
         variables: {
+            "heading-heading-color": {
+                description: "Header color",
+                type: "color",
+                value: "#5f6165",
+            },
+            "list-border-color": {
+                description: "Outline border color in small device mode",
+                type: "color",
+                value: "#ddddde",
+            },
             "active-border-color": {
                 description: "Border color for the current active item",
                 type: "color",

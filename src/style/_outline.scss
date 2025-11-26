@@ -1,14 +1,8 @@
 @use "breakpoints" as bp;
 
-// palette
-$fk-black-15: #ddddde;
-$fk-green-a-100: #116a3e !default;
-
 // variables
 $outline-border-size: 4px;
 $outline-border-duration: 300ms;
-$outline-active-border: var(--docs-outline-active-border-color);
-$outline-hover-background: var(--docs-outline-hover-background-color);
 
 #outline {
     margin-bottom: 1rem;
@@ -77,14 +71,14 @@ $outline-hover-background: var(--docs-outline-hover-background-color);
     .outline__heading {
         font-size: 1rem;
         font-weight: normal;
-        color: #5f6165;
+        color: var(--docs-outline-heading-color);
         margin: 0 0 0.5rem;
     }
 
     ul {
         margin: 0;
         padding: 0;
-        border-left: 1px solid $fk-black-15;
+        border-left: 1px solid var(--docs-outline-list-border-color);
     }
 
     li {
@@ -110,17 +104,17 @@ $outline-hover-background: var(--docs-outline-hover-background-color);
 
         @media not (prefers-reduced-motion: reduce) {
             &.active::before {
-                background: $outline-active-border;
+                background: var(--docs-outline-active-border-color);
             }
         }
 
         &:hover {
             &::after {
-                background: $outline-active-border;
+                background: var(--docs-outline-active-border-color);
             }
 
             a {
-                background: $outline-hover-background;
+                background: var(--docs-outline-hover-background-color);
             }
         }
     }
@@ -130,7 +124,7 @@ $outline-hover-background: var(--docs-outline-hover-background-color);
         width: 100%;
         font-size: 16px;
         line-height: 20px;
-        color: var(--f-font-color-primary);
+        color: var(--docs-text-color-default);
         padding: 0.5rem;
         text-decoration: none;
     }
