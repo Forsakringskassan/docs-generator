@@ -56,4 +56,10 @@
     --docs-search-border-color: var(--fkds-color-border-primary);
     --docs-search-background-color: var(--fkds-color-background-primary);
     --docs-search-text-color: var(--fkds-color-text-primary);
+
+    // outline
+    --docs-outline-hover-background-color: var(--fkds-color-background-tertiary);
+    --docs-outline-active-border-color: var(--fkds-color-select-background-secondary-default);
+    --docs-outline-heading-color: var(--fkds-color-text-secondary);
+    --docs-outline-list-border-color: var(--fkds-color-border-weak);
 }
