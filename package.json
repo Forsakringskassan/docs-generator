@@ -128,7 +128,7 @@
     "@babel/traverse": "^7.0.0",
     "@fontsource-variable/inter": "5.2.8",
     "@leeoniya/ufuzzy": "1.0.19",
-    "chokidar": "4.0.3",
+    "chokidar": "5.0.0",
     "cli-progress": "3.12.0",
     "dedent": "1.7.0",
     "diff": "8.0.2",
@@ -213,7 +213,7 @@
     }
   },
   "engines": {
-    "node": ">= 20.5"
+    "node": ">= 20.19"
   },
   "publishConfig": {
     "access": "public",
