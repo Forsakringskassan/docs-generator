@@ -6,6 +6,7 @@ import {
     cookieProcessor,
     extractExamplesProcessor,
     htmlRedirectProcessor,
+    isRelease,
     manifestProcessor,
     motdProcessor,
     redirectFileProcessor,
@@ -16,7 +17,6 @@ import {
 } from "./dist/index.mjs";
 import config from "./docs.config.mjs";
 
-const isRelease = Boolean(process.env.RELEASE);
 const pkg = JSON.parse(await fs.readFile("./package.json", "utf-8"));
 
 const docs = new Generator(import.meta.url, {
@@ -48,7 +48,7 @@ const docs = new Generator(import.meta.url, {
         }),
         searchProcessor(),
         versionProcessor(pkg, "toolbar", {
-            scm: !isRelease
+            scm: !isRelease()
                 ? {
                       commitUrlFormat: "{{ repository }}/commits/{{ hash }}",
                       prUrlFormat: "{{ repository }}/pull/{{ pr }}",

@@ -74,7 +74,7 @@ export {
 export { searchProcessor } from "./search";
 export { livereloadProcessor } from "./serve";
 export { type SetupOptions } from "./setup-options";
-export { type AttributeTable, type AttributeValue } from "./utils";
+export { type AttributeTable, type AttributeValue, isRelease } from "./utils";
 export {
     type VendorAsset,
     type VendorDefinition,
