@@ -162,6 +162,9 @@ export interface GeneratorSiteOptions {
 // @public
 export function htmlRedirectProcessor(): Processor;
 
+// @public
+export function isRelease(): boolean;
+
 // @public (undocumented)
 export function livereloadProcessor(options: ProcessorOptions): Processor;
 
