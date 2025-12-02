@@ -83,9 +83,8 @@ async function buildStyle(entrypoints) {
 }
 
 async function getProcessorScripts() {
-    const { availableProcessors, processorRuntimeName } = await import(
-        "./dist/index.mjs"
-    );
+    const { availableProcessors, processorRuntimeName } =
+        await import("./dist/index.mjs");
     return availableProcessors
         .filter((processor) => {
             return processor.runtime && processor.runtime.length > 0;
