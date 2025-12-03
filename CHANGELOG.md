@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## [2.35.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.34.0...v2.35.0) (2025-12-03)
+
+### Features
+
+* **deps:** update dependency chokidar to v5 ([ff6c20d](https://github.com/Forsakringskassan/docs-generator/commit/ff6c20d65a5ec6a11e64aaf33f2ad8571684c017))
+* **deps:** update dependency glob to v13 ([e1ad57f](https://github.com/Forsakringskassan/docs-generator/commit/e1ad57fa4c8df10d3eee195dd6c3110b370c9dc6))
+* isRelease function ([2537411](https://github.com/Forsakringskassan/docs-generator/commit/25374113eef92fc6721828c002a49ddbac7ca4ec))
+
+### Bug Fixes
+
+* darkmode fixes for outline ([2b8f48b](https://github.com/Forsakringskassan/docs-generator/commit/2b8f48bd41fc798fcbc7a6a0b0f7c97b77daa570))
+* **deps:** update dependency express to v5.2.0 [security] ([e879d32](https://github.com/Forsakringskassan/docs-generator/commit/e879d32ba83be304f96aa28b8d6c328bbf1de896))
+* **deps:** update dependency i18next to v25.6.3 ([dd4c411](https://github.com/Forsakringskassan/docs-generator/commit/dd4c411b435186785861f8879c3d8a69b6979904))
+* fkui variables for navigation ([89d4b0d](https://github.com/Forsakringskassan/docs-generator/commit/89d4b0df325490ad0a171b86a50a6f7ca4c97f9f))
+* replace deprecated fkui variable ([a94eb85](https://github.com/Forsakringskassan/docs-generator/commit/a94eb85a95b32ee6c17431451ae45bccb4c8464d))
+
 ## [2.34.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.33.1...v2.34.0) (2025-11-21)
 
 ### Features
