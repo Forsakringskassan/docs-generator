@@ -288,22 +288,22 @@ main #aside dd {
 }
 
 .code-preview--default {
-    border: 1px solid #ddddde;
+    border: 1px solid var(--docs-code-border-color);
     border-radius: 4px;
     width: 100%;
-    background-color: #f4f4f4;
+    background-color: var(--docs-code-background-color);
     margin-bottom: 1rem;
 }
 
 .code-preview--default .code-preview__preview {
-    border-bottom: 1px solid #ddddde;
+    border-bottom: 1px solid var(--docs-code-border-color);
     padding: 1.5rem;
     overflow: auto;
 }
 
 .code-preview--borderless {
     width: 100%;
-    background-color: #f4f4f4;
+    background-color: var(--docs-code-background-color);
     margin-bottom: 1rem;
 }
 

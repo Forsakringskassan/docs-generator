@@ -477,6 +477,11 @@ export default {
                 type: "color",
                 value: "#f4f4f4",
             },
+            "border-color": {
+                description: "Default code border.",
+                type: "color",
+                value: "#ddddde",
+            },
             "optional-background-color": {
                 description: "darker code background.",
                 type: "color",
