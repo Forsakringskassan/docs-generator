@@ -413,6 +413,11 @@ export default {
                 type: "color",
                 value: "#000",
             },
+            "button-color-hover": {
+                description: "Button hover in top navigation",
+                type: "color",
+                value: "#f4f4f4",
+            },
         },
     },
 
