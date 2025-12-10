@@ -381,7 +381,8 @@ kbd {
 }
 
 #search button:hover {
-    background-color: #f4f4f4;
+    cursor: pointer;
+    background-color: var(--docs-search-button-color-hover);
 }
 
 #search button:focus {
