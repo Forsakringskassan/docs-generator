@@ -1,0 +1,17 @@
+.docs-searchresult {
+    display: flex;
+    gap: 1rem;
+
+    &__type {
+        display: flex;
+        width: 1.5em;
+        height: 1.5em;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__icon {
+        height: 1.5em;
+        aspect-ratio: 1;
+    }
+}

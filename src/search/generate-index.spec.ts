@@ -2,9 +2,21 @@ import { generateIndex } from "./generate-index";
 import { type SearchEntry } from "./search-entry";
 
 const entries: SearchEntry[] = [
-    { url: "a.html", title: "A", terms: ["Bar"], words: ["Foo", "Bar"] },
-    { url: "b.html", title: "B", terms: [], words: ["Baz"] },
-    { url: "c.html", title: "C", terms: [], words: ["Spam", "Ham"] },
+    {
+        url: "a.html",
+        title: "A",
+        type: "article",
+        terms: ["Bar"],
+        words: ["Foo", "Bar"],
+    },
+    { url: "b.html", title: "B", type: "article", terms: [], words: ["Baz"] },
+    {
+        url: "c.html",
+        title: "C",
+        type: "article",
+        terms: [],
+        words: ["Spam", "Ham"],
+    },
 ];
 
 it("should generate list of all terms", () => {
@@ -17,9 +29,9 @@ it("should generate list of all results", () => {
     expect.assertions(1);
     const index = generateIndex(entries);
     expect(index.results).toEqual([
-        { url: "a.html", title: "A", terms: ["Bar"] },
-        { url: "b.html", title: "B", terms: [] },
-        { url: "c.html", title: "C", terms: [] },
+        { url: "a.html", title: "A", type: "article", terms: ["Bar"] },
+        { url: "b.html", title: "B", type: "article", terms: [] },
+        { url: "c.html", title: "C", type: "article", terms: [] },
     ]);
 });
 
