@@ -1,5 +1,6 @@
 import {
     type EventDescriptor,
+    type ParamType,
     type PropDescriptor,
     type SlotDescriptor,
     parse,
@@ -59,6 +60,62 @@ function getEventDeprecated(
     }
 }
 
+/**
+ * A name is considered simple if it is suitable to type out as `Something[]`
+ * instead of `Array<Something>`.
+ *
+ * Examples of simple names:
+ *
+ * - `string[]`
+ * - `AwesomeInterface[]`
+ *
+ * Examples of complex names:
+ *
+ * - `Array<{ inline: "interface" }>`
+ */
+function isSimpleName(name: string): boolean {
+    return /^[a-z0-9]+$/i.test(name);
+}
+
+/**
+ * Get the type as a string from a prop.
+ */
+function getPropType(prop: PropDescriptor): string | null {
+    const { type } = prop;
+    if (!type) {
+        return null;
+    }
+
+    /* for composition api the type is set to "Array" and the `elements`
+     * property holds what the array contains (with a single element, if there
+     * is multiple array elements it is considered a tuple). */
+    if (type.name === "Array") {
+        const param = type as ParamType;
+        const element = param.elements?.[0];
+        if (!element) {
+            return "any[]";
+        }
+        if (isSimpleName(element.name)) {
+            return `${element.name}[]`;
+        } else {
+            return `Array<${element.name}>`;
+        }
+    }
+
+    /* similar to "Array" but this time the `elements` property contains each
+     * constituent of the tuple (including zero elements if the type is `[]`) */
+    if (type.name === "tuple") {
+        const param = type as ParamType;
+        if (!param.elements) {
+            return type.name;
+        }
+        const constituents = param.elements.map((it) => it.name).join(", ");
+        return `[${constituents}]`;
+    }
+
+    return type.name;
+}
+
 function translateProps(props: PropDescriptor[]): ComponentProp[] {
     const isRelevant = (prop: PropDescriptor): boolean => {
         return prop.tags?.ignore === undefined;
@@ -70,7 +127,7 @@ function translateProps(props: PropDescriptor[]): ComponentProp[] {
         return {
             name: prop.name,
             description: prop.description ?? null,
-            type: prop.type?.name ?? null,
+            type: getPropType(prop),
             required: Boolean(prop.required),
             default: defaultValue,
             deprecated: getPropSlotDeprecated(prop),

@@ -118,6 +118,54 @@ describe("options API", () => {
         ]);
     });
 
+    it("should parse array props", async () => {
+        expect.assertions(1);
+        const filepath = fixture("options-props-array.vue");
+        const result = await translateAPI(filepath);
+        expect(result.props).toEqual([
+            {
+                name: "stringArray",
+                type: "string[]",
+                required: true,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+            {
+                name: "inlineArray",
+                type: "Array<{ foo: string }>",
+                required: true,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+            {
+                name: "localArray",
+                type: "LocalFoo[]",
+                required: true,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+            {
+                name: "externalArray",
+                type: "ExternalFoo[]",
+                required: true,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+            {
+                name: "untypedArray",
+                type: "array",
+                required: true,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+        ]);
+    });
+
     it("should parse events (string)", async () => {
         expect.assertions(1);
         const filepath = fixture("options-emits-string.vue");
@@ -379,6 +427,86 @@ describe("composition API", () => {
                 description: null,
                 default: null,
                 deprecated: "Use `foo` instead",
+            },
+        ]);
+    });
+
+    it("should parse array props", async () => {
+        expect.assertions(1);
+        const filepath = fixture("composition-props-array.vue");
+        const result = await translateAPI(filepath);
+        expect(result.props).toEqual([
+            {
+                name: "stringArray",
+                type: "string[]",
+                required: true,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+            {
+                name: "inlineArray",
+                type: "Array<{ foo: string }>",
+                required: true,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+            {
+                name: "localArray",
+                type: "LocalFoo[]",
+                required: true,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+            {
+                name: "externalArray",
+                type: "ExternalFoo[]",
+                required: true,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+            {
+                name: "untypedArray",
+                type: "any[]",
+                required: true,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+        ]);
+    });
+
+    it("should parse tuple props", async () => {
+        expect.assertions(1);
+        const filepath = fixture("composition-props-tuple.vue");
+        const result = await translateAPI(filepath);
+        expect(result.props).toEqual([
+            {
+                name: "emptyTuple",
+                type: "[]",
+                required: true,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+            {
+                name: "singleElementTuple",
+                type: "[number]",
+                required: true,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+            {
+                name: "multipleElementTuple",
+                type: "[string, number]",
+                required: true,
+                description: null,
+                default: null,
+                deprecated: null,
             },
         ]);
     });
