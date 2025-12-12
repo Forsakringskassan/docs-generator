@@ -118,6 +118,23 @@ describe("options API", () => {
         ]);
     });
 
+    /* eslint-disable-next-line jest/no-disabled-tests -- known bug */
+    it.skip("should parse enum prop", async () => {
+        expect.assertions(1);
+        const filepath = fixture("options-props-enum.vue");
+        const result = await translateAPI(filepath);
+        expect(result.props).toEqual([
+            {
+                name: "value",
+                type: "'foo' | 'bar' | 'baz'",
+                required: true,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+        ]);
+    });
+
     it("should parse array props", async () => {
         expect.assertions(1);
         const filepath = fixture("options-props-array.vue");
@@ -503,6 +520,23 @@ describe("composition API", () => {
             {
                 name: "multipleElementTuple",
                 type: "[string, number]",
+                required: true,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+        ]);
+    });
+
+    /* eslint-disable-next-line jest/no-disabled-tests -- known bug */
+    it.skip("should parse enum prop", async () => {
+        expect.assertions(1);
+        const filepath = fixture("composition-props-enum.vue");
+        const result = await translateAPI(filepath);
+        expect(result.props).toEqual([
+            {
+                name: "value",
+                type: "'foo' | 'bar' | 'baz'",
                 required: true,
                 description: null,
                 default: null,
