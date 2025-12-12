@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [2.35.2](https://github.com/Forsakringskassan/docs-generator/compare/v2.35.1...v2.35.2) (2025-12-12)
+
+### Bug Fixes
+
+* dark mode support on search button ([f87fb88](https://github.com/Forsakringskassan/docs-generator/commit/f87fb881a762408b79070e699a4dd09463df2825))
+* **deps:** update dependency i18next to v25.7.1 ([eb92866](https://github.com/Forsakringskassan/docs-generator/commit/eb928667b27a6eddce6a50b83abf0be4426d664b))
+* **deps:** update dependency i18next to v25.7.2 ([12a91af](https://github.com/Forsakringskassan/docs-generator/commit/12a91af21665c6a9a95114da1ce8dd88028c88cb))
+* **deps:** update dependency mermaid to v11.12.2 ([3bca1fb](https://github.com/Forsakringskassan/docs-generator/commit/3bca1fbd332d7d00742b52c97a15634692177e60))
+* semantic token for links ([bb43d80](https://github.com/Forsakringskassan/docs-generator/commit/bb43d804987750ef7cb6155f7fb5464e29412067))
+* semantic tokens for code preview ([5d215da](https://github.com/Forsakringskassan/docs-generator/commit/5d215dae29fbd16d129919271da406c1d059a928))
+
 ## [2.35.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.35.0...v2.35.1) (2025-12-05)
 
 ### Bug Fixes
