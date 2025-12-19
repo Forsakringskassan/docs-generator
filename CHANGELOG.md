@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [2.35.3](https://github.com/Forsakringskassan/docs-generator/compare/v2.35.2...v2.35.3) (2025-12-19)
+
+### Bug Fixes
+
+* **deps:** update dependency i18next to v25.7.3 ([ae39416](https://github.com/Forsakringskassan/docs-generator/commit/ae394160660f5355de1678f3aeb9782598f46366))
+* fix array and tuple prop types not being displayed properly ([442e551](https://github.com/Forsakringskassan/docs-generator/commit/442e551bb8bb65a0715942bb2d53d1d6d167dfd5))
+
 ## [2.35.2](https://github.com/Forsakringskassan/docs-generator/compare/v2.35.1...v2.35.2) (2025-12-12)
 
 ### Bug Fixes
