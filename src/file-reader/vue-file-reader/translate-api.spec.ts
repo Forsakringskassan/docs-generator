@@ -183,6 +183,38 @@ describe("options API", () => {
         ]);
     });
 
+    it("should parse union props", async () => {
+        expect.assertions(1);
+        const filepath = fixture("options-props-union.vue");
+        const result = await translateAPI(filepath);
+        expect(result.props).toEqual([
+            {
+                name: "types",
+                type: "string | number",
+                required: true,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+            {
+                name: "enumeration",
+                type: '"active" | "inactive" | "pending"',
+                required: true,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+            {
+                name: "complex",
+                type: '{ foo: "spam" } | { foo: "ham" }',
+                required: true,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+        ]);
+    });
+
     it("should parse events (string)", async () => {
         expect.assertions(1);
         const filepath = fixture("options-emits-string.vue");
@@ -520,6 +552,38 @@ describe("composition API", () => {
             {
                 name: "multipleElementTuple",
                 type: "[string, number]",
+                required: true,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+        ]);
+    });
+
+    it("should parse union props", async () => {
+        expect.assertions(1);
+        const filepath = fixture("composition-props-union.vue");
+        const result = await translateAPI(filepath);
+        expect(result.props).toEqual([
+            {
+                name: "types",
+                type: "string | number",
+                required: true,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+            {
+                name: "enumeration",
+                type: '"active" | "inactive" | "pending"',
+                required: true,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+            {
+                name: "complex",
+                type: '{ foo: "spam" } | { foo: "ham" }',
                 required: true,
                 description: null,
                 default: null,

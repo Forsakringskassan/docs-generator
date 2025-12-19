@@ -86,6 +86,11 @@ function getPropType(prop: PropDescriptor): string | null {
         return null;
     }
 
+    /* for options api the type may contain enum-like values */
+    if (type.name === "string" && prop.values) {
+        return prop.values.map((value) => `"${value}"`).join(" | ");
+    }
+
     /* for composition api the type is set to "Array" and the `elements`
      * property holds what the array contains (with a single element, if there
      * is multiple array elements it is considered a tuple). */
@@ -111,6 +116,15 @@ function getPropType(prop: PropDescriptor): string | null {
         }
         const constituents = param.elements.map((it) => it.name).join(", ");
         return `[${constituents}]`;
+    }
+
+    /* handle union types by joining the constituent types with `|` */
+    if (type.name === "union") {
+        const param = type as ParamType;
+        if (!param.elements) {
+            return type.name;
+        }
+        return param.elements.map((it) => it.name).join(" | ");
     }
 
     return type.name;
