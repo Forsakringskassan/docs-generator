@@ -22,6 +22,15 @@ defineEmits<{
     bar: [];
 }>();
 
+defineSlots<{
+    foo(): void;
+
+    /**
+     * @ignore
+     */
+    bar(): void;
+}>();
+
 defineOptions({
     name: "IgnoreFixture",
 });
@@ -29,9 +38,5 @@ defineOptions({
 
 <template>
     <slot name="foo"></slot>
-    <!--
-         @slot lorem ipsum
-         @ignore
-    -->
     <slot name="bar"></slot>
 </template>

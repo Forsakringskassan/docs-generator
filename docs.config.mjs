@@ -113,7 +113,7 @@ export default {
         },
         {
             include: "docs/markdown/api/vue/*.vue",
-            fileReader: vueFileReader,
+            fileReader: vueFileReader("tsconfig.json"),
         },
     ],
 };

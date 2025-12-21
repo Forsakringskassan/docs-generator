@@ -1,3 +1,35 @@
+<script lang="ts">
+import { type SlotsType, defineComponent } from "vue";
+
+export default defineComponent({
+    name: "FooBar",
+    props: {},
+    slots: Object as SlotsType<{
+        /**
+         * Lorem default ipsum
+         */
+        default?(): unknown;
+
+        /**
+         * Lorem foo ipsum
+         */
+        foo(props: {
+            /**
+             * Item description
+             */
+            item: string;
+
+            /**
+             * Index description
+             */
+            index: number;
+        }): unknown;
+
+        bar?(): unknown;
+    }>,
+});
+</script>
+
 <template>
     <!--
         @slot Lorem default ipsum

@@ -27,7 +27,7 @@ await docs.build([
     },
     {
         include: ["./src/**/*.vue"],
-        fileReader: vueFileReader,
+        fileReader: vueFileReader("tsconfig.json"),
     },
 ]);
 

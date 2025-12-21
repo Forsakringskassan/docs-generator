@@ -1,5 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import type VueComponentMeta from "vue-component-meta";
 import { type DocumentPartial } from "../../document";
 import { normalizePath } from "../../utils";
 import { type ComponentAPI } from "./component-api";
@@ -72,11 +73,26 @@ async function parseTranslation(
  *
  * @public
  */
-export async function vueFileReader(
-    filePath: string,
-): Promise<DocumentPartial[]> {
-    const translated = await translateAPI(filePath);
-    const vueApi = parseAPI(filePath, translated);
-    const vueTranslation = await parseTranslation(translated.slug, filePath);
-    return [vueApi, vueTranslation];
+export function vueFileReader(tsconfig: string = "tsconfig.json") {
+    let vueComponentMeta: typeof VueComponentMeta | undefined;
+
+    return async function (filePath: string): Promise<DocumentPartial[]> {
+        if (!vueComponentMeta) {
+            try {
+                vueComponentMeta = await import("vue-component-meta");
+            } catch {
+                throw new Error("vue-component-meta package is not installed.");
+            }
+        }
+
+        const checker = vueComponentMeta.createChecker(tsconfig);
+
+        const translated = await translateAPI(checker, filePath);
+        const vueApi = parseAPI(filePath, translated);
+        const vueTranslation = await parseTranslation(
+            translated.slug,
+            filePath,
+        );
+        return [vueApi, vueTranslation];
+    };
 }

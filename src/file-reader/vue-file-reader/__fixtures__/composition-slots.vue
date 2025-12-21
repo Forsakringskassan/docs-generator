@@ -3,7 +3,7 @@ defineSlots<{
     /**
      * Lorem default ipsum
      */
-    default(): unknown;
+    default?(): unknown;
 
     /**
      * Lorem foo ipsum
@@ -20,7 +20,7 @@ defineSlots<{
         index: number;
     }): unknown;
 
-    bar(): unknown;
+    bar?(): unknown;
 }>();
 </script>
 

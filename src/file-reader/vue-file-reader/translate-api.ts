@@ -1,3 +1,6 @@
+import path from "node:path";
+import type VueComponentMeta from "vue-component-meta";
+import { type SlotMeta } from "vue-component-meta";
 import {
     type EventDescriptor,
     type ParamType,
@@ -212,18 +215,34 @@ function translateEventProperties(event: EventDescriptor): Array<{
     return translatedProperties;
 }
 
-function translateSlots(slots: SlotDescriptor[]): ComponentSlot[] {
+function findTag(
+    tags: SlotMeta["tags"],
+    name: string,
+): SlotMeta["tags"][number] | null {
+    return tags.find((it) => it.name === name) ?? null;
+}
+
+function translateSlots(
+    slots: VueComponentMeta.SlotMeta[],
+    checker: VueComponentMeta.ComponentMetaChecker,
+): ComponentSlot[] {
     const translatedSlots: ComponentSlot[] = [];
 
     for (const slot of slots) {
-        if (slot.tags?.ignore) {
+        const { tags } = slot;
+
+        const ignoreTag = findTag(tags, "ignore");
+        if (ignoreTag) {
             continue;
         }
+
+        const deprecatedTag = findTag(tags, "deprecated");
+
         const translatedSlot: ComponentSlot = {
             name: slot.name,
-            description: slot.description ?? null,
-            bindings: translateSlotBindings(slot),
-            deprecated: getPropSlotDeprecated(slot),
+            description: slot.description || null,
+            bindings: Array.from(translateSlotBindings(slot, checker)),
+            deprecated: deprecatedTag ? (deprecatedTag.text ?? "") : null,
         };
 
         translatedSlots.push(translatedSlot);
@@ -232,36 +251,50 @@ function translateSlots(slots: SlotDescriptor[]): ComponentSlot[] {
     return translatedSlots;
 }
 
-function translateSlotBindings(slot: SlotDescriptor): Array<{
+function* translateSlotBindings(
+    slot: VueComponentMeta.SlotMeta,
+    checker: VueComponentMeta.ComponentMetaChecker,
+): Generator<{
     name: string;
     type: string;
     description: string | null;
 }> {
-    if (!slot.bindings) {
-        return [];
+    const typeObject = slot.getTypeObject();
+    const properties = typeObject.getProperties();
+    const program = checker.getProgram();
+
+    if (!program) {
+        return;
     }
 
-    const translatedBindings: Array<{
-        name: string;
-        type: string;
-        description: string | null;
-    }> = [];
+    const typeChecker = program.getTypeChecker();
 
-    for (const binding of slot.bindings) {
-        const name = binding.name ?? "<anonymous>";
-        const type = binding.type?.name ?? "unknown";
+    for (const property of properties) {
+        const name = property.getName();
+        const declaration =
+            property.valueDeclaration ?? property.declarations?.[0];
+
+        if (!declaration) {
+            continue;
+        }
+
+        const propType = typeChecker.getTypeOfSymbolAtLocation(
+            property,
+            declaration,
+        );
+
+        const type = typeChecker.typeToString(propType);
+
+        const doc = property.getDocumentationComment(typeChecker);
         const description =
-            typeof binding.description === "string"
-                ? binding.description
-                : null;
-        translatedBindings.push({
+            doc.length > 0 ? doc.map((it) => it.text).join("") : null;
+
+        yield {
             name,
             type,
             description,
-        });
+        };
     }
-
-    return translatedBindings;
 }
 
 /**
@@ -306,20 +339,32 @@ function filterModels(
     return { models, props, events };
 }
 
+function resolvePath(filePath: string): string {
+    return path.isAbsolute(filePath)
+        ? filePath
+        : path.join(process.cwd(), filePath);
+}
+
 /**
  * Translates output from a vue component parser to general interface.
  * If the parser is changed the translation functions need to be updated to match its interface.
  *
  * @internal
  */
-export async function translateAPI(filePath: string): Promise<ComponentAPI> {
+export async function translateAPI(
+    checker: VueComponentMeta.ComponentMetaChecker,
+    filePath: string,
+): Promise<ComponentAPI> {
     try {
+        const fullPath = resolvePath(filePath);
+        const component = checker.getComponentMeta(fullPath);
+
         const api = await parse(filePath);
         const rawProps = api.props ? translateProps(api.props) : [];
         const rawEvents = api.events ? translateEvents(api.events) : [];
 
         const { models, props, events } = filterModels(rawProps, rawEvents);
-        const slots = api.slots ? translateSlots(api.slots) : [];
+        const slots = translateSlots(component.slots, checker);
 
         return {
             name: api.displayName,

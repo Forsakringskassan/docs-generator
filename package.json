@@ -198,14 +198,16 @@
     "rollup-plugin-visualizer": "6.0.5",
     "sass": "1.97.0",
     "ts-node": "10.9.2",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "vue-component-meta": "3.2.0"
   },
   "peerDependencies": {
     "esbuild": "0.x",
     "express": "^4 || ^5.0.0",
     "he": "^1.2",
     "sass": "^1.71",
-    "vue": "^3.0.0"
+    "vue": "^3.0.0",
+    "vue-component-meta": "^3.0.0"
   },
   "peerDependenciesMeta": {
     "express": {
@@ -227,6 +229,8 @@
     "livereload-js",
     "nunjucks",
     "piscina",
+    "typescript",
+    "vue-component-meta",
     "vue-docgen-api"
   ]
 }

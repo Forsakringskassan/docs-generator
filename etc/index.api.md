@@ -521,7 +521,7 @@ export interface VersionProcessorOptions {
 }
 
 // @public
-export function vueFileReader(filePath: string): Promise<DocumentPartial[]>;
+export function vueFileReader(tsconfig?: string): (filePath: string) => Promise<DocumentPartial[]>;
 
 // (No @packageDocumentation comment for this package)
 
