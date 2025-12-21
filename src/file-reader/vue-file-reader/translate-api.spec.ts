@@ -1,3 +1,5 @@
+/* eslint-disable sonarjs/fixme-tag -- false positive */
+
 import path from "node:path";
 import { translateAPI } from "./translate-api";
 
@@ -262,6 +264,44 @@ describe("options API", () => {
                 name: "bar",
                 description: null,
                 properties: [],
+                deprecated: null,
+            },
+        ]);
+    });
+
+    it("should parse slots", async () => {
+        expect.assertions(1);
+        const filepath = fixture("options-slots.vue");
+        const result = await translateAPI(filepath);
+        expect(result.slots).toEqual([
+            {
+                name: "default",
+                description: "Lorem default ipsum",
+                bindings: [],
+                deprecated: null,
+            },
+            {
+                name: "foo",
+                description: "Lorem foo ipsum",
+                bindings: [
+                    {
+                        name: "item",
+                        type: "string",
+                        description: "Item description",
+                    },
+                    {
+                        name: "index",
+                        type: "number",
+                        description: "Index description",
+                    },
+                ],
+                deprecated: null,
+            },
+            {
+                name: "bar",
+                /* eslint-disable-next-line no-warning-comments -- bug in vue-docgen-api */
+                description: "Lorem default ipsum", // FIXME
+                bindings: [],
                 deprecated: null,
             },
         ]);
@@ -754,6 +794,81 @@ describe("composition API", () => {
                 description: null,
                 properties: [],
                 deprecated: "Use `foo` instead",
+            },
+        ]);
+    });
+
+    it("should parse slots (template)", async () => {
+        expect.assertions(1);
+        const filepath = fixture("composition-slots-template.vue");
+        const result = await translateAPI(filepath);
+        expect(result.slots).toEqual([
+            {
+                name: "default",
+                description: "Lorem default ipsum",
+                bindings: [],
+                deprecated: null,
+            },
+            {
+                name: "foo",
+                description: "Lorem foo ipsum",
+                bindings: [
+                    {
+                        name: "item",
+                        type: "string",
+                        description: "Item description",
+                    },
+                    {
+                        name: "index",
+                        type: "number",
+                        description: "Index description",
+                    },
+                ],
+                deprecated: null,
+            },
+            {
+                name: "bar",
+                /* eslint-disable-next-line no-warning-comments -- bug in vue-docgen-api */
+                description: "Lorem default ipsum", // FIXME
+                bindings: [],
+                deprecated: null,
+            },
+        ]);
+    });
+
+    it("should parse slots (defineSlots)", async () => {
+        expect.assertions(1);
+        const filepath = fixture("composition-slots-defineslots.vue");
+        const result = await translateAPI(filepath);
+        expect(result.slots).toEqual([
+            {
+                name: "default",
+                description: "Lorem default ipsum",
+                bindings: [],
+                deprecated: null,
+            },
+            {
+                name: "foo",
+                description: "Lorem foo ipsum",
+                bindings: [
+                    {
+                        name: "item",
+                        type: "unknown",
+                        description: "Item description",
+                    },
+                    {
+                        name: "index",
+                        type: "unknown",
+                        description: "Index description",
+                    },
+                ],
+                deprecated: null,
+            },
+            {
+                name: "bar",
+                description: null,
+                bindings: [],
+                deprecated: null,
             },
         ]);
     });
