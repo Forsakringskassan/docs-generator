@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [2.35.4](https://github.com/Forsakringskassan/docs-generator/compare/v2.35.3...v2.35.4) (2025-12-22)
+
+### Bug Fixes
+
+* **deps:** update dependency dedent to v1.7.1 ([a7745db](https://github.com/Forsakringskassan/docs-generator/commit/a7745db2f2901e11ec396f5a61f32f11e45a3b07))
+* **deps:** update dependency fs-extra to v11.3.3 ([a069420](https://github.com/Forsakringskassan/docs-generator/commit/a0694204621e8f3cd1bc46aecf5308a4adbae8af))
+* fix union prop types not being displayed properly ([130c224](https://github.com/Forsakringskassan/docs-generator/commit/130c22453b841adfd74e5d4353501eaf9849df96))
+
 ## [2.35.3](https://github.com/Forsakringskassan/docs-generator/compare/v2.35.2...v2.35.3) (2025-12-19)
 
 ### Bug Fixes
