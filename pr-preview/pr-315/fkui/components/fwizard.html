@@ -25,14 +25,14 @@
     "vue": "../assets/vendor-vue-3c61c7.js",
     "@fkui/logic": "../assets/vendor-fkui-logic-59aa9f.js",
     "@fkui/date": "../assets/vendor-fkui-date-808bee.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-17cd0f.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-0debb3.js",
     "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-1e0efc.js"
   },
   "integrity": {
     "../assets/vendor-vue-3c61c7.js": "sha384-RFFt2TUq/P7FECAFh4C3ELP6yZU8Ir8ImkyXh/+L24z1hVGmolcbLi51F4OKu87M",
     "../assets/vendor-fkui-logic-59aa9f.js": "sha384-if5Op9xLJOQ+bexhtVxEfbgViVdwDXK0yKCqmJ7KlArve38A9EfWK+ICL67V5ZjA",
     "../assets/vendor-fkui-date-808bee.js": "sha384-IN4zHvcRlGuLi0UYOhjEdRxZOn2WIB5rxIl8GIzKfTJeMODVhBb57BAkdW5by1Pd",
-    "../assets/vendor-fkui-vue-17cd0f.js": "sha384-M4xcG/xLu9Esyx+ssQELToSZ8+JU8PFgqMt1CXB9JtNH5WL6QkJsuQ3PwioORphv",
+    "../assets/vendor-fkui-vue-0debb3.js": "sha384-a8E1UzSc51CvFgCnyaVuliTIeH3x0wCrfSHAKFr9DucMSkxfWKZP58hm5OaR26bg",
     "../assets/vendor-forsakringskassan-docs-live-example-1e0efc.js": "sha384-Oj8vEZy2tR2o2QOD+48F/usJ6aXfQb2mh/3tbNgVTpxUZeP+ynYXtsk4VJHWHwih"
   }
 }
@@ -82,10 +82,10 @@
 
         <link
             rel="preload"
-            href="../search-data-9f01c9.json"
+            href="../search-data-05b3ec.json"
             as="fetch"
             crossorigin
-            integrity="sha384-zZtq63OFxPirQq1ClIbTQK/Sg+Mz6biWAa+jCteoXL6r1vD3erthihc6rqu2b9mz"
+            integrity="sha384-4VDbvYhZGANQKJA2/JKxZfvIoYaGtM36KVDYtGieJf6rpaGkKT/5vKJR5f72sMaU"
             id="search-data"
         />
     </head>
@@ -1095,13 +1095,13 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/25153dd659a6dc07853f89c35e4d14f77deb13e7/packages/vue/src/components/FWizard/FWizard.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/8b0ee93fd90365d653661868cf7bbd312e11390d/packages/vue/src/components/FWizard/FWizard.vue">
                 FWizard
             </a>
             
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/25153dd659a6dc07853f89c35e4d14f77deb13e7/packages/vue/src/components/FWizard/FWizardStep.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/8b0ee93fd90365d653661868cf7bbd312e11390d/packages/vue/src/components/FWizard/FWizardStep.vue">
                 FWizardStep
             </a>
             
@@ -1132,6 +1132,8 @@
                                 
                                 <li><a href="#for_utvecklare">För utvecklare</a></li>
                                 
+                                <li><a href="#textnycklar">Textnycklar</a></li>
+                                
                                 <li><a href="#props_events_slots">Props, Events &amp; Slots</a></li>
                                 
                             </ul>
@@ -1152,13 +1154,13 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-3af458"></div>
+        <div id="example-cb37d0"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FWizardExampleDefault-3af458.js"></script>
+        <script type="module" src="./FWizardExampleDefault-cb37d0.js"></script>
     
                 </div>
                 <div>
@@ -1341,13 +1343,13 @@ I <code>onBeforeNext</code> har du möjlighet att sätta nya valideringsfel på 
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-53a8ca"></div>
+        <div id="example-c8b8e7"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FWizardExampleAddStep-53a8ca.js"></script>
+        <script type="module" src="./FWizardExampleAddStep-c8b8e7.js"></script>
     
                 </div>
                 <div>
@@ -1499,7 +1501,152 @@ interface <span class="hljs-title class_">Fruktkorg</span> {
 </code></pre>
                 </div>
             </div>
-        <h2 id="props_events_slots"><a class="header-anchor" href="#props_events_slots">Props, Events &amp; Slots</a></h2><h3 id="fwizard"><a class="header-anchor" href="#fwizard">FWizard</a></h3>
+        <h2 id="textnycklar"><a class="header-anchor" href="#textnycklar">Textnycklar</a></h2><p class="docs-paragraph">Läs mer om att <a href="../gettingstarted/use-design-system/translate-text.html">anpassa och översätta text</a>.</p>
+
+        <dl class="docs-api docs-api--translation">
+            
+        </dl>
+    
+        <dl class="docs-api docs-api--translation">
+            
+                        <dt>
+                            <code id="fwizardstep-translation-fkui-wizard-step-current-step"
+                                ><a class="docs-api__anchor" href="#fwizardstep-translation-fkui-wizard-step-current-step"
+                                    ><span class="docs-api__name"
+                                        >fkui.wizard-step.current-step</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            &#8208;
+                            
+                            <p class="docs-api__list-title">Parameters:</p><ul class="docs-api__list">
+                            <li><code>stepNumber</code></li><li><code>totalSteps</code></li>
+                            </ul>
+                        </dd>
+                    
+                        <dt>
+                            <code id="fwizardstep-translation-fkui-wizard-step-finished-step"
+                                ><a class="docs-api__anchor" href="#fwizardstep-translation-fkui-wizard-step-finished-step"
+                                    ><span class="docs-api__name"
+                                        >fkui.wizard-step.finished-step</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            &#8208;
+                            <p class="doc-api__item">Default: "Avklarat steg"</p>
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fwizardstep-translation-fkui-wizard-step-pending"
+                                ><a class="docs-api__anchor" href="#fwizardstep-translation-fkui-wizard-step-pending"
+                                    ><span class="docs-api__name"
+                                        >fkui.wizard-step.pending</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            &#8208;
+                            <p class="doc-api__item">Default: "Inaktivt"</p>
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fwizardstep-translation-fkui-wizard-step-errorlist-title"
+                                ><a class="docs-api__anchor" href="#fwizardstep-translation-fkui-wizard-step-errorlist-title"
+                                    ><span class="docs-api__name"
+                                        >fkui.wizard-step.errorlist.title</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            &#8208;
+                            <p class="doc-api__item">Default: "Oj, du har glömt att fylla i något. Gå till:"</p>
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fwizardstep-translation-fkui-wizard-step-button-next-text-final"
+                                ><a class="docs-api__anchor" href="#fwizardstep-translation-fkui-wizard-step-button-next-text-final"
+                                    ><span class="docs-api__name"
+                                        >fkui.wizard-step.button.next.text-final</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            &#8208;
+                            <p class="doc-api__item">Default: "Gå vidare och granska"</p>
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fwizardstep-translation-fkui-wizard-step-button-next-text"
+                                ><a class="docs-api__anchor" href="#fwizardstep-translation-fkui-wizard-step-button-next-text"
+                                    ><span class="docs-api__name"
+                                        >fkui.wizard-step.button.next.text</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            &#8208;
+                            <p class="doc-api__item">Default: "Fortsätt"</p>
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fwizardstep-translation-fkui-wizard-step-button-next-sr-text"
+                                ><a class="docs-api__anchor" href="#fwizardstep-translation-fkui-wizard-step-button-next-sr-text"
+                                    ><span class="docs-api__name"
+                                        >fkui.wizard-step.button.next.sr-text</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            &#8208;
+                            <p class="doc-api__item">Default: "till nästa steg"</p>
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fwizardstep-translation-fkui-wizard-step-button-cancel-text"
+                                ><a class="docs-api__anchor" href="#fwizardstep-translation-fkui-wizard-step-button-cancel-text"
+                                    ><span class="docs-api__name"
+                                        >fkui.wizard-step.button.cancel.text</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            &#8208;
+                            <p class="doc-api__item">Default: "Avbryt"</p>
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    <h2 id="props_events_slots"><a class="header-anchor" href="#props_events_slots">Props, Events &amp; Slots</a></h2><h3 id="fwizard"><a class="header-anchor" href="#fwizard">FWizard</a></h3>
         <h4 id="fwizard-models">
             <a class="header-anchor" href="#fwizard-models">Models</a>
         </h4>
@@ -1857,9 +2004,9 @@ When cancelled, the consumer is responsible to indicate why this happened.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">renovate/eslint-config-monorepo (<a href="https://github.com/Forsakringskassan/designsystem/commits/25153dd659a6dc07853f89c35e4d14f77deb13e7">25153dd</a>)<br />
+<div class="footer__right"><div class="version">renovate/eslint-config-monorepo (<a href="https://github.com/Forsakringskassan/designsystem/commits/8b0ee93fd90365d653661868cf7bbd312e11390d">8b0ee93</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/315">PR 315</a><br />
-        2026-01-11 00:42
+        2026-01-13 21:01
 </div>
 <div class="toolbar__item">
     <form id="version">
