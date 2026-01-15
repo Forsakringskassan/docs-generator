@@ -131,7 +131,7 @@
     "chokidar": "5.0.0",
     "cli-progress": "3.12.0",
     "dedent": "1.7.1",
-    "diff": "8.0.2",
+    "diff": "8.0.3",
     "fastest-levenshtein": "1.0.16",
     "front-matter": "4.0.2",
     "fs-extra": "11.3.3",
