@@ -162,7 +162,7 @@
     "@forsakringskassan/jest-config": "30.1.1",
     "@forsakringskassan/prettier-config": "3.3.2",
     "@forsakringskassan/sass-module-importer": "1.1.6",
-    "@forsakringskassan/stylelint-config": "3.2.2",
+    "@forsakringskassan/stylelint-config": "3.2.3",
     "@html-validate/release-scripts": "7.1.0",
     "@microsoft/api-extractor": "7.55.2",
     "@rollup/plugin-commonjs": "29.0.0",
