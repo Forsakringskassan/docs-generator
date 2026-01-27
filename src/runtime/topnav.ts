@@ -7,27 +7,42 @@ interface ItemPair {
 }
 
 interface Refs {
+    header: HTMLElement;
+    brand: HTMLElement;
     nav: HTMLElement;
-    moreItem: HTMLElement;
-    moreButton: HTMLElement;
-    popoverContainer: HTMLElement;
-    popover: HTMLElement;
+    toolbar: HTMLElement;
+
+    // nav: HTMLElement;
+    // moreItem: HTMLElement;
+    // moreButton: HTMLElement;
+    // popoverContainer: HTMLElement;
+    // popover: HTMLElement;
     itemPairs: ItemPair[];
-    highlightIndex: number;
+    // highlightIndex: number;
 }
 
 function getElementsRefs(): Refs | undefined {
-    const nav = document.querySelector<HTMLElement>("#topnav");
-    if (!nav) {
+    const header = document.querySelector("header");
+    if (!header) {
         return;
     }
 
     /* eslint-disable @typescript-eslint/no-non-null-assertion -- accept runtime error if not found */
+    const brand = header.querySelector<HTMLElement>(".docs-header-brand")!;
+    const nav = header.querySelector<HTMLElement>(".docs-header-nav")!;
+    const toolbar = header.querySelector<HTMLElement>(".docs-header-toolbar")!;
+
+    // const nav = document.querySelector<HTMLElement>("#topnav");
+    // if (!nav) {
+    //     return;
+    // }
+
+    // /* eslint-disable @typescript-eslint/no-non-null-assertion -- accept runtime error if not found */
     const menuItems = Array.from(
         nav.querySelectorAll<HTMLElement>(".docs-topnav__item"),
     );
     const moreItem = menuItems.pop()!;
-    const moreButton = moreItem.querySelector<HTMLElement>("button")!;
+    // const moreButton = moreItem.querySelector<HTMLElement>("button")!;
     const popoverContainer =
         moreItem.querySelector<HTMLElement>(".docs-contextmenu")!;
     const popover = popoverContainer.querySelector<HTMLElement>(
@@ -38,45 +53,53 @@ function getElementsRefs(): Refs | undefined {
     );
     /* eslint-enable @typescript-eslint/no-non-null-assertion */
 
-    const highlightIndex = menuItems.findIndex((it) =>
-        it.classList.contains("highlight"),
-    );
+    // const highlightIndex = menuItems.findIndex((it) =>
+    //     it.classList.contains("highlight"),
+    // );
     const itemPairs = menuItems.map((menu, index) => ({
         menu,
         popover: popoverItems[index],
     }));
 
+    // return {
+    //     nav,
+    //     moreItem,
+    //     moreButton,
+    //     popoverContainer,
+    //     popover,
+    //     itemPairs,
+    //     highlightIndex,
+    // };
+
     return {
+        header,
+        brand,
         nav,
-        moreItem,
-        moreButton,
-        popoverContainer,
-        popover,
+        toolbar,
         itemPairs,
-        highlightIndex,
     };
 }
 
-function setPopoverVisibility(visible: boolean, refs: Refs): void {
-    refs.popover.style.visibility = visible ? "visible" : "hidden";
-    refs.moreButton.ariaExpanded = visible.toString();
-}
+// function setPopoverVisibility(visible: boolean, refs: Refs): void {
+//     refs.popover.style.visibility = visible ? "visible" : "hidden";
+//     refs.moreButton.ariaExpanded = visible.toString();
+// }
 
-function togglePopover(event: Event, refs: Refs): void {
-    event.stopPropagation();
-    setPopoverVisibility(refs.popover.style.visibility === "hidden", refs);
-}
+// function togglePopover(event: Event, refs: Refs): void {
+//     event.stopPropagation();
+//     setPopoverVisibility(refs.popover.style.visibility === "hidden", refs);
+// }
 
-function closePopoverOnEsc(event: KeyboardEvent, refs: Refs): void {
-    if (event.key === "Escape") {
-        setPopoverVisibility(false, refs);
-        refs.moreButton.focus();
-    }
-}
+// function closePopoverOnEsc(event: KeyboardEvent, refs: Refs): void {
+//     if (event.key === "Escape") {
+//         setPopoverVisibility(false, refs);
+//         refs.moreButton.focus();
+//     }
+// }
 
-function onClickPopover(event: Event): void {
-    event.stopPropagation();
-}
+// function onClickPopover(event: Event): void {
+//     event.stopPropagation();
+// }
 
 function hasOverflow(
     container: { offsetLeft: number; offsetWidth: number },
@@ -88,48 +111,106 @@ function hasOverflow(
     );
 }
 
-function setMenuItemVisibility(itemPair: ItemPair, visible: boolean): void {
-    itemPair.menu.style.visibility = visible ? "visible" : "hidden";
-    itemPair.popover.style.display = visible ? "none" : "block";
+// function setMenuItemVisibility(itemPair: ItemPair, visible: boolean): void {
+//     itemPair.menu.style.visibility = visible ? "visible" : "hidden";
+//     itemPair.popover.style.display = visible ? "none" : "block";
+// }
+
+function getChildWidth(element: HTMLElement): number {
+    const cachedMaxWidth = element.style.maxWidth;
+
+    if (cachedMaxWidth) {
+        return parseFloat(cachedMaxWidth);
+    }
+
+    const width = Array.from(element.children).reduce((total, it) => {
+        const style = getComputedStyle(it);
+        const { width } = it.getBoundingClientRect();
+        const marginLeft = parseFloat(style.marginLeft) || 0;
+        const marginRight = parseFloat(style.marginRight) || 0;
+        return total + Math.ceil(marginLeft + width + marginRight); // force rounding up to avoid sub-pixel issues
+    }, 0);
+
+    element.style.maxWidth = `${width}px`;
+    return width;
+}
+
+function getUsableWidth(element: Element): number {
+    const style = getComputedStyle(element);
+    const width = element.getBoundingClientRect().width;
+    const paddingLeft = parseFloat(style.paddingLeft) || 0;
+    const paddingRight = parseFloat(style.paddingRight) || 0;
+    const contentWidth = width - paddingLeft - paddingRight;
+    const gap = parseFloat(style.columnGap) || 0;
+    return contentWidth - gap * 2;
 }
 
 function calculateVisibility(refs: Refs): void {
-    refs.moreItem.style.left = "0";
-    const menuItems = refs.itemPairs.map((item) => item.menu);
-    let overflowIndex = menuItems.findIndex((it) => hasOverflow(refs.nav, it));
+    const { header } = refs;
 
-    if (overflowIndex === -1) {
-        refs.itemPairs.forEach((it) => {
-            setMenuItemVisibility(it, true);
-        });
-        refs.moreItem.style.visibility = "hidden";
-        setPopoverVisibility(false, refs);
-        return;
-    }
+    /* this is expensive as *bleep* as it forces multiple reflows */
+
+    header.style.setProperty("visibility", "hidden");
+    header.classList.toggle("header--oneline", false);
+    header.classList.toggle("header--multiline", false);
+
+    const usableWidth = getUsableWidth(header);
+    const brandWidth = getChildWidth(refs.brand);
+    const navWidth = getChildWidth(refs.nav);
+    const toolbarWidth = getChildWidth(refs.toolbar);
+    const requiredWidth = brandWidth + navWidth + toolbarWidth;
+
+    console.log({ usableWidth, requiredWidth });
+    console.log({ brandWidth, navWidth, toolbarWidth });
+
+    header.classList.toggle("header--oneline", requiredWidth < usableWidth);
+    header.classList.toggle("header--multiline", requiredWidth >= usableWidth);
+    header.style.removeProperty("visibility");
+
+    //refs.moreItem.style.left = "0";
+    const menuItems = refs.itemPairs.map((item) => item.menu);
+
+    //const a = refs.nav.offsetLeft + refs.nav.offsetWidth;
+    //const b = refs.nav.getBoundingClientRect().right;
+    //console.log(refs.nav, a, b);
+
+    const overflowIndex = menuItems.findIndex((it) =>
+        hasOverflow(refs.nav, it),
+    );
+    //console.log("overflowIndex", overflowIndex);
+
+    // if (overflowIndex === -1) {
+    //     refs.itemPairs.forEach((it) => {
+    //         setMenuItemVisibility(it, true);
+    //     });
+    //     refs.moreItem.style.visibility = "hidden";
+    //     setPopoverVisibility(false, refs);
+    //     return;
+    // }
 
     // step back one position if more item don't fit at overflow index
-    if (
-        hasOverflow(refs.nav, {
-            offsetLeft: menuItems[overflowIndex].offsetLeft,
-            offsetWidth: refs.moreItem.offsetWidth,
-        })
-    ) {
-        overflowIndex--;
-    }
+    // if (
+    //     hasOverflow(refs.nav, {
+    //         offsetLeft: menuItems[overflowIndex].offsetLeft,
+    //         offsetWidth: refs.moreItem.offsetWidth,
+    //     })
+    // ) {
+    //     overflowIndex--;
+    // }
 
-    refs.itemPairs.forEach((it, index) => {
-        setMenuItemVisibility(it, index < overflowIndex);
-    });
+    // refs.itemPairs.forEach((it, index) => {
+    //     setMenuItemVisibility(it, index < overflowIndex);
+    // });
 
-    refs.moreItem.classList.toggle(
-        "highlight",
-        refs.highlightIndex >= overflowIndex,
-    );
-    refs.moreItem.style.left = `${String(menuItems[overflowIndex].offsetLeft)}px`;
-    refs.moreItem.style.visibility = "visible";
+    // refs.moreItem.classList.toggle(
+    //     "highlight",
+    //     refs.highlightIndex >= overflowIndex,
+    // );
+    // refs.moreItem.style.left = `${String(menuItems[overflowIndex].offsetLeft)}px`;
+    // refs.moreItem.style.visibility = "visible";
 
-    const popupTop = refs.moreItem.offsetHeight + 16;
-    refs.popover.style.top = `${String(popupTop)}px`;
+    // const popupTop = refs.moreItem.offsetHeight + 16;
+    // refs.popover.style.top = `${String(popupTop)}px`;
 }
 
 function setup(): Refs | undefined {
@@ -138,13 +219,13 @@ function setup(): Refs | undefined {
         return;
     }
 
-    refs.moreItem.addEventListener("click", (e) => {
-        togglePopover(e, refs);
-    });
-    refs.moreItem.addEventListener("keyup", (e) => {
-        closePopoverOnEsc(e, refs);
-    });
-    refs.popoverContainer.addEventListener("click", onClickPopover);
+    // refs.moreItem.addEventListener("click", (e) => {
+    //     togglePopover(e, refs);
+    // });
+    // refs.moreItem.addEventListener("keyup", (e) => {
+    //     closePopoverOnEsc(e, refs);
+    // });
+    // refs.popoverContainer.addEventListener("click", onClickPopover);
 
     return refs;
 }
@@ -164,18 +245,18 @@ onContentReady(() => {
         }, 100),
     );
 
-    window.addEventListener("docs:navigation", () => {
-        const newRefs = setup();
-        if (newRefs) {
-            refs = newRefs;
-        }
-        calculateVisibility(refs);
-    });
+    // window.addEventListener("docs:navigation", () => {
+    //     const newRefs = setup();
+    //     if (newRefs) {
+    //         refs = newRefs;
+    //     }
+    //     calculateVisibility(refs);
+    // });
 
-    document.addEventListener("click", () => {
-        setPopoverVisibility(false, refs);
-    });
+    // document.addEventListener("click", () => {
+    //     setPopoverVisibility(false, refs);
+    // });
 
-    setPopoverVisibility(false, refs);
+    //setPopoverVisibility(false, refs);
     calculateVisibility(refs);
 });

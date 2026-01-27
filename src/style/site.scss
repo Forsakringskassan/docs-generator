@@ -3,6 +3,7 @@
 
 @use "fonts";
 @use "footer";
+@use "header";
 @use "cookie-warning";
 @use "motd";
 @use "breakpoints" as *;
@@ -28,13 +29,9 @@ body {
     line-height: var(--docs-line-height);
 }
 
-.page-header {
+.header {
     --docs-text-color-default: var(--docs-header-text-color-default);
     --docs-text-color-discrete: var(--docs-header-text-color-discrete);
-}
-
-.page-header__app-name {
-    text-decoration: none;
 }
 
 .sr-only {

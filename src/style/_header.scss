@@ -1,0 +1,71 @@
+header {
+    background-color: var(--docs-header-background-color);
+    padding: 0.5rem 1.2rem;
+    border-bottom: 1px solid var(--docs-header-border-color);
+    gap: 0.5rem 1rem;
+
+    &.header--oneline {
+        display: grid;
+        grid-template: "brand nav toolbar" min-content / auto 1fr auto;
+    }
+
+    &.header--multiline {
+        display: grid;
+        grid-template:
+            "brand spacing toolbar" min-content
+            "nav nav nav" min-content / auto 1fr auto;
+    }
+}
+
+.docs-header-brand {
+    grid-area: brand;
+    align-self: center;
+    overflow: visible;
+
+    color: #116a3e;
+    font-size: 1.2rem;
+    font-weight: 700;
+    white-space: nowrap;
+    text-decoration: none;
+
+    &__logo {
+        display: inline-block;
+        background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzEiIGhlaWdodD0iMzEiIHZpZXdCb3g9IjAgMCAzMSAzMSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iMC41IiB5PSIwLjU4Mzk4NCIgd2lkdGg9IjI5LjM1MzUiIGhlaWdodD0iMjkuMzUzNSIgcng9IjEuNSIgZmlsbD0iIzI5Nzk1MiIgc3Ryb2tlPSIjMjk3OTUyIi8+CjxwYXRoIGQ9Ik0yLjA1MDk2IDMuMTM0NzdDMi4wNTA5NiAyLjU4MjQ4IDIuNDk4NjggMi4xMzQ3NyAzLjA1MDk2IDIuMTM0NzdIMjguMzAyNkwyMC41OTQxIDkuNzIwOThDMjAuNDA3IDkuOTA1MDcgMjAuMTU1MSAxMC4wMDgyIDE5Ljg5MjYgMTAuMDA4MkgxMS4xMzg0QzEwLjU4NjEgMTAuMDA4MiAxMC4xMzg0IDEwLjQ1NiAxMC4xMzg0IDExLjAwODJWMTkuMjA2MkMxMC4xMzg0IDE5LjQ3NDYgMTAuMDMwNSAxOS43MzE3IDkuODM5IDE5LjkxOThMMi4wNTA5NiAyNy41NjYxVjMuMTM0NzdaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTEuODk1NCAxMi45NzkyQzExLjg5NTQgMTIuNDI3IDEyLjM0MzEgMTEuOTc5MiAxMi44OTU0IDExLjk3OTJIMTkuNzAwNkMxOS45NTY0IDExLjk3OTIgMjAuMjAyNiAxMi4wNzczIDIwLjM4ODMgMTIuMjUzM0wyNy45OTA0IDE5LjQ1NTVDMjguMTg5OCAxOS42NDQzIDI4LjMwMjcgMTkuOTA2OCAyOC4zMDI3IDIwLjE4MTRWMjcuMzg2NUMyOC4zMDI3IDI3LjkzODggMjcuODU1IDI4LjM4NjUgMjcuMzAyNyAyOC4zODY1SDIwLjUxMzJDMjAuMjQ4IDI4LjM4NjUgMTkuOTkzNyAyOC4yODEyIDE5LjgwNjEgMjguMDkzNkwxMi4xODgzIDIwLjQ3NThDMTIuMDAwNyAyMC4yODgzIDExLjg5NTQgMjAuMDMzOSAxMS44OTU0IDE5Ljc2ODdWMTIuOTc5MloiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPg==);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 1.4rem;
+        height: 1.4rem;
+        margin-right: 2rem;
+        position: relative;
+
+        &::after {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            right: -1rem;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: hotpink;
+        }
+
+    }
+
+    &__app-name {
+        display: inline-block;
+        margin-right: 2rem;
+    }
+}
+
+.docs-header-nav {
+    grid-area: nav;
+    align-self: center;
+    overflow: visible;
+}
+
+.docs-header-toolbar {
+    grid-area: toolbar;
+    align-self: center;
+    overflow: visible;
+}
