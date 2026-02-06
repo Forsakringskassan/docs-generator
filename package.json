@@ -190,7 +190,7 @@
     "is-ci": "4.1.0",
     "jest-environment-jsdom": "30.2.0",
     "memfs": "4.56.10",
-    "minimatch": "10.1.1",
+    "minimatch": "10.1.2",
     "npm-pkg-lint": "4.3.4",
     "npm-run-all2": "8.0.4",
     "rollup": "4.57.1",
