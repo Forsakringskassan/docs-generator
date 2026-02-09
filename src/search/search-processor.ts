@@ -26,10 +26,22 @@ function isIndexable(doc: DocumentPage): boolean {
     return Boolean(visible && fileInfo.outputName && format !== "redirect");
 }
 
+function determineType(doc: DocumentPage): SearchEntry["type"] {
+    const layout = doc.attributes.layout ?? "default";
+    if (layout === "api" || layout.startsWith("api.")) {
+        return "api";
+    }
+    if (layout === "component" || layout.startsWith("component.")) {
+        return "component";
+    }
+    return "article";
+}
+
 function getTerms(doc: DocumentPage): SearchEntry {
     return {
         url: getOutputFilePath(".", doc.fileInfo) ?? "",
         title: doc.attributes.title ?? doc.name,
+        type: determineType(doc),
         terms: [
             ...doc.attributes.search.terms,
             ...(doc.attributes.component?.map((it) => it.name) ?? []),
