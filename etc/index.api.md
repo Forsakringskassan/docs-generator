@@ -90,9 +90,7 @@ export interface DocumentPartial {
 
 // @public
 export interface ExtractExamplesOptions extends ProcessorOptions {
-    // (undocumented)
     languages?: string[];
-    // (undocumented)
     outputFolder: string;
 }
 
@@ -351,7 +349,6 @@ export interface ProcessorHandler {
     enabled?: boolean;
     // (undocumented)
     handler(context: ProcessorContext): void | string[] | Promise<void> | Promise<string[]>;
-    // (undocumented)
     name: string;
     runtime?: ProcessorRuntime[];
     // (undocumented)
