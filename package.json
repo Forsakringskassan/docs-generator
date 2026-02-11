@@ -91,6 +91,7 @@
       "!**/index.[jt]s",
       "!**/__fixtures__/**"
     ],
+    "globalSetup": "<rootDir>/jest.global.mjs",
     "preset": "@forsakringskassan/jest-config",
     "projects": [
       {
@@ -145,6 +146,7 @@
     "nunjucks": "3.2.4",
     "scroll-into-view-if-needed": "3.1.0",
     "semver": "7.7.4",
+    "synckit": "0.11.12",
     "tiny-lr": "2.0.0",
     "vue-docgen-api": "4.79.2"
   },

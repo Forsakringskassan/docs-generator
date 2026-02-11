@@ -11,6 +11,7 @@ export { getOutputFilePath } from "./get-output-filepath";
 export { getPullRequestID } from "./get-pull-request-id";
 export { getRepositoryUrl } from "./get-repository-url";
 export { gitCommitHash } from "./git";
+export { formatCode } from "./format-code";
 export { haveOutput } from "./have-output";
 export { hasTag } from "./has-tag";
 export { htmlencode } from "./htmlencode";
