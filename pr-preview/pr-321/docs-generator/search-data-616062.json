@@ -41,15 +41,15 @@
     "Nested Page 3",
     "Nested Page 2",
     "Nested Page 1",
+    "Messagebox",
+    "Details",
+    "Alternative text",
     "Vue examples",
     "Javascript and Typescript",
     "Fullscreen examples",
     "Diff",
     "Code preview",
     "Documenting Vue components",
-    "Messagebox",
-    "Details",
-    "Alternative text",
     "README",
     "Live example",
     "Changelog"
@@ -251,6 +251,21 @@
       "terms": []
     },
     {
+      "url": "markdown/containers/messagebox.html",
+      "title": "Messagebox",
+      "terms": []
+    },
+    {
+      "url": "markdown/containers/details.html",
+      "title": "Details",
+      "terms": []
+    },
+    {
+      "url": "markdown/containers/alt-text.html",
+      "title": "Alternative text",
+      "terms": []
+    },
+    {
       "url": "markdown/code-preview/vue.html",
       "title": "Vue examples",
       "terms": []
@@ -278,21 +293,6 @@
     {
       "url": "markdown/api/vue.html",
       "title": "Documenting Vue components",
-      "terms": []
-    },
-    {
-      "url": "markdown/containers/messagebox.html",
-      "title": "Messagebox",
-      "terms": []
-    },
-    {
-      "url": "markdown/containers/details.html",
-      "title": "Details",
-      "terms": []
-    },
-    {
-      "url": "markdown/containers/alt-text.html",
-      "title": "Alternative text",
       "terms": []
     },
     {
