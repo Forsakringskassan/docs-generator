@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [2.35.7](https://github.com/Forsakringskassan/docs-generator/compare/v2.35.6...v2.35.7) (2026-02-13)
+
+### Bug Fixes
+
+* **deps:** update dependency glob to v13.0.1 ([0304387](https://github.com/Forsakringskassan/docs-generator/commit/0304387ab05ed6b919131a556bfdd0177cc477b4))
+* **deps:** update dependency i18next to v25.8.1 ([6403e0b](https://github.com/Forsakringskassan/docs-generator/commit/6403e0bdaa2add509609c02dda3c509bc4e39b72))
+* **deps:** update dependency i18next to v25.8.3 ([530d1d0](https://github.com/Forsakringskassan/docs-generator/commit/530d1d0f223ed57aaa36791c4c623de1e5028545))
+* **deps:** update dependency i18next to v25.8.4 ([2264e0e](https://github.com/Forsakringskassan/docs-generator/commit/2264e0e99cdace1c14ebd9911c8a3afd2890d2bf))
+* **deps:** update dependency semver to v7.7.4 ([08cd00d](https://github.com/Forsakringskassan/docs-generator/commit/08cd00d4cd1e726cfcb29f8366f9ab37bb588b9f))
+
 ## [2.35.6](https://github.com/Forsakringskassan/docs-generator/compare/v2.35.5...v2.35.6) (2026-01-30)
 
 ### Bug Fixes
