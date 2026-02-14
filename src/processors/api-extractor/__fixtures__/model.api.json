@@ -187,7 +187,332 @@
       "canonicalReference": "@forsakringskassan/docs-generator!",
       "name": "",
       "preserveMemberOrder": false,
-      "members": []
+      "members": [
+        {
+          "kind": "Variable",
+          "canonicalReference": "@forsakringskassan/docs-generator!docBlocktag:var",
+          "docComment": "/**\n * Lorem ipsum dolor sit amet.\n *\n * @remarks\n *\n * Consectetur adipiscing elit.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "docBlocktag = "
+            },
+            {
+              "kind": "Content",
+              "text": "1"
+            }
+          ],
+          "fileUrlPath": "src/processors/api-extractor/__fixtures__/model.ts",
+          "initializerTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          },
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "docBlocktag",
+          "variableTypeTokenRange": {
+            "startIndex": 0,
+            "endIndex": 0
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@forsakringskassan/docs-generator!docCodeFence:var",
+          "docComment": "/**\n * Code example:\n * ```typescript\n * const x = 1;\n * function foo() {}\n * ```\n *\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "docCodeFence = "
+            },
+            {
+              "kind": "Content",
+              "text": "1"
+            }
+          ],
+          "fileUrlPath": "src/processors/api-extractor/__fixtures__/model.ts",
+          "initializerTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          },
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "docCodeFence",
+          "variableTypeTokenRange": {
+            "startIndex": 0,
+            "endIndex": 0
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@forsakringskassan/docs-generator!docHtmlEntities:var",
+          "docComment": "/**\n * HTML entities: &lt;div&gt;, &amp;, &copy;, &#8217;\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "docHtmlEntities = "
+            },
+            {
+              "kind": "Content",
+              "text": "1"
+            }
+          ],
+          "fileUrlPath": "src/processors/api-extractor/__fixtures__/model.ts",
+          "initializerTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          },
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "docHtmlEntities",
+          "variableTypeTokenRange": {
+            "startIndex": 0,
+            "endIndex": 0
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@forsakringskassan/docs-generator!docLeadingTrailing:var",
+          "docComment": "/**\n * Lorem ipsum dolor sit amet.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "docLeadingTrailing = "
+            },
+            {
+              "kind": "Content",
+              "text": "1"
+            }
+          ],
+          "fileUrlPath": "src/processors/api-extractor/__fixtures__/model.ts",
+          "initializerTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          },
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "docLeadingTrailing",
+          "variableTypeTokenRange": {
+            "startIndex": 0,
+            "endIndex": 0
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@forsakringskassan/docs-generator!docMarkdown:var",
+          "docComment": "/**\n * Lorem ipsum dolor sit amet.\n *\n * - List item 1 - List item 2 - List item 3\n *\n * * Another list * using asterisks * instead of dashes.\n *\n * Markdown **formatting**.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "docMarkdown = "
+            },
+            {
+              "kind": "Content",
+              "text": "1"
+            }
+          ],
+          "fileUrlPath": "src/processors/api-extractor/__fixtures__/model.ts",
+          "initializerTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          },
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "docMarkdown",
+          "variableTypeTokenRange": {
+            "startIndex": 0,
+            "endIndex": 0
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@forsakringskassan/docs-generator!docMultiline:var",
+          "docComment": "/**\n * Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n *\n * Duis tincidunt justo ut augue volutpat ultricies.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "docMultiline = "
+            },
+            {
+              "kind": "Content",
+              "text": "1"
+            }
+          ],
+          "fileUrlPath": "src/processors/api-extractor/__fixtures__/model.ts",
+          "initializerTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          },
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "docMultiline",
+          "variableTypeTokenRange": {
+            "startIndex": 0,
+            "endIndex": 0
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@forsakringskassan/docs-generator!docMultipleBlanks:var",
+          "docComment": "/**\n * First paragraph.\n *\n * Second paragraph after multiple blanks.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "docMultipleBlanks = "
+            },
+            {
+              "kind": "Content",
+              "text": "1"
+            }
+          ],
+          "fileUrlPath": "src/processors/api-extractor/__fixtures__/model.ts",
+          "initializerTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          },
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "docMultipleBlanks",
+          "variableTypeTokenRange": {
+            "startIndex": 0,
+            "endIndex": 0
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@forsakringskassan/docs-generator!docSingleline:var",
+          "docComment": "/**\n * lorem ipsum dolor sit amet\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "docSingleline = "
+            },
+            {
+              "kind": "Content",
+              "text": "1"
+            }
+          ],
+          "fileUrlPath": "src/processors/api-extractor/__fixtures__/model.ts",
+          "initializerTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          },
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "docSingleline",
+          "variableTypeTokenRange": {
+            "startIndex": 0,
+            "endIndex": 0
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@forsakringskassan/docs-generator!docSpecialChars:var",
+          "docComment": "/**\n * Special chars: / \\\\ \\# $ % ^ & ( ) + = \\{ \\} [ ] | ; : ' \" , . \\< \\> ?\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "docSpecialChars = "
+            },
+            {
+              "kind": "Content",
+              "text": "1"
+            }
+          ],
+          "fileUrlPath": "src/processors/api-extractor/__fixtures__/model.ts",
+          "initializerTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          },
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "docSpecialChars",
+          "variableTypeTokenRange": {
+            "startIndex": 0,
+            "endIndex": 0
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@forsakringskassan/docs-generator!docUnicodeEmoji:var",
+          "docComment": "/**\n * ☃️\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "docUnicodeEmoji = "
+            },
+            {
+              "kind": "Content",
+              "text": "1"
+            }
+          ],
+          "fileUrlPath": "src/processors/api-extractor/__fixtures__/model.ts",
+          "initializerTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          },
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "docUnicodeEmoji",
+          "variableTypeTokenRange": {
+            "startIndex": 0,
+            "endIndex": 0
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@forsakringskassan/docs-generator!docWhitespace:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "docWhitespace = "
+            },
+            {
+              "kind": "Content",
+              "text": "1"
+            }
+          ],
+          "fileUrlPath": "src/processors/api-extractor/__fixtures__/model.ts",
+          "initializerTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          },
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "docWhitespace",
+          "variableTypeTokenRange": {
+            "startIndex": 0,
+            "endIndex": 0
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@forsakringskassan/docs-generator!docWithoutDocumentation:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "docWithoutDocumentation = "
+            },
+            {
+              "kind": "Content",
+              "text": "1"
+            }
+          ],
+          "fileUrlPath": "src/processors/api-extractor/__fixtures__/model.ts",
+          "initializerTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          },
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "docWithoutDocumentation",
+          "variableTypeTokenRange": {
+            "startIndex": 0,
+            "endIndex": 0
+          }
+        }
+      ]
     }
   ]
 }
