@@ -9,6 +9,7 @@
         "alwaysStrict": true,
         "declaration": true,
         "declarationDir": "./temp/types",
+        "declarationMap": true,
         "strict": true,
         "jsx": "preserve",
         "noImplicitAny": true,
