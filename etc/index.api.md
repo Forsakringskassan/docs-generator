@@ -6,6 +6,15 @@
 
 import { Component } from 'vue';
 
+// @public
+export function apiExtractorProcessor(options?: ApiExtractorProcessorOptions): Processor;
+
+// @public
+export interface ApiExtractorProcessorOptions extends ProcessorOptions {
+    // (undocumented)
+    apiModel?: string | string[];
+}
+
 // @public (undocumented)
 export type AttributeTable = Record<string, AttributeValue>;
 
