@@ -189,6 +189,65 @@
       "preserveMemberOrder": false,
       "members": [
         {
+          "kind": "Interface",
+          "canonicalReference": "@forsakringskassan/docs-generator!Bar:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface Bar extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "Foo",
+              "canonicalReference": "@forsakringskassan/docs-generator!Foo:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "fileUrlPath": "src/processors/api-extractor/__fixtures__/model.ts",
+          "releaseTag": "Public",
+          "name": "Bar",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@forsakringskassan/docs-generator!Bar#documented:member",
+              "docComment": "/**\n * Overridden documentation.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "documented: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "documented",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 2
+            }
+          ]
+        },
+        {
           "kind": "Variable",
           "canonicalReference": "@forsakringskassan/docs-generator!docBlocktag:var",
           "docComment": "/**\n * Lorem ipsum dolor sit amet.\n *\n * @remarks\n *\n * Consectetur adipiscing elit.\n */\n",
@@ -511,6 +570,231 @@
             "startIndex": 0,
             "endIndex": 0
           }
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@forsakringskassan/docs-generator!ExampleInterface:interface",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface ExampleInterface "
+            }
+          ],
+          "fileUrlPath": "src/processors/api-extractor/__fixtures__/model.ts",
+          "releaseTag": "Public",
+          "name": "ExampleInterface",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@forsakringskassan/docs-generator!ExampleInterface#age:member",
+              "docComment": "/**\n * Persons age\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "age: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "age",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@forsakringskassan/docs-generator!ExampleInterface#name:member",
+              "docComment": "/**\n * Persons name\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "name: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "name",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@forsakringskassan/docs-generator!ExampleInterface#nickname:member",
+              "docComment": "/**\n * Optional nickname\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "nickname?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "nickname",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@forsakringskassan/docs-generator!Foo:interface",
+          "docComment": "/**\n * Lorem ipsum dolor sit amet.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface Foo "
+            }
+          ],
+          "fileUrlPath": "src/processors/api-extractor/__fixtures__/model.ts",
+          "releaseTag": "Public",
+          "name": "Foo",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@forsakringskassan/docs-generator!Foo#documented:member",
+              "docComment": "/**\n * Lorem ipsum dolor sit amet.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "documented: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "documented",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@forsakringskassan/docs-generator!Foo#enumeration:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "enumeration: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"foo\" | \"bar\""
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "enumeration",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@forsakringskassan/docs-generator!Foo#optional:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "optional?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "optional",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@forsakringskassan/docs-generator!Foo#required:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "required: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "required",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
         }
       ]
     }

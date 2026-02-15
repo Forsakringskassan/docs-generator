@@ -5,6 +5,10 @@
     "apiReport": {
         "reportFileName": "index.api.md"
     },
+    "docModel": {
+        "enabled": true,
+        "apiJsonFilePath": "<projectFolder>/temp/index.api.json"
+    },
     "dtsRollup": {
         "publicTrimmedFilePath": "<projectFolder>/dist/index.d.mts"
     }

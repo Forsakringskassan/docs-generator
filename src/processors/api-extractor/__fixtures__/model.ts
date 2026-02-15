@@ -1,3 +1,23 @@
+/**
+ * Lorem ipsum dolor sit amet.
+ */
+export interface Foo {
+    required: string;
+    optional?: number;
+    /**
+     * Lorem ipsum dolor sit amet.
+     */
+    documented: string;
+    enumeration: "foo" | "bar";
+}
+
+export interface Bar extends Foo {
+    /**
+     * Overridden documentation.
+     */
+    documented: string;
+}
+
 /* this symbol has no documentation block (this is a regular code comment, not a documentation block) */
 export const docWithoutDocumentation = 1;
 
@@ -88,3 +108,17 @@ export const docCodeFence = 1;
  * ☃️
  */
 export const docUnicodeEmoji = 1;
+
+/**
+ * @public
+ */
+export interface ExampleInterface {
+    /** Persons name */
+    name: string;
+
+    /** Persons age */
+    age: number;
+
+    /** Optional nickname */
+    nickname?: string;
+}

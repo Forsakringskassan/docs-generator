@@ -16,6 +16,13 @@ exports[`smoketest 1`] = `
           "children": [
             {
               "external": false,
+              "id": "fs:docs/markdown/api/typescript.md",
+              "path": "./markdown/api/typescript.html",
+              "sortorder": Infinity,
+              "title": "TypeScript",
+            },
+            {
+              "external": false,
               "id": "fs:docs/markdown/api/vue.md",
               "path": "./markdown/api/vue.html",
               "sortorder": Infinity,
@@ -286,6 +293,13 @@ exports[`smoketest 1`] = `
           "path": "./processors/",
           "sortorder": 1,
           "title": "Processors",
+        },
+        {
+          "external": false,
+          "id": "fs:docs/processors/api-extractor.md",
+          "path": "./processors/api-extractor.html",
+          "sortorder": Infinity,
+          "title": "API Extractor",
         },
         {
           "external": false,
