@@ -1,3 +1,16 @@
+/**
+ * Lorem ipsum dolor sit amet.
+ */
+export interface Foo {
+    required: string;
+    optional?: number;
+    /**
+     * Lorem ipsum dolor sit amet.
+     */
+    documented: string;
+    enumeration: "foo" | "bar";
+}
+
 /* this symbol has no documentation block (this is a regular code comment, not a documentation block) */
 export const docWithoutDocumentation = 1;
 

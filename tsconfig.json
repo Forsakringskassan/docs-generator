@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "rootDir": "./src",
+        "rootDirs": ["./src", "./docs/markdown/api"],
         "outDir": "./dist",
         "emitDeclarationOnly": true,
         "target": "es2022",
@@ -9,7 +9,6 @@
         "alwaysStrict": true,
         "declaration": true,
         "declarationDir": "./temp/types",
-        "declarationMap": true,
         "strict": true,
         "jsx": "preserve",
         "noImplicitAny": true,
@@ -21,5 +20,5 @@
         "sourceMap": true,
         "skipLibCheck": true
     },
-    "include": ["./src/**/*.ts"]
+    "include": ["./src/**/*.ts", "./docs/markdown/api/**/*.ts"]
 }

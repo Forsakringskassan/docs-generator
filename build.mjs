@@ -195,7 +195,13 @@ async function build() {
     } else {
         console.group(`Running API Extractor in local mode.`);
     }
-    for (const entrypoint of ["index", "markdown", "runtime", "fixtures"]) {
+    for (const entrypoint of [
+        "index",
+        "markdown",
+        "runtime",
+        "fixtures",
+        "docs",
+    ]) {
         const filename = `config/api-extractor-${entrypoint}.json`;
         const config = ExtractorConfig.loadFileAndPrepare(filename);
         const result = Extractor.invoke(config, {

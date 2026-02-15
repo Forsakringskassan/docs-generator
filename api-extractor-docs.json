@@ -1,15 +1,15 @@
 {
     "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
     "extends": "./api-extractor.json",
-    "mainEntryPointFilePath": "<projectFolder>/temp/types/index.d.ts",
+    "mainEntryPointFilePath": "<projectFolder>/temp/types/docs/markdown/api/typescript/index.d.ts",
     "apiReport": {
-        "reportFileName": "index.api.md"
+        "enabled": false
     },
     "docModel": {
         "enabled": true,
-        "apiJsonFilePath": "<projectFolder>/temp/index.api.json"
+        "apiJsonFilePath": "<projectFolder>/temp/docs.api.json"
     },
     "dtsRollup": {
-        "publicTrimmedFilePath": "<projectFolder>/dist/index.d.mts"
+        "enabled": false
     }
 }
