@@ -681,6 +681,39 @@ describe("composition API", () => {
         ]);
     });
 
+    /* eslint-disable-next-line jest/no-disabled-tests -- vue-docgen-api fails to recognize this */
+    it.skip("should parse type props with props destructuring", async () => {
+        expect.assertions(1);
+        const filepath = fixture("composition-props-destructuring.vue");
+        const result = await translateAPI(filepath);
+        expect(result.props).toEqual([
+            {
+                name: "foo",
+                type: "string",
+                required: false,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+            {
+                name: "bar",
+                type: "number",
+                required: true,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+            {
+                name: "baz",
+                type: "{ name: string }",
+                required: false,
+                description: "Lorem ipsum dolor\nsit amet.",
+                default: { value: "42" },
+                deprecated: null,
+            },
+        ]);
+    });
+
     it("should parse events (string)", async () => {
         expect.assertions(1);
         const filepath = fixture("composition-emits-string.vue");
