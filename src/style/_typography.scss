@@ -7,7 +7,6 @@ h4:not(.code-preview h4),
 h5:not(.code-preview h5),
 h6:not(.code-preview h6) {
     font-family: var(--docs-heading-font-family);
-    font-weight: var(--docs-heading-font-weight);
     line-height: var(--docs-heading-line-height);
     margin-top: 0;
     margin-bottom: 0.25rem;
@@ -17,31 +16,37 @@ h6:not(.code-preview h6) {
 
 h1 {
     font-size: var(--f-font-size-h1);
+    font-weight: var(--docs-heading-font-weight-h1);
     color: var(--f-text-color-heading-1);
 }
 
 h2 {
     font-size: var(--f-font-size-h2);
+    font-weight: var(--docs-heading-font-weight-h2);
     color: var(--f-text-color-heading-2);
 }
 
 h3 {
     font-size: var(--f-font-size-h3);
+    font-weight: var(--docs-heading-font-weight-h3);
     color: var(--f-text-color-heading-3);
 }
 
 h4 {
     font-size: var(--f-font-size-h4);
+    font-weight: var(--docs-heading-font-weight-h4);
     color: var(--f-text-color-heading-4);
 }
 
 h5 {
     font-size: var(--f-font-size-large);
+    font-weight: var(--docs-heading-font-weight-h5);
     color: var(--f-text-color-heading-5);
 }
 
 h6 {
     font-size: var(--f-font-size-standard);
+    font-weight: var(--docs-heading-font-weight-h6);
     color: var(--f-text-color-heading-6);
 }
 
