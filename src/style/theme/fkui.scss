@@ -18,6 +18,14 @@
     --docs-font-line-height: var(--f-line-height-large);
     --docs-font-size: var(--f-font-size-default-rem);
 
+    // Headings
+    --docs-heading-font-weight-h1: var(--f-font-weight-bold);
+    --docs-heading-font-weight-h2: var(--f-font-weight-medium);
+    --docs-heading-font-weight-h3: var(--f-font-weight-medium);
+    --docs-heading-font-weight-h4: var(--f-font-weight-medium);
+    --docs-heading-font-weight-h5: var(--f-font-weight-medium);
+    --docs-heading-font-weight-h6: var(--f-font-weight-medium);
+
     // Badge
     --docs-badge-component-color: var(--fkds-color-text-primary);
     --docs-badge-component-background: var(--fkds-color-feedback-background-neutral);

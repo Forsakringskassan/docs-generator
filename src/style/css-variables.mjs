@@ -144,6 +144,30 @@ export default {
                 value: `var(--docs-font-family)`,
             },
             "font-weight": { value: "var(--docs-font-weight)" },
+            "font-weight-h1": {
+                description: "Default `font-weight` for `h1` headings.",
+                value: `var(--docs-font-weight)`,
+            },
+            "font-weight-h2": {
+                description: "Default `font-weight` for `h2` headings.",
+                value: `var(--docs-font-weight)`,
+            },
+            "font-weight-h3": {
+                description: "Default `font-weight` for `h3` headings.",
+                value: `var(--docs-font-weight)`,
+            },
+            "font-weight-h4": {
+                description: "Default `font-weight` for `h4` headings.",
+                value: `var(--docs-font-weight)`,
+            },
+            "font-weight-h5": {
+                description: "Default `font-weight` for `h5` headings.",
+                value: `var(--docs-font-weight)`,
+            },
+            "font-weight-h6": {
+                description: "Default `font-weight` for `h6` headings.",
+                value: `var(--docs-font-weight)`,
+            },
             "line-height": { value: "1.4" },
         },
     },
