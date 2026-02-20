@@ -7877,12 +7877,12 @@ kbd {
   --docs-contextmenu-link-background-hover: #ddddde;
   --docs-heading-font-family: var(--docs-font-family);
   --docs-heading-font-weight: var(--docs-font-weight);
-  --docs-heading-font-weight-h1: var(--docs-font-family);
-  --docs-heading-font-weight-h2: var(--docs-font-family);
-  --docs-heading-font-weight-h3: var(--docs-font-family);
-  --docs-heading-font-weight-h4: var(--docs-font-family);
-  --docs-heading-font-weight-h5: var(--docs-font-family);
-  --docs-heading-font-weight-h6: var(--docs-font-family);
+  --docs-heading-font-weight-h1: var(--docs-font-weight);
+  --docs-heading-font-weight-h2: var(--docs-font-weight);
+  --docs-heading-font-weight-h3: var(--docs-font-weight);
+  --docs-heading-font-weight-h4: var(--docs-font-weight);
+  --docs-heading-font-weight-h5: var(--docs-font-weight);
+  --docs-heading-font-weight-h6: var(--docs-font-weight);
   --docs-heading-line-height: 1.4;
   --docs-header-text-color-default: #1b1e23;
   --docs-header-text-color-discrete: #5f6165;
