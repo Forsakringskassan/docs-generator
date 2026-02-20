@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## [2.35.8](https://github.com/Forsakringskassan/docs-generator/compare/v2.35.7...v2.35.8) (2026-02-20)
+
+### Bug Fixes
+
+* **deps:** update dependency glob to v13.0.2 ([68b3e31](https://github.com/Forsakringskassan/docs-generator/commit/68b3e316d89ba242ff1440f70df4f0a329d7a24e))
+* **deps:** update dependency glob to v13.0.3 ([15e1650](https://github.com/Forsakringskassan/docs-generator/commit/15e1650ba0e60cb3e5aed7b10d6568e133500a45))
+* **deps:** update dependency i18next to v25.8.10 ([57f0f3b](https://github.com/Forsakringskassan/docs-generator/commit/57f0f3be93b41f1cdd0feae91c5b401d02a302f5))
+* **deps:** update dependency i18next to v25.8.5 ([f2642ea](https://github.com/Forsakringskassan/docs-generator/commit/f2642ead39bbdb574f0726ac1139f05c2b8d0e62))
+* **deps:** update dependency i18next to v25.8.6 ([802b096](https://github.com/Forsakringskassan/docs-generator/commit/802b0962904207c95c9d25142d876071a422b75f))
+* **deps:** update dependency i18next to v25.8.7 ([fb3c4b4](https://github.com/Forsakringskassan/docs-generator/commit/fb3c4b470bec04650e5a23709dd9ca7b3ec9eac1))
+* **deps:** update dependency i18next to v25.8.8 ([2f39e6e](https://github.com/Forsakringskassan/docs-generator/commit/2f39e6eb6b83d5251bf41624526901268f96ef60))
+* **deps:** update dependency markdown-it to v14.1.1 [security] ([3f6e95e](https://github.com/Forsakringskassan/docs-generator/commit/3f6e95e4efbd26acbdce1642dc40fcc60f05e097))
+
 ## [2.35.7](https://github.com/Forsakringskassan/docs-generator/compare/v2.35.6...v2.35.7) (2026-02-13)
 
 ### Bug Fixes
