@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [2.36.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.35.8...v2.36.0) (2026-02-20)
+
+### Features
+
+* new `--docs-heading-font-weight` section heading variables (fixes SFKUI-7489) ([043f967](https://github.com/Forsakringskassan/docs-generator/commit/043f96763702e5600c3fbded494e7ff20e9fff2b))
+
+### Bug Fixes
+
+* wrong `font-weight` prop value for headings (fixes SFKUI-7489) ([70aa3cb](https://github.com/Forsakringskassan/docs-generator/commit/70aa3cbfd7998b7ba81b7ac1c6ebefcf8ef7fb67))
+
 ## [2.35.8](https://github.com/Forsakringskassan/docs-generator/compare/v2.35.7...v2.35.8) (2026-02-20)
 
 ### Bug Fixes
