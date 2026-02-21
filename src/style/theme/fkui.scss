@@ -17,8 +17,10 @@
     --docs-error-background: var(--fkds-color-feedback-background-negative);
     --docs-font-line-height: var(--f-line-height-large);
     --docs-font-size: var(--f-font-size-default-rem);
+    --docs-font-family: var(--f-font-family);
 
     // Headings
+    --docs-heading-font-family: var(--f-font-family);
     --docs-heading-font-weight-h1: var(--f-font-weight-bold);
     --docs-heading-font-weight-h2: var(--f-font-weight-medium);
     --docs-heading-font-weight-h3: var(--f-font-weight-medium);
