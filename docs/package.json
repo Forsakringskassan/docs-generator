@@ -13,6 +13,7 @@
   "license": "MIT",
   "author": "Försäkringskassan",
   "devDependencies": {
+    "@fkui/theme-default": "6.36.1",
     "@forsakringskassan/docs-generator": "file:..",
     "@forsakringskassan/docs-live-example": "2.4.1",
     "vue": "3.5.28"
