@@ -1,5 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import { assets as fontAssets } from "@fkui/font-default/metadata";
 import isCI from "is-ci";
 import {
     Generator,
@@ -24,6 +25,7 @@ const docs = new Generator(import.meta.url, {
         name: "FK Documentation generator",
         lang: "en",
     },
+    bundleDefaultFont: false,
     outputFolder: "./public",
     cacheFolder: "./temp/docs",
     exampleFolders: ["./docs", "./src"],
@@ -84,6 +86,14 @@ try {
 } catch (err) {
     console.error(err.prettyError ? err.prettyError() : err);
     process.exitCode = 1;
+}
+
+await fs.mkdir("public/assets/fonts", { recursive: true });
+for (const asset of fontAssets) {
+    await fs.copyFile(
+        asset.filePath,
+        path.join("public/assets", asset.filename),
+    );
 }
 
 if (!isCI) {
