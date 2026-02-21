@@ -1,4 +1,7 @@
 @use "@fkui/theme-default";
+@use "@fkui/font-default" with (
+    $asset-path: "./fonts"
+);
 @use "@forsakringskassan/docs-generator/style/core.css";
 @use "@forsakringskassan/docs-generator/style/site.css";
 @use "@forsakringskassan/docs-generator/theme/fkui";
