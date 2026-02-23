@@ -37,6 +37,10 @@
     "Nested Page 3",
     "Nested Page 2",
     "Nested Page 1",
+    "Top page",
+    "Sorted Page 3",
+    "Sorted Page 2",
+    "Sorted Page 1",
     "Messagebox",
     "Details",
     "Alternative text",
@@ -46,10 +50,6 @@
     "Diff",
     "Code preview",
     "Documenting Vue components",
-    "Top page",
-    "Sorted Page 3",
-    "Sorted Page 2",
-    "Sorted Page 1",
     "README",
     "Live example",
     "Changelog"
@@ -231,6 +231,26 @@
       "terms": []
     },
     {
+      "url": "navigation/sorted-group/top-page.html",
+      "title": "Top page",
+      "terms": []
+    },
+    {
+      "url": "navigation/sorted-group/sorted-page-3.html",
+      "title": "Sorted Page 3",
+      "terms": []
+    },
+    {
+      "url": "navigation/sorted-group/sorted-page-2.html",
+      "title": "Sorted Page 2",
+      "terms": []
+    },
+    {
+      "url": "navigation/sorted-group/sorted-page-1.html",
+      "title": "Sorted Page 1",
+      "terms": []
+    },
+    {
       "url": "markdown/containers/messagebox.html",
       "title": "Messagebox",
       "terms": []
@@ -273,26 +293,6 @@
     {
       "url": "markdown/api/vue.html",
       "title": "Documenting Vue components",
-      "terms": []
-    },
-    {
-      "url": "navigation/sorted-group/top-page.html",
-      "title": "Top page",
-      "terms": []
-    },
-    {
-      "url": "navigation/sorted-group/sorted-page-3.html",
-      "title": "Sorted Page 3",
-      "terms": []
-    },
-    {
-      "url": "navigation/sorted-group/sorted-page-2.html",
-      "title": "Sorted Page 2",
-      "terms": []
-    },
-    {
-      "url": "navigation/sorted-group/sorted-page-1.html",
-      "title": "Sorted Page 1",
       "terms": []
     },
     {
