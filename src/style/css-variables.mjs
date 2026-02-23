@@ -185,6 +185,30 @@ export default {
                 value: "-0.3px",
             },
             "line-height": { value: "1.4" },
+            "margin-bottom-h1": {
+                description: "Default `margin-bottom` for `h1` headings.",
+                value: "1.5rem",
+            },
+            "margin-bottom-h2": {
+                description: "Default `margin-bottom` for `h2` headings.",
+                value: "1rem",
+            },
+            "margin-bottom-h3": {
+                description: "Default `margin-bottom` for `h3` headings.",
+                value: "1rem",
+            },
+            "margin-bottom-h4": {
+                description: "Default `margin-bottom` for `h4` headings.",
+                value: "0.5rem",
+            },
+            "margin-bottom-h5": {
+                description: "Default `margin-bottom` for `h5` headings.",
+                value: "0.5rem",
+            },
+            "margin-bottom-h6": {
+                description: "Default `margin-bottom` for `h6` headings.",
+                value: "0.5rem",
+            },
         },
     },
 
