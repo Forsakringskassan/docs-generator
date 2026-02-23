@@ -168,6 +168,22 @@ export default {
                 description: "Default `font-weight` for `h6` headings.",
                 value: `var(--docs-font-weight)`,
             },
+            "letter-spacing-h1": {
+                description: "Default `letter-spacing` for `h1` headings.",
+                value: "-0.5px",
+            },
+            "letter-spacing-h2": {
+                description: "Default `letter-spacing` for `h2` headings.",
+                value: "-0.3px",
+            },
+            "letter-spacing-h3": {
+                description: "Default `letter-spacing` for `h3` headings.",
+                value: "-0.3px",
+            },
+            "letter-spacing-h4": {
+                description: "Default `letter-spacing` for `h4` headings.",
+                value: "-0.3px",
+            },
             "line-height": { value: "1.4" },
         },
     },
