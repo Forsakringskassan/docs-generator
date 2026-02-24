@@ -6535,24 +6535,28 @@ h1 {
   font-size: var(--f-font-size-h1);
   font-weight: var(--docs-heading-font-weight-h1);
   color: var(--f-text-color-heading-1);
+  letter-spacing: var(--docs-heading-letter-spacing-h1);
 }
 
 h2 {
   font-size: var(--f-font-size-h2);
   font-weight: var(--docs-heading-font-weight-h2);
   color: var(--f-text-color-heading-2);
+  letter-spacing: var(--docs-heading-letter-spacing-h2);
 }
 
 h3 {
   font-size: var(--f-font-size-h3);
   font-weight: var(--docs-heading-font-weight-h3);
   color: var(--f-text-color-heading-3);
+  letter-spacing: var(--docs-heading-letter-spacing-h3);
 }
 
 h4 {
   font-size: var(--f-font-size-h4);
   font-weight: var(--docs-heading-font-weight-h4);
   color: var(--f-text-color-heading-4);
+  letter-spacing: var(--docs-heading-letter-spacing-h4);
 }
 
 h5 {
@@ -7883,6 +7887,10 @@ kbd {
   --docs-heading-font-weight-h4: var(--docs-font-weight);
   --docs-heading-font-weight-h5: var(--docs-font-weight);
   --docs-heading-font-weight-h6: var(--docs-font-weight);
+  --docs-heading-letter-spacing-h1: -0.5px;
+  --docs-heading-letter-spacing-h2: -0.3px;
+  --docs-heading-letter-spacing-h3: -0.3px;
+  --docs-heading-letter-spacing-h4: -0.3px;
   --docs-heading-line-height: 1.4;
   --docs-header-text-color-default: #1b1e23;
   --docs-header-text-color-discrete: #5f6165;

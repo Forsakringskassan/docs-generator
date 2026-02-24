@@ -49,7 +49,6 @@
     "production",
     "globala inställningar",
     "config",
-    "CHANGELOG v5",
     "Paginering",
     "FPaginateDataset",
     "FPaginator",
@@ -95,6 +94,7 @@
     "kalenderdag",
     "Bricka",
     "FBadge",
+    "CHANGELOG v5",
     "Validering och felhantering",
     "obligatoriska fält",
     "submit",
@@ -215,6 +215,9 @@
     "testverktyg",
     "Jest",
     "testverktyg",
+    "EventBus",
+    "EventBus",
+    "services",
     "focus-indicator() mixin",
     "fokus",
     "fokusindikator",
@@ -222,9 +225,6 @@
     "densify() function",
     "densitet",
     "sass",
-    "EventBus",
-    "EventBus",
-    "services",
     "Validation Plugin",
     "validering",
     "v-validation",
@@ -772,11 +772,6 @@
       ]
     },
     {
-      "url": "changelog/v5.html",
-      "title": "CHANGELOG v5",
-      "terms": []
-    },
-    {
       "url": "components/pagination.html",
       "title": "Paginering",
       "terms": [
@@ -895,6 +890,11 @@
       "terms": [
         "FBadge"
       ]
+    },
+    {
+      "url": "changelog/v5.html",
+      "title": "CHANGELOG v5",
+      "terms": []
     },
     {
       "url": "guides/validation-and-error-handling/validation.html",
@@ -1154,6 +1154,14 @@
       ]
     },
     {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "services",
+        "EventBus"
+      ]
+    },
+    {
       "url": "functions/sass/focus-indicator.html",
       "title": "focus-indicator() mixin",
       "terms": [
@@ -1168,14 +1176,6 @@
       "terms": [
         "densitet",
         "sass"
-      ]
-    },
-    {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "services",
-        "EventBus"
       ]
     },
     {
@@ -2416,50 +2416,50 @@
     "47": 12,
     "48": 12,
     "49": 13,
-    "50": 14,
-    "51": 14,
+    "50": 13,
+    "51": 13,
     "52": 14,
-    "53": 15,
+    "53": 14,
     "54": 15,
-    "55": 16,
+    "55": 15,
     "56": 16,
-    "57": 17,
-    "58": 17,
-    "59": 17,
-    "60": 17,
+    "57": 16,
+    "58": 16,
+    "59": 16,
+    "60": 16,
     "61": 17,
-    "62": 18,
+    "62": 17,
     "63": 18,
-    "64": 19,
+    "64": 18,
     "65": 19,
-    "66": 20,
-    "67": 20,
-    "68": 20,
-    "69": 20,
-    "70": 20,
+    "66": 19,
+    "67": 19,
+    "68": 19,
+    "69": 19,
+    "70": 19,
     "71": 20,
-    "72": 21,
+    "72": 20,
     "73": 21,
-    "74": 22,
-    "75": 22,
+    "74": 21,
+    "75": 21,
     "76": 22,
-    "77": 23,
-    "78": 23,
+    "77": 22,
+    "78": 22,
     "79": 23,
-    "80": 24,
+    "80": 23,
     "81": 24,
-    "82": 25,
-    "83": 25,
+    "82": 24,
+    "83": 24,
     "84": 25,
-    "85": 26,
+    "85": 25,
     "86": 26,
-    "87": 27,
-    "88": 27,
-    "89": 27,
-    "90": 27,
-    "91": 27,
+    "87": 26,
+    "88": 26,
+    "89": 26,
+    "90": 26,
+    "91": 26,
     "92": 27,
-    "93": 28,
+    "93": 27,
     "94": 28,
     "95": 29,
     "96": 29,
@@ -2584,7 +2584,7 @@
     "215": 57,
     "216": 57,
     "217": 57,
-    "218": 57,
+    "218": 58,
     "219": 58,
     "220": 58,
     "221": 58,
