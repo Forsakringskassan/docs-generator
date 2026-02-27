@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## [2.37.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.36.0...v2.37.0) (2026-02-27)
+
+### Features
+
+* new `--docs-heading-letter-spacing` section heading varaibles (fixes SFKUI-7636) ([92b2b4e](https://github.com/Forsakringskassan/docs-generator/commit/92b2b4e49b13583d05545bd21da36db8f12b9dae))
+
+### Bug Fixes
+
+* `letter-spacing` prop not defined for headings (refs SFKUI-7636) ([d8cbf75](https://github.com/Forsakringskassan/docs-generator/commit/d8cbf75d67d31a805d883b8be6d5980e61af2267))
+* **deps:** update dependency glob to v13.0.5 ([0c17672](https://github.com/Forsakringskassan/docs-generator/commit/0c17672c4f68c42337fe986bfec25d942af7c510))
+* **deps:** update dependency glob to v13.0.6 ([0612549](https://github.com/Forsakringskassan/docs-generator/commit/0612549ca0791c0c861517f2409e7a295c002201))
+* **deps:** update dependency i18next to v25.8.11 ([3003d2c](https://github.com/Forsakringskassan/docs-generator/commit/3003d2cb4efb6422e05c81df4f78ab8814947799))
+* **deps:** update dependency i18next to v25.8.13 ([0cc06d1](https://github.com/Forsakringskassan/docs-generator/commit/0cc06d142f896ffddf6d532baf748dffc4726845))
+* **deps:** update dependency mermaid to v11.12.3 ([fd874de](https://github.com/Forsakringskassan/docs-generator/commit/fd874deed3d610073563a203ab801c50a4daad22))
+
 ## [2.36.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.35.8...v2.36.0) (2026-02-20)
 
 ### Features
