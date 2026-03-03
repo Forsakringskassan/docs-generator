@@ -3578,6 +3578,7 @@ function render11(_ctx, _cache, $props, $setup, $data, $options) {
         _createCommentVNode9(" @slot Slot for main content above text fields and buttons. "),
         _renderSlot10(_ctx.$slots, "default")
       ]),
+      _createCommentVNode9(" [html-validate-disable-next wcag/h32 -- Submit button with `formId` present in footer ] "),
       _createVNode4(_component_f_validation_form, {
         id: _ctx.formId,
         "before-submit": _ctx.beforeSubmit,
@@ -4634,12 +4635,11 @@ function render13(_ctx, _cache, $props, $setup, $data, $options) {
                   /* TEXT */
                 ),
                 _createCommentVNode11(' `tabindex="-1" is set since `IPopupError` has `aria-hidden`, wich cannot be used on focusable elements.\n                        `IPopupError` will be closed on input-field `blur`, so the button is never focusable anyway .\n                    '),
-                _createCommentVNode11(" [html-validate-disable-next fkui/class-deprecated -- technical debt] "),
                 _ctx.layout === "f-interactive-table" ? (_openBlock13(), _createElementBlock12("button", {
                   key: 1,
                   tabindex: "-1",
                   type: "button",
-                  class: "button button--discrete button--discrete--black modal__close-button popup-error__button",
+                  class: "popup-error__button",
                   "aria-label": "St\xE4ng",
                   onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onClose && _ctx.onClose(...args))
                 }, [
@@ -4780,6 +4780,8 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent({
     const contentRef = useTemplateRef("content");
     const popupClasses = ["popup", "popup--overlay"];
     const teleportTarget = computed(() => config.teleportTarget);
+    const debouncedOnResize = debounce2(onResize, 100);
+    const debouncedOnScroll = debounce2(onScroll, 100);
     let guessedItemHeight = void 0;
     let verticalSpacing = void 0;
     useEventListener(__props.anchor, "keyup", onKeyEsc);
@@ -4795,11 +4797,13 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent({
     });
     function addListeners() {
       document.addEventListener("click", onDocumentClickHandler);
-      window.addEventListener("resize", debounce2(onResize, 100));
+      window.addEventListener("resize", debouncedOnResize);
+      window.addEventListener("scroll", debouncedOnScroll, { capture: true });
     }
     function removeListeners() {
       document.removeEventListener("click", onDocumentClickHandler);
-      window.removeEventListener("resize", debounce2(onResize, 100));
+      window.removeEventListener("resize", debouncedOnResize);
+      window.removeEventListener("scroll", debouncedOnScroll, { capture: true });
     }
     function isElementInsideViewport(element) {
       const rect = element.getBoundingClientRect();
@@ -4838,6 +4842,13 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent({
         calculatePosition();
       }
     }
+    function onScroll(event) {
+      const isPopupTarget = event.target instanceof HTMLElement && Boolean(event.target.closest(".popup"));
+      if (isPopupTarget) {
+        return;
+      }
+      calculatePosition({ horizontalOnly: true });
+    }
     function onKeyEsc(event) {
       if (event.key === "Escape") {
         emit("close");
@@ -4846,7 +4857,7 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent({
     function guessItemHeight(numOfItems, contentWrapper) {
       return Math.ceil(contentWrapper.clientHeight / numOfItems);
     }
-    function calculatePosition() {
+    function calculatePosition(options) {
       const wrapperElement = wrapperRef.value;
       const contentWrapper = contentRef.value;
       if (!__props.anchor || !wrapperElement || !contentWrapper) {
@@ -4874,14 +4885,17 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent({
         const offsetRect = wrapperElement.offsetParent?.getBoundingClientRect();
         const offsetLeft = Math.floor((offsetRect?.x ?? 0) + window.scrollX);
         const offSetTop = Math.floor((offsetRect?.top ?? 0) + window.scrollY);
-        wrapperElement.style.top = `${String(top - offSetTop)}px`;
         wrapperElement.style.left = `${String(left - offsetLeft)}px`;
+        if (options?.horizontalOnly) {
+          return;
+        }
+        wrapperElement.style.top = `${String(top - offSetTop)}px`;
         wrapperElement.style.width = `${String(width)}px`;
         contentWrapper.style.maxHeight = `${String(height)}px`;
         contentWrapper.style.width = `${String(width)}px`;
       }
     }
-    const __returned__ = { emit, wrapperRef, contentRef, teleportDisabled, popupClasses, teleportTarget, get guessedItemHeight() {
+    const __returned__ = { emit, wrapperRef, contentRef, teleportDisabled, popupClasses, teleportTarget, debouncedOnResize, debouncedOnScroll, get guessedItemHeight() {
       return guessedItemHeight;
     }, set guessedItemHeight(v) {
       guessedItemHeight = v;
@@ -4889,7 +4903,7 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent({
       return verticalSpacing;
     }, set verticalSpacing(v) {
       verticalSpacing = v;
-    }, addListeners, removeListeners, isElementInsideViewport, onDocumentClickHandler, onResize, onKeyEsc, guessItemHeight, calculatePosition };
+    }, addListeners, removeListeners, isElementInsideViewport, onDocumentClickHandler, onResize, onScroll, onKeyEsc, guessItemHeight, calculatePosition };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
   }
