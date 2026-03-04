@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.37.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.37.0...v2.37.1) (2026-03-04)
+
+### Bug Fixes
+
+* map fkui font variables in theme/fkui ([a98a044](https://github.com/Forsakringskassan/docs-generator/commit/a98a0440c046e0440719af875f4b6c2342232968))
+
 ## [2.37.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.36.0...v2.37.0) (2026-02-27)
 
 ### Features
