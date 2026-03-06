@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [2.38.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.37.1...v2.38.0) (2026-03-06)
+
+### Features
+
+* new `--docs-heading-margin-bottom` section heading variables (fixes SFKUI-7638) ([c6e8fb3](https://github.com/Forsakringskassan/docs-generator/commit/c6e8fb37bee6ce292c321c715afb5c78a552937f))
+
+### Bug Fixes
+
+* **deps:** update dependency dedent to v1.7.2 ([85347cd](https://github.com/Forsakringskassan/docs-generator/commit/85347cd08f64fac0a39f56b757a16f20ac220907))
+* wrong `margin-bottom` for headings (fixes SFKUI-7638) ([0c470b2](https://github.com/Forsakringskassan/docs-generator/commit/0c470b2877f3dc52f44d1113ca7bc6fd8deb4949))
+
 ## [2.37.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.37.0...v2.37.1) (2026-03-04)
 
 ### Bug Fixes
