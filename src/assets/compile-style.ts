@@ -14,9 +14,9 @@ export async function compileStyle(
 ): Promise<AssetInfo> {
     try {
         const outfile = path.join("temp", `asset-${name}.css`);
-        const source = await fs.readFile(src, "utf-8");
+        const source = await fs.readFile(src, "utf8");
         await compileSassString(outfile, source);
-        const content = await fs.readFile(outfile, "utf-8");
+        const content = await fs.readFile(outfile, "utf8");
         const fingerprint = getFingerprint(content);
         const integrity = getIntegrity(content);
         const filename = `${name}-${fingerprint}.css`;

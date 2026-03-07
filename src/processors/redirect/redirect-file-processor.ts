@@ -38,7 +38,7 @@ export function redirectFileProcessor(
                 });
             const filePath = path.join(context.outputFolder, filename);
             await fs.mkdir(path.dirname(filePath), { recursive: true });
-            await fs.writeFile(filePath, lines.join(""), "utf-8");
+            await fs.writeFile(filePath, lines.join(""), "utf8");
             context.log(filename, "generated");
         },
     };

@@ -54,7 +54,7 @@ export function topnavProcessor(filename: string, title: string): Processor {
         after: "generate-nav",
         name: "topnav-processor",
         async handler(context) {
-            const content = await fs.readFile(filename, "utf-8");
+            const content = await fs.readFile(filename, "utf8");
             const parsed = JSON.parse(content) as TopnavEntry[];
             const rootNode = generateNavigation(parsed);
             context.setTopNavigation({

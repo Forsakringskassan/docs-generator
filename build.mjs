@@ -15,7 +15,7 @@ import esbuildPlugin from "rollup-plugin-esbuild";
 import { visualizer } from "rollup-plugin-visualizer";
 import * as sass from "sass";
 
-const pkg = JSON.parse(await fs.readFile("package.json", "utf-8"));
+const pkg = JSON.parse(await fs.readFile("package.json", "utf8"));
 const { externalDependencies, peerDependencies } = pkg;
 
 const rootDir = import.meta.dirname;
@@ -60,9 +60,9 @@ async function buildFonts() {
     console.log();
     console.log("Generating", dst);
 
-    const content = await fs.readFile(src, "utf-8");
+    const content = await fs.readFile(src, "utf8");
     const updated = [preamble, content].join("\n\n").replaceAll("files/", "");
-    await fs.writeFile(dst, updated, "utf-8");
+    await fs.writeFile(dst, updated, "utf8");
 }
 
 /**
@@ -78,7 +78,7 @@ async function buildStyle(entrypoints) {
             importers: [sassCSSVariableImporter],
         });
         await fs.mkdir(path.dirname(dst), { recursive: true });
-        await fs.writeFile(dst, result.css, "utf-8");
+        await fs.writeFile(dst, result.css, "utf8");
     }
 }
 

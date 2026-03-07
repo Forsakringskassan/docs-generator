@@ -69,7 +69,7 @@ ${searched}
 Make sure the name is correct and the template file exists in one of the listed directories.`;
             throw new Error(message);
         }
-        const content = await fs.readFile(filePath, "utf-8");
+        const content = await fs.readFile(filePath, "utf8");
         const resolved = { content, filePath };
         templateCache.set(name, resolved);
         return resolved;

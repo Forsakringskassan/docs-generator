@@ -32,7 +32,7 @@ const esbuild = jest
         await volume.promises.writeFile(
             options.outfile,
             "mock compiled content",
-            { encoding: "utf-8" },
+            { encoding: "utf8" },
         );
 
         /* this will blow up if compileScript try to use the result */

@@ -95,18 +95,18 @@ export function manifestProcessor(
                 const content = normalize(renderMarkdown(manifest));
                 if (verify) {
                     const actual = normalize(
-                        await fs.readFile(markdown, "utf-8"),
+                        await fs.readFile(markdown, "utf8"),
                     );
                     if (actual !== content) {
                         throw new ManifestError(markdown);
                     }
                 } else {
-                    await fs.writeFile(markdown, content, "utf-8");
+                    await fs.writeFile(markdown, content, "utf8");
                 }
             }
             if (json) {
                 const content = renderJSON(manifest);
-                await fs.writeFile(json, content, "utf-8");
+                await fs.writeFile(json, content, "utf8");
             }
         },
     };

@@ -21,7 +21,7 @@ import {
 
 /* --- cut above --- */
 
-const pkg = JSON.parse(await fs.readFile("package.json", "utf-8"));
+const pkg = JSON.parse(await fs.readFile("package.json", "utf8"));
 
 const docs = new Generator(import.meta.url, {
     /* --- cut begin --- */

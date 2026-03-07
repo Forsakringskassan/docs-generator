@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import esbuild from "esbuild";
 
-const pkg = JSON.parse(fs.readFileSync("../../package.json", "utf-8"));
+const pkg = JSON.parse(fs.readFileSync("../../package.json", "utf8"));
 const { externalDependencies, peerDependencies } = pkg;
 
 try {

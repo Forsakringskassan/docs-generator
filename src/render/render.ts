@@ -205,7 +205,7 @@ async function compileStandalones(options: {
             ...templateData,
             content: task.content,
         });
-        await fs.writeFile(outputFile, content, "utf-8");
+        await fs.writeFile(outputFile, content, "utf8");
     }
 }
 
@@ -328,7 +328,7 @@ export async function render(
         getImportedSource(filename) {
             const context = `when importing example from "${fileInfo.fullPath}"`;
             const match = fileMatcher(filename, context);
-            return readFileSync(match, "utf-8");
+            return readFileSync(match, "utf8");
         },
         addResource(dst, src) {
             if (!existsSync(src)) {
@@ -413,7 +413,7 @@ export async function render(
             return match;
         }
     });
-    const writeFile = fs.writeFile(expandedDst, content, "utf-8");
+    const writeFile = fs.writeFile(expandedDst, content, "utf8");
 
     try {
         const assets = Object.values(templateData.assets).filter(

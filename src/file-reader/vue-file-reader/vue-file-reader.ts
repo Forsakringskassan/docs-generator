@@ -50,7 +50,7 @@ async function parseTranslation(
     const relative = normalizePath(filePath);
     const parsedPath = path.parse(relative);
     const componentName = parsedPath.name;
-    const content = await fs.readFile(filePath, "utf-8");
+    const content = await fs.readFile(filePath, "utf8");
     return {
         kind: "partial",
         id: `fs:${filePath.replaceAll("\\", "/")}:translation`,

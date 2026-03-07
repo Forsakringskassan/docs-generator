@@ -10,7 +10,7 @@ export async function keypress(): Promise<string> {
         process.stdin.once("data", (data) => {
             process.stdin.setRawMode(false);
             process.stdin.resume();
-            resolve(data.toString("utf-8"));
+            resolve(data.toString("utf8"));
         });
     });
 }

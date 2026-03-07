@@ -41,7 +41,7 @@ export function htmlRedirectProcessor(): Processor {
                 const dst = relative(doc.body, doc);
                 const content = template(dst);
                 await fs.mkdir(path.dirname(filePath), { recursive: true });
-                await fs.writeFile(filePath, dedent(content), "utf-8");
+                await fs.writeFile(filePath, dedent(content), "utf8");
             }
         },
     };
