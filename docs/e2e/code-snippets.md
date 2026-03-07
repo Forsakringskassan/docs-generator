@@ -37,5 +37,5 @@ const name = "World";
 ## Imported Vue
 
 ```import name=vue-import
-code-snippets-vue.vue
+CodeSnippetsVue.vue
 ```

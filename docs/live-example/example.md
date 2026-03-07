@@ -6,11 +6,11 @@ layout: content-with-menu
 ## HTML
 
 ```import live-example test-id="html-example"
-HTMLLiveExample.vue
+HtmlLiveExample.vue
 ```
 
 ```import static
-HTMLLiveExample.vue
+HtmlLiveExample.vue
 ```
 
 ## Vue
