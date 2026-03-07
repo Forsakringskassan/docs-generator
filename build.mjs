@@ -225,7 +225,9 @@ async function build() {
     ]);
 }
 
-build().catch((err) => {
+try {
+    await build();
+} catch (err) {
     console.error(err);
     process.exitCode = 1;
-});
+}
