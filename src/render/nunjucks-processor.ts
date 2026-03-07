@@ -37,11 +37,11 @@ export function nunjucksProcessor(
                 });
             }
 
-            const formats = ["markdown", "json"];
+            const formats = new Set(["markdown", "json"]);
             const docs = context.docs.filter(isDocumentPage).filter((it) => {
                 /* the nunjucks process primarly renders markdown documents but
                  * for legacy reasons it also renders raw json files */
-                if (!formats.includes(it.format)) {
+                if (!formats.has(it.format)) {
                     return false;
                 }
                 return it.fileInfo.outputName;
