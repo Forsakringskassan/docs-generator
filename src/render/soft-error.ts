@@ -43,7 +43,7 @@ export class SoftError<T extends SoftErrorCode> extends Error {
             : [SoftErrorDetails[T]]
     ) {
         super(message);
-        this.name = this.constructor.name;
+        this.name = "SoftError";
         this.code = code;
         const [details] = args;
 
