@@ -194,7 +194,7 @@ my-file.html
 ## Runnable examples
 
 ```import
-my-file.vue
+MyFile.vue
 ```
 
 ## Selectors for E2E testing

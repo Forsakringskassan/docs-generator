@@ -6,13 +6,13 @@ layout: article
 ## Options API
 
 ```import
-vue-options.vue
+VueOptions.vue
 ```
 
 ## Composition API
 
 ```import
-vue-composition.vue
+VueComposition.vue
 ```
 
 ## Snippets

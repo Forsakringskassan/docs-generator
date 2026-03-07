@@ -33,15 +33,15 @@ All three examples should run properly, i.e. render the following strings:
 1. `"bar"`
 
 ```import nomarkup name=imported-1
-examples-imported-foo.vue
+ExamplesImportedFoo.vue
 ```
 
 ```import nomarkup name=imported-2
-examples-imported-foo.vue
+ExamplesImportedFoo.vue
 ```
 
 ```import nomarkup name=imported-3
-examples-imported-bar.vue
+ExamplesImportedBar.vue
 ```
 
 ## Diff inline

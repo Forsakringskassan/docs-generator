@@ -10,11 +10,11 @@ function fixture(filename: string): string {
 describe("options API", () => {
     it("should parse dummy javascript component", async () => {
         expect.assertions(1);
-        const filepath = fixture("options-dummy-js.vue");
+        const filepath = fixture("OptionsDummyJs.vue");
         const result = await translateAPI(filepath);
         expect(result).toEqual({
-            name: "options-dummy-js",
-            slug: "options-dummy-js",
+            name: "OptionsDummyJs",
+            slug: "optionsdummyjs",
             models: [],
             events: [],
             props: [],
@@ -24,11 +24,11 @@ describe("options API", () => {
 
     it("should parse dummy typescript component", async () => {
         expect.assertions(1);
-        const filepath = fixture("options-dummy-ts.vue");
+        const filepath = fixture("OptionsDummyTs.vue");
         const result = await translateAPI(filepath);
         expect(result).toEqual({
-            name: "options-dummy-ts",
-            slug: "options-dummy-ts",
+            name: "OptionsDummyTs",
+            slug: "optionsdummyts",
             models: [],
             events: [],
             props: [],
@@ -38,7 +38,7 @@ describe("options API", () => {
 
     it("should handle v-model with update event", async () => {
         expect.assertions(3);
-        const filepath = fixture("options-vmodel-emit.vue");
+        const filepath = fixture("OptionsVmodelEmit.vue");
         const result = await translateAPI(filepath);
         expect(result.models).toEqual([
             {
@@ -56,7 +56,7 @@ describe("options API", () => {
 
     it("should handle multiple v-model", async () => {
         expect.assertions(3);
-        const filepath = fixture("options-vmodel-multiple.vue");
+        const filepath = fixture("OptionsVmodelMultiple.vue");
         const result = await translateAPI(filepath);
         expect(result.models).toEqual([
             {
@@ -82,7 +82,7 @@ describe("options API", () => {
 
     it("should parse props", async () => {
         expect.assertions(1);
-        const filepath = fixture("options-props.vue");
+        const filepath = fixture("OptionsProps.vue");
         const result = await translateAPI(filepath);
         expect(result.props).toEqual([
             {
@@ -123,7 +123,7 @@ describe("options API", () => {
     /* eslint-disable-next-line jest/no-disabled-tests -- known bug */
     it.skip("should parse enum prop", async () => {
         expect.assertions(1);
-        const filepath = fixture("options-props-enum.vue");
+        const filepath = fixture("OptionsPropsEnum.vue");
         const result = await translateAPI(filepath);
         expect(result.props).toEqual([
             {
@@ -139,7 +139,7 @@ describe("options API", () => {
 
     it("should parse array props", async () => {
         expect.assertions(1);
-        const filepath = fixture("options-props-array.vue");
+        const filepath = fixture("OptionsPropsArray.vue");
         const result = await translateAPI(filepath);
         expect(result.props).toEqual([
             {
@@ -187,7 +187,7 @@ describe("options API", () => {
 
     it("should parse union props", async () => {
         expect.assertions(1);
-        const filepath = fixture("options-props-union.vue");
+        const filepath = fixture("OptionsPropsUnion.vue");
         const result = await translateAPI(filepath);
         expect(result.props).toEqual([
             {
@@ -219,7 +219,7 @@ describe("options API", () => {
 
     it("should parse events (string)", async () => {
         expect.assertions(1);
-        const filepath = fixture("options-emits-string.vue");
+        const filepath = fixture("OptionsEmitsString.vue");
         const result = await translateAPI(filepath);
         expect(result.events).toEqual([
             {
@@ -245,7 +245,7 @@ describe("options API", () => {
 
     it("should parse events (object)", async () => {
         expect.assertions(1);
-        const filepath = fixture("options-emits-object.vue");
+        const filepath = fixture("OptionsEmitsObject.vue");
         const result = await translateAPI(filepath);
         expect(result.events).toEqual([
             {
@@ -271,7 +271,7 @@ describe("options API", () => {
 
     it("should parse slots", async () => {
         expect.assertions(1);
-        const filepath = fixture("options-slots.vue");
+        const filepath = fixture("OptionsSlots.vue");
         const result = await translateAPI(filepath);
         expect(result.slots).toEqual([
             {
@@ -311,11 +311,11 @@ describe("options API", () => {
 describe("composition API", () => {
     it("should parse dummy javascript component", async () => {
         expect.assertions(1);
-        const filepath = fixture("composition-dummy-js.vue");
+        const filepath = fixture("CompositionDummyJs.vue");
         const result = await translateAPI(filepath);
         expect(result).toEqual({
-            name: "composition-dummy-js",
-            slug: "composition-dummy-js",
+            name: "CompositionDummyJs",
+            slug: "compositiondummyjs",
             models: [],
             events: [],
             props: [],
@@ -325,11 +325,11 @@ describe("composition API", () => {
 
     it("should parse dummy typescript component", async () => {
         expect.assertions(1);
-        const filepath = fixture("composition-dummy-ts.vue");
+        const filepath = fixture("CompositionDummyTs.vue");
         const result = await translateAPI(filepath);
         expect(result).toEqual({
-            name: "composition-dummy-ts",
-            slug: "composition-dummy-ts",
+            name: "CompositionDummyTs",
+            slug: "compositiondummyts",
             models: [],
             events: [],
             props: [],
@@ -339,7 +339,7 @@ describe("composition API", () => {
 
     it("should handle v-model with update event", async () => {
         expect.assertions(3);
-        const filepath = fixture("composition-vmodel-emit.vue");
+        const filepath = fixture("CompositionVmodelEmit.vue");
         const result = await translateAPI(filepath);
         expect(result.models).toEqual([
             {
@@ -357,7 +357,7 @@ describe("composition API", () => {
 
     it("should handle multiple v-model", async () => {
         expect.assertions(3);
-        const filepath = fixture("options-vmodel-multiple.vue");
+        const filepath = fixture("OptionsVmodelMultiple.vue");
         const result = await translateAPI(filepath);
         expect(result.models).toEqual([
             {
@@ -384,7 +384,7 @@ describe("composition API", () => {
     /* eslint-disable-next-line jest/no-disabled-tests -- vue-docgen-api fails to recognize this */
     it.skip("should handle v-model with `defineModel`", async () => {
         expect.assertions(3);
-        const filepath = fixture("composition-vmodel-define.vue");
+        const filepath = fixture("CompositionVmodelDefine.vue");
         const result = await translateAPI(filepath);
         expect(result.models).toEqual([
             {
@@ -402,7 +402,7 @@ describe("composition API", () => {
 
     it("should parse object props", async () => {
         expect.assertions(1);
-        const filepath = fixture("composition-props-object.vue");
+        const filepath = fixture("CompositionPropsObject.vue");
         const result = await translateAPI(filepath);
         expect(result.props).toEqual([
             {
@@ -442,7 +442,7 @@ describe("composition API", () => {
 
     it("should parse type props", async () => {
         expect.assertions(1);
-        const filepath = fixture("composition-props-type.vue");
+        const filepath = fixture("CompositionPropsType.vue");
         const result = await translateAPI(filepath);
         expect(result.props).toEqual([
             {
@@ -482,7 +482,7 @@ describe("composition API", () => {
 
     it("should parse type props with interface", async () => {
         expect.assertions(1);
-        const filepath = fixture("composition-props-interface.vue");
+        const filepath = fixture("CompositionPropsInterface.vue");
         const result = await translateAPI(filepath);
         expect(result.props).toEqual([
             {
@@ -522,7 +522,7 @@ describe("composition API", () => {
 
     it("should parse array props", async () => {
         expect.assertions(1);
-        const filepath = fixture("composition-props-array.vue");
+        const filepath = fixture("CompositionPropsArray.vue");
         const result = await translateAPI(filepath);
         expect(result.props).toEqual([
             {
@@ -570,7 +570,7 @@ describe("composition API", () => {
 
     it("should parse tuple props", async () => {
         expect.assertions(1);
-        const filepath = fixture("composition-props-tuple.vue");
+        const filepath = fixture("CompositionPropsTuple.vue");
         const result = await translateAPI(filepath);
         expect(result.props).toEqual([
             {
@@ -602,7 +602,7 @@ describe("composition API", () => {
 
     it("should parse union props", async () => {
         expect.assertions(1);
-        const filepath = fixture("composition-props-union.vue");
+        const filepath = fixture("CompositionPropsUnion.vue");
         const result = await translateAPI(filepath);
         expect(result.props).toEqual([
             {
@@ -635,7 +635,7 @@ describe("composition API", () => {
     /* eslint-disable-next-line jest/no-disabled-tests -- known bug */
     it.skip("should parse enum prop", async () => {
         expect.assertions(1);
-        const filepath = fixture("composition-props-enum.vue");
+        const filepath = fixture("CompositionPropsEnum.vue");
         const result = await translateAPI(filepath);
         expect(result.props).toEqual([
             {
@@ -651,7 +651,7 @@ describe("composition API", () => {
 
     it("should parse type props with defaults", async () => {
         expect.assertions(1);
-        const filepath = fixture("composition-props-defaults.vue");
+        const filepath = fixture("CompositionPropsDefaults.vue");
         const result = await translateAPI(filepath);
         expect(result.props).toEqual([
             {
@@ -684,7 +684,7 @@ describe("composition API", () => {
     /* eslint-disable-next-line jest/no-disabled-tests -- vue-docgen-api fails to recognize this */
     it.skip("should parse type props with props destructuring", async () => {
         expect.assertions(1);
-        const filepath = fixture("composition-props-destructuring.vue");
+        const filepath = fixture("CompositionPropsDestructuring.vue");
         const result = await translateAPI(filepath);
         expect(result.props).toEqual([
             {
@@ -716,7 +716,7 @@ describe("composition API", () => {
 
     it("should parse events (string)", async () => {
         expect.assertions(1);
-        const filepath = fixture("composition-emits-string.vue");
+        const filepath = fixture("CompositionEmitsString.vue");
         const result = await translateAPI(filepath);
         expect(result.events).toEqual([
             {
@@ -743,7 +743,7 @@ describe("composition API", () => {
     /* eslint-disable-next-line jest/no-disabled-tests -- vue-docgen-api fails to recognize this */
     it.skip("should parse events (object)", async () => {
         expect.assertions(1);
-        const filepath = fixture("composition-emits-object.vue");
+        const filepath = fixture("CompositionEmitsObject.vue");
         const result = await translateAPI(filepath);
         expect(result.events).toEqual([
             {
@@ -769,7 +769,7 @@ describe("composition API", () => {
 
     it("should parse events (type)", async () => {
         expect.assertions(1);
-        const filepath = fixture("composition-emits-type.vue");
+        const filepath = fixture("CompositionEmitsType.vue");
         const result = await translateAPI(filepath);
         expect(result.events).toEqual([
             {
@@ -801,7 +801,7 @@ describe("composition API", () => {
 
     it("should parse events (interface)", async () => {
         expect.assertions(1);
-        const filepath = fixture("composition-emits-interface.vue");
+        const filepath = fixture("CompositionEmitsInterface.vue");
         const result = await translateAPI(filepath);
         expect(result.events).toEqual([
             {
@@ -833,7 +833,7 @@ describe("composition API", () => {
 
     it("should parse slots (template)", async () => {
         expect.assertions(1);
-        const filepath = fixture("composition-slots-template.vue");
+        const filepath = fixture("CompositionSlotsTemplate.vue");
         const result = await translateAPI(filepath);
         expect(result.slots).toEqual([
             {
@@ -871,7 +871,7 @@ describe("composition API", () => {
 
     it("should parse slots (defineSlots)", async () => {
         expect.assertions(1);
-        const filepath = fixture("composition-slots-defineslots.vue");
+        const filepath = fixture("CompositionSlotsDefineslots.vue");
         const result = await translateAPI(filepath);
         expect(result.slots).toEqual([
             {
@@ -909,7 +909,7 @@ describe("composition API", () => {
 
 it("should handle @ignore", async () => {
     expect.assertions(3);
-    const filepath = fixture("ignore.vue");
+    const filepath = fixture("Ignore.vue");
     const result = await translateAPI(filepath);
     expect(result.props).toEqual([
         {
