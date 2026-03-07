@@ -41,9 +41,13 @@ function getDescription(node: CommentBlock | null | undefined): string | null {
     if (!text.startsWith("*")) {
         return null;
     }
-    return node.value
-        .replaceAll(/^\s*\*\s/gm, "") // removes leading whitespace and *
-        .replaceAll(/\s+$/gm, ""); // removes trailing whitespace
+    return (
+        node.value
+            /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
+            .replaceAll(/^\s*\*\s/gm, "") // removes leading whitespace and *
+            /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
+            .replaceAll(/\s+$/gm, "") // removes trailing whitespace
+    );
 }
 
 /**

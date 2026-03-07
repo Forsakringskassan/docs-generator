@@ -5,6 +5,7 @@ const replacements = {
 };
 
 function findVersion(text: string): [number, number, number] | null {
+    /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
     const match = /(\d+)\.(\d+)\.(\d+) \(\d+-\d+-\d+\)/.exec(text);
     if (match) {
         return [
@@ -27,14 +28,17 @@ export function generateId(text: string): string {
     if (version) {
         return `v${version.join("-")}`;
     }
-    return text
-        .toLowerCase()
-        .trim()
-        .replaceAll(
-            /[äåö]/g,
-            (m) => replacements[m as keyof typeof replacements],
-        ) // åäö to aao
-        .replaceAll(/[^\da-z]+/g, "_") // non-alphanum to dashes
-        .replace(/^_+/, "") // remove leading dashes
-        .replace(/_+$/, ""); // remove trailing dashes
+    return (
+        text
+            .toLowerCase()
+            .trim()
+            .replaceAll(
+                /[äåö]/g,
+                (m) => replacements[m as keyof typeof replacements],
+            ) // åäö to aao
+            .replaceAll(/[^\da-z]+/g, "_") // non-alphanum to dashes
+            .replace(/^_+/, "") // remove leading dashes
+            /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
+            .replace(/_+$/, "") // remove trailing dashes
+    );
 }
