@@ -279,7 +279,7 @@ if (toggle && navigation) {
         previousPath = location.pathname;
     });
 
-    document.head.appendChild(variableBlock);
+    document.head.append(variableBlock);
     updateSidenavHeight(navigation);
     window.addEventListener("scroll", () => {
         updateSidenavHeight(navigation);

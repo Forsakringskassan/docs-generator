@@ -116,12 +116,12 @@ function updateVersionList(element: Element | null, versions: string[]): void {
         const a = item.querySelector("a")!;
         a.href = getUrl(document, `../${version}`);
         a.textContent = version;
-        ul.appendChild(item);
+        ul.append(item);
     }
     /* eslint-enable @typescript-eslint/no-non-null-assertion */
 
     element.innerHTML = "";
-    element.appendChild(ul);
+    element.append(ul);
 }
 
 function setErrorMessage(element: Element | null): void {
@@ -131,7 +131,7 @@ function setErrorMessage(element: Element | null): void {
     const p = document.createElement("p");
     p.innerText = "Det gick inte att hitta några tidigare versioner!";
     element.innerHTML = "";
-    element.appendChild(p);
+    element.append(p);
 }
 
 /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */

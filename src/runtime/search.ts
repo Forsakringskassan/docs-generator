@@ -166,12 +166,12 @@ function setup(): void {
             a.classList.add("list__item__itempane");
             li.classList.add("list__item");
             li.classList.toggle("list__item--active", i === active);
-            li.appendChild(a);
-            ul.appendChild(li);
+            li.append(a);
+            ul.append(li);
         }
 
         results.innerHTML = "";
-        results.appendChild(ul);
+        results.append(ul);
     }
 
     function clickOutside(event: MouseEvent): void {
