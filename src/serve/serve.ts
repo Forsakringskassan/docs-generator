@@ -1,4 +1,4 @@
-import { type AddressInfo } from "net";
+import { type AddressInfo } from "node:net";
 import path from "node:path/posix";
 import { watch } from "chokidar";
 import tinylr from "tiny-lr";
