@@ -23,7 +23,7 @@ export function tableOfContents(
     const options = {
         root: null,
         rootMargin: "0px 0px -80%",
-        threshold: 1.0,
+        threshold: 1,
     };
 
     const observer = new IntersectionObserver(visibilityChange, options);
