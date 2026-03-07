@@ -64,7 +64,7 @@ export async function navigationFileReader(
     filePath: string,
     basePath?: string,
 ): Promise<DocumentPage[]> {
-    const content = await fs.readFile(filePath, "utf-8");
+    const content = await fs.readFile(filePath, "utf8");
     const doc = parseFile(filePath, basePath, content);
     return [doc];
 }

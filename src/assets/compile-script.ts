@@ -72,7 +72,7 @@ export async function compileScript(
                 ...buildOptions.define,
             },
         });
-        const content = await fs.readFile(outfile, "utf-8");
+        const content = await fs.readFile(outfile, "utf8");
         const fingerprint = getFingerprint(content);
         const integrity = getIntegrity(content);
         const filename = `${name}-${fingerprint}.js`;

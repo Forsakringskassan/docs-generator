@@ -18,7 +18,7 @@ import {
 } from "./dist/index.mjs";
 import config from "./docs.config.mjs";
 
-const pkg = JSON.parse(await fs.readFile("./package.json", "utf-8"));
+const pkg = JSON.parse(await fs.readFile("./package.json", "utf8"));
 
 const docs = new Generator(import.meta.url, {
     site: {
@@ -106,5 +106,5 @@ if (!isCI) {
         null,
         2,
     );
-    await fs.writeFile("public/versions.json", versions, "utf-8");
+    await fs.writeFile("public/versions.json", versions, "utf8");
 }

@@ -30,7 +30,7 @@ export async function compileVendor(
     const outfile = `temp/vendor-${slug}.out.js`;
     const tmpfile = `temp/vendor-${slug}.in.js`;
     const source = getAssetSource(vendor);
-    await fs.writeFile(tmpfile, source, "utf-8");
+    await fs.writeFile(tmpfile, source, "utf8");
     await esbuild.build({
         entryPoints: [tmpfile],
         outfile,
@@ -47,7 +47,7 @@ export async function compileVendor(
         alias: vendor.alias ? { [vendor.package]: vendor.alias } : undefined,
         ...options,
     });
-    const content = await fs.readFile(outfile, "utf-8");
+    const content = await fs.readFile(outfile, "utf8");
     const fingerprint = getFingerprint(content);
     const integrity = getIntegrity(content);
     const filename = `vendor-${slug}-${fingerprint}.js`;

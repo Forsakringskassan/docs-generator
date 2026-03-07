@@ -12,7 +12,7 @@ function readFixture(filename: string): ExampleOptions {
         });
     const fingerprint = "123456";
     const setupPath = "/path/to/setup.ts";
-    const fixture = fs.readFileSync(path.join(fixturePath, filename), "utf-8");
+    const fixture = fs.readFileSync(path.join(fixturePath, filename), "utf8");
     return {
         filename,
         slug,

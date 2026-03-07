@@ -30,7 +30,7 @@ export function generateExample(options: ExampleOptions): ExampleResult {
         const filename = fileMatcher(parsed.filename, "when importing example");
         const language = parsed.extension;
         const comments = parsed.comments;
-        const content = fs.readFileSync(filename, "utf-8");
+        const content = fs.readFileSync(filename, "utf8");
         const example = generateExample({
             ...options,
             source: content,

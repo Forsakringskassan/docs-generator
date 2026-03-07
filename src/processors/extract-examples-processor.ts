@@ -147,7 +147,7 @@ export function extractExamplesProcessor(
                     const extension = getExtension(example.language);
                     const filename = `example-${example.name ?? String(n++)}${suffix}.${extension}`;
                     const filePath = path.join(dir, filename);
-                    await fs.writeFile(filePath, example.content, "utf-8");
+                    await fs.writeFile(filePath, example.content, "utf8");
                     total++;
                 }
             }

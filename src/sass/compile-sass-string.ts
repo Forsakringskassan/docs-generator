@@ -17,5 +17,5 @@ export async function compileSassString(
         importers: [new NodePackageImporter(), moduleImporter],
     });
     await fs.mkdir(path.dirname(dst), { recursive: true });
-    await fs.writeFile(dst, result.css, "utf-8");
+    await fs.writeFile(dst, result.css, "utf8");
 }
