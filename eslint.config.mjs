@@ -101,7 +101,6 @@ export default [
         name: "local/technical-debt",
         rules: {
             "sonarjs/slow-regex": "off",
-            "unicorn/consistent-existence-index-check": "off",
             "unicorn/consistent-function-scoping": "off",
             "unicorn/custom-error-definition": "off",
             "unicorn/explicit-length-check": "off",

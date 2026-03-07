@@ -37,7 +37,7 @@ export function findLocation(
     const yaml = match[1];
     const lines = yaml.split("\n");
     const index = lines.findIndex((it) => it.startsWith(`${attr}:`)); // this makes horrible assumptions and will break
-    if (index < 0) {
+    if (index === -1) {
         return null;
     }
 
