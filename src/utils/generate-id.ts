@@ -8,9 +8,9 @@ function findVersion(text: string): [number, number, number] | null {
     const match = /(\d+)\.(\d+)\.(\d+) \(\d+-\d+-\d+\)/.exec(text);
     if (match) {
         return [
-            parseInt(match[1], 10),
-            parseInt(match[2], 10),
-            parseInt(match[3], 10),
+            Number.parseInt(match[1], 10),
+            Number.parseInt(match[2], 10),
+            Number.parseInt(match[3], 10),
         ];
     } else {
         return null;

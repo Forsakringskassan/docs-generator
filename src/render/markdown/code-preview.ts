@@ -95,7 +95,7 @@ export function codePreview(
             );
             const b = ensureTrailingNewline(transformCode(content, language));
             const diff = createTwoFilesPatch("a", "b", a, b, "", "", {
-                context: context ? parseInt(context, 10) : 3,
+                context: context ? Number.parseInt(context, 10) : 3,
                 ignoreWhitespace: true,
             })
                 .split("\n")
