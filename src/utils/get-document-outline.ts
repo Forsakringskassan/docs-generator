@@ -43,7 +43,11 @@ export function getDocumentOutline(
      * first heading is always inserted as a child to this virtal heading.*/
     const root = { title: "", rank: 0, anchor: "", subheadings: [] };
     const stack: DocumentOutlineEntry[] = [root];
-    const top = (): DocumentOutlineEntry => stack[stack.length - 1];
+
+    /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion --
+     * "should" never be undefined, if it is let it crash so the underlying
+     * cause can be fixed instead */
+    const top = (): DocumentOutlineEntry => stack.at(-1)!;
 
     for (const entry of entries) {
         const heading: DocumentOutlineEntry = {
