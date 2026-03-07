@@ -129,7 +129,7 @@ function setErrorMessage(element: Element | null): void {
         return;
     }
     const p = document.createElement("p");
-    p.innerText = "Det gick inte att hitta några tidigare versioner!";
+    p.textContent = "Det gick inte att hitta några tidigare versioner!";
     element.innerHTML = "";
     element.append(p);
 }

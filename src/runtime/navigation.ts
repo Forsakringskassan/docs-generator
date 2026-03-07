@@ -239,7 +239,7 @@ function updateSidenavHeight(navigation: HTMLElement): void {
         }
         return 0;
     })();
-    variableBlock.innerText = /* CSS */ `
+    variableBlock.textContent = /* CSS */ `
         #sidenav {
             --header-footer-visible-height: ${String(offset)}px;
         }
