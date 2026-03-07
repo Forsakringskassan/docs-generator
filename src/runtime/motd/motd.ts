@@ -29,6 +29,9 @@ export function showMessage(
         const key = element.dataset.bind!; // eslint-disable-line @typescript-eslint/no-non-null-assertion -- querySelector guarantees attribute will be present
         const value = bindings[key] ?? "";
         element.innerHTML = value;
+        /* eslint-disable-next-line unicorn/prefer-dom-node-dataset -- we
+         * explicitly want to remove the attribute from DOM, mostly to aid
+         * debugging with devtools */
         element.removeAttribute("data-bind");
     }
     if (message.preprocess) {
