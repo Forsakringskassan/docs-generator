@@ -35,7 +35,7 @@ function cutSnippets(code: string): string {
         .map((it, index, lines) => (index < lines.length - 1 ? `${it}\n` : it));
     const directive =
         /* eslint-disable-next-line sonarjs/regex-complexity -- not to bad for a regexp */
-        /(?:\/\* +--- +cut (?<js>above|below|begin|end) +--- +\*\/|<!---? +cut (?<html>above|below|begin|end) +---?>)/;
+        /\/\* +--- +cut (?<js>above|below|begin|end) +--- +\*\/|<!---? +cut (?<html>above|below|begin|end) +---?>/;
 
     let buffer = -1;
     lines.forEach((line, index) => {
@@ -100,12 +100,12 @@ function stripEslintComments(code: string): string {
     /* matches an eslint comment occupying the whole line (entire line including
      * newline is removed) */
     const matchLine =
-        /^[ \t]*(\/\* eslint-disable[^*]*\*\/|\/\/ eslint-disable.*)\n/gm;
+        /^[\t ]*(\/\* eslint-disable[^*]*\*\/|\/\/ eslint-disable.*)\n/gm;
 
     /* matches an eslint comment embedded with other statements (only the
      * commend and whitespace before it is removed) */
     const matchEmbedded =
-        /[ \t]*(\/\* eslint-disable[^*]*\*\/|\/\/ eslint-disable.*)/g;
+        /[\t ]*(\/\* eslint-disable[^*]*\*\/|\/\/ eslint-disable.*)/g;
 
     return code.replace(matchLine, "").replace(matchEmbedded, "");
 }
@@ -113,11 +113,11 @@ function stripEslintComments(code: string): string {
 function stripHtmlValidateComments(code: string): string {
     /* matches an html-validate comment occupying the whole line (entire line
      * including newline is removed) */
-    const matchLine = /^[ \t]*(<!--\s*\[html-validate-[^\]]+]\s*-->)\n/gm;
+    const matchLine = /^[\t ]*(<!--\s*\[html-validate-[^\]]+]\s*-->)\n/gm;
 
     /* matches an html-validate comment embedded with other elements (only the
      * commend and whitespace before it is removed) */
-    const matchEmbedded = /[ \t]*(<!--\s*\[html-validate-[^\]]+]\s*-->)/g;
+    const matchEmbedded = /[\t ]*(<!--\s*\[html-validate-[^\]]+]\s*-->)/g;
 
     return code.replace(matchLine, "").replace(matchEmbedded, "");
 }

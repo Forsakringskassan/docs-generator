@@ -30,7 +30,7 @@ export interface ExampleResult {
     output: string | false;
 }
 
-const HTML_ESCAPE_REPLACE_RE = /[&<>"]/g;
+const HTML_ESCAPE_REPLACE_RE = /["&<>]/g;
 const HTML_REPLACEMENTS: Record<string, string> = {
     "&": "&amp;",
     "<": "&lt;",

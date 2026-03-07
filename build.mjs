@@ -148,7 +148,7 @@ async function build() {
             ``,
         ].join("\n"),
         manualChunks(id) {
-            const fullPath = id.replace(/[?].*/, "").replace("\x00", "");
+            const fullPath = id.replace(/\?.*/, "").replace("\x00", "");
             const base = nativePath
                 .relative(rootDir, fullPath)
                 .replace(/\\/g, "/");

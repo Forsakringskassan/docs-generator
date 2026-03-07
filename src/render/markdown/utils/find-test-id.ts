@@ -8,7 +8,7 @@ export function findTestId(tags: string[]): string | null {
     const tag = tags.find((it) => {
         return it.startsWith(prefix);
     });
-    const match = tag?.match(/^test-id=(?:"([^"]+)"|'([^']+)'|([^'"]+))$/);
+    const match = tag?.match(/^test-id=(?:"([^"]+)"|'([^']+)'|([^"']+))$/);
     if (!match) {
         return null;
     }

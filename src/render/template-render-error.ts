@@ -1,5 +1,4 @@
-/* eslint-disable-next-line sonarjs/single-char-in-character-classes -- technically the ) does not need to be escaped but is used for consistency here */
-const messageRegex = /^[(][^)]+[)] \[Line \d+, Column \d+\]\n\s+Error: (.*)$/;
+const messageRegex = /^\([^)]+\) \[Line \d+, Column \d+]\n\s+Error: (.*)$/;
 
 /**
  * Extracts the actual error message from a nunjucks render error.

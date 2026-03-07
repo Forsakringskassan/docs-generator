@@ -74,7 +74,7 @@ function getEventDeprecated(
  * - `Array<{ inline: "interface" }>`
  */
 function isSimpleName(name: string): boolean {
-    return /^[a-z0-9]+$/i.test(name);
+    return /^[\da-z]+$/i.test(name);
 }
 
 /**

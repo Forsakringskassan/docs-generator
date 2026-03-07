@@ -1,6 +1,6 @@
 import hljs from "highlight.js/lib/common";
 
-const HTML_ESCAPE_REPLACE_RE = /[&<>"]/g;
+const HTML_ESCAPE_REPLACE_RE = /["&<>]/g;
 const HTML_REPLACEMENTS: Record<string, string> = {
     "&": "&amp;",
     "<": "&lt;",

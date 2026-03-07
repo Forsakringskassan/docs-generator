@@ -23,7 +23,7 @@ export function getRepositoryUrl(
     }
 
     /* strip out "git+" prefix if present */
-    value = value.replace(/^git[+]/, "");
+    value = value.replace(/^git\+/, "");
 
     /* convert ssh://user@host:org/repo to https://host/org/repo */
     const ssh = RE_MATCH_SSH.exec(value);
@@ -34,7 +34,7 @@ export function getRepositoryUrl(
     }
 
     /* strip out ".git" suffix if present */
-    value = value.replace(/[.]git$/, "");
+    value = value.replace(/\.git$/, "");
 
     return value;
 }

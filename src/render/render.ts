@@ -260,7 +260,7 @@ export async function render(
         site: options.site,
         doc,
         get layoutClass() {
-            return `layout--${doc.template.replace(/[.]/g, "--")}`;
+            return `layout--${doc.template.replace(/\./g, "--")}`;
         },
         topnav,
         rootUrl(doc: DocumentPage) {
@@ -406,7 +406,7 @@ export async function render(
         throw new Error(`${prefix}: ${message}`, { cause: err });
     }
 
-    const expandedDst = dst.replace(/\[([^]+)\]/g, (match, key) => {
+    const expandedDst = dst.replace(/\[([^]+)]/g, (match, key) => {
         if (key === "hash") {
             return getFingerprint(doc.body);
         } else {
