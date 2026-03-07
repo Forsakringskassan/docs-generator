@@ -56,6 +56,7 @@ class ManifestError extends Error {
 
     public constructor(filename: string) {
         super(`Documentation manifest "${filename}" is not up-to-date!`);
+        this.name = "ManifestError";
         this.filename = filename;
     }
 

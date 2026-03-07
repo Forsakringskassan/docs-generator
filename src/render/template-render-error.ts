@@ -25,7 +25,7 @@ export class TemplateRenderError extends Error {
 
     public constructor(message: string, filename: string) {
         super(getActualMessage(message));
-        this.name = "RenderError";
+        this.name = "TemplateRenderError";
         this.filename = filename;
     }
 
