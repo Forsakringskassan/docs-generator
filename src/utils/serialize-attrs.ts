@@ -10,7 +10,7 @@ export type AttributeValue =
 export type AttributeTable = Record<string, AttributeValue>;
 
 function quote(text: string | number): string {
-    return String(text).replace(/"/g, "&quot;");
+    return String(text).replaceAll('"', "&quot;");
 }
 
 function* serializeAttr(key: string, value: AttributeValue): Generator<string> {

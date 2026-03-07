@@ -50,8 +50,8 @@ async function cssVariablesFileReader(filePath) {
     });
     const doc = {
         kind: "partial",
-        id: `fs:${filePath.replace(/\\/g, "/")}`,
-        name: `css-variables:${filePath.replace(/\\/g, "/")}`,
+        id: `fs:${filePath.replaceAll("\\", "/")}`,
+        name: `css-variables:${filePath.replaceAll("\\", "/")}`,
         alias: [],
         body: groups.join("\n\n"),
         format: "markdown",

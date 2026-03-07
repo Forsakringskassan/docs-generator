@@ -243,7 +243,7 @@ function createContext(
 
         addResource(dst: string, src: string): void {
             resources.push({
-                from: src.replace(/\\/g, "/"),
+                from: src.replaceAll("\\", "/"),
                 to: dst,
             });
         },
@@ -366,7 +366,7 @@ export class Generator {
         this.templateFolders = options.templateFolders ?? [];
         this.processors = options.processors ?? [];
         this.vendor = options.vendor ?? [];
-        this.setupPath = options.setupPath.replace(/\\/g, "/");
+        this.setupPath = options.setupPath.replaceAll("\\", "/");
         this.scripts = [];
         this.styles = [];
         this.resources = [];
@@ -434,7 +434,7 @@ export class Generator {
      */
     public copyResource(dst: string, src: string): void {
         this.resources.push({
-            from: src.replace(/\\/g, "/"),
+            from: src.replaceAll("\\", "/"),
             to: dst,
         });
     }

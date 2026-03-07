@@ -63,5 +63,5 @@ function renderNode(docNode: DocNode | undefined): string {
 function formatMarkdownLists(text: string): string {
     /* API Extractor condenses lists to `"- foo - bar - baz"`, this restores the
      * lists to proper markdown lists again */
-    return text.replace(/(\S)[^\S\n]+([*-])[^\S\n]+/g, "$1\n$2 ");
+    return text.replaceAll(/(\S)[^\S\n]+([*-])[^\S\n]+/g, "$1\n$2 ");
 }

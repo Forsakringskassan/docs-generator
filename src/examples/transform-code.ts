@@ -107,7 +107,7 @@ function stripEslintComments(code: string): string {
     const matchEmbedded =
         /[\t ]*(\/\* eslint-disable[^*]*\*\/|\/\/ eslint-disable.*)/g;
 
-    return code.replace(matchLine, "").replace(matchEmbedded, "");
+    return code.replaceAll(matchLine, "").replaceAll(matchEmbedded, "");
 }
 
 function stripHtmlValidateComments(code: string): string {
@@ -119,7 +119,7 @@ function stripHtmlValidateComments(code: string): string {
      * commend and whitespace before it is removed) */
     const matchEmbedded = /[\t ]*(<!--\s*\[html-validate-[^\]]+]\s*-->)/g;
 
-    return code.replace(matchLine, "").replace(matchEmbedded, "");
+    return code.replaceAll(matchLine, "").replaceAll(matchEmbedded, "");
 }
 
 function maybeDedent(value: string): string {

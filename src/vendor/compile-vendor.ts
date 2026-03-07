@@ -8,7 +8,7 @@ import { type NormalizedVendorDefinition } from "./vendor-definition";
 
 export function getAssetSource(asset: NormalizedVendorDefinition): string {
     const lines = [];
-    const pkg = asset.package.replace(/\\/g, "/");
+    const pkg = asset.package.replaceAll("\\", "/");
 
     lines.push(`export * from "${pkg}";`);
 
@@ -51,7 +51,7 @@ export async function compileVendor(
     const fingerprint = getFingerprint(content);
     const integrity = getIntegrity(content);
     const filename = `vendor-${slug}-${fingerprint}.js`;
-    const dst = path.join(assetFolder, filename).replace(/\\/g, "/");
+    const dst = path.join(assetFolder, filename).replaceAll("\\", "/");
     await fs.rename(outfile, dst);
     const stat = await fs.stat(dst);
     return {

@@ -42,8 +42,8 @@ function getDescription(node: CommentBlock | null | undefined): string | null {
         return null;
     }
     return node.value
-        .replace(/^\s*\*\s/gm, "") // removes leading whitespace and *
-        .replace(/\s+$/gm, ""); // removes trailing whitespace
+        .replaceAll(/^\s*\*\s/gm, "") // removes leading whitespace and *
+        .replaceAll(/\s+$/gm, ""); // removes trailing whitespace
 }
 
 /**

@@ -44,10 +44,10 @@ export function isNavigationSection(
 
 function pathFromDoc({ fileInfo }: DocumentPage): [string, boolean] {
     if (fileInfo.name === "index") {
-        return [fileInfo.path.replace(/\\/g, "/"), true];
+        return [fileInfo.path.replaceAll("\\", "/"), true];
     } else {
         return [
-            `./${path.join(fileInfo.path, fileInfo.name).replace(/\\/g, "/")}`,
+            `./${path.join(fileInfo.path, fileInfo.name).replaceAll("\\", "/")}`,
             false,
         ];
     }

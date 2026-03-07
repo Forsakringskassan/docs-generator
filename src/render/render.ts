@@ -218,7 +218,7 @@ export function createTemplateLoader(folders: string[]): TemplateLoader {
 }
 
 function stripPrettierComments(content: string): string {
-    return content.replace(/\s*<!-- prettier-ignore -->\s*/gm, "");
+    return content.replaceAll(/\s*<!-- prettier-ignore -->\s*/gm, "");
 }
 
 /**
@@ -260,7 +260,7 @@ export async function render(
         site: options.site,
         doc,
         get layoutClass() {
-            return `layout--${doc.template.replace(/\./g, "--")}`;
+            return `layout--${doc.template.replaceAll(".", "--")}`;
         },
         topnav,
         rootUrl(doc: DocumentPage) {
@@ -406,7 +406,7 @@ export async function render(
         throw new Error(`${prefix}: ${message}`, { cause: err });
     }
 
-    const expandedDst = dst.replace(/\[([^]+)]/g, (match, key) => {
+    const expandedDst = dst.replaceAll(/\[([^]+)]/g, (match, key) => {
         if (key === "hash") {
             return getFingerprint(doc.body);
         } else {

@@ -138,7 +138,7 @@ export function parseFile(
 
     return {
         kind: "page",
-        id: `fs:${filePath.replace(/\\/g, "/")}`,
+        id: `fs:${filePath.replaceAll("\\", "/")}`,
         name,
         alias: Array.from(getDocumentAlias(attributes)),
         visible: attributes.visible ?? true,
