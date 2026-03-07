@@ -19,13 +19,6 @@ function byPriority({ options: a }: JSAsset, { options: b }: JSAsset): number {
     return b.priority - a.priority;
 }
 
-/**
- * Cannot use Array.toSorted(..) until NodeJS 20.
- */
-function toSorted<T>(values: T[], comparator: (a: T, b: T) => number): T[] {
-    return [...values].sort(comparator);
-}
-
 function isExternal(asset: JSAsset): boolean {
     return asset.options.appendTo === "none";
 }
@@ -46,7 +39,7 @@ export function jsAssetProcessor(
             const assetInfo = context.getTemplateData("assets", {});
             const head = context.getTemplateData("injectHead", []);
             const body = context.getTemplateData("injectBody", []);
-            for (const asset of toSorted(assets, byPriority)) {
+            for (const asset of assets.toSorted(byPriority)) {
                 const info = await compileScript({
                     assetFolder,
                     name: asset.name,
