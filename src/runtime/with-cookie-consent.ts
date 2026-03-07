@@ -1,5 +1,11 @@
 import { onContentReady } from "./on-content-ready";
 
+function hasCookie(name: string): boolean {
+    return document.cookie
+        .split("; ")
+        .some((row) => row.startsWith(`${name}=`));
+}
+
 /**
  * Executes callback when cookie consent is given.
  *
@@ -8,12 +14,6 @@ import { onContentReady } from "./on-content-ready";
  * @internal
  */
 export function withCookieConsent(callback: () => void): void {
-    function hasCookie(name: string): boolean {
-        return document.cookie
-            .split("; ")
-            .some((row) => row.startsWith(`${name}=`));
-    }
-
     onContentReady(() => {
         if (!document.querySelector(".cookie-warning")) {
             callback();

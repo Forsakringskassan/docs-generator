@@ -33,8 +33,12 @@ function resolveText(subject: Cypress.JQueryWithSelector): string | string[] {
     return text.length === 1 ? text[0] : text.toArray();
 }
 
+const resolveTextFactory = (
+    subject: Cypress.JQueryWithSelector,
+): string | string[] => resolveText(subject);
+
 Cypress.Commands.addQuery("text", () => {
-    return (subject) => resolveText(subject);
+    return resolveTextFactory;
 });
 
 export {};

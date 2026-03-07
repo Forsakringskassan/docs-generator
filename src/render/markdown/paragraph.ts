@@ -1,11 +1,11 @@
 import type MarkdownIt from "markdown-it";
 
-export function paragraph(): (md: MarkdownIt) => void {
-    const renderToken: MarkdownIt.Renderer.RenderRule = (...args) => {
-        const [tokens, idx, options, , self] = args;
-        return self.renderToken(tokens, idx, options);
-    };
+const renderToken: MarkdownIt.Renderer.RenderRule = (...args) => {
+    const [tokens, idx, options, , self] = args;
+    return self.renderToken(tokens, idx, options);
+};
 
+export function paragraph(): (md: MarkdownIt) => void {
     return function (md: MarkdownIt): void {
         /* eslint-disable camelcase -- property is defined in upstream library */
         const renderRule = md.renderer.rules.paragraph_open ?? renderToken;

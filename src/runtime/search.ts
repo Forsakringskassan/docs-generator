@@ -27,6 +27,28 @@ function isMoreSpecific(a: SearchResult, b: SearchResult | null): boolean {
     }
     return a.matchType === "title" && b.matchType === "term";
 }
+function updateActive(items: HTMLElement[], active: number): void {
+    items.forEach((item, index) => {
+        item.classList.toggle("list__item--active", index === active);
+    });
+
+    const item = items[active];
+    scrollIntoView(item, {
+        scrollMode: "if-needed",
+        block: "nearest",
+        inline: "nearest",
+    });
+}
+
+function isOutside(rect: DOMRect, point: { x: number; y: number }): boolean {
+    if (point.y < rect.top || point.y > rect.top + rect.height) {
+        return true;
+    }
+    if (point.x < rect.left || point.x > rect.left + rect.width) {
+        return true;
+    }
+    return false;
+}
 
 function setup(): void {
     const searchData = document.querySelector("#search-data");
@@ -147,32 +169,6 @@ function setup(): void {
 
         results.innerHTML = "";
         results.appendChild(ul);
-    }
-
-    function updateActive(items: HTMLElement[], active: number): void {
-        items.forEach((item, index) => {
-            item.classList.toggle("list__item--active", index === active);
-        });
-
-        const item = items[active];
-        scrollIntoView(item, {
-            scrollMode: "if-needed",
-            block: "nearest",
-            inline: "nearest",
-        });
-    }
-
-    function isOutside(
-        rect: DOMRect,
-        point: { x: number; y: number },
-    ): boolean {
-        if (point.y < rect.top || point.y > rect.top + rect.height) {
-            return true;
-        }
-        if (point.x < rect.left || point.x > rect.left + rect.width) {
-            return true;
-        }
-        return false;
     }
 
     function clickOutside(event: MouseEvent): void {
