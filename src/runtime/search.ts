@@ -151,8 +151,10 @@ function setup(): void {
         const ul = document.createElement("ul");
         ul.classList.add("list");
 
-        for (let i = 0; i < searchResults.length; i++) {
-            const { matchType, highlighted, doc } = searchResults[i];
+        for (const [
+            i,
+            { matchType, highlighted, doc },
+        ] of searchResults.entries()) {
             const li = document.createElement("li");
             const a = document.createElement("a");
             if (matchType === "term") {

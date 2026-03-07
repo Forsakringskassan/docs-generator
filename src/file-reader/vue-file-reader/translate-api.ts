@@ -191,8 +191,7 @@ function translateEventProperties(event: EventDescriptor): Array<{
         description: string | null;
     }> = [];
 
-    for (let i = 0; i < properties.length; i++) {
-        const property = properties[i];
+    for (const [i, property] of properties.entries()) {
         const name = property.name ?? "<anonymous>";
         const eventType = types[i];
         const hasEventType = Boolean(eventType) && eventType !== "undefined";
