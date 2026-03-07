@@ -99,9 +99,9 @@ function calculateVisibility(refs: Refs): void {
     let overflowIndex = menuItems.findIndex((it) => hasOverflow(refs.nav, it));
 
     if (overflowIndex === -1) {
-        refs.itemPairs.forEach((it) => {
+        for (const it of refs.itemPairs) {
             setMenuItemVisibility(it, true);
-        });
+        }
         refs.moreItem.style.visibility = "hidden";
         setPopoverVisibility(false, refs);
         return;
@@ -117,9 +117,9 @@ function calculateVisibility(refs: Refs): void {
         overflowIndex--;
     }
 
-    refs.itemPairs.forEach((it, index) => {
+    for (const [index, it] of refs.itemPairs.entries()) {
         setMenuItemVisibility(it, index < overflowIndex);
-    });
+    }
 
     refs.moreItem.classList.toggle(
         "highlight",
