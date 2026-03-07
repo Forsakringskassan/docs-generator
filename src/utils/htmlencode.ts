@@ -18,7 +18,7 @@ const replacement: Record<string, string> = {
  * @internal
  */
 export function htmlencode(text: string): string {
-    return text.replace(/[<>&"']/g, (m) => {
+    return text.replace(/["&'<>]/g, (m) => {
         return replacement[m];
     });
 }
