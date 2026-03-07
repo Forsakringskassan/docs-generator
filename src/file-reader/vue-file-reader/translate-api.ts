@@ -176,7 +176,7 @@ function translateEventProperties(event: EventDescriptor): Array<{
     const properties = event.properties;
     const types = event.type ? Object.values(event.type.names) : [];
 
-    if (!properties && !types.length) {
+    if (!properties && types.length === 0) {
         return [];
     }
     if (!properties) {

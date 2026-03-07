@@ -17,16 +17,16 @@ function parseAPI(filePath: string, api: ComponentAPI): DocumentPartial {
     const componentName = parsedPath.name;
 
     let html = "";
-    if (api.models.length) {
+    if (api.models.length > 0) {
         html += generateModelTable(api.slug, api.models);
     }
-    if (api.props.length) {
+    if (api.props.length > 0) {
         html += generatePropTable(api.slug, api.props);
     }
-    if (api.events.length) {
+    if (api.events.length > 0) {
         html += generateEventTable(api.slug, api.events);
     }
-    if (api.slots.length) {
+    if (api.slots.length > 0) {
         html += generateSlotTable(api.slug, api.slots);
     }
 
