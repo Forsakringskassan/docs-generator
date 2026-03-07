@@ -101,7 +101,6 @@ export default [
         name: "local/technical-debt",
         rules: {
             "sonarjs/slow-regex": "off",
-            "unicorn/prefer-date-now": "off",
             "unicorn/prefer-dom-node-append": "off",
             "unicorn/prefer-dom-node-dataset": "off",
             "unicorn/prefer-dom-node-text-content": "off",

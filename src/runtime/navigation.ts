@@ -38,7 +38,7 @@ function closeNested(details: HTMLDetailsElement): void {
  * @param href - The url which the src attribute should be relative to.
  */
 function cloneScripts(element: HTMLElement, href: string): void {
-    const ts = String(new Date().getTime());
+    const ts = String(Date.now());
     for (const script of element.querySelectorAll("script")) {
         const copy = document.createElement("script");
         const src = script.getAttribute("src");
