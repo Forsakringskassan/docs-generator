@@ -5,7 +5,7 @@ const configCache = new Map<string, Options | null>();
 
 async function getConfig(filepath: string): Promise<Options | null> {
     const cached = configCache.get(filepath);
-    if (typeof cached !== "undefined") {
+    if (cached !== undefined) {
         return cached;
     }
     const options = await resolveConfig(filepath);

@@ -351,7 +351,8 @@ export class Generator {
             );
         }
 
-        if (typeof options.site === "undefined") {
+        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, sonarjs/different-types-comparison -- will not happen with typescript users but handle when vanilla js users miss this parameter */
+        if (options.site === undefined) {
             throw new Error("site metadata not set in configuration");
         }
 
