@@ -49,7 +49,7 @@ interface CompileOptions {
     readonly external: string[];
 }
 
-const vueMajor = parseInt(version.split(".", 2)[0], 10) as 2 | 3;
+const vueMajor = Number.parseInt(version.split(".", 2)[0], 10) as 2 | 3;
 
 function stripExtension(filename: string): string {
     return filename.replace(".js", "");
