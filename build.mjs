@@ -18,7 +18,7 @@ import * as sass from "sass";
 const pkg = JSON.parse(await fs.readFile("package.json", "utf-8"));
 const { externalDependencies, peerDependencies } = pkg;
 
-const rootDir = fileURLToPath(new URL(".", import.meta.url));
+const rootDir = import.meta.dirname;
 
 /** @type {import("sass").Importer<"async">} */
 const sassCSSVariableImporter = {
