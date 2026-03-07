@@ -32,7 +32,7 @@ function parseAPI(filePath: string, api: ComponentAPI): DocumentPartial {
 
     return {
         kind: "partial",
-        id: `fs:${filePath.replace(/\\/g, "/")}:api`,
+        id: `fs:${filePath.replaceAll("\\", "/")}:api`,
         name: `vue:${componentName}`,
         alias: [],
         body: html,
@@ -53,7 +53,7 @@ async function parseTranslation(
     const content = await fs.readFile(filePath, "utf-8");
     return {
         kind: "partial",
-        id: `fs:${filePath.replace(/\\/g, "/")}:translation`,
+        id: `fs:${filePath.replaceAll("\\", "/")}:translation`,
         name: `translation:${componentName}`,
         alias: [],
         get body() {

@@ -27,7 +27,7 @@ export function parseFile(
     const urlpath = parsed.dir;
     return {
         kind: "page",
-        id: `nav:${filePath.replace(/\\/g, "/")}`,
+        id: `nav:${filePath.replaceAll("\\", "/")}`,
         name,
         alias: [],
         visible: attributes.href ? true : false,

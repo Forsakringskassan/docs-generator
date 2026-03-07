@@ -30,8 +30,11 @@ export function generateId(text: string): string {
     return text
         .toLowerCase()
         .trim()
-        .replace(/[äåö]/g, (m) => replacements[m as keyof typeof replacements]) // åäö to aao
-        .replace(/[^\da-z]+/g, "_") // non-alphanum to dashes
+        .replaceAll(
+            /[äåö]/g,
+            (m) => replacements[m as keyof typeof replacements],
+        ) // åäö to aao
+        .replaceAll(/[^\da-z]+/g, "_") // non-alphanum to dashes
         .replace(/^_+/, "") // remove leading dashes
         .replace(/_+$/, ""); // remove trailing dashes
 }

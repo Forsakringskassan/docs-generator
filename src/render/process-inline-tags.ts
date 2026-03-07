@@ -12,7 +12,7 @@ export function processInlineTags(
     text: string,
     handleSoftError: (error: SoftErrorType) => string,
 ): string {
-    return text.replace(
+    return text.replaceAll(
         /{@(@?)([^{}]+)}/g,
         (_, escape: string, content: string) => {
             if (escape) {

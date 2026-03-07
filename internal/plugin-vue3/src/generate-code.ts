@@ -44,7 +44,10 @@ const HTML_REPLACEMENTS: Record<string, string> = {
  * function
  */
 function escapeHtml(str: string): string {
-    return str.replace(HTML_ESCAPE_REPLACE_RE, (ch) => HTML_REPLACEMENTS[ch]);
+    return str.replaceAll(
+        HTML_ESCAPE_REPLACE_RE,
+        (ch) => HTML_REPLACEMENTS[ch],
+    );
 }
 
 let counter = 1;

@@ -61,7 +61,7 @@ async function buildFonts() {
     console.log("Generating", dst);
 
     const content = await fs.readFile(src, "utf-8");
-    const updated = [preamble, content].join("\n\n").replace(/files\//g, "");
+    const updated = [preamble, content].join("\n\n").replaceAll("files/", "");
     await fs.writeFile(dst, updated, "utf-8");
 }
 
@@ -150,7 +150,7 @@ async function build() {
             const fullPath = id.replace(/\?.*/, "").replace("\u0000", "");
             const base = nativePath
                 .relative(rootDir, fullPath)
-                .replace(/\\/g, "/");
+                .replaceAll("\\", "/");
             if (base.startsWith("node_modules/")) {
                 return "vendor";
             }

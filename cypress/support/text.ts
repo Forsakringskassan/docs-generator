@@ -28,7 +28,7 @@ function getTextContent(element: HTMLElement): string {
 
 function resolveText(subject: Cypress.JQueryWithSelector): string | string[] {
     const text = subject.map((_, elem) => {
-        return getTextContent(elem).trim().replace(/\s+/g, " ");
+        return getTextContent(elem).trim().replaceAll(/\s+/g, " ");
     });
     return text.length === 1 ? text[0] : text.toArray();
 }

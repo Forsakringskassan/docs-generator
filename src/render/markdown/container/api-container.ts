@@ -43,7 +43,7 @@ export function apiContainer(context: ContainerContext): ContainerCallback {
         const body = typeof doc.body === "string" ? doc.body : doc.body(tags);
 
         if (doc.format === "html") {
-            return body.replace(
+            return body.replaceAll(
                 /* replace `<next-heading-level>` and `</next-heading-level>` with actual h-tags */
                 /(?<=<\/?)next-heading-level/g,
                 `h${String(env.currentHeading + 1)}`,

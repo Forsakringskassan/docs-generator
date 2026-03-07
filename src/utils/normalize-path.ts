@@ -8,5 +8,5 @@ export function normalizePath(...pathSegments: string[]): string {
     return path
         .normalize(filePath)
         .replace(/^([A-Z]):\\/, "/")
-        .replace(/\\/g, "/");
+        .replaceAll("\\", "/");
 }
