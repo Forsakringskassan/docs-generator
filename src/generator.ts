@@ -535,7 +535,7 @@ export class Generator {
      */
     public serve(): Promise<void> {
         const { outputFolder, sourceFiles } = this;
-        const watch = sourceFiles.map((it) => it.include).flat();
+        const watch = sourceFiles.flatMap((it) => it.include);
         return serve({
             outputFolder,
             watch,

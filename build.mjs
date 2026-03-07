@@ -89,13 +89,12 @@ async function getProcessorScripts() {
         .filter((processor) => {
             return processor.runtime && processor.runtime.length > 0;
         })
-        .map((processor) => {
+        .flatMap((processor) => {
             return processor.runtime.map((entry) => ({
                 in: entry.src,
                 out: processorRuntimeName(processor, entry),
             }));
-        })
-        .flat();
+        });
 }
 
 async function build() {

@@ -13,20 +13,17 @@ export interface Redirect {
  * @internal
  */
 export function getRedirects(docs: Document[]): Redirect[] {
-    return docs
-        .filter(isDocumentPage)
-        .map((it): Redirect[] => {
-            const { fileInfo } = it;
-            const { path, outputName } = fileInfo;
-            if (outputName === false) {
-                return [];
-            }
-            return it.attributes.redirectFrom.map((jt) => {
-                return {
-                    from: jt.startsWith("/") ? jt.slice(1) : jt,
-                    to: normalizePath(path, outputName),
-                };
-            });
-        })
-        .flat();
+    return docs.filter(isDocumentPage).flatMap((it): Redirect[] => {
+        const { fileInfo } = it;
+        const { path, outputName } = fileInfo;
+        if (outputName === false) {
+            return [];
+        }
+        return it.attributes.redirectFrom.map((jt) => {
+            return {
+                from: jt.startsWith("/") ? jt.slice(1) : jt,
+                to: normalizePath(path, outputName),
+            };
+        });
+    });
 }
