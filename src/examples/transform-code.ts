@@ -38,12 +38,12 @@ function cutSnippets(code: string): string {
         /\/\* +--- +cut (?<js>above|below|begin|end) +--- +\*\/|<!---? +cut (?<html>above|below|begin|end) +---?>/;
 
     let buffer = -1;
-    lines.forEach((line, index) => {
+    for (const [index, line] of lines.entries()) {
         const match = directive.exec(line);
         const { js, html } = match?.groups ?? { js: null, html: null };
         const instruction = js ?? html;
         if (!instruction) {
-            return;
+            continue;
         }
         switch (instruction) {
             /* --- cut above --- */
@@ -81,7 +81,7 @@ function cutSnippets(code: string): string {
             default:
                 break;
         }
-    });
+    }
 
     /* if cut begin was used without end we still have the line number buffered
      * and should interpret it as cut below, i.e. we remove all lines from begin

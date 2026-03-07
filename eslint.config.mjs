@@ -102,7 +102,6 @@ export default [
         rules: {
             "sonarjs/slow-regex": "off",
             "unicorn/filename-case": "off",
-            "unicorn/no-array-for-each": "off",
             "unicorn/no-array-method-this-argument": "off",
             "unicorn/no-array-sort": "off",
             "unicorn/no-await-expression-member": "off",

@@ -28,9 +28,9 @@ function isMoreSpecific(a: SearchResult, b: SearchResult | null): boolean {
     return a.matchType === "title" && b.matchType === "term";
 }
 function updateActive(items: HTMLElement[], active: number): void {
-    items.forEach((item, index) => {
+    for (const [index, item] of items.entries()) {
         item.classList.toggle("list__item--active", index === active);
-    });
+    }
 
     const item = items[active];
     scrollIntoView(item, {
