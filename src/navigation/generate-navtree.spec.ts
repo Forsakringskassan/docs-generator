@@ -456,7 +456,8 @@ async function getDocsFromGlob(
         nodir: true,
     });
     const parsed = filenames.map((it) => frontMatterFileReader(it, basePath));
-    return (await Promise.all(parsed)).flat();
+    const result = await Promise.all(parsed);
+    return result.flat();
 }
 
 it("smoketest", async () => {
