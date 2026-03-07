@@ -134,10 +134,8 @@ function setErrorMessage(element: Element | null): void {
     element.append(p);
 }
 
-/* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
-initVersionProcessor();
-
 window.addEventListener("docs:navigation", () => {
-    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
-    initVersionProcessor();
+    void initVersionProcessor();
 });
+
+await initVersionProcessor();
