@@ -20,9 +20,16 @@ function renderVariable(name, entry) {
     }
 }
 
+/**
+ * @param {string} value
+ * @returns {string}
+ */
+function capitalize(value) {
+    return `${value[0].toUpperCase()}${value.slice(1)}`;
+}
+
 async function cssVariablesFileReader(filePath) {
     const { default: module } = await import(`./${filePath}`);
-    const capitalize = (value) => `${value[0].toUpperCase()}${value.slice(1)}`;
     const groups = Object.entries(module).map(([key, entry]) => {
         const name = key === "*" ? "Global" : `${capitalize(key)}`;
         const prefix = key === "*" ? "--docs-" : `--docs-${key}-`;
