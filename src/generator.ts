@@ -150,8 +150,9 @@ async function stage(
     stage: ProcessorStage,
     context: Omit<ProcessorContext, "log">,
     processors: Processor[],
-    { verbose }: { verbose: boolean } = { verbose: true },
+    options?: { verbose: boolean },
 ): Promise<string[]> {
+    const { verbose = true } = options ?? {};
     if (verbose) {
         console.log(`stage:${stage}`);
     }
