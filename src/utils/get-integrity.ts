@@ -1,4 +1,4 @@
-import crypto from "crypto";
+import crypto from "node:crypto";
 
 export function getIntegrity(source: string): string {
     const hash = crypto.createHash("sha384").update(source).digest("base64");
