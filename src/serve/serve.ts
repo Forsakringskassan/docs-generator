@@ -116,7 +116,7 @@ export async function serve(options: ServeOptions): Promise<void> {
     for (;;) {
         const key = await keypress();
         switch (key) {
-            case "\x03": /* ctrl-c */
+            case "\u0003": /* ctrl-c */
             case "q":
                 /* eslint-disable-next-line no-console -- expected to log */
                 console.log("Shutting down gracefully");
