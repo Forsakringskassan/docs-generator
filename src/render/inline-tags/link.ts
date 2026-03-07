@@ -44,6 +44,7 @@ export const linkTag: InlineTag = {
     name: "link",
     description: "Create a link to another document",
     handler(doc, docs, content) {
+        /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
         const match = /^([^\s#]+)(#\S+)?\s*(.+)?$/.exec(content);
         if (!match) {
             throw new SoftError(

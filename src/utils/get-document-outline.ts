@@ -7,6 +7,7 @@ interface ParsedHeading {
     anchor: string;
 }
 
+/* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
 const matchHeading = /^(#+)(.*)$/gm;
 
 function getHeadings(text: string): ParsedHeading[] {

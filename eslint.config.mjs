@@ -96,11 +96,4 @@ export default [
             "vue/no-unused-properties": "off",
         },
     },
-
-    {
-        name: "local/technical-debt",
-        rules: {
-            "sonarjs/slow-regex": "off",
-        },
-    },
 ];
