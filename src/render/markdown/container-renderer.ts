@@ -14,7 +14,7 @@ import {
 type Options = Record<string, ContainerCallback>;
 
 const markerStr = ":";
-const markerChar = markerStr.charCodeAt(0);
+const markerChar = markerStr.codePointAt(0);
 
 /**
  * @internal
@@ -38,7 +38,8 @@ export function containerParser(md: MarkdownIt, options: Options): void {
             return false;
         }
 
-        const marker = state.src.charCodeAt(pos);
+        /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- pos will always be positive */
+        const marker = state.src.codePointAt(pos)!;
 
         if (marker !== markerChar) {
             return false;
@@ -86,7 +87,7 @@ export function containerParser(md: MarkdownIt, options: Options): void {
                 break;
             }
 
-            if (state.src.charCodeAt(pos) !== marker) {
+            if (state.src.codePointAt(pos) !== marker) {
                 continue;
             }
 
