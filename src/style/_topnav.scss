@@ -39,6 +39,7 @@
         display: inline-flex;
         padding-bottom: 0.5rem;
         text-decoration: none;
+        font-feature-settings: "tnum" 1;
 
         &,
         &:visited,
