@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [2.38.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.38.0...v2.38.1) (2026-03-10)
+
+### Bug Fixes
+
+* `font-weight` styling applies to code previews (refs SFKUI-7489) ([da1981f](https://github.com/Forsakringskassan/docs-generator/commit/da1981f46cb99a63385637d0acfcd577b92c1b78))
+* **deps:** update dependency fs-extra to v11.3.4 ([56d7ccb](https://github.com/Forsakringskassan/docs-generator/commit/56d7ccb34c11abb6630ce0565f287709bf335f29))
+* **deps:** update dependency i18next to v25.8.14 ([541597f](https://github.com/Forsakringskassan/docs-generator/commit/541597fc8f8fa54704a6372c3ca019279ae56cac))
+
 ## [2.38.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.37.1...v2.38.0) (2026-03-06)
 
 ### Features
