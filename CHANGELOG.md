@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.38.2](https://github.com/Forsakringskassan/docs-generator/compare/v2.38.1...v2.38.2) (2026-03-10)
+
+### Bug Fixes
+
+* set menu selection to the same width as it has when active (refs SFKUI-7717) ([25febca](https://github.com/Forsakringskassan/docs-generator/commit/25febcaa990f45f3785beebe90a80f50fadb7cc8))
+
 ## [2.38.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.38.0...v2.38.1) (2026-03-10)
 
 ### Bug Fixes
