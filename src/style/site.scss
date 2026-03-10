@@ -26,6 +26,7 @@ body {
     font-size: var(--docs-font-size);
     font-weight: var(--docs-font-weight);
     line-height: var(--docs-line-height);
+    -webkit-font-smoothing: antialiased;
 }
 
 .page-header {
