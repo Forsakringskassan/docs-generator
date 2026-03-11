@@ -6,7 +6,7 @@
     {%- if item.children -%}
     <li class="expandable {% if item.active %}active{% endif %}">
         <details {% if item.active %}open{% endif %}>
-            <summary>{{ item.title }}</summary>
+            <summary>{{ item.title }} <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             {% if item.children.length > 0 %}
             {{ sidenav_item(doc, item) }}
             {% endif %}
