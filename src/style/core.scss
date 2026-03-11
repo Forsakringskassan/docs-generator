@@ -68,7 +68,7 @@ main h4:not(.code-preview h4) {
 }
 
 h1 code {
-    color: #5f6165;
+    color: var(--docs-text-color-discrete);
     font-family: var(--docs-font-family);
     background-color: transparent;
     font-weight: 400;
@@ -188,7 +188,7 @@ header .select-field__select {
 
 header .label {
     font-weight: 400;
-    color: #5f6165;
+    color: var(--docs-text-color-discrete);
     margin-right: 1rem;
     margin-bottom: 0;
 }
@@ -262,7 +262,7 @@ main #aside dl {
 
 main #aside dt {
     font-weight: 400;
-    color: #5f6165;
+    color: var(--docs-text-color-discrete);
 }
 
 main #aside dd {
@@ -362,7 +362,7 @@ pre.mermaid:not([data-processed]) {
 
 kbd {
     border: 1px solid #bbbbbd;
-    color: #5f6165;
+    color: var(--docs-text-color-discrete);
     padding: 0.1rem 0.5rem;
     border-radius: 6px;
     font-family: var(--docs-font-family);
