@@ -36,6 +36,7 @@
         border-left: var(--highlight-width) solid transparent;
 
         &.link.active {
+            font-weight: bold;
             border-color: var(--docs-navigation-highlight-color);
             background: var(--docs-navigation-active-background);
         }
