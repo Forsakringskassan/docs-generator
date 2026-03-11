@@ -95,7 +95,8 @@ h6 {
     color: var(--docs-text-color-default);
 }
 
-#content a:where(:not(.code-preview a, h2 a, h3 a, h4 a, h5 a)) {
+#content a:where(:not(.code-preview a, h2 a, h3 a, h4 a, h5 a)),
+footer a {
     text-decoration: underline;
     text-decoration-thickness: 1px;
     color: var(--docs-text-color-link);
