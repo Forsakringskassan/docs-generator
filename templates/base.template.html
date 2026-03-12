@@ -89,7 +89,12 @@
 
                         {% if doc.outline | length %}
                         <details id="outline">
-                            <summary class="outline__heading">{{ $t('outline.in-this-article') }}</summary>
+                            <summary class="outline__heading">
+                                {{ $t('outline.in-this-article') }}
+                                <svg focusable="false" class="icon" aria-hidden="true">
+                                    <use href="#docs-icon-arrow-down"></use>
+                                </svg>
+                            </summary>
                             <ul>
                                 {% for heading in doc.outline %}
                                 <li><a href="#{{ heading.anchor }}">{{ heading.title | escape }}</a></li>
