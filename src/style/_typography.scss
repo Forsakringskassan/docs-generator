@@ -129,6 +129,17 @@ h6 {
     }
 }
 
+// Om en h3 kommer i direkt anslutning efter en h2 så ändras margin mellan elementen till 2rem.
+h2 + h3,
+h2:last-child + h3:first-child {
+    margin-top: 2rem;
+}
+
+// Om en h2 kommer i direkt anslutning efter en ingress så ändras margin mellan elementen till 2.5rem.
+h2:first-of-type {
+    margin-top: 2.5rem;
+}
+
 .docs-paragraph {
     font-size: var(--docs-font-size);
     font-weight: var(--docs-font-weight);
