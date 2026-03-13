@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [2.38.3](https://github.com/Forsakringskassan/docs-generator/compare/v2.38.2...v2.38.3) (2026-03-13)
+
+### Bug Fixes
+
+* [#5f6165](https://github.com/Forsakringskassan/docs-generator/issues/5f6165) -> --docs-text-color-discrete ([a19e18d](https://github.com/Forsakringskassan/docs-generator/commit/a19e18d195fb12d435eec0ae8b9da07124db725d))
+* footer links should have default styling ([2c4370b](https://github.com/Forsakringskassan/docs-generator/commit/2c4370bbd5b5f4145c8429b1733c4fb4b70a70c7))
+* for inter on mac so that the text becomes thinner (refs SFKUI-7514) ([c22db5d](https://github.com/Forsakringskassan/docs-generator/commit/c22db5d3e9cfb9d2e9f807fe12814d593ab95510))
+* set bold text on hover, updated fkui theme on active navigation ([56d8b59](https://github.com/Forsakringskassan/docs-generator/commit/56d8b59099e05a0d699badd10572a427c6fbda8d))
+* use svg symbol in navigation ([2b9929c](https://github.com/Forsakringskassan/docs-generator/commit/2b9929c16e1a70274aa1ce92b5ff9407379e7f32))
+
 ## [2.38.2](https://github.com/Forsakringskassan/docs-generator/compare/v2.38.1...v2.38.2) (2026-03-10)
 
 ### Bug Fixes
