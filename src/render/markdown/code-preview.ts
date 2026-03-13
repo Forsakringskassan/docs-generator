@@ -247,7 +247,9 @@ export function codePreview(
                 aria-expanded="false"
                 onclick="toggleMarkup(this)"
             >
-                <i class="icon icon--code"></i>
+                <svg focusable="false" class="icon" aria-hidden="true">
+                    <use href="#docs-icon-code"></use>
+                </svg>
                 Visa kod
             </button>
         `;
@@ -258,7 +260,9 @@ export function codePreview(
                       href="${standalonePath ?? ""}"
                       class="code-preview__fullscreen"
                   >
-                      <i class="icon icon--fullscreen"></i>
+                      <svg focusable="false" class="icon" aria-hidden="true">
+                          <use href="#docs-icon-fullscreen"></use>
+                      </svg>
                       Helskärm
                   </a>
               `
