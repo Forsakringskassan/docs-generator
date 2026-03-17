@@ -46,7 +46,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         },
         " Name ",
         -1
-        /* HOISTED */
+        /* CACHED */
       )),
       _withDirectives(_createElementVNode(
         "select",
@@ -56,37 +56,37 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           class: "docs-block",
           name: "html-name"
         },
-        _cache[1] || (_cache[1] = [
+        [..._cache[1] || (_cache[1] = [
           _createElementVNode(
             "option",
             { value: "World" },
             "World",
             -1
-            /* HOISTED */
+            /* CACHED */
           ),
           _createElementVNode(
             "option",
             { value: "Kalle Anka" },
             "Kalle Anka",
             -1
-            /* HOISTED */
+            /* CACHED */
           ),
           _createElementVNode(
             "option",
             { value: "Fred Flintstone" },
             "Fred Flintstone",
             -1
-            /* HOISTED */
+            /* CACHED */
           )
-        ]),
+        ])],
         512
         /* NEED_PATCH */
       ), [
         [_vModelSelect, _ctx.name]
       ])
     ]),
-    _: 1,
-    __: [2]
+    _: 1
+    /* STABLE */
   }, 8, ["template"]);
 }
 exampleComponent.render = render;
