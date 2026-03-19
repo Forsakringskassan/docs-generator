@@ -22,7 +22,11 @@ var exampleComponent = defineComponent({
 });
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createElementBlock("p", null, [
-    _cache[0] || (_cache[0] = _createTextVNode(" Hello ")),
+    _cache[0] || (_cache[0] = _createTextVNode(
+      " Hello ",
+      -1
+      /* CACHED */
+    )),
     _createElementVNode(
       "em",
       null,

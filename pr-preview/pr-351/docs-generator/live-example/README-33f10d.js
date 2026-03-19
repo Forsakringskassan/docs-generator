@@ -44,7 +44,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           { for: "config-element" },
           " Element ",
           -1
-          /* HOISTED */
+          /* CACHED */
         )),
         _withDirectives(_createElementVNode(
           "select",
@@ -52,29 +52,29 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             id: "config-element",
             "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.tagName = $event)
           },
-          _cache[2] || (_cache[2] = [
+          [..._cache[2] || (_cache[2] = [
             _createElementVNode(
               "option",
               { value: "div" },
               "div",
               -1
-              /* HOISTED */
+              /* CACHED */
             ),
             _createElementVNode(
               "option",
               { value: "p" },
               "p",
               -1
-              /* HOISTED */
+              /* CACHED */
             ),
             _createElementVNode(
               "option",
               { value: "em" },
               "em",
               -1
-              /* HOISTED */
+              /* CACHED */
             )
-          ]),
+          ])],
           512
           /* NEED_PATCH */
         ), [
@@ -96,7 +96,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           ), [
             [_vModelCheckbox, _ctx.placeholderText]
           ]),
-          _cache[4] || (_cache[4] = _createTextVNode(" Use placeholder text "))
+          _cache[4] || (_cache[4] = _createTextVNode(
+            " Use placeholder text ",
+            -1
+            /* CACHED */
+          ))
         ])
       ])
     ]),
