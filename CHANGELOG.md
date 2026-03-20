@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## [2.38.4](https://github.com/Forsakringskassan/docs-generator/compare/v2.38.3...v2.38.4) (2026-03-20)
+
+### Bug Fixes
+
+* **deps:** update dependency i18next to v25.8.17 ([5b017ed](https://github.com/Forsakringskassan/docs-generator/commit/5b017ed29cad1da8ae043b0d5458996f47a2936f))
+* **deps:** update dependency i18next to v25.8.18 ([f7de7c9](https://github.com/Forsakringskassan/docs-generator/commit/f7de7c9df971b18ca38930dc381a504240a480cc))
+* **deps:** update dependency mermaid to v11.13.0 ([2acf4b3](https://github.com/Forsakringskassan/docs-generator/commit/2acf4b3173a62b566fabd5c16173723b2cbf0be8))
+* flex-grow to get the right overflow calculation (refs SFKUI-7446) ([2619235](https://github.com/Forsakringskassan/docs-generator/commit/261923531e2113123320a395844b4ece856e3857))
+
 ## [2.38.3](https://github.com/Forsakringskassan/docs-generator/compare/v2.38.2...v2.38.3) (2026-03-13)
 
 ### Bug Fixes
