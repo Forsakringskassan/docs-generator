@@ -3,4 +3,67 @@
     border-bottom: 2px solid var(--docs-cookie-border-color);
     display: none;
     padding: 1rem 1.5rem 0;
+
+    &__button-group {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        margin-top: 0.25rem;
+    }
+
+    &__button {
+        border: 2px solid transparent;
+        border-radius: 4px;
+        box-shadow: 0 1px 3px rgb(0 0 0 / 30%);
+        cursor: pointer;
+        font-weight: 600;
+        letter-spacing: 0.01rem;
+        line-height: 1.5rem;
+        max-width: 100%;
+        width: 100%;
+        text-align: center;
+        transition: background-color 350ms ease-out;
+        padding: 1rem 1.5rem;
+
+        @media (width >= 768px) {
+            max-width: none;
+            width: auto;
+        }
+
+        &:active,
+        &:focus {
+            outline: 3px solid transparent;
+            border-radius: 0;
+            box-shadow:
+                0 0 0 2px #ffffff,
+                0 0 0 4px #1b1e23,
+                0 0 0 6px #ffffff;
+        }
+
+        &--primary {
+            background-color: #4a52b6;
+            border-color: transparent;
+            color: #fff;
+
+            &:hover,
+            &:active,
+            &:focus {
+                background-color: #3b4292;
+            }
+        }
+
+        &--secondary {
+            background-color: #f5f6fa;
+            border-color: #4a52b6;
+            color: #4a52b6;
+
+            &:hover,
+            &:active,
+            &:focus {
+                background-color: #e5e5f5;
+            }
+        }
+    }
 }
