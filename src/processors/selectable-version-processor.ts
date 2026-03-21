@@ -45,6 +45,10 @@ export function selectableVersionProcessor(
                 filename: "partials/selectable-version.html",
                 data: { pkg },
             });
+            context.addTemplateBlock("body:end", "version-modal", {
+                filename: "partials/version-modal.html",
+                data: { pkg },
+            });
         },
     };
 }
