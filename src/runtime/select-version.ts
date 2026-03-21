@@ -107,8 +107,10 @@ function updateVersionList(element: Element | null, versions: string[]): void {
 
     const sortedVersions = ["latest", ...semver.rsort(versions)];
 
-    /* eslint-disable @typescript-eslint/no-non-null-assertion -- if we've come this far, it probably exists. */
     const ul = document.createElement("ul");
+    ul.classList.add("docs-selectable-version__list");
+
+    /* eslint-disable @typescript-eslint/no-non-null-assertion -- if we've come this far, it probably exists. */
     const template =
         document.querySelector<HTMLTemplateElement>(`#version-list-item`)!;
     for (const version of sortedVersions) {

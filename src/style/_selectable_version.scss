@@ -1,3 +1,5 @@
+@use "modal";
+
 #version button {
     padding: 0;
     background: transparent;
@@ -6,32 +8,54 @@
     margin: 0;
     color: var(--f-text-color-discrete);
     text-decoration-color: var(--f-text-color-discrete);
+
+    &:hover {
+        background-color: #f4f4f4;
+    }
 }
 
 #version-dialog {
-    --docs-text-color-default: var(--docs-version-text-color);
-
     width: 30rem;
     max-height: 80vh;
     background: var(--docs-version-background-color);
     border: 1px solid var(--docs-version-border-color);
     color: var(--docs-text-color-default);
+}
 
-    a {
-        text-decoration: none;
+.docs-selectable-version {
+    &__list {
+        margin: 0 0 1.5rem;
+        padding-left: 0;
     }
-}
 
-#version-dialog-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-}
+    &__item {
+        display: flex;
+        border: 2px solid #8d8e91;
+        background: #fff;
 
-#version-dialog .list__item__itempane {
-    padding: 0.2rem;
-}
+        &:not(:last-child) {
+            border-bottom: none;
+        }
 
-#version button:hover {
-    background-color: #f4f4f4;
+        &:focus-within,
+        &:hover {
+            background: #e5e5f5;
+            cursor: pointer;
+        }
+    }
+
+    &__link {
+        width: 100%;
+        padding: 0.2rem;
+        text-decoration: none;
+        color: var(--docs-text-color-default);
+
+        &:focus-visible {
+            box-shadow:
+                0 0 0 2px #ffffff,
+                0 0 0 4px #1b1e23,
+                0 0 0 6px #ffffff;
+            outline: 3px solid transparent;
+        }
+    }
 }
