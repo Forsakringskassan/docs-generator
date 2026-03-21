@@ -11,8 +11,16 @@
             "message": "We use cookies to make this website work as well as possible for you.<br />We also use cookies for web analytics to improve the website.",
             "accept": "Do you also accept cookies for web analytics?"
         },
+        "modal": {
+            "close": "Close"
+        },
         "outline": {
             "in-this-article": "In this article"
+        },
+        "selectable-version": {
+            "button": "Switch version",
+            "title": "Select version",
+            "loading": "Please wait, loading version data..."
         },
         "search": {
             "button": "Search",

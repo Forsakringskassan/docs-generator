@@ -1,22 +1,22 @@
 <div class="toolbar__item">
     <form id="version">
         <button type="submit" class="anchor">
-            <span id="version-info" class="version"> Byt version </span>
+            <span id="version-info" class="version">{{ $t("selectable-version.button") }} </span>
         </button>
     </form>
 
     <dialog class="docs-modal" id="version-dialog">
         <div class="docs-modal__header">
-            <h1 class="docs-modal__title">Välj version</h1>
+            <h1 class="docs-modal__title">{{ $t("selectable-version.title") }}</h1>
             <button type="button" class="docs-modal__close">
-                <span>Stäng</span>
+                <span>{{ $t("modal.close") }}</span>
                 <svg class="icon" focusable="false" aria-hidden="true">
                     <use xlink:href="#docs-icon-close"></use>
                 </svg>
             </button>
         </div>
         <div class="docs-modal__body" id="version-list">
-            <p>Var god vänta, laddar versionsdata...</p>
+            <p>{{ $t("selectable-version.loading") }}</p>
         </div>
     </dialog>
 </div>
