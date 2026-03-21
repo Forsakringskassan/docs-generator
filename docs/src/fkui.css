@@ -413,14 +413,6 @@ code.hljs {
 .button--text {
     /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */
 }
-.button--text--black {
-    /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */
-    color: var(--f-text-color-default);
-}
-.button--text--black > .button__icon {
-    color: var(--f-icon-color-black);
-}
-
 .button {
     background-color: var(--f-background-button-standard);
     border-color: var(--f-border-color-button-standard);
@@ -545,15 +537,6 @@ code.hljs {
     .button.button--text {
         width: auto;
     }
-}
-.button.button--discrete--black,
-.button.button--text--black {
-    padding: var(--f-button-discrete-black-padding);
-    color: var(--f-text-color-default);
-}
-.button.button--discrete--black > .button__icon,
-.button.button--text--black > .button__icon {
-    color: var(--f-icon-color-black);
 }
 .button.button--discrete:hover,
 .button.button--text:hover {
