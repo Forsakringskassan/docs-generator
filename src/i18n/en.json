@@ -4,6 +4,13 @@
             "component": "Component",
             "status": "Status"
         },
+        "cookie-warning": {
+            "title": "Cookies on this website",
+            "consent-all": "Yes, I accept all cookies",
+            "consent-functional": "No, I only accept necessary cookies",
+            "message": "We use cookies to make this website work as well as possible for you.<br />We also use cookies for web analytics to improve the website.",
+            "accept": "Do you also accept cookies for web analytics?"
+        },
         "outline": {
             "in-this-article": "In this article"
         },
