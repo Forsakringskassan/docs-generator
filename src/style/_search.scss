@@ -27,7 +27,10 @@ kbd {
 
 #search button:focus-visible {
     border-radius: 0;
-    box-shadow: var(--f-focus-box-shadow);
+    box-shadow:
+        0 0 0 2px #ffffff,
+        0 0 0 4px #1b1e23,
+        0 0 0 6px #ffffff;
     outline: 3px solid transparent;
 }
 
