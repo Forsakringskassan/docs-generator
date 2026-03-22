@@ -20,24 +20,6 @@ p:not(.code-preview p) {
     max-width: 680px;
 }
 
-main h1:not(.code-preview h1) {
-    font-size: 2.5rem;
-    color: var(--docs-text-color-default);
-}
-
-main h2:not(.code-preview h2) {
-    font-size: 1.5rem;
-    margin-top: 3rem;
-}
-
-main h3:not(.code-preview h3) {
-    font-size: 1.2rem;
-}
-
-main h4:not(.code-preview h4) {
-    font-size: 1rem;
-}
-
 .header-anchor:hover {
     text-decoration: underline;
 }
@@ -57,35 +39,11 @@ main h4:not(.code-preview h4) {
     visibility: visible;
 }
 
-h1 code {
-    color: var(--docs-text-color-discrete);
-    font-family: var(--docs-font-family);
-    background-color: transparent;
-    font-weight: 400;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    .header-anchor {
-        color: var(--docs-text-color-default);
-    }
-    code {
-        font-size: inherit;
-        margin: 0;
-        padding: 0;
-        text-decoration: inherit;
-    }
-}
-
 #content a:where(:not(.code-preview a)) {
     color: var(--docs-text-color-default);
 }
 
-#content a:where(:not(.code-preview a, h2 a, h3 a, h4 a, h5 a)),
+#content a:where(:not(.code-preview a, .header-anchor)),
 footer a {
     text-decoration: underline;
     text-decoration-thickness: 1px;
@@ -206,10 +164,6 @@ header .page-header__right-slot {
     height: 2rem;
     padding: 0.5rem;
     display: inline-block;
-}
-
-main h2:first-child {
-    margin-top: 0;
 }
 
 main #aside dl {

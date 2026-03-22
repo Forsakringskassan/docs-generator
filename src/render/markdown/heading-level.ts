@@ -38,7 +38,7 @@ export function headingLevel(options: {
             return tag.replace(/h(\d)/, (_, n: string) => {
                 const level = Number.parseInt(n, 10) + offset;
                 env.currentHeading = level;
-                return `<h${String(level)} id="${id}"><a class="header-anchor" href="#${id}">`;
+                return `<h${String(level)} id="${id}" class="docs-heading docs-heading--h${n}"><a class="header-anchor" href="#${id}">`;
             });
         };
         /* eslint-disable-next-line camelcase -- upstream library uses snake_case */
