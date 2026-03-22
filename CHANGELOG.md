@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [2.38.6](https://github.com/Forsakringskassan/docs-generator/compare/v2.38.5...v2.38.6) (2026-03-22)
+
+### Bug Fixes
+
+* **deps:** replace `minimatch` with native nodejs function ([086373d](https://github.com/Forsakringskassan/docs-generator/commit/086373d3ded4e7887ca0cb3d2134bf509333b453))
+* **deps:** update dependency i18next to v25.8.19 ([37b5389](https://github.com/Forsakringskassan/docs-generator/commit/37b5389018650b10192ceb485ef620adfba37087))
+* fix modal background scroll when using `@fkui/design` ([51e7d18](https://github.com/Forsakringskassan/docs-generator/commit/51e7d18916ad29b8c59bbde6297f4585d4f4b0eb))
+* prevent scrolling in background when using search ([08df18c](https://github.com/Forsakringskassan/docs-generator/commit/08df18c652e6acf384e057156a01b98d6eb60dc9))
+* remove duplicate hljs styling ([322e794](https://github.com/Forsakringskassan/docs-generator/commit/322e79437f63682193d1baba5f5d809f2476b9dc))
+* remove obsolete unused `themeSelectProcessor()` ([22d7409](https://github.com/Forsakringskassan/docs-generator/commit/22d740927d0287547624736bda9fbec1afcf147c))
+
 ## [2.38.5](https://github.com/Forsakringskassan/docs-generator/compare/v2.38.4...v2.38.5) (2026-03-22)
 
 ### Bug Fixes
