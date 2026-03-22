@@ -38,3 +38,12 @@
 .docs-modal-active {
     overflow: hidden;
 }
+
+/* reset broken FKUI reset */
+dialog {
+    display: none;
+
+    &[open] {
+        display: block;
+    }
+}

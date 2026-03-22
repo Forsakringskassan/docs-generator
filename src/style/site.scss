@@ -6,6 +6,8 @@
 @use "cookie-warning";
 @use "motd";
 @use "breakpoints" as *;
+@use "search";
+@use "selectable_version";
 @use "version";
 
 html {

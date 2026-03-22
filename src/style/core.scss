@@ -6,20 +6,10 @@
 @use "messagebox";
 @use "navigation";
 @use "outline";
-@use "selectable_version";
 @use "skeleton";
 @use "tags";
 @use "version_banner";
 @use "highlight.js/styles/default";
-
-/* reset broken FKUI reset */
-dialog {
-    display: none;
-}
-
-dialog[open] {
-    display: block;
-}
 
 dd > dl {
     border-left: 2px solid var(--docs-text-color-discrete);
@@ -356,87 +346,6 @@ pre.mermaid:not([data-processed]) {
     &__item {
         display: flex;
     }
-}
-
-kbd {
-    border: 1px solid #bbbbbd;
-    color: var(--docs-text-color-discrete);
-    padding: 0.1rem 0.5rem;
-    border-radius: 6px;
-    font-family: var(--docs-font-family);
-}
-
-#search button {
-    background: transparent;
-    color: var(--docs-text-color-discrete);
-    border-radius: 4px;
-    border: 0;
-    box-shadow: none;
-    cursor: text;
-    min-height: 2.5rem;
-    padding: 0 0.75rem;
-    width: 100%;
-}
-
-#search button:hover {
-    cursor: pointer;
-    background-color: var(--docs-search-button-color-hover);
-}
-
-#search button:focus {
-    box-shadow: var(--f-focus-box-shadow);
-}
-
-#search .search__icon {
-    display: inline-block;
-    height: 1rem;
-    margin-right: 0.5rem;
-    max-height: 100%;
-    max-width: 100%;
-    pointer-events: none;
-    width: 1rem;
-}
-
-#search-dialog {
-    --docs-text-color-default: var(--docs-search-text-color);
-
-    margin-top: 80px;
-    background: var(--docs-search-background-color);
-    border: 1px solid var(--docs-search-border-color);
-    color: var(--docs-text-color-default);
-    width: 580px;
-}
-
-#search-dialog label {
-    font-weight: 600;
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    color: var(--docs-text-color-default);
-}
-
-#search-results {
-    overflow-y: auto;
-    max-height: 60vh;
-    margin: 0.5rem 0;
-    padding: 0.2rem;
-}
-
-#search-results a,
-#search-results a:visited {
-    color: var(--docs-text-color-default);
-    text-decoration: none;
-}
-
-#search-results .list__item--active {
-    background-color: #e5e5e5;
-}
-
-#search-results .list__item:hover {
-    background-color: #e5e5e5;
-}
-
-#search-results .list__item__itempane:focus {
-    background-color: #f4f4f4;
 }
 
 .docs-deprecated {
