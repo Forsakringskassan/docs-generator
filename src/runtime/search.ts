@@ -29,7 +29,10 @@ function isMoreSpecific(a: SearchResult, b: SearchResult | null): boolean {
 }
 function updateActive(items: HTMLElement[], active: number): void {
     for (const [index, item] of items.entries()) {
-        item.classList.toggle("list__item--active", index === active);
+        item.classList.toggle(
+            "docs-search-result__item--active",
+            index === active,
+        );
     }
 
     const item = items[active];
@@ -63,6 +66,9 @@ function setup(): void {
     const form = document.querySelector<HTMLButtonElement>("#search-form")!;
     const results =
         document.querySelector<HTMLButtonElement>("#search-results")!;
+    const template =
+        document.querySelector<HTMLTemplateElement>(`#search-result-item`)!;
+    const dialogCloseButton = dialog.querySelector("button")!;
     /* eslint-enable @typescript-eslint/no-non-null-assertion */
 
     let index: SearchIndex | null = null;
@@ -148,30 +154,34 @@ function setup(): void {
         active = 0;
 
         const rootUrl = document.documentElement.dataset.rootUrl ?? ".";
-        const ul = document.createElement("ul");
-        ul.classList.add("list");
+        const fragment = new DocumentFragment();
 
         for (const [
             i,
             { matchType, highlighted, doc },
         ] of searchResults.entries()) {
-            const li = document.createElement("li");
-            const a = document.createElement("a");
+            const item = template.content.cloneNode(true) as HTMLLIElement;
+
+            /* eslint-disable @typescript-eslint/no-non-null-assertion -- crash if template is malformed */
+            const li = item.querySelector("li")!;
+            const a = item.querySelector("a")!;
+            /* eslint-enable @typescript-eslint/no-non-null-assertion */
+
             if (matchType === "term") {
                 a.innerHTML = `${doc.title} (${highlighted})`;
             } else {
                 a.innerHTML = highlighted;
             }
             a.href = [rootUrl, doc.url].join("/");
-            a.classList.add("list__item__itempane");
-            li.classList.add("list__item");
-            li.classList.toggle("list__item--active", i === active);
-            li.append(a);
-            ul.append(li);
+            li.classList.toggle(
+                "docs-search-result__item--active",
+                i === active,
+            );
+            fragment.append(li);
         }
 
         results.innerHTML = "";
-        results.append(ul);
+        results.append(fragment);
     }
 
     function clickOutside(event: MouseEvent): void {
@@ -194,6 +204,10 @@ function setup(): void {
             index = value;
             updateResults();
         });
+
+    dialogCloseButton.addEventListener("click", () => {
+        dialog.close();
+    });
 
     input.addEventListener("input", () => {
         searchTerm = input.value.toLowerCase();
