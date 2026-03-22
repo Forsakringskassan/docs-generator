@@ -19,3 +19,7 @@ jobs:
             app-id: ${{ vars.RELEASE_APP_ID }}
         secrets:
             app-key: ${{ secrets.RELEASE_APP_KEY }}
+    deploy-documentation:
+        needs: [release]
+        name: Deploy new documentation
+        uses: ./.github/workflows/docs.yml
