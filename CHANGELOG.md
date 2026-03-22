@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## [2.38.5](https://github.com/Forsakringskassan/docs-generator/compare/v2.38.4...v2.38.5) (2026-03-22)
+
+### Bug Fixes
+
+* internal changes to styling ([2d46cd7](https://github.com/Forsakringskassan/docs-generator/commit/2d46cd7600a09a7c4d5014d01b74d491fc583b82))
+* prevent scrolling in background when selecting version ([1578bbc](https://github.com/Forsakringskassan/docs-generator/commit/1578bbcc36e9e00d9a2961b72b780af5ff01e240))
+* remove hardcoded swedish texts from cookie warning ([1850a55](https://github.com/Forsakringskassan/docs-generator/commit/1850a559eacb95e26269eee42b7c0ef6012553cd))
+* remove hardcoded swedish texts from version selector ([74fb2d7](https://github.com/Forsakringskassan/docs-generator/commit/74fb2d73699e7e30a8a0424ef4b4a4d615fb28f5))
+
 ## [2.38.4](https://github.com/Forsakringskassan/docs-generator/compare/v2.38.3...v2.38.4) (2026-03-20)
 
 ### Bug Fixes
