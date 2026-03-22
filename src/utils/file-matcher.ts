@@ -1,15 +1,15 @@
+import path from "node:path";
 import { globSync } from "glob";
-import { minimatch } from "minimatch";
 import { memoize } from "./memoize";
 
 /**
  * Create a matcher which returns the full path given a filename, partial path
- * to a filename or minimatch pattern.
+ * to a filename or glob pattern.
  *
  * Throws an error if zero or more than one paths match.
  *
  * @internal
- * @param patterns - Minimatch patterns to match all possible files.
+ * @param patterns - Glob patterns to match all possible files.
  */
 export function fileMatcher(
     patterns: string[],
@@ -20,7 +20,9 @@ export function fileMatcher(
     });
 
     return memoize((filename: string, context?: string) => {
-        const matches = minimatch.match(fileList, `**/${filename}`);
+        const matches = fileList.filter((file) => {
+            return path.matchesGlob(file, `**/${filename}`);
+        });
         if (matches.length === 0) {
             const additionalInfo = context ? ` (${context})` : "";
             const message = `No files matched pattern "${filename}"${additionalInfo}`;
