@@ -80,6 +80,7 @@ async function initVersionProcessor(): Promise<void> {
 
     dialog.addEventListener("close", () => {
         document.body.removeEventListener("click", clickListener);
+        document.body.classList.remove("docs-modal-active");
     });
 
     dialogCloseButton.addEventListener("click", () => {
@@ -97,6 +98,7 @@ async function initVersionProcessor(): Promise<void> {
         }
         dialog.showModal();
         document.body.addEventListener("click", clickListener);
+        document.body.classList.add("docs-modal-active");
     });
 }
 
