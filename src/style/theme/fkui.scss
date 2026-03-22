@@ -80,3 +80,8 @@
     --docs-navigation-active-background: var(--fkds-color-background-secondary);
     --docs-navigation-highlight-color: var(--fkds-color-select-background-secondary-default);
 }
+
+// reset overflow set from @fkui/design
+:root {
+    overflow-y: initial;
+}
