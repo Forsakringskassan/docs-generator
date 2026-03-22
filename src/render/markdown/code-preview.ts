@@ -243,7 +243,7 @@ export function codePreview(
         const toggleMarkup = /* HTML */ `
             <button
                 type="button"
-                class="button button--discrete code-preview__toggle-markup"
+                class="code-preview__button code-preview__toggle-markup"
                 aria-expanded="false"
                 onclick="toggleMarkup(this)"
             >
@@ -258,7 +258,7 @@ export function codePreview(
             ? /* HTML */ `
                   <a
                       href="${standalonePath ?? ""}"
-                      class="code-preview__fullscreen"
+                      class="code-preview__button code-preview__fullscreen"
                   >
                       <svg focusable="false" class="icon" aria-hidden="true">
                           <use href="#docs-icon-fullscreen"></use>
