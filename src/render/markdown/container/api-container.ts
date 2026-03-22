@@ -43,10 +43,16 @@ export function apiContainer(context: ContainerContext): ContainerCallback {
         const body = typeof doc.body === "string" ? doc.body : doc.body(tags);
 
         if (doc.format === "html") {
+            const { currentHeading } = env;
+            const nextHeadingLevel = currentHeading + 1;
             return body.replaceAll(
                 /* replace `<next-heading-level>` and `</next-heading-level>` with actual h-tags */
-                /(?<=<\/?)next-heading-level/g,
-                `h${String(env.currentHeading + 1)}`,
+                /<(\/?)next-heading-level/g,
+                (_, slash: string) =>
+                    slash
+                        ? `</h${String(nextHeadingLevel)}`
+                        : /* technical debt: this will fail if classes are being set on <next-heading-level tags */
+                          `<h${String(nextHeadingLevel)} class="docs-heading docs-heading--h${String(nextHeadingLevel)}"`,
             );
         }
 
