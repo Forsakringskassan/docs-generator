@@ -131,18 +131,6 @@ header .page-header__logo::after {
     margin: 0 1rem;
 }
 
-header .select-field {
-    --f-background-input-hover: #f4f4f4;
-    --f-input-shadow-inset: none;
-
-    padding-left: 1rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 0;
-    width: 100%;
-}
-
 header .page-header__right {
     justify-content: space-between;
     min-width: 0;
@@ -164,24 +152,6 @@ header .page-header__right-slot {
     header button kbd {
         display: none;
     }
-}
-
-header .select-field__icon {
-    top: 0.5rem;
-    color: #1b1e23;
-}
-
-header .select-field__select {
-    width: auto;
-    border: 1px solid #8d8e91;
-    padding-right: 3rem;
-}
-
-header .label {
-    font-weight: 400;
-    color: var(--docs-text-color-discrete);
-    margin-right: 1rem;
-    margin-bottom: 0;
 }
 
 /* navigering vänster */

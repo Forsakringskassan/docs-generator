@@ -274,17 +274,6 @@ code.hljs {
     pointer-events: none;
     width: var(--f-icon-size-small);
 }
-
-.select-field__icon {
-    display: inline;
-    height: var(--f-icon-size-large);
-    position: absolute;
-    right: 0.75rem;
-    top: 0.5rem;
-    transition: opacity var(--f-animation-duration-medium) ease-in-out;
-    width: var(--f-icon-size-large);
-}
-
 .icon-stack {
     position: relative;
 }
@@ -294,62 +283,4 @@ code.hljs {
 .icon-stack--info .f-icon-circle {
     color: var(--f-icon-color-white);
     fill: var(--f-icon-color-info);
-}
-
-.select-field {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    margin: var(--f-margin-component);
-    position: relative;
-    width: var(--f-width-full);
-}
-@media (min-width: 640px) {
-    .select-field--inline {
-        margin-bottom: 0.75rem;
-        flex-direction: row;
-        justify-content: flex-start;
-        width: auto;
-    }
-    .select-field--inline .label {
-        width: auto;
-        margin-right: 1rem;
-        padding-top: 0.5rem;
-    }
-}
-.select-field__select {
-    appearance: none;
-    background-color: var(--f-background-input);
-    box-shadow: var(--f-input-shadow-inset);
-    border-radius: var(--f-border-radius-medium);
-    border: var(--f-border-width-medium) solid var(--f-border-color-input);
-    color: var(--f-text-color-default);
-    cursor: pointer;
-    min-height: var(--f-height-large);
-    padding: var(--padding-input-fields);
-    width: var(--f-width-full);
-}
-.select-field__select:hover {
-    background-color: var(--f-background-input-hover);
-}
-.select-field__select:focus {
-    background-color: var(--f-background-input);
-}
-.select-field__select:disabled {
-    border-color: var(--f-border-color-input-disabled);
-    color: var(--f-text-color-input-disabled);
-    background-color: var(--f-background-input-disabled);
-    opacity: 1;
-}
-.select-field__select:disabled + .select-field__icon {
-    color: var(--f-text-color-button-disabled);
-}
-.select-field__icon-wrapper {
-    position: relative;
-}
-.select-field__icon {
-    color: var(--f-icon-color-primary);
-}
-.select-field--error .select-field__select {
-    border-color: var(--f-border-color-error);
 }

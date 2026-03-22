@@ -460,9 +460,6 @@ export interface TemplateData {
 }
 
 // @public
-export function themeSelectProcessor(): Processor;
-
-// @public
 export interface TopnavEntry {
     // (undocumented)
     path: string;

@@ -5,7 +5,6 @@ import {
     motdProcessor,
     selectableVersionProcessor,
     sourceUrlProcessor,
-    themeSelectProcessor,
     topnavProcessor,
     versionProcessor,
 } from "./processors";
@@ -22,7 +21,6 @@ export const availableProcessors = [
     motdProcessor({ message: "" }),
     selectableVersionProcessor({ name: "", version: "" }, ""),
     sourceUrlProcessor({ urlFormat: "" }),
-    themeSelectProcessor(),
     topnavProcessor("", ""),
     versionProcessor({ name: "", version: "", homepage: "" }, ""),
 ];
