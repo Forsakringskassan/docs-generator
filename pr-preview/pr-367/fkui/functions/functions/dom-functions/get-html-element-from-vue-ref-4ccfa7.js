@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/functions/dom-functions/get-html-element-from-vue-ref.md:get-html-element-from-vue-ref-883b1b.js
+// virtual-entry:virtual:docs/functions/functions/dom-functions/get-html-element-from-vue-ref.md:get-html-element-from-vue-ref-4ccfa7.js
 import { createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
 var exampleComponent = {};
 var _hoisted_1 = { ref: "myParagraph" };
@@ -46,7 +46,7 @@ function render(_ctx, _cache) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-883b1b"
+  selector: "#example-4ccfa7"
 });
 export {
   render
