@@ -303,16 +303,27 @@ main #aside dd {
 }
 
 /* Increased specificity to override button styling */
-.code-preview .code-preview__fullscreen,
-.code-preview .button.code-preview__toggle-markup {
+.code-preview .code-preview__button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
     display: inline-flex;
     align-items: center;
     width: fit-content;
     margin: 0;
     padding: 0.5rem;
     font-weight: 600;
-    line-height: var(--f-line-height-medium);
+    line-height: 1.4;
     color: var(--docs-text-color-default);
+
+    &:focus-visible {
+        border-radius: 0;
+        box-shadow:
+            0 0 0 2px #ffffff,
+            0 0 0 4px #1b1e23,
+            0 0 0 6px #ffffff;
+        outline: 3px solid transparent;
+    }
 
     .icon {
         margin-right: 0.25rem;
