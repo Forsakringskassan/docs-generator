@@ -1,0 +1,308 @@
+pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+}
+
+code.hljs {
+  padding: 3px 5px;
+}
+
+/*!
+  Theme: Default
+  Description: Original highlight.js style
+  Author: (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
+  Maintainer: @highlightjs/core-team
+  Website: https://highlightjs.org/
+  License: see project LICENSE
+  Touched: 2021
+*/
+/*
+This is left on purpose making default.css the single file that can be lifted
+as-is from the repository directly without the need for a build step
+
+Typically this "required" baseline CSS is added by `makestuff.js` during build.
+*/
+pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+}
+
+code.hljs {
+  padding: 3px 5px;
+}
+
+/* end baseline CSS */
+.hljs {
+  background: #f3f3f3;
+  color: #444;
+}
+
+/* Base color: saturation 0; */
+.hljs-subst {
+  /* default */
+}
+
+/* purposely ignored */
+.hljs-comment {
+  color: #697070;
+}
+
+.hljs-tag,
+.hljs-punctuation {
+  color: rgba(68, 68, 68, 0.6666666667);
+}
+
+.hljs-tag .hljs-name,
+.hljs-tag .hljs-attr {
+  color: #444;
+}
+
+.hljs-keyword,
+.hljs-attribute,
+.hljs-selector-tag,
+.hljs-meta .hljs-keyword,
+.hljs-doctag,
+.hljs-name {
+  font-weight: bold;
+}
+
+/* User color: hue: 0 */
+.hljs-type,
+.hljs-string,
+.hljs-number,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-quote,
+.hljs-template-tag,
+.hljs-deletion {
+  color: #880000;
+}
+
+.hljs-title,
+.hljs-section {
+  color: #880000;
+  font-weight: bold;
+}
+
+.hljs-regexp,
+.hljs-symbol,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-link,
+.hljs-selector-attr,
+.hljs-operator,
+.hljs-selector-pseudo {
+  color: #ab5656;
+}
+
+/* Language color: hue: 90; */
+.hljs-literal {
+  color: #695;
+}
+
+.hljs-built_in,
+.hljs-bullet,
+.hljs-code,
+.hljs-addition {
+  color: #397300;
+}
+
+/* Meta color: hue: 200 */
+.hljs-meta {
+  color: #1f7199;
+}
+
+.hljs-meta .hljs-string {
+  color: #38a;
+}
+
+/* Misc effects */
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.badge {
+  border-radius: var(--f-border-radius-medium);
+  border-style: solid;
+  border-width: var(--f-border-width-small);
+  box-sizing: border-box;
+  color: var(--f-text-color-default);
+  display: inline-block;
+  font-size: var(--f-font-size-standard);
+  line-height: var(--f-line-height-large);
+  font-weight: var(--f-font-weight-normal);
+  padding: 0 0.5rem;
+}
+
+.badge--default {
+  background-color: var(--f-background-badge-default);
+  border-color: var(--f-background-badge-default);
+}
+
+.badge--default-inverted {
+  background-color: var(--f-background-badge-default-inverted);
+  border-color: var(--f-border-color-badge-default);
+}
+
+.badge--warning {
+  background-color: var(--f-background-badge-warning);
+  border-color: var(--f-background-badge-warning);
+}
+
+.badge--warning-inverted {
+  background-color: var(--f-background-badge-warning-inverted);
+  border-color: var(--f-border-color-badge-warning);
+}
+
+.badge--error {
+  color: var(--f-text-color-default-inverted);
+  background-color: var(--f-background-badge-error);
+  border-color: var(--f-background-badge-error);
+}
+
+.badge--error-inverted {
+  background-color: var(--f-background-badge-error-inverted);
+  border-color: var(--f-border-color-badge-error);
+}
+
+.badge--success {
+  color: var(--f-text-color-default-inverted);
+  background-color: var(--f-background-badge-success);
+  border-color: var(--f-background-badge-success);
+}
+
+.badge--success-inverted {
+  background-color: var(--f-background-badge-success-inverted);
+  border-color: var(--f-border-color-badge-success);
+}
+
+.badge--info {
+  color: var(--f-text-color-default-inverted);
+  background-color: var(--f-background-badge-info);
+  border-color: var(--f-background-badge-info);
+}
+
+.badge--info-inverted {
+  background-color: var(--f-background-badge-info-inverted);
+  border-color: var(--f-border-color-badge-info);
+}
+
+.page-header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  color: var(--f-text-color-default-inverted);
+  background-color: var(--f-background-pageheader-primary);
+  padding: 1rem 0 1rem 1rem;
+  align-items: center;
+  overflow: hidden;
+}
+
+.page-header__logo {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.page-header__logo--small {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 0.8rem;
+  background-image: url("./images/fk-logo-primary-small.svg");
+}
+
+.page-header__logo--large {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: var(--f-background-pageheader-primary);
+  padding: 0.8rem 6.195rem;
+  background-image: url("./images/fk-logo-primary-large.svg");
+}
+
+.page-header__logo--responsive {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: var(--f-background-pageheader-primary);
+  padding: 0.8rem 6.195rem;
+  background-image: url("./images/fk-logo-primary-large.svg");
+}
+
+@media (max-width: 639.98px) {
+  .page-header__logo--responsive {
+    min-width: 0.8rem;
+    padding: 0.8rem;
+    background-image: url("./images/fk-logo-primary-small.svg");
+  }
+}
+.page-header__logo > a {
+  display: inline-flex;
+}
+
+.page-header__logo::after {
+  content: " ";
+  background-color: var(--f-border-color-separator-pageheader-primary);
+  height: 1.38rem;
+  padding: 0.5px;
+  margin: 0 1rem 0.155rem;
+}
+
+.page-header__app-name {
+  padding-top: 0.22rem;
+  margin: 0;
+  font-size: var(--f-font-size-h3);
+  font-weight: var(--f-font-weight-medium);
+  color: var(--f-text-color-default-inverted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 9rem;
+}
+
+.page-header__right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-grow: 1;
+  white-space: nowrap;
+  padding-top: 0.4rem;
+  font-size: var(--f-font-size-standard);
+}
+
+.page-header__right-slot {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.icon,
+.icon-stack {
+  display: inline-block;
+  height: var(--f-icon-size-small);
+  max-height: 100%;
+  max-width: 100%;
+  pointer-events: none;
+  width: var(--f-icon-size-small);
+}
+
+.icon-stack {
+  position: relative;
+}
+
+.icon-stack .icon {
+  position: absolute;
+}
+
+.icon-stack--info .f-icon-circle {
+  color: var(--f-icon-color-white);
+  fill: var(--f-icon-color-info);
+}
