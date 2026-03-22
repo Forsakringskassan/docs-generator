@@ -195,6 +195,7 @@ function setup(): void {
 
     dialog.addEventListener("close", () => {
         document.body.removeEventListener("click", clickOutside);
+        document.body.classList.remove("docs-modal-active");
     });
 
     /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
@@ -255,6 +256,7 @@ function setup(): void {
             updateResults();
             dialog.showModal();
             document.body.addEventListener("click", clickOutside);
+            document.body.classList.add("docs-modal-active");
         }
     });
 
@@ -274,6 +276,7 @@ function setup(): void {
                 input.value = searchTerm = "";
                 dialog.showModal();
                 document.body.addEventListener("click", clickOutside);
+                document.body.classList.add("docs-modal-active");
             });
         }
     }
