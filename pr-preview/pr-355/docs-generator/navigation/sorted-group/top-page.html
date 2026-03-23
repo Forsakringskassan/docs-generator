@@ -6,16 +6,16 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Top page - FK Documentation generator</title><link
             rel="stylesheet"
-            href="../../assets/docs-dbfda2.css"
+            href="../../assets/docs-c9b432.css"
             crossorigin
-            integrity="sha384-+ERshAJERp7+6T6hPkAYpbcWnT20ritn82opiDTJbm/Koiu/PRcNRYPudwgIuNqS"
+            integrity="sha384-2N9f/lf7ilTgIacKWWMyFiNrSL7z+n3NqEY1s+lUWGe60Q4sE+pV/hUzeiS+AeqW"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/fkui-ea1220.css"
+            href="../../assets/fkui-0edb3a.css"
             crossorigin
-            integrity="sha384-TFhPiotEG5tAFXgd7OWS3me/QRCGWlJ5LMVBN/j4jq9CMuiDVX1HY6fogiKoJukD"
+            integrity="sha384-RHW2pj2nbUTCtUwVerKSeFFQB1o+kAhXwhFpnPxU0/Vz6YQUcttlOrzCU4RW9uMd"
             
         />
 
@@ -47,20 +47,20 @@
     </head>
     <body><div class="cookie-warning">
     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
-    <h1>Kakor på webbplatsen</h1>
-    <p>
-        Vi använder kakor (cookies) för att webbplatsen ska fungera så bra som möjligt för dig.<br />
-        Vi använder också kakor för webbanalys för att göra webbplatsen bättre.
-    </p>
-    <p>Godkänner du att vi också använder kakor för webbanalys?</p>
+    <h1>Cookies on this website</h1>
+    <p>We use cookies to make this website work as well as possible for you.<br />We also use cookies for web analytics to improve the website.</p>
+    <p>Do you also accept cookies for web analytics?</p>
 
-    <div class="button-group">
-        <button id="consent-all-button" class="button button-group__item button--primary" type="button">
-            Ja, jag godkänner alla kakor
+    <div class="cookie-warning__button-group">
+        <button id="consent-all-button" class="cookie-warning__button cookie-warning__button--primary" type="button">
+            Yes, I accept all cookies
         </button>
-
-        <button id="consent-functional-button" class="button button-group__item button--secondary" type="button">
-            Nej, jag godkänner bara nödvändiga kakor
+        <button
+            id="consent-functional-button"
+            class="cookie-warning__button cookie-warning__button--secondary"
+            type="button"
+        >
+            No, I only accept necessary cookies
         </button>
     </div>
 </div>
@@ -68,11 +68,11 @@
 <template id="motd-message">
 <div class="docs-motd docs-motd--info">
     <span class="docs-motd__icon">
-        <span class="icon-stack icon-stack--info">
-            <svg class="icon icon--circle" focusable="false" aria-hidden="true">
+        <span class="docs-icon-stack docs-icon-stack--info">
+            <svg class="docs-icon icon--circle" focusable="false" aria-hidden="true">
                 <use xlink:href="#docs-icon-circle"></use>
             </svg>
-            <svg class="icon icon--i" focusable="false" aria-hidden="true">
+            <svg class="docs-icon icon--i" focusable="false" aria-hidden="true">
                 <use xlink:href="#docs-icon-i"></use>
             </svg>
         </span>
@@ -147,7 +147,7 @@
         <li class="docs-topnav__item docs-topnav__item--more" style="visibility: hidden">
             <button type="button" class="docs-topnav__anchor" aria-expanded="false">
                 <span>Mer</span>
-                <svg class="icon" focusable="false" aria-hidden="true">
+                <svg class="docs-icon" focusable="false" aria-hidden="true">
                     <use xlink:href="#docs-icon-arrow-down"></use>
                 </svg>
             </button>
@@ -222,9 +222,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        buggfix/ikoner-dokumentation (<a href="https://github.com/Forsakringskassan/docs-generator/commits/df463a46b9ee0e7154fb93cff9a6ac933b9bd15e">df463a4</a>)<br />
+        buggfix/ikoner-dokumentation (<a href="https://github.com/Forsakringskassan/docs-generator/commits/545f498ace96e564a6ff7db413b62211fee1510c">545f498</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/355">PR 355</a><br />
-        2026-03-20 10:54
+        2026-03-23 13:59
     </span>
 </div>
 </div>
@@ -237,6 +237,7 @@
             <div id="primary"><div id="sidenav">
 <input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
 <nav class="navigation" aria-label="Sekundär">
+ <span>Stefan</span>
 <ol><li class="link ">
         <a
             href="../"
@@ -283,9 +284,10 @@
         </a>
     </li><li class="expandable ">
         <details >
-            <summary>Expandable group <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Expandable group <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
+ <span>Stefan</span>
 <ol><li class="link ">
         <a
             href="../group/nested-page-1.html"
@@ -351,9 +353,10 @@
         </a>
     </li><li class="expandable active">
         <details open>
-            <summary>Sorted group <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Sorted group <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
+ <span>Stefan</span>
 <ol><li class="link active">
         <a
             href="./top-page.html"
@@ -425,31 +428,10 @@
     <div class="docs-footer__content"><div class="toolbar__item">
     <form id="version">
         <button type="submit" class="anchor">
-            <span id="version-info" class="version"> Byt version </span>
+            <span id="version-info" class="version">Switch version </span>
         </button>
     </form>
-
-    <dialog id="version-dialog">
-        <div id="version-dialog-head">
-            <h1>Välj version</h1>
-            <button type="button" class="button button--discrete button--discrete--black">
-                <span>Stäng</span>
-                <svg class="button__icon icon" focusable="false" aria-hidden>
-                    <use xlink:href="#docs-icon-close"></use>
-                </svg>
-            </button>
-        </div>
-        <div id="version-list">
-            <p>Var god vänta, laddar versionsdata...</p>
-        </div>
-    </dialog>
 </div>
-
-<template id="version-list-item">
-    <li class="list__item">
-        <a class="list__item__itempane">template</a>
-    </li>
-</template>
 
     </div>
 </div>
@@ -510,47 +492,77 @@
             />
         </symbol>
     </svg>
-</div><dialog id="search-dialog">
+</div><dialog class="docs-modal" id="search-dialog">
+    <div class="docs-modal__header">
+        <h1 class="docs-modal__title" id="search-dialog-title">Search</h1>
+        <button type="button" class="docs-modal__close">
+            <span>Close</span>
+            <svg class="icon" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-close"></use>
+            </svg>
+        </button>
+    </div>
+
     <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
-    <form id="search-form">
-        <div class="text-field">
-            <label for="search-field" class="label">Search</label>
-            <div class="text-field__input-wrapper">
-                <div class="text-field__icon-wrapper">
-                    <input
-                        autofocus
-                        autocomplete="off"
-                        autocapitalize="off"
-                        autocorrect="off"
-                        id="search-field"
-                        type="text"
-                        class="text-field__input"
-                        maxlength="50"
-                        placeholder="Type to begin searching"
-                    />
-                </div>
-            </div>
-        </div>
-        <div id="search-results"></div>
+    <form class="docs-modal__body" id="search-form">
+        <input
+            autofocus
+            autocomplete="off"
+            autocapitalize="off"
+            autocorrect="off"
+            id="search-field"
+            type="search"
+            class="docs-search-dialog__input"
+            maxlength="50"
+            placeholder="Type to begin searching"
+            aria-labelledby="search-dialog-title"
+        />
+        <ul class="docs-search-result__list" id="search-results"></ul>
         <p><kbd>Esc</kbd> to close <kbd>Arrow up/down</kbd> to navigate <kbd>Enter</kbd> to select</p>
     </form>
-</dialog><script
+</dialog>
+
+<template id="search-result-item">
+    <li class="docs-search-result__item">
+        <a class="docs-search-result__link"></a>
+    </li>
+</template>
+<dialog class="docs-modal" id="version-dialog">
+    <div class="docs-modal__header">
+        <h1 class="docs-modal__title">Select version</h1>
+        <button type="button" class="docs-modal__close">
+            <span>Close</span>
+            <svg class="icon" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-close"></use>
+            </svg>
+        </button>
+    </div>
+    <div class="docs-modal__body" id="version-list">
+        <p>Please wait, loading version data...</p>
+    </div>
+</dialog>
+
+<template id="version-list-item">
+    <li class="docs-selectable-version__item">
+        <a class="docs-selectable-version__link"></a>
+    </li>
+</template><script
             src="../../assets/processors/motd/index-db684d.js"
             type="module"
             crossorigin
             integrity="sha384-zAoLcKQxzwmKl8WDuv2SdmMjcqkFzdJo6p4UsXF27ONwO6eGqJD0F2C0Aipv2cAC"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-f0c8aa.js"
+            src="../../assets/processors/selectable-version/select-version-baf36a.js"
             type="module"
             crossorigin
-            integrity="sha384-s4LxGj3F8WnM0NmfdGdj9hLo8amh/eerGmeZSMNvUaXN8ttMbcFoqHVvlt1PwyAJ"
+            integrity="sha384-BxpIvGa+O+gQDbXhUKkGd/gd4EVvZ8wzS+LyxY4arY2VPmpRVF7mriSHV3xNXxxi"
             
         ></script><script
-            src="../../assets/main-312e80.js"
+            src="../../assets/main-a281a5.js"
             type="module"
             crossorigin
-            integrity="sha384-FR5e84PNzBUAAWr04VJ9VenF7dnlRsetpgTASN481sT6AAOUDVgk/ZyyMEP60ed7"
+            integrity="sha384-RMXYYvlD6pMJC/YbbT5KuNiroEF9/xDKslejdYyDfTCarFp7CMowfQc1r8GGMtty"
             
         ></script>
     </body>

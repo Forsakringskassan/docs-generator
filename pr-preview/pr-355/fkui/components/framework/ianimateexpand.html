@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Animerad expandering - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-00f090.css"
+            href="../../assets/docs-7fe960.css"
             crossorigin
-            integrity="sha384-uxQZmLY7hSB6x9grQDZrVW3iJGuMgYRIYd1Si+C2iXnUp6bdEgf0ny306Haa0+mZ"
+            integrity="sha384-ioCV3tk1PTQRFDDzPBqyB8mZOlgxy0NayLjS+Ve7KrggcMjPWcJTz3Dgn2AGtILW"
             
         />
         <link
@@ -24,17 +24,17 @@
   "imports": {
     "vue": "../../assets/vendor-vue-dd241e.js",
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-dd52a5.js",
-    "@fkui/logic": "../../assets/vendor-fkui-logic-98de52.js",
+    "@fkui/logic": "../../assets/vendor-fkui-logic-907e93.js",
     "@fkui/date": "../../assets/vendor-fkui-date-6cefc4.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-2c7abf.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-4b3ba3.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js"
   },
   "integrity": {
     "../../assets/vendor-vue-dd241e.js": "sha384-3bp3RphA5Fue/POFOIMqyfDfPU6ARe/NNr5xPPAVr1ycHv2556I1esecXtk1Wt0s",
     "../../assets/vendor-fkui-vue-selectors-dd52a5.js": "sha384-m27Lu53OLaLen7ASwujbnbVpRXC2zmCy45iu0vrnS6mjnoUT3/ld10vJilIF2em7",
-    "../../assets/vendor-fkui-logic-98de52.js": "sha384-Ptnc7xByl78++N85l8MGYnpfAGrdohEpKKt9UuQaOU7Avr3TV3rmyjKzInUKGEe5",
+    "../../assets/vendor-fkui-logic-907e93.js": "sha384-4TeiJAmFYySCGdBwAd/6BruO6Gq21Zk16k0vfgF/ZwvVH1Ze+8Y8ZNkAFJkEg0LX",
     "../../assets/vendor-fkui-date-6cefc4.js": "sha384-9srvwBR/8E3tvhOCMv4zfTdALZq6lxNa1BhGi7k1N8IIkIucgvs4UnUisqLKGYPY",
-    "../../assets/vendor-fkui-vue-2c7abf.js": "sha384-YoKS0bXDCaVp5S0CBGMd+TVVFQh0w+uEKsIKkQlKRr91w8mAX2xNqEfWL5aJVIZe",
+    "../../assets/vendor-fkui-vue-4b3ba3.js": "sha384-oRDXZ9Jbst2/4Kumj5PDOcpPhKCFRzoo48IDTsGx1eNBL+XM6Q1vLvIuTilLy2DB",
     "../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js": "sha384-PUTSynHDD212n+s+dqThyOaj24OlZQJGsyjX8DCQB2pQg15TTuHNg699Kf5e6hwU"
   }
 }
@@ -84,21 +84,21 @@
 
         <link
             rel="preload"
-            href="../../search-data-6f164e.json"
+            href="../../search-data-d06e51.json"
             as="fetch"
             crossorigin
-            integrity="sha384-z4kXktjkvFsVAy6raFfR60AycY+IOQdFnsdGEhvuLTul+S+GubKBu0wA8cc9UR3C"
+            integrity="sha384-8DBCSiavj5bGgU6ix2QY79tbAgYw5DIyuqIKmasIBTuPmxbQ1w6JKMWDbgomiYPp"
             id="search-data"
         />
     </head>
     <body><template id="motd-message">
 <div class="docs-motd docs-motd--info">
     <span class="docs-motd__icon">
-        <span class="icon-stack icon-stack--info">
-            <svg class="icon icon--circle" focusable="false" aria-hidden="true">
+        <span class="docs-icon-stack docs-icon-stack--info">
+            <svg class="docs-icon icon--circle" focusable="false" aria-hidden="true">
                 <use xlink:href="#docs-icon-circle"></use>
             </svg>
-            <svg class="icon icon--i" focusable="false" aria-hidden="true">
+            <svg class="docs-icon icon--i" focusable="false" aria-hidden="true">
                 <use xlink:href="#docs-icon-i"></use>
             </svg>
         </span>
@@ -112,18 +112,18 @@
 <div class="cookie-warning">
     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
     <h1>Kakor på webbplatsen</h1>
-    <p>
-        Vi använder kakor (cookies) för att webbplatsen ska fungera så bra som möjligt för dig.<br />
-        Vi använder också kakor för webbanalys för att göra webbplatsen bättre.
-    </p>
+    <p>Vi använder kakor (cookies) för att webbplatsen ska fungera så bra som möjligt för dig.<br />Vi använder också kakor för webbanalys för att göra webbplatsen bättre.</p>
     <p>Godkänner du att vi också använder kakor för webbanalys?</p>
 
-    <div class="button-group">
-        <button id="consent-all-button" class="button button-group__item button--primary" type="button">
+    <div class="cookie-warning__button-group">
+        <button id="consent-all-button" class="cookie-warning__button cookie-warning__button--primary" type="button">
             Ja, jag godkänner alla kakor
         </button>
-
-        <button id="consent-functional-button" class="button button-group__item button--secondary" type="button">
+        <button
+            id="consent-functional-button"
+            class="cookie-warning__button cookie-warning__button--secondary"
+            type="button"
+        >
             Nej, jag godkänner bara nödvändiga kakor
         </button>
     </div>
@@ -172,7 +172,7 @@
         <li class="docs-topnav__item docs-topnav__item--more" style="visibility: hidden">
             <button type="button" class="docs-topnav__anchor" aria-expanded="false">
                 <span>Mer</span>
-                <svg class="icon" focusable="false" aria-hidden="true">
+                <svg class="docs-icon" focusable="false" aria-hidden="true">
                     <use xlink:href="#docs-icon-arrow-down"></use>
                 </svg>
             </button>
@@ -238,6 +238,7 @@
             <div id="primary"><div id="sidenav">
 <input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
 <nav class="navigation" aria-label="Sekundär">
+ <span>Stefan</span>
 <ol><li class="link ">
         <a
             href="../fbadge.html"
@@ -284,9 +285,10 @@
         </a>
     </li><li class="expandable ">
         <details >
-            <summary>Expanderbara ytor <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Expanderbara ytor <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
+ <span>Stefan</span>
 <ol><li class="link ">
         <a
             href="../expandable/fexpandablepanel.html"
@@ -326,9 +328,10 @@
         </details>
     </li><li class="expandable ">
         <details >
-            <summary>Filuppladdning <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Filuppladdning <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
+ <span>Stefan</span>
 <ol><li class="link ">
         <a
             href="../file-upload/ffileitem.html"
@@ -357,9 +360,10 @@
         </details>
     </li><li class="expandable ">
         <details >
-            <summary>Gruppera <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Gruppera <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
+ <span>Stefan</span>
 <ol><li class="link ">
         <a
             href="../group/ffieldset.html"
@@ -399,9 +403,10 @@
         </a>
     </li><li class="expandable ">
         <details >
-            <summary>Inmatning <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Inmatning <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
+ <span>Stefan</span>
 <ol><li class="link ">
         <a
             href="../input/ftextfield.html"
@@ -540,9 +545,10 @@
         </a>
     </li><li class="expandable ">
         <details >
-            <summary>Ladda innehåll <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Ladda innehåll <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
+ <span>Stefan</span>
 <ol><li class="link ">
         <a
             href="../load/fprogressbar.html"
@@ -582,9 +588,10 @@
         </a>
     </li><li class="expandable ">
         <details >
-            <summary>Länkar <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Länkar <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
+ <span>Stefan</span>
 <ol><li class="link ">
         <a
             href="../links/anchor.html"
@@ -624,9 +631,10 @@
         </a>
     </li><li class="expandable ">
         <details >
-            <summary>Modal <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Modal <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
+ <span>Stefan</span>
 <ol><li class="link ">
         <a
             href="../modal/fconfirmmodal.html"
@@ -688,9 +696,10 @@
         </a>
     </li><li class="expandable ">
         <details >
-            <summary>Presentationsfält <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Presentationsfält <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
+ <span>Stefan</span>
 <ol><li class="link ">
         <a
             href="../presentation/foutputfield.html"
@@ -719,9 +728,10 @@
         </details>
     </li><li class="expandable active">
         <details open>
-            <summary>Ramverkskomponenter <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Ramverkskomponenter <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
+ <span>Stefan</span>
 <ol><li class="link ">
         <a
             href="./about.html"
@@ -849,9 +859,10 @@
         </details>
     </li><li class="expandable ">
         <details >
-            <summary>Sidlayout <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Sidlayout <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
+ <span>Stefan</span>
 <ol><li class="link ">
         <a
             href="../page-layout/application-layout.html"
@@ -957,9 +968,10 @@
         </a>
     </li><li class="expandable ">
         <details >
-            <summary>Tabell och lista <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Tabell och lista <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
+ <span>Stefan</span>
 <ol><li class="link ">
         <a
             href="../table-and-list/table.html"
@@ -1032,9 +1044,10 @@
         </a>
     </li><li class="expandable ">
         <details >
-            <summary>Validering <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Validering <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
+ <span>Stefan</span>
 <ol><li class="link ">
         <a
             href="../validation/ferrorlist.html"
@@ -1108,7 +1121,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/b01ba3ef00fb919e95e9f887ef8febf12b78690f/packages/vue/src/internal-components/IAnimateExpand/IAnimateExpand.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/c2875ff1be9c98a28bbccd5aa6babbabd195e6a0/packages/vue/src/internal-components/IAnimateExpand/IAnimateExpand.vue">
                 IAnimateExpand
             </a>
             
@@ -1125,7 +1138,7 @@
                         <details id="outline">
                             <summary class="outline__heading">
                                 Innehåll
-                                <svg focusable="false" class="icon" aria-hidden="true">
+                                <svg focusable="false" class="docs-icon" aria-hidden="true">
                                     <use href="#docs-icon-arrow-down"></use>
                                 </svg>
                             </summary>
@@ -1158,23 +1171,23 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-3bd6f1"></div>
+        <div id="example-9e8583"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./IAnimateExpandRadioGroup-3bd6f1.js"></script>
+        <script type="module" src="./IAnimateExpandRadioGroup-9e8583.js"></script>
     
                 </div>
                 <div>
             <button
                 type="button"
-                class="button button--discrete code-preview__toggle-markup"
+                class="code-preview__button code-preview__toggle-markup"
                 aria-expanded="false"
                 onclick="toggleMarkup(this)"
             >
-                <svg focusable="false" class="icon" aria-hidden="true">
+                <svg focusable="false" class="docs-icon" aria-hidden="true">
                     <use href="#docs-icon-code"></use>
                 </svg>
                 Visa kod
@@ -1240,7 +1253,7 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-4fe71a"></div>
+        <div id="example-44403d"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -1251,17 +1264,17 @@ select {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./IAnimateExpandRecommended-4fe71a.js"></script>
+        <script type="module" src="./IAnimateExpandRecommended-44403d.js"></script>
     
                 </div>
                 <div>
             <button
                 type="button"
-                class="button button--discrete code-preview__toggle-markup"
+                class="code-preview__button code-preview__toggle-markup"
                 aria-expanded="false"
                 onclick="toggleMarkup(this)"
             >
-                <svg focusable="false" class="icon" aria-hidden="true">
+                <svg focusable="false" class="docs-icon" aria-hidden="true">
                     <use href="#docs-icon-code"></use>
                 </svg>
                 Visa kod
@@ -1355,23 +1368,23 @@ select {
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-074407"></div>
+        <div id="example-e0ba7e"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./IAnimateExpandToggleTwo-074407.js"></script>
+        <script type="module" src="./IAnimateExpandToggleTwo-e0ba7e.js"></script>
     
                 </div>
                 <div>
             <button
                 type="button"
-                class="button button--discrete code-preview__toggle-markup"
+                class="code-preview__button code-preview__toggle-markup"
                 aria-expanded="false"
                 onclick="toggleMarkup(this)"
             >
-                <svg focusable="false" class="icon" aria-hidden="true">
+                <svg focusable="false" class="docs-icon" aria-hidden="true">
                     <use href="#docs-icon-code"></use>
                 </svg>
                 Visa kod
@@ -1584,9 +1597,9 @@ Callback will await Promise.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">buggfix/ikoner-dokumentation (<a href="https://github.com/Forsakringskassan/designsystem/commits/b01ba3ef00fb919e95e9f887ef8febf12b78690f">b01ba3e</a>)<br />
+<div class="footer__right"><div class="version">buggfix/ikoner-dokumentation (<a href="https://github.com/Forsakringskassan/designsystem/commits/c2875ff1be9c98a28bbccd5aa6babbabd195e6a0">c2875ff</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/355">PR 355</a><br />
-        2026-03-20 10:58
+        2026-03-23 14:02
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1594,28 +1607,7 @@ Callback will await Promise.</p>
             <span id="version-info" class="anchor"> Byt version </span>
         </button>
     </form>
-
-    <dialog id="version-dialog">
-        <div id="version-dialog-head">
-            <h1>Välj version</h1>
-            <button type="button" class="button button--tertiary button--tertiary--black">
-                <span>Stäng</span>
-                <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
-                    <use href="#f-icon-close"></use>
-                </svg>
-            </button>
-        </div>
-        <div id="version-list">
-            <p>Var god vänta, laddar versionsdata...</p>
-        </div>
-    </dialog>
 </div>
-
-<template id="version-list-item">
-    <li class="list__item">
-        <a class="list__item__itempane">template</a>
-    </li>
-</template>
 
 
     <ul>
@@ -1679,31 +1671,61 @@ Callback will await Promise.</p>
             />
         </symbol>
     </svg>
-</div><dialog id="search-dialog">
+</div><dialog class="docs-modal" id="search-dialog">
+    <div class="docs-modal__header">
+        <h1 class="docs-modal__title" id="search-dialog-title">Sök</h1>
+        <button type="button" class="docs-modal__close">
+            <span>Stäng</span>
+            <svg class="icon" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-close"></use>
+            </svg>
+        </button>
+    </div>
+
     <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
-    <form id="search-form">
-        <div class="text-field">
-            <label for="search-field" class="label">Sök</label>
-            <div class="text-field__input-wrapper">
-                <div class="text-field__icon-wrapper">
-                    <input
-                        autofocus
-                        autocomplete="off"
-                        autocapitalize="off"
-                        autocorrect="off"
-                        id="search-field"
-                        type="text"
-                        class="text-field__input"
-                        maxlength="50"
-                        placeholder="Skriv för att börja söka"
-                    />
-                </div>
-            </div>
-        </div>
-        <div id="search-results"></div>
+    <form class="docs-modal__body" id="search-form">
+        <input
+            autofocus
+            autocomplete="off"
+            autocapitalize="off"
+            autocorrect="off"
+            id="search-field"
+            type="search"
+            class="docs-search-dialog__input"
+            maxlength="50"
+            placeholder="Skriv för att börja söka"
+            aria-labelledby="search-dialog-title"
+        />
+        <ul class="docs-search-result__list" id="search-results"></ul>
         <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
     </form>
 </dialog>
+
+<template id="search-result-item">
+    <li class="docs-search-result__item">
+        <a class="docs-search-result__link"></a>
+    </li>
+</template>
+<dialog class="docs-modal" id="version-dialog">
+    <div class="docs-modal__header">
+        <h1 class="docs-modal__title">Välj version</h1>
+        <button type="button" class="docs-modal__close">
+            <span>Stäng</span>
+            <svg class="icon" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-close"></use>
+            </svg>
+        </button>
+    </div>
+    <div class="docs-modal__body" id="version-list">
+        <p>Var god vänta, laddar versionsdata...</p>
+    </div>
+</dialog>
+
+<template id="version-list-item">
+    <li class="docs-selectable-version__item">
+        <a class="docs-selectable-version__link"></a>
+    </li>
+</template>
 <div id="teleport-target" class="user-theme"></div><script
             src="../../assets/processors/motd/index-cda4cc.js"
             type="module"
@@ -1711,16 +1733,16 @@ Callback will await Promise.</p>
             integrity="sha384-MiyHuq1hbcemP/RGZgotKZC8qlPOYjlrbQ/VNcrv6ju3y4SnFHj2CvLfATECOQdA"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-1fa30d.js"
+            src="../../assets/processors/selectable-version/select-version-92a936.js"
             type="module"
             crossorigin
-            integrity="sha384-S7axHBuhVkx1OrFTW9/nE0lj9cTNqqBRTYRZa+mq6Ts4zb0T3k2yYpqQId3enxkl"
+            integrity="sha384-tKGkvryhTUyr0fJJ+lTeWZhxCCL9t4TuqtGUKA2MNJ1v6MbY6EybZ2ptUlAnu3ke"
             
         ></script><script
-            src="../../assets/main-968011.js"
+            src="../../assets/main-f68cda.js"
             type="module"
             crossorigin
-            integrity="sha384-lLuOt0gDwe+q44Yr+DdMJo2Et5XCAV1RJVsQ9cweqokZN21pHe5qfR5ozaFAe62h"
+            integrity="sha384-ARuCalqVPs3IlLA12rdhvH79lFkpQ7/wgXP1YgdXqst0Cg3amLJRe5AuuxkU5xgz"
             
         ></script>
     </body>
