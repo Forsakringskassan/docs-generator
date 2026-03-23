@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [2.39.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.38.6...v2.39.0) (2026-03-23)
+
+### Features
+
+* use separate css-class for styling headers ([df50586](https://github.com/Forsakringskassan/docs-generator/commit/df5058644dc3f14fb497038bac9c542b0291a4cd))
+
+### Bug Fixes
+
+* **deps:** update dependency i18next to v25.8.20 ([a343b9f](https://github.com/Forsakringskassan/docs-generator/commit/a343b9f4c1fbaf633995ec0216d9187324ae419a))
+
 ## [2.38.6](https://github.com/Forsakringskassan/docs-generator/compare/v2.38.5...v2.38.6) (2026-03-22)
 
 ### Bug Fixes
