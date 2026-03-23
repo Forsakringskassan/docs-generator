@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FFileSelector/examples/FFileSelectorLiveExample.vue:FFileSelectorLiveExample-440425.js
+// virtual-entry:virtual:packages/vue/src/components/FFileSelector/examples/FFileSelectorLiveExample.vue:FFileSelectorLiveExample-d8f088.js
 import { defineComponent as _defineComponent } from "vue";
 import { computed, ref } from "vue";
 import { FCheckboxField, FFileSelector, FSelectField } from "@fkui/vue";
@@ -129,7 +129,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-440425"
+  selector: "#example-d8f088"
 });
 export {
   render

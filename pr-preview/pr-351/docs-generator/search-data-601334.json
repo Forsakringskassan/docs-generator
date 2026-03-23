@@ -5,19 +5,6 @@
     "Theme",
     "Font",
     "Smoketest: tables",
-    "Version",
-    "Topnav",
-    "Source url",
-    "Foo",
-    "Bar",
-    "Search processor",
-    "searchProcessor",
-    "Nunjucks",
-    "MOTD",
-    "Manifest",
-    "Processors",
-    "Extract examples",
-    "Cookie",
     "Navigation",
     "Child Page 3",
     "Child Page 2",
@@ -34,6 +21,19 @@
     "Custom layout",
     "Scripts",
     "Configuration",
+    "Version",
+    "Topnav",
+    "Source url",
+    "Foo",
+    "Bar",
+    "Search processor",
+    "searchProcessor",
+    "Nunjucks",
+    "MOTD",
+    "Manifest",
+    "Processors",
+    "Extract examples",
+    "Cookie",
     "Top page",
     "Sorted Page 3",
     "Sorted Page 2",
@@ -41,15 +41,15 @@
     "Nested Page 3",
     "Nested Page 2",
     "Nested Page 1",
-    "Messagebox",
-    "Details",
-    "Alternative text",
     "Vue examples",
     "Javascript and Typescript",
     "Fullscreen examples",
     "Diff",
     "Code preview",
     "Documenting Vue components",
+    "Messagebox",
+    "Details",
+    "Alternative text",
     "README",
     "Live example",
     "Changelog"
@@ -78,61 +78,6 @@
     {
       "url": "smoketest/table.html",
       "title": "Smoketest: tables",
-      "terms": []
-    },
-    {
-      "url": "processors/version.html",
-      "title": "Version",
-      "terms": []
-    },
-    {
-      "url": "processors/topnav.html",
-      "title": "Topnav",
-      "terms": []
-    },
-    {
-      "url": "processors/source-url.html",
-      "title": "Source url",
-      "terms": [
-        "Foo",
-        "Bar"
-      ]
-    },
-    {
-      "url": "processors/search.html",
-      "title": "Search processor",
-      "terms": [
-        "searchProcessor"
-      ]
-    },
-    {
-      "url": "processors/nunjucks.html",
-      "title": "Nunjucks",
-      "terms": []
-    },
-    {
-      "url": "processors/motd.html",
-      "title": "MOTD",
-      "terms": []
-    },
-    {
-      "url": "processors/manifest.html",
-      "title": "Manifest",
-      "terms": []
-    },
-    {
-      "url": "processors/index.html",
-      "title": "Processors",
-      "terms": []
-    },
-    {
-      "url": "processors/extract-examples.html",
-      "title": "Extract examples",
-      "terms": []
-    },
-    {
-      "url": "processors/cookie.html",
-      "title": "Cookie",
       "terms": []
     },
     {
@@ -216,6 +161,61 @@
       "terms": []
     },
     {
+      "url": "processors/version.html",
+      "title": "Version",
+      "terms": []
+    },
+    {
+      "url": "processors/topnav.html",
+      "title": "Topnav",
+      "terms": []
+    },
+    {
+      "url": "processors/source-url.html",
+      "title": "Source url",
+      "terms": [
+        "Foo",
+        "Bar"
+      ]
+    },
+    {
+      "url": "processors/search.html",
+      "title": "Search processor",
+      "terms": [
+        "searchProcessor"
+      ]
+    },
+    {
+      "url": "processors/nunjucks.html",
+      "title": "Nunjucks",
+      "terms": []
+    },
+    {
+      "url": "processors/motd.html",
+      "title": "MOTD",
+      "terms": []
+    },
+    {
+      "url": "processors/manifest.html",
+      "title": "Manifest",
+      "terms": []
+    },
+    {
+      "url": "processors/index.html",
+      "title": "Processors",
+      "terms": []
+    },
+    {
+      "url": "processors/extract-examples.html",
+      "title": "Extract examples",
+      "terms": []
+    },
+    {
+      "url": "processors/cookie.html",
+      "title": "Cookie",
+      "terms": []
+    },
+    {
       "url": "navigation/sorted-group/top-page.html",
       "title": "Top page",
       "terms": []
@@ -251,21 +251,6 @@
       "terms": []
     },
     {
-      "url": "markdown/containers/messagebox.html",
-      "title": "Messagebox",
-      "terms": []
-    },
-    {
-      "url": "markdown/containers/details.html",
-      "title": "Details",
-      "terms": []
-    },
-    {
-      "url": "markdown/containers/alt-text.html",
-      "title": "Alternative text",
-      "terms": []
-    },
-    {
       "url": "markdown/code-preview/vue.html",
       "title": "Vue examples",
       "terms": []
@@ -296,6 +281,21 @@
       "terms": []
     },
     {
+      "url": "markdown/containers/messagebox.html",
+      "title": "Messagebox",
+      "terms": []
+    },
+    {
+      "url": "markdown/containers/details.html",
+      "title": "Details",
+      "terms": []
+    },
+    {
+      "url": "markdown/containers/alt-text.html",
+      "title": "Alternative text",
+      "terms": []
+    },
+    {
       "url": "index.html",
       "title": "README",
       "terms": []
@@ -320,25 +320,25 @@
     "5": 5,
     "6": 6,
     "7": 7,
-    "8": 7,
-    "9": 7,
-    "10": 8,
-    "11": 8,
-    "12": 9,
-    "13": 10,
-    "14": 11,
-    "15": 12,
-    "16": 13,
-    "17": 14,
-    "18": 15,
-    "19": 16,
-    "20": 17,
-    "21": 18,
-    "22": 19,
-    "23": 20,
-    "24": 21,
-    "25": 22,
-    "26": 23,
+    "8": 8,
+    "9": 9,
+    "10": 10,
+    "11": 11,
+    "12": 12,
+    "13": 13,
+    "14": 14,
+    "15": 15,
+    "16": 16,
+    "17": 17,
+    "18": 18,
+    "19": 19,
+    "20": 20,
+    "21": 21,
+    "22": 22,
+    "23": 23,
+    "24": 23,
+    "25": 23,
+    "26": 24,
     "27": 24,
     "28": 25,
     "29": 26,
