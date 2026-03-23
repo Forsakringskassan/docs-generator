@@ -8,11 +8,15 @@ layout: content-with-menu
 ```html nomarkup
 <div class="docs-motd docs-motd--info">
     <span class="docs-motd__icon">
-        <span class="icon-stack icon-stack--info">
-            <svg class="icon icon--circle" focusable="false" aria-hidden="true">
+        <span class="docs-stack docs-icon-stack--info">
+            <svg
+                class="docs-icon icon--circle"
+                focusable="false"
+                aria-hidden="true"
+            >
                 <use xlink:href="#docs-icon-circle"></use>
             </svg>
-            <svg class="icon icon--i" focusable="false" aria-hidden="true">
+            <svg class="docs-icon icon--i" focusable="false" aria-hidden="true">
                 <use xlink:href="#docs-icon-i"></use>
             </svg>
         </span>

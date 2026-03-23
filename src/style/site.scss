@@ -52,11 +52,36 @@ body {
     border: 0;
 }
 
-.icon {
+@property --docs-icon-size {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 1rem;
+}
+
+.docs-icon {
     display: inline-block;
-    height: 1rem;
+    height: var(--docs-icon-size);
     max-height: 100%;
     max-width: 100%;
     pointer-events: none;
-    width: 1rem;
+    width: var(--docs-icon-size);
+
+    &-stack {
+        display: inline-block;
+        height: var(--docs-icon-size);
+        max-height: 100%;
+        max-width: 100%;
+        pointer-events: none;
+        width: var(--docs-icon-size);
+        position: relative;
+        .icon {
+            position: absolute;
+        }
+    }
+    &-stack--info {
+        .f-icon-circle {
+            color: #ffffff;
+            fill: #4a52b6;
+        }
+    }
 }
