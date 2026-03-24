@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Navigation - FK Documentation generator</title><link
             rel="stylesheet"
-            href="../assets/docs-6dbd52.css"
+            href="../assets/docs-ebed00.css"
             crossorigin
-            integrity="sha384-1XiHp9ewVhAPEIZRrgP+ztRyHkXRTk2MDPqemBuMLw+7/RTw327BKGyAylrNkNue"
+            integrity="sha384-haOSMjImmL4JbR6GbbVxOSno7tv3J3Rp7zfGZ3PqPL6PlISfWOe1m6oTyrF7zhOG"
             
         />
         <link
@@ -38,10 +38,10 @@
             
         ></script><link
             rel="preload"
-            href="../search-data-7f6493.json"
+            href="../search-data-618b42.json"
             as="fetch"
             crossorigin
-            integrity="sha384-tcd1RtsF7rEky/kVj8mdAAfqFgNeTPr/MKmFsUuF0RC1AUZ+tMn1svztXYhzrxj0"
+            integrity="sha384-hSjwX0iN8TOLQKNCoO3EK1agXcEOuNxpsxHYyarR27SHj/6FSvyZ624AWvL9MQPD"
             id="search-data"
         />
     </head>
@@ -222,9 +222,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        buggfix/ikoner-dokumentation (<a href="https://github.com/Forsakringskassan/docs-generator/commits/22bbb4f5af75e5e2c521e40048b8ebe4cefc6dfb">22bbb4f</a>)<br />
+        buggfix/ikoner-dokumentation (<a href="https://github.com/Forsakringskassan/docs-generator/commits/7c8c9e6e9150c108ea0f509899f4a8ab5978cdd9">7c8c9e6</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/355">PR 355</a><br />
-        2026-03-23 14:51
+        2026-03-24 08:51
     </span>
 </div>
 </div>
@@ -406,7 +406,7 @@
 </nav>
 </div><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
-                    <h1 id="title">Navigation</h1>
+                    <h1 class="docs-heading docs-heading--h1" id="title">Navigation</h1>
 
                     
 
@@ -459,7 +459,7 @@
 ]);
 </code></pre>
                 </div>
-            <h2 id="hiding_pages"><a class="header-anchor" href="#hiding_pages">Hiding pages</a></h2><p class="docs-paragraph">Each file will be present in the navigation unless the <code>visible</code> attribute is set to <code>false</code>, e.g.:</p>
+            <h2 id="hiding_pages" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#hiding_pages">Hiding pages</a></h2><p class="docs-paragraph">Each file will be present in the navigation unless the <code>visible</code> attribute is set to <code>false</code>, e.g.:</p>
 
                 <div
                     id="example-5ab3cb"
@@ -479,7 +479,7 @@ It can be linked to by other means.
 </code></pre>
                 </div>
             <p class="docs-paragraph">If a section (<code>index.md</code>) is hidden it will still generate a navigation tree but will not be rendered in the menu.</p>
-<h2 id="expandable_groups"><a class="header-anchor" href="#expandable_groups">Expandable groups</a></h2><p class="docs-paragraph">Each folder with new files will be a expandable group.
+<h2 id="expandable_groups" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#expandable_groups">Expandable groups</a></h2><p class="docs-paragraph">Each folder with new files will be a expandable group.
 To set the title of the group create a new <code>index.json</code> with the <code>title</code> attribute set:</p>
 
                 <div
@@ -495,7 +495,7 @@ To set the title of the group create a new <code>index.json</code> with the <cod
 <span class="hljs-punctuation">}</span>
 </code></pre>
                 </div>
-            <h2 id="links"><a class="header-anchor" href="#links">Links</a></h2><p class="docs-paragraph">Custom links can be created by adding a json file with both the <code>title</code> and <code>href</code> property set, e.g. <code>external-link.json</code>:</p>
+            <h2 id="links" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#links">Links</a></h2><p class="docs-paragraph">Custom links can be created by adding a json file with both the <code>title</code> and <code>href</code> property set, e.g. <code>external-link.json</code>:</p>
 
                 <div
                     id="example-46768b"
@@ -514,7 +514,7 @@ To set the title of the group create a new <code>index.json</code> with the <cod
             <p class="docs-paragraph">If the <code>href</code> starts with <code>http://</code>, <code>https://</code> or <code>//</code> it is considered an external link.
 Otherwise it is considered a link relative to the output folder.
 It is recommended to start such hrefs with a single <code>/</code> for better clarity.</p>
-<h2 id="sorting"><a class="header-anchor" href="#sorting">Sorting</a></h2><p class="docs-paragraph">Sorting uses the optional <code>sortorder</code> attribute:</p>
+<h2 id="sorting" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#sorting">Sorting</a></h2><p class="docs-paragraph">Sorting uses the optional <code>sortorder</code> attribute:</p>
 
                 <div
                     id="example-6040a0"
@@ -540,7 +540,7 @@ Pages sharing the same <code>sortorder</code> or when <code>sortorder</code> is 
 <li><code>title: Barney</code>, - Appears last, sorted alphabetically</li>
 <li><code>title: Fred</code>, - Appears last, sorted alphabetically</li>
 </ul>
-<h2 id="page_title"><a class="header-anchor" href="#page_title">Page title</a></h2><p class="docs-paragraph">Normally the title shown in the navigation is read from the <code>title</code> attribute of the document.
+<h2 id="page_title" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#page_title">Page title</a></h2><p class="docs-paragraph">Normally the title shown in the navigation is read from the <code>title</code> attribute of the document.
 If the <code>shortTitle</code> attribute is set it is used instead.</p>
 
                 <div
@@ -696,10 +696,10 @@ title: A longer title unsuitable for the navigation
             integrity="sha384-zAoLcKQxzwmKl8WDuv2SdmMjcqkFzdJo6p4UsXF27ONwO6eGqJD0F2C0Aipv2cAC"
             
         ></script><script
-            src="../assets/processors/selectable-version/select-version-baf36a.js"
+            src="../assets/processors/selectable-version/select-version-81a011.js"
             type="module"
             crossorigin
-            integrity="sha384-BxpIvGa+O+gQDbXhUKkGd/gd4EVvZ8wzS+LyxY4arY2VPmpRVF7mriSHV3xNXxxi"
+            integrity="sha384-7TW2S3Wax25foAZmWZcSMDUEbq/6kBO55MnCpyGjD+eIuEc7ggU/bhT4hrs51TfL"
             
         ></script><script
             src="../assets/main-a281a5.js"

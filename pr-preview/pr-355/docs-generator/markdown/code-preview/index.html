@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Code preview - FK Documentation generator</title><link
             rel="stylesheet"
-            href="../../assets/docs-6dbd52.css"
+            href="../../assets/docs-ebed00.css"
             crossorigin
-            integrity="sha384-1XiHp9ewVhAPEIZRrgP+ztRyHkXRTk2MDPqemBuMLw+7/RTw327BKGyAylrNkNue"
+            integrity="sha384-haOSMjImmL4JbR6GbbVxOSno7tv3J3Rp7zfGZ3PqPL6PlISfWOe1m6oTyrF7zhOG"
             
         />
         <link
@@ -38,10 +38,10 @@
             
         ></script><link
             rel="preload"
-            href="../../search-data-7f6493.json"
+            href="../../search-data-618b42.json"
             as="fetch"
             crossorigin
-            integrity="sha384-tcd1RtsF7rEky/kVj8mdAAfqFgNeTPr/MKmFsUuF0RC1AUZ+tMn1svztXYhzrxj0"
+            integrity="sha384-hSjwX0iN8TOLQKNCoO3EK1agXcEOuNxpsxHYyarR27SHj/6FSvyZ624AWvL9MQPD"
             id="search-data"
         />
     </head>
@@ -222,9 +222,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        buggfix/ikoner-dokumentation (<a href="https://github.com/Forsakringskassan/docs-generator/commits/22bbb4f5af75e5e2c521e40048b8ebe4cefc6dfb">22bbb4f</a>)<br />
+        buggfix/ikoner-dokumentation (<a href="https://github.com/Forsakringskassan/docs-generator/commits/7c8c9e6e9150c108ea0f509899f4a8ab5978cdd9">7c8c9e6</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/355">PR 355</a><br />
-        2026-03-23 14:51
+        2026-03-24 08:51
     </span>
 </div>
 </div>
@@ -422,7 +422,7 @@
 </nav>
 </div><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
-                    <h1 id="title">Code preview</h1>
+                    <h1 class="docs-heading docs-heading--h1" id="title">Code preview</h1>
 
                     
                     <div id="aside"><dl></dl>
@@ -461,7 +461,7 @@
                     
 
                     <div id="content"><p class="docs-paragraph">Code within markdown code fences will be rendered with syntax highlighting and for languages that can run in the browser a runnable example will be created.</p>
-<h2 id="default_no_language_or_tags"><a class="header-anchor" href="#default_no_language_or_tags">Default, no language or tags</a></h2><p class="docs-paragraph">By default no language is implied and the code is rendered as-is with no syntax highlight.</p>
+<h2 id="default_no_language_or_tags" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#default_no_language_or_tags">Default, no language or tags</a></h2><p class="docs-paragraph">By default no language is implied and the code is rendered as-is with no syntax highlight.</p>
 <p class="docs-paragraph"><strong>Input:</strong></p>
 
                 <div
@@ -490,8 +490,8 @@ Lorem ipsum
                     <pre class="code-preview__markup"><code>Lorem ipsum
 </code></pre>
                 </div>
-            <h2 id="explicit_languages"><a class="header-anchor" href="#explicit_languages">Explicit languages</a></h2><p class="docs-paragraph">When explicit languages is set the behaviour varies for different languages.</p>
-<h3 id="html"><a class="header-anchor" href="#html">HTML</a></h3><p class="docs-paragraph">HTML is rendered in the browser and the HTML markup is shown with syntax highlight.</p>
+            <h2 id="explicit_languages" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#explicit_languages">Explicit languages</a></h2><p class="docs-paragraph">When explicit languages is set the behaviour varies for different languages.</p>
+<h3 id="html" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#html">HTML</a></h3><p class="docs-paragraph">HTML is rendered in the browser and the HTML markup is shown with syntax highlight.</p>
 <p class="docs-paragraph"><strong>Input:</strong></p>
 
                 <div
@@ -543,7 +543,7 @@ Lorem ipsum
 </code></pre>
                 </div>
             </div>
-        <h3 id="javascript_typescript"><a class="header-anchor" href="#javascript_typescript">Javascript / Typescript</a></h3><p class="docs-paragraph">Javascript and Typescript only shows the code with syntax highlight.</p>
+        <h3 id="javascript_typescript" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#javascript_typescript">Javascript / Typescript</a></h3><p class="docs-paragraph">Javascript and Typescript only shows the code with syntax highlight.</p>
 <p class="docs-paragraph">See also <a href="./javascript.html">Javascript and Typescript</a> for additional details about wrinting JS-based examples.</p>
 <p class="docs-paragraph"><strong>Input:</strong></p>
 
@@ -577,7 +577,7 @@ export interface Foo {
 }
 </code></pre>
                 </div>
-            <h2 id="importing_files"><a class="header-anchor" href="#importing_files">Importing files</a></h2><p class="docs-paragraph">Instead of writing examples inline the source can be imported from another file.
+            <h2 id="importing_files" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#importing_files">Importing files</a></h2><p class="docs-paragraph">Instead of writing examples inline the source can be imported from another file.
 This is especially useful if the examples become long and clumpsy to write in a code fence.</p>
 <p class="docs-paragraph">When importing files the extension determines the language but is otherwise the same as if the contents of the file was written inside the code fence directly.</p>
 <p class="docs-paragraph"><strong>Input:</strong></p>
@@ -649,8 +649,8 @@ my-file.ts
 }
 </code></pre>
                 </div>
-            <h2 id="fullscreen"><a class="header-anchor" href="#fullscreen">Fullscreen</a></h2><p class="docs-paragraph">See documentation for <a href="./fullscreen.html">fullscreen examples</a>.</p>
-<h2 id="tags"><a class="header-anchor" href="#tags">Tags</a></h2><h3 id="hidden"><a class="header-anchor" href="#hidden"><code>hidden</code></a></h3><p class="docs-paragraph">The <code>hidden</code> tag hides the example from rendering.
+            <h2 id="fullscreen" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fullscreen">Fullscreen</a></h2><p class="docs-paragraph">See documentation for <a href="./fullscreen.html">fullscreen examples</a>.</p>
+<h2 id="tags" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tags">Tags</a></h2><h3 id="hidden" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#hidden"><code>hidden</code></a></h3><p class="docs-paragraph">The <code>hidden</code> tag hides the example from rendering.
 Typically only used when creating code diffs.</p>
 <p class="docs-paragraph">Hidden examples are included when extracting examples but excluded when generating manifests.</p>
 <p class="docs-paragraph"><strong>Input:</strong></p>
@@ -669,7 +669,7 @@ Typically only used when creating code diffs.</p>
 </code></pre>
                 </div>
             <p class="docs-paragraph"><strong>Output:</strong></p>
-<h3 id="name"><a class="header-anchor" href="#name"><code>name</code></a></h3><p class="docs-paragraph">The <code>name</code> tag can be used to attach an optional name to an example.</p>
+<h3 id="name" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#name"><code>name</code></a></h3><p class="docs-paragraph">The <code>name</code> tag can be used to attach an optional name to an example.</p>
 <p class="docs-paragraph">The name is used in many contexts such as the <a href="../../processors/manifest.html">Manifest</a>, filename used when <a href="../../processors/extract-examples.html">extracting examples</a>, etc.</p>
 <p class="docs-paragraph"><strong>Input:</strong></p>
 
@@ -686,7 +686,7 @@ Typically only used when creating code diffs.</p>
 ```</span>
 </code></pre>
                 </div>
-            <h3 id="static"><a class="header-anchor" href="#static"><code>static</code></a></h3><p class="docs-paragraph">Disables rendering the example and only shows the source code with highlighting.</p>
+            <h3 id="static" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#static"><code>static</code></a></h3><p class="docs-paragraph">Disables rendering the example and only shows the source code with highlighting.</p>
 <p class="docs-paragraph"><strong>Input:</strong></p>
 
                 <div
@@ -731,7 +731,7 @@ my-file.html
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>lorem <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>ipsum<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 </code></pre>
                 </div>
-            <h3 id="nomarkup"><a class="header-anchor" href="#nomarkup"><code>nomarkup</code></a></h3><p class="docs-paragraph">Disables showing souce with syntax highlighting and only shows a rendered example.</p>
+            <h3 id="nomarkup" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#nomarkup"><code>nomarkup</code></a></h3><p class="docs-paragraph">Disables showing souce with syntax highlighting and only shows a rendered example.</p>
 <p class="docs-paragraph"><strong>Input:</strong></p>
 
                 <div
@@ -780,7 +780,7 @@ my-file.html
 
                     </div>
                 </div>
-            <h2 id="runnable_examples"><a class="header-anchor" href="#runnable_examples">Runnable examples</a></h2>
+            <h2 id="runnable_examples" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#runnable_examples">Runnable examples</a></h2>
             <div
                 id="example-39490f"
                 class="code-preview code-preview--default"
@@ -830,17 +830,17 @@ my-file.html
 </code></pre>
                 </div>
             </div>
-        <h2 id="selectors_for_e2e_testing"><a class="header-anchor" href="#selectors_for_e2e_testing">Selectors for E2E testing</a></h2><p class="docs-paragraph">While generally discouraged to write E2E tests against the generated documentation it is sometimes a necessity.</p>
+        <h2 id="selectors_for_e2e_testing" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#selectors_for_e2e_testing">Selectors for E2E testing</a></h2><p class="docs-paragraph">While generally discouraged to write E2E tests against the generated documentation it is sometimes a necessity.</p>
 <p class="docs-paragraph">There are three supported ways to write selectors:</p>
 <ul>
 <li>Via a unique automatically generated id retrieved from <a href="../../processors/manifest.html">manifest</a>.</li>
 <li>Via a custom author specified <code>test-id</code> tag.</li>
 <li>Via a generic <code>.code-preview</code> selector.</li>
 </ul>
-<h3 id="unique_generated_id"><a class="header-anchor" href="#unique_generated_id">Unique generated id</a></h3><p class="docs-paragraph">Each example gets a unique generated id similar to <code>id=&quot;example-${hash}&quot;</code>.
+<h3 id="unique_generated_id" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#unique_generated_id">Unique generated id</a></h3><p class="docs-paragraph">Each example gets a unique generated id similar to <code>id=&quot;example-${hash}&quot;</code>.
 The <a href="../../processors/manifest.html">manifest</a> includes each example and its selector.</p>
 <p class="docs-paragraph">Use this when you want to run the same test over each example available on the site, e.g. when testing if each example starts up properly.</p>
-<h3 id="custom_test_id"><a class="header-anchor" href="#custom_test_id">Custom test id</a></h3><p class="docs-paragraph">Examples can be given a custom test id using the <code>test-id=string</code> tag which can be used to write a selector such as <code>[data-test=string]</code>:</p>
+<h3 id="custom_test_id" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#custom_test_id">Custom test id</a></h3><p class="docs-paragraph">Examples can be given a custom test id using the <code>test-id=string</code> tag which can be used to write a selector such as <code>[data-test=string]</code>:</p>
 
                 <div
                     id="example-e10dc0"
@@ -856,11 +856,11 @@ The <a href="../../processors/manifest.html">manifest</a> includes each example 
 </code></pre>
                 </div>
             <p class="docs-paragraph">Use this when you want to run a test against a specific example on a given page.</p>
-<h3 id="generic_selector"><a class="header-anchor" href="#generic_selector">Generic selector</a></h3><p class="docs-paragraph">Each example can also be selected using the <code>.code-preview</code> selector.</p>
+<h3 id="generic_selector" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#generic_selector">Generic selector</a></h3><p class="docs-paragraph">Each example can also be selected using the <code>.code-preview</code> selector.</p>
 <p class="docs-paragraph">This selector gives the least stability as for any given page it might yield no results (no examples on that page) or multiple.
 Moving examples around on the same page will change the order this selector returns the example.</p>
 <p class="docs-paragraph">This selector should generally be avoided.</p>
-<h2 id="example_metadata"><a class="header-anchor" href="#example_metadata">Example metadata</a></h2><p class="docs-paragraph">The example tags and language can be queried from the <code>data-tags</code> (space-separated list of author given tags) and <code>data-language</code> (explicit or resolved language):</p>
+<h2 id="example_metadata" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#example_metadata">Example metadata</a></h2><p class="docs-paragraph">The example tags and language can be queried from the <code>data-tags</code> (space-separated list of author given tags) and <code>data-language</code> (explicit or resolved language):</p>
 <p class="docs-paragraph">Given an example such as:</p>
 
                 <div
@@ -1033,10 +1033,10 @@ Moving examples around on the same page will change the order this selector retu
             integrity="sha384-zAoLcKQxzwmKl8WDuv2SdmMjcqkFzdJo6p4UsXF27ONwO6eGqJD0F2C0Aipv2cAC"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-baf36a.js"
+            src="../../assets/processors/selectable-version/select-version-81a011.js"
             type="module"
             crossorigin
-            integrity="sha384-BxpIvGa+O+gQDbXhUKkGd/gd4EVvZ8wzS+LyxY4arY2VPmpRVF7mriSHV3xNXxxi"
+            integrity="sha384-7TW2S3Wax25foAZmWZcSMDUEbq/6kBO55MnCpyGjD+eIuEc7ggU/bhT4hrs51TfL"
             
         ></script><script
             src="../../assets/main-a281a5.js"

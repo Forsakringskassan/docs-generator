@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>README - FK Documentation generator</title><link
             rel="stylesheet"
-            href="./assets/docs-6dbd52.css"
+            href="./assets/docs-ebed00.css"
             crossorigin
-            integrity="sha384-1XiHp9ewVhAPEIZRrgP+ztRyHkXRTk2MDPqemBuMLw+7/RTw327BKGyAylrNkNue"
+            integrity="sha384-haOSMjImmL4JbR6GbbVxOSno7tv3J3Rp7zfGZ3PqPL6PlISfWOe1m6oTyrF7zhOG"
             
         />
         <link
@@ -38,10 +38,10 @@
             
         ></script><link
             rel="preload"
-            href="./search-data-7f6493.json"
+            href="./search-data-618b42.json"
             as="fetch"
             crossorigin
-            integrity="sha384-tcd1RtsF7rEky/kVj8mdAAfqFgNeTPr/MKmFsUuF0RC1AUZ+tMn1svztXYhzrxj0"
+            integrity="sha384-hSjwX0iN8TOLQKNCoO3EK1agXcEOuNxpsxHYyarR27SHj/6FSvyZ624AWvL9MQPD"
             id="search-data"
         />
     </head>
@@ -222,9 +222,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        buggfix/ikoner-dokumentation (<a href="https://github.com/Forsakringskassan/docs-generator/commits/22bbb4f5af75e5e2c521e40048b8ebe4cefc6dfb">22bbb4f</a>)<br />
+        buggfix/ikoner-dokumentation (<a href="https://github.com/Forsakringskassan/docs-generator/commits/7c8c9e6e9150c108ea0f509899f4a8ab5978cdd9">7c8c9e6</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/355">PR 355</a><br />
-        2026-03-23 14:51
+        2026-03-24 08:51
     </span>
 </div>
 </div>
@@ -236,11 +236,11 @@
 
             <div id="primary"><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
-                    <h1 id="title">README</h1>
+                    <h1 class="docs-heading docs-heading--h1" id="title">README</h1>
 
                     
 
-                    <div id="content"><h1 id="forsakringskassan_docs_generator"><a class="header-anchor" href="#forsakringskassan_docs_generator"><code>@forsakringskassan/docs-generator</code></a></h1>
+                    <div id="content"><h1 id="forsakringskassan_docs_generator" class="docs-heading docs-heading--h1"><a class="header-anchor" href="#forsakringskassan_docs_generator"><code>@forsakringskassan/docs-generator</code></a></h1>
                 <div
                     id="example-72c05e"
                     class="code-preview code-preview--default"
@@ -252,7 +252,7 @@
                     <pre class="code-preview__markup"><code class="hljs lang-bash" tabindex="0">npm install --save-dev --save-exact @forsakringskassan/docs-generator
 </code></pre>
                 </div>
-            <h2 id="setup"><a class="header-anchor" href="#setup">Setup</a></h2><h3 id="watch_development_mode"><a class="header-anchor" href="#watch_development_mode">Watch (development mode)</a></h3><p class="docs-paragraph">You can start a development server with watch for incremental builds using <code>.serve()</code>.</p>
+            <h2 id="setup" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#setup">Setup</a></h2><h3 id="watch_development_mode" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#watch_development_mode">Watch (development mode)</a></h3><p class="docs-paragraph">You can start a development server with watch for incremental builds using <code>.serve()</code>.</p>
 
                 <div
                     id="example-58b7c2"
@@ -282,7 +282,7 @@ docs.<span class="hljs-title function_">build</span>([
 docs.<span class="hljs-title function_">serve</span>();
 </code></pre>
                 </div>
-            <h3 id="vendor_alias"><a class="header-anchor" href="#vendor_alias">Vendor alias</a></h3><p class="docs-paragraph">Vendor alias is optional, it lets you substitute one package for another when bundling. The example below substitutes the package <code>vue</code> with the package <code>vue/dist/esm.bundle.js</code>. When an alias is given the package can be imported using the given alias as well as the original package name. For instance, when using the following configuration &quot;vue&quot; can be imported and resolved as &quot;vue/dist/esm.bundle.js&quot;.</p>
+            <h3 id="vendor_alias" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#vendor_alias">Vendor alias</a></h3><p class="docs-paragraph">Vendor alias is optional, it lets you substitute one package for another when bundling. The example below substitutes the package <code>vue</code> with the package <code>vue/dist/esm.bundle.js</code>. When an alias is given the package can be imported using the given alias as well as the original package name. For instance, when using the following configuration &quot;vue&quot; can be imported and resolved as &quot;vue/dist/esm.bundle.js&quot;.</p>
 
                 <div
                     id="example-6b2bf7"
@@ -312,7 +312,7 @@ docs.<span class="hljs-title function_">serve</span>();
 });
 </code></pre>
                 </div>
-            <h2 id="usage"><a class="header-anchor" href="#usage">Usage</a></h2><h3 id="using_with_vue_2"><a class="header-anchor" href="#using_with_vue_2">Using with Vue 2</a></h3><p class="docs-paragraph">Vue 2 requires an additional dependency to be installed:</p>
+            <h2 id="usage" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#usage">Usage</a></h2><h3 id="using_with_vue_2" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#using_with_vue_2">Using with Vue 2</a></h3><p class="docs-paragraph">Vue 2 requires an additional dependency to be installed:</p>
 
                 <div
                     id="example-9c0018"
@@ -348,7 +348,7 @@ docs.<span class="hljs-title function_">serve</span>();
 }
 </code></pre>
                 </div>
-            <h3 id="using_with_vue_3"><a class="header-anchor" href="#using_with_vue_3">Using with Vue 3</a></h3><p class="docs-paragraph">Create the <code>setup</code> callback in <code>docs/src/setup.ts</code>:</p>
+            <h3 id="using_with_vue_3" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#using_with_vue_3">Using with Vue 3</a></h3><p class="docs-paragraph">Create the <code>setup</code> callback in <code>docs/src/setup.ts</code>:</p>
 
                 <div
                     id="example-19eab2"
@@ -372,7 +372,7 @@ docs.<span class="hljs-title function_">serve</span>();
 }
 </code></pre>
                 </div>
-            <h3 id="styling"><a class="header-anchor" href="#styling">Styling</a></h3><p class="docs-paragraph">Three CSS files are provided:</p>
+            <h3 id="styling" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#styling">Styling</a></h3><p class="docs-paragraph">Three CSS files are provided:</p>
 <ul>
 <li><code>@forsakringskassan/docs-generator/style/index.css</code> (aliased as <code>@forsakringskassan/docs-generator/style</code>)</li>
 <li><code>@forsakringskassan/docs-generator/style/core.css</code></li>
@@ -417,7 +417,7 @@ docs.<span class="hljs-title function_">compileStyle</span>(<span class="hljs-st
                     <pre class="code-preview__markup"><code class="hljs lang-scss" tabindex="0"><span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;~@forsakringskassan/docs-generator/style&quot;</span>;
 </code></pre>
                 </div>
-            <h3 id="markdown"><a class="header-anchor" href="#markdown">Markdown</a></h3><h4 id="links_link"><a class="header-anchor" href="#links_link">Links <code>&lcub;@link ...&rcub;</code></a></h4><p class="docs-paragraph">To create link to a different document use <code>&lcub;@link ID [TITLE]&rcub;</code>, e.g.:</p>
+            <h3 id="markdown" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#markdown">Markdown</a></h3><h4 id="links_link" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#links_link">Links <code>&lcub;@link ...&rcub;</code></a></h4><p class="docs-paragraph">To create link to a different document use <code>&lcub;@link ID [TITLE]&rcub;</code>, e.g.:</p>
 
                 <div
                     id="example-80ad66"
@@ -478,7 +478,7 @@ docs.<span class="hljs-title function_">compileStyle</span>(<span class="hljs-st
             </div>
         <p class="docs-paragraph">The ID can be either the document identifier, name or one of the aliases.
 The link destination will always be relative to the current document.</p>
-<h4 id="code_fence"><a class="header-anchor" href="#code_fence">Code fence</a></h4><p class="docs-paragraph">For configured languages (default <code>html</code> and <code>vue</code>) code fences are run as a live example in the browser with an option to display the source code.
+<h4 id="code_fence" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#code_fence">Code fence</a></h4><p class="docs-paragraph">For configured languages (default <code>html</code> and <code>vue</code>) code fences are run as a live example in the browser with an option to display the source code.
 The following tags can be used:</p>
 <ul>
 <li><code>borderless</code> - removes the border from the example.</li>
@@ -549,7 +549,7 @@ MyAwesomeLiveExampleFile.vue
 ```</span>
 </code></pre>
                 </div>
-            <h3 id="frontmatter"><a class="header-anchor" href="#frontmatter">Frontmatter</a></h3><h4 id="status"><a class="header-anchor" href="#status"><code>status</code></a></h4><p class="docs-paragraph">Set a status badge for a component.</p>
+            <h3 id="frontmatter" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#frontmatter">Frontmatter</a></h3><h4 id="status" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#status"><code>status</code></a></h4><p class="docs-paragraph">Set a status badge for a component.</p>
 <p class="docs-paragraph">The following statuses are recognized:</p>
 <ul>
 <li><code>Produktionsklar</code></li>
@@ -559,13 +559,13 @@ MyAwesomeLiveExampleFile.vue
 <li><code>Draft</code> (deprecated alias for <code>Preliminär</code>)</li>
 <li><code>Beta</code> (deprecated alias for <code>Preliminär</code>)</li>
 </ul>
-<h4 id="title"><a class="header-anchor" href="#title"><code>title</code></a></h4><p class="docs-paragraph">Document title used for <code>&lt;title&gt;</code> and <code>&lt;nav&gt;</code></p>
-<h4 id="short_title"><a class="header-anchor" href="#short_title"><code>short-title</code></a></h4><p class="docs-paragraph">Document title used when a shorter title is needed, e.g. site navigation.</p>
-<h4 id="visible"><a class="header-anchor" href="#visible"><code>visible</code></a></h4><p class="docs-paragraph">Set to <code>false</code> to hide document from navigation menu.
+<h4 id="title" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#title"><code>title</code></a></h4><p class="docs-paragraph">Document title used for <code>&lt;title&gt;</code> and <code>&lt;nav&gt;</code></p>
+<h4 id="short_title" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#short_title"><code>short-title</code></a></h4><p class="docs-paragraph">Document title used when a shorter title is needed, e.g. site navigation.</p>
+<h4 id="visible" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#visible"><code>visible</code></a></h4><p class="docs-paragraph">Set to <code>false</code> to hide document from navigation menu.
 Default <code>true</code>.</p>
-<h4 id="include"><a class="header-anchor" href="#include"><code>include</code></a></h4><p class="docs-paragraph">Set to <code>false</code> to not write the document to file or include as a page.
+<h4 id="include" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#include"><code>include</code></a></h4><p class="docs-paragraph">Set to <code>false</code> to not write the document to file or include as a page.
 Default <code>true</code>.</p>
-<h3 id="inline_tags"><a class="header-anchor" href="#inline_tags">Inline tags</a></h3><h4 id="link"><a class="header-anchor" href="#link"><code>{@link ...}</code></a></h4><p class="docs-paragraph">Implicit title:</p>
+<h3 id="inline_tags" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#inline_tags">Inline tags</a></h3><h4 id="link" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#link"><code>{@link ...}</code></a></h4><p class="docs-paragraph">Implicit title:</p>
 
                 <div
                     id="example-6e8973"
@@ -591,7 +591,7 @@ Default <code>true</code>.</p>
                     <pre class="code-preview__markup"><code class="hljs lang-md" tabindex="0">Use the {@link MyAwesomeComponent awesome component}.
 </code></pre>
                 </div>
-            <h4 id="optional"><a class="header-anchor" href="#optional"><code>{@optional}</code></a></h4><p class="docs-paragraph">Creates a tag (badge) to mark something as optional.</p>
+            <h4 id="optional" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#optional"><code>{@optional}</code></a></h4><p class="docs-paragraph">Creates a tag (badge) to mark something as optional.</p>
 <p class="docs-paragraph"><strong>Input:</strong></p>
 
                 <div
@@ -607,10 +607,10 @@ Default <code>true</code>.</p>
                 </div>
             <p class="docs-paragraph"><strong>Output:</strong></p>
 <p class="docs-paragraph"><span class="docs-tag docs-tag--default">Optional</span></p>
-<h3 id="templating"><a class="header-anchor" href="#templating">Templating</a></h3><p class="docs-paragraph">The <a href="https://mozilla.github.io/nunjucks/">Nunjucks</a> templating engine is used for rendering documents to HTML.
+<h3 id="templating" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#templating">Templating</a></h3><p class="docs-paragraph">The <a href="https://mozilla.github.io/nunjucks/">Nunjucks</a> templating engine is used for rendering documents to HTML.
 See <a href="https://mozilla.github.io/nunjucks/templating.html">templating documentation</a> for help.</p>
 <p class="docs-paragraph">These custom filters and tags are available:</p>
-<h4 id="container"><a class="header-anchor" href="#container"><code>container</code></a></h4>
+<h4 id="container" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#container"><code>container</code></a></h4>
                 <div
                     id="example-bbf350"
                     class="code-preview code-preview--default"
@@ -623,7 +623,7 @@ See <a href="https://mozilla.github.io/nunjucks/templating.html">templating docu
 </code></pre>
                 </div>
             <p class="docs-paragraph">Creates a container which processors may inject content into.</p>
-<h3 id="environment_variables"><a class="header-anchor" href="#environment_variables">Environment variables</a></h3><h4 id="docs_icon_lib"><a class="header-anchor" href="#docs_icon_lib"><code>DOCS_ICON_LIB</code></a></h4><p class="docs-paragraph">Preferred icon library package name.
+<h3 id="environment_variables" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#environment_variables">Environment variables</a></h3><h4 id="docs_icon_lib" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#docs_icon_lib"><code>DOCS_ICON_LIB</code></a></h4><p class="docs-paragraph">Preferred icon library package name.
 Defaults to <code>@fkui/icon-lib-default</code>.
 Makes it possible to dynamically load icons and get access to icon metadata.
 The library must have been built using <code>@fkui/icon-lib-builder</code>.</p>
@@ -643,7 +643,7 @@ The library must have been built using <code>@fkui/icon-lib-builder</code>.</p>
 }
 </code></pre>
                 </div>
-            <h2 id="processors"><a class="header-anchor" href="#processors">Processors</a></h2><h3 id="matomo"><a class="header-anchor" href="#matomo">Matomo</a></h3>
+            <h2 id="processors" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#processors">Processors</a></h2><h3 id="matomo" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#matomo">Matomo</a></h3>
                 <div
                     id="example-4ed1fb"
                     class="code-preview code-preview--default"
@@ -826,10 +826,10 @@ Multiple hostnames can be specified as an array.</p>
             integrity="sha384-zAoLcKQxzwmKl8WDuv2SdmMjcqkFzdJo6p4UsXF27ONwO6eGqJD0F2C0Aipv2cAC"
             
         ></script><script
-            src="./assets/processors/selectable-version/select-version-baf36a.js"
+            src="./assets/processors/selectable-version/select-version-81a011.js"
             type="module"
             crossorigin
-            integrity="sha384-BxpIvGa+O+gQDbXhUKkGd/gd4EVvZ8wzS+LyxY4arY2VPmpRVF7mriSHV3xNXxxi"
+            integrity="sha384-7TW2S3Wax25foAZmWZcSMDUEbq/6kBO55MnCpyGjD+eIuEc7ggU/bhT4hrs51TfL"
             
         ></script><script
             src="./assets/main-a281a5.js"

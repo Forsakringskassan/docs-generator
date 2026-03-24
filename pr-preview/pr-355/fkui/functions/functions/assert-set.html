@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>assertSet() function - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-7a3d62.css"
+            href="../../assets/docs-a4a917.css"
             crossorigin
-            integrity="sha384-uBefQO4O8I13eqmzBgGGHHqz3paLvsETayQSI0VPnc1tIIDMZFyY/yPHhJ1bROsc"
+            integrity="sha384-I+Vd0aCyKX1L2vW8HiD9debqJCeD6Jj8RuxvzEG1e7dAchyhoXAtyhNo7w2qKNW8"
             
         />
         <link
@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-dd52a5.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-907e93.js",
     "@fkui/date": "../../assets/vendor-fkui-date-6cefc4.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-4b3ba3.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-8fd070.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js"
   },
   "integrity": {
@@ -34,7 +34,7 @@
     "../../assets/vendor-fkui-vue-selectors-dd52a5.js": "sha384-m27Lu53OLaLen7ASwujbnbVpRXC2zmCy45iu0vrnS6mjnoUT3/ld10vJilIF2em7",
     "../../assets/vendor-fkui-logic-907e93.js": "sha384-4TeiJAmFYySCGdBwAd/6BruO6Gq21Zk16k0vfgF/ZwvVH1Ze+8Y8ZNkAFJkEg0LX",
     "../../assets/vendor-fkui-date-6cefc4.js": "sha384-9srvwBR/8E3tvhOCMv4zfTdALZq6lxNa1BhGi7k1N8IIkIucgvs4UnUisqLKGYPY",
-    "../../assets/vendor-fkui-vue-4b3ba3.js": "sha384-oRDXZ9Jbst2/4Kumj5PDOcpPhKCFRzoo48IDTsGx1eNBL+XM6Q1vLvIuTilLy2DB",
+    "../../assets/vendor-fkui-vue-8fd070.js": "sha384-tR8tI5pGIO8nLkgp6pnv69bOJ9xt0XovCcQHGZA2si1fFZsPI8FDDVJ4CtbjpO4o",
     "../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js": "sha384-PUTSynHDD212n+s+dqThyOaj24OlZQJGsyjX8DCQB2pQg15TTuHNg699Kf5e6hwU"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-a2667e.json"
+            href="../../search-data-1d80fe.json"
             as="fetch"
             crossorigin
-            integrity="sha384-4wLK5gCZxs/u8KNF31jzoMDFWPiWf8ljjbMDfKF+nlV72cWF/xp2LxjQAjY1BV8q"
+            integrity="sha384-zEEMViTmB28kxlpty6hi3b9F6ZCq/uMiUB+UolZmyg5nLMulxCEroMK7V214rHlx"
             id="search-data"
         />
     </head>
@@ -1764,7 +1764,7 @@
 </nav>
 </div><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
-                    <h1 id="title">assertSet() function</h1>
+                    <h1 class="docs-heading docs-heading--h1" id="title">assertSet() function</h1>
 
                     
                     <div id="aside"><dl></dl>
@@ -1804,7 +1804,7 @@ Alla värden skiljt från <code>null</code> och <code>undefined</code> anses var
 <p class="docs-paragraph">Om värdet kan vara <code>null</code> eller <code>undefined</code> i normalfall så är det bättre att använda andra lösningar så som null-checks eller default värden.</p>
 
             </div>
-        <h2 id="syntax"><a class="header-anchor" href="#syntax">Syntax</a></h2>
+        <h2 id="syntax" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#syntax">Syntax</a></h2>
                 <div
                     id="example-baed0e"
                     class="code-preview code-preview--default"
@@ -1816,13 +1816,13 @@ Alla värden skiljt från <code>null</code> och <code>undefined</code> anses var
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">function</span> assertSet&lt;T&gt;(value, message);
 </code></pre>
                 </div>
-            <h2 id="parametrar"><a class="header-anchor" href="#parametrar">Parametrar</a></h2><dl>
+            <h2 id="parametrar" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#parametrar">Parametrar</a></h2><dl>
 <dt><code>value: T | undefined | null</code></dt>
 <dd>Värde att säkerställa att det är satt.</dd>
 <dt><code>message: string</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
 <dd>Anpassat felmeddelande till exception om testet misslyckas.</dd>
 </dl>
-<h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2>
+<h2 id="anvandning" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#anvandning">Användning</a></h2>
                 <div
                     id="example-974912"
                     class="code-preview code-preview--default"
@@ -1844,7 +1844,7 @@ Alla värden skiljt från <code>null</code> och <code>undefined</code> anses var
 <span class="hljs-title function_">useValue</span>(value); <span class="hljs-comment">// OK value cannot be null after call to assertSet()</span>
 </code></pre>
                 </div>
-            <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><ul>
+            <h2 id="relaterat" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><ul>
 <li><code>ensureSet()</code> - returnerar non-null värde eller kastar exception.</li>
 </ul>
 
@@ -1871,9 +1871,9 @@ Alla värden skiljt från <code>null</code> och <code>undefined</code> anses var
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">buggfix/ikoner-dokumentation (<a href="https://github.com/Forsakringskassan/designsystem/commits/2da4034b263e33f9257a1563096f0e6f2f742bb8">2da4034</a>)<br />
+<div class="footer__right"><div class="version">buggfix/ikoner-dokumentation (<a href="https://github.com/Forsakringskassan/designsystem/commits/5306f5f36cca0041cbaca4ec6f86174d62b8c5fa">5306f5f</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/355">PR 355</a><br />
-        2026-03-23 14:54
+        2026-03-24 08:54
 </div>
 <div class="toolbar__item">
     <form id="version">
