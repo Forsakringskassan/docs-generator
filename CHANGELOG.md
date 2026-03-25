@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.39.2](https://github.com/Forsakringskassan/docs-generator/compare/v2.39.1...v2.39.2) (2026-03-25)
+
+### Bug Fixes
+
+* pixel as initial value docs-icon variable (refs SFKUI-77339) ([0e4c677](https://github.com/Forsakringskassan/docs-generator/commit/0e4c677ae14e86628d659ed750bd2ebf440714ed))
+
 ## [2.39.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.39.0...v2.39.1) (2026-03-25)
 
 ### Bug Fixes
