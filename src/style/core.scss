@@ -179,7 +179,7 @@ main #aside dd {
     margin: 0 0 1.5rem;
 }
 
-.user-background {
+docs-code-preview::part(preview) {
     @media (prefers-color-scheme: light) {
         background: repeating-conic-gradient(#fff 0 90deg, rgb(235 235 235) 0 180deg) 0 0/20px 20px round;
     }
@@ -194,63 +194,6 @@ main #aside dd {
     header,
     footer {
         all: revert;
-    }
-}
-
-.code-preview--default {
-    border: 1px solid var(--docs-code-border-color);
-    border-radius: 4px;
-    width: 100%;
-    background-color: var(--docs-code-background-color);
-    margin-bottom: 1rem;
-}
-
-.code-preview--default .code-preview__preview {
-    border-bottom: 1px solid var(--docs-code-border-color);
-    padding: 1.5rem;
-    overflow: auto;
-}
-
-.code-preview--borderless {
-    width: 100%;
-    background-color: var(--docs-code-background-color);
-    margin-bottom: 1rem;
-}
-
-.code-preview__preview {
-    flex: 1 1 auto;
-}
-
-.code-preview__markup {
-    margin: 0;
-    overflow-x: auto;
-}
-
-/* Increased specificity to override button styling */
-.code-preview .code-preview__button {
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    width: fit-content;
-    margin: 0;
-    padding: 0.5rem;
-    font-weight: 600;
-    line-height: 1.4;
-    color: var(--docs-text-color-default);
-
-    &:focus-visible {
-        border-radius: 0;
-        box-shadow:
-            0 0 0 2px #ffffff,
-            0 0 0 4px #1b1e23,
-            0 0 0 6px #ffffff;
-        outline: 3px solid transparent;
-    }
-
-    .docs-icon {
-        margin-right: 0.25rem;
     }
 }
 

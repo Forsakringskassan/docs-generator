@@ -35,11 +35,11 @@ export interface CodePreviewOptions {
     getImportedSource(this: void, filename: string): string;
 }
 
-function getClassModifier(tags: string[]): string {
-    if (tags.includes("borderless")) {
-        return "code-preview--borderless";
+function getVariant(tags: string[]): "default" | "borderless" {
+    if (tags.includes("borderless") || tags.includes("live-example")) {
+        return "borderless";
     }
-    return "code-preview--default";
+    return "default";
 }
 
 function getStandalonePath(output: string | null): string | null {
@@ -56,6 +56,24 @@ function ensureTrailingNewline(text: string): string {
     } else {
         return `${text}\n`;
     }
+}
+
+function serializeAttributes(
+    attributes: Record<string, string | boolean | null | undefined>,
+): string {
+    return Object.entries(attributes)
+        .flatMap(([key, value]) => {
+            if (value === false || value === null || value === undefined) {
+                return [];
+            }
+
+            if (value === true) {
+                return key;
+            }
+
+            return `${key}="${htmlencode(value)}"`;
+        })
+        .join(" ");
 }
 
 export function codePreview(
@@ -110,7 +128,6 @@ export function codePreview(
         return { source: content, language };
     }
 
-    /* eslint-disable-next-line complexity -- technical debt */
     function fence(
         _md: MarkdownIt,
         tokens: MarkdownIt.Token[],
@@ -171,14 +188,12 @@ export function codePreview(
             highlight({ source: transformedCode, language: example.language }),
         );
         const testId = findTestId(tags) ?? findTag(tags, "name")?.value;
-        const liveExample = tags.includes("live-example");
         const staticCode = example.runtime === false || tags.includes("static");
         const noMarkup = tags.includes("nomarkup");
         const fullscreen = tags.includes("fullscreen");
-        const modifier = getClassModifier(tags);
+        const variant = getVariant(tags);
         const standalonePath = getStandalonePath(example.output);
         const showFullscreen = Boolean(standalonePath) && fullscreen;
-        const testIdAttr = testId ? `data-test="${testId}"` : "";
         const filteredTags = tags.filter((it) => {
             if (
                 it.startsWith("test-id=") ||
@@ -190,109 +205,27 @@ export function codePreview(
             return true;
         });
         const dataTagsAttr =
-            filteredTags.length > 0
-                ? `data-tags="${htmlencode(filteredTags.join(" "))}"`
-                : "";
-
-        if (liveExample) {
-            return /* HTML */ `
-                <div
-                    id="example-${fingerprint}"
-                    class="code-preview code-preview--borderless"
-                    ${testIdAttr}
-                    ${dataTagsAttr}
-                    data-language="${example.language}"
-                >
-                    ${example.markup}
-                </div>
-            `;
-        }
-
-        if (staticCode) {
-            return /* HTML */ `
-                <div
-                    id="example-${fingerprint}"
-                    class="code-preview ${modifier}"
-                    ${testIdAttr}
-                    ${dataTagsAttr}
-                    data-language="${example.language}"
-                >
-                    ${example.comments.join("\n")}
-                    <pre class="code-preview__markup">${highlightedCode}</pre>
-                </div>
-            `;
-        }
-
-        if (noMarkup) {
-            return /* HTML */ `
-                <div
-                    id="example-${fingerprint}"
-                    class="code-preview ${modifier}"
-                    ${testIdAttr}
-                    ${dataTagsAttr}
-                    data-language="${example.language}"
-                >
-                    ${example.comments.join("\n")}
-                    <div class="code-preview__preview user-background">
-                        ${example.markup}
-                    </div>
-                </div>
-            `;
-        }
-
-        const toggleMarkup = /* HTML */ `
-            <button
-                type="button"
-                class="code-preview__button code-preview__toggle-markup"
-                aria-expanded="false"
-                onclick="toggleMarkup(this)"
-            >
-                <svg focusable="false" class="docs-icon" aria-hidden="true">
-                    <use href="#docs-icon-code"></use>
-                </svg>
-                Visa kod
-            </button>
-        `;
-
-        const toggleFullscreen = showFullscreen
-            ? /* HTML */ `
-                  <a
-                      href="${standalonePath ?? ""}"
-                      class="code-preview__button code-preview__fullscreen"
-                  >
-                      <svg
-                          focusable="false"
-                          class="docs-icon"
-                          aria-hidden="true"
-                      >
-                          <use href="#docs-icon-fullscreen"></use>
-                      </svg>
-                      Helskärm
-                  </a>
-              `
-            : "";
+            filteredTags.length > 0 ? filteredTags.join(" ") : "";
+        const serializedAttributes = serializeAttributes({
+            id: `example-${fingerprint}`,
+            class: "code-preview",
+            variant,
+            fullscreen: showFullscreen ? standalonePath : undefined,
+            nomarkup: noMarkup,
+            nopreview: staticCode,
+            "data-test": testId,
+            "data-tags": dataTagsAttr || undefined,
+            "data-language": example.language,
+        });
+        const previewSlot = staticCode
+            ? ""
+            : /* HTML */ ` <div slot="preview">${example.markup}</div> `;
 
         return /* HTML */ `
-            <div
-                id="example-${fingerprint}"
-                class="code-preview ${modifier}"
-                ${testIdAttr}
-                ${dataTagsAttr}
-                data-language="${example.language}"
-            >
-                ${example.comments.join("\n")}
-                <div class="code-preview__preview user-background">
-                    ${example.markup}
-                </div>
-                <div>${toggleMarkup} ${toggleFullscreen}</div>
-                <div
-                    class="code-preview__expand animate-expand"
-                    style="height: 0px;"
-                    hidden
-                >
-                    <pre class="code-preview__markup">${highlightedCode}</pre>
-                </div>
-            </div>
+            <docs-code-preview ${serializedAttributes}>
+                ${example.comments.join("\n")} ${previewSlot}
+                <span slot="code">${highlightedCode}</span>
+            </docs-code-preview>
         `;
     }
 }
