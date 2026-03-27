@@ -14,7 +14,7 @@ export async function compileSassString(
 ): Promise<void> {
     const result = await compileStringAsync(style, {
         style: "expanded",
-        importers: [new NodePackageImporter(), moduleImporter],
+        importers: [new NodePackageImporter(), moduleImporter()],
     });
     await fs.mkdir(path.dirname(dst), { recursive: true });
     await fs.writeFile(dst, result.css, "utf8");
