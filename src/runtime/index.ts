@@ -1,4 +1,4 @@
-import { toggleMarkup } from "./code-preview";
+import { setup } from "code-preview";
 import "./mermaid";
 import "./navigation";
 import "./search";
@@ -14,10 +14,4 @@ export {
 } from "./motd/motd-proxy";
 export { onContentReady } from "./on-content-ready";
 
-declare global {
-    interface Window {
-        toggleMarkup(element: HTMLElement): void;
-    }
-}
-
-window.toggleMarkup = toggleMarkup;
+setup();

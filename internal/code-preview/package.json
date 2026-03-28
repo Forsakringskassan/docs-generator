@@ -1,0 +1,32 @@
+{
+  "name": "code-preview",
+  "version": "1.0.0",
+  "private": true,
+  "keywords": [
+    "documentation"
+  ],
+  "homepage": "https://github.com/Forsakringskassan/docs-generator",
+  "bugs": "https://github.com/Forsakringskassan/docs-generator/issues",
+  "repository": {
+    "url": "https://github.com/Forsakringskassan/docs-generator.git"
+  },
+  "license": "MIT",
+  "author": "Försäkringskassan",
+  "main": "./dist/index.js",
+  "exports": {
+    "types": "./dist/index.d.ts",
+    "import": "./dist/index.js"
+  },
+  "scripts": {
+    "prebuild": "tsc",
+    "build": "node build.mjs"
+  },
+  "devDependencies": {
+    "@microsoft/api-extractor": "7.57.7",
+    "esbuild": "0.27.4",
+    "is-ci": "4.1.0"
+  },
+  "engines": {
+    "node": ">= 20"
+  }
+}

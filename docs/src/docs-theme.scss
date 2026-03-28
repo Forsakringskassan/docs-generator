@@ -99,7 +99,7 @@
     padding: 0;
 }
 
-.user-background {
+docs-code-preview::part(preview) {
     @media (prefers-color-scheme: light) {
         color: var(--docs-text-color-default);
     }
