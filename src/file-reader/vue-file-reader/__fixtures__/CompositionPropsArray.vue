@@ -10,8 +10,6 @@ defineProps<{
     inlineArray: Array<{ foo: string }>;
     localArray: LocalFoo[];
     externalArray: ExternalFoo[];
-
-    /* eslint-disable-next-line @typescript-eslint/array-type -- discouraged but should work */
     untypedArray: Array;
 }>();
 </script>
