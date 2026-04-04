@@ -1,8 +1,7 @@
 /* eslint-disable camelcase -- upstream library uses snake_case */
 import type markdownIt from "markdown-it";
+import type { RenderRule } from "markdown-it/lib/renderer.mjs";
 import { replaceAtLink } from "./utils";
-
-type RenderRule = markdownIt.Renderer.RenderRule;
 
 export function codeInline(): (md: markdownIt) => void {
     return function (md: markdownIt): void {

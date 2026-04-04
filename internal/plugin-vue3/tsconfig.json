@@ -3,6 +3,7 @@
     "compilerOptions": {
         "emitDeclarationOnly": true,
         "lib": ["es2023", "dom", "dom.iterable", "es2018.intl"],
+        "types": ["node", "jest"],
         "declaration": true,
         "rootDir": "src",
         "outDir": "dist",
