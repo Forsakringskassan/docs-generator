@@ -1,6 +1,6 @@
 declare module "markdown-it-deflist" {
-    import type MarkdownIt from "markdown-it";
+    import { type PluginSimple } from "markdown-it";
 
-    const value: MarkdownIt.PluginSimple;
+    const value: PluginSimple;
     export default value;
 }

@@ -1,6 +1,7 @@
 import type MarkdownIt from "markdown-it";
+import type { RenderRule } from "markdown-it/lib/renderer.mjs";
 
-const renderToken: MarkdownIt.Renderer.RenderRule = (...args) => {
+const renderToken: RenderRule = (...args) => {
     const [tokens, idx, options, , self] = args;
     return self.renderToken(tokens, idx, options);
 };

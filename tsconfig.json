@@ -1,11 +1,15 @@
 {
     "compilerOptions": {
+        /* ts-jest uses hardcoded deprecated moduleResolution node10 */
+        "ignoreDeprecations": "6.0",
         "rootDir": "./src",
         "outDir": "./dist",
         "emitDeclarationOnly": true,
         "target": "es2022",
         "lib": ["es2023", "dom", "dom.iterable", "es2018.intl"],
+        "types": ["node", "jest"],
         "module": "esnext",
+        "moduleResolution": "bundler",
         "alwaysStrict": true,
         "declaration": true,
         "declarationDir": "./temp/types",
@@ -13,7 +17,6 @@
         "strict": true,
         "jsx": "preserve",
         "noImplicitAny": true,
-        "moduleResolution": "node",
         "isolatedModules": true,
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,

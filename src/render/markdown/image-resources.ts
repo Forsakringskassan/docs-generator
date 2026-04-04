@@ -1,6 +1,9 @@
 import crypto from "node:crypto";
 import path from "node:path/posix";
 import type MarkdownIt from "markdown-it";
+import type { Options } from "markdown-it";
+import type Renderer from "markdown-it/lib/renderer.mjs";
+import type Token from "markdown-it/lib/token.mjs";
 import { type FileInfo } from "../../document";
 import { type MarkdownEnv } from "../markdown-env";
 
@@ -21,11 +24,11 @@ export function imageResources(options: {
 }): (md: MarkdownIt) => void {
     const { addResource } = options;
     function imageResource(
-        tokens: MarkdownIt.Token[],
+        tokens: Token[],
         index: number,
-        options: MarkdownIt.Options,
+        options: Options,
         env: MarkdownEnv,
-        self: MarkdownIt.Renderer,
+        self: Renderer,
     ): string {
         const { fileInfo } = env;
         const token = tokens[index];

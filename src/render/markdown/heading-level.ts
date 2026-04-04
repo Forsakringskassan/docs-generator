@@ -1,8 +1,9 @@
 import type MarkdownIt from "markdown-it";
+import type Token from "markdown-it/lib/token.mjs";
 import { generateId } from "../../utils/generate-id";
 import { type MarkdownEnv } from "../markdown-env";
 
-function getTokensText(tokens: MarkdownIt.Token[]): string {
+function getTokensText(tokens: Token[]): string {
     return tokens
         .filter((token) => ["text", "code_inline"].includes(token.type))
         .map((token) => token.content)

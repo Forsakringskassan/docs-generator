@@ -1,6 +1,8 @@
 import path from "node:path";
 import { createTwoFilesPatch } from "diff";
 import type MarkdownIt from "markdown-it";
+import type { Options } from "markdown-it";
+import type Token from "markdown-it/lib/token.mjs";
 import {
     type ExampleResult,
     parseInfostring,
@@ -113,9 +115,9 @@ export function codePreview(
     /* eslint-disable-next-line complexity -- technical debt */
     function fence(
         _md: MarkdownIt,
-        tokens: MarkdownIt.Token[],
+        tokens: Token[],
         idx: number,
-        _options: MarkdownIt.Options,
+        _options: Options,
         env: MarkdownEnv,
     ): string {
         const { fileInfo } = env;
