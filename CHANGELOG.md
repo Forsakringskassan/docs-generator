@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [2.40.2](https://github.com/Forsakringskassan/docs-generator/compare/v2.40.1...v2.40.2) (2026-04-10)
+
+### Bug Fixes
+
+* **deps:** update dependency i18next to v26.0.3 ([29a4276](https://github.com/Forsakringskassan/docs-generator/commit/29a4276df02311b213d2e1c7d14199d22a5f813b))
+* **deps:** update dependency mermaid to v11.14.0 ([427de67](https://github.com/Forsakringskassan/docs-generator/commit/427de67ab0e68764cf641798e4255a77ea131ee9))
+
 ## [2.40.1](https://github.com/Forsakringskassan/docs-generator/compare/v2.40.0...v2.40.1) (2026-04-03)
 
 ### Bug Fixes
