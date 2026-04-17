@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.41.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.40.3...v2.41.0) (2026-04-17)
+
+### Features
+
+* **deps:** update dependency diff to v9 ([a1b9324](https://github.com/Forsakringskassan/docs-generator/commit/a1b932471358a420ed2612c641fae6ae176b630a))
+
 ## [2.40.3](https://github.com/Forsakringskassan/docs-generator/compare/v2.40.2...v2.40.3) (2026-04-17)
 
 ### Bug Fixes
