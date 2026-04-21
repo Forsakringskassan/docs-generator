@@ -195,7 +195,7 @@
     "memfs": "4.57.2",
     "npm-pkg-lint": "4.6.5",
     "npm-run-all2": "8.0.4",
-    "rollup": "4.60.1",
+    "rollup": "4.60.2",
     "rollup-plugin-esbuild": "6.2.1",
     "rollup-plugin-visualizer": "7.0.1",
     "sass": "1.99.0",
