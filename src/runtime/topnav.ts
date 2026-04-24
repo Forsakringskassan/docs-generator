@@ -1,4 +1,5 @@
 import { debounce } from "./debounce";
+import { headerLayoutDetector } from "./header-layout-detector";
 import { onContentReady } from "./on-content-ready";
 
 interface ItemPair {
@@ -117,6 +118,9 @@ function calculateVisibility(refs: Refs): void {
         overflowIndex--;
     }
 
+    if (overflowIndex < 0) {
+        return;
+    }
     for (const [index, it] of refs.itemPairs.entries()) {
         setMenuItemVisibility(it, index < overflowIndex);
     }
@@ -125,6 +129,7 @@ function calculateVisibility(refs: Refs): void {
         "highlight",
         refs.highlightIndex >= overflowIndex,
     );
+
     refs.moreItem.style.left = `${String(menuItems[overflowIndex].offsetLeft)}px`;
     refs.moreItem.style.visibility = "visible";
 
@@ -178,4 +183,5 @@ onContentReady(() => {
 
     setPopoverVisibility(false, refs);
     calculateVisibility(refs);
+    headerLayoutDetector();
 });

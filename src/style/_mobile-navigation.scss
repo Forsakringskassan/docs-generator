@@ -1,16 +1,40 @@
 @use "breakpoints" as bp;
+@use "focus" as *;
 
-.navigation {
+#mobile-sidenav {
+    // this variable is overridden at runtime by js
+    --header-footer-visible-height: 4.5rem;
+
+    overflow: auto;
+    max-height: calc(100vh - var(--header-footer-visible-height));
+    scrollbar-gutter: stable;
+    position: sticky;
+    top: 0;
+}
+#mobile-toggle:focus-visible ~ .docs-mobile-nav-label,
+#mobile-toggle:focus-visible ~ .docs-mobile-navigation .docs-mobile-nav-close {
+    @include focus-indicator;
+}
+
+#mobile-toggle:checked ~ .docs-mobile-navigation {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    gap: 1.5rem;
+    top: 0;
+    left: 0;
+}
+
+.docs-mobile-navigation {
     --highlight-width: 4px;
 
+    background-color: var(--docs-background-color);
     display: none;
     padding: 1.5rem;
-    width: var(--sidenav-width);
     height: max-content;
-
-    @media screen and (width >= #{bp.$breakpoint-md}) {
-        display: block;
-    }
+    z-index: 2;
 
     ol {
         padding: 0;
@@ -20,10 +44,10 @@
         list-style: none;
         border-left: var(--highlight-width) solid transparent;
 
-        &.link.active {
+        &.link.highlight {
             font-weight: bold;
             border-color: var(--docs-navigation-highlight-color);
-            background: var(--docs-navigation-active-background);
+            background-color: var(--docs-topnav-border-color-highlight-background-color);
         }
 
         &.link a {
@@ -48,19 +72,16 @@
         justify-content: space-between;
         line-height: 1.5;
         padding: 0.5rem calc(0.25rem + var(--highlight-width)) 0.5rem 0.25rem;
+        align-items: center;
 
         &:hover {
             background: var(--docs-navigation-hover-color);
             border-color: var(--docs-navigation-highlight-color);
         }
-
-        .docs-icon {
-            transform: translateY(3px);
-            transition: all 200ms cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s;
-            display: inline;
-        }
     }
-
+    .docs-icon {
+        transition: transform 0.2s ease-in-out;
+    }
     details {
         &[open] > summary {
             font-weight: 700;
@@ -68,7 +89,7 @@
 
         &[open] > summary {
             .docs-icon {
-                transform: rotate(180deg) translateY(-5px);
+                transform: rotate(180deg);
             }
         }
 

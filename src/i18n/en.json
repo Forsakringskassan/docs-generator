@@ -27,6 +27,12 @@
             "instructions": "<kbd>Esc</kbd> to close <kbd>Arrow up/down</kbd> to navigate <kbd>Enter</kbd> to select",
             "title": "Search",
             "placeholder": "Type to begin searching"
+        },
+        "mobile-nav": {
+            "close": "Close",
+            "menu": "Menu",
+            "aria-label": "Open/close menu",
+            "nav": "Mobile primary"
         }
     }
 }
