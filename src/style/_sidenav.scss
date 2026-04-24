@@ -35,6 +35,14 @@
     padding-right: 1rem;
 }
 
+.sidenav__header {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: 1rem;
+}
+
 .sidenav__toggle {
     height: min-content;
     width: min-content;

@@ -49,9 +49,10 @@ header {
         }
         &.is-single-row {
             .docs-page-header__right {
-                flex-basis: auto;
-                justify-content: flex-end;
-                margin-left: auto;
+                // flex-basis: auto;
+                // justify-content: flex-end;
+                // margin-left: o;
+                flex-grow: 1;
             }
         }
         &.is-multi-row {

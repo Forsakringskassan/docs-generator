@@ -16,20 +16,35 @@ header {
     min-width: 0;
 }
 
+#primary {
+    display: grid;
+    grid-area: primary;
+    gap: 0 2rem;
+    @media (width > 1200px) {
+        width: 1200px;
+        margin: 0 auto;
+    }
+}
+
 footer {
     grid-area: footer;
     min-width: 0;
+    .docs-footer-content {
+        @media (width > 1200px) {
+            width: 1200px;
+            margin: 0 auto;
+        }
+    }
 }
 
 main {
-    padding: 0 1rem 2rem;
-    // max-width: 920px;
-    @media (width > #{bp.$breakpoint-sm}) {
+    // padding: 0 1rem 2rem;
+
+    @media (width < 1286px) {
         padding: 0 3rem 2rem;
     }
-    .docs-container {
-        width: 1280px;
-        margin: 0 auto;
+    @media (width < #{bp.$breakpoint-sm}) {
+        padding: 0 1rem 2rem;
     }
 }
 
@@ -49,9 +64,6 @@ main {
     #primary {
         --sidenav-width: 320px;
 
-        display: grid;
-        grid-area: primary;
-        gap: 0 2rem;
         padding-right: 2rem;
         min-width: 0;
         grid-template:
@@ -65,8 +77,6 @@ main {
                 "sidenav title aside" auto
                 "sidenav content aside" 1fr
                 / min-content minmax(10rem, 920px) auto;
-            width: 1280px;
-            margin: 0 auto;
         }
         @media (width < #{bp.$breakpoint-sm}) {
             gap: 0;
