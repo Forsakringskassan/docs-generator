@@ -1,27 +1,32 @@
 @use "breakpoints" as bp;
 
-/* navigering vänster */
-
 #sidenav {
     background-color: var(--docs-menu-background-color);
     width: auto;
     display: flex;
-    justify-content: space-between;
-    flex-direction: row-reverse;
+    justify-content: flex-start;
+    flex-direction: column;
 
     // this variable is overridden at runtime by js
     --header-footer-visible-height: 4.5rem;
 
+    box-sizing: border-box;
     overflow: auto;
     max-height: calc(100vh - var(--header-footer-visible-height));
-    scrollbar-gutter: stable;
     position: sticky;
     top: 0;
     grid-area: sidenav;
-
     @media (width < #{bp.$breakpoint-sm}) {
         display: none;
     }
+}
+
+.sidenav__header {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: 1rem;
 }
 
 .sidenav__toggle {
@@ -55,7 +60,7 @@
     margin-right: 0;
 }
 
-.sidenav__toggle:checked ~ .navigation {
+.sidenav__header:has(.sidenav__toggle:checked) ~ .navigation {
     display: block;
 }
 
