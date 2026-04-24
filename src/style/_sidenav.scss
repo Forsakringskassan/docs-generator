@@ -17,6 +17,11 @@
     scrollbar-gutter: stable;
     position: sticky;
     top: 0;
+    grid-area: sidenav;
+
+    @media (width < #{bp.$breakpoint-sm}) {
+        display: none;
+    }
 }
 
 .sidenav__toggle {

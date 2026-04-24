@@ -1,0 +1,98 @@
+@use "breakpoints" as bp;
+
+#mobile-sidenav {
+    // this variable is overridden at runtime by js
+    --header-footer-visible-height: 4.5rem;
+
+    overflow: auto;
+    max-height: calc(100vh - var(--header-footer-visible-height));
+    scrollbar-gutter: stable;
+    position: sticky;
+    top: 0;
+}
+
+.docs-mobile-navigation {
+    --highlight-width: 4px;
+
+    background-color: #fff;
+    display: none;
+    padding: 1.5rem;
+    height: max-content;
+    z-index: 2;
+
+    @media screen and (width >= #{bp.$breakpoint-md}) {
+        display: block;
+    }
+
+    ol {
+        padding: 0;
+    }
+
+    li {
+        list-style: none;
+        border-left: var(--highlight-width) solid transparent;
+
+        &.link.highlight {
+            font-weight: bold;
+            border-color: var(--docs-navigation-highlight-color);
+            background-color: var(--docs-topnav-border-color-highlighr-background-color);
+        }
+
+        &.link a {
+            display: block;
+            color: var(--docs-text-color-default);
+            padding: 0.5rem calc(0.25rem + var(--highlight-width)) 0.5rem 0.25rem;
+            line-height: 1.2;
+            text-decoration: none;
+            text-overflow: ellipsis;
+            overflow: hidden;
+
+            &:hover {
+                background: var(--docs-navigation-hover-color);
+                border-color: var(--docs-navigation-highlight-color);
+            }
+        }
+    }
+
+    summary {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        line-height: 1.5;
+        padding: 0.5rem calc(0.25rem + var(--highlight-width)) 0.5rem 0.25rem;
+        align-items: center;
+
+        &:hover {
+            background: var(--docs-navigation-hover-color);
+            border-color: var(--docs-navigation-highlight-color);
+        }
+
+        .icon {
+            transition: all 200ms cubic-bezier(0.46, 0.03, 0.52, 0.96) 0s;
+            display: inline;
+        }
+    }
+    .docs-icon {
+        transition: transform 0.2s ease-in-out;
+    }
+    details {
+        &[open] > summary {
+            font-weight: 700;
+        }
+
+        &[open] > summary {
+            .docs-icon {
+                transform: rotate(180deg);
+            }
+        }
+
+        > ol {
+            margin-bottom: 0;
+            margin-left: 1rem;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+    }
+}

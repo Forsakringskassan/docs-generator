@@ -2,18 +2,18 @@
 
 /* Page header - inverted */
 
-// den här css:koden kommer från core.scss
 header {
     .docs-page-header {
         display: flex;
         flex-wrap: wrap;
         width: 100%;
         color: var(--docs-header-text-color-default);
-        padding: 1rem 0 1rem 1rem;
+        padding: 1rem 2rem;
         align-items: center;
         overflow: hidden;
         background-color: var(--docs-header-background-color);
         border-bottom: 1px solid var(--docs-header-border-color);
+        gap: 1rem;
 
         --docs-text-color-default: var(--docs-header-text-color-default);
         --docs-text-color-discrete: var(--docs-header-text-color-discrete);
@@ -31,15 +31,9 @@ header {
             align-items: center;
             flex-grow: 1;
             white-space: nowrap;
-            padding-top: 0.4rem;
             font-size: var(--f-font-size-standard);
             min-width: 0;
             max-width: 1260px;
-
-            &-slot {
-                padding-left: 1rem;
-                padding-right: 1rem;
-            }
         }
 
         &__logo {
@@ -79,10 +73,6 @@ header {
             text-decoration: none;
         }
 
-        &__right-slot {
-            padding-top: 0.3rem;
-        }
-
         &__logo > a {
             display: inline-flex;
         }
@@ -90,29 +80,15 @@ header {
 }
 
 @media screen and (width < #{bp.$breakpoint-md}) {
-    .docs-page-header__right-slot {
-        margin-top: 0.5rem;
-        margin-left: -1.5rem;
-    }
-
     button kbd {
         display: none;
     }
-
-    .docs-page-header__right {
-        flex: 0 0 100%;
-    }
 }
 @media (width < #{bp.$breakpoint-sm}) {
-    .docs-page-header {
-        flex-direction: column;
-        align-items: stretch;
+    header .docs-page-header {
+        padding: 1rem;
 
         &__right {
-            width: 100%;
-        }
-
-        &__left {
             width: 100%;
         }
     }
