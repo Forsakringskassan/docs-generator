@@ -18,6 +18,20 @@ interface SearchResult {
     };
 }
 
+function removeIsTouch(): void {
+    const searchForm = document.querySelector("#search-form");
+    if (searchForm) {
+        searchForm.classList.remove("is-touch");
+    }
+}
+
+function setIsTouch(): void {
+    const searchForm = document.querySelector("#search-form");
+    if (searchForm) {
+        searchForm.classList.add("is-touch");
+    }
+}
+
 /**
  * Returns `true` if `a` is more specific than `b`
  */
@@ -186,9 +200,11 @@ function setup(): void {
         const rect = dialog.getBoundingClientRect();
         const point = { x: event.clientX, y: event.clientY };
 
-        if (isOutside(rect, point)) {
-            dialog.close();
+        if (!isOutside(rect, point)) {
+            return;
         }
+        dialog.close();
+        removeIsTouch();
     }
 
     queueMicrotask(async () => {
@@ -207,10 +223,12 @@ function setup(): void {
     dialog.addEventListener("close", () => {
         document.body.removeEventListener("click", clickOutside);
         document.body.classList.remove("docs-modal-active");
+        removeIsTouch();
     });
 
     dialogCloseButton.addEventListener("click", () => {
         dialog.close();
+        removeIsTouch();
     });
 
     input.addEventListener("input", () => {
@@ -256,7 +274,7 @@ function setup(): void {
         if (!(event.ctrlKey && event.key === "k")) {
             return;
         }
-
+        removeIsTouch();
         event.preventDefault();
         input.value = searchTerm = "";
         updateResults();
@@ -275,15 +293,33 @@ function setup(): void {
 
     function initButton(): void {
         const button = document.querySelector("#docs-search");
-        if (button) {
-            button.addEventListener("submit", (event) => {
-                event.preventDefault();
-                input.value = searchTerm = "";
-                dialog.showModal();
-                document.body.addEventListener("click", clickOutside);
-                document.body.classList.add("docs-modal-active");
-            });
+
+        if (!button) {
+            return;
         }
+
+        const searchForm = document.querySelector("#search-form");
+        if (searchForm) {
+            removeIsTouch();
+        }
+
+        button.addEventListener("submit", (event) => {
+            event.preventDefault();
+            input.value = searchTerm = "";
+            dialog.showModal();
+            document.body.addEventListener("click", clickOutside);
+            document.body.classList.add("docs-modal-active");
+        });
+
+        button.addEventListener(
+            "touchstart",
+            () => {
+                if (searchForm) {
+                    setIsTouch();
+                }
+            },
+            { passive: true },
+        );
     }
 }
 
