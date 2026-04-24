@@ -23,9 +23,13 @@ footer {
 
 main {
     padding: 0 1rem 2rem;
-    max-width: 920px;
+    // max-width: 920px;
     @media (width > #{bp.$breakpoint-sm}) {
         padding: 0 3rem 2rem;
+    }
+    .docs-container {
+        width: 1280px;
+        margin: 0 auto;
     }
 }
 
@@ -61,11 +65,8 @@ main {
                 "sidenav title aside" auto
                 "sidenav content aside" 1fr
                 / min-content minmax(10rem, 920px) auto;
-
-        }
-        @media (width < #{bp.$breakpoint-sm}) {
-            gap: 0;
-            padding: 0;
+            width: 1280px;
+            margin: 0 auto;
         }
         @media (width < #{bp.$breakpoint-sm}) {
             gap: 0;
