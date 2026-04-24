@@ -16,6 +16,7 @@ header {
         background-color: var(--docs-header-background-color);
         border-bottom: 1px solid var(--docs-header-border-color);
         gap: 1rem;
+        max-width: 100vw;
 
         --docs-text-color-default: var(--docs-header-text-color-default);
         --docs-text-color-discrete: var(--docs-header-text-color-discrete);

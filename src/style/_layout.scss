@@ -7,8 +7,9 @@
     grid-template:
         "header" auto
         "primary" 1fr
-        "footer" auto;
+        "footer" minmax(0, 100%);
     min-height: 100vh;
+    max-width: 100vw;
 }
 
 header {
@@ -25,6 +26,9 @@ main {
     max-width: 920px;
     @media (width > #{bp.$breakpoint-sm}) {
         padding: 0 3rem 2rem;
+    }
+    @media (width < #{bp.$breakpoint-sm}) {
+        max-width: 100vw;
     }
 }
 
