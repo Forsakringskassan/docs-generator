@@ -6,9 +6,9 @@
     grid-template:
         "header" auto
         "primary" 1fr
-        "footer" auto;
+        "footer" auto
+        / minmax(0, 1fr);
     min-height: 100vh;
-    max-width: 100vw;
 }
 
 header {
@@ -24,6 +24,7 @@ header {
 
 footer {
     grid-area: footer;
+    min-width: 0;
 }
 
 main {
@@ -54,11 +55,12 @@ main {
         --sidenav-width: 350px;
 
         padding-right: 2rem;
+        min-width: 0;
         grid-template:
             "sidenav title" auto
             "sidenav aside" auto
             "sidenav content" 1fr
-            / min-content 1fr;
+            / min-content minmax(0, 1fr);
 
         @media screen and (width >= #{bp.$breakpoint-lg}) {
             grid-template:
