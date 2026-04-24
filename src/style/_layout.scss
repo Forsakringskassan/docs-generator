@@ -42,7 +42,7 @@ main {
 .layout--component,
 .layout--pattern {
     #primary {
-        --sidenav-width: 350px;
+        --sidenav-width: 320px;
 
         display: grid;
         grid-area: primary;
@@ -59,6 +59,7 @@ main {
                 "sidenav title aside" auto
                 "sidenav content aside" 1fr
                 / min-content minmax(10rem, 920px) auto;
+
         }
         @media (width < #{bp.$breakpoint-sm}) {
             gap: 0;
