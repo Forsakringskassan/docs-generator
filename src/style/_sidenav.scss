@@ -1,0 +1,77 @@
+@use "breakpoints" as bp;
+
+/* navigering vänster */
+
+#sidenav {
+    background-color: var(--docs-menu-background-color);
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+
+    // this variable is overridden at runtime by js
+    --header-footer-visible-height: 4.5rem;
+
+    overflow: auto;
+    max-height: calc(100vh - var(--header-footer-visible-height));
+    scrollbar-gutter: stable;
+    position: sticky;
+    top: 0;
+}
+
+.sidenav__toggle {
+    position: sticky;
+    height: min-content;
+    width: min-content;
+    padding: 0.5rem;
+    cursor: pointer;
+    appearance: none;
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.docs-icon.icon-back {
+    display: none;
+}
+
+.sidenav__toggle:checked + label .docs-icon.icon-menu {
+    display: none;
+}
+
+.sidenav__toggle:checked + label .docs-icon.icon-back {
+    display: block;
+}
+
+.sidenav__toggle:checked {
+    justify-content: flex-end;
+    margin-top: 0;
+    margin-right: 0;
+}
+
+.sidenav__toggle:checked ~ .navigation {
+    display: block;
+}
+
+label[for="nav-toggle"] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+}
+label[for="nav-toggle"]:hover {
+    background-color: #ddddde;
+}
+
+@media screen and (width >= #{bp.$breakpoint-md}) {
+    .sidenav__toggle {
+        display: none;
+    }
+
+    .docs-icon.icon-menu {
+        display: none;
+    }
+}

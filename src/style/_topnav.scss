@@ -1,3 +1,11 @@
+@use "breakpoints" as bp;
+
+@media (width < #{bp.$breakpoint-sm}) {
+    .docs-topnav {
+        display: none;
+    }
+}
+
 .docs-topnav {
     background-color: var(--docs-topnav-background-color);
     margin: 0 -0.5rem;
