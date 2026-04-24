@@ -15,6 +15,7 @@ import {
     searchProcessor,
     selectableVersionProcessor,
     sourceUrlProcessor,
+    topnavProcessor,
     versionProcessor,
 } from "./dist/index.mjs";
 import config from "./docs.config.mjs";
@@ -55,6 +56,7 @@ const docs = new Generator(import.meta.url, {
             markdown: "etc/docs-manifest.md",
             verify: isCI,
         }),
+        topnavProcessor("docs/topmenu.json", "FK Documentation generator"),
         searchProcessor(),
         versionProcessor(pkg, "toolbar", {
             scm: !isRelease()

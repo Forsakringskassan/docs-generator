@@ -1,0 +1,38 @@
+[
+    {
+        "path": "./theme/",
+        "title": "Theme"
+    },
+    {
+        "path": "./smoketest/",
+        "title": "Smoketest"
+    },
+    {
+        "path": "./processors/",
+        "title": "Processors"
+    },
+    {
+        "path": "./navigation/",
+        "title": "Navigation"
+    },
+    {
+        "path": "./live-example/",
+        "title": "Live-example"
+    },
+    {
+        "path": "./markdown/",
+        "title": "Markdown"
+    },
+    {
+        "path": "./layout/",
+        "title": "Layout"
+    },
+    {
+        "path": "./configuration/",
+        "title": "Configuration"
+    },
+    {
+        "path": "/changelog.html",
+        "title": "Link to Changelog"
+    }
+]
