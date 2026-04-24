@@ -52,10 +52,26 @@ function getTopnavMaxWidht(right: HTMLElement): number {
  * Calculates total item width by summing up pre-measured rects.
  */
 function getMenuItemsWidth(items: HTMLElement[]): number {
-    return items.reduce(
-        (total, item) => total + item.getBoundingClientRect().width,
+    if (items.length === 0) {
+        return 0;
+    }
+
+    const totalItemsWidth = items.reduce(
+        (total, item) => total + item.scrollWidth,
         0,
     );
+
+    const parent = items[0].parentElement;
+    let totalGapWidth = 0;
+
+    if (parent) {
+        const parentStyle = getComputedStyle(parent);
+        const itemGap = parsePx(parentStyle.columnGap || parentStyle.gap, 0);
+
+        totalGapWidth = itemGap * (items.length - 1);
+    }
+
+    return totalItemsWidth + totalGapWidth;
 }
 
 function setMenuItemVisibility(items: HTMLElement[], visible: boolean): void {
@@ -78,7 +94,6 @@ function checkLayout(nav: HTMLElement): void {
     const right = document.querySelector<HTMLElement>(
         ".docs-page-header__right",
     )!;
-    const mobileMeny = document.querySelector(".docs-mobile-nav")!;
 
     const menuItems = Array.from(
         nav.querySelectorAll<HTMLElement>(".docs-topnav__item"),
@@ -86,8 +101,7 @@ function checkLayout(nav: HTMLElement): void {
     /* eslint-enable @typescript-eslint/no-non-null-assertion */
 
     header.classList.remove("is-multi-row", "is-single-row");
-    mobileMeny.classList.remove("is-mobile");
-    nav.classList.remove("is-mobile");
+    document.body.classList.remove("is-mobile");
     setMenuItemVisibility(menuItems, true);
 
     const leftWidth = left.getBoundingClientRect().width;
@@ -113,8 +127,7 @@ function checkLayout(nav: HTMLElement): void {
 
         const topnavFit = topnavWidth < topnavMaxWidth;
 
-        mobileMeny.classList.toggle("is-mobile", !topnavFit);
-        nav.classList.toggle("is-mobile", !topnavFit);
+        document.body.classList.toggle("is-mobile", !topnavFit);
 
         setMenuItemVisibility(menuItems, topnavFit);
     }

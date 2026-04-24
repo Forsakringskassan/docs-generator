@@ -23,6 +23,11 @@
     @media (width < #{bp.$breakpoint-sm}) {
         display: none;
     }
+    @media (width < #{bp.$breakpoint-md}) {
+        .is-mobile & {
+            display: none;
+        }
+    }
 }
 
 .sidenav__toggle {
