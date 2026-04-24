@@ -1,7 +1,9 @@
 @use "breakpoints" as bp;
 
 /* Page header - inverted */
-
+.loading .docs-page-header {
+    visibility: hidden;
+}
 header {
     .docs-page-header {
         display: flex;
@@ -19,7 +21,8 @@ header {
         --docs-text-color-discrete: var(--docs-header-text-color-discrete);
 
         &__left {
-            flex-grow: 1;
+            flex-grow: 0;
+            flex-basis: auto;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -27,15 +30,27 @@ header {
 
         &__right {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            flex-grow: 1;
             white-space: nowrap;
             font-size: var(--f-font-size-standard);
             min-width: 0;
-            max-width: 1260px;
+            gap: 1rem;
+            margin-left: 0;
         }
-
+        &.is-single-row {
+            .docs-page-header__right {
+                flex-basis: auto;
+                justify-content: flex-end;
+                margin-left: auto;
+            }
+        }
+        &.is-multi-row {
+            .docs-page-header__right {
+                flex-basis: 100%;
+                justify-content: space-between;
+                margin-left: 0;
+            }
+        }
         &__logo {
             display: flex;
             margin: 0;
@@ -84,6 +99,7 @@ header {
         display: none;
     }
 }
+
 @media (width < #{bp.$breakpoint-sm}) {
     header .docs-page-header {
         padding: 1rem;

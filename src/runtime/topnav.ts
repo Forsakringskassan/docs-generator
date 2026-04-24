@@ -1,4 +1,5 @@
 import { debounce } from "./debounce";
+import { headerLayoutDetector } from "./header-layout-detector";
 import { onContentReady } from "./on-content-ready";
 
 interface ItemPair {
@@ -178,4 +179,5 @@ onContentReady(() => {
 
     setPopoverVisibility(false, refs);
     calculateVisibility(refs);
+    headerLayoutDetector();
 });
