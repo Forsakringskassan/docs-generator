@@ -1,6 +1,5 @@
 @use "css-variables";
 @use "reset";
-
 @use "fonts";
 @use "footer";
 @use "cookie-warning";
@@ -10,6 +9,7 @@
 @use "header";
 @use "mobile-nav";
 @use "sidenav";
+@use "mobile-navigation";
 @use "selectable_version";
 @use "version";
 
