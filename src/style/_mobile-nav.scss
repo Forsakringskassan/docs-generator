@@ -4,6 +4,10 @@
     width: 100%;
     display: inline;
 
+    &.is-mobile {
+        display: inline;
+    }
+
     &-wrapper {
         ul ul {
             background-color: var(--docs-menu-background-color);
