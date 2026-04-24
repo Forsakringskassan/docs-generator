@@ -30,7 +30,9 @@
         },
         "mobile-nav": {
             "close": "Close",
-            "menu": "Menu"
+            "menu": "Menu",
+            "aria-label": "Open/close menu",
+            "nav": "Mobile primary"
         }
     }
 }

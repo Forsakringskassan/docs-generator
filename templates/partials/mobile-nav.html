@@ -1,31 +1,31 @@
+<!-- prettier-ignore -->
+{% import "macro/mobile-menu.html" as menu with context %}
+
 <div class="docs-mobile-nav">
-    <input id="mobile__toggle" type="checkbox" class="docs-mobile-nav__toggle" aria-label="Open/close navigation" />
+    <input
+        id="mobile__toggle"
+        type="checkbox"
+        class="docs-mobile-nav__toggle"
+        aria-label="{{$t('mobile-nav.aria-label')}}"
+    />
     <label for="mobile__toggle" class="docs-mobile-nav-label">
         <svg class="docs-icon"><use href="#docs-icon-menu"></use></svg>
         <span>{{$t("mobile-nav.menu")}}</span>
     </label>
-
-    <nav id="nav-container" class="docs-mobile-nav-overlay" aria-label="Mobile primär">
+    <nav id="nav-container" class="docs-mobile-navigation" aria-label="Mobile primär">
         <div class="docs-mobile-nav__header">
-            <label for="mobile__toggle" class="docs-mobile-nav-close">{{$t("mobile-nav.close")}} ✕</label>
+            <label for="mobile__toggle" class="docs-mobile-nav-close">
+                <span class="docs-mobile-nav-close__text">{{$t("mobile-nav.close")}}</span>
+                <svg class="docs-icon" focusable="false" aria-hidden="true">
+                    <use xlink:href="#docs-icon-close"></use>
+                </svg>
+            </label>
         </div>
-        <ul class="docs-mobile-nav__list">
-            <!-- prettier-ignore -->
-            {%- for nav in topnav.children -%}
-            {% set navPath = nav.path | replace("html", "") %}
-            {% set navPath = navPath | replace(".", "") %}
-            {% set activePage = navPath in doc.fileInfo.fullPath %}
-            {% if nav.visible %}
-            <li>
-                <a href="{{ nav.path | relative(doc) }}">
-                    {{nav.title}}
-
-                    <svg class="docs-icon" focusable="false" aria-hidden="true">
-                        <use href="#docs-icon-arrow-down"></use>
-                    </svg>
-                </a>
-            </li>
-            {% endif %} {%- endfor -%}
-        </ul>
+        <!-- prettier-ignore -->
+        {% block mobilenav %}
+        <div id="mobile-sidenav">
+            {%- if topnav -%} {{ menu.mobile_sidenav(doc, topnav, "Sekundär") }} {%- endif -%}
+        </div>
+        {% endblock %}
     </nav>
 </div>

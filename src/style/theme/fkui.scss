@@ -49,14 +49,15 @@
 
     // Top-nav
     --docs-topnav-background-color: var(--fkds-color-background-primary);
-
-    // menu
-    --docs-menu-background-color: var(--fkds-color-background-secondary);
     --docs-topnav-link-color-default: var(--fkds-color-text-primary);
     --docs-topnav-link-color-hover: var(--fkds-color-text-primary);
     --docs-topnav-link-color-highlight: var(--fkds-color-text-primary);
     --docs-topnav-border-color-hover: var(--fkds-color-select-background-secondary-hover);
     --docs-topnav-border-color-highlighr: var(--fkds-color-select-background-secondary-default);
+    --docs-topnav-border-color-highlighr-background-color: var(--fkds-color-background-tertiary);
+
+    // menu
+    --docs-menu-background-color: var(--fkds-color-background-secondary);
 
     // code
     --docs-code-background-color: var(--fkds-color-background-secondary);
