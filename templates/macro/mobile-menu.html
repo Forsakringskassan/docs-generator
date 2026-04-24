@@ -1,0 +1,75 @@
+{% macro sidenav_item(doc, node) %}
+<ul class="docs-mobile-nav__list">
+    {%- for item in node.children -%}
+              {# section node #}
+{% set normalizedId = item.id | replace("fs:", "") | lower %}
+{% set normalizedCurrent = doc.fileInfo.fullPath | lower %}
+{% set highLight = normalizedId == normalizedCurrent %}
+
+{%- if item.children -%}
+    {% if item.visible %}
+
+{% set currentRef = item.path or item.key %}
+    {% set folderPath = currentRef | replace("./", "") | replace(".html", "") | replace(".md", "") %}
+  {% set open = folderPath != "" and folderPath in normalizedCurrent %}
+
+    <li class="expandable">
+        <details {% if open %}open{% endif %}>
+            <summary>{{ item.title }} <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            {% if item.children.length > 0 %}
+
+
+            {# DYNAMISK KONTROLL: Finns förälderns länk redan som ett barn? #}
+                {% set alreadyExists = false %}
+                {% for child in item.children %}
+                    {% if child.path == item.path %}
+                        {% set alreadyExists = true %}
+                    {% endif %}
+                {% endfor %}
+
+                {# Skapa bara länken om den INTE redan finns bland barnen #}
+                {% if item.path and not alreadyExists %}
+                <ul class="docs-mobile-nav__list docs-mobile-nav__list--main-link-wrapper">
+                    <li class="link {% if highLight %}highlight{% endif %}">
+                        <a href="{{ item.path | relative(doc) }}">
+                            {{ item.title }}
+                        </a>
+                    </li>
+                </ul>
+                {% endif %}
+
+
+            {{ sidenav_item(doc, item) }}
+            {% endif %}
+        </details>
+    </li>
+    {% endif %}
+    {%- endif -%}
+     {# leaf node #}
+    {%- if not item.children -%}
+
+    <li class="link {% if highLight %}highlight{% endif %}">
+        <a
+            href="{{ item.path | relative(doc) }}"
+            {% if item.external %}
+            target="_blank"
+            rel="external"
+            {% endif %}
+            {% if item.path.startsWith('/') %}
+            data-path="{{ item.path.slice(1) }}"
+            {% endif %}
+            {% if item.path.startsWith('./') %}
+            data-path="{{ item.path.slice(2) }}"
+            {% endif %}
+        >
+            {{ item.title }}
+        </a>
+    </li>
+{%- endif -%}
+    {%- endfor -%}
+</ul>
+{% endmacro %}
+
+{% macro mobile_sidenav(doc, node, label) %}
+<div class="docs-mobile-nav-wrapper">{{ sidenav_item(doc, node) }}</div>
+{% endmacro %}
