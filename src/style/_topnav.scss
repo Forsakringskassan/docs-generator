@@ -11,7 +11,7 @@
     overflow: hidden;
     flex-grow: 1;
 
-    &.is-mobile {
+    .is-mobile & {
         display: none;
     }
 

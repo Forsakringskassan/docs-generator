@@ -99,6 +99,7 @@ jobs:
                   <h2>Integration tests</h2>
                   <a href="./docs-generator/integration-tests/minimal">Minimal site</a>
                   <a href="./docs-generator/integration-tests/base">Base site</a>
+                   <a href="./docs-generator/integration-tests/intermediate">Intermediate site</a>
                   EOF
             - name: Deploy docs
               uses: rossjrw/pr-preview-action@ffa7509e91a3ec8dfc2e5536c4d5c1acdf7a6de9 # v1

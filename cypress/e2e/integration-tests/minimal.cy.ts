@@ -1,3 +1,9 @@
+function setViewPortMinimal(width: number, height: number): void {
+    cy.viewport(width, height);
+    cy.visit("/integration-tests/minimal");
+    cy.get("#topnav .docs-topnav__item").contains("Baz").click();
+}
+
 beforeEach(() => {
     cy.viewport(1280, 720);
     cy.visit("/integration-tests/minimal");
@@ -107,5 +113,21 @@ describe("Baz", () => {
             .should("be.visible")
             .and("have.length", 1)
             .and("contain.text", "Baz");
+    });
+});
+
+describe("site menu layout", () => {
+    it("desktop side menu", () => {
+        setViewPortMinimal(1280, 720);
+        cy.get("#sidenav").should("be.visible");
+        cy.get(".sidenav__toggle").should("not.be.visible");
+        cy.get('label[for="nav-toggle"]').should("not.be.visible");
+    });
+
+    it("tablet side menu", () => {
+        setViewPortMinimal(1000, 720);
+        cy.get("#sidenav").should("be.visible");
+        cy.get(".sidenav__toggle").should("not.be.visible");
+        cy.get('label[for="nav-toggle"]').should("be.visible");
     });
 });
