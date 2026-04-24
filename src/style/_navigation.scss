@@ -1,16 +1,5 @@
 @use "breakpoints" as bp;
 
-#sidenav {
-    // this variable is overridden at runtime by js
-    --header-footer-visible-height: 4.5rem;
-
-    overflow: auto;
-    max-height: calc(100vh - var(--header-footer-visible-height));
-    scrollbar-gutter: stable;
-    position: sticky;
-    top: 0;
-}
-
 .navigation {
     --highlight-width: 4px;
 
@@ -18,10 +7,6 @@
     padding: 1.5rem;
     width: var(--sidenav-width);
     height: max-content;
-
-    .sidenav__toggle:checked + & {
-        display: block;
-    }
 
     @media screen and (width >= #{bp.$breakpoint-md}) {
         display: block;
