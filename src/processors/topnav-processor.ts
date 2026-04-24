@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path/posix";
 import { isDocumentPage } from "../document";
-import { type NavigationSection } from "../navigation";
+import { type NavigationSection, sortNavigationTree } from "../navigation";
 import { generateNavtree } from "../navigation/generate-navtree";
 import { type Processor } from "../processor";
 
@@ -77,6 +77,7 @@ export function topnavProcessor(filename: string, title: string): Processor {
             const parsed = JSON.parse(content) as TopnavEntry[];
             const pages = context.docs.filter(isDocumentPage);
             const navtree = generateNavtree(pages);
+            sortNavigationTree(navtree);
             const rootNode = generateNavigation(parsed, navtree);
 
             context.setTopNavigation({

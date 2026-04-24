@@ -1,0 +1,111 @@
+@use "breakpoints" as bp;
+
+/* Page header - inverted */
+.loading .docs-page-header {
+    visibility: hidden;
+}
+header {
+    .docs-page-header {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        color: var(--docs-header-text-color-default);
+        padding: 1rem 2rem;
+        align-items: center;
+        overflow: hidden;
+        background-color: var(--docs-header-background-color);
+        border-bottom: 1px solid var(--docs-header-border-color);
+        gap: 1rem;
+
+        --docs-text-color-default: var(--docs-header-text-color-default);
+        --docs-text-color-discrete: var(--docs-header-text-color-discrete);
+
+        &__left {
+            flex-grow: 0;
+            flex-basis: auto;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        &__right {
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            font-size: var(--f-font-size-standard);
+            min-width: 0;
+            gap: 1rem;
+            margin-left: 0;
+        }
+        &.is-single-row {
+            .docs-page-header__right {
+                flex-basis: auto;
+                justify-content: flex-end;
+                margin-left: auto;
+            }
+        }
+        &.is-multi-row {
+            .docs-page-header__right {
+                flex-basis: 100%;
+                justify-content: space-between;
+                margin-left: 0;
+            }
+        }
+        &__logo {
+            display: flex;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+            box-sizing: border-box;
+            &--pipe {
+                background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzEiIGhlaWdodD0iMzEiIHZpZXdCb3g9IjAgMCAzMSAzMSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iMC41IiB5PSIwLjU4Mzk4NCIgd2lkdGg9IjI5LjM1MzUiIGhlaWdodD0iMjkuMzUzNSIgcng9IjEuNSIgZmlsbD0iIzI5Nzk1MiIgc3Ryb2tlPSIjMjk3OTUyIi8+CjxwYXRoIGQ9Ik0yLjA1MDk2IDMuMTM0NzdDMi4wNTA5NiAyLjU4MjQ4IDIuNDk4NjggMi4xMzQ3NyAzLjA1MDk2IDIuMTM0NzdIMjguMzAyNkwyMC41OTQxIDkuNzIwOThDMjAuNDA3IDkuOTA1MDcgMjAuMTU1MSAxMC4wMDgyIDE5Ljg5MjYgMTAuMDA4MkgxMS4xMzg0QzEwLjU4NjEgMTAuMDA4MiAxMC4xMzg0IDEwLjQ1NiAxMC4xMzg0IDExLjAwODJWMTkuMjA2MkMxMC4xMzg0IDE5LjQ3NDYgMTAuMDMwNSAxOS43MzE3IDkuODM5IDE5LjkxOThMMi4wNTA5NiAyNy41NjYxVjMuMTM0NzdaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTEuODk1NCAxMi45NzkyQzExLjg5NTQgMTIuNDI3IDEyLjM0MzEgMTEuOTc5MiAxMi44OTU0IDExLjk3OTJIMTkuNzAwNkMxOS45NTY0IDExLjk3OTIgMjAuMjAyNiAxMi4wNzczIDIwLjM4ODMgMTIuMjUzM0wyNy45OTA0IDE5LjQ1NTVDMjguMTg5OCAxOS42NDQzIDI4LjMwMjcgMTkuOTA2OCAyOC4zMDI3IDIwLjE4MTRWMjcuMzg2NUMyOC4zMDI3IDI3LjkzODggMjcuODU1IDI4LjM4NjUgMjcuMzAyNyAyOC4zODY1SDIwLjUxMzJDMjAuMjQ4IDI4LjM4NjUgMTkuOTkzNyAyOC4yODEyIDE5LjgwNjEgMjguMDkzNkwxMi4xODgzIDIwLjQ3NThDMTIuMDAwNyAyMC4yODgzIDExLjg5NTQgMjAuMDMzOSAxMS44OTU0IDE5Ljc2ODdWMTIuOTc5MloiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPg==");
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: contain;
+                display: inline-block;
+                padding: 0.8rem;
+            }
+        }
+
+        &__logo::after {
+            background-color: #116a3e;
+            content: " ";
+            height: 1.38rem;
+            padding: 0.5px;
+            margin: 0 1rem 0.155rem;
+        }
+
+        &__app-name {
+            color: #116a3e;
+            width: auto;
+            margin: 0;
+            font-size: var(--f-font-size-h3);
+            font-weight: var(--f-font-weight-medium);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            min-width: 9rem;
+            text-decoration: none;
+        }
+
+        &__logo > a {
+            display: inline-flex;
+        }
+    }
+}
+
+@media screen and (width < #{bp.$breakpoint-md}) {
+    button kbd {
+        display: none;
+    }
+}
+
+@media (width < #{bp.$breakpoint-sm}) {
+    header .docs-page-header {
+        padding: 1rem;
+
+        &__right {
+            width: 100%;
+        }
+    }
+}
