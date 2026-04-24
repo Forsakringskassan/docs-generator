@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Live example - FK Documentation generator</title><link
             rel="stylesheet"
-            href="../assets/docs-95733d.css"
+            href="../assets/docs-8c5bd3.css"
             crossorigin
-            integrity="sha384-YDwuVQKWRsNg3zDr17e3ivRr558dT1JzElpypZCdxgUh54+BwoNhox93x8Wowu/c"
+            integrity="sha384-16lIJjHDMjTeDIUiYyMTgD9oHqs72TV224lmhygn/08TRhdLew6PYsedXd6poz82"
             
         />
         <link
@@ -22,12 +22,12 @@
         <script type="importmap">
             {
   "imports": {
-    "vue": "../assets/vendor-vue-dd241e.js",
-    "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-297e3b.js"
+    "vue": "../assets/vendor-vue-3c4216.js",
+    "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js"
   },
   "integrity": {
-    "../assets/vendor-vue-dd241e.js": "sha384-3bp3RphA5Fue/POFOIMqyfDfPU6ARe/NNr5xPPAVr1ycHv2556I1esecXtk1Wt0s",
-    "../assets/vendor-forsakringskassan-docs-live-example-297e3b.js": "sha384-PUTSynHDD212n+s+dqThyOaj24OlZQJGsyjX8DCQB2pQg15TTuHNg699Kf5e6hwU"
+    "../assets/vendor-vue-3c4216.js": "sha384-TPOqyspDennXniRKCOf0FoIUcCBZjNAk3S6SXMQivQp3pF3oP0RCece+Pj/T3osp",
+    "../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js": "sha384-d21VgyliBY8Zvt/srv0hr2Qu+6gTgMV0E+98Pvb5ftvVH4IAms43bj1He1vzrD+J"
   }
 }
         </script><script
@@ -38,10 +38,10 @@
             
         ></script><link
             rel="preload"
-            href="../search-data-601334.json"
+            href="../search-data-8032e8.json"
             as="fetch"
             crossorigin
-            integrity="sha384-aZhbG9j7mERgEoFB3g9UthqveOk6hE5s52SVuLSkPAHYXi4U37gK2u1/TF01sn3K"
+            integrity="sha384-GxkFAt5sANWzkCaBcBeqoPhBqJKLokCdB+mQEBKpOdJ19cBJqWatWpHoA24KBc0E"
             id="search-data"
         />
     </head>
@@ -68,11 +68,11 @@
 <template id="motd-message">
 <div class="docs-motd docs-motd--info">
     <span class="docs-motd__icon">
-        <span class="icon-stack icon-stack--info">
-            <svg class="icon icon--circle" focusable="false" aria-hidden="true">
+        <span class="docs-icon-stack docs-icon-stack--info">
+            <svg class="docs-icon icon--circle" focusable="false" aria-hidden="true">
                 <use xlink:href="#docs-icon-circle"></use>
             </svg>
-            <svg class="icon icon--i" focusable="false" aria-hidden="true">
+            <svg class="docs-icon icon--i" focusable="false" aria-hidden="true">
                 <use xlink:href="#docs-icon-i"></use>
             </svg>
         </span>
@@ -111,6 +111,13 @@
         
         
         <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../processors/"> Processors </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
             <a class="docs-topnav__anchor" href="../markdown/"> Markdown </a>
         </li>
         
@@ -137,17 +144,10 @@
         
         
         
-        
-        <li class="docs-topnav__item ">
-            <a class="docs-topnav__anchor" href="../processors/"> Processors </a>
-        </li>
-        
-        
-        
         <li class="docs-topnav__item docs-topnav__item--more" style="visibility: hidden">
             <button type="button" class="docs-topnav__anchor" aria-expanded="false">
                 <span>Mer</span>
-                <svg class="icon" focusable="false" aria-hidden="true">
+                <svg class="docs-icon" focusable="false" aria-hidden="true">
                     <use xlink:href="#docs-icon-arrow-down"></use>
                 </svg>
             </button>
@@ -164,6 +164,13 @@
                     
                     <li class="docs-contextmenu__item " style="display: none">
                         <a class="docs-contextmenu__anchor" href="../navigation/"> Navigation </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../processors/"> Processors </a>
                     </li>
                     
                     
@@ -196,13 +203,6 @@
                     
                     
                     
-                    
-                    <li class="docs-contextmenu__item " style="display: none">
-                        <a class="docs-contextmenu__anchor" href="../processors/"> Processors </a>
-                    </li>
-                    
-                    
-                    
                     </ul>
             </div>
         </li>
@@ -222,9 +222,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        margin-between-headers-and-other-elements (<a href="https://github.com/Forsakringskassan/docs-generator/commits/6aa27e38b54e5254249d10d4fdee9d7aa236305d">6aa27e3</a>)<br />
+        margin-between-headers-and-other-elements (<a href="https://github.com/Forsakringskassan/docs-generator/commits/85ee73f940f7d3cd84e644de2bb4165b2eb96004">85ee73f</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/351">PR 351</a><br />
-        2026-03-23 08:22
+        2026-04-24 09:02
     </span>
 </div>
 </div>
@@ -263,7 +263,7 @@
 </nav>
 </div><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
-                    <h1 id="title">Live example</h1>
+                    <h1 class="docs-heading docs-heading--h1" id="title">Live example</h1>
 
                     
 
@@ -275,7 +275,7 @@
 <li>kodyta: visar HTML-markup och Vue-template för exemplet (om Vue-komponenter används).</li>
 </ul>
 <p class="docs-paragraph">Eftersom <code>live-example</code> kompileras i runtime så kan man direkt modifiera exemplet och den markup som visas genom att använda de inmatningsfält som lagts till i kontrollytan.</p>
-<h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">Installera paketet genom att köra:</p>
+<h2 id="anvandning" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">Installera paketet genom att köra:</p>
 <p class="docs-paragraph"><code>npm install --save-dev @forsakringskassan/docs-live-example</code></p>
 <p class="docs-paragraph">Om du använder <code>html-validate</code> bör du även uppdatera din <code>.htmlvalidate.json</code> med följande rader för att registrera <code>live-example</code> elementet:</p>
 
@@ -295,12 +295,12 @@
 <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
 </code></pre>
                 </div>
-            <h3 id="props"><a class="header-anchor" href="#props">Props</a></h3><h4 id="template"><a class="header-anchor" href="#template"><code>template</code></a></h4><p class="docs-paragraph">För att generera ett exempel så används <code>template</code> för att skicka in markup.</p>
-<h4 id="components_optional"><a class="header-anchor" href="#components_optional"><code>components</code> (optional)</a></h4><p class="docs-paragraph">De Vue-komponenter som används i markup som skickas in till <code>template</code> måste läggas till i <code>components</code>.</p>
-<h4 id="livedata_optional"><a class="header-anchor" href="#livedata_optional"><code>livedata</code> (optional)</a></h4><p class="docs-paragraph">Om exemplet behöver spara ett värde (till exempel <code>v-model</code>) så skickas detta in genom <code>livedata</code>.</p>
-<h4 id="livemethods_optional"><a class="header-anchor" href="#livemethods_optional"><code>livemethods</code> (optional)</a></h4><p class="docs-paragraph">Om exemplet behöver köra en metod så skickas detta in genom <code>livemethods</code>.</p>
-<h4 id="forcesinglecolumn_optional"><a class="header-anchor" href="#forcesinglecolumn_optional"><code>forceSingleColumn</code> (optional)</a></h4><p class="docs-paragraph">Om exemplets exempelyta hindras av kontrollytan i den högra kolumnen går det att ange <code>forceSingleColumn</code> för att forcera exemplet att visas i en kolumn.</p>
-<h3 id="konfigurera_exemplet"><a class="header-anchor" href="#konfigurera_exemplet">Konfigurera exemplet</a></h3><p class="docs-paragraph">För att skapa ett konfigurerbart exempel börjar vi med att skapa en ny komponent <code>AwesomeComponentLiveExample.vue</code>.
+            <h3 id="props" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#props">Props</a></h3><h4 id="template" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#template"><code>template</code></a></h4><p class="docs-paragraph">För att generera ett exempel så används <code>template</code> för att skicka in markup.</p>
+<h4 id="components_optional" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#components_optional"><code>components</code> (optional)</a></h4><p class="docs-paragraph">De Vue-komponenter som används i markup som skickas in till <code>template</code> måste läggas till i <code>components</code>.</p>
+<h4 id="livedata_optional" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#livedata_optional"><code>livedata</code> (optional)</a></h4><p class="docs-paragraph">Om exemplet behöver spara ett värde (till exempel <code>v-model</code>) så skickas detta in genom <code>livedata</code>.</p>
+<h4 id="livemethods_optional" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#livemethods_optional"><code>livemethods</code> (optional)</a></h4><p class="docs-paragraph">Om exemplet behöver köra en metod så skickas detta in genom <code>livemethods</code>.</p>
+<h4 id="forcesinglecolumn_optional" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#forcesinglecolumn_optional"><code>forceSingleColumn</code> (optional)</a></h4><p class="docs-paragraph">Om exemplets exempelyta hindras av kontrollytan i den högra kolumnen går det att ange <code>forceSingleColumn</code> för att forcera exemplet att visas i en kolumn.</p>
+<h3 id="konfigurera_exemplet" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#konfigurera_exemplet">Konfigurera exemplet</a></h3><p class="docs-paragraph">För att skapa ett konfigurerbart exempel börjar vi med att skapa en ny komponent <code>AwesomeComponentLiveExample.vue</code>.
 Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-exempel.</p>
 <p class="docs-paragraph">Följande boilerplate kan användas:</p>
 
@@ -443,7 +443,7 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
         <script type="module" src="./README-33f10d.js"></script>
     
                 </div>
-            <h2 id="createelement"><a class="header-anchor" href="#createelement"><code>createElement</code></a></h2><p class="docs-paragraph">A helper function to render the markup for the live example.</p>
+            <h2 id="createelement" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#createelement"><code>createElement</code></a></h2><p class="docs-paragraph">A helper function to render the markup for the live example.</p>
 
                 <div
                     id="example-4628f6"
@@ -669,16 +669,16 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
             integrity="sha384-zAoLcKQxzwmKl8WDuv2SdmMjcqkFzdJo6p4UsXF27ONwO6eGqJD0F2C0Aipv2cAC"
             
         ></script><script
-            src="../assets/processors/selectable-version/select-version-baf36a.js"
+            src="../assets/processors/selectable-version/select-version-0eee75.js"
             type="module"
             crossorigin
-            integrity="sha384-BxpIvGa+O+gQDbXhUKkGd/gd4EVvZ8wzS+LyxY4arY2VPmpRVF7mriSHV3xNXxxi"
+            integrity="sha384-Hls0b82CzPqMVDXlODWCdKNA9EqOZ2XLIQcHjiVkCY0pEhq3qQ1pb4300LsYLjUB"
             
         ></script><script
-            src="../assets/main-a281a5.js"
+            src="../assets/main-8ac6d8.js"
             type="module"
             crossorigin
-            integrity="sha384-RMXYYvlD6pMJC/YbbT5KuNiroEF9/xDKslejdYyDfTCarFp7CMowfQc1r8GGMtty"
+            integrity="sha384-+feB8TV++M/oB3+QIfn48anRc8P9gI0C44L3IPdWzTCW/PGGgg3k3jAtQu9LUe9e"
             
         ></script>
     </body>
