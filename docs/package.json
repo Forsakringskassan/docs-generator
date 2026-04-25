@@ -17,7 +17,7 @@
     "@fkui/theme-default": "6.43.1",
     "@forsakringskassan/docs-generator": "file:..",
     "@forsakringskassan/docs-live-example": "2.4.2",
-    "vue": "3.5.32"
+    "vue": "3.5.33"
   },
   "engines": {
     "node": ">= 16"
