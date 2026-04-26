@@ -48,7 +48,7 @@ export async function compileScript(
         assets,
         vendor,
         buildOptions,
-        fs = nodeFS as FSLike,
+        fs = nodeFS,
     } = options;
 
     const iconLib = process.env.DOCS_ICON_LIB ?? "@fkui/icon-lib-default";
