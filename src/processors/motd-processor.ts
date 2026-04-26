@@ -100,6 +100,7 @@ function versionBannerProcessorDeprecated(
  * @public
  * @deprecated Use the `motdProcessor` instead.
  */
+/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- to avoid exporting versionBannerProcessorDeprecated itself */
 export const versionBannerProcessor = util.deprecate(
     versionBannerProcessorDeprecated,
     "versionBannerProcessor() is deprecated, use motdProcessor() instead",
