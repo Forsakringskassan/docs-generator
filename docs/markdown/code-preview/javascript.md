@@ -81,4 +81,6 @@ The following instructions are available:
 - `/* --- cut below --- */` removes all lines below the instruction.
 - `/* --- cut begin --- */` and `/* --- cut end --- */` removes all lines between the two instructions.
 
+Comments can be either block comments `/* ... */` or line comments `// ...`.
+
 Blank lines above or below the instructions will always be trimmed as well.
