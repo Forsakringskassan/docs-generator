@@ -98,12 +98,27 @@ it("should remove html-validate comments", () => {
     `);
 });
 
-it("should cut above marker (js)", () => {
+it("should cut above marker (js, block comment)", () => {
     expect.assertions(1);
     const source = dedent`
         a
         b
         /* --- cut above --- */
+        c
+        d
+    `;
+    expect(transformCode(source, "typescript")).toMatchInlineSnapshot(`
+        c
+        d
+    `);
+});
+
+it("should cut above marker (js, line comment)", () => {
+    expect.assertions(1);
+    const source = dedent`
+        a
+        b
+        // --- cut above ---
         c
         d
     `;
@@ -128,13 +143,30 @@ it("should cut above marker (html)", () => {
     `);
 });
 
-it("should cut above marker with surrounding newlines (js)", () => {
+it("should cut above marker with surrounding newlines (js, block comment)", () => {
     expect.assertions(1);
     const source = dedent`
         a
         b
 
         /* --- cut above --- */
+
+        c
+        d
+    `;
+    expect(transformCode(source, "typescript")).toMatchInlineSnapshot(`
+        c
+        d
+    `);
+});
+
+it("should cut above marker with surrounding newlines (js, line comment)", () => {
+    expect.assertions(1);
+    const source = dedent`
+        a
+        b
+
+        // --- cut above ---
 
         c
         d
@@ -162,12 +194,27 @@ it("should cut above marker with surrounding newlines (html)", () => {
     `);
 });
 
-it("should cut below marker (js)", () => {
+it("should cut below marker (js, block comment)", () => {
     expect.assertions(1);
     const source = dedent`
         a
         b
         /* --- cut below --- */
+        c
+        d
+    `;
+    expect(transformCode(source, "typescript")).toMatchInlineSnapshot(`
+        a
+        b
+    `);
+});
+
+it("should cut below marker (js, line comment)", () => {
+    expect.assertions(1);
+    const source = dedent`
+        a
+        b
+        // --- cut below ---
         c
         d
     `;
@@ -192,13 +239,30 @@ it("should cut below marker (html)", () => {
     `);
 });
 
-it("should cut below marker with surrounding newlines (js)", () => {
+it("should cut below marker with surrounding newlines (js, block comment)", () => {
     expect.assertions(1);
     const source = dedent`
         a
         b
 
         /* --- cut below --- */
+
+        c
+        d
+    `;
+    expect(transformCode(source, "typescript")).toMatchInlineSnapshot(`
+        a
+        b
+    `);
+});
+
+it("should cut below marker with surrounding newlines (js, line comment)", () => {
+    expect.assertions(1);
+    const source = dedent`
+        a
+        b
+
+        // --- cut below ---
 
         c
         d
@@ -226,13 +290,28 @@ it("should cut below marker with surrounding newlines (html)", () => {
     `);
 });
 
-it("should cut with start and end marker (js)", () => {
+it("should cut with start and end marker (js, block comment)", () => {
     expect.assertions(1);
     const source = dedent`
         a
         /* --- cut begin --- */
         b
         /* --- cut end --- */
+        c
+    `;
+    expect(transformCode(source, "typescript")).toMatchInlineSnapshot(`
+        a
+        c
+    `);
+});
+
+it("should cut with start and end marker (js, line comment)", () => {
+    expect.assertions(1);
+    const source = dedent`
+        a
+        // --- cut begin ---
+        b
+        // --- cut end ---
         c
     `;
     expect(transformCode(source, "typescript")).toMatchInlineSnapshot(`
@@ -256,7 +335,7 @@ it("should cut with start and end marker (html)", () => {
     `);
 });
 
-it("should cut with start and end marker with surrounding newlines (js)", () => {
+it("should cut with start and end marker with surrounding newlines (js, block comment)", () => {
     expect.assertions(1);
     const source = dedent`
         a
@@ -264,6 +343,23 @@ it("should cut with start and end marker with surrounding newlines (js)", () => 
         /* --- cut begin --- */
         b
         /* --- cut end --- */
+
+        c
+    `;
+    expect(transformCode(source, "typescript")).toMatchInlineSnapshot(`
+        a
+        c
+    `);
+});
+
+it("should cut with start and end marker with surrounding newlines (js, line comment)", () => {
+    expect.assertions(1);
+    const source = dedent`
+        a
+
+        // --- cut begin ---
+        b
+        // --- cut end ---
 
         c
     `;
@@ -290,13 +386,30 @@ it("should cut with start and end marker with surrounding newlines (html)", () =
     `);
 });
 
-it("should handle missing end instruction same as cut below (js)", () => {
+it("should handle missing end instruction same as cut below (js, block comment)", () => {
     expect.assertions(1);
     const source = dedent`
         a
         b
 
         /* --- cut begin --- */
+
+        c
+        d
+    `;
+    expect(transformCode(source, "typescript")).toMatchInlineSnapshot(`
+        a
+        b
+    `);
+});
+
+it("should handle missing end instruction same as cut below (js, line comment)", () => {
+    expect.assertions(1);
+    const source = dedent`
+        a
+        b
+
+        // --- cut begin ---
 
         c
         d
@@ -324,13 +437,30 @@ it("should handle missing end instruction same as cut below (html)", () => {
     `);
 });
 
-it("should handle missing begin instruction same as cut above (js)", () => {
+it("should handle missing begin instruction same as cut above (js, block comment)", () => {
     expect.assertions(1);
     const source = dedent`
         a
         b
 
         /* --- cut end --- */
+
+        c
+        d
+    `;
+    expect(transformCode(source, "typescript")).toMatchInlineSnapshot(`
+        c
+        d
+    `);
+});
+
+it("should handle missing begin instruction same as cut above (js, line comment)", () => {
+    expect.assertions(1);
+    const source = dedent`
+        a
+        b
+
+        // --- cut end ---
 
         c
         d
@@ -358,7 +488,7 @@ it("should handle missing begin instruction same as cut above (html)", () => {
     `);
 });
 
-it("should handle cuts with no other content (js)", () => {
+it("should handle cuts with no other content (js, block comment)", () => {
     expect.assertions(3);
     expect(transformCode("/* --- cut above --- */", "javascript")).toBe("");
     expect(transformCode("/* --- cut below --- */", "javascript")).toBe("");
@@ -367,6 +497,15 @@ it("should handle cuts with no other content (js)", () => {
             "/* --- cut begin --- */\n/* --- cut end --- */",
             "javascript",
         ),
+    ).toBe("");
+});
+
+it("should handle cuts with no other content (js, line comment)", () => {
+    expect.assertions(3);
+    expect(transformCode("// --- cut above ---", "javascript")).toBe("");
+    expect(transformCode("// --- cut below ---", "javascript")).toBe("");
+    expect(
+        transformCode("// --- cut begin ---\n// --- cut end ---", "javascript"),
     ).toBe("");
 });
 

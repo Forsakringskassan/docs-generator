@@ -35,13 +35,17 @@ function cutSnippets(code: string): string {
         .map((it, index, lines) => (index < lines.length - 1 ? `${it}\n` : it));
     const directive =
         /* eslint-disable-next-line sonarjs/regex-complexity -- not to bad for a regexp */
-        /\/\* +--- +cut (?<js>above|below|begin|end) +--- +\*\/|<!---? +cut (?<html>above|below|begin|end) +---?>/;
+        /\/\* +--- +cut (?<jsBlock>above|below|begin|end) +--- +\*\/|\/\/ +--- +cut (?<jsLine>above|below|begin|end) +---|<!---? +cut (?<html>above|below|begin|end) +---?>/;
 
     let buffer = -1;
     for (const [index, line] of lines.entries()) {
         const match = directive.exec(line);
-        const { js, html } = match?.groups ?? { js: null, html: null };
-        const instruction = js ?? html;
+        const { jsBlock, jsLine, html } = match?.groups ?? {
+            jsBlock: null,
+            jsLine: null,
+            html: null,
+        };
+        const instruction = jsBlock ?? jsLine ?? html;
         if (!instruction) {
             continue;
         }
