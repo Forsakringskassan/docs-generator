@@ -16,6 +16,7 @@ export { haveOutput } from "./have-output";
 export { hasTag } from "./has-tag";
 export { htmlencode } from "./htmlencode";
 export { interpolate } from "./interpolate";
+export { naturalJoin } from "./natural-join";
 export { normalizePath } from "./normalize-path";
 export { parseImport } from "./parse-import";
 export { runCommand } from "./run-command";
