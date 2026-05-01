@@ -14,8 +14,8 @@ export function apiContainer(context: ContainerContext): ContainerCallback {
         const token = tokens[index];
         const needle = token.content.trim();
         const tags = token.info.trim().split(/\s+/);
-        const { document } = findDocument(docs, needle);
-        if (!document) {
+        const result = findDocument(docs, needle);
+        if (!result.document) {
             return handleSoftError(
                 new SoftError(
                     "EINCLUDETARGET",
@@ -24,6 +24,8 @@ export function apiContainer(context: ContainerContext): ContainerCallback {
                 ),
             );
         }
+
+        const { document, kind, reference } = result;
 
         /* @todo here we should instead detect the chain of includes to
          * provide a better explanation of *why* it happened, not just
@@ -43,7 +45,7 @@ export function apiContainer(context: ContainerContext): ContainerCallback {
         const body =
             typeof document.body === "string"
                 ? document.body
-                : document.body(tags);
+                : document.body(tags, { kind, reference });
 
         if (document.format === "html") {
             const { currentHeading } = env;

@@ -6,6 +6,7 @@ export {
     type DocumentOutlineEntry,
     type DocumentPage,
     type DocumentPartial,
+    type DocumentPartialReference,
     type FileInfo,
     type NormalizedDocumentAttributes,
 } from "./document";

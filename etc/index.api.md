@@ -77,7 +77,7 @@ export interface DocumentPage {
 // @public
 export interface DocumentPartial {
     alias: string[];
-    body: string | ((tags: string[]) => string);
+    body: string | ((tags: string[], reference: DocumentPartialReference) => string);
     // (undocumented)
     fileInfo: {
         fullPath: string | undefined;
@@ -86,6 +86,12 @@ export interface DocumentPartial {
     id: string;
     kind: "partial";
     name: string;
+}
+
+// @public
+export interface DocumentPartialReference {
+    kind: "id" | "name" | "alias";
+    reference: string;
 }
 
 // @public
