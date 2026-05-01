@@ -1,3 +1,4 @@
+import { getDocumentBody } from "../../../document";
 import { findDocument } from "../../../utils/find-document";
 import { SoftError } from "../../soft-error";
 import { type ContainerCallback } from "./container-callback";
@@ -42,10 +43,7 @@ export function apiContainer(context: ContainerContext): ContainerCallback {
         }
         included.set(key, context.doc.id);
 
-        const body =
-            typeof document.body === "string"
-                ? document.body
-                : document.body(tags, { kind, reference });
+        const body = getDocumentBody(document, tags, { kind, reference });
 
         if (document.format === "html") {
             const { currentHeading } = env;

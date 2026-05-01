@@ -1,3 +1,4 @@
+import { getDocumentBody } from "../../../document";
 import { findDocument } from "../../../utils/find-document";
 import { type ContainerCallback } from "./container-callback";
 import { type ContainerContext } from "./container-context";
@@ -21,10 +22,7 @@ export function altContainer(context: ContainerContext): ContainerCallback {
 
         const { document, kind, reference } = result;
         if (result.document.format === "markdown") {
-            const body =
-                typeof document.body === "string"
-                    ? document.body
-                    : document.body(tags, { kind, reference });
+            const body = getDocumentBody(document, tags, { kind, reference });
             return md.render(body, env);
         }
 
