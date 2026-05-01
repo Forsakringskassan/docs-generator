@@ -15,6 +15,7 @@ export {
     type DocumentPartial,
     type DocumentPartialReference,
 } from "./document-partial";
+export { getDocumentBody } from "./get-document-body";
 export { isDocumentPage } from "./is-document-page";
 export { isDocumentPartial } from "./is-document-partial";
 export { type FileInfo } from "./file-info";
