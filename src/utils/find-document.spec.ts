@@ -7,22 +7,26 @@ it("should find document by id", () => {
         createMockDocument("mock-name", "foo.html", { id: "mock-id" }),
     ];
     const result = findDocument(docs, "mock-id");
-    expect(result).toEqual(
-        expect.objectContaining({
+    expect(result).toEqual({
+        kind: "id",
+        reference: "mock-id",
+        document: expect.objectContaining({
             id: "mock-id",
         }),
-    );
+    });
 });
 
 it("should find document by name", () => {
     expect.assertions(1);
     const docs = [createMockDocument("mock-name", "foo.html")];
     const result = findDocument(docs, "mock-name");
-    expect(result).toEqual(
-        expect.objectContaining({
+    expect(result).toEqual({
+        kind: "name",
+        reference: "mock-name",
+        document: expect.objectContaining({
             name: "mock-name",
         }),
-    );
+    });
 });
 
 it("should find document by alias", () => {
@@ -33,16 +37,22 @@ it("should find document by alias", () => {
         }),
     ];
     const result = findDocument(docs, "bar");
-    expect(result).toEqual(
-        expect.objectContaining({
+    expect(result).toEqual({
+        kind: "alias",
+        reference: "bar",
+        document: expect.objectContaining({
             alias: ["foo", "bar", "baz"],
         }),
-    );
+    });
 });
 
 it("should return null if no document matches", () => {
     expect.assertions(1);
     const docs = [createMockDocument("mock-name", "foo.html")];
     const result = findDocument(docs, "missing");
-    expect(result).toBeNull();
+    expect(result).toEqual({
+        kind: null,
+        reference: null,
+        document: null,
+    });
 });

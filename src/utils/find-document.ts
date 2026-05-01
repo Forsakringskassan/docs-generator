@@ -1,6 +1,13 @@
 import { type Document } from "../document";
 
 /**
+ * @internal
+ */
+export type FindDocumentResult =
+    | { document: Document; kind: "id" | "name" | "alias"; reference: string }
+    | { document: null; kind: null; reference: null };
+
+/**
  * Find a document by id, name or alias.
  *
  * In case multiple document matches the "first" match is returned but the order
@@ -14,18 +21,17 @@ import { type Document } from "../document";
 export function findDocument(
     haystack: Document[],
     needle: string,
-): Document | null {
-    const match = haystack.find((it) => {
-        if (it.id === needle) {
-            return true;
+): FindDocumentResult {
+    for (const document of haystack) {
+        if (document.id === needle) {
+            return { document, kind: "id", reference: needle };
         }
-        if (it.name === needle) {
-            return true;
+        if (document.name === needle) {
+            return { document, kind: "name", reference: needle };
         }
-        if (it.alias.includes(needle)) {
-            return true;
+        if (document.alias.includes(needle)) {
+            return { document, kind: "alias", reference: needle };
         }
-        return false;
-    });
-    return match ?? null;
+    }
+    return { document: null, kind: null, reference: null };
 }
