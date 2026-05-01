@@ -13,13 +13,18 @@ export function altContainer(context: ContainerContext): ContainerCallback {
         const token = tokens[index];
         const needle = token.info;
         const tags = token.info.trim().split(/\s+/);
-        const { document } = findDocument(docs, needle);
+        const result = findDocument(docs, needle);
 
-        if (document?.format === "markdown") {
+        if (!result.document) {
+            return md.render(token.content, env);
+        }
+
+        const { document, kind, reference } = result;
+        if (result.document.format === "markdown") {
             const body =
                 typeof document.body === "string"
                     ? document.body
-                    : document.body(tags);
+                    : document.body(tags, { kind, reference });
             return md.render(body, env);
         }
 
