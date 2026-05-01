@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.43.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.42.0...v2.43.0) (2026-05-01)
+
+### Features
+
+* support rendering interfaces from API Extractor models ([0b61985](https://github.com/Forsakringskassan/docs-generator/commit/0b619851a29f503dbd96d21610addb8c59bc8f74))
+
 ## [2.42.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.41.1...v2.42.0) (2026-04-29)
 
 ### Features
