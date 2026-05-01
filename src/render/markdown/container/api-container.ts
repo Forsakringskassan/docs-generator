@@ -14,8 +14,8 @@ export function apiContainer(context: ContainerContext): ContainerCallback {
         const token = tokens[index];
         const needle = token.content.trim();
         const tags = token.info.trim().split(/\s+/);
-        const doc = findDocument(docs, needle);
-        if (!doc) {
+        const { document } = findDocument(docs, needle);
+        if (!document) {
             return handleSoftError(
                 new SoftError(
                     "EINCLUDETARGET",
@@ -28,21 +28,24 @@ export function apiContainer(context: ContainerContext): ContainerCallback {
         /* @todo here we should instead detect the chain of includes to
          * provide a better explanation of *why* it happened, not just
          * *that* it happened */
-        const key = [doc.id, ...tags].join("|");
-        const loop = included.get(doc.id);
+        const key = [document.id, ...tags].join("|");
+        const loop = included.get(document.id);
         if (loop && loop !== context.doc.id) {
             return handleSoftError(
                 new SoftError(
                     "EINCLUDERECURSION",
-                    `Recursion detected when including document "${doc.id}"`,
+                    `Recursion detected when including document "${document.id}"`,
                 ),
             );
         }
         included.set(key, context.doc.id);
 
-        const body = typeof doc.body === "string" ? doc.body : doc.body(tags);
+        const body =
+            typeof document.body === "string"
+                ? document.body
+                : document.body(tags);
 
-        if (doc.format === "html") {
+        if (document.format === "html") {
             const { currentHeading } = env;
             const nextHeadingLevel = currentHeading + 1;
             return body.replaceAll(

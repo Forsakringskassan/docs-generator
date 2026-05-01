@@ -60,7 +60,7 @@ export const linkTag: InlineTag = {
             return `<a href="${key}${hash ?? ""}">${explicitTitle ?? key}</a>`;
         }
 
-        const linked = findDocument(docs, key);
+        const { document: linked } = findDocument(docs, key);
         if (!linked) {
             throw new SoftError(
                 "ELINKTARGET",
