@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Popup-meny - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-d7a98c.css"
+            href="../../assets/docs-5b0c50.css"
             crossorigin
-            integrity="sha384-H55I3I5cO9XHPABF4fY5uZ7ThTsT4mErarifFg2MtEg6tHqqe8FSK25vsbSb6R7K"
+            integrity="sha384-lEZQqSdda3F+MeNMj9Muv4d5Q1VHu3kzt6QURvEjpDotZhKPDEznx0GICED0kuMv"
             
         />
         <link
@@ -24,17 +24,17 @@
   "imports": {
     "vue": "../../assets/vendor-vue-8977ef.js",
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-2e0001.js",
-    "@fkui/logic": "../../assets/vendor-fkui-logic-907e93.js",
-    "@fkui/date": "../../assets/vendor-fkui-date-6cefc4.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-ef7adc.js",
+    "@fkui/logic": "../../assets/vendor-fkui-logic-1c91f8.js",
+    "@fkui/date": "../../assets/vendor-fkui-date-2e85fe.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-42e3ee.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js"
   },
   "integrity": {
     "../../assets/vendor-vue-8977ef.js": "sha384-ZFPq1uoIzDDp4kXAAwFjNrxqfYHV0OeI5inRqo7c0o4egVFdEFBRnROTVpm5bKYA",
     "../../assets/vendor-fkui-vue-selectors-2e0001.js": "sha384-V1Wer3dMsjVpAFS/PrSjSFNHJYDQRv8k1RtPZLszEx/tnYmzbuPR4YIkP21Fwap0",
-    "../../assets/vendor-fkui-logic-907e93.js": "sha384-4TeiJAmFYySCGdBwAd/6BruO6Gq21Zk16k0vfgF/ZwvVH1Ze+8Y8ZNkAFJkEg0LX",
-    "../../assets/vendor-fkui-date-6cefc4.js": "sha384-9srvwBR/8E3tvhOCMv4zfTdALZq6lxNa1BhGi7k1N8IIkIucgvs4UnUisqLKGYPY",
-    "../../assets/vendor-fkui-vue-ef7adc.js": "sha384-7Em0CDQvF8TngsuvV2B9ZtARcDf/eZVDsaulK7a5fMp1M+HOCYUuqDr1srvTSjlS",
+    "../../assets/vendor-fkui-logic-1c91f8.js": "sha384-mp6SG2Ww/cIPEYqg6jTjq3eURsh8UQxZGJRozRrFoQ1j2wT8ROPkhVKXVxnzIFmM",
+    "../../assets/vendor-fkui-date-2e85fe.js": "sha384-xrA9fPmAfTE2H1Zd/5Wd5Z6B+FXD2kEosKe6kfxFdmxr3cznPQZ6Ie3/tSlITmyJ",
+    "../../assets/vendor-fkui-vue-42e3ee.js": "sha384-8pL+Yz8tSs98jFqBmZFMlyiT2pTcJmZCDX7d9EiEC+6syfAy35pNAHwTANrIsjah",
     "../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js": "sha384-d21VgyliBY8Zvt/srv0hr2Qu+6gTgMV0E+98Pvb5ftvVH4IAms43bj1He1vzrD+J"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-842906.json"
+            href="../../search-data-b3d6a8.json"
             as="fetch"
             crossorigin
-            integrity="sha384-o8ETeC33RXg2vN2G42JuOXDC/pXaLMdqcPz6fYR3ZssmjxVN/lO2LVB758BEtt+7"
+            integrity="sha384-JqUGVuZl0lq8I2/drT8mQVqpF8uTNh/9Sdki08LLSTxfZTXLT1rxRc6m631p89yZ"
             id="search-data"
         />
     </head>
@@ -141,7 +141,10 @@
         </div>
         <div class="docs-page-header__right"><div class="mobile-nav">
     <input id="mobile__toggle" type="checkbox" class="mobile-nav__toggle" aria-label="Open/close meny" />
-    <label for="mobile__toggle"> Meny </label>
+    <label for="mobile__toggle" class="mobile-nav-label">
+        <svg class="docs-icon"><use href="#docs-icon-menu"></use></svg>
+        <span>Meny</span>
+    </label>
 
     <nav id="nav-container" class="mobile-nav-overlay" aria-label="Mobile primär">
         <div class="mobile-nav__header">
@@ -152,7 +155,7 @@
                     Kom igång
 
                     <svg class="docs-icon" focusable="false" aria-hidden="true">
-                        <use xlink:href="#docs-icon-arrow-down"></use>
+                        <use href="#docs-icon-arrow-down"></use>
                     </svg>
                 </a>
             </li>
@@ -165,7 +168,7 @@
                     Komponenter
 
                     <svg class="docs-icon" focusable="false" aria-hidden="true">
-                        <use xlink:href="#docs-icon-arrow-down"></use>
+                        <use href="#docs-icon-arrow-down"></use>
                     </svg>
                 </a>
             </li>
@@ -178,7 +181,7 @@
                     Guider
 
                     <svg class="docs-icon" focusable="false" aria-hidden="true">
-                        <use xlink:href="#docs-icon-arrow-down"></use>
+                        <use href="#docs-icon-arrow-down"></use>
                     </svg>
                 </a>
             </li>
@@ -191,7 +194,7 @@
                     Funktioner
 
                     <svg class="docs-icon" focusable="false" aria-hidden="true">
-                        <use xlink:href="#docs-icon-arrow-down"></use>
+                        <use href="#docs-icon-arrow-down"></use>
                     </svg>
                 </a>
             </li>
@@ -204,7 +207,7 @@
                     Visuellt
 
                     <svg class="docs-icon" focusable="false" aria-hidden="true">
-                        <use xlink:href="#docs-icon-arrow-down"></use>
+                        <use href="#docs-icon-arrow-down"></use>
                     </svg>
                 </a>
             </li>
@@ -1624,7 +1627,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/e5b2802a74ffcfec93371bb9c1a45836dcd45257/packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/26116ab7a626ee7cfc6a0e53b3be2432695c8d9f/packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue">
                 IPopupMenu
             </a>
             
@@ -1671,13 +1674,13 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-c5208e"></div>
+        <div id="example-f3bc2f"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./IPopupMenuExample-c5208e.js"></script>
+        <script type="module" src="./IPopupMenuExample-f3bc2f.js"></script>
     
                 </div>
                 <div>
@@ -1701,6 +1704,7 @@
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-comment">&lt;!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">IPopupMenu</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;..&quot;</span>;
 
 <span class="hljs-keyword">const</span> exampleItems = [
@@ -1723,7 +1727,7 @@
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;IPopupMenuExample&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">IPopupMenu</span> },
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">IPopupMenu</span> },
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
             <span class="hljs-attr">items</span>: exampleItems,
@@ -1775,17 +1779,16 @@
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span>
             <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;popup-menu-open-button&quot;</span>
             <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;popup-anchor&quot;</span>
-            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span>
+            <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span>
             @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onClick&quot;</span>
             @<span class="hljs-attr">keyup</span>=<span class="hljs-string">&quot;onKeyUp&quot;</span>
             @<span class="hljs-attr">keydown</span>=<span class="hljs-string">&quot;onKeyDown&quot;</span>
         &gt;</span>
             Öppna popupmeny
-        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
 
         <span class="hljs-tag">&lt;<span class="hljs-name">i-popup-menu</span>
             <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;popup-menu&quot;</span>
@@ -2062,9 +2065,9 @@ Sets focus on matching item element when value changes.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">feature/sidfot-struktur (<a href="https://github.com/Forsakringskassan/designsystem/commits/e5b2802a74ffcfec93371bb9c1a45836dcd45257">e5b2802</a>)<br />
+<div class="footer__right"><div class="version">feature/sidfot-struktur (<a href="https://github.com/Forsakringskassan/designsystem/commits/26116ab7a626ee7cfc6a0e53b3be2432695c8d9f">26116ab</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/381">PR 381</a><br />
-        2026-05-06 13:16
+        2026-05-08 11:10
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -2099,6 +2102,12 @@ Sets focus on matching item element when value changes.</p>
             <path
                 fill="currentColor"
                 d="M239.373 380.982 45.03 186.638c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04l154.746 154.021L411.089 129.99c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L273.315 380.982c-9.373 9.372-24.569 9.372-33.942 0"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-menu" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="M475.4 209.6H36.6C16.4 209.6 0 225.9 0 246.1s16.4 36.6 36.6 36.6h438.9c20.2 0 36.6-16.4 36.6-36.6s-16.4-36.5-36.6-36.5zM475.4 392.4H36.6C16.4 392.4 0 408.8 0 429s16.4 36.6 36.6 36.6h438.9c20.2 0 36.6-16.4 36.6-36.6s-16.4-36.6-36.6-36.6zM475.4 26.7H36.6C16.4 26.7 0 43.1 0 63.3s16.4 36.6 36.6 36.6h438.9c20.2 0 36.6-16.4 36.6-36.6s-16.4-36.6-36.6-36.6z"
             ></path>
         </symbol>
         <symbol id="docs-icon-circle" xml:space="preserve" viewBox="0 0 512 512">
