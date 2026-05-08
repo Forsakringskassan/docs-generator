@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>FCrudButton migreringsguide - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-850302.css"
+            href="../../assets/docs-052281.css"
             crossorigin
-            integrity="sha384-DCqmzS1IDrYg98x7aQtLd3O4pE1ST0dkDQqNv09ctTrQqoSl5rJqz2aS1popuhJR"
+            integrity="sha384-/u4lRACstUZJznBLvKcxd5yZHfprF0YhjUUFI+/kp0B2mXVMAlZ/o++VQBSNlQ9Q"
             
         />
         <link
@@ -24,17 +24,17 @@
   "imports": {
     "vue": "../../assets/vendor-vue-8977ef.js",
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-2e0001.js",
-    "@fkui/logic": "../../assets/vendor-fkui-logic-907e93.js",
-    "@fkui/date": "../../assets/vendor-fkui-date-6cefc4.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-8821ce.js",
+    "@fkui/logic": "../../assets/vendor-fkui-logic-1c91f8.js",
+    "@fkui/date": "../../assets/vendor-fkui-date-2e85fe.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-42e3ee.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js"
   },
   "integrity": {
     "../../assets/vendor-vue-8977ef.js": "sha384-ZFPq1uoIzDDp4kXAAwFjNrxqfYHV0OeI5inRqo7c0o4egVFdEFBRnROTVpm5bKYA",
     "../../assets/vendor-fkui-vue-selectors-2e0001.js": "sha384-V1Wer3dMsjVpAFS/PrSjSFNHJYDQRv8k1RtPZLszEx/tnYmzbuPR4YIkP21Fwap0",
-    "../../assets/vendor-fkui-logic-907e93.js": "sha384-4TeiJAmFYySCGdBwAd/6BruO6Gq21Zk16k0vfgF/ZwvVH1Ze+8Y8ZNkAFJkEg0LX",
-    "../../assets/vendor-fkui-date-6cefc4.js": "sha384-9srvwBR/8E3tvhOCMv4zfTdALZq6lxNa1BhGi7k1N8IIkIucgvs4UnUisqLKGYPY",
-    "../../assets/vendor-fkui-vue-8821ce.js": "sha384-q6C9VF/pX+F69S9sGLtuNUv5XRi2ig36Dfgy379/hWaiC9AWSzP0645lYxgjeP2d",
+    "../../assets/vendor-fkui-logic-1c91f8.js": "sha384-mp6SG2Ww/cIPEYqg6jTjq3eURsh8UQxZGJRozRrFoQ1j2wT8ROPkhVKXVxnzIFmM",
+    "../../assets/vendor-fkui-date-2e85fe.js": "sha384-xrA9fPmAfTE2H1Zd/5Wd5Z6B+FXD2kEosKe6kfxFdmxr3cznPQZ6Ie3/tSlITmyJ",
+    "../../assets/vendor-fkui-vue-42e3ee.js": "sha384-8pL+Yz8tSs98jFqBmZFMlyiT2pTcJmZCDX7d9EiEC+6syfAy35pNAHwTANrIsjah",
     "../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js": "sha384-d21VgyliBY8Zvt/srv0hr2Qu+6gTgMV0E+98Pvb5ftvVH4IAms43bj1He1vzrD+J"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-d1e280.json"
+            href="../../search-data-fe2b83.json"
             as="fetch"
             crossorigin
-            integrity="sha384-7yAox9cyNVjROwNxO6vCfG7POcrcvO9yzM7TNWKYAiM7Cyz3bNCO5dyKKyGK/dw9"
+            integrity="sha384-bpemR53FIOlYM12s9kIlIompKlX2IFwX7thncNL2NCkpqiL8Ihn4PVKju3Fb5DYz"
             id="search-data"
         />
     </head>
@@ -142,27 +142,29 @@
         <div class="docs-page-header__right"><div class="mobile-nav">
     <input id="mobile__toggle" type="checkbox" class="mobile-nav__toggle" aria-label="Open/close meny" />
     <label for="mobile__toggle"> Meny </label>
-
     <nav id="nav-container" class="mobile-navigation" aria-label="Mobile primär">
         <div class="mobile-nav__header">
             <label for="mobile__toggle" class="mobile-nav-close">Stäng ✕</label>
         </div><div id="mobile-sidenav">
 <div class="mobile-nav-wrapper">
 <ul class="mobile-nav__list">
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
-        <details >
+  
+
+    <li class="expandable">
+        <details open>
             <summary>Kom igång <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../help-and-support.html"
             
@@ -174,20 +176,23 @@
             Hjälp och support
         </a>
     </li>
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>Använda designsystemet <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../use-design-system/translate-text.html"
             
@@ -199,10 +204,9 @@
             Anpassa och översätt text
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../use-design-system/icon-library.html"
             
@@ -214,10 +218,9 @@
             Skapa eget ikonbibliotek
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../use-design-system/getting-started.html"
             
@@ -229,10 +232,9 @@
             Kom igång
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../use-design-system/getting-started-application.html"
             
@@ -249,20 +251,23 @@
         </details>
     </li>
     
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
-        <details >
+  
+
+    <li class="expandable">
+        <details open>
             <summary>Migreringsguider <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="./migrating-to-v5.html"
             
@@ -274,10 +279,9 @@
             Version 5 migreringsguide
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="./migrating-to-ftable.html"
             
@@ -289,10 +293,9 @@
             Ftable
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="./migrating-to-fieldset.html"
             
@@ -304,10 +307,9 @@
             Fieldset migreringsguide
         </a>
     </li>
-        
-     
-        
-    <li class="link highlight">
+
+
+<li class="link highlight">
         <a
             href="./migrating-crud-button.html"
             
@@ -319,20 +321,23 @@
             FCrudButton migreringsguide
         </a>
     </li>
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>Version 6 migreringsguide <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="./migrating-to-v6/vue.html"
             
@@ -344,10 +349,9 @@
             @fkui/vue
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="./migrating-to-v6/overview.html"
             
@@ -359,10 +363,9 @@
             Sammanfattning
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="./migrating-to-v6/logic.html"
             
@@ -374,10 +377,9 @@
             @fkui/logic
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="./migrating-to-v6/design.html"
             
@@ -389,10 +391,9 @@
             @fkui/design
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="./migrating-to-v6/cypress-pageobjects.html"
             
@@ -414,20 +415,23 @@
         </details>
     </li>
     
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>Bidra till designsystemet <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../contribute-to-fkds/"
             
@@ -439,10 +443,9 @@
             Bidra till designsystemet
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../contribute-to-fkds/testverktyg.html"
             
@@ -454,10 +457,9 @@
             Testverktyg
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../contribute-to-fkds/release.html"
             
@@ -469,10 +471,9 @@
             Releaseprocess
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../contribute-to-fkds/contributing-developers.html"
             
@@ -484,10 +485,9 @@
             För utvecklare
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../contribute-to-fkds/commits.html"
             
@@ -499,10 +499,9 @@
             Commits och commitmeddelanden
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../contribute-to-fkds/code-guidelines.html"
             
@@ -514,10 +513,9 @@
             Riktlinjer för kod
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../contribute-to-fkds/checklist-publication.html"
             
@@ -529,10 +527,9 @@
             Checklista vid publicering
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../contribute-to-fkds/testing.html"
             
@@ -549,20 +546,23 @@
         </details>
     </li>
     
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>Om designsystemet <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../about/"
             
@@ -574,10 +574,9 @@
             Designsystemet
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../about/roadmap.html"
             
@@ -589,10 +588,9 @@
             På gång
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../about/releases.html"
             
@@ -604,10 +602,9 @@
             Releaser
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../about/release-notes.html"
             
@@ -629,20 +626,23 @@
         </details>
     </li>
     
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>Komponenter <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/pagination.html"
             
@@ -654,10 +654,9 @@
             Paginering
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/chip.html"
             
@@ -669,10 +668,9 @@
             Chip
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/button.html"
             
@@ -684,10 +682,9 @@
             Knapp
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/fwizard.html"
             
@@ -699,10 +696,9 @@
             Steg för steg-guide
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/ftooltip.html"
             
@@ -714,10 +710,9 @@
             Tooltip
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/foffline.html"
             
@@ -729,10 +724,9 @@
             Offline
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/fmessagebox.html"
             
@@ -744,10 +738,9 @@
             Meddelanderuta
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/flogo.html"
             
@@ -759,10 +752,9 @@
             Logotyp
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/flabel.html"
             
@@ -774,10 +766,9 @@
             Etikett
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/ficon.html"
             
@@ -789,10 +780,9 @@
             Ikon
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/fdialoguetree.html"
             
@@ -804,10 +794,9 @@
             Dialogträd
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/fdefinitionlist.html"
             
@@ -819,10 +808,9 @@
             Definitionslista
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/fcontextmenu.html"
             
@@ -834,10 +822,9 @@
             Kontextmeny
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/fcard.html"
             
@@ -849,10 +836,9 @@
             Kort
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/fcalendar.html"
             
@@ -864,10 +850,9 @@
             Kalender
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/fbadge.html"
             
@@ -879,20 +864,23 @@
             Bricka
         </a>
     </li>
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>Validering <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/validation/validators.html"
             
@@ -904,10 +892,9 @@
             Validatorer
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/validation/formatters-and-parsers.html"
             
@@ -919,10 +906,9 @@
             Formaterare och parsers
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/validation/fvalidationgroup.html"
             
@@ -934,10 +920,9 @@
             Validering samlad
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/validation/fvalidationform.html"
             
@@ -949,10 +934,9 @@
             Valideringsformulär
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/validation/ferrorlist.html"
             
@@ -969,20 +953,23 @@
         </details>
     </li>
     
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>Tabell och lista <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table.html"
             
@@ -994,10 +981,9 @@
             Datatabell och interaktiv tabell
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/fsortfilterdataset.html"
             
@@ -1009,10 +995,9 @@
             Datamängdsorterare
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/flist.html"
             
@@ -1024,10 +1009,9 @@
             Lista
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/fcruddataset.html"
             
@@ -1039,20 +1023,23 @@
             Datamängdredigerare
         </a>
     </li>
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>Tabell <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/"
             
@@ -1064,10 +1051,9 @@
             Om tabell
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/sort-filter.html"
             
@@ -1079,10 +1065,9 @@
             Sortera och filtrera
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/sort-filter-code.html"
             
@@ -1094,10 +1079,9 @@
             Sortera och filtrera (kod)
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/select-rows.html"
             
@@ -1109,10 +1093,9 @@
             Välja rader
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/select-rows-code.html"
             
@@ -1124,10 +1107,9 @@
             Välja rader (kod)
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/paginate.html"
             
@@ -1139,10 +1121,9 @@
             Paginera
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/paginate-code.html"
             
@@ -1154,10 +1135,9 @@
             Paginera (kod)
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/navigate.html"
             
@@ -1169,10 +1149,9 @@
             Navigera
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/expand-rows.html"
             
@@ -1184,10 +1163,9 @@
             Expandera rader
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/expand-rows-code.html"
             
@@ -1199,10 +1177,9 @@
             Expandera rader (kod)
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/edit.html"
             
@@ -1214,10 +1191,9 @@
             Redigera innehåll
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/edit-code.html"
             
@@ -1229,10 +1205,9 @@
             Redigera innehåll (kod)
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/create-delete-rows.html"
             
@@ -1244,10 +1219,9 @@
             Lägga till och ta bort rader
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/create-delete-rows-code.html"
             
@@ -1259,10 +1233,9 @@
             Lägga till och ta bort rader (kod)
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/code.html"
             
@@ -1274,10 +1247,9 @@
             Tabell (kod)
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/action-button-link.html"
             
@@ -1289,20 +1261,23 @@
             Åtgärdsknappar och länkar
         </a>
     </li>
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>Kolumntyper <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/column-types/"
             
@@ -1314,10 +1289,9 @@
             Om kolumntyper
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/column-types/select.html"
             
@@ -1329,10 +1303,9 @@
             Dropplista
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/column-types/rowheader.html"
             
@@ -1344,10 +1317,9 @@
             Radrubrik
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/column-types/render.html"
             
@@ -1359,10 +1331,9 @@
             Anpassa egen kolumntyp
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/column-types/contextmenu.html"
             
@@ -1374,10 +1345,9 @@
             Kontextmeny
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/column-types/checkbox.html"
             
@@ -1389,10 +1359,9 @@
             Kryssruta
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/column-types/button.html"
             
@@ -1404,10 +1373,9 @@
             Knapp
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/column-types/anchor.html"
             
@@ -1419,20 +1387,23 @@
             Länk
         </a>
     </li>
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>Textfält <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/column-types/text/"
             
@@ -1444,10 +1415,9 @@
             Om textfält
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/column-types/text/postal-code.html"
             
@@ -1459,10 +1429,9 @@
             Postnummer
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/column-types/text/plusgiro.html"
             
@@ -1474,10 +1443,9 @@
             Plusgiro
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/column-types/text/phone-number.html"
             
@@ -1489,10 +1457,9 @@
             Telefonnummer
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/column-types/text/personnummer.html"
             
@@ -1504,10 +1471,9 @@
             Personnummer
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/column-types/text/percent.html"
             
@@ -1519,10 +1485,9 @@
             Procent
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/column-types/text/organisationsnummer.html"
             
@@ -1534,10 +1499,9 @@
             Organisationsnummer
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/column-types/text/number.html"
             
@@ -1549,10 +1513,9 @@
             Numeriskt
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/column-types/text/email.html"
             
@@ -1564,10 +1527,9 @@
             Mejladress
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/column-types/text/date.html"
             
@@ -1579,10 +1541,9 @@
             Datum
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/column-types/text/currency.html"
             
@@ -1594,10 +1555,9 @@
             Valuta
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/column-types/text/clearing-number.html"
             
@@ -1609,10 +1569,9 @@
             Clearingnummer
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/column-types/text/bankgiro.html"
             
@@ -1624,10 +1583,9 @@
             Bankgiro
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/table-and-list/table/column-types/text/bank-account-number.html"
             
@@ -1659,20 +1617,23 @@
         </details>
     </li>
     
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>Presentationsfält <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/presentation/fstaticfield.html"
             
@@ -1684,10 +1645,9 @@
             Presentationsfält - statiskt
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/presentation/foutputfield.html"
             
@@ -1704,20 +1664,23 @@
         </details>
     </li>
     
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>Sidlayout <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/page-layout/application-layout.html"
             
@@ -1729,10 +1692,9 @@
             Applikationslayout
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/page-layout/fresizepane.html"
             
@@ -1744,10 +1706,9 @@
             Justerbar yta
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/page-layout/fpagelayout.html"
             
@@ -1759,10 +1720,9 @@
             Applikationsmall
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/page-layout/fpageheader.html"
             
@@ -1774,10 +1734,9 @@
             Sidhuvud
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/page-layout/fnavigationmenu.html"
             
@@ -1789,10 +1748,9 @@
             Navigeringsmeny
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/page-layout/fminimizablepanel.html"
             
@@ -1804,10 +1762,9 @@
             Minimerbar panel
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/page-layout/ffixedpane.html"
             
@@ -1819,10 +1776,9 @@
             Fixerad yta
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/page-layout/fdetailspanel.html"
             
@@ -1839,20 +1795,23 @@
         </details>
     </li>
     
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>Modal <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/modal/fmodal.html"
             
@@ -1864,10 +1823,9 @@
             Modal dialogruta
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/modal/fformmodal.html"
             
@@ -1879,10 +1837,9 @@
             Formulärsmodal
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/modal/fconfirmmodal.html"
             
@@ -1899,20 +1856,23 @@
         </details>
     </li>
     
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>Ladda innehåll <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/load/fprogressbar.html"
             
@@ -1924,10 +1884,9 @@
             Förloppsindikator
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/load/floader.html"
             
@@ -1944,20 +1903,23 @@
         </details>
     </li>
     
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>Länkar <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/links/entrypoint.html"
             
@@ -1969,10 +1931,9 @@
             Startpunkt
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/links/anchor.html"
             
@@ -1989,20 +1950,23 @@
         </details>
     </li>
     
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>Inmatning <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/input/textfield-specialized.html"
             
@@ -2014,10 +1978,9 @@
             Specialiserade inmatningsfält
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/input/combobox.html"
             
@@ -2029,10 +1992,9 @@
             Kombobox
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/input/ftextareafield.html"
             
@@ -2044,10 +2006,9 @@
             Flerradigt inmatningsfält
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/input/ftextfield.html"
             
@@ -2059,10 +2020,9 @@
             Inmatningsfält
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/input/fselectfield.html"
             
@@ -2074,10 +2034,9 @@
             Dropplista
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/input/fradiofield.html"
             
@@ -2089,10 +2048,9 @@
             Radioknapp
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/input/fdatepickerfield.html"
             
@@ -2104,10 +2062,9 @@
             Datumväljare
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/input/fcheckboxfield.html"
             
@@ -2124,20 +2081,23 @@
         </details>
     </li>
     
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>Gruppera <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/group/"
             
@@ -2149,10 +2109,9 @@
             Komponentgrupp
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/group/ffieldset.html"
             
@@ -2169,20 +2128,23 @@
         </details>
     </li>
     
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>Ramverkskomponenter <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/framework/about.html"
             
@@ -2194,10 +2156,9 @@
             Om ramverkskomponenter
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/framework/iskiplink.html"
             
@@ -2209,10 +2170,9 @@
             Gå till innehåll
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/framework/ipopupmenu.html"
             
@@ -2224,10 +2184,9 @@
             Popup-meny
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/framework/ipopuperror.html"
             
@@ -2239,10 +2198,9 @@
             PopupError
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/framework/ipopup.html"
             
@@ -2254,10 +2212,9 @@
             Popup
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/framework/iflexitem.html"
             
@@ -2269,10 +2226,9 @@
             Flex Item
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/framework/iflex.html"
             
@@ -2284,10 +2240,9 @@
             Flexibel positionering
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/framework/icalendarnavbar.html"
             
@@ -2299,10 +2254,9 @@
             Kalendernavigering
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/framework/icalendarmonthgrid.html"
             
@@ -2314,10 +2268,9 @@
             Kalenderrutnät
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/framework/icalendarmonth.html"
             
@@ -2329,10 +2282,9 @@
             Kalendermånad
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/framework/ianimateexpand.html"
             
@@ -2349,20 +2301,23 @@
         </details>
     </li>
     
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>Filuppladdning <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/file-upload/ffileselector.html"
             
@@ -2374,10 +2329,9 @@
             Filväljare
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/file-upload/ffileitem.html"
             
@@ -2394,20 +2348,23 @@
         </details>
     </li>
     
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>Expanderbara ytor <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/expandable/fexpandableparagraph.html"
             
@@ -2419,10 +2376,9 @@
             Expanderbart stycke
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/expandable/fexpandablepanel.html"
             
@@ -2434,10 +2390,9 @@
             Expanderbar panel
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../components/expandable/fexpand.html"
             
@@ -2459,30 +2414,37 @@
         </details>
     </li>
     
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>Guider <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>Validering och felhantering <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../guides/validation-and-error-handling/validation.html"
             
@@ -2494,10 +2456,9 @@
             Validering och felhantering
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../guides/validation-and-error-handling/length-validation.html"
             
@@ -2509,10 +2470,9 @@
             Längdvalidering
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../guides/validation-and-error-handling/custom-validator.html"
             
@@ -2524,10 +2484,9 @@
             Validator - anpassad
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../guides/validation-and-error-handling/custom-error-message.html"
             
@@ -2539,10 +2498,9 @@
             Felmeddelande - anpassat
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../guides/validation-and-error-handling/cross-validation.html"
             
@@ -2559,20 +2517,23 @@
         </details>
     </li>
     
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>Formatering och parsning <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../guides/formatting-and-parsing/formatter-parser.html"
             
@@ -2584,10 +2545,9 @@
             Formatering och parsning
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../guides/formatting-and-parsing/custom-formatter-parser.html"
             
@@ -2609,20 +2569,23 @@
         </details>
     </li>
     
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>Funktioner <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/tsconfig.html"
             
@@ -2634,10 +2597,9 @@
             TSConfig
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/logo-default.html"
             
@@ -2649,10 +2611,9 @@
             Logotyp-paket
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/font-default.html"
             
@@ -2664,10 +2625,9 @@
             Typsnittspaket
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/config.html"
             
@@ -2679,20 +2639,23 @@
             Konfiguration
         </a>
     </li>
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>Testverktyg <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/test-utils/"
             
@@ -2704,10 +2667,9 @@
             Om testverktyg
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/test-utils/vue.html"
             
@@ -2719,10 +2681,9 @@
             Vue.js
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/test-utils/lib.html"
             
@@ -2734,10 +2695,9 @@
             Generella funktioner
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/test-utils/jest.html"
             
@@ -2754,20 +2714,23 @@
         </details>
     </li>
     
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>Services <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/services/event-bus.html"
             
@@ -2784,20 +2747,23 @@
         </details>
     </li>
     
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>Sass <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/sass/focus-indicator.html"
             
@@ -2809,10 +2775,9 @@
             focus-indicator()
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/sass/densify.html"
             
@@ -2829,20 +2794,23 @@
         </details>
     </li>
     
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>Plugins <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/plugins/validationplugin.html"
             
@@ -2854,10 +2822,9 @@
             Validation Plugin
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/plugins/translationplugin.html"
             
@@ -2869,10 +2836,9 @@
             Translation Plugin
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/plugins/testplugin.html"
             
@@ -2884,10 +2850,9 @@
             Test Plugin
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/plugins/formatplugin.html"
             
@@ -2899,10 +2864,9 @@
             Format Plugin
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/plugins/errorplugin.html"
             
@@ -2919,20 +2883,23 @@
         </details>
     </li>
     
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>Labs <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/labs/"
             
@@ -2944,10 +2911,9 @@
             Om FKUI Vue Labs
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/labs/xtimetextfield.html"
             
@@ -2959,10 +2925,9 @@
             Tidsinmatning
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/labs/xsortfilterdatasetng.html"
             
@@ -2974,10 +2939,9 @@
             XSortFilterDatasetNg
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/labs/xrelativetime.html"
             
@@ -2989,10 +2953,9 @@
             XRelativeTime
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/labs/xfiledragdrop.html"
             
@@ -3009,20 +2972,23 @@
         </details>
     </li>
     
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>i18next <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/i18next-translate/i18next.html"
             
@@ -3034,10 +3000,9 @@
             i18next
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/i18next-translate/i18next-provider.html"
             
@@ -3049,10 +3014,9 @@
             i18nextProvider
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/i18next-translate/i18next-provider-interface.html"
             
@@ -3069,20 +3033,23 @@
         </details>
     </li>
     
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>Helpers <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/helpers/"
             
@@ -3094,10 +3061,9 @@
             Hjälpklasser
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/helpers/accessibility.html"
             
@@ -3114,710 +3080,23 @@
         </details>
     </li>
     
-    
-        
-        
-        
-    <li class="expandable ">
-        <details >
-            <summary>Funktioner <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
-            
-            
-<ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/use-resize.html"
-            
-            
-            
-            data-path="functions/functions/use-resize.html"
-            
-        >
-            useResize()
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/use-modal.html"
-            
-            
-            
-            data-path="functions/functions/use-modal.html"
-            
-        >
-            useModal()
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/use-details-panel.html"
-            
-            
-            
-            data-path="functions/functions/use-details-panel.html"
-            
-        >
-            useDetailsPanel()
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/use-dataset-ref.html"
-            
-            
-            
-            data-path="functions/functions/use-dataset-ref.html"
-            
-        >
-            useDatasetRef()
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/use-area-data.html"
-            
-            
-            
-            data-path="functions/functions/use-area-data.html"
-            
-        >
-            useAreaData()
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/table-scroll.html"
-            
-            
-            
-            data-path="functions/functions/table-scroll.html"
-            
-        >
-            TableScroll
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/table-scroll-classes.html"
-            
-            
-            
-            data-path="functions/functions/table-scroll-classes.html"
-            
-        >
-            tableScrollClasses
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/render-slot-text.html"
-            
-            
-            
-            data-path="functions/functions/render-slot-text.html"
-            
-        >
-            renderSlotText
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/mount-component.html"
-            
-            
-            
-            data-path="functions/functions/mount-component.html"
-            
-        >
-            mountComponent
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/maybe-component.html"
-            
-            
-            
-            data-path="functions/functions/maybe-component.html"
-            
-        >
-            MaybeComponent
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/item-equals.html"
-            
-            
-            
-            data-path="functions/functions/item-equals.html"
-            
-        >
-            itemEquals
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/include-item.html"
-            
-            
-            
-            data-path="functions/functions/include-item.html"
-            
-        >
-            includeItem
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/handle-keyboard-focus-navigation.html"
-            
-            
-            
-            data-path="functions/functions/handle-keyboard-focus-navigation.html"
-            
-        >
-            handleKeyboardFocusNavigation
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/get-dataset-metadata.html"
-            
-            
-            
-            data-path="functions/functions/get-dataset-metadata.html"
-            
-        >
-            getDatasetMetadata()
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/dispatch-component-validity-event.html"
-            
-            
-            
-            data-path="functions/functions/dispatch-component-validity-event.html"
-            
-        >
-            dispatchComponentValidityEvent
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/dataset-iterator.html"
-            
-            
-            
-            data-path="functions/functions/dataset-iterator.html"
-            
-        >
-            datasetIterator()
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/assert-set.html"
-            
-            
-            
-            data-path="functions/functions/assert-set.html"
-            
-        >
-            assertSet()
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/assert-ref.html"
-            
-            
-            
-            data-path="functions/functions/assert-ref.html"
-            
-        >
-            assertRef()
-        </a>
-    </li>
-    
-        
-        
-        
-    <li class="expandable ">
-        <details >
-            <summary>Modalfunktioner <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
-            
-            
-<ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/modal-functions/open-modal.html"
-            
-            
-            
-            data-path="functions/functions/modal-functions/open-modal.html"
-            
-        >
-            openModal
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/modal-functions/form-modal.html"
-            
-            
-            
-            data-path="functions/functions/modal-functions/form-modal.html"
-            
-        >
-            formModal()
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/modal-functions/confirm-modal.html"
-            
-            
-            
-            data-path="functions/functions/modal-functions/confirm-modal.html"
-            
-        >
-            confirmModal()
-        </a>
-    </li></ul>
 
-            
-        </details>
-    </li>
-    
-    
-        
-        
-        
-    <li class="expandable ">
-        <details >
-            <summary>ValidationErrorMessageBuilder <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
-            
-            
-<ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/ValidationErrorMessageBuilder/map.html"
-            
-            
-            
-            data-path="functions/functions/ValidationErrorMessageBuilder/map.html"
-            
-        >
-            map()
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/ValidationErrorMessageBuilder/map-combined.html"
-            
-            
-            
-            data-path="functions/functions/ValidationErrorMessageBuilder/map-combined.html"
-            
-        >
-            mapCombined()
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/ValidationErrorMessageBuilder/create.html"
-            
-            
-            
-            data-path="functions/functions/ValidationErrorMessageBuilder/create.html"
-            
-        >
-            create()
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/ValidationErrorMessageBuilder/build.html"
-            
-            
-            
-            data-path="functions/functions/ValidationErrorMessageBuilder/build.html"
-            
-        >
-            build()
-        </a>
-    </li></ul>
 
-            
-        </details>
-    </li>
-    
-    
-        
-        
-        
-    <li class="expandable ">
-        <details >
-            <summary>DOM-funktioner <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
-            
-            
-<ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/dom-functions/ref-is-vue.html"
-            
-            
-            
-            data-path="functions/functions/dom-functions/ref-is-vue.html"
-            
-        >
-            refIsVue
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/dom-functions/ref-is-vue-array.html"
-            
-            
-            
-            data-path="functions/functions/dom-functions/ref-is-vue-array.html"
-            
-        >
-            refIsVueArray
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/dom-functions/ref-is-html-element-array.html"
-            
-            
-            
-            data-path="functions/functions/dom-functions/ref-is-html-element-array.html"
-            
-        >
-            refIsHTMLElementArray
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/dom-functions/ref-is-element.html"
-            
-            
-            
-            data-path="functions/functions/dom-functions/ref-is-element.html"
-            
-        >
-            refIsElement
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/dom-functions/ref-is-element-array.html"
-            
-            
-            
-            data-path="functions/functions/dom-functions/ref-is-element-array.html"
-            
-        >
-            refIsElementArray
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/dom-functions/has-slot.html"
-            
-            
-            
-            data-path="functions/functions/dom-functions/has-slot.html"
-            
-        >
-            hasSlot()
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/dom-functions/has-parent-by-name.html"
-            
-            
-            
-            data-path="functions/functions/dom-functions/has-parent-by-name.html"
-            
-        >
-            hasParentByName
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/dom-functions/get-parent-by-name.html"
-            
-            
-            
-            data-path="functions/functions/dom-functions/get-parent-by-name.html"
-            
-        >
-            getParentByName
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/dom-functions/get-input-element.html"
-            
-            
-            
-            data-path="functions/functions/dom-functions/get-input-element.html"
-            
-        >
-            getInputElement
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/dom-functions/get-html-elements-from-vue-ref.html"
-            
-            
-            
-            data-path="functions/functions/dom-functions/get-html-elements-from-vue-ref.html"
-            
-        >
-            getHTMLElementsFromVueRef
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/dom-functions/get-html-element-from-vue-ref.html"
-            
-            
-            
-            data-path="functions/functions/dom-functions/get-html-element-from-vue-ref.html"
-            
-        >
-            getHTMLElementFromVueRef
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/dom-functions/get-elements-from-vue-ref.html"
-            
-            
-            
-            data-path="functions/functions/dom-functions/get-elements-from-vue-ref.html"
-            
-        >
-            getElementsFromVueRef
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/dom-functions/get-element-from-vue-ref.html"
-            
-            
-            
-            data-path="functions/functions/dom-functions/get-element-from-vue-ref.html"
-            
-        >
-            getElementFromVueRef
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/dom-functions/focus.html"
-            
-            
-            
-            data-path="functions/functions/dom-functions/focus.html"
-            
-        >
-            focus
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/dom-functions/find-parent-by-name.html"
-            
-            
-            
-            data-path="functions/functions/dom-functions/find-parent-by-name.html"
-            
-        >
-            findParentByName
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/dom-functions/find-html-element-from-vue-ref.html"
-            
-            
-            
-            data-path="functions/functions/dom-functions/find-html-element-from-vue-ref.html"
-            
-        >
-            findHTMLElementFromVueRef
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/functions/dom-functions/find-element-from-vue-ref.html"
-            
-            
-            
-            data-path="functions/functions/dom-functions/find-element-from-vue-ref.html"
-            
-        >
-            findElementFromVueRef
-        </a>
-    </li></ul>
 
-            
-        </details>
-    </li>
-    </ul>
 
-            
-        </details>
-    </li>
+
     
-    
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>Datum <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/date/clamp.html"
             
@@ -3829,20 +3108,23 @@
             clamp()
         </a>
     </li>
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>FYear <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/date/f-year/"
             
@@ -3854,10 +3136,9 @@
             FYear
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/date/f-year/value.html"
             
@@ -3869,10 +3150,9 @@
             value
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/date/f-year/tostring.html"
             
@@ -3884,10 +3164,9 @@
             toString()
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/date/f-year/tojson.html"
             
@@ -3899,10 +3178,9 @@
             toJSON()
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/date/f-year/now.html"
             
@@ -3914,10 +3192,9 @@
             now()
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/date/f-year/is-valid.html"
             
@@ -3929,10 +3206,9 @@
             isValid()
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/date/f-year/is-before.html"
             
@@ -3944,10 +3220,9 @@
             isBefore()
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/date/f-year/is-after.html"
             
@@ -3959,10 +3234,9 @@
             isAfter()
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/date/f-year/from-year.html"
             
@@ -3974,10 +3248,9 @@
             fromYear()
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/date/f-year/from-date.html"
             
@@ -3989,10 +3262,9 @@
             fromDate()
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/date/f-year/equals.html"
             
@@ -4004,10 +3276,9 @@
             equals()
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/date/f-year/compare.html"
             
@@ -4019,10 +3290,9 @@
             compare()
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/date/f-year/add-years.html"
             
@@ -4034,10 +3304,9 @@
             addYears()
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/date/f-year/f-date-previous.html"
             
@@ -4049,10 +3318,9 @@
             previous()
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/date/f-year/f-date-next.html"
             
@@ -4074,30 +3342,701 @@
         </details>
     </li>
     
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Funktioner <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+            
+<ul class="mobile-nav__list">
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/use-resize.html"
+            
+            
+            
+            data-path="functions/functions/use-resize.html"
+            
+        >
+            useResize()
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/use-modal.html"
+            
+            
+            
+            data-path="functions/functions/use-modal.html"
+            
+        >
+            useModal()
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/use-details-panel.html"
+            
+            
+            
+            data-path="functions/functions/use-details-panel.html"
+            
+        >
+            useDetailsPanel()
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/use-dataset-ref.html"
+            
+            
+            
+            data-path="functions/functions/use-dataset-ref.html"
+            
+        >
+            useDatasetRef()
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/use-area-data.html"
+            
+            
+            
+            data-path="functions/functions/use-area-data.html"
+            
+        >
+            useAreaData()
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/table-scroll.html"
+            
+            
+            
+            data-path="functions/functions/table-scroll.html"
+            
+        >
+            TableScroll
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/table-scroll-classes.html"
+            
+            
+            
+            data-path="functions/functions/table-scroll-classes.html"
+            
+        >
+            tableScrollClasses
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/render-slot-text.html"
+            
+            
+            
+            data-path="functions/functions/render-slot-text.html"
+            
+        >
+            renderSlotText
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/mount-component.html"
+            
+            
+            
+            data-path="functions/functions/mount-component.html"
+            
+        >
+            mountComponent
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/maybe-component.html"
+            
+            
+            
+            data-path="functions/functions/maybe-component.html"
+            
+        >
+            MaybeComponent
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/item-equals.html"
+            
+            
+            
+            data-path="functions/functions/item-equals.html"
+            
+        >
+            itemEquals
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/include-item.html"
+            
+            
+            
+            data-path="functions/functions/include-item.html"
+            
+        >
+            includeItem
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/handle-keyboard-focus-navigation.html"
+            
+            
+            
+            data-path="functions/functions/handle-keyboard-focus-navigation.html"
+            
+        >
+            handleKeyboardFocusNavigation
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/get-dataset-metadata.html"
+            
+            
+            
+            data-path="functions/functions/get-dataset-metadata.html"
+            
+        >
+            getDatasetMetadata()
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/dispatch-component-validity-event.html"
+            
+            
+            
+            data-path="functions/functions/dispatch-component-validity-event.html"
+            
+        >
+            dispatchComponentValidityEvent
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/dataset-iterator.html"
+            
+            
+            
+            data-path="functions/functions/dataset-iterator.html"
+            
+        >
+            datasetIterator()
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/assert-set.html"
+            
+            
+            
+            data-path="functions/functions/assert-set.html"
+            
+        >
+            assertSet()
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/assert-ref.html"
+            
+            
+            
+            data-path="functions/functions/assert-ref.html"
+            
+        >
+            assertRef()
+        </a>
+    </li>
+
+
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Modalfunktioner <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+            
+<ul class="mobile-nav__list">
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/modal-functions/open-modal.html"
+            
+            
+            
+            data-path="functions/functions/modal-functions/open-modal.html"
+            
+        >
+            openModal
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/modal-functions/form-modal.html"
+            
+            
+            
+            data-path="functions/functions/modal-functions/form-modal.html"
+            
+        >
+            formModal()
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/modal-functions/confirm-modal.html"
+            
+            
+            
+            data-path="functions/functions/modal-functions/confirm-modal.html"
+            
+        >
+            confirmModal()
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>DOM-funktioner <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+            
+<ul class="mobile-nav__list">
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/dom-functions/ref-is-vue.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/ref-is-vue.html"
+            
+        >
+            refIsVue
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/dom-functions/ref-is-vue-array.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/ref-is-vue-array.html"
+            
+        >
+            refIsVueArray
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/dom-functions/ref-is-html-element-array.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/ref-is-html-element-array.html"
+            
+        >
+            refIsHTMLElementArray
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/dom-functions/ref-is-element.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/ref-is-element.html"
+            
+        >
+            refIsElement
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/dom-functions/ref-is-element-array.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/ref-is-element-array.html"
+            
+        >
+            refIsElementArray
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/dom-functions/has-slot.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/has-slot.html"
+            
+        >
+            hasSlot()
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/dom-functions/has-parent-by-name.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/has-parent-by-name.html"
+            
+        >
+            hasParentByName
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/dom-functions/get-parent-by-name.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/get-parent-by-name.html"
+            
+        >
+            getParentByName
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/dom-functions/get-input-element.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/get-input-element.html"
+            
+        >
+            getInputElement
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/dom-functions/get-html-elements-from-vue-ref.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/get-html-elements-from-vue-ref.html"
+            
+        >
+            getHTMLElementsFromVueRef
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/dom-functions/get-html-element-from-vue-ref.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/get-html-element-from-vue-ref.html"
+            
+        >
+            getHTMLElementFromVueRef
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/dom-functions/get-elements-from-vue-ref.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/get-elements-from-vue-ref.html"
+            
+        >
+            getElementsFromVueRef
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/dom-functions/get-element-from-vue-ref.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/get-element-from-vue-ref.html"
+            
+        >
+            getElementFromVueRef
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/dom-functions/focus.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/focus.html"
+            
+        >
+            focus
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/dom-functions/find-parent-by-name.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/find-parent-by-name.html"
+            
+        >
+            findParentByName
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/dom-functions/find-html-element-from-vue-ref.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/find-html-element-from-vue-ref.html"
+            
+        >
+            findHTMLElementFromVueRef
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/dom-functions/find-element-from-vue-ref.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/find-element-from-vue-ref.html"
+            
+        >
+            findElementFromVueRef
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>ValidationErrorMessageBuilder <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+            
+<ul class="mobile-nav__list">
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/ValidationErrorMessageBuilder/map.html"
+            
+            
+            
+            data-path="functions/functions/ValidationErrorMessageBuilder/map.html"
+            
+        >
+            map()
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/ValidationErrorMessageBuilder/map-combined.html"
+            
+            
+            
+            data-path="functions/functions/ValidationErrorMessageBuilder/map-combined.html"
+            
+        >
+            mapCombined()
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/ValidationErrorMessageBuilder/create.html"
+            
+            
+            
+            data-path="functions/functions/ValidationErrorMessageBuilder/create.html"
+            
+        >
+            create()
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/functions/ValidationErrorMessageBuilder/build.html"
+            
+            
+            
+            data-path="functions/functions/ValidationErrorMessageBuilder/build.html"
+            
+        >
+            build()
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    </ul>
+
+            
+        </details>
+    </li>
+    
+
+
+
+
+
+    
+  
+
+    <li class="expandable">
         <details >
             <summary>Cypress <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>Pageobject <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/cypress/pageobjects/ftablepageobject.html"
             
@@ -4109,10 +4048,9 @@
             FTablePageObject
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/cypress/pageobjects/fpaginatorpageobject.html"
             
@@ -4124,10 +4062,9 @@
             FPaginatorPageObject
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/cypress/pageobjects/flistpageobject.html"
             
@@ -4139,10 +4076,9 @@
             FListPageObject
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/cypress/pageobjects/fexpandableparagraphpageobject.html"
             
@@ -4154,10 +4090,9 @@
             FExpandableParagraphPageObject
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/cypress/pageobjects/fdefinitionlistpageobject.html"
             
@@ -4169,20 +4104,23 @@
             FDefinitionListPageObject
         </a>
     </li>
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>FProgressbarPageObject <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/cypress/pageobjects/FProgressbarPageObject/"
             
@@ -4194,10 +4132,9 @@
             FProgressbarPageObject
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/cypress/pageobjects/FProgressbarPageObject/value.html"
             
@@ -4209,10 +4146,9 @@
             value()
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/cypress/pageobjects/FProgressbarPageObject/progress-status.html"
             
@@ -4224,10 +4160,9 @@
             progressStatus()
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/cypress/pageobjects/FProgressbarPageObject/el.html"
             
@@ -4244,20 +4179,23 @@
         </details>
     </li>
     
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>FLabelPageObject <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/cypress/pageobjects/FLabelPageObject/"
             
@@ -4269,10 +4207,9 @@
             FLabelPageObject()
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/cypress/pageobjects/FLabelPageObject/format-description.html"
             
@@ -4284,10 +4221,9 @@
             formatDescription()
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/cypress/pageobjects/FLabelPageObject/error-message.html"
             
@@ -4299,10 +4235,9 @@
             errorMessage()
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/cypress/pageobjects/FLabelPageObject/error-icon.html"
             
@@ -4314,10 +4249,9 @@
             errorIcon()
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/cypress/pageobjects/FLabelPageObject/description.html"
             
@@ -4334,125 +4268,23 @@
         </details>
     </li>
     
-    
-        
-        
-        
-    <li class="expandable ">
-        <details >
-            <summary>FMinimizablePanel <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
-            
-            
-<ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject.html"
-            
-            
-            
-            data-path="functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject.html"
-            
-        >
-            FMinimizablePanelPageObject()
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-toggle-button.html"
-            
-            
-            
-            data-path="functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-toggle-button.html"
-            
-        >
-            toggleButton()
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-header.html"
-            
-            
-            
-            data-path="functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-header.html"
-            
-        >
-            header()
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-footer.html"
-            
-            
-            
-            data-path="functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-footer.html"
-            
-        >
-            footer()
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-el.html"
-            
-            
-            
-            data-path="functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-el.html"
-            
-        >
-            el()
-        </a>
-    </li>
-        
-     
-        
-    <li class="link ">
-        <a
-            href="../../functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-content.html"
-            
-            
-            
-            data-path="functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-content.html"
-            
-        >
-            content()
-        </a>
-    </li></ul>
 
-            
-        </details>
-    </li>
+
+
+
+
     
-    
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>FInteractiveTablePageObject <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/cypress/pageobjects/FInteractiveTablePageObject/header.html"
             
@@ -4464,10 +4296,9 @@
             header()
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/cypress/pageobjects/FInteractiveTablePageObject/checkbox.html"
             
@@ -4479,10 +4310,9 @@
             checkbox()
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html"
             
@@ -4499,20 +4329,23 @@
         </details>
     </li>
     
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>FFileItemPageObject() <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/cypress/pageobjects/FFileItemPageObject/"
             
@@ -4524,10 +4357,9 @@
             FFileItemPageObject()
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/cypress/pageobjects/FFileItemPageObject/typeoffile.html"
             
@@ -4539,10 +4371,9 @@
             typeOfFile()
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/cypress/pageobjects/FFileItemPageObject/filename.html"
             
@@ -4559,20 +4390,23 @@
         </details>
     </li>
     
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>FDetailsPanelPageObject() <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/cypress/pageobjects/FDetailsPanelPageObject/"
             
@@ -4584,10 +4418,9 @@
             FDetailsPanelPageObject()
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/cypress/pageobjects/FDetailsPanelPageObject/header.html"
             
@@ -4599,10 +4432,9 @@
             header()
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/cypress/pageobjects/FDetailsPanelPageObject/footer.html"
             
@@ -4614,10 +4446,9 @@
             footer()
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/cypress/pageobjects/FDetailsPanelPageObject/el.html"
             
@@ -4629,10 +4460,9 @@
             el()
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/cypress/pageobjects/FDetailsPanelPageObject/content.html"
             
@@ -4644,10 +4474,9 @@
             content()
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/cypress/pageobjects/FDetailsPanelPageObject/close-button.html"
             
@@ -4664,20 +4493,23 @@
         </details>
     </li>
     
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>FBadgePageObject() <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/cypress/pageobjects/FBadgePageObject/"
             
@@ -4689,10 +4521,9 @@
             FBadgePageObject()
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/cypress/pageobjects/FBadgePageObject/status.html"
             
@@ -4704,10 +4535,9 @@
             status()
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../functions/cypress/pageobjects/FBadgePageObject/is-inverted.html"
             
@@ -4717,6 +4547,109 @@
             
         >
             inverted()
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>FMinimizablePanel <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+            
+<ul class="mobile-nav__list">
+
+
+<li class="link ">
+        <a
+            href="../../functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject.html"
+            
+        >
+            FMinimizablePanelPageObject()
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-toggle-button.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-toggle-button.html"
+            
+        >
+            toggleButton()
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-header.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-header.html"
+            
+        >
+            header()
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-footer.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-footer.html"
+            
+        >
+            footer()
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-el.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-el.html"
+            
+        >
+            el()
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-content.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-content.html"
+            
+        >
+            content()
         </a>
     </li></ul>
 
@@ -4734,10 +4667,9 @@
         </details>
     </li>
     
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../logic/"
             
@@ -4752,10 +4684,9 @@
             Logik-paket
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../date/"
             
@@ -4775,20 +4706,23 @@
         </details>
     </li>
     
+
+
+
+
+
     
-        
-        
-        
-    <li class="expandable ">
+  
+
+    <li class="expandable">
         <details >
             <summary>Visuellt <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ul class="mobile-nav__list">
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../styles/typography.html"
             
@@ -4800,10 +4734,9 @@
             Typografi
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../styles/theme.html"
             
@@ -4815,10 +4748,9 @@
             Tema
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../styles/icons.html"
             
@@ -4830,10 +4762,9 @@
             Ikoner
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../styles/grid.html"
             
@@ -4845,10 +4776,9 @@
             Grid
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../styles/forcedcolors.html"
             
@@ -4860,10 +4790,9 @@
             Högkontrast
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../styles/density.html"
             
@@ -4875,10 +4804,9 @@
             Densitet
         </a>
     </li>
-        
-     
-        
-    <li class="link ">
+
+
+<li class="link ">
         <a
             href="../../styles/colors.html"
             
@@ -4895,10 +4823,12 @@
         </details>
     </li>
     
-        
-     
-        
-    <li class="link ">
+
+
+
+
+
+<li class="link ">
         <a
             href="../../changelog.html"
             
@@ -5020,7 +4950,8 @@
         </div>
     </div>
 </div>
-</header>
+
+            </header>
 
             <div id="primary"><div id="sidenav">
 <input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
@@ -5622,9 +5553,9 @@ If false, the button will use a visually hidden text for accessibility.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">feature/vanster-meny (<a href="https://github.com/Forsakringskassan/designsystem/commits/4498a7b128fd24f6c0a3dcf583b0188d73630e49">4498a7b</a>)<br />
+<div class="footer__right"><div class="version">feature/vanster-meny (<a href="https://github.com/Forsakringskassan/designsystem/commits/26116ab7a626ee7cfc6a0e53b3be2432695c8d9f">26116ab</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/387">PR 387</a><br />
-        2026-05-06 13:42
+        2026-05-08 05:55
 </div>
 <div class="toolbar__item">
     <form id="version">
