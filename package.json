@@ -140,7 +140,7 @@
     "fs-extra": "11.3.5",
     "glob": "13.0.6",
     "highlight.js": "11.11.1",
-    "i18next": "26.0.9",
+    "i18next": "26.0.10",
     "livereload-js": "4.0.2",
     "markdown-it": "14.1.1",
     "markdown-it-deflist": "3.0.0",
