@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Validatorer - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-5b0c50.css"
+            href="../../assets/docs-9abe73.css"
             crossorigin
-            integrity="sha384-lEZQqSdda3F+MeNMj9Muv4d5Q1VHu3kzt6QURvEjpDotZhKPDEznx0GICED0kuMv"
+            integrity="sha384-z+p2Y+MkWfl5OFH6AZ7kPwwJLopXYJB9AgwR1VnOBurKledlLyn7JZ2hitQX+JNq"
             
         />
         <link
@@ -22,19 +22,19 @@
         <script type="importmap">
             {
   "imports": {
-    "vue": "../../assets/vendor-vue-8977ef.js",
+    "vue": "../../assets/vendor-vue-448de6.js",
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-2e0001.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-1c91f8.js",
     "@fkui/date": "../../assets/vendor-fkui-date-2e85fe.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-42e3ee.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-fb8ada.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js"
   },
   "integrity": {
-    "../../assets/vendor-vue-8977ef.js": "sha384-ZFPq1uoIzDDp4kXAAwFjNrxqfYHV0OeI5inRqo7c0o4egVFdEFBRnROTVpm5bKYA",
+    "../../assets/vendor-vue-448de6.js": "sha384-rZxFTbL2qhTFnZSmebMjep+0ryvxHbPDn5A5/ztzHrKtEpiERNJ3DiZZhhqJxZ4P",
     "../../assets/vendor-fkui-vue-selectors-2e0001.js": "sha384-V1Wer3dMsjVpAFS/PrSjSFNHJYDQRv8k1RtPZLszEx/tnYmzbuPR4YIkP21Fwap0",
     "../../assets/vendor-fkui-logic-1c91f8.js": "sha384-mp6SG2Ww/cIPEYqg6jTjq3eURsh8UQxZGJRozRrFoQ1j2wT8ROPkhVKXVxnzIFmM",
     "../../assets/vendor-fkui-date-2e85fe.js": "sha384-xrA9fPmAfTE2H1Zd/5Wd5Z6B+FXD2kEosKe6kfxFdmxr3cznPQZ6Ie3/tSlITmyJ",
-    "../../assets/vendor-fkui-vue-42e3ee.js": "sha384-8pL+Yz8tSs98jFqBmZFMlyiT2pTcJmZCDX7d9EiEC+6syfAy35pNAHwTANrIsjah",
+    "../../assets/vendor-fkui-vue-fb8ada.js": "sha384-jXZOXzB90C2MmIW5fHRT5BtBFEhy1N2o5tqZI17xxB4+LHCCDqKb0ebGAh0qbkv4",
     "../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js": "sha384-d21VgyliBY8Zvt/srv0hr2Qu+6gTgMV0E+98Pvb5ftvVH4IAms43bj1He1vzrD+J"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-b3d6a8.json"
+            href="../../search-data-277ae2.json"
             as="fetch"
             crossorigin
-            integrity="sha384-JqUGVuZl0lq8I2/drT8mQVqpF8uTNh/9Sdki08LLSTxfZTXLT1rxRc6m631p89yZ"
+            integrity="sha384-AUyS9Og9L6DUJ2d3fv7Z55NgQnx2qs6LqRoVxmF0+69VVnS//0Z4rBCSxiJqq/ey"
             id="search-data"
         />
     </head>
@@ -135,7 +135,7 @@
     <div class="docs-page-header">
         <div class="docs-page-header__left">
             <a class="docs-page-header__logo" href="../../index.html">
-                <span aria-label="FK Designsystem" role="img" class="docs-page-header__logo--small"> </span>
+                <span aria-label="FK Designsystem" role="img" class="docs-page-header__logo--pipe"> </span>
             </a>
             <a class="docs-page-header__app-name" href="../../index.html"> FK Designsystem </a>
         </div>
@@ -310,7 +310,12 @@
 </header>
 
             <div id="primary"><div id="sidenav">
-<input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
+
+    <input id="nav-toggle" type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
+    <label for="nav-toggle">
+         <svg class="docs-icon icon-menu"><use href="#docs-icon-menu"></use></svg>
+         <svg class="docs-icon icon-back"><use href="#docs-icon-chevrons-left"></use></svg>
+    </label>
 <nav class="navigation" aria-label="Sekundär">
 <ol><li class="link ">
         <a
@@ -1670,13 +1675,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-f7dfe2"></div>
+        <div id="example-2b3573"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./MatchesExample-f7dfe2.js"></script>
+        <script type="module" src="./MatchesExample-2b3573.js"></script>
     
                     </div>
                 </div>
@@ -1730,13 +1735,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-8ee2d0"></div>
+        <div id="example-b65322"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./MaxLengthExample-8ee2d0.js"></script>
+        <script type="module" src="./MaxLengthExample-b65322.js"></script>
     
                     </div>
                 </div>
@@ -1777,13 +1782,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-d07e70"></div>
+        <div id="example-4615c8"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./MinLengthExample-d07e70.js"></script>
+        <script type="module" src="./MinLengthExample-4615c8.js"></script>
     
                     </div>
                 </div>
@@ -1826,13 +1831,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-48da4a"></div>
+        <div id="example-11edef"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./RequiredExample-48da4a.js"></script>
+        <script type="module" src="./RequiredExample-11edef.js"></script>
     
                     </div>
                 </div>
@@ -1888,13 +1893,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-9972f5"></div>
+        <div id="example-eadea6"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./WhitelistExample-9972f5.js"></script>
+        <script type="module" src="./WhitelistExample-eadea6.js"></script>
     
                     </div>
                 </div>
@@ -1931,13 +1936,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-8ef6da"></div>
+        <div id="example-31015d"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./AllowListExample-8ef6da.js"></script>
+        <script type="module" src="./AllowListExample-31015d.js"></script>
     
                     </div>
                 </div>
@@ -1982,13 +1987,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-3e641f"></div>
+        <div id="example-c2f89b"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./DateExample-3e641f.js"></script>
+        <script type="module" src="./DateExample-c2f89b.js"></script>
     
                     </div>
                 </div>
@@ -2028,13 +2033,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-e9cda7"></div>
+        <div id="example-f50050"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./DateFormatExample-e9cda7.js"></script>
+        <script type="module" src="./DateFormatExample-f50050.js"></script>
     
                     </div>
                 </div>
@@ -2067,13 +2072,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-4c5e9a"></div>
+        <div id="example-54c453"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./InvalidDatesExample-4c5e9a.js"></script>
+        <script type="module" src="./InvalidDatesExample-54c453.js"></script>
     
                     </div>
                 </div>
@@ -2106,13 +2111,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-89283f"></div>
+        <div id="example-cdaa53"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./InvalidWeekdaysExample-89283f.js"></script>
+        <script type="module" src="./InvalidWeekdaysExample-cdaa53.js"></script>
     
                     </div>
                 </div>
@@ -2149,13 +2154,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-8ae5ab"></div>
+        <div id="example-5ac5fa"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./MaxDateExample-8ae5ab.js"></script>
+        <script type="module" src="./MaxDateExample-5ac5fa.js"></script>
     
                     </div>
                 </div>
@@ -2192,13 +2197,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-8ab988"></div>
+        <div id="example-258b38"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./MinDateExample-8ab988.js"></script>
+        <script type="module" src="./MinDateExample-258b38.js"></script>
     
                     </div>
                 </div>
@@ -2240,13 +2245,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-b96308"></div>
+        <div id="example-6b08be"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./NumberExample-b96308.js"></script>
+        <script type="module" src="./NumberExample-6b08be.js"></script>
     
                     </div>
                 </div>
@@ -2291,13 +2296,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-2a3b71"></div>
+        <div id="example-99b5dc"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./IntegerExample-2a3b71.js"></script>
+        <script type="module" src="./IntegerExample-99b5dc.js"></script>
     
                     </div>
                 </div>
@@ -2347,13 +2352,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-fc5130"></div>
+        <div id="example-71c3ce"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./DecimalExample-fc5130.js"></script>
+        <script type="module" src="./DecimalExample-71c3ce.js"></script>
     
                     </div>
                 </div>
@@ -2397,13 +2402,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-cc2a2e"></div>
+        <div id="example-0fe604"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./MaxValueExample-cc2a2e.js"></script>
+        <script type="module" src="./MaxValueExample-0fe604.js"></script>
     
                     </div>
                 </div>
@@ -2453,13 +2458,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-c8f5bf"></div>
+        <div id="example-138f2b"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./MinValueExample-c8f5bf.js"></script>
+        <script type="module" src="./MinValueExample-138f2b.js"></script>
     
                     </div>
                 </div>
@@ -2509,13 +2514,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-757a29"></div>
+        <div id="example-12f9cd"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./LessThanExample-757a29.js"></script>
+        <script type="module" src="./LessThanExample-12f9cd.js"></script>
     
                     </div>
                 </div>
@@ -2559,13 +2564,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-754bde"></div>
+        <div id="example-23c1a9"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./GreaterThanExample-754bde.js"></script>
+        <script type="module" src="./GreaterThanExample-23c1a9.js"></script>
     
                     </div>
                 </div>
@@ -2606,13 +2611,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-59eeb6"></div>
+        <div id="example-06e624"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./PercentExample-59eeb6.js"></script>
+        <script type="module" src="./PercentExample-06e624.js"></script>
     
                     </div>
                 </div>
@@ -2652,13 +2657,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-d335f8"></div>
+        <div id="example-c0cfa4"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./CurrencyExample-d335f8.js"></script>
+        <script type="module" src="./CurrencyExample-c0cfa4.js"></script>
     
                     </div>
                 </div>
@@ -2705,13 +2710,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-6bc0b4"></div>
+        <div id="example-0402b2"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./OrganisationsnummerExample-6bc0b4.js"></script>
+        <script type="module" src="./OrganisationsnummerExample-0402b2.js"></script>
     
                     </div>
                 </div>
@@ -2765,13 +2770,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-e3299d"></div>
+        <div id="example-1298b5"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./PersonnummerFormatExample-e3299d.js"></script>
+        <script type="module" src="./PersonnummerFormatExample-1298b5.js"></script>
     
                     </div>
                 </div>
@@ -2810,13 +2815,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-7aac40"></div>
+        <div id="example-c3476c"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./PersonnummerLuhnExample-7aac40.js"></script>
+        <script type="module" src="./PersonnummerLuhnExample-c3476c.js"></script>
     
                     </div>
                 </div>
@@ -2850,13 +2855,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-6f06bf"></div>
+        <div id="example-e63647"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./PersonnummerNotSameExample-6f06bf.js"></script>
+        <script type="module" src="./PersonnummerNotSameExample-e63647.js"></script>
     
                     </div>
                 </div>
@@ -2890,13 +2895,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-ec4b1d"></div>
+        <div id="example-5de490"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./PersonnummerOlderExample-ec4b1d.js"></script>
+        <script type="module" src="./PersonnummerOlderExample-5de490.js"></script>
     
                     </div>
                 </div>
@@ -2930,13 +2935,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-548a47"></div>
+        <div id="example-9c8013"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./PersonnummerYoungerExample-548a47.js"></script>
+        <script type="module" src="./PersonnummerYoungerExample-9c8013.js"></script>
     
                     </div>
                 </div>
@@ -2980,13 +2985,13 @@ Max antal tecken är konfigurerbart.</p>
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-893b04"></div>
+        <div id="example-c67443"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./EmailExample-893b04.js"></script>
+        <script type="module" src="./EmailExample-c67443.js"></script>
     
                     </div>
                 </div>
@@ -3028,13 +3033,13 @@ Max antal tecken är konfigurerbart.</p>
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-9bcc43"></div>
+        <div id="example-db0724"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./PostalCodeExample-9bcc43.js"></script>
+        <script type="module" src="./PostalCodeExample-db0724.js"></script>
     
                     </div>
                 </div>
@@ -3081,13 +3086,13 @@ Max antal tecken är konfigurerbart.</p>
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-4ad1c5"></div>
+        <div id="example-c860f8"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./PhoneNumberExample-4ad1c5.js"></script>
+        <script type="module" src="./PhoneNumberExample-c860f8.js"></script>
     
                     </div>
                 </div>
@@ -3130,13 +3135,13 @@ Max antal tecken är konfigurerbart.</p>
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-b20c10"></div>
+        <div id="example-63d754"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./BankgiroExample-b20c10.js"></script>
+        <script type="module" src="./BankgiroExample-63d754.js"></script>
     
                     </div>
                 </div>
@@ -3183,13 +3188,13 @@ Max antal tecken är konfigurerbart.</p>
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-48f675"></div>
+        <div id="example-8cb0b8"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ClearingNumberExample-48f675.js"></script>
+        <script type="module" src="./ClearingNumberExample-8cb0b8.js"></script>
     
                     </div>
                 </div>
@@ -3230,13 +3235,13 @@ Max antal tecken är konfigurerbart.</p>
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-41c377"></div>
+        <div id="example-a8f070"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./BankAccountNumberExample-41c377.js"></script>
+        <script type="module" src="./BankAccountNumberExample-a8f070.js"></script>
     
                     </div>
                 </div>
@@ -3278,13 +3283,13 @@ Max antal tecken är konfigurerbart.</p>
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-4fc32f"></div>
+        <div id="example-e985c4"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./PlusgiroExample-4fc32f.js"></script>
+        <script type="module" src="./PlusgiroExample-e985c4.js"></script>
     
                     </div>
                 </div>
@@ -3361,9 +3366,9 @@ Max antal tecken är konfigurerbart.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">feature/sidfot-struktur (<a href="https://github.com/Forsakringskassan/designsystem/commits/26116ab7a626ee7cfc6a0e53b3be2432695c8d9f">26116ab</a>)<br />
+<div class="footer__right"><div class="version">feature/sidfot-struktur (<a href="https://github.com/Forsakringskassan/designsystem/commits/fff6c55b79a22fd777a251a8c9ae0e73a348fbf2">fff6c55</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/381">PR 381</a><br />
-        2026-05-08 11:10
+        2026-05-11 09:36
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -3399,6 +3404,12 @@ Max antal tecken är konfigurerbart.</p>
                 fill="currentColor"
                 d="M239.373 380.982 45.03 186.638c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04l154.746 154.021L411.089 129.99c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L273.315 380.982c-9.373 9.372-24.569 9.372-33.942 0"
             ></path>
+        </symbol>
+        <symbol id="docs-icon-chevrons-left" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="M111.3 256L281.2 78.4c17.3-18.1 16.8-46.9-1.4-64.3-18.1-17.3-46.9-16.7-64.3 1.4l-200 209.1C7.2 233.4 3 244.7 3 256c0 11.3 4.2 22.6 12.6 31.4l200 209.1c17.4 18.1 46.1 18.8 64.3 1.4 18.1-17.3 18.7-46.1 1.4-64.3L111.3 256z M329.5 256L499.4 78.4c17.3-18.1 16.8-46.9-1.4-64.3-18.1-17.3-46.9-16.7-64.3 1.4l-200 209.1c-8.4 8.8-12.6 20.1-12.6 31.4c0 11.3 4.2 22.6 12.6 31.4l200 209.1c17.4 18.1 46.1 18.8 64.3 1.4 18.1-17.3 18.8-46.1 1.4-64.3L329.5 256z"
+            />
         </symbol>
         <symbol id="docs-icon-menu" viewBox="0 0 512 512">
             <path

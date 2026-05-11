@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>FYear: now() function - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../../assets/docs-5b0c50.css"
+            href="../../../assets/docs-9abe73.css"
             crossorigin
-            integrity="sha384-lEZQqSdda3F+MeNMj9Muv4d5Q1VHu3kzt6QURvEjpDotZhKPDEznx0GICED0kuMv"
+            integrity="sha384-z+p2Y+MkWfl5OFH6AZ7kPwwJLopXYJB9AgwR1VnOBurKledlLyn7JZ2hitQX+JNq"
             
         />
         <link
@@ -22,19 +22,19 @@
         <script type="importmap">
             {
   "imports": {
-    "vue": "../../../assets/vendor-vue-8977ef.js",
+    "vue": "../../../assets/vendor-vue-448de6.js",
     "@fkui/vue/selectors": "../../../assets/vendor-fkui-vue-selectors-2e0001.js",
     "@fkui/logic": "../../../assets/vendor-fkui-logic-1c91f8.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-2e85fe.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-42e3ee.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-fb8ada.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js"
   },
   "integrity": {
-    "../../../assets/vendor-vue-8977ef.js": "sha384-ZFPq1uoIzDDp4kXAAwFjNrxqfYHV0OeI5inRqo7c0o4egVFdEFBRnROTVpm5bKYA",
+    "../../../assets/vendor-vue-448de6.js": "sha384-rZxFTbL2qhTFnZSmebMjep+0ryvxHbPDn5A5/ztzHrKtEpiERNJ3DiZZhhqJxZ4P",
     "../../../assets/vendor-fkui-vue-selectors-2e0001.js": "sha384-V1Wer3dMsjVpAFS/PrSjSFNHJYDQRv8k1RtPZLszEx/tnYmzbuPR4YIkP21Fwap0",
     "../../../assets/vendor-fkui-logic-1c91f8.js": "sha384-mp6SG2Ww/cIPEYqg6jTjq3eURsh8UQxZGJRozRrFoQ1j2wT8ROPkhVKXVxnzIFmM",
     "../../../assets/vendor-fkui-date-2e85fe.js": "sha384-xrA9fPmAfTE2H1Zd/5Wd5Z6B+FXD2kEosKe6kfxFdmxr3cznPQZ6Ie3/tSlITmyJ",
-    "../../../assets/vendor-fkui-vue-42e3ee.js": "sha384-8pL+Yz8tSs98jFqBmZFMlyiT2pTcJmZCDX7d9EiEC+6syfAy35pNAHwTANrIsjah",
+    "../../../assets/vendor-fkui-vue-fb8ada.js": "sha384-jXZOXzB90C2MmIW5fHRT5BtBFEhy1N2o5tqZI17xxB4+LHCCDqKb0ebGAh0qbkv4",
     "../../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js": "sha384-d21VgyliBY8Zvt/srv0hr2Qu+6gTgMV0E+98Pvb5ftvVH4IAms43bj1He1vzrD+J"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-b3d6a8.json"
+            href="../../../search-data-277ae2.json"
             as="fetch"
             crossorigin
-            integrity="sha384-JqUGVuZl0lq8I2/drT8mQVqpF8uTNh/9Sdki08LLSTxfZTXLT1rxRc6m631p89yZ"
+            integrity="sha384-AUyS9Og9L6DUJ2d3fv7Z55NgQnx2qs6LqRoVxmF0+69VVnS//0Z4rBCSxiJqq/ey"
             id="search-data"
         />
     </head>
@@ -135,7 +135,7 @@
     <div class="docs-page-header">
         <div class="docs-page-header__left">
             <a class="docs-page-header__logo" href="../../../index.html">
-                <span aria-label="FK Designsystem" role="img" class="docs-page-header__logo--small"> </span>
+                <span aria-label="FK Designsystem" role="img" class="docs-page-header__logo--pipe"> </span>
             </a>
             <a class="docs-page-header__app-name" href="../../../index.html"> FK Designsystem </a>
         </div>
@@ -310,7 +310,12 @@
 </header>
 
             <div id="primary"><div id="sidenav">
-<input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
+
+    <input id="nav-toggle" type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
+    <label for="nav-toggle">
+         <svg class="docs-icon icon-menu"><use href="#docs-icon-menu"></use></svg>
+         <svg class="docs-icon icon-back"><use href="#docs-icon-chevrons-left"></use></svg>
+    </label>
 <nav class="navigation" aria-label="Sekundär">
 <ol><li class="expandable ">
         <details >
@@ -1953,9 +1958,9 @@
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">feature/sidfot-struktur (<a href="https://github.com/Forsakringskassan/designsystem/commits/26116ab7a626ee7cfc6a0e53b3be2432695c8d9f">26116ab</a>)<br />
+<div class="footer__right"><div class="version">feature/sidfot-struktur (<a href="https://github.com/Forsakringskassan/designsystem/commits/fff6c55b79a22fd777a251a8c9ae0e73a348fbf2">fff6c55</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/381">PR 381</a><br />
-        2026-05-08 11:10
+        2026-05-11 09:36
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1991,6 +1996,12 @@
                 fill="currentColor"
                 d="M239.373 380.982 45.03 186.638c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04l154.746 154.021L411.089 129.99c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L273.315 380.982c-9.373 9.372-24.569 9.372-33.942 0"
             ></path>
+        </symbol>
+        <symbol id="docs-icon-chevrons-left" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="M111.3 256L281.2 78.4c17.3-18.1 16.8-46.9-1.4-64.3-18.1-17.3-46.9-16.7-64.3 1.4l-200 209.1C7.2 233.4 3 244.7 3 256c0 11.3 4.2 22.6 12.6 31.4l200 209.1c17.4 18.1 46.1 18.8 64.3 1.4 18.1-17.3 18.7-46.1 1.4-64.3L111.3 256z M329.5 256L499.4 78.4c17.3-18.1 16.8-46.9-1.4-64.3-18.1-17.3-46.9-16.7-64.3 1.4l-200 209.1c-8.4 8.8-12.6 20.1-12.6 31.4c0 11.3 4.2 22.6 12.6 31.4l200 209.1c17.4 18.1 46.1 18.8 64.3 1.4 18.1-17.3 18.8-46.1 1.4-64.3L329.5 256z"
+            />
         </symbol>
         <symbol id="docs-icon-menu" viewBox="0 0 512 512">
             <path
