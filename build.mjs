@@ -126,7 +126,7 @@ async function build() {
             esbuildPlugin({
                 platform: "node",
                 format: "esm",
-                target: ["node20"],
+                target: ["node22"],
             }),
             visualizer({
                 filename: "temp/bundle.html",

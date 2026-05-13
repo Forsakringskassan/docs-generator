@@ -7,7 +7,7 @@ export default async function setup() {
         format: "esm",
         outdir: "temp/workers",
         platform: "node",
-        target: "node20",
+        target: "node22",
         metafile: true,
         external: ["prettier", "synckit"],
         outExtension: {

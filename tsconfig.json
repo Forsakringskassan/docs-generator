@@ -1,28 +1,35 @@
 {
+    "extends": [
+        "@tsconfig/recommended",
+        "@tsconfig/node22",
+        "@tsconfig/strictest"
+    ],
     "compilerOptions": {
         /* ts-jest uses hardcoded deprecated moduleResolution node10 */
         "ignoreDeprecations": "6.0",
+
         "rootDir": "./src",
         "outDir": "./dist",
-        "emitDeclarationOnly": true,
-        "target": "es2022",
-        "lib": ["es2023", "dom", "dom.iterable", "es2018.intl"],
+
+        "lib": ["es2024", "dom"],
         "types": ["node", "jest"],
         "module": "esnext",
         "moduleResolution": "bundler",
-        "alwaysStrict": true,
+
+        "emitDeclarationOnly": true,
         "declaration": true,
         "declarationDir": "./temp/types",
         "declarationMap": true,
-        "strict": true,
-        "jsx": "preserve",
-        "noImplicitAny": true,
-        "isolatedModules": true,
-        "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
-        "resolveJsonModule": true,
         "sourceMap": true,
-        "skipLibCheck": true
+
+        "noUncheckedIndexedAccess": false,
+
+        /* technical debt */
+        "allowUnreachableCode": false,
+        "exactOptionalPropertyTypes": false,
+        "noImplicitReturns": false,
+        "noPropertyAccessFromIndexSignature": false,
+        "noUnusedLocals": false
     },
     "include": ["./src/**/*.ts"]
 }

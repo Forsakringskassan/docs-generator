@@ -173,6 +173,9 @@
     "@rollup/plugin-json": "6.1.0",
     "@rollup/plugin-node-resolve": "16.0.3",
     "@sidvind/rollup-plugin-worker": "1.0.4",
+    "@tsconfig/node22": "22.0.5",
+    "@tsconfig/recommended": "1.0.13",
+    "@tsconfig/strictest": "2.0.8",
     "@types/babel__code-frame": "7.27.0",
     "@types/cli-progress": "3.11.6",
     "@types/d3": "7.4.3",
@@ -181,7 +184,7 @@
     "@types/fs-extra": "11.0.4",
     "@types/jest": "30.0.0",
     "@types/markdown-it": "14.1.2",
-    "@types/node": "20.19.40",
+    "@types/node": "22.19.19",
     "@types/nunjucks": "3.2.6",
     "@types/pug": "2.0.10",
     "@types/semver": "7.7.1",
@@ -216,7 +219,7 @@
     }
   },
   "engines": {
-    "node": ">= 20.19"
+    "node": "^22.16 || >= 24"
   },
   "publishConfig": {
     "access": "public",
