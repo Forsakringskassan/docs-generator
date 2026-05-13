@@ -1,6 +1,8 @@
 import fs from "node:fs/promises";
 import path from "node:path/posix";
+import { isDocumentPage } from "../document";
 import { type NavigationSection } from "../navigation";
+import { generateNavtree } from "../navigation/generate-navtree";
 import { type Processor } from "../processor";
 
 /**
@@ -20,23 +22,39 @@ export interface TopnavEntry {
  */
 export function generateNavigation(
     entries: TopnavEntry[],
+    navtree: NavigationSection,
 ): Omit<NavigationSection, "title"> {
-    const children = entries.map((it, index): NavigationSection => {
-        const key = path.parse(it.path).name;
-        return {
-            key,
-            sortorder: index,
-            children: [],
-            visible: true,
-            ...it,
-        };
-    });
     return {
         key: ".",
         path: "./index.html",
         sortorder: Infinity,
-        children,
         visible: true,
+        children: entries
+            .map((entry, index) => {
+                // Find the corresponding item in navtree
+                const navtreeItem = navtree.children.find(
+                    (item) => item.title === entry.title,
+                );
+
+                if (navtreeItem) {
+                    return {
+                        ...navtreeItem,
+                        path: entry.path,
+                        sortorder: entry.sortorder ?? index,
+                    };
+                }
+
+                const key = path.parse(entry.path).name;
+                // Create a new NavigationLeaf for entries not in navtree
+                return {
+                    key,
+                    sortorder: index,
+                    children: [],
+                    visible: true,
+                    ...entry,
+                };
+            })
+            .toSorted((a, b) => a.sortorder - b.sortorder),
     };
 }
 
@@ -56,7 +74,10 @@ export function topnavProcessor(filename: string, title: string): Processor {
         async handler(context) {
             const content = await fs.readFile(filename, "utf8");
             const parsed = JSON.parse(content) as TopnavEntry[];
-            const rootNode = generateNavigation(parsed);
+            const pages = context.docs.filter(isDocumentPage);
+            const navtree = generateNavtree(pages);
+            const rootNode = generateNavigation(parsed, navtree);
+
             context.setTopNavigation({
                 title,
                 ...rootNode,
