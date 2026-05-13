@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## [3.0.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.43.0...v3.0.0) (2026-05-13)
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** NodeJS v22 or later is now required.
+
+### Features
+
+* **deps:** require nodejs v22 or later ([3b02fd6](https://github.com/Forsakringskassan/docs-generator/commit/3b02fd67314b874d9f8a76355451867b42d0b9f1))
+
+### Bug Fixes
+
+* `margin` between headers and other elements (fixes SFKUI-7489) ([a3e3324](https://github.com/Forsakringskassan/docs-generator/commit/a3e3324c7500df4e42f52c355a4de9e1401dd2d2))
+* **deps:** update dependency fs-extra to v11.3.5 ([cbfbc4e](https://github.com/Forsakringskassan/docs-generator/commit/cbfbc4e338ce06bf12358ce75b131bead0c83ed1))
+* **deps:** update dependency i18next to v26.0.10 ([f387b7c](https://github.com/Forsakringskassan/docs-generator/commit/f387b7c632618ef2b98673ccfc6d435b83f7c287))
+* **deps:** update dependency i18next to v26.0.9 ([c0131d2](https://github.com/Forsakringskassan/docs-generator/commit/c0131d21a93243f00fa46e62e8a500cc6615b029))
+* **deps:** update dependency semver to v7.8.0 ([ab7b7ab](https://github.com/Forsakringskassan/docs-generator/commit/ab7b7ab5ac2d92d82aec41002a8cb223d5a00a59))
+
 ## [2.43.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.42.0...v2.43.0) (2026-05-01)
 
 ### Features
