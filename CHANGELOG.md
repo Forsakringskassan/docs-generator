@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [3.0.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.0.0...v3.0.1) (2026-05-15)
+
+### Bug Fixes
+
+* **deps:** update dependency i18next to v26.1.0 ([e4935e4](https://github.com/Forsakringskassan/docs-generator/commit/e4935e491d9006e403cd3e624d3c47bf6fdf50f4))
+* populate child elements when using `topnavProcessor` ([1b9938b](https://github.com/Forsakringskassan/docs-generator/commit/1b9938bb750221d6a2d90509a2da30b0c4d882bb))
+
 ## [3.0.0](https://github.com/Forsakringskassan/docs-generator/compare/v2.43.0...v3.0.0) (2026-05-13)
 
 ### ⚠ BREAKING CHANGES
