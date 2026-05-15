@@ -172,7 +172,7 @@
     "@rollup/plugin-commonjs": "29.0.2",
     "@rollup/plugin-json": "6.1.0",
     "@rollup/plugin-node-resolve": "16.0.3",
-    "@sidvind/rollup-plugin-worker": "1.0.4",
+    "@sidvind/rollup-plugin-worker": "2.0.0",
     "@tsconfig/node22": "22.0.5",
     "@tsconfig/recommended": "1.0.13",
     "@tsconfig/strictest": "2.0.8",
