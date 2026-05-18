@@ -6,35 +6,35 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>MaybeComponent - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-200e19.css"
+            href="../../assets/docs-ff83f0.css"
             crossorigin
-            integrity="sha384-5JBOF/Ww+WbI01IonWKhwkZC46v+iBnRKnchDEr5/6AnvvKOqQKsgZMInuQM0+7A"
+            integrity="sha384-j4Zt/zuR1RWT1nsjsiDXnJUBrw8HXwIlpPRpJAOJgMPV5qyx6sAqJcHV3ThHDjug"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-fkui-8bf291.css"
+            href="../../assets/docs-fkui-f9c4c1.css"
             crossorigin
-            integrity="sha384-rTChEuVmK0a1yKPaoJUPCrb7cFyxgdmLu5fk1esVLv8egJliuHIfidQp9vsGlTCQ"
+            integrity="sha384-PPTUgKZ4lpLRJ9O+VGBA/HPUXa/uWmnKuUyHL+xyIbUOSNpQPBRWKJGmhAKHQc5N"
             
         />
 
         <script type="importmap">
             {
   "imports": {
-    "vue": "../../assets/vendor-vue-8977ef.js",
+    "vue": "../../assets/vendor-vue-448de6.js",
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-2e0001.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-1c91f8.js",
     "@fkui/date": "../../assets/vendor-fkui-date-2e85fe.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-42e3ee.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-56da6c.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js"
   },
   "integrity": {
-    "../../assets/vendor-vue-8977ef.js": "sha384-ZFPq1uoIzDDp4kXAAwFjNrxqfYHV0OeI5inRqo7c0o4egVFdEFBRnROTVpm5bKYA",
+    "../../assets/vendor-vue-448de6.js": "sha384-rZxFTbL2qhTFnZSmebMjep+0ryvxHbPDn5A5/ztzHrKtEpiERNJ3DiZZhhqJxZ4P",
     "../../assets/vendor-fkui-vue-selectors-2e0001.js": "sha384-V1Wer3dMsjVpAFS/PrSjSFNHJYDQRv8k1RtPZLszEx/tnYmzbuPR4YIkP21Fwap0",
     "../../assets/vendor-fkui-logic-1c91f8.js": "sha384-mp6SG2Ww/cIPEYqg6jTjq3eURsh8UQxZGJRozRrFoQ1j2wT8ROPkhVKXVxnzIFmM",
     "../../assets/vendor-fkui-date-2e85fe.js": "sha384-xrA9fPmAfTE2H1Zd/5Wd5Z6B+FXD2kEosKe6kfxFdmxr3cznPQZ6Ie3/tSlITmyJ",
-    "../../assets/vendor-fkui-vue-42e3ee.js": "sha384-8pL+Yz8tSs98jFqBmZFMlyiT2pTcJmZCDX7d9EiEC+6syfAy35pNAHwTANrIsjah",
+    "../../assets/vendor-fkui-vue-56da6c.js": "sha384-4vT1bwurCM/6J9hwKwbvn70ffgbX4XqXypmJh/WfcISQTvACsd6fP31Byl51e15U",
     "../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js": "sha384-d21VgyliBY8Zvt/srv0hr2Qu+6gTgMV0E+98Pvb5ftvVH4IAms43bj1He1vzrD+J"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-8a2e08.json"
+            href="../../search-data-ef2f2a.json"
             as="fetch"
             crossorigin
-            integrity="sha384-IgauHgSVIRi0I8ASbixxQbLJve6TLNXiH0Yx560mXkEbTYabHnSvkJas9ckX3P4q"
+            integrity="sha384-14BeWXJppDztzApBNVFSGV2Rl4O2CzIOmxRKYNzMPMwbhdtSoEzFAo7BdJQ2sR+o"
             id="search-data"
         />
     </head>
@@ -135,17 +135,20 @@
     <div class="docs-page-header">
         <div class="docs-page-header__left">
             <a class="docs-page-header__logo" href="../../index.html">
-                <span aria-label="FK Designsystem" role="img" class="docs-page-header__logo--small"> </span>
+                <span aria-label="FK Designsystem" role="img" class="docs-page-header__logo--pipe"> </span>
             </a>
             <a class="docs-page-header__app-name" href="../../index.html"> FK Designsystem </a>
         </div>
-        <div class="docs-page-header__right"><div class="mobile-nav">
-    <input id="mobile__toggle" type="checkbox" class="mobile-nav__toggle" aria-label="Open/close meny" />
-    <label for="mobile__toggle"> Meny </label>
-    <nav id="nav-container" class="mobile-navigation" aria-label="Mobile primär">
-        <div class="mobile-nav__header">
-            <label for="mobile__toggle" class="mobile-nav-close">
-                <span class="mobile-nav-close__text">Stäng</span>
+        <div class="docs-page-header__right"><div class="docs-mobile-nav">
+    <input id="mobile__toggle" type="checkbox" class="docs-mobile-nav__toggle" aria-label="Open/close meny" />
+    <label for="mobile__toggle" class="docs-mobile-nav-label">
+        <svg class="docs-icon"><use href="#docs-icon-menu"></use></svg>
+        <span>Meny</span>
+    </label>
+    <nav id="nav-container" class="docs-mobile-navigation" aria-label="Mobile primär">
+        <div class="docs-mobile-nav__header">
+            <label for="mobile__toggle" class="docs-mobile-nav-close">
+                <span class="docs-mobile-nav-close__text">Stäng</span>
                 <svg class="icon" focusable="false" aria-hidden="true">
                     <use xlink:href="#docs-icon-close"></use>
                 </svg>
@@ -869,95 +872,6 @@
             Bricka
         </a>
     </li>
-
-
-
-
-
-    
-  
-
-    <li class="expandable">
-        <details >
-            <summary>Validering <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
-            
-            
-<ul class="mobile-nav__list">
-
-
-<li class="link ">
-        <a
-            href="../../components/validation/validators.html"
-            
-            
-            
-            data-path="components/validation/validators.html"
-            
-        >
-            Validatorer
-        </a>
-    </li>
-
-
-<li class="link ">
-        <a
-            href="../../components/validation/formatters-and-parsers.html"
-            
-            
-            
-            data-path="components/validation/formatters-and-parsers.html"
-            
-        >
-            Formaterare och parsers
-        </a>
-    </li>
-
-
-<li class="link ">
-        <a
-            href="../../components/validation/fvalidationgroup.html"
-            
-            
-            
-            data-path="components/validation/fvalidationgroup.html"
-            
-        >
-            Validering samlad
-        </a>
-    </li>
-
-
-<li class="link ">
-        <a
-            href="../../components/validation/fvalidationform.html"
-            
-            
-            
-            data-path="components/validation/fvalidationform.html"
-            
-        >
-            Valideringsformulär
-        </a>
-    </li>
-
-
-<li class="link ">
-        <a
-            href="../../components/validation/ferrorlist.html"
-            
-            
-            
-            data-path="components/validation/ferrorlist.html"
-            
-        >
-            Fellista
-        </a>
-    </li></ul>
-
-            
-        </details>
-    </li>
-    
 
 
 
@@ -1871,6 +1785,95 @@
 
     <li class="expandable">
         <details >
+            <summary>Validering <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+            
+<ul class="mobile-nav__list">
+
+
+<li class="link ">
+        <a
+            href="../../components/validation/validators.html"
+            
+            
+            
+            data-path="components/validation/validators.html"
+            
+        >
+            Validatorer
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../components/validation/formatters-and-parsers.html"
+            
+            
+            
+            data-path="components/validation/formatters-and-parsers.html"
+            
+        >
+            Formaterare och parsers
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../components/validation/fvalidationgroup.html"
+            
+            
+            
+            data-path="components/validation/fvalidationgroup.html"
+            
+        >
+            Validering samlad
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../components/validation/fvalidationform.html"
+            
+            
+            
+            data-path="components/validation/fvalidationform.html"
+            
+        >
+            Valideringsformulär
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../components/validation/ferrorlist.html"
+            
+            
+            
+            data-path="components/validation/ferrorlist.html"
+            
+        >
+            Fellista
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
             <summary>Ladda innehåll <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
@@ -2143,6 +2146,53 @@
 
     <li class="expandable">
         <details >
+            <summary>Filuppladdning <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+            
+<ul class="mobile-nav__list">
+
+
+<li class="link ">
+        <a
+            href="../../components/file-upload/ffileselector.html"
+            
+            
+            
+            data-path="components/file-upload/ffileselector.html"
+            
+        >
+            Filväljare
+        </a>
+    </li>
+
+
+<li class="link ">
+        <a
+            href="../../components/file-upload/ffileitem.html"
+            
+            
+            
+            data-path="components/file-upload/ffileitem.html"
+            
+        >
+            Filpresentatör
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
             <summary>Ramverkskomponenter <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
@@ -2299,53 +2349,6 @@
             
         >
             Animerad expandering
-        </a>
-    </li></ul>
-
-            
-        </details>
-    </li>
-    
-
-
-
-
-
-    
-  
-
-    <li class="expandable">
-        <details >
-            <summary>Filuppladdning <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
-            
-            
-<ul class="mobile-nav__list">
-
-
-<li class="link ">
-        <a
-            href="../../components/file-upload/ffileselector.html"
-            
-            
-            
-            data-path="components/file-upload/ffileselector.html"
-            
-        >
-            Filväljare
-        </a>
-    </li>
-
-
-<li class="link ">
-        <a
-            href="../../components/file-upload/ffileitem.html"
-            
-            
-            
-            data-path="components/file-upload/ffileitem.html"
-            
-        >
-            Filpresentatör
         </a>
     </li></ul>
 
@@ -4827,24 +4830,7 @@
             
         </details>
     </li>
-    
-
-
-
-
-
-<li class="link ">
-        <a
-            href="../../changelog.html"
-            
-            
-            
-            data-path="changelog.html"
-            
-        >
-            CHANGELOG
-        </a>
-    </li></ul>
+    </ul>
 </div>
 </div>
         
@@ -4882,12 +4868,6 @@
         <li class="docs-topnav__item ">
             <a class="docs-topnav__anchor" href="../../styles/"> Visuellt </a>
         </li>
-        
-        
-        
-        
-        
-        
         <li class="docs-topnav__item docs-topnav__item--more" style="visibility: hidden">
             <button type="button" class="docs-topnav__anchor" aria-expanded="false">
                 <span>Mer</span>
@@ -4927,12 +4907,6 @@
                     <li class="docs-contextmenu__item " style="display: none">
                         <a class="docs-contextmenu__anchor" href="../../styles/"> Visuellt </a>
                     </li>
-                    
-                    
-                    
-                    
-                    
-                    
                     </ul>
             </div>
         </li>
@@ -4959,7 +4933,12 @@
             </header>
 
             <div id="primary"><div id="sidenav">
-<input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
+
+    <input id="nav-toggle" type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
+    <label for="nav-toggle">
+         <svg class="docs-icon icon-menu"><use href="#docs-icon-menu"></use></svg>
+         <svg class="docs-icon icon-back"><use href="#docs-icon-chevrons-left"></use></svg>
+    </label>
 <nav class="navigation" aria-label="Sekundär">
 <ol><li class="expandable ">
         <details >
@@ -6565,9 +6544,9 @@
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">feature/vanster-meny (<a href="https://github.com/Forsakringskassan/designsystem/commits/26116ab7a626ee7cfc6a0e53b3be2432695c8d9f">26116ab</a>)<br />
+<div class="footer__right"><div class="version">feature/vanster-meny (<a href="https://github.com/Forsakringskassan/designsystem/commits/08d959b4ecda91984eaced3e25adbf63a40026a7">08d959b</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/387">PR 387</a><br />
-        2026-05-08 07:36
+        2026-05-18 07:50
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -6602,6 +6581,18 @@
             <path
                 fill="currentColor"
                 d="M239.373 380.982 45.03 186.638c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04l154.746 154.021L411.089 129.99c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L273.315 380.982c-9.373 9.372-24.569 9.372-33.942 0"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-chevrons-left" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="M111.3 256L281.2 78.4c17.3-18.1 16.8-46.9-1.4-64.3-18.1-17.3-46.9-16.7-64.3 1.4l-200 209.1C7.2 233.4 3 244.7 3 256c0 11.3 4.2 22.6 12.6 31.4l200 209.1c17.4 18.1 46.1 18.8 64.3 1.4 18.1-17.3 18.7-46.1 1.4-64.3L111.3 256z M329.5 256L499.4 78.4c17.3-18.1 16.8-46.9-1.4-64.3-18.1-17.3-46.9-16.7-64.3 1.4l-200 209.1c-8.4 8.8-12.6 20.1-12.6 31.4c0 11.3 4.2 22.6 12.6 31.4l200 209.1c17.4 18.1 46.1 18.8 64.3 1.4 18.1-17.3 18.8-46.1 1.4-64.3L329.5 256z"
+            />
+        </symbol>
+        <symbol id="docs-icon-menu" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="M475.4 209.6H36.6C16.4 209.6 0 225.9 0 246.1s16.4 36.6 36.6 36.6h438.9c20.2 0 36.6-16.4 36.6-36.6s-16.4-36.5-36.6-36.5zM475.4 392.4H36.6C16.4 392.4 0 408.8 0 429s16.4 36.6 36.6 36.6h438.9c20.2 0 36.6-16.4 36.6-36.6s-16.4-36.6-36.6-36.6zM475.4 26.7H36.6C16.4 26.7 0 43.1 0 63.3s16.4 36.6 36.6 36.6h438.9c20.2 0 36.6-16.4 36.6-36.6s-16.4-36.6-36.6-36.6z"
             ></path>
         </symbol>
         <symbol id="docs-icon-circle" xml:space="preserve" viewBox="0 0 512 512">
@@ -6701,16 +6692,16 @@
             integrity="sha384-MiyHuq1hbcemP/RGZgotKZC8qlPOYjlrbQ/VNcrv6ju3y4SnFHj2CvLfATECOQdA"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-19655c.js"
+            src="../../assets/processors/selectable-version/select-version-5607d5.js"
             type="module"
             crossorigin
-            integrity="sha384-tw6L+jj4H9K6Jo/Oi6CqrYe2PUYGLPwhDjJsEZSew833+Fcrek2OhH5IyDgooJTG"
+            integrity="sha384-vzAzc60veE2mI1ucH1sw/WFVjJFthQVYs+dM/6oNPw7aPf5cFei4ynmX81O1ClqH"
             
         ></script><script
-            src="../../assets/main-d3aa2b.js"
+            src="../../assets/main-3c4ce4.js"
             type="module"
             crossorigin
-            integrity="sha384-zCQEokYSwZMBsPtkul6eVoEgjw+ZaCuOZsfzW07nNv2bpzDnGlVuM933JM8fsWGN"
+            integrity="sha384-nFmhrSXyLG9upFDzq2KHhEA9fkmWablDs1Afa19yn6D2rrzmNerGgF9IqZDwWsSV"
             
         ></script>
     </body>
