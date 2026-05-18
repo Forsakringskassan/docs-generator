@@ -41,6 +41,7 @@ export function generateNavigation(
                         ...navtreeItem,
                         path: entry.path,
                         sortorder: entry.sortorder ?? index,
+                        visible: true,
                     };
                 }
 
