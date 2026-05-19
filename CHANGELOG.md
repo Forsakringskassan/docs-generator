@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [3.0.2](https://github.com/Forsakringskassan/docs-generator/compare/v3.0.1...v3.0.2) (2026-05-19)
+
+### Bug Fixes
+
+* add visible true for topnav node (refs SFKUI-7490) ([834da75](https://github.com/Forsakringskassan/docs-generator/commit/834da7548f27c78c122fbe1ed4b4a9f3059246b1))
+* **deps:** update dependency i18next to v26.2.0 ([3504482](https://github.com/Forsakringskassan/docs-generator/commit/3504482cd7d8a403aa9e58bbae7959e3c258c20e))
+
 ## [3.0.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.0.0...v3.0.1) (2026-05-15)
 
 ### Bug Fixes
