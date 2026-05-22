@@ -19,22 +19,29 @@
     "Extract examples",
     "Cookie",
     "API Extractor",
+    "Navigation",
+    "Child Page 3",
+    "Child Page 2",
+    "Child Page 1",
     "Redirects",
     "Mermaid",
     "Markdown",
     "Images",
     "Definition lists",
-    "Navigation",
-    "Child Page 3",
-    "Child Page 2",
-    "Child Page 1",
+    "Example",
     "Plumbing",
     "Overriding templates",
     "Layout",
     "Custom layout",
-    "Example",
     "Scripts",
     "Configuration",
+    "Top page",
+    "Sorted Page 3",
+    "Sorted Page 2",
+    "Sorted Page 1",
+    "Nested Page 3",
+    "Nested Page 2",
+    "Nested Page 1",
     "Messagebox",
     "Details",
     "Alternative text",
@@ -45,13 +52,6 @@
     "Code preview",
     "Documenting Vue components",
     "Documenting TypeScript",
-    "Top page",
-    "Sorted Page 3",
-    "Sorted Page 2",
-    "Sorted Page 1",
-    "Nested Page 3",
-    "Nested Page 2",
-    "Nested Page 1",
     "README",
     "Live example",
     "Changelog"
@@ -143,6 +143,26 @@
       "terms": []
     },
     {
+      "url": "navigation/index.html",
+      "title": "Navigation",
+      "terms": []
+    },
+    {
+      "url": "navigation/child-page-3.html",
+      "title": "Child Page 3",
+      "terms": []
+    },
+    {
+      "url": "navigation/child-page-2.html",
+      "title": "Child Page 2",
+      "terms": []
+    },
+    {
+      "url": "navigation/child-page-1.html",
+      "title": "Child Page 1",
+      "terms": []
+    },
+    {
       "url": "markdown/redirects.html",
       "title": "Redirects",
       "terms": []
@@ -168,23 +188,8 @@
       "terms": []
     },
     {
-      "url": "navigation/index.html",
-      "title": "Navigation",
-      "terms": []
-    },
-    {
-      "url": "navigation/child-page-3.html",
-      "title": "Child Page 3",
-      "terms": []
-    },
-    {
-      "url": "navigation/child-page-2.html",
-      "title": "Child Page 2",
-      "terms": []
-    },
-    {
-      "url": "navigation/child-page-1.html",
-      "title": "Child Page 1",
+      "url": "live-example/example.html",
+      "title": "Example",
       "terms": []
     },
     {
@@ -208,11 +213,6 @@
       "terms": []
     },
     {
-      "url": "live-example/example.html",
-      "title": "Example",
-      "terms": []
-    },
-    {
       "url": "configuration/scripts.html",
       "title": "Scripts",
       "terms": []
@@ -220,6 +220,41 @@
     {
       "url": "configuration/index.html",
       "title": "Configuration",
+      "terms": []
+    },
+    {
+      "url": "navigation/sorted-group/top-page.html",
+      "title": "Top page",
+      "terms": []
+    },
+    {
+      "url": "navigation/sorted-group/sorted-page-3.html",
+      "title": "Sorted Page 3",
+      "terms": []
+    },
+    {
+      "url": "navigation/sorted-group/sorted-page-2.html",
+      "title": "Sorted Page 2",
+      "terms": []
+    },
+    {
+      "url": "navigation/sorted-group/sorted-page-1.html",
+      "title": "Sorted Page 1",
+      "terms": []
+    },
+    {
+      "url": "navigation/group/nested-page-3.html",
+      "title": "Nested Page 3",
+      "terms": []
+    },
+    {
+      "url": "navigation/group/nested-page-2.html",
+      "title": "Nested Page 2",
+      "terms": []
+    },
+    {
+      "url": "navigation/group/nested-page-1.html",
+      "title": "Nested Page 1",
       "terms": []
     },
     {
@@ -270,41 +305,6 @@
     {
       "url": "markdown/api/typescript.html",
       "title": "Documenting TypeScript",
-      "terms": []
-    },
-    {
-      "url": "navigation/sorted-group/top-page.html",
-      "title": "Top page",
-      "terms": []
-    },
-    {
-      "url": "navigation/sorted-group/sorted-page-3.html",
-      "title": "Sorted Page 3",
-      "terms": []
-    },
-    {
-      "url": "navigation/sorted-group/sorted-page-2.html",
-      "title": "Sorted Page 2",
-      "terms": []
-    },
-    {
-      "url": "navigation/sorted-group/sorted-page-1.html",
-      "title": "Sorted Page 1",
-      "terms": []
-    },
-    {
-      "url": "navigation/group/nested-page-3.html",
-      "title": "Nested Page 3",
-      "terms": []
-    },
-    {
-      "url": "navigation/group/nested-page-2.html",
-      "title": "Nested Page 2",
-      "terms": []
-    },
-    {
-      "url": "navigation/group/nested-page-1.html",
-      "title": "Nested Page 1",
       "terms": []
     },
     {
