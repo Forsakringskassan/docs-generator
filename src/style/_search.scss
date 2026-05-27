@@ -1,3 +1,4 @@
+@use "breakpoints" as bp;
 @use "modal";
 
 kbd {
@@ -97,6 +98,11 @@ kbd {
         max-height: 60vh;
         margin: 0.5rem 0 1.5rem;
         padding: 0.2rem;
+    }
+    &__instructions {
+        @media (width < #{bp.$breakpoint-sm}) {
+            display: none;
+        }
     }
 
     &__item {
