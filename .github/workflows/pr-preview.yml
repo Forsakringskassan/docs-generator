@@ -20,45 +20,58 @@ jobs:
             contents: write
             pull-requests: write
         steps:
-            - name: Checkout
-              uses: actions/checkout@v6
             - name: Setup Node.js
               uses: actions/setup-node@v6
               with:
                   node-version: 24.x
+            - name: Checkout public folder
+              uses: actions/checkout@v6
+            - name: Prepare public
+              id: public
+              run: |
+                  rm -rf *
+                  mkdir temp
+                  echo "dir=${GITHUB_WORKSPACE}/temp" | tee -a $GITHUB_OUTPUT
+            - name: Checkout Forsakringskassan/docs-generator
+              uses: actions/checkout@v6
+              with:
+                  path: "./docs-generator"
             - name: Install and build
               if: github.event.action != 'closed'
               id: prerelease
+              working-directory: ./docs-generator
               run: |
                   npm ci
                   npm run build
                   npm run build:docs
                   npm pack
-                  mkdir -p ./temp/pr-preview/docs-generator
-                  cp -r ./public/* ./temp/pr-preview/docs-generator
+                  mkdir -p "${{ steps.public.outputs.dir }}/docs-generator"
+                  cp -r ./public/* "${{ steps.public.outputs.dir }}/docs-generator"
                   export VERSION=$(npm pkg get version | jq -r)
-                  echo "{ \"versions\": [\"v${VERSION}\"], \"latest\": \"v${VERSION}\" }" | tee ./temp/pr-preview/versions.json
+                  echo "{ \"versions\": [\"v${VERSION}\"], \"latest\": \"v${VERSION}\" }" | tee "${{ steps.public.outputs.dir }}/versions.json"
                   echo "version=${VERSION}" | tee -a $GITHUB_OUTPUT
-                  echo "pkg=forsakringskassan-docs-generator-${VERSION}.tgz" | tee -a $GITHUB_OUTPUT
-            - name: Clear node_modules
-              run: rm -rf node_modules
-            #FKUI
-            - uses: actions/checkout@v6
+                  echo "pkg=${GITHUB_WORKSPACE}/docs-generator/forsakringskassan-docs-generator-${VERSION}.tgz" | tee -a $GITHUB_OUTPUT
+            - name: Checkout Forsakringskassan/designsystem
+              uses: actions/checkout@v6
               with:
-                  path: "fkui"
+                  path: "./fkui"
                   repository: "Forsakringskassan/designsystem"
             - name: Build FKUI documentation
               if: github.event.action != 'closed'
               working-directory: ./fkui
               run: |
                   npm ci
-                  npm install "${GITHUB_WORKSPACE}/${{ steps.prerelease.outputs.pkg }}"
-                  npm install --workspaces "${GITHUB_WORKSPACE}/${{ steps.prerelease.outputs.pkg }}"
+                  npm install "${{ steps.prerelease.outputs.pkg }}"
+                  npm install --workspaces "${{ steps.prerelease.outputs.pkg }}"
                   npm run build
                   npm run build:docs
-                  mkdir -p ../temp/pr-preview/fkui/
-                  cp -r ./public/* ../temp/pr-preview/fkui/
-                  cat << EOF > ../temp/pr-preview/index.html
+                  mkdir -p "${{ steps.public.outputs.dir }}/fkui"
+                  cp -r ./public/* "${{ steps.public.outputs.dir }}/fkui"
+            - name: Create landing page
+              if: github.event.action != 'closed'
+              working-directory: ${{ steps.public.outputs.dir }}
+              run: |
+                  cat << EOF > index.html
                   <style>
                     body {
                       padding: 2rem;
@@ -84,7 +97,7 @@ jobs:
             - name: Deploy docs
               uses: rossjrw/pr-preview-action@v1
               with:
-                  source-dir: ./temp/pr-preview/
+                  source-dir: ${{ steps.public.outputs.dir }}
                   preview-branch: gh-pages
                   umbrella-dir: pr-preview
                   action: auto
