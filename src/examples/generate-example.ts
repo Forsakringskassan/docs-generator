@@ -1,10 +1,10 @@
 import fs from "node:fs";
 import { version } from "vue";
-import { generateCode as vue3 } from "plugin-vue3";
 import { getFingerprint, parseImport } from "../utils";
 import { type ExampleOptions } from "./example-options";
 import { type ExampleResult } from "./example-result";
 import { getExampleName } from "./get-example-name";
+import { generateCode as vue3 } from "plugin-vue3";
 
 const vueMajor = Number.parseInt(version.split(".", 2)[0], 10) as 2 | 3;
 

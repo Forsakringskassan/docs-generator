@@ -1,10 +1,10 @@
 import { parentPort } from "node:worker_threads";
 import { version } from "vue";
 import { type Plugin, build as esbuild } from "esbuild";
-import { vuePlugin as Vue3Plugin } from "plugin-vue3";
 import { virtualEntryPlugin } from "../esbuild";
 import { tsconfigPath as tsconfig } from "../tsconfig-path";
 import { type ExampleCompileTask } from "./example-task";
+import { vuePlugin as Vue3Plugin } from "plugin-vue3";
 
 /**
  * @internal

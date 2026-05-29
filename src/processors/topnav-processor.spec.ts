@@ -79,7 +79,7 @@ it("should merge children with existing navigation items", () => {
                 title: "Foo",
                 path: "./old-foo",
                 sortorder: 5,
-                visible: true,
+                visible: false,
                 children: [
                     {
                         title: "Foo Child",

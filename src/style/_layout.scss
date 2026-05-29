@@ -16,12 +16,6 @@ header {
     min-width: 0;
 }
 
-#primary {
-    display: grid;
-    grid-area: primary;
-    gap: 0 2rem;
-}
-
 footer {
     grid-area: footer;
 }
@@ -29,6 +23,9 @@ footer {
 main {
     padding: 0 3rem 2rem;
     max-width: 920px;
+    @media (width < #{bp.$breakpoint-sm}) {
+        padding: 0 1rem 2rem;
+    }
 }
 
 .layout--content-with-menu,
@@ -47,6 +44,9 @@ main {
     #primary {
         --sidenav-width: 350px;
 
+        display: grid;
+        grid-area: primary;
+        gap: 0 2rem;
         padding-right: 2rem;
         grid-template:
             "sidenav title" auto
@@ -60,6 +60,10 @@ main {
                 "sidenav content aside" 1fr
                 / min-content minmax(10rem, 920px) auto;
         }
+        @media (width < #{bp.$breakpoint-sm}) {
+            gap: 0;
+            padding: 0;
+        }
     }
 
     main {
@@ -70,7 +74,7 @@ main {
 
     #title,
     #content {
-        padding-left: 1rem;
+        padding: 0 1rem;
     }
 
     #aside {
@@ -78,10 +82,6 @@ main {
             padding-left: 1rem;
         }
     }
-}
-
-#sidenav {
-    grid-area: sidenav;
 }
 
 #aside {
