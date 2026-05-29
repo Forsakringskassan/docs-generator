@@ -35,6 +35,6 @@ export async function compileStyle(
     } catch (err) {
         /* eslint-disable-next-line no-console -- expected to log */
         console.error(err);
-        throw new Error(`Failed to compile style "${name}"`);
+        throw new Error(`Failed to compile style "${name}"`, { cause: err });
     }
 }
