@@ -49,14 +49,14 @@
 
     // Top-nav
     --docs-topnav-background-color: var(--fkds-color-background-primary);
-
-    // menu
-    --docs-menu-background-color: var(--fkds-color-background-secondary);
     --docs-topnav-link-color-default: var(--fkds-color-text-primary);
     --docs-topnav-link-color-hover: var(--fkds-color-text-primary);
     --docs-topnav-link-color-highlight: var(--fkds-color-text-primary);
     --docs-topnav-border-color-hover: var(--fkds-color-select-background-secondary-hover);
     --docs-topnav-border-color-highlighr: var(--fkds-color-select-background-secondary-default);
+
+    // menu
+    --docs-menu-background-color: var(--fkds-color-background-secondary);
 
     // code
     --docs-code-background-color: var(--fkds-color-background-secondary);
@@ -79,6 +79,7 @@
     --docs-navigation-hover-color: var(--fkds-color-background-tertiary);
     --docs-navigation-active-background: var(--fkds-color-background-secondary);
     --docs-navigation-highlight-color: var(--fkds-color-select-background-secondary-default);
+    --docs-navigation-highlight-background-color: var(--fkds-color-background-tertiary);
 }
 
 // reset overflow set from @fkui/design

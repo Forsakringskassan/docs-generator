@@ -14,7 +14,7 @@
 .docs-mobile-navigation {
     --highlight-width: 4px;
 
-    background-color: #fff;
+    background-color: var(--docs-background-color);
     display: none;
     padding: 1.5rem;
     height: max-content;
@@ -35,7 +35,7 @@
         &.link.highlight {
             font-weight: bold;
             border-color: var(--docs-navigation-highlight-color);
-            background-color: #ddddde;
+            background-color: var(--docs-navigation-highlight-background-color);
         }
 
         &.link a {
