@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [3.0.3](https://github.com/Forsakringskassan/docs-generator/compare/v3.0.2...v3.0.3) (2026-05-29)
+
+### Bug Fixes
+
+* **deps:** update dependency markdown-it to v14.2.0 ([47ff7d8](https://github.com/Forsakringskassan/docs-generator/commit/47ff7d86f5b50c1db482ee7910fa848014183e02))
+* **deps:** update dependency markdown-it-deflist to v3.0.1 ([72f163b](https://github.com/Forsakringskassan/docs-generator/commit/72f163b9df39770d2195c7e5a9e62d753b65a2a3))
+* **deps:** update dependency semver to v7.8.1 ([062d705](https://github.com/Forsakringskassan/docs-generator/commit/062d7057e234bd11f67d181c216bfe69f042c21a))
+
 ## [3.0.2](https://github.com/Forsakringskassan/docs-generator/compare/v3.0.1...v3.0.2) (2026-05-19)
 
 ### Bug Fixes
