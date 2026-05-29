@@ -46,8 +46,8 @@ export default [
     {
         name: "local",
         rules: {
-            "import/no-unresolved": "off",
-            "import/no-extraneous-dependencies": "off",
+            "import-x/no-unresolved": "off",
+            "import-x/no-extraneous-dependencies": "off",
         },
     },
 
@@ -81,7 +81,7 @@ export default [
             "no-unused-vars": "off",
             "@typescript-eslint/no-unused-vars": "off",
             "eslint-comments/require-description": "off",
-            "import/no-extraneous-dependencies": "off",
+            "import-x/no-extraneous-dependencies": "off",
         },
     },
 

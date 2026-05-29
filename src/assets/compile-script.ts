@@ -91,6 +91,8 @@ export async function compileScript(
         };
     } catch (err) {
         const reason = err instanceof Error ? err.message : String(err);
-        throw new Error(`Failed to compile script "${name}": ${reason}`);
+        throw new Error(`Failed to compile script "${name}": ${reason}`, {
+            cause: err,
+        });
     }
 }
