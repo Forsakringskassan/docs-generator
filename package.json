@@ -169,7 +169,7 @@
     "@forsakringskassan/stylelint-config": "3.4.2",
     "@html-validate/release-scripts": "7.2.4",
     "@microsoft/api-extractor": "7.58.7",
-    "@rollup/plugin-commonjs": "29.0.2",
+    "@rollup/plugin-commonjs": "29.0.3",
     "@rollup/plugin-json": "6.1.0",
     "@rollup/plugin-node-resolve": "16.0.3",
     "@sidvind/rollup-plugin-worker": "2.0.0",
