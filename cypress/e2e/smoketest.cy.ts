@@ -5,6 +5,12 @@ import { type Manifest } from "../../src";
 type ManifestPage = Manifest["pages"][number];
 type ManifestExample = ManifestPage["examples"][number];
 
+function hasExample(page: ManifestPage): boolean {
+    const liveExamples = page.examples.filter(isLiveExample);
+    const vuePreviewExamples = page.examples.filter(isVuePreviewExample);
+    return liveExamples.length > 0 || vuePreviewExamples.length > 0;
+}
+
 function isLiveExample(example: ManifestExample): boolean {
     return example.tags.includes("live-example");
 }
@@ -22,15 +28,18 @@ beforeEach(() => {
 });
 
 describe("should visit all pages and ensure examples load properly", () => {
-    const pages = Cypress.env("pages") as ManifestPage[];
+    let pages = Cypress.expose("pages") ?? [];
+    pages = pages.filter(hasExample);
+
+    it("should contain pages with examples", () => {
+        cy.wrap(pages.length).should("be.gt", 0);
+    });
+
     for (const page of pages) {
         const { path, examples } = page;
+
         const liveExamples = examples.filter(isLiveExample);
         const vuePreviewExamples = examples.filter(isVuePreviewExample);
-
-        if (liveExamples.length === 0 && vuePreviewExamples.length === 0) {
-            return;
-        }
 
         it(path, () => {
             cy.visit(path);
