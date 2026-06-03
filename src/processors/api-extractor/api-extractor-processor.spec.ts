@@ -29,6 +29,7 @@ function createMockContext(): ProcessorContext {
     return {
         docs,
         log: jest.fn(),
+        error: jest.fn(),
         addDocument(document) {
             for (const doc of toArray(document)) {
                 docs.push(doc);

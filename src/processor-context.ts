@@ -100,5 +100,15 @@ export interface ProcessorContext {
     ): void;
     setTemplateData(key: string, value: unknown): void;
 
+    /**
+     * Log information to the user.
+     */
     log(...args: unknown[]): void;
+
+    /**
+     * Log error to the user.
+     *
+     * The process will exit with a non-zero exit code after displaying one or more errors.
+     */
+    error(...args: unknown[]): void;
 }

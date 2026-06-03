@@ -2,6 +2,7 @@ import { existsSync } from "node:fs";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { styleText } from "node:util";
 import inter from "@fontsource-variable/inter/metadata.json";
 import fse from "fs-extra";
 import { createInstance as i18next } from "i18next";
@@ -148,7 +149,7 @@ function filterProcessors(
 /* eslint-disable no-console -- expected to log */
 async function stage(
     stage: ProcessorStage,
-    context: Omit<ProcessorContext, "log">,
+    context: Omit<ProcessorContext, "log" | "error">,
     processors: Processor[],
     options?: { verbose: boolean },
 ): Promise<string[]> {
@@ -165,12 +166,28 @@ async function stage(
             console.log(isLast ? "  └─" : "  ├─", processor.name);
         }
         try {
+            const prefix = (() => {
+                if (verbose) {
+                    return isLast ? "      " : "  │   ";
+                } else {
+                    return "";
+                }
+            })();
             const result = await processor.handler({
                 ...context,
                 log(...args: unknown[]) {
                     if (verbose) {
-                        console.log(isLast ? "      " : "  │   ", ...args);
+                        console.log(prefix, ...args);
                     }
+                },
+                error(...args: unknown[]) {
+                    process.exitCode = 1;
+                    console.error(
+                        prefix,
+                        ...args.map((it) =>
+                            typeof it === "string" ? styleText("red", it) : it,
+                        ),
+                    );
                 },
             });
             if (result) {
@@ -188,7 +205,7 @@ async function stage(
 function createContext(
     outputFolder: string,
     templateLoader: TemplateLoader,
-): Omit<ProcessorContext, "log"> {
+): Omit<ProcessorContext, "log" | "error"> {
     let docs: Document[] = [];
     let vendors: VendorAsset[] = [];
     const resources: ResourceTask[] = [];
