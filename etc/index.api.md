@@ -317,6 +317,7 @@ export interface ProcessorContext {
     addVendorAsset(asset: VendorAsset | VendorAsset[]): void;
     // (undocumented)
     readonly docs: Document_2[];
+    error(...args: unknown[]): void;
     // @internal (undocumented)
     getAllTemplateBlocks(): Map<string, Array<TemplateBlockData<unknown>>>;
     // (undocumented)
@@ -329,7 +330,6 @@ export interface ProcessorContext {
     getTemplateData(key: string): unknown;
     // @internal
     hasTemplate(name: string): boolean;
-    // (undocumented)
     log(...args: unknown[]): void;
     // (undocumented)
     readonly outputFolder: string;
