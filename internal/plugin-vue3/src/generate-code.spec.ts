@@ -39,3 +39,12 @@ it("should handle missing <script>", () => {
     const { sourcecode } = generateCode(readFixture("NoScript.vue"));
     expect(sourcecode).toMatchSnapshot();
 });
+
+it("should handle omitted setupPath", () => {
+    expect.assertions(1);
+    const { sourcecode } = generateCode({
+        ...readFixture("MockExample.vue"),
+        setupPath: null,
+    });
+    expect(sourcecode).toMatchSnapshot();
+});

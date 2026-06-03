@@ -11,7 +11,7 @@ export interface ExampleOptions {
     /** absolute path to document containing this example */
     parent: string;
     /** absolute path to setup function */
-    setupPath: string;
+    setupPath: string | null;
     /** list of folders to search when importing examples */
     exampleFolders: string[];
     /** Tags */

@@ -17,7 +17,7 @@ export interface RenderOptions {
     exampleFolders: string[];
     i18n: i18n;
     templateFolders: string[];
-    setupPath: string;
+    setupPath: string | null;
     templateBlocks: Map<string, Array<TemplateBlockData<unknown>>>;
     templateData: TemplateData & Record<string, unknown>;
 

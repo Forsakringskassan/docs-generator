@@ -18,7 +18,7 @@ export interface ExampleOptions {
     /** example sourcecode */
     code: string;
     /** absolute path to setup function */
-    setupPath: string;
+    setupPath: string | null;
 }
 
 export interface ExampleResult {
@@ -103,7 +103,13 @@ export function generateCode(options: ExampleOptions): ExampleResult {
         })
         .join("\n");
 
-    let sourcecode = `import { setup } from "${setupPath}";\n`;
+    let sourcecode = ``;
+
+    if (setupPath) {
+        sourcecode += `import { setup } from "${setupPath}";\n`;
+    } else {
+        sourcecode += `import { createApp } from "vue"\n`;
+    }
 
     let bindings: BindingMetadata | undefined = undefined;
     if (descriptor.script || descriptor.scriptSetup) {
@@ -159,7 +165,11 @@ export function generateCode(options: ExampleOptions): ExampleResult {
         sourcecode += `exampleComponent.__scopeId = "${scopeId}";\n`;
     }
 
-    sourcecode += `\nsetup({\n  rootComponent: exampleComponent,\n  selector: "${selector}"\n});\n`;
+    if (setupPath) {
+        sourcecode += `\nsetup({\n  rootComponent: exampleComponent,\n  selector: "${selector}"\n});\n`;
+    } else {
+        sourcecode += `\ncreateApp(exampleComponent).mount(selector);\n`;
+    }
 
     const markup = /* HTML */ `
         <div id="${exampleId}"></div>
