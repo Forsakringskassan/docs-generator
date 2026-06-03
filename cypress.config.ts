@@ -24,7 +24,8 @@ export default defineConfig({
     e2e: {
         baseUrl: "http://localhost:8080",
         async setupNodeEvents(on, config) {
-            config.env.pages = await getDocsPages();
+            const pages = await getDocsPages();
+            config.expose = { pages };
 
             htmlvalidate.install(on);
 

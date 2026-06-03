@@ -219,6 +219,8 @@ The following statuses are recognized:
 - `Draft` (deprecated alias for `Preliminär`)
 - `Beta` (deprecated alias for `Preliminär`)
 
+<!-- html-validate-disable-next no-dup-id -- collides with hard coded title in base template -->
+
 #### `title`
 
 Document title used for `<title>` and `<nav>`

@@ -85,6 +85,12 @@ export default {
             include: "README.md",
             basePath: "./",
             fileReader: frontMatterFileReader,
+            transform(doc) {
+                doc.name = "FK Documentation generator";
+                doc.attributes.title = "FK Documentation generator";
+                doc.body = doc.body.replace(/^# .*$/m, "");
+                return doc;
+            },
         },
         {
             include: [
