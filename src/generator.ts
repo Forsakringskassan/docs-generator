@@ -84,7 +84,7 @@ export interface GeneratorOptions {
     /** Path to file with exported `setup` function, responsible for mounting of component.
      * `function setup(options: { rootComponent: string, selector: string }): void`
      */
-    setupPath: string;
+    setupPath: string | null;
 
     /**
      * Options for markdown renderer.
@@ -320,7 +320,7 @@ export class Generator {
     private templateFolders: string[];
     private processors: Processor[];
     private vendor: VendorDefinition[];
-    private setupPath: string;
+    private setupPath: string | null;
     private scripts: JSAsset[];
     private styles: CSSAsset[];
     private resources: ResourceTask[];
@@ -366,7 +366,7 @@ export class Generator {
         this.templateFolders = options.templateFolders ?? [];
         this.processors = options.processors ?? [];
         this.vendor = options.vendor ?? [];
-        this.setupPath = options.setupPath.replaceAll("\\", "/");
+        this.setupPath = options.setupPath?.replaceAll("\\", "/") ?? null;
         this.scripts = [];
         this.styles = [];
         this.resources = [];

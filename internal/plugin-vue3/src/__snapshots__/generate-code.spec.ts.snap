@@ -69,3 +69,33 @@ setup({
 });
 "
 `;
+
+exports[`should handle omitted setupPath 1`] = `
+"import { createApp } from "vue"
+
+import { defineComponent } from "vue";
+
+const exampleComponent = defineComponent({
+    name: "MockExample",
+    props: {
+        name: {
+            type: String,
+            required: true,
+        },
+    },
+});
+
+
+import { toDisplayString as _toDisplayString, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue"
+
+const _hoisted_1 = { class: "greeting" }
+
+export function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (_openBlock(), _createElementBlock("p", _hoisted_1, "Hello " + _toDisplayString(_ctx.name) + "!", 1 /* TEXT */))
+}
+
+exampleComponent.render = render;
+
+createApp(exampleComponent).mount(selector);
+"
+`;
