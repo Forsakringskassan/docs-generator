@@ -39,15 +39,6 @@
 
         <!-- prettier-ignore -->
         {% container "head" %}
-
-        <link
-            rel="preload"
-            href="{{ searchDataUrl | relative(doc) }}"
-            as="fetch"
-            crossorigin
-            integrity="{{ searchDataIntegrity }}"
-            id="search-data"
-        />
     </head>
     <body>
         <!-- prettier-ignore -->

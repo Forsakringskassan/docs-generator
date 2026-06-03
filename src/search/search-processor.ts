@@ -86,6 +86,9 @@ export function searchProcessor(): Processor {
             context.addTemplateBlock("toolbar", "search-toolbar", {
                 filename: "partials/search-toolbar.html",
             });
+            context.addTemplateBlock("head", "search-preload", {
+                filename: "partials/search-preload.html",
+            });
             context.addTemplateBlock("body:end", "search-dialog", {
                 filename: "partials/search-dialog.html",
             });
