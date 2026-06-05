@@ -23,14 +23,16 @@ export function nunjucksProcessor(
         name: "nunjucks-renderer",
         async handler(context) {
             function renderDocument(doc: DocumentPage): Promise<string | null> {
-                const nav = {
-                    topnav: context.topnav,
-                    sidenav: context.sidenav,
-                };
-                return render(doc, context.docs, nav, context.vendors, {
+                return render(doc, context.docs, {
                     ...options,
+                    exampleFileMatcher: context.exampleFileMatcher,
+                    nav: {
+                        topnav: context.topnav,
+                        sidenav: context.sidenav,
+                    },
                     templateBlocks: context.getAllTemplateBlocks(),
                     templateData: context.getAllTemplateData(),
+                    vendors: context.vendors,
                     addResource(dst, src) {
                         context.addResource(dst, src);
                     },

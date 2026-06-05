@@ -121,6 +121,9 @@ export interface FileInfo {
 }
 
 // @public
+export type FileMatcher = (filename: string, context?: string) => string;
+
+// @public
 type FileReader_2 = (filePath: string, basePath?: string) => Promise<Document_2[]>;
 export { FileReader_2 as FileReader }
 
@@ -194,6 +197,7 @@ export interface Manifest {
         }>;
         examples: Array<{
             name?: string;
+            src: string | null;
             selector: string;
             language: string;
             tags: string[];
@@ -318,6 +322,7 @@ export interface ProcessorContext {
     // (undocumented)
     readonly docs: Document_2[];
     error(...args: unknown[]): void;
+    readonly exampleFileMatcher: FileMatcher;
     // @internal (undocumented)
     getAllTemplateBlocks(): Map<string, Array<TemplateBlockData<unknown>>>;
     // (undocumented)

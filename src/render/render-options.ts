@@ -28,7 +28,4 @@ export interface RenderOptions {
     };
 
     addResource(this: void, dst: string, src: string): void;
-
-    /** A previously constructed fileMatcher() */
-    fileMatcher(this: void, filename: string, context?: string): string;
 }

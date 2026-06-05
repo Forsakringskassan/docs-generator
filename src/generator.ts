@@ -34,7 +34,12 @@ import { redirectProcessor } from "./processors";
 import { type TemplateLoader, nunjucksProcessor } from "./render";
 import { createTemplateLoader } from "./render/render";
 import { serve } from "./serve";
-import { fileMatcher, haveOutput, normalizePath } from "./utils";
+import {
+    type FileMatcher,
+    fileMatcher,
+    haveOutput,
+    normalizePath,
+} from "./utils";
 import {
     type VendorAsset,
     type VendorDefinition,
@@ -202,10 +207,12 @@ async function stage(
 }
 /* eslint-enable no-console */
 
-function createContext(
-    outputFolder: string,
-    templateLoader: TemplateLoader,
-): Omit<ProcessorContext, "log" | "error"> {
+function createContext(options: {
+    outputFolder: string;
+    exampleFileMatcher: FileMatcher;
+    templateLoader: TemplateLoader;
+}): Omit<ProcessorContext, "log" | "error"> {
+    const { outputFolder, exampleFileMatcher, templateLoader } = options;
     let docs: Document[] = [];
     let vendors: VendorAsset[] = [];
     const resources: ResourceTask[] = [];
@@ -249,6 +256,7 @@ function createContext(
         },
 
         outputFolder,
+        exampleFileMatcher,
 
         addDocument(document: Document | Document[]) {
             docs = [...docs, ...toArray(document)];
@@ -472,8 +480,14 @@ export class Generator {
             ...this.processors,
         ];
 
+        const examplePatterns = this.exampleFolders.map((it) => `${it}/**/*`);
+        const exampleFileMatcher = fileMatcher(examplePatterns);
         const templateLoader = createTemplateLoader([]);
-        const context = createContext("", templateLoader);
+        const context = createContext({
+            outputFolder: "",
+            exampleFileMatcher,
+            templateLoader,
+        });
         await stage("generate-docs", context, processors, { verbose: false });
 
         const docs = context.docs.filter(isDocumentPage).filter(haveOutput);
@@ -529,7 +543,6 @@ export class Generator {
                 templateFolders,
                 setupPath,
                 markdown: markdownOptions ?? {},
-                fileMatcher: fileMatcher(examplePatterns),
             }),
             ...this.processors,
         ];
@@ -537,7 +550,11 @@ export class Generator {
         compileProcessorRuntime(this, import.meta.url, processors);
 
         const templateLoader = createTemplateLoader(templateFolders);
-        const context = createContext(outputFolder, templateLoader);
+        const context = createContext({
+            outputFolder,
+            exampleFileMatcher: fileMatcher(examplePatterns),
+            templateLoader,
+        });
         const generatedFiles = [
             await stage("generate-docs", context, processors),
             await stage("generate-nav", context, processors),
