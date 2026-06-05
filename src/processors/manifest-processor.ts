@@ -86,7 +86,9 @@ export function manifestProcessor(
         before: "render",
         async handler(context) {
             const docs = context.docs.filter(isDocumentPage).filter(haveOutput);
-            const pages = docs.map(manifestPageFromDocument);
+            const pages = docs.map((doc) =>
+                manifestPageFromDocument(context, doc),
+            );
             pages.sort((a, b) => {
                 return a.path.localeCompare(b.path);
             });

@@ -491,7 +491,9 @@ export class Generator {
         await stage("generate-docs", context, processors, { verbose: false });
 
         const docs = context.docs.filter(isDocumentPage).filter(haveOutput);
-        const pages = docs.map(manifestPageFromDocument);
+        const pages = docs.map((doc) => {
+            return manifestPageFromDocument({ exampleFileMatcher }, doc);
+        });
         return { pages };
     }
 
