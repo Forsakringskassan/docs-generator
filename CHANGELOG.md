@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## [3.0.4](https://github.com/Forsakringskassan/docs-generator/compare/v3.0.3...v3.0.4) (2026-06-05)
+
+### Bug Fixes
+
+* change icon class to docs-icon (refs SFKUI-7739) ([f4bb407](https://github.com/Forsakringskassan/docs-generator/commit/f4bb40773ab45cf9898b96e6914f4b66d2fb0aee))
+* **deps:** update dependency i18next to v26.3.0 ([fcc33a2](https://github.com/Forsakringskassan/docs-generator/commit/fcc33a2cb074f043df333f4a626ff063b78dfb86))
+* **deps:** update dependency synckit to v0.11.13 ([8ce8cd4](https://github.com/Forsakringskassan/docs-generator/commit/8ce8cd42486c9b9b188d606a501cf8c82158a9b2))
+* migrate from deprecated Cypress.env (refs SFKUI-7851) ([157b602](https://github.com/Forsakringskassan/docs-generator/commit/157b602e15787b5f42fcfe2ea131e963e0317f61))
+
 ## [3.0.3](https://github.com/Forsakringskassan/docs-generator/compare/v3.0.2...v3.0.3) (2026-05-29)
 
 ### Bug Fixes
