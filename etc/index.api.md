@@ -189,6 +189,7 @@ export interface Manifest {
     // (undocumented)
     pages: Array<{
         path: string;
+        src: string;
         title: string;
         redirect: null | string;
         outline: Array<{

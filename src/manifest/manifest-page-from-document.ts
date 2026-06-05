@@ -79,6 +79,7 @@ export function manifestPageFromDocument(doc: DocumentPageLike): ManifestPage {
     const { body, fileInfo, format } = doc;
     return {
         path: getOutputFilePath("", fileInfo),
+        src: doc.fileInfo.fullPath,
         title: doc.attributes.title ?? doc.name,
         redirect: format === "redirect" ? body : null,
         outline: flattenOutline(doc.outline),
