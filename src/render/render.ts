@@ -22,7 +22,7 @@ import {
     isNavigationSection,
     sortNavigationTree,
 } from "../navigation";
-import { getFingerprint, getOutputFilePath } from "../utils";
+import { type FileMatcher, getFingerprint, getOutputFilePath } from "../utils";
 import { type VendorAsset } from "../vendor";
 import { createMarkdownRenderer } from "./create-markdown-renderer";
 import * as filter from "./filter";
@@ -228,13 +228,25 @@ function stripPrettierComments(content: string): string {
 export async function render(
     doc: DocumentPage,
     docs: Document[],
-    nav: { topnav: NavigationSection; sidenav: NavigationSection },
-    vendors: VendorAsset[],
-    options: RenderOptions,
+    options: RenderOptions & {
+        readonly exampleFileMatcher: FileMatcher;
+        readonly nav: {
+            readonly topnav: NavigationSection;
+            readonly sidenav: NavigationSection;
+        };
+        readonly vendors: VendorAsset[];
+    },
 ): Promise<string | null> {
     const { fileInfo } = doc;
-    const { i18n, outputFolder, cacheFolder, templateFolders, fileMatcher } =
-        options;
+    const {
+        i18n,
+        outputFolder,
+        cacheFolder,
+        exampleFileMatcher,
+        nav,
+        templateFolders,
+        vendors,
+    } = options;
 
     /* skip rendering files which have no output */
     if (!haveOutputFile(fileInfo)) {
@@ -310,7 +322,7 @@ export async function render(
                 setupPath: options.setupPath,
                 exampleFolders: options.exampleFolders,
                 tags,
-                fileMatcher,
+                fileMatcher: exampleFileMatcher,
             });
 
             if (example.output) {
@@ -328,7 +340,7 @@ export async function render(
         },
         getImportedSource(filename) {
             const context = `when importing example from "${fileInfo.fullPath}"`;
-            const match = fileMatcher(filename, context);
+            const match = exampleFileMatcher(filename, context);
             return readFileSync(match, "utf8");
         },
         addResource(dst, src) {

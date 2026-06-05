@@ -35,6 +35,9 @@ function createMockContext(): ProcessorContext {
                 docs.push(doc);
             }
         },
+        exampleFileMatcher() {
+            return "";
+        },
         topnav: {
             key: "root",
             title: "Root",

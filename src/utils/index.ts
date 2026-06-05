@@ -1,5 +1,5 @@
 export { createMockDocument } from "./create-mock-document";
-export { fileMatcher } from "./file-matcher";
+export { type FileMatcher, fileMatcher } from "./file-matcher";
 export { findDocument } from "./find-document";
 export { findTag } from "./find-tag";
 export { formatSize } from "./format-size";

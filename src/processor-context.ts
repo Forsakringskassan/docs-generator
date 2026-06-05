@@ -1,6 +1,7 @@
 import { type ResourceTask } from "./assets";
 import { type Document } from "./document";
 import { type NavigationSection } from "./navigation";
+import { type FileMatcher } from "./utils";
 import { type VendorAsset } from "./vendor";
 
 /**
@@ -67,6 +68,11 @@ export interface ProcessorContext {
         id: string,
         renderer: TemplateBlockRenderer<T>,
     ): void;
+
+    /**
+     * A `fileMatcher()` instance for finding imported examples.
+     */
+    readonly exampleFileMatcher: FileMatcher;
 
     /**
      * @internal

@@ -3,6 +3,18 @@ import { globSync } from "glob";
 import { memoize } from "./memoize";
 
 /**
+ * A function to search for a filename.
+ *
+ * @public
+ * @since %version%
+ * @param filename - The filename to search for
+ * @param context - An optional context for usage in error messages
+ * @throws Throws an error if the filename could not be found
+ * @returns Filename relative to project root
+ */
+export type FileMatcher = (filename: string, context?: string) => string;
+
+/**
  * Create a matcher which returns the full path given a filename, partial path
  * to a filename or glob pattern.
  *
@@ -11,9 +23,7 @@ import { memoize } from "./memoize";
  * @internal
  * @param patterns - Glob patterns to match all possible files.
  */
-export function fileMatcher(
-    patterns: string[],
-): (filename: string, context?: string) => string {
+export function fileMatcher(patterns: string[]): FileMatcher {
     const fileList = globSync(patterns, {
         posix: true,
         ignore: "**/node_modules/**",

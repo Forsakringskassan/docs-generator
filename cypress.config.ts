@@ -12,7 +12,7 @@ async function getDocsPages(): Promise<Manifest["pages"]> {
             name: "FK Documentation generator",
             lang: "en",
         },
-        setupPath: "",
+        exampleFolders: ["./docs", "./src"],
     });
     const manifest = await docs.manifest(config.sourceFiles);
     return manifest.pages.filter((it) => {
