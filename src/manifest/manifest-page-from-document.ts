@@ -1,7 +1,15 @@
 import markdownIt from "markdown-it";
 import { type DocumentOutline, type DocumentPage } from "../document";
 import { parseInfostring } from "../examples";
-import { findTag, getFingerprint, getOutputFilePath, hasTag } from "../utils";
+import { type ProcessorContext } from "../processor-context";
+import {
+    type FileMatcher,
+    findTag,
+    getFingerprint,
+    getOutputFilePath,
+    hasTag,
+    parseImport,
+} from "../utils";
 import { type Manifest } from "./manifest";
 
 type DocumentPageWithOutput = DocumentPage & {
@@ -15,20 +23,27 @@ type ManifestPage = Manifest["pages"][number];
 type ManifestOutline = ManifestPage["outline"];
 type ManifestExamples = ManifestPage["examples"];
 
+interface MarkdownEnv {
+    readonly collected: ManifestExamples;
+    readonly exampleFileMatcher: FileMatcher;
+}
+
 const md = markdownIt();
 
 md.renderer.rules.fence = (
     tokens,
     idx,
     _options,
-    collected: ManifestExamples,
+    env: MarkdownEnv,
     /* eslint-disable-next-line sonarjs/no-invariant-returns -- function works as intended */
 ) => {
+    const { collected, exampleFileMatcher } = env;
     const { content, info, map } = tokens[idx];
     const { language: rawLanguage, tags } = parseInfostring(info);
     const hashContent = `${String(map?.[0])}:${String(map?.[1])}:${info}:${content}`;
     const fingerprint = getFingerprint(hashContent);
     let extension = undefined;
+    let src: string | null = null;
     let language = rawLanguage;
 
     if (hasTag(tags, "compare")) {
@@ -36,7 +51,9 @@ md.renderer.rules.fence = (
     }
 
     if (language === "import") {
-        extension = content.split(".").at(-1)?.trim();
+        const parsed = parseImport(content);
+        src = exampleFileMatcher(parsed.filename);
+        extension = parsed.extension;
     }
 
     if (hasTag(tags, "hidden")) {
@@ -47,6 +64,7 @@ md.renderer.rules.fence = (
 
     collected.push({
         name,
+        src,
         selector: `#example-${fingerprint}`,
         language: extension ?? language,
         tags,
@@ -63,19 +81,29 @@ function flattenOutline(outline: DocumentOutline): ManifestOutline {
     });
 }
 
-function findExamples(doc: DocumentPageLike): ManifestExamples {
+function findExamples(
+    context: Pick<ProcessorContext, "exampleFileMatcher">,
+    doc: DocumentPageLike,
+): ManifestExamples {
+    const { exampleFileMatcher } = context;
     if (doc.format !== "markdown") {
         return [];
     }
     const collected: ManifestExamples = [];
-    md.render(doc.body, collected);
+    md.render(doc.body, {
+        exampleFileMatcher,
+        collected,
+    } satisfies MarkdownEnv);
     return collected;
 }
 
 /**
  * @internal
  */
-export function manifestPageFromDocument(doc: DocumentPageLike): ManifestPage {
+export function manifestPageFromDocument(
+    context: Pick<ProcessorContext, "exampleFileMatcher">,
+    doc: DocumentPageLike,
+): ManifestPage {
     const { body, fileInfo, format } = doc;
     return {
         path: getOutputFilePath("", fileInfo),
@@ -83,6 +111,6 @@ export function manifestPageFromDocument(doc: DocumentPageLike): ManifestPage {
         title: doc.attributes.title ?? doc.name,
         redirect: format === "redirect" ? body : null,
         outline: flattenOutline(doc.outline),
-        examples: findExamples(doc),
+        examples: findExamples(context, doc),
     };
 }

@@ -11,6 +11,8 @@ export interface Manifest {
         outline: Array<{ heading: string; anchor: string }>;
         examples: Array<{
             name?: string;
+            /** Path to imported example file (relative to project root) or `null` if example is inline */
+            src: string | null;
             selector: string;
             language: string;
             tags: string[];
