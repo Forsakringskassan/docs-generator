@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## [3.1.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.0.4...v3.1.0) (2026-06-08)
+
+### Features
+
+* include document original source filename in manifest ([98d2f75](https://github.com/Forsakringskassan/docs-generator/commit/98d2f757a1150213884d3b9740f42c0b33d2291f))
+* include example original source filename in manifest ([6b2c723](https://github.com/Forsakringskassan/docs-generator/commit/6b2c7231698816f538a9cae4cd4ddf9864c85027))
+
+### Bug Fixes
+
+* **deps:** update dependency i18next to v26.3.1 ([078cae8](https://github.com/Forsakringskassan/docs-generator/commit/078cae80560c88b484fc249183f6ed6efcb81042))
+* **deps:** update dependency semver to v7.8.2 ([f0d55d5](https://github.com/Forsakringskassan/docs-generator/commit/f0d55d51a9d3d2e2fa316fbb97baa6e09ecbdd10))
+* handle when `searchProcessor` is not in use ([7b2decf](https://github.com/Forsakringskassan/docs-generator/commit/7b2decf1fc3e0ed53ebb3db4c3f84f14673860f6)), closes [#413](https://github.com/Forsakringskassan/docs-generator/issues/413)
+* make `setupPath` optional ([7033756](https://github.com/Forsakringskassan/docs-generator/commit/70337564ff17745b2de694dcb0ed1d46306896c4)), closes [#411](https://github.com/Forsakringskassan/docs-generator/issues/411)
+* show better error when `fileReader` property is missing ([cf4b0de](https://github.com/Forsakringskassan/docs-generator/commit/cf4b0dee3c746e0c5b124210bcc8235052b7d118)), closes [#412](https://github.com/Forsakringskassan/docs-generator/issues/412)
+* sort navigation tree by default ([2f961b9](https://github.com/Forsakringskassan/docs-generator/commit/2f961b91d4f21949de7661f4e41515bec77d00af)), closes [#416](https://github.com/Forsakringskassan/docs-generator/issues/416)
+
 ## [3.0.4](https://github.com/Forsakringskassan/docs-generator/compare/v3.0.3...v3.0.4) (2026-06-05)
 
 ### Bug Fixes
