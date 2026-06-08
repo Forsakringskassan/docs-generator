@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Tabell - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../../assets/docs-054f3e.css"
+            href="../../../assets/docs-3f81c7.css"
             crossorigin
-            integrity="sha384-9TT8TebWcPZWst5Cs9z5mp7ky4F20csxGb2GMIPDCCmJj5ntCTsEbxCB6Ad2cGsU"
+            integrity="sha384-HOj9NWF18n5+ZRQBcH9RmJGJUxWL20AKxp8IUrNnyOotypmAafgF/jXAmZF/q3ia"
             
         />
         <link
@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../../assets/vendor-fkui-vue-selectors-2e0001.js",
     "@fkui/logic": "../../../assets/vendor-fkui-logic-ba1b7a.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-692a76.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-b9c6d3.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-f5de4c.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js"
   },
   "integrity": {
@@ -34,7 +34,7 @@
     "../../../assets/vendor-fkui-vue-selectors-2e0001.js": "sha384-V1Wer3dMsjVpAFS/PrSjSFNHJYDQRv8k1RtPZLszEx/tnYmzbuPR4YIkP21Fwap0",
     "../../../assets/vendor-fkui-logic-ba1b7a.js": "sha384-vzXbs4dDmB5nxB2+/l+eL2n8Ju06KOu7bG1nKtIrQdfxi9EWMrLsxjKsSwK0PauJ",
     "../../../assets/vendor-fkui-date-692a76.js": "sha384-MwbLPk6deCTFOhc1JjO7SwACbk5fiURa0P++wkNh8qT5ckXSJVAIS1wp08u5D8AS",
-    "../../../assets/vendor-fkui-vue-b9c6d3.js": "sha384-53BexlGp99tjHzs4LoQW0/jo2DQPK0Dr0DwSnA/l0y9BFpuZ9qh9qgQbgIuQZ8e9",
+    "../../../assets/vendor-fkui-vue-f5de4c.js": "sha384-XDFnyC0fVXJ6eEM6cn25+zldz3y66SwD4HkEL7ZlcypruESB2a6lm0uC0Rtag7oR",
     "../../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js": "sha384-d21VgyliBY8Zvt/srv0hr2Qu+6gTgMV0E+98Pvb5ftvVH4IAms43bj1He1vzrD+J"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-92bfe6.json"
+            href="../../../search-data-f31107.json"
             as="fetch"
             crossorigin
-            integrity="sha384-Abc+QQ7l1SngOs4NNptPTDAnk8ZD3hh89wz1tGmGCcDGZgsoowqzLcalNL7nK4Qe"
+            integrity="sha384-ATZClAKEHNh+KkKSda476UvW2xIf67LnTZgvWDmViE+ir29puLXU5YeEt6WcjtPo"
             id="search-data"
         />
     </head>
@@ -7091,7 +7091,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/cc88d0e64b5ac838ac6aafd7dcb429bfa5a0756f/packages/vue/src/components/FTable/FTable.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/8ba9235f869504d750d524fa7a45d3f55bb32339/packages/vue/src/components/FTable/FTable.vue">
                 FTable
             </a>
             
@@ -7145,13 +7145,13 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-749b4a"></div>
+        <div id="example-a11a00"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableExample-749b4a.js"></script>
+        <script type="module" src="./FTableExample-a11a00.js"></script>
     
                 </div>
                 <div>
@@ -7174,29 +7174,55 @@
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FSortFilterDataset</span>, useDatasetRef, useModal } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span>, defineTableColumns, removeDatasetRows } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span>, defineTableColumns, useDatasetRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 interface <span class="hljs-title class_">Row</span> {
     <span class="hljs-attr">namn</span>: string;
     <span class="hljs-attr">land</span>: string;
-    pris?: number;
-    kommentar?: string;
-    sorter?: <span class="hljs-title class_">Row</span>[];
+    <span class="hljs-attr">pris</span>: string;
+    nested?: <span class="hljs-title class_">Row</span>[];
 }
 
-<span class="hljs-keyword">const</span> lander = [
-    <span class="hljs-string">&quot;&quot;</span>,
-    <span class="hljs-string">&quot;Colombia&quot;</span>,
-    <span class="hljs-string">&quot;Costa Rica&quot;</span>,
-    <span class="hljs-string">&quot;Dominikanska republiken&quot;</span>,
-    <span class="hljs-string">&quot;Ecuador&quot;</span>,
-    <span class="hljs-string">&quot;Frankrike&quot;</span>,
-    <span class="hljs-string">&quot;Italien&quot;</span>,
-    <span class="hljs-string">&quot;Spanien&quot;</span>,
-    <span class="hljs-string">&quot;Sverige&quot;</span>,
-    <span class="hljs-string">&quot;Sydafrika&quot;</span>,
+<span class="hljs-keyword">const</span> <span class="hljs-attr">data</span>: <span class="hljs-title class_">Row</span>[] = [
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Apelsin&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Spanien&quot;</span>,
+        <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;30&quot;</span>,
+        <span class="hljs-attr">nested</span>: [
+            {
+                <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Apelsiner importeras främst från Medelhavsområdet&quot;</span>,
+                <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;&quot;</span>,
+            },
+        ],
+    },
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Banan&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Ecuador&quot;</span>,
+        <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;15&quot;</span>,
+        <span class="hljs-attr">nested</span>: [
+            {
+                <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Bananer importeras främst från tropiska länder i Latinamerika, Afrika och Asien&quot;</span>,
+                <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;&quot;</span>,
+            },
+        ],
+    },
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Äpple&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Sverige&quot;</span>,
+        <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;22&quot;</span>,
+        <span class="hljs-attr">nested</span>: [
+            {
+                <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Äpplen odlas i stor skala i tempererade klimat, bland annat i Sverige, Polen och Kina&quot;</span>,
+                <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;&quot;</span>,
+            },
+        ],
+    },
 ];
+
+<span class="hljs-keyword">const</span> selectedRows = ref&lt;<span class="hljs-title class_">Row</span>[]&gt;([]);
 
 <span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
     {
@@ -7205,117 +7231,25 @@ interface <span class="hljs-title class_">Row</span> {
         <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;namn&quot;</span>,
     },
     {
-        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;select&quot;</span>,
-        <span class="hljs-attr">options</span>: lander,
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Land&quot;</span>,
-        <span class="hljs-attr">label</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-string">`Val av land`</span>,
         <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;land&quot;</span>,
     },
     {
         <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:currency&quot;</span>,
-        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Pris&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Pris per kilo&quot;</span>,
         <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;pris&quot;</span>,
-    },
-    {
-        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
-        <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
-        <span class="hljs-attr">label</span>: <span class="hljs-function">(<span class="hljs-params">row</span>) =&gt;</span> <span class="hljs-string">`Kommentar till <span class="hljs-subst">${row.namn}</span>`</span>,
-        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Kommentar&quot;</span>,
-        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;kommentar&quot;</span>,
     },
 ]);
 
-<span class="hljs-keyword">const</span> rows = useDatasetRef&lt;<span class="hljs-title class_">Row</span>&gt;(
-    [
-        {
-            <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Apelsin&quot;</span>,
-            <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;&quot;</span>,
-            <span class="hljs-attr">kommentar</span>: <span class="hljs-string">&quot;&quot;</span>,
-            <span class="hljs-attr">sorter</span>: [
-                { <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Navelina&quot;</span>, <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Spanien&quot;</span>, <span class="hljs-attr">pris</span>: <span class="hljs-number">28.73</span> },
-                { <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Navel (Navels)&quot;</span>, <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Spanien&quot;</span>, <span class="hljs-attr">pris</span>: <span class="hljs-number">18</span> },
-                { <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Ekologiska Navels&quot;</span>, <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Spanien&quot;</span>, <span class="hljs-attr">pris</span>: <span class="hljs-number">46.63</span> },
-                { <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Tarocco (Blodapelsin)&quot;</span>, <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Italien&quot;</span>, <span class="hljs-attr">pris</span>: <span class="hljs-number">35</span> },
-                { <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Moro (Blodapelsin)&quot;</span>, <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Italien&quot;</span>, <span class="hljs-attr">pris</span>: <span class="hljs-number">32</span> },
-                { <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Valencia (Juiceapelsin)&quot;</span>, <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Sydafrika&quot;</span>, <span class="hljs-attr">pris</span>: <span class="hljs-number">22</span> },
-            ],
-        },
-        {
-            <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Äpple&quot;</span>,
-            <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;&quot;</span>,
-            <span class="hljs-attr">kommentar</span>: <span class="hljs-string">&quot;Säsongsvariationer förekommer&quot;</span>,
-            <span class="hljs-attr">sorter</span>: [
-                { <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Ingrid Marie&quot;</span>, <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Sverige&quot;</span>, <span class="hljs-attr">pris</span>: <span class="hljs-number">29.9</span> },
-                { <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Aroma&quot;</span>, <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Sverige&quot;</span>, <span class="hljs-attr">pris</span>: <span class="hljs-number">32.5</span> },
-                { <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Royal Gala&quot;</span>, <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Italien&quot;</span>, <span class="hljs-attr">pris</span>: <span class="hljs-number">24.95</span> },
-                { <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Granny Smith&quot;</span>, <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Frankrike&quot;</span>, <span class="hljs-attr">pris</span>: <span class="hljs-number">28</span> },
-                { <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Pink Lady&quot;</span>, <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Italien&quot;</span>, <span class="hljs-attr">pris</span>: <span class="hljs-number">42</span> },
-            ],
-        },
-        {
-            <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Banan&quot;</span>,
-            <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;&quot;</span>,
-            <span class="hljs-attr">kommentar</span>: <span class="hljs-string">&quot;Säljs oftast per kilo&quot;</span>,
-            <span class="hljs-attr">sorter</span>: [
-                { <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Cavendish&quot;</span>, <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Ecuador&quot;</span>, <span class="hljs-attr">pris</span>: <span class="hljs-number">21.9</span> },
-                { <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Ekologiska Bananer&quot;</span>, <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Dominikanska republiken&quot;</span>, <span class="hljs-attr">pris</span>: <span class="hljs-number">28.5</span> },
-                { <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Fairtrade Bananer&quot;</span>, <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Colombia&quot;</span>, <span class="hljs-attr">pris</span>: <span class="hljs-number">26</span> },
-                { <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Plantain (Kokbanan)&quot;</span>, <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Costa Rica&quot;</span>, <span class="hljs-attr">pris</span>: <span class="hljs-number">35</span> },
-                { <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Babybanan&quot;</span>, <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Ecuador&quot;</span>, <span class="hljs-attr">pris</span>: <span class="hljs-number">45</span> },
-            ],
-        },
-    ],
-    <span class="hljs-string">&quot;sorter&quot;</span>,
-);
-
-<span class="hljs-keyword">const</span> sortableAttributes = { <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Frukt&quot;</span> };
-<span class="hljs-keyword">const</span> valdaRader = <span class="hljs-title function_">ref</span>([]);
-<span class="hljs-keyword">const</span> { confirmModal } = <span class="hljs-title function_">useModal</span>();
-
-<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">onRemoveSelectedRows</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-keyword">void</span>&gt; {
-    <span class="hljs-keyword">if</span> (valdaRader.<span class="hljs-property">value</span>.<span class="hljs-property">length</span> === <span class="hljs-number">0</span>) {
-        <span class="hljs-keyword">return</span>;
-    }
-
-    <span class="hljs-keyword">const</span> confirmed = <span class="hljs-keyword">await</span> <span class="hljs-title function_">confirmModal</span>({
-        <span class="hljs-attr">heading</span>: <span class="hljs-string">&quot;Ta bort frukt(er)&quot;</span>,
-        <span class="hljs-attr">content</span>: <span class="hljs-string">&quot;Är du säker att du vill ta bort valda frukt(er)?&quot;</span>,
-        <span class="hljs-attr">confirm</span>: <span class="hljs-string">&quot;Ja, ta bort&quot;</span>,
-        <span class="hljs-attr">dismiss</span>: <span class="hljs-string">&quot;Nej, behåll&quot;</span>,
-    });
-
-    <span class="hljs-keyword">if</span> (confirmed) {
-        <span class="hljs-title function_">removeDatasetRows</span>(rows, valdaRader);
-    }
-}
+<span class="hljs-keyword">const</span> rows = <span class="hljs-title function_">useDatasetRef</span>(data, <span class="hljs-string">&quot;nested&quot;</span>);
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-sort-filter-dataset</span> <span class="hljs-attr">:data</span>=<span class="hljs-string">&quot;rows&quot;</span> <span class="hljs-attr">:sortable-attributes</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">header</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span>
-                <span class="hljs-attr">data-id</span>=<span class="hljs-string">&quot;remove-selected-button&quot;</span>
-                <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;tertiary&quot;</span>
-                <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;trashcan&quot;</span>
-                <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;small&quot;</span>
-                @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onRemoveSelectedRows&quot;</span>
-            &gt;</span>
-                Ta bort valda frukter
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">v-model:selected-rows</span>=<span class="hljs-string">&quot;selectedRows&quot;</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">selectable</span>=<span class="hljs-string">&quot;multi&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">expandable</span>=<span class="hljs-string">&quot;{ row }: { row: Row }&quot;</span>&gt;</span>
+            {{ row.namn }}
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ sortFilterResult }&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span>
-                <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;table&quot;</span>
-                <span class="hljs-attr">v-model:selected-rows</span>=<span class="hljs-string">&quot;valdaRader&quot;</span>
-                <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;sortFilterResult&quot;</span>
-                <span class="hljs-attr">:columns</span>
-                <span class="hljs-attr">striped</span>
-                <span class="hljs-attr">selectable</span>=<span class="hljs-string">&quot;multi&quot;</span>
-            &gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>Fruktexempel<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">f-sort-filter-dataset</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
@@ -7437,9 +7371,9 @@ Håll innehållet kort och koncist så att det blir lätt och överskådligt fö
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">feature/vanster-meny (<a href="https://github.com/Forsakringskassan/designsystem/commits/cc88d0e64b5ac838ac6aafd7dcb429bfa5a0756f">cc88d0e</a>)<br />
+<div class="footer__right"><div class="version">feature/vanster-meny (<a href="https://github.com/Forsakringskassan/designsystem/commits/8ba9235f869504d750d524fa7a45d3f55bb32339">8ba9235</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/387">PR 387</a><br />
-        2026-06-05 06:05
+        2026-06-08 13:11
 </div>
 <div class="toolbar__item">
     <form id="version">
