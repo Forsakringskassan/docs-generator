@@ -1,4 +1,5 @@
 import fs from "node:fs/promises";
+import path from "node:path";
 import { isDocumentPage } from "../document";
 import { type Manifest, manifestPageFromDocument } from "../manifest";
 import { type Processor } from "../processor";
@@ -95,6 +96,7 @@ export function manifestProcessor(
             const manifest: Manifest = { pages };
             if (markdown) {
                 const content = normalize(renderMarkdown(manifest));
+                await fs.mkdir(path.dirname(markdown), { recursive: true });
                 if (verify) {
                     const actual = normalize(
                         await fs.readFile(markdown, "utf8"),
@@ -108,6 +110,7 @@ export function manifestProcessor(
             }
             if (json) {
                 const content = renderJSON(manifest);
+                await fs.mkdir(path.dirname(json), { recursive: true });
                 await fs.writeFile(json, content, "utf8");
             }
         },
