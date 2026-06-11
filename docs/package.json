@@ -14,7 +14,7 @@
   "author": "Försäkringskassan",
   "devDependencies": {
     "@fkui/font-default": "6.49.0",
-    "@fkui/theme-default": "6.49.0",
+    "@fkui/theme-default": "6.49.1",
     "@forsakringskassan/docs-generator": "file:..",
     "@forsakringskassan/docs-live-example": "3.0.0",
     "vue": "3.5.35"
