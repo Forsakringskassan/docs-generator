@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [3.1.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.1.0...v3.1.1) (2026-06-12)
+
+### Bug Fixes
+
+* create output folders before writing manifest files ([c0673c4](https://github.com/Forsakringskassan/docs-generator/commit/c0673c4ea3aa5cc8ba6a4d87857a2aae0ae80a96))
+
 ## [3.1.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.0.4...v3.1.0) (2026-06-08)
 
 ### Features
