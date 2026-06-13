@@ -197,7 +197,7 @@
     "is-ci": "4.1.0",
     "jest-environment-jsdom": "30.4.1",
     "memfs": "4.57.6",
-    "npm-pkg-lint": "5.1.5",
+    "npm-pkg-lint": "5.1.6",
     "npm-run-all2": "9.0.1",
     "rollup": "4.61.1",
     "rollup-plugin-esbuild": "6.2.1",
