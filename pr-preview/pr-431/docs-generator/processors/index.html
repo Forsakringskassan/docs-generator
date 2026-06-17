@@ -223,9 +223,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        feature/link-resolver (<a href="https://github.com/Forsakringskassan/docs-generator/commits/db4bca2b3fc981a590cb11bbbc7b18d5dbfb3575">db4bca2</a>)<br />
+        feature/link-resolver (<a href="https://github.com/Forsakringskassan/docs-generator/commits/5727c67686c603118b114d3666cd41f749a1e202">5727c67</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/431">PR 431</a><br />
-        2026-06-17 13:50
+        2026-06-17 15:15
     </span>
 </div>
 </div>
@@ -515,11 +515,11 @@ Link resolvers are called in the same order as they appear in the list of proces
 <p class="docs-paragraph">The resolver overrides the normal handling of links, when a resolver returns a result the final link will be rendered with it even if it would normally throw an exception (e.g. when linking to missing documents).</p>
 <h4 id="parameters" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#parameters">Parameters</a></h4><dl>
 <dt><code>key: string</code></dt>
-<dd>Key (without hash) referenced by user */</dd>
+<dd>Key (without hash) referenced by user</dd>
 <dt><code>hash: string | null</code></dt>
 <dd>Optional hash from the key (includes the <code>#</code> prefix)</dd>
 <dt><code>title: string | null</code></dt>
-<dd>Optional explicit title requested by user */</dd>
+<dd>Optional explicit title requested by user</dd>
 <dt><code>doc: Document | null</code></dt>
 <dd>Matching document if one was found</dd>
 </dl>
@@ -528,7 +528,7 @@ Link resolvers are called in the same order as they appear in the list of proces
 <dt><code>href: string</code></dt>
 <dd>Link target (href attribute of the <code>&lt;a&gt;</code> element)</dd>
 <dt><code>title: string</code></dt>
-<dd>Link text */</dd>
+<dd>Link text</dd>
 <dt><code>rel?: &quot;external&quot;</code></dt>
 <dd>If given, the <code>rel</code> attribute is set with this value on the <code>&lt;a&gt;</code> element</dd>
 </dl>
