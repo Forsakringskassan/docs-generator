@@ -115,6 +115,18 @@ export interface FileInfo {
 }
 
 // @public
+export type LinkResolver = (this: void, link: {
+    readonly key: string;
+    readonly hash: string | null;
+    readonly title: string | null;
+    readonly doc: Document_2 | null;
+}) => {
+    readonly href: string;
+    readonly title: string;
+    readonly rel?: "external";
+} | undefined | null;
+
+// @public
 export interface MarkdownOptions {
     addResource(this: void, dst: string, src: string): void;
     readonly docs: Document_2[];
@@ -126,6 +138,7 @@ export interface MarkdownOptions {
     }): ExampleResult;
     getImportedSource(this: void, filename: string): string;
     handleSoftError(this: void, error: SoftErrorType): string;
+    readonly linkResolvers?: LinkResolver[] | undefined;
     messagebox?: {
         title?: Record<string, string>;
     };

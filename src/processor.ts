@@ -1,3 +1,4 @@
+import { type LinkResolver } from "./link-resolver";
 import { type ProcessorContext } from "./processor-context";
 import { type ProcessorStage } from "./processor-stage";
 
@@ -59,6 +60,11 @@ export interface ProcessorHandler {
         /* eslint-disable-next-line @typescript-eslint/no-invalid-void-type --
          * technical debt: want implicit undefined (void) instead of explicit "return undefined" */
     ): void | string[] | Promise<void> | Promise<string[]>;
+
+    /**
+     * Resolve a link from a `{@link ...}` tag.
+     */
+    resolveLink?: LinkResolver;
 }
 
 /**

@@ -15,6 +15,7 @@ import {
     generateExample,
     workerUrl as exampleWorkerUrl,
 } from "../examples";
+import { type LinkResolver } from "../link-resolver";
 import {
     type NavigationLeaf,
     type NavigationNode,
@@ -235,6 +236,7 @@ export async function render(
             readonly sidenav: NavigationSection;
         };
         readonly vendors: VendorAsset[];
+        readonly linkResolvers: LinkResolver[];
     },
 ): Promise<string | null> {
     const { fileInfo } = doc;
@@ -246,6 +248,7 @@ export async function render(
         nav,
         templateFolders,
         vendors,
+        linkResolvers,
     } = options;
 
     /* skip rendering files which have no output */
@@ -354,6 +357,7 @@ export async function render(
             throw error;
         },
         messagebox: options.markdown.messagebox,
+        linkResolvers,
     });
 
     njk.addFilter("marked", (content: string) => {

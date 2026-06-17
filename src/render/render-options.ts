@@ -1,4 +1,5 @@
 import { type i18n } from "i18next";
+import { type LinkResolver } from "../link-resolver";
 import {
     type TemplateBlockData,
     type TemplateData,
@@ -20,6 +21,7 @@ export interface RenderOptions {
     setupPath: string | null;
     templateBlocks: Map<string, Array<TemplateBlockData<unknown>>>;
     templateData: TemplateData & Record<string, unknown>;
+    readonly linkResolvers: LinkResolver[];
 
     markdown: {
         messagebox?: {

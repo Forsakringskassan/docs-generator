@@ -27,6 +27,7 @@ export {
     type GeneratorSiteOptions,
     Generator,
 } from "./generator";
+export { type LinkResolver } from "./link-resolver";
 export { type Manifest } from "./manifest";
 export { type MatomoOptions, matomoProcessor } from "./matomo";
 export {

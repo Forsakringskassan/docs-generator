@@ -33,6 +33,7 @@ export function nunjucksProcessor(
                     templateBlocks: context.getAllTemplateBlocks(),
                     templateData: context.getAllTemplateData(),
                     vendors: context.vendors,
+                    linkResolvers: options.linkResolvers,
                     addResource(dst, src) {
                         context.addResource(dst, src);
                     },
