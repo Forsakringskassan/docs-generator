@@ -60,6 +60,7 @@
     "lint": "run-s prettier:check eslint stylelint",
     "prepack": "release-prepack --bundle --retain-scripts",
     "postpack": "release-postpack",
+    "prepare": "commitlint-config",
     "prepublishOnly": "release-prepublish --bundle --retain-scripts",
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
@@ -154,7 +155,7 @@
   },
   "devDependencies": {
     "@babel/types": "7.29.7",
-    "@forsakringskassan/commitlint-config": "3.6.9",
+    "@forsakringskassan/commitlint-config": "4.0.0",
     "@forsakringskassan/docs-live-example": "3.0.0",
     "@forsakringskassan/eslint-config": "15.0.18",
     "@forsakringskassan/eslint-config-cli": "15.0.0",
@@ -224,6 +225,13 @@
   "publishConfig": {
     "access": "public",
     "provenance": true
+  },
+  "allowScripts": {
+    "@parcel/watcher": false,
+    "cypress": true,
+    "esbuild": true,
+    "fsevents": false,
+    "unrs-resolver": true
   },
   "externalDependencies": [
     "@babel/code-frame",
