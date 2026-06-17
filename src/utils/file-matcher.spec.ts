@@ -21,6 +21,20 @@ it("should match by partial path", () => {
     expect(match("foo/bar.ts")).toBe("src/foo/bar.ts");
 });
 
+it("should match with glob", () => {
+    expect.assertions(1);
+    globSync.mockReturnValue(["src/foo/bar.ts"]);
+    const match = fileMatcher(["src/**"]);
+    expect(match("**/bar.ts")).toBe("src/foo/bar.ts");
+});
+
+it("should match in parent directory", () => {
+    expect.assertions(1);
+    globSync.mockReturnValue(["../../src/foo/bar.ts"]);
+    const match = fileMatcher(["../../src/**"]);
+    expect(match("bar.ts")).toBe("../../src/foo/bar.ts");
+});
+
 it("should throw when no files match", () => {
     expect.assertions(1);
     globSync.mockReturnValue([]);

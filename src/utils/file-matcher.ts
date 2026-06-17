@@ -5,6 +5,12 @@ import { memoize } from "./memoize";
 /**
  * A function to search for a filename.
  *
+ * The filename can optionally include subdirectories or glob patterns:
+ *
+ * - `foo.ts` searches for `foo.ts` anywhere.
+ * - `bar/foo.ts` searches for `foo` in any `bar` directory.
+ * - `bar/**\/foo.ts` searches `foo` anywhere in an `bar` directory.
+ *
  * @public
  * @since %version%
  * @param filename - The filename to search for
@@ -31,7 +37,10 @@ export function fileMatcher(patterns: string[]): FileMatcher {
 
     return memoize((filename: string, context?: string) => {
         const matches = fileList.filter((file) => {
-            return path.matchesGlob(file, `**/${filename}`);
+            /* if the path starts with `../` we strip it out before matching or
+             * `path.matchesGlob()` wont match */
+            const stem = file.replace(/^(\.\.\/)+/, "");
+            return path.matchesGlob(stem, `**/${filename}`);
         });
         if (matches.length === 0) {
             const additionalInfo = context ? ` (${context})` : "";
