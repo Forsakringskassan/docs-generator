@@ -21,11 +21,11 @@ jobs:
             pull-requests: write
         steps:
             - name: Setup Node.js
-              uses: actions/setup-node@v6
+              uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
               with:
                   node-version: 24.x
             - name: Checkout public folder
-              uses: actions/checkout@v6
+              uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
             - name: Prepare public
               id: public
               run: |
@@ -33,7 +33,7 @@ jobs:
                   mkdir temp
                   echo "dir=${GITHUB_WORKSPACE}/temp" | tee -a $GITHUB_OUTPUT
             - name: Checkout Forsakringskassan/docs-generator
-              uses: actions/checkout@v6
+              uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
               with:
                   path: "./docs-generator"
             - name: Install and build
@@ -52,7 +52,7 @@ jobs:
                   echo "version=${VERSION}" | tee -a $GITHUB_OUTPUT
                   echo "pkg=${GITHUB_WORKSPACE}/docs-generator/forsakringskassan-docs-generator-${VERSION}.tgz" | tee -a $GITHUB_OUTPUT
             - name: Checkout Forsakringskassan/designsystem
-              uses: actions/checkout@v6
+              uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
               with:
                   path: "./fkui"
                   repository: "Forsakringskassan/designsystem"
@@ -95,7 +95,7 @@ jobs:
                   <a href="./fkui">FK Designsystem</a>
                   EOF
             - name: Deploy docs
-              uses: rossjrw/pr-preview-action@v1
+              uses: rossjrw/pr-preview-action@ffa7509e91a3ec8dfc2e5536c4d5c1acdf7a6de9 # v1
               with:
                   source-dir: ${{ steps.public.outputs.dir }}
                   preview-branch: gh-pages
