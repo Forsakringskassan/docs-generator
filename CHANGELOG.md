@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [3.2.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.1.2...v3.2.0) (2026-06-17)
+
+### Features
+
+* support using custom link resolvers ([8bd99c6](https://github.com/Forsakringskassan/docs-generator/commit/8bd99c66fd70bdd2d1e9e150e9c446a2dac33256))
+
 ## [3.1.2](https://github.com/Forsakringskassan/docs-generator/compare/v3.1.1...v3.1.2) (2026-06-17)
 
 ### Bug Fixes
