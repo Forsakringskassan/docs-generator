@@ -156,7 +156,7 @@
     "@babel/types": "7.29.7",
     "@forsakringskassan/commitlint-config": "3.6.9",
     "@forsakringskassan/docs-live-example": "3.0.0",
-    "@forsakringskassan/eslint-config": "15.0.17",
+    "@forsakringskassan/eslint-config": "15.0.18",
     "@forsakringskassan/eslint-config-cli": "15.0.0",
     "@forsakringskassan/eslint-config-cypress": "15.0.16",
     "@forsakringskassan/eslint-config-jest": "15.0.0",
