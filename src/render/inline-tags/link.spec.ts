@@ -1,3 +1,4 @@
+import { type LinkResolver } from "../../link-resolver";
 import { createMockDocument } from "../../utils";
 import { processInlineTags } from "../process-inline-tags";
 import { type SoftErrorType } from "../soft-error";
@@ -15,7 +16,7 @@ expect.addSnapshotSerializer({
 const rethrow = (err: SoftErrorType): never => {
     throw err;
 };
-const tags = [linkTag];
+const tags = [linkTag([])];
 const doc = createMockDocument("index", "./components/index.html");
 const docs = [
     doc,
@@ -182,4 +183,120 @@ it("should throw error if linking to non-existing document", () => {
     expect(() => processInlineTags(tags, doc, docs, text, rethrow)).toThrow(
         'Failed to find linked document "missing"',
     );
+});
+
+describe("with link resolver", () => {
+    it("should call each link resolver", () => {
+        expect.assertions(3);
+        const linkResolver1 = jest.fn();
+        const linkResolver2 = jest.fn();
+        const linkResolver3 = jest.fn();
+        const tags = [linkTag([linkResolver1, linkResolver2, linkResolver3])];
+        const text = "{@link foo#bar lorem ipsum}";
+        processInlineTags(tags, doc, docs, text, rethrow);
+        expect(linkResolver1).toHaveBeenCalledWith({
+            key: "foo",
+            hash: "#bar",
+            title: "lorem ipsum",
+            doc: expect.anything(),
+        });
+        expect(linkResolver2).toHaveBeenCalledWith({
+            key: "foo",
+            hash: "#bar",
+            title: "lorem ipsum",
+            doc: expect.anything(),
+        });
+        expect(linkResolver3).toHaveBeenCalledWith({
+            key: "foo",
+            hash: "#bar",
+            title: "lorem ipsum",
+            doc: expect.anything(),
+        });
+    });
+
+    it("should stop processing once a resolver returns a result", () => {
+        expect.assertions(3);
+        const linkResolver1 = jest.fn();
+        const linkResolver2 = jest.fn(() => ({ href: "", title: "" }));
+        const linkResolver3 = jest.fn();
+        const tags = [linkTag([linkResolver1, linkResolver2, linkResolver3])];
+        const text = "{@link foo#bar lorem ipsum}";
+        processInlineTags(tags, doc, docs, text, rethrow);
+        expect(linkResolver1).toHaveBeenCalled();
+        expect(linkResolver2).toHaveBeenCalled();
+        expect(linkResolver3).not.toHaveBeenCalled();
+    });
+
+    it("should pass in trimmed title (tsdoc compatibility)", () => {
+        expect.assertions(1);
+        const linkResolver = jest.fn();
+        const tags = [linkTag([linkResolver])];
+        const text = "{@link foo | lorem ipsum}";
+        processInlineTags(tags, doc, docs, text, rethrow);
+        expect(linkResolver).toHaveBeenCalledWith({
+            key: "foo",
+            hash: null,
+            title: "lorem ipsum",
+            doc: expect.anything(),
+        });
+    });
+
+    it("should render result from link resolver", () => {
+        expect.assertions(1);
+        const linkResolver = jest.fn((): ReturnType<LinkResolver> => {
+            return {
+                href: "https://example.net/foo",
+                title: "bar",
+            };
+        });
+        const tags = [linkTag([linkResolver])];
+        const text = "{@link foo#bar lorem ipsum}";
+        const result = processInlineTags(tags, doc, docs, text, rethrow);
+        expect(result).toMatchInlineSnapshot(
+            `<a href="https://example.net/foo">bar</a>`,
+        );
+    });
+
+    it("should set rel attibute", () => {
+        expect.assertions(1);
+        const linkResolver = jest.fn((): ReturnType<LinkResolver> => {
+            return {
+                href: "https://example.net/foo",
+                title: "bar",
+                rel: "external",
+            };
+        });
+        const tags = [linkTag([linkResolver])];
+        const text = "{@link foo#bar lorem ipsum}";
+        const result = processInlineTags(tags, doc, docs, text, rethrow);
+        expect(result).toMatchInlineSnapshot(
+            `<a href="https://example.net/foo" rel="external">bar</a>`,
+        );
+    });
+
+    it("should handle when no document exists", () => {
+        expect.assertions(1);
+        const linkResolver = jest.fn((): ReturnType<LinkResolver> => {
+            return {
+                href: "https://example.net/foo",
+                title: "bar",
+            };
+        });
+        const tags = [linkTag([linkResolver])];
+        const text = "{@link missing lorem ipsum}";
+        const result = processInlineTags(tags, doc, docs, text, rethrow);
+        expect(result).toMatchInlineSnapshot(
+            `<a href="https://example.net/foo">bar</a>`,
+        );
+    });
+
+    it("should throw error when no resolver resolved a missing document", () => {
+        expect.assertions(1);
+        const linkResolver = jest.fn();
+        const tags = [linkTag([linkResolver])];
+        const text = "{@link missing}";
+        expect(() => processInlineTags(tags, doc, docs, text, rethrow)).toThrow(
+            'Failed to find linked document "missing"',
+        );
+    });
 });

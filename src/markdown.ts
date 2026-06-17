@@ -27,3 +27,4 @@ export {
     type SoftErrorType,
     SoftError,
 } from "./render/soft-error";
+export { type LinkResolver } from "./link-resolver";

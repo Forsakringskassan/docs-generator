@@ -181,6 +181,18 @@ export function htmlRedirectProcessor(): Processor;
 // @public
 export function isRelease(): boolean;
 
+// @public
+export type LinkResolver = (this: void, link: {
+    readonly key: string;
+    readonly hash: string | null;
+    readonly title: string | null;
+    readonly doc: Document_2 | null;
+}) => {
+    readonly href: string;
+    readonly title: string;
+    readonly rel?: "external";
+} | undefined | null;
+
 // @public (undocumented)
 export function livereloadProcessor(options: ProcessorOptions): Processor;
 
@@ -371,6 +383,7 @@ export interface ProcessorHandler {
     // (undocumented)
     handler(context: ProcessorContext): void | string[] | Promise<void> | Promise<string[]>;
     name: string;
+    resolveLink?: LinkResolver;
     runtime?: ProcessorRuntime[];
     // (undocumented)
     stage?: ProcessorStage;

@@ -2,6 +2,7 @@ import markdownIt from "markdown-it";
 import markdownItDeflist from "markdown-it-deflist";
 import { type Document, type DocumentPage } from "../document";
 import { type ExampleResult } from "../examples/example-result";
+import { type LinkResolver } from "../link-resolver";
 import inlineTags from "./inline-tags";
 import {
     codeInline,
@@ -62,6 +63,9 @@ export interface MarkdownOptions {
         /** Default titles for messageboxes */
         title?: Record<string, string>;
     };
+
+    /** List of link resolvers to use */
+    readonly linkResolvers?: LinkResolver[] | undefined;
 }
 
 /**
@@ -86,7 +90,7 @@ export interface MarkdownRenderer {
 export function createMarkdownRenderer(
     options: MarkdownOptions,
 ): MarkdownRenderer {
-    const { docs } = options;
+    const { docs, linkResolvers } = options;
     const env: MarkdownEnv = {
         fileInfo: {
             fullPath: "",
@@ -153,7 +157,7 @@ export function createMarkdownRenderer(
             env.ids = new Set();
             const html = md.render(content, env);
             return processInlineTags(
-                inlineTags,
+                inlineTags(linkResolvers ?? []),
                 doc,
                 docs,
                 html,

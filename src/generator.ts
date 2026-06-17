@@ -20,6 +20,7 @@ import { type Document, isDocumentPage } from "./document";
 import { type SourceFiles, fileReaderProcessor } from "./file-reader";
 import langEn from "./i18n/en.json";
 import langSv from "./i18n/sv.json";
+import { type LinkResolver } from "./link-resolver";
 import { manifestPageFromDocument } from "./manifest";
 import { type Manifest } from "./manifest";
 import { type NavigationSection, navigationProcessor } from "./navigation";
@@ -525,6 +526,9 @@ export class Generator {
         await this._prepareFolders();
         await this._copyFonts();
 
+        const linkResolvers = this.processors
+            .map((it) => (it.enabled !== false ? it.resolveLink : undefined))
+            .filter((it): it is LinkResolver => Boolean(it));
         const processors: Processor[] = [
             fileReaderProcessor(sourceFiles),
             redirectProcessor(),
@@ -544,6 +548,7 @@ export class Generator {
                 exampleFolders,
                 templateFolders,
                 setupPath,
+                linkResolvers,
                 markdown: markdownOptions ?? {},
             }),
             ...this.processors,
