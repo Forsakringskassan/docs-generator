@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## [3.1.2](https://github.com/Forsakringskassan/docs-generator/compare/v3.1.1...v3.1.2) (2026-06-17)
+
+### Bug Fixes
+
+* **deps:** update dependency esbuild to v0.28.1 [security] ([b194152](https://github.com/Forsakringskassan/docs-generator/commit/b194152b7144ab4004fbc8ffdf6c1858e6f56908))
+* **deps:** update dependency semver to v7.8.3 ([c837905](https://github.com/Forsakringskassan/docs-generator/commit/c837905f081bd537918473f0f7fa1f9ce77a95da))
+* **deps:** update dependency semver to v7.8.4 ([8dd5a81](https://github.com/Forsakringskassan/docs-generator/commit/8dd5a81cdeb19f6f5ae0cff9877bf8487d17e6c0))
+* handle when `exampleFolders` contains paths from a parent folder ([20996a1](https://github.com/Forsakringskassan/docs-generator/commit/20996a1bf4893ae2aa12641c374ea615cc3e0790))
+
 ## [3.1.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.1.0...v3.1.1) (2026-06-12)
 
 ### Bug Fixes
