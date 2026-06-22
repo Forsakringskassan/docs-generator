@@ -325,6 +325,19 @@ export interface PackageJson {
     readonly version: string;
 }
 
+// @internal (undocumented)
+export interface PartialFile {
+    // (undocumented)
+    body: string;
+    // (undocumented)
+    format: "html" | "markdown" | "json";
+    // (undocumented)
+    id: string;
+}
+
+// @public
+export function partialFileReader(filePath: string): Promise<DocumentPartial[]>;
+
 // @public
 export function playgroundProcessor(options: PlaygroundProcessorOptions): Processor;
 

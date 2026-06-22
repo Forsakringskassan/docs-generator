@@ -17,9 +17,11 @@ export {
 } from "./document";
 export {
     type FileReader,
+    type PartialFile,
     type SourceFiles,
     frontMatterFileReader,
     navigationFileReader,
+    partialFileReader,
     vueFileReader,
 } from "./file-reader";
 export {
