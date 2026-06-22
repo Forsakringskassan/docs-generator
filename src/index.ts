@@ -20,6 +20,7 @@ export {
     type SourceFiles,
     frontMatterFileReader,
     navigationFileReader,
+    partialFileReader,
     vueFileReader,
 } from "./file-reader";
 export {
@@ -55,6 +56,7 @@ export { type ProcessorStage } from "./processor-stage";
 export {
     type ApiExtractorProcessorOptions,
     type ExtractExamplesOptions,
+    type ExtractMarkdownProcessorOptions,
     type MOTDOptions,
     type ManifestProcessorOptions,
     type SelectableVersionProcessorOptions,
@@ -64,6 +66,7 @@ export {
     apiExtractorProcessor,
     cookieProcessor,
     extractExamplesProcessor,
+    extractMarkdownProcessor,
     htmlRedirectProcessor,
     manifestProcessor,
     motdProcessor,

@@ -112,6 +112,14 @@ export interface ExtractExamplesOptions extends ProcessorOptions {
 // @public
 export function extractExamplesProcessor(options: ExtractExamplesOptions): Processor;
 
+// @public
+export function extractMarkdownProcessor(options: ExtractMarkdownProcessorOptions): Processor;
+
+// @public
+export interface ExtractMarkdownProcessorOptions {
+    outputFolder: string;
+}
+
 // @public (undocumented)
 export interface FileInfo {
     fullPath: string;
@@ -320,6 +328,9 @@ export interface PackageJson {
     // (undocumented)
     readonly version: string;
 }
+
+// @public
+export function partialFileReader(filePath: string): Promise<DocumentPartial[]>;
 
 // @public (undocumented)
 export type Processor = ProcessorDescriptor<"before"> | ProcessorDescriptor<"stage"> | ProcessorDescriptor<"after">;

@@ -7,6 +7,10 @@ export {
     extractExamplesProcessor,
 } from "./extract-examples-processor";
 export {
+    type ExtractMarkdownProcessorOptions,
+    extractMarkdownProcessor,
+} from "./extract-markdown-processor";
+export {
     type ManifestProcessorOptions,
     manifestProcessor,
 } from "./manifest-processor";

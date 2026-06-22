@@ -4,3 +4,4 @@ export { vueFileReader } from "./vue-file-reader";
 export { type SourceFiles } from "./source-files";
 export { fileReaderProcessor } from "./file-reader-processor";
 export { navigationFileReader } from "./navigation-file-reader";
+export { partialFileReader } from "./partial-file-reader";
