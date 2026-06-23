@@ -1,6 +1,6 @@
 import { type PackageJson } from "../package-json";
 
-const RE_MATCH_SSH = /^(ssh:\/\/)?(?<user>[^@]+)@(?<host>[^:]+):(?<path>.*)$/;
+const RE_MATCH_SSH = /^[^@]+@(?<host>[^:]+):(?<path>.*)$/;
 
 /**
  * Get normalized URL to the repository (https).

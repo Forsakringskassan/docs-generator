@@ -7,6 +7,6 @@ export function normalizePath(...pathSegments: string[]): string {
     const filePath = path.join(...pathSegments);
     return path
         .normalize(filePath)
-        .replace(/^([A-Z]):\\/, "/")
+        .replace(/^[A-Z]:\\/, "/")
         .replaceAll("\\", "/");
 }

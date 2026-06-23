@@ -39,7 +39,7 @@ export function fileMatcher(patterns: string[]): FileMatcher {
         const matches = fileList.filter((file) => {
             /* if the path starts with `../` we strip it out before matching or
              * `path.matchesGlob()` wont match */
-            const stem = file.replace(/^(\.\.\/)+/, "");
+            const stem = file.replace(/^(?:\.\.\/)+/, "");
             return path.matchesGlob(stem, `**/${filename}`);
         });
         if (matches.length === 0) {

@@ -104,13 +104,12 @@ function stripEslintComments(code: string): string {
     /* matches an eslint comment occupying the whole line (entire line including
      * newline is removed) */
     const matchLine =
-        /^[\t ]*(\/\* eslint-disable[^*]*\*\/|\/\/ eslint-disable.*)\n/gm;
+        /^[\t ]*(?:\/\* eslint-disable[^*]*\*\/|\/\/ eslint-disable.*)\n/gm;
 
     /* matches an eslint comment embedded with other statements (only the
      * commend and whitespace before it is removed) */
     const matchEmbedded =
-        /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
-        /[\t ]*(\/\* eslint-disable[^*]*\*\/|\/\/ eslint-disable.*)/g;
+        /[\t ]*(?:\/\* eslint-disable[^*]*\*\/|\/\/ eslint-disable.*)/g;
 
     return code.replaceAll(matchLine, "").replaceAll(matchEmbedded, "");
 }
@@ -118,12 +117,11 @@ function stripEslintComments(code: string): string {
 function stripHtmlValidateComments(code: string): string {
     /* matches an html-validate comment occupying the whole line (entire line
      * including newline is removed) */
-    const matchLine = /^[\t ]*(<!--\s*\[html-validate-[^\]]+]\s*-->)\n/gm;
+    const matchLine = /^[\t ]*<!--\s*\[html-validate-[^\]]+\]\s*-->\n/gm;
 
     /* matches an html-validate comment embedded with other elements (only the
      * commend and whitespace before it is removed) */
-    /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
-    const matchEmbedded = /[\t ]*(<!--\s*\[html-validate-[^\]]+]\s*-->)/g;
+    const matchEmbedded = /[\t ]*<!--\s*\[html-validate-[^\]]+\]\s*-->/g;
 
     return code.replaceAll(matchLine, "").replaceAll(matchEmbedded, "");
 }

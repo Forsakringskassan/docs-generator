@@ -219,8 +219,7 @@ export function createTemplateLoader(folders: string[]): TemplateLoader {
 }
 
 function stripPrettierComments(content: string): string {
-    /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
-    return content.replaceAll(/\s*<!-- prettier-ignore -->\s*/gm, "");
+    return content.replaceAll(/\s*<!-- prettier-ignore -->\s*/g, "");
 }
 
 /**
@@ -423,8 +422,7 @@ export async function render(
         throw new Error(`${prefix}: ${message}`, { cause: err });
     }
 
-    /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
-    const expandedDst = dst.replaceAll(/\[([^]+)]/g, (match, key) => {
+    const expandedDst = dst.replaceAll(/\[([\s\S]+)\]/g, (match, key) => {
         if (key === "hash") {
             return getFingerprint(doc.body);
         } else {

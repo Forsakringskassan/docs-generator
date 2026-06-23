@@ -63,7 +63,7 @@ export function linkTag(linkResolvers: LinkResolver[]): InlineTag {
         name: "link",
         description: "Create a link to another document",
         handler(doc, docs, content) {
-            /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
+            /* eslint-disable-next-line regexp/no-super-linear-backtracking, regexp/no-misleading-capturing-group -- technical debt */
             const match = /^([^\s#]+)(#\S+)?\s*(.+)?$/.exec(content);
             if (!match) {
                 throw new SoftError(

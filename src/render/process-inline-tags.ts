@@ -13,12 +13,14 @@ export function processInlineTags(
     handleSoftError: (error: SoftErrorType) => string,
 ): string {
     return text.replaceAll(
-        /{@(@?)([^{}]+)}/g,
+        /* eslint-disable-next-line regexp/no-misleading-capturing-group -- technical debt */
+        /\{@(@?)([^{}]+)\}/g,
         (_, escape: string, content: string) => {
             if (escape) {
                 return `{@${content}}`;
             }
-            const match = /^(\S+)($|\s[^]+)$/.exec(content);
+            /* eslint-disable-next-line regexp/no-useless-assertions -- technical debt */
+            const match = /^(\S+)($|\s[\s\S]+)$/.exec(content);
 
             /* istanbul ignore next: should never happen but just in case this is a
              * better fallback than crashing */
