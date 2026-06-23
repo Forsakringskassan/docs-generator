@@ -10,7 +10,7 @@ expect.addSnapshotSerializer({
     },
     serialize(value: string) {
         return dedent(value)
-            .split(/\n/g)
+            .split(/\n/)
             .map((it) => it.trimEnd())
             .filter((it) => it.length > 0)
             .join("\n");

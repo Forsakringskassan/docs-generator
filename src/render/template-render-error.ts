@@ -1,4 +1,4 @@
-const messageRegex = /^\([^)]+\) \[Line \d+, Column \d+]\n\s+Error: (.*)$/;
+const messageRegex = /^\([^)]+\) \[Line \d+, Column \d+\]\n\s+Error: (.*)$/;
 
 /**
  * Extracts the actual error message from a nunjucks render error.

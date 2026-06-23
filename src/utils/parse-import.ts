@@ -12,7 +12,7 @@ export function parseImport(raw: string): ParsedImport {
     let previous;
     do {
         previous = stripped;
-        stripped = stripped.replaceAll(/<!--.*?-->/gms, (match) => {
+        stripped = stripped.replaceAll(/<!--.*?-->/gs, (match) => {
             comments.push(match);
             return "";
         });
