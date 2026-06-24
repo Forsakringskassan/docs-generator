@@ -133,7 +133,7 @@
     "@forsakringskassan/prettier-config": "3.7.2",
     "@forsakringskassan/sass-module-importer": "3.0.0",
     "@forsakringskassan/stylelint-config": "3.4.3",
-    "@forsakringskassan/vitest-config": "2.2.8",
+    "@forsakringskassan/vitest-config": "2.3.0",
     "@forsakringskassan/vitest-config-jsdom": "2.2.9",
     "@html-validate/release-scripts": "7.2.4",
     "@microsoft/api-extractor": "7.58.9",
