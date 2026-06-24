@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [3.3.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.2.0...v3.3.0) (2026-06-24)
+
+### Features
+
+* **deps:** update babel monorepo to v8 ([c5522a8](https://github.com/Forsakringskassan/docs-generator/commit/c5522a8898966fb0b5a8039b929d758af08f1dea))
+
+### Bug Fixes
+
+* **deps:** update dependency semver to v7.8.5 ([7873473](https://github.com/Forsakringskassan/docs-generator/commit/7873473b6df77733586f116e0c131fe7f783c2ee))
+
 ## [3.2.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.1.2...v3.2.0) (2026-06-17)
 
 ### Features
