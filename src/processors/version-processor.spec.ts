@@ -1,5 +1,6 @@
 import { promisify } from "node:util";
 import nunjucks from "nunjucks";
+import { describe, expect, it } from "vitest";
 import { TemplateLoader } from "../render/template-loader";
 import { type VersionProcessorTemplateData as TemplateData } from "./version-processor";
 

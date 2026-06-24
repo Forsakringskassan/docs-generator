@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`should render correctly with all data 1`] = `
+exports[`should render correctly > with all data 1`] = `
 "<div class="toolbar__item">
     <span class="version">
         feature/foobar (<a href="https://example.net/commits/c0ffee">c0ffee</a>)<br />
@@ -11,7 +11,7 @@ exports[`should render correctly with all data 1`] = `
 "
 `;
 
-exports[`should render correctly without PR data 1`] = `
+exports[`should render correctly > without PR data 1`] = `
 "<div class="toolbar__item">
     <span class="version">
         feature/foobar (<a href="https://example.net/commits/c0ffee">c0ffee</a>)<br />
@@ -22,7 +22,7 @@ exports[`should render correctly without PR data 1`] = `
 "
 `;
 
-exports[`should render correctly without scm data 1`] = `
+exports[`should render correctly > without scm data 1`] = `
 "<div class="toolbar__item">
     <span class="version">
         1.2.3

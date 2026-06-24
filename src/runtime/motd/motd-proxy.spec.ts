@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { motdProxy } from "./motd-proxy";
 
 it("should throw error on usage", () => {

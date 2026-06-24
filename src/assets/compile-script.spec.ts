@@ -1,12 +1,13 @@
 import path from "node:path";
 import { type BuildResult } from "esbuild";
 import { Volume } from "memfs";
+import { beforeEach, expect, it, vi } from "vitest";
 import { type FSLike, compileScript } from "./compile-script";
 import * as esbuildWrapper from "./esbuild-wrapper";
 
 const fingerprint = "b4dc00ffe";
 
-jest.mock("../utils/get-fingerprint", () => {
+vi.mock(import("../utils/get-fingerprint"), () => {
     return {
         getFingerprint() {
             return fingerprint;
@@ -16,7 +17,7 @@ jest.mock("../utils/get-fingerprint", () => {
 
 let volume: Volume | null = null;
 
-const esbuild = jest
+const esbuild = vi
     .spyOn(esbuildWrapper, "esbuild")
     .mockImplementation(async (options) => {
         if (!volume) {
@@ -41,7 +42,7 @@ const esbuild = jest
 
 beforeEach(() => {
     volume = null;
-    jest.clearAllMocks();
+    vi.clearAllMocks();
 });
 
 it("should compile and create asset in assets folder", async () => {

@@ -1,4 +1,5 @@
 import markdownIt from "markdown-it";
+import { expect, it } from "vitest";
 import { table } from "./table";
 
 const md = markdownIt();

@@ -10,7 +10,6 @@ coverage/
 dist/
 docs/examples/files/
 node_modules/
-.jest-cache/
 src/processors/api-extractor/__fixtures__/model.api.json
 src/style/_fonts.scss
 temp/

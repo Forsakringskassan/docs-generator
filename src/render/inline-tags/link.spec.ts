@@ -1,3 +1,4 @@
+import { describe, expect, it, vi } from "vitest";
 import { type LinkResolver } from "../../link-resolver";
 import { createMockDocument } from "../../utils";
 import { processInlineTags } from "../process-inline-tags";
@@ -188,9 +189,9 @@ it("should throw error if linking to non-existing document", () => {
 describe("with link resolver", () => {
     it("should call each link resolver", () => {
         expect.assertions(3);
-        const linkResolver1 = jest.fn();
-        const linkResolver2 = jest.fn();
-        const linkResolver3 = jest.fn();
+        const linkResolver1 = vi.fn();
+        const linkResolver2 = vi.fn();
+        const linkResolver3 = vi.fn();
         const tags = [linkTag([linkResolver1, linkResolver2, linkResolver3])];
         const text = "{@link foo#bar lorem ipsum}";
         processInlineTags(tags, doc, docs, text, rethrow);
@@ -216,9 +217,9 @@ describe("with link resolver", () => {
 
     it("should stop processing once a resolver returns a result", () => {
         expect.assertions(3);
-        const linkResolver1 = jest.fn();
-        const linkResolver2 = jest.fn(() => ({ href: "", title: "" }));
-        const linkResolver3 = jest.fn();
+        const linkResolver1 = vi.fn();
+        const linkResolver2 = vi.fn(() => ({ href: "", title: "" }));
+        const linkResolver3 = vi.fn();
         const tags = [linkTag([linkResolver1, linkResolver2, linkResolver3])];
         const text = "{@link foo#bar lorem ipsum}";
         processInlineTags(tags, doc, docs, text, rethrow);
@@ -229,7 +230,7 @@ describe("with link resolver", () => {
 
     it("should pass in trimmed title (tsdoc compatibility)", () => {
         expect.assertions(1);
-        const linkResolver = jest.fn();
+        const linkResolver = vi.fn();
         const tags = [linkTag([linkResolver])];
         const text = "{@link foo | lorem ipsum}";
         processInlineTags(tags, doc, docs, text, rethrow);
@@ -243,7 +244,7 @@ describe("with link resolver", () => {
 
     it("should render result from link resolver", () => {
         expect.assertions(1);
-        const linkResolver = jest.fn((): ReturnType<LinkResolver> => {
+        const linkResolver = vi.fn((): ReturnType<LinkResolver> => {
             return {
                 href: "https://example.net/foo",
                 title: "bar",
@@ -259,7 +260,7 @@ describe("with link resolver", () => {
 
     it("should set rel attibute", () => {
         expect.assertions(1);
-        const linkResolver = jest.fn((): ReturnType<LinkResolver> => {
+        const linkResolver = vi.fn((): ReturnType<LinkResolver> => {
             return {
                 href: "https://example.net/foo",
                 title: "bar",
@@ -276,7 +277,7 @@ describe("with link resolver", () => {
 
     it("should handle when no document exists", () => {
         expect.assertions(1);
-        const linkResolver = jest.fn((): ReturnType<LinkResolver> => {
+        const linkResolver = vi.fn((): ReturnType<LinkResolver> => {
             return {
                 href: "https://example.net/foo",
                 title: "bar",
@@ -292,7 +293,7 @@ describe("with link resolver", () => {
 
     it("should throw error when no resolver resolved a missing document", () => {
         expect.assertions(1);
-        const linkResolver = jest.fn();
+        const linkResolver = vi.fn();
         const tags = [linkTag([linkResolver])];
         const text = "{@link missing}";
         expect(() => processInlineTags(tags, doc, docs, text, rethrow)).toThrow(

@@ -1,7 +1,8 @@
-/* @jest-environment jsdom */
+/* @vitest-environment jsdom */
 
 import { promisify } from "node:util";
 import nunjucks from "nunjucks";
+import { expect, it } from "vitest";
 import { TemplateLoader } from "../render/template-loader";
 import { type MOTDProcessorTemplateData as TemplateData } from "./motd-processor";
 

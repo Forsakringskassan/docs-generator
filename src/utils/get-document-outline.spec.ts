@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { getDocumentOutline } from "./get-document-outline";
 
 describe("markdown", () => {

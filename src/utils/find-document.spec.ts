@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { createMockDocument } from "./create-mock-document";
 import { findDocument } from "./find-document";
 

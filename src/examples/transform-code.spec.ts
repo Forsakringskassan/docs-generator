@@ -1,4 +1,5 @@
 import dedent from "dedent";
+import { expect, it } from "vitest";
 import { transformCode } from "./transform-code";
 
 expect.addSnapshotSerializer({

@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { hasTag } from "./has-tag";
 
 const tags = ["foo", "bar=spam", "baz"];

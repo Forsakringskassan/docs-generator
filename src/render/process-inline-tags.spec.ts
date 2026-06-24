@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { createMockDocument } from "../utils";
 import { type InlineTag } from "./inline-tags";
 import { processInlineTags } from "./process-inline-tags";

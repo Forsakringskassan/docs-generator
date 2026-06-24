@@ -1,5 +1,3 @@
-/* eslint-disable jest/no-large-snapshots -- keeps test and expected results better together */
-
 import path from "node:path";
 import {
     type ApiInterface,
@@ -7,6 +5,7 @@ import {
     ApiItemKind,
     ApiModel,
 } from "@microsoft/api-extractor-model";
+import { describe, expect, it } from "vitest";
 import { renderInterface } from "./render-interface";
 
 const fixture = path.join(__dirname, "__fixtures__/model.api.json");

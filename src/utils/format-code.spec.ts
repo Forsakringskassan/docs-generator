@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { formatCode } from "./format-code";
 
 expect.addSnapshotSerializer({
@@ -11,6 +12,7 @@ expect.addSnapshotSerializer({
 
 describe("formatCode()", () => {
     it("should format code", () => {
+        expect.assertions(1);
         const original = `const foo=1; const bar    =   2;`;
         const formatted = formatCode(original, "foo.ts");
         expect(formatted).toMatchInlineSnapshot(`

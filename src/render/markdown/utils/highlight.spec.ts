@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { highlight } from "./highlight";
 
 it("should render syntax highlighting", () => {

@@ -68,7 +68,7 @@
     "start": "http-server public",
     "stylelint": "stylelint \"src/**/*.scss\"",
     "pretest": "run-s prettier:check eslint stylelint",
-    "test": "jest"
+    "test": "vitest run"
   },
   "commitlint": {
     "extends": "@forsakringskassan/commitlint-config/no-jira"
@@ -80,40 +80,6 @@
   "stylelint": {
     "extends": [
       "@forsakringskassan/stylelint-config"
-    ]
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.[jt]s",
-      "internal/*/src/**/*.[jt]s",
-      "packages/*/src/**/*.[jt]s",
-      "!**/*.spec.[jt]s",
-      "!**/*.d.ts",
-      "!**/index.[jt]s",
-      "!**/__fixtures__/**"
-    ],
-    "globalSetup": "<rootDir>/jest.global.mjs",
-    "preset": "@forsakringskassan/jest-config",
-    "projects": [
-      {
-        "displayName": "node",
-        "preset": "@forsakringskassan/jest-config",
-        "setupFiles": [
-          "<rootDir>/jest.setup.ts"
-        ],
-        "testPathIgnorePatterns": [
-          "/node_modules/",
-          "<rootDir>/src/runtime"
-        ]
-      },
-      {
-        "displayName": "browser",
-        "preset": "@forsakringskassan/jest-config",
-        "testMatch": [
-          "<rootDir>/src/runtime/**/*.spec.[jt]s"
-        ],
-        "testEnvironment": "jest-environment-jsdom"
-      }
     ]
   },
   "overrides": {
@@ -160,14 +126,15 @@
     "@forsakringskassan/eslint-config": "15.1.0",
     "@forsakringskassan/eslint-config-cli": "15.1.0",
     "@forsakringskassan/eslint-config-cypress": "15.1.0",
-    "@forsakringskassan/eslint-config-jest": "15.1.0",
     "@forsakringskassan/eslint-config-typescript": "15.1.0",
     "@forsakringskassan/eslint-config-typescript-typeinfo": "15.1.0",
+    "@forsakringskassan/eslint-config-vitest": "15.1.0",
     "@forsakringskassan/eslint-config-vue": "15.1.0",
-    "@forsakringskassan/jest-config": "30.3.2",
     "@forsakringskassan/prettier-config": "3.7.2",
     "@forsakringskassan/sass-module-importer": "3.0.0",
     "@forsakringskassan/stylelint-config": "3.4.3",
+    "@forsakringskassan/vitest-config": "2.2.8",
+    "@forsakringskassan/vitest-config-jsdom": "2.2.9",
     "@html-validate/release-scripts": "7.2.4",
     "@microsoft/api-extractor": "7.58.9",
     "@rollup/plugin-commonjs": "29.0.3",
@@ -178,12 +145,12 @@
     "@tsconfig/recommended": "1.0.13",
     "@tsconfig/strictest": "2.0.8",
     "@types/babel__code-frame": "7.27.0",
+    "@types/babel__traverse": "7.28.0",
     "@types/cli-progress": "3.11.6",
     "@types/d3": "7.4.3",
     "@types/dedent": "0.7.2",
     "@types/express": "5.0.6",
     "@types/fs-extra": "11.0.4",
-    "@types/jest": "30.0.0",
     "@types/markdown-it": "14.1.2",
     "@types/node": "22.20.0",
     "@types/nunjucks": "3.2.6",
@@ -196,7 +163,7 @@
     "html-validate": "11.5.3",
     "http-server": "14.1.1",
     "is-ci": "4.1.0",
-    "jest-environment-jsdom": "30.4.1",
+    "jsdom": "29.1.1",
     "memfs": "4.57.8",
     "npm-pkg-lint": "5.1.7",
     "npm-run-all2": "9.0.2",
@@ -205,7 +172,8 @@
     "rollup-plugin-visualizer": "7.0.1",
     "sass": "1.101.0",
     "ts-node": "10.9.2",
-    "typescript": "6.0.3"
+    "typescript": "6.0.3",
+    "vitest": "4.1.9"
   },
   "peerDependencies": {
     "esbuild": "0.x",

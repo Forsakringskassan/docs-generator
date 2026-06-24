@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { parseInfostring } from "./parse-infostring";
 
 it("should return language and tags from infostring", () => {

@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { replaceAtLink } from "./replace-at-link";
 
 it("should replace all {@link ...}", () => {

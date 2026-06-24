@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { parseImport } from "./parse-import";
 
 it("should parse filename from import block", () => {

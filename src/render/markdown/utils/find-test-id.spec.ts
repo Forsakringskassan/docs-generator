@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { findTestId } from "./find-test-id";
 
 it("should find test-id", () => {

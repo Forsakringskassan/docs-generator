@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { getPullRequestID } from "./get-pull-request-id";
 
 it("should get pull request id from Jenkins", () => {

@@ -1,3 +1,4 @@
+import { expect, it, vi } from "vitest";
 import { getDocumentBody } from "./get-document-body";
 
 const text = "lorem ipsum";
@@ -14,7 +15,7 @@ it("should return static body", () => {
 
 it("should return dynamic body", () => {
     expect.assertions(2);
-    const body = jest.fn().mockReturnValue(text);
+    const body = vi.fn().mockReturnValue(text);
     const document = { body };
     const result = getDocumentBody(document, tags, reference);
     expect(result).toBe(text);

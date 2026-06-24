@@ -1,4 +1,5 @@
 import markdownIt from "markdown-it";
+import { expect, it } from "vitest";
 import { paragraph } from "./paragraph";
 
 const md = markdownIt();

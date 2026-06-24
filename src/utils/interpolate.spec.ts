@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { interpolate } from "./interpolate";
 
 it("should interpolate text", () => {

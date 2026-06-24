@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { relative } from "./relative";
 
 it("should return relative url to parent page", () => {

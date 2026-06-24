@@ -1,9 +1,9 @@
 import defaultConfig, { globals } from "@forsakringskassan/eslint-config";
 import cliConfig from "@forsakringskassan/eslint-config-cli";
 import cypressConfig from "@forsakringskassan/eslint-config-cypress";
-import jestConfig from "@forsakringskassan/eslint-config-jest";
 import typescriptConfig from "@forsakringskassan/eslint-config-typescript";
 import typeinfoConfig from "@forsakringskassan/eslint-config-typescript-typeinfo";
+import vitestConfig from "@forsakringskassan/eslint-config-vitest";
 import vueConfig from "@forsakringskassan/eslint-config-vue";
 
 export default [
@@ -32,14 +32,16 @@ export default [
     typeinfoConfig(import.meta.dirname, {
         ignores: [
             "cypress.config.ts",
-            "jest.setup.ts",
+            "vitest.config.mts",
+            "vitest.global.mts",
+            "vitest.setup.mts",
             "cypress/**",
             "docs/**",
         ],
     }),
     vueConfig(),
-    jestConfig({
-        files: ["**/*.spec.[jt]s", "jest.*.js"],
+    vitestConfig({
+        files: ["**/*.spec.[jt]s", "vitest.*.mts"],
     }),
     cypressConfig(),
 

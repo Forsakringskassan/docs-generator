@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { type NavigationSection } from "../navigation";
 import { type TopnavEntry, generateNavigation } from "./topnav-processor";
 

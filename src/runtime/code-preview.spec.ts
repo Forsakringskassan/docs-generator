@@ -1,6 +1,7 @@
+import { describe, expect, it, vi } from "vitest";
 import { toggleMarkup } from "./code-preview";
 
-jest.useFakeTimers();
+vi.useFakeTimers();
 
 describe("toggleMarkup()", () => {
     it("should expand markup", () => {
@@ -17,7 +18,7 @@ describe("toggleMarkup()", () => {
         const button = element.querySelector("button")!;
         const expand = element.querySelector(".code-preview__expand")!;
         toggleMarkup(button);
-        jest.runAllTimers();
+        vi.runAllTimers();
         expect(button.getAttribute("aria-expanded")).toBe("true");
         expect(expand.hasAttribute("hidden")).toBeFalsy();
         expect(expand.classList).not.toContain("animate-expand");
@@ -37,7 +38,7 @@ describe("toggleMarkup()", () => {
         const button = element.querySelector("button")!;
         const expand = element.querySelector(".code-preview__expand")!;
         toggleMarkup(button);
-        jest.runAllTimers();
+        vi.runAllTimers();
         expect(button.getAttribute("aria-expanded")).toBe("false");
         expect(expand.hasAttribute("hidden")).toBeTruthy();
         expect(expand.classList).toContain("animate-expand");

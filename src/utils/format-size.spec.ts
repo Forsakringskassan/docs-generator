@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { formatSize } from "./format-size";
 
 it.each`
