@@ -25,8 +25,8 @@ describe("findLocation()", () => {
         expect.assertions(1);
         const location = findLocation(markdown, "kalle-anka");
         expect(location).toEqual({
-            start: { line: 3, column: 1 },
-            end: { line: 3, column: 11 },
+            start: { line: 3, column: 0 },
+            end: { line: 3, column: 10 },
         });
     });
 

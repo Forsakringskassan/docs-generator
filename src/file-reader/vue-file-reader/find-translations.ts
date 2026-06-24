@@ -143,8 +143,8 @@ function findDocComment(
     }
 
     /* find comment from variable declaration */
-    const grandparent = path.parentPath?.parent;
-    if (parent.type === "VariableDeclarator" && grandparent?.leadingComments) {
+    const grandparent = path.parentPath.parent;
+    if (parent.type === "VariableDeclarator" && grandparent.leadingComments) {
         const doc = grandparent.leadingComments.find(isDocComment);
         if (doc) {
             return doc;
