@@ -1,8 +1,7 @@
-/* eslint-disable jest/no-large-snapshots -- want them inline in this case */
-
 import dedent from "dedent";
 import markdownIt from "markdown-it";
 import markdownItDeflist from "markdown-it-deflist";
+import { expect, it } from "vitest";
 
 expect.addSnapshotSerializer({
     test() {

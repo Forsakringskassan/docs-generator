@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { serializeAttrs } from "./serialize-attrs";
 
 it("should serialize string", () => {

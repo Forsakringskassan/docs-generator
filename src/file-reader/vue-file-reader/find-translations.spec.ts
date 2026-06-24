@@ -1,4 +1,5 @@
 import dedent from "dedent";
+import { describe, expect, it } from "vitest";
 import { findTranslations } from "./find-translations";
 
 describe("script setup", () => {

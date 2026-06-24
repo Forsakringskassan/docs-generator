@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { getActualMessage } from "./template-render-error";
 
 it("should extract actual error from nunjucks error", () => {

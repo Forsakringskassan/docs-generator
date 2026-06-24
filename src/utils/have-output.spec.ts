@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { type FileInfo } from "../document";
 import { haveOutput } from "./have-output";
 

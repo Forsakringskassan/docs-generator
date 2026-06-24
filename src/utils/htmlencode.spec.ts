@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { htmlencode } from "./htmlencode";
 
 it("should encode characters", () => {

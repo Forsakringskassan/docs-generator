@@ -1,4 +1,5 @@
 import path from "node:path";
+import { expect, it, vi } from "vitest";
 import { type Document, getDocumentBody } from "../../document";
 import { type ProcessorContext } from "../../processor-context";
 import { findDocument } from "../../utils";
@@ -28,8 +29,8 @@ function createMockContext(): ProcessorContext {
     const docs: Document[] = [];
     return {
         docs,
-        log: jest.fn(),
-        error: jest.fn(),
+        log: vi.fn(),
+        error: vi.fn(),
         addDocument(document) {
             for (const doc of toArray(document)) {
                 docs.push(doc);
@@ -136,6 +137,6 @@ it("should throw error when name is ambiguous", async () => {
     expect(() =>
         getDocumentBody(document, [], { kind, reference }),
     ).toThrowErrorMatchingInlineSnapshot(
-        `"Ambiguous name "Foo", found 2 interfaces matching this name: "@forsakringskassan/docs-generator!Foo:interface" and "@forsakringskassan/docs-generator!Foo:interface""`,
+        `[Error: Ambiguous name "Foo", found 2 interfaces matching this name: "@forsakringskassan/docs-generator!Foo:interface" and "@forsakringskassan/docs-generator!Foo:interface"]`,
     );
 });

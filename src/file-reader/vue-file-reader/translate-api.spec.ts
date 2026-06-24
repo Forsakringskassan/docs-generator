@@ -1,6 +1,7 @@
 /* eslint-disable sonarjs/fixme-tag -- false positive */
 
 import path from "node:path";
+import { describe, expect, it } from "vitest";
 import { translateAPI } from "./translate-api";
 
 function fixture(filename: string): string {
@@ -120,7 +121,7 @@ describe("options API", () => {
         ]);
     });
 
-    /* eslint-disable-next-line jest/no-disabled-tests -- known bug */
+    /* eslint-disable-next-line vitest/no-disabled-tests -- known bug */
     it.skip("should parse enum prop", async () => {
         expect.assertions(1);
         const filepath = fixture("OptionsPropsEnum.vue");
@@ -381,7 +382,7 @@ describe("composition API", () => {
         expect(result.events).toEqual([]);
     });
 
-    /* eslint-disable-next-line jest/no-disabled-tests -- vue-docgen-api fails to recognize this */
+    /* eslint-disable-next-line vitest/no-disabled-tests -- vue-docgen-api fails to recognize this */
     it.skip("should handle v-model with `defineModel`", async () => {
         expect.assertions(3);
         const filepath = fixture("CompositionVmodelDefine.vue");
@@ -632,7 +633,7 @@ describe("composition API", () => {
         ]);
     });
 
-    /* eslint-disable-next-line jest/no-disabled-tests -- known bug */
+    /* eslint-disable-next-line vitest/no-disabled-tests -- known bug */
     it.skip("should parse enum prop", async () => {
         expect.assertions(1);
         const filepath = fixture("CompositionPropsEnum.vue");
@@ -681,7 +682,7 @@ describe("composition API", () => {
         ]);
     });
 
-    /* eslint-disable-next-line jest/no-disabled-tests -- vue-docgen-api fails to recognize this */
+    /* eslint-disable-next-line vitest/no-disabled-tests -- vue-docgen-api fails to recognize this */
     it.skip("should parse type props with props destructuring", async () => {
         expect.assertions(1);
         const filepath = fixture("CompositionPropsDestructuring.vue");
@@ -740,7 +741,7 @@ describe("composition API", () => {
         ]);
     });
 
-    /* eslint-disable-next-line jest/no-disabled-tests -- vue-docgen-api fails to recognize this */
+    /* eslint-disable-next-line vitest/no-disabled-tests -- vue-docgen-api fails to recognize this */
     it.skip("should parse events (object)", async () => {
         expect.assertions(1);
         const filepath = fixture("CompositionEmitsObject.vue");

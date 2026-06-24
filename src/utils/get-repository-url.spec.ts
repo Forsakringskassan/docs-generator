@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { getRepositoryUrl } from "./get-repository-url";
 
 it("should normalize git+https://", () => {

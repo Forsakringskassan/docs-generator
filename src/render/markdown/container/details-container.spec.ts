@@ -1,5 +1,6 @@
 import dedent from "dedent";
 import markdownIt from "markdown-it";
+import { expect, it } from "vitest";
 import { type FileInfo } from "../../../document";
 import { containerParser } from "../container-renderer";
 import { type ContainerContext } from "./container-context";

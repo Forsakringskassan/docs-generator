@@ -1,5 +1,6 @@
 import path from "node:path";
 import { glob } from "glob";
+import { expect, it } from "vitest";
 import { type DocumentPage } from "../document";
 import { frontMatterFileReader } from "../file-reader";
 import { generateNavtree } from "./generate-navtree";
@@ -40,6 +41,7 @@ function createDocument(
 }
 
 it("should create root node", () => {
+    expect.assertions(1);
     const nav = generateNavtree([]);
     expect(nav).toEqual({
         key: ".",
@@ -52,6 +54,7 @@ it("should create root node", () => {
 });
 
 it("should merge root index.md to root node", () => {
+    expect.assertions(1);
     const nav = generateNavtree([createDocument("index.md", "Frontpage")]);
     expect(nav).toEqual({
         key: ".",
@@ -64,6 +67,7 @@ it("should merge root index.md to root node", () => {
 });
 
 it("should store sort order from document", () => {
+    expect.assertions(1);
     const nav = generateNavtree([
         createDocument("index.md", "Frontpage", {
             attributes: {
@@ -82,6 +86,7 @@ it("should store sort order from document", () => {
 });
 
 it("should use short title if present", () => {
+    expect.assertions(1);
     const nav = generateNavtree([
         createDocument("index.md", "Frontpage", {
             attributes: {
@@ -100,6 +105,7 @@ it("should use short title if present", () => {
 });
 
 it("should ignore documents with visible false", () => {
+    expect.assertions(1);
     const nav = generateNavtree([
         createDocument("index.md", "Frontpage"),
         createDocument("foo.md", "Foo", { visible: false }),
@@ -115,6 +121,7 @@ it("should ignore documents with visible false", () => {
 });
 
 it("should not ignore sections with visible false", () => {
+    expect.assertions(1);
     const nav = generateNavtree([
         createDocument("index.md", "Frontpage"),
         createDocument("foo/index.md", "Foo", { visible: false }),
@@ -148,6 +155,7 @@ it("should not ignore sections with visible false", () => {
 });
 
 it("should ignore redirects", () => {
+    expect.assertions(1);
     const nav = generateNavtree([
         createDocument("index.md", "Frontpage"),
         createDocument("foo.md", "Foo", { format: "redirect" }),
@@ -163,6 +171,7 @@ it("should ignore redirects", () => {
 });
 
 it("should create children for each folder", () => {
+    expect.assertions(1);
     const nav = generateNavtree([
         createDocument("index.md", "Frontpage"),
         createDocument("usage/index.md", "Usage guide"),
@@ -226,6 +235,7 @@ it("should create children for each folder", () => {
 });
 
 it("should create children for each folder (inverse order)", () => {
+    expect.assertions(1);
     const nav = generateNavtree([
         createDocument("components/index.md", "Components"),
         createDocument("usage/foo.md", "Foo component"),
@@ -295,6 +305,7 @@ it("should create children for each folder (inverse order)", () => {
 });
 
 it("should create children for subpages", () => {
+    expect.assertions(1);
     const nav = generateNavtree([
         createDocument("index.md", "Frontpage"),
         createDocument("a/index.md", "A"),
@@ -409,6 +420,7 @@ it("should create children for subpages", () => {
 });
 
 it("should read title and sortorder from hidden index.md", () => {
+    expect.assertions(1);
     const nav = generateNavtree([
         createDocument("usage/index.md", "Usage guide", {
             visible: false,
@@ -461,6 +473,7 @@ async function getDocsFromGlob(
 }
 
 it("smoketest", async () => {
+    expect.assertions(1);
     const docs = await getDocsFromGlob("./docs/**/*.md", "./docs");
     const nav = generateNavtree(docs);
     sortNavigationTree(nav); // to prevent flakyness

@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { findTag } from "./find-tag";
 
 const tags = ["foo", "bar=spam", "baz"];

@@ -1,4 +1,5 @@
 import path from "node:path";
+import { expect, it } from "vitest";
 import { type DocumentLike, getUrl } from "./get-url";
 
 interface Entry {

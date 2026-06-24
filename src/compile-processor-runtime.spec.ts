@@ -1,3 +1,4 @@
+import { beforeEach, expect, it, vi } from "vitest";
 import { compileProcessorRuntime } from "./compile-processor-runtime";
 import { type Generator } from "./generator";
 
@@ -7,7 +8,7 @@ const docs: Pick<Generator, "compileScript"> = {
     },
 };
 
-const compileScript = jest.spyOn(docs, "compileScript");
+const compileScript = vi.spyOn(docs, "compileScript");
 
 beforeEach(() => {
     compileScript.mockReset();

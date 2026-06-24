@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { AttributeError, findLocation } from "./attribute-error";
 
 expect.addSnapshotSerializer({

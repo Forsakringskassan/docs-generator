@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { expect, it } from "vitest";
 import { type ExampleOptions, generateCode } from "./generate-code";
 
 const fixturePath = path.join(__dirname, "__fixtures__");

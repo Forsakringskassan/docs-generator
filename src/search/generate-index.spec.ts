@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { generateIndex } from "./generate-index";
 import { type SearchEntry } from "./search-entry";
 

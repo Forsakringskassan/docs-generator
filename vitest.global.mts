@@ -1,6 +1,6 @@
 import { build } from "esbuild";
 
-export default async function setup() {
+export async function setup(): Promise<void> {
     await build({
         entryPoints: ["src/utils/format-code.worker.ts"],
         bundle: true,

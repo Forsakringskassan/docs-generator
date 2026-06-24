@@ -5,14 +5,11 @@
         "@tsconfig/strictest"
     ],
     "compilerOptions": {
-        /* ts-jest uses hardcoded deprecated moduleResolution node10 */
-        "ignoreDeprecations": "6.0",
-
         "rootDir": "./src",
         "outDir": "./dist",
 
         "lib": ["es2024", "dom"],
-        "types": ["node", "jest"],
+        "types": ["node"],
         "module": "esnext",
         "moduleResolution": "bundler",
 
