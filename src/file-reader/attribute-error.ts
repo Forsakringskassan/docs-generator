@@ -1,4 +1,4 @@
-import { type SourceLocation, codeFrameColumns } from "@babel/code-frame";
+import { codeFrameColumns } from "@babel/code-frame";
 import { closest, distance } from "fastest-levenshtein";
 import { documentAttributeKeys } from "../document";
 
@@ -27,7 +27,10 @@ const suggestions: Partial<Record<string, string>> = {
 export function findLocation(
     content: string,
     attr: string,
-): SourceLocation | null {
+): {
+    start: { line: number; column: number };
+    end: { line: number; column: number };
+} | null {
     const match = /^---\n(.*?)^---/ms.exec(content);
     if (match?.index !== 0) {
         return null;
@@ -43,8 +46,8 @@ export function findLocation(
 
     const blockBegin = 2; // the first line of the frontmatter block is at line 2
     return {
-        start: { line: index + blockBegin, column: 1 },
-        end: { line: index + blockBegin, column: 1 + attr.length },
+        start: { line: index + blockBegin, column: 0 },
+        end: { line: index + blockBegin, column: attr.length },
     };
 }
 
