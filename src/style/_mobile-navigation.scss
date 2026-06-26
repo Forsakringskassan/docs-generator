@@ -1,4 +1,5 @@
 @use "breakpoints" as bp;
+@use "focus" as *;
 
 #mobile-sidenav {
     // this variable is overridden at runtime by js
@@ -9,6 +10,21 @@
     scrollbar-gutter: stable;
     position: sticky;
     top: 0;
+}
+#mobile-toggle:focus-visible ~ .docs-mobile-nav-label,
+#mobile-toggle:focus-visible ~ .docs-mobile-navigation .docs-mobile-nav-close {
+    @include focus-indicator;
+}
+
+#mobile-toggle:checked ~ .docs-mobile-navigation {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    gap: 1.5rem;
+    top: 0;
+    left: 0;
 }
 
 .docs-mobile-navigation {
