@@ -2,12 +2,7 @@
 {% import "macro/mobile-menu.html" as menu with context %}
 
 <div class="docs-mobile-nav">
-    <input
-        id="mobile-toggle"
-        type="checkbox"
-        class="docs-mobile-nav__toggle"
-        aria-label="{{$t('mobile-nav.aria-label')}}"
-    />
+    <input id="mobile-toggle" type="checkbox" class="sr-only" aria-label="{{$t('mobile-nav.aria-label')}}" />
     <label for="mobile-toggle" class="docs-mobile-nav-label">
         <svg class="docs-icon"><use href="#docs-icon-menu"></use></svg>
         <span>{{$t("mobile-nav.menu")}}</span>
