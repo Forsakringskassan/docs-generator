@@ -18,6 +18,9 @@
     --docs-font-line-height: var(--f-line-height-large);
     --docs-font-size: var(--f-font-size-default-rem);
     --docs-font-family: var(--f-font-family);
+    --docs-focus-box-shadow:
+        0 0 0 2px var(--fkds-focus-indicator-color-background), 0 0 0 4px var(--fkds-focus-indicator-color),
+        0 0 0 6px var(--fkds-focus-indicator-color-background);
 
     // Headings
     --docs-heading-font-family: var(--f-font-family);

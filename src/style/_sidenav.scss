@@ -1,4 +1,5 @@
 @use "breakpoints" as bp;
+@use "focus" as *;
 
 /* navigering vänster */
 
@@ -53,6 +54,10 @@
     justify-content: flex-end;
     margin-top: 0;
     margin-right: 0;
+}
+#nav-toggle:focus-visible + label,
+#nav-toggle:focus-visible ~ .sidenav__navigation .sidenav__close {
+    @include focus-indicator;
 }
 
 .sidenav__toggle:checked ~ .navigation {
