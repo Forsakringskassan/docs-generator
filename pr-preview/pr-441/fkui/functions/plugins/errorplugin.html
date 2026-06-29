@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-2e0001.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-9ed948.js",
     "@fkui/date": "../../assets/vendor-fkui-date-4ec930.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-b8268e.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-8e8ae5.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-e77205.js"
   },
   "integrity": {
@@ -34,7 +34,7 @@
     "../../assets/vendor-fkui-vue-selectors-2e0001.js": "sha384-V1Wer3dMsjVpAFS/PrSjSFNHJYDQRv8k1RtPZLszEx/tnYmzbuPR4YIkP21Fwap0",
     "../../assets/vendor-fkui-logic-9ed948.js": "sha384-5mW5y/PYSM5vHGddH/4Shn8prsUJrV4tEXpuxjA1ZI0z1NDh2JjokIoTk3viQFgU",
     "../../assets/vendor-fkui-date-4ec930.js": "sha384-pq05tS3yKOrr/fsY3iZ74ZrIeKXlAnLfHhLBVljCdO+ZS0Ulow1fh9oRg+c8zSuE",
-    "../../assets/vendor-fkui-vue-b8268e.js": "sha384-/vwCxzRcVYVkWQ6DwdgVkFLQfmUnzFB02EztRQiqHCZCmEwHDKm0Aga3/THtFqcY",
+    "../../assets/vendor-fkui-vue-8e8ae5.js": "sha384-PQ9d0nrZg3CyX1LI6ts7kNGvZxOLeLn+bTrVwqeI3IUl9db63H+gkaFDt1Q9U0ng",
     "../../assets/vendor-forsakringskassan-docs-live-example-e77205.js": "sha384-DsovFPooLKpiiaZiNa3CqNblTphlEp/J+pqN41M1kxsCiie+UVPgLJD/7vEfv84K"
   }
 }
@@ -46,10 +46,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-a8cd24.json"
+    href="../../search-data-4c5a3a.json"
     as="fetch"
     crossorigin
-    integrity="sha384-kvldgonm791rVQeTIrNB9fsb7nGTWW6fQhKm7Nr/ETZGbN0R2SQSjjQ/29oEpOrw"
+    integrity="sha384-BA8RMtoIA1kRbh3ZO5hwLk8bmURUWyVY2mk5oRqYMn4LtlBDHWzz6Qy515KSmf5d"
     id="search-data"
 />
 <script>
@@ -7394,13 +7394,13 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-e28191"></div>
+        <div id="example-5f5330"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ErrorPluginExample-e28191.js"></script>
+        <script type="module" src="./ErrorPluginExample-5f5330.js"></script>
     
                 </div>
                 <div>
@@ -7451,10 +7451,20 @@
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;generate-error&#x27;&quot;</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;generateError()&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span>
+            <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;generate-error&#x27;&quot;</span>
+            <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;medium&quot;</span>
+            <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span>
+            @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;generateError()&quot;</span>
+        &gt;</span>
             Fel
         <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;generate-warning&#x27;&quot;</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;generateWarning()&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span>
+            <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;generate-warning&#x27;&quot;</span>
+            <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;medium&quot;</span>
+            <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span>
+            @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;generateWarning()&quot;</span>
+        &gt;</span>
             Varning
         <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
@@ -7574,9 +7584,9 @@ app.<span class="hljs-title function_">use</span>(<span class="hljs-title class_
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">bugfix/pr (<a href="https://github.com/Forsakringskassan/designsystem/commits/329d27894caff992655f99e4e317e1cd75293638">329d278</a>)<br />
+<div class="footer__right"><div class="version">bugfix/pr (<a href="https://github.com/Forsakringskassan/designsystem/commits/096354428e3ef0fdfdfa626390ab5c0fc78e4e57">0963544</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/441">PR 441</a><br />
-        2026-06-26 08:31
+        2026-06-29 06:01
 </div>
 <div class="toolbar__item">
     <form id="version">
