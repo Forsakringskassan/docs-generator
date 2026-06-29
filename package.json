@@ -132,7 +132,7 @@
     "@forsakringskassan/eslint-config-vue": "15.1.2",
     "@forsakringskassan/prettier-config": "3.7.2",
     "@forsakringskassan/sass-module-importer": "3.0.0",
-    "@forsakringskassan/stylelint-config": "3.4.3",
+    "@forsakringskassan/stylelint-config": "3.4.4",
     "@forsakringskassan/vitest-config": "2.5.0",
     "@forsakringskassan/vitest-config-jsdom": "2.5.0",
     "@html-validate/release-scripts": "7.3.1",
