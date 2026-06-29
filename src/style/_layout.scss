@@ -9,6 +9,8 @@
         "primary" 1fr
         "footer" auto;
     min-height: 100vh;
+    max-width: 100vw;
+    grid-template-columns: minmax(0, 100%);
 }
 
 header {
