@@ -2,7 +2,4 @@
  * @public
  */
 export type ProcessorStage =
-    | "generate-docs"
-    | "generate-nav"
-    | "assets"
-    | "render";
+    "generate-docs" | "generate-nav" | "assets" | "render";

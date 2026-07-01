@@ -40,12 +40,16 @@ export function generateTranslationTable(
                         </dt>
                         <dd>
                             ${render(translation.description)}
-                            ${translation.defaultTranslation
-                                ? `<p class="doc-api__item">Default: "${htmlencode(translation.defaultTranslation)}"</p>`
-                                : ""}
-                            ${haveParameters
-                                ? `<p class="docs-api__list-title">Parameters:</p><ul class="docs-api__list">`
-                                : ""}
+                            ${
+                                translation.defaultTranslation
+                                    ? `<p class="doc-api__item">Default: "${htmlencode(translation.defaultTranslation)}"</p>`
+                                    : ""
+                            }
+                            ${
+                                haveParameters
+                                    ? `<p class="docs-api__list-title">Parameters:</p><ul class="docs-api__list">`
+                                    : ""
+                            }
                             ${translation.parameters
                                 .map((it) => {
                                     if (it.description) {

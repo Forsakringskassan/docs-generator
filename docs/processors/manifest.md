@@ -20,9 +20,7 @@ import { Generator } from "@forsakringskassan/docs-generator";
 /* --- cut above --- */
 
 const config = {
-    sourceFiles: [
-        /* ... */
-    ],
+    sourceFiles: [/* ... */],
 };
 const docs = new Generator(import.meta.url, {
     /* --- cut begin --- */
