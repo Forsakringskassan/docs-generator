@@ -38,21 +38,29 @@ export function generatePropTable(
                                     >: ${htmlencode(prop.type ?? "unknown")}</a
                                 ></code
                             >
-                            ${prop.required
-                                ? ""
-                                : `<span class="docs-tag docs-tag--default">Optional</span>`}
-                            ${prop.deprecated === null
-                                ? ""
-                                : `<span class="docs-tag docs-tag--deprecated">Deprecated</span>`}
+                            ${
+                                prop.required
+                                    ? ""
+                                    : `<span class="docs-tag docs-tag--default">Optional</span>`
+                            }
+                            ${
+                                prop.deprecated === null
+                                    ? ""
+                                    : `<span class="docs-tag docs-tag--deprecated">Deprecated</span>`
+                            }
                         </dt>
                         <dd>
                             ${render(prop.description)}
-                            ${prop.default
-                                ? `<p class="doc-api__item">Default: <code>${htmlencode(prop.default.value)}</code></p>`
-                                : ""}
-                            ${prop.deprecated
-                                ? `<p class="doc-api__item docs-deprecated">Deprecated: ${renderInline(prop.deprecated)}</p>`
-                                : ""}
+                            ${
+                                prop.default
+                                    ? `<p class="doc-api__item">Default: <code>${htmlencode(prop.default.value)}</code></p>`
+                                    : ""
+                            }
+                            ${
+                                prop.deprecated
+                                    ? `<p class="doc-api__item docs-deprecated">Deprecated: ${renderInline(prop.deprecated)}</p>`
+                                    : ""
+                            }
                         </dd>
                     `;
                 })

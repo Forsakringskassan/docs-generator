@@ -38,21 +38,29 @@ export function generateModelTable(
                                     >: ${htmlencode(model.type ?? "unknown")}</a
                                 ></code
                             >
-                            ${model.required
-                                ? ""
-                                : `<span class="docs-tag docs-tag--default">Optional</span>`}
-                            ${model.deprecated === null
-                                ? ""
-                                : `<span class="docs-tag docs-tag--deprecated">Deprecated</span>`}
+                            ${
+                                model.required
+                                    ? ""
+                                    : `<span class="docs-tag docs-tag--default">Optional</span>`
+                            }
+                            ${
+                                model.deprecated === null
+                                    ? ""
+                                    : `<span class="docs-tag docs-tag--deprecated">Deprecated</span>`
+                            }
                         </dt>
                         <dd>
                             ${render(model.description)}
-                            ${model.default
-                                ? `<p class="doc-api__item">Default: <code>${htmlencode(model.default.value)}</code></p>`
-                                : ""}
-                            ${model.deprecated
-                                ? `<p class="doc-api__item docs-deprecated">Deprecated: ${renderInline(model.deprecated)}</p>`
-                                : ""}
+                            ${
+                                model.default
+                                    ? `<p class="doc-api__item">Default: <code>${htmlencode(model.default.value)}</code></p>`
+                                    : ""
+                            }
+                            ${
+                                model.deprecated
+                                    ? `<p class="doc-api__item docs-deprecated">Deprecated: ${renderInline(model.deprecated)}</p>`
+                                    : ""
+                            }
                         </dd>
                     `;
                 })

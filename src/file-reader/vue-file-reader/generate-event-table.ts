@@ -40,15 +40,19 @@ export function generateEventTable(
                                     ></a
                                 ></code
                             >
-                            ${event.deprecated === null
-                                ? ""
-                                : `<span class="docs-tag docs-tag--deprecated">Deprecated</span>`}
+                            ${
+                                event.deprecated === null
+                                    ? ""
+                                    : `<span class="docs-tag docs-tag--deprecated">Deprecated</span>`
+                            }
                         </dt>
                         <dd>
                             ${render(event.description)}
-                            ${haveProperties
-                                ? `<p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">`
-                                : ""}
+                            ${
+                                haveProperties
+                                    ? `<p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">`
+                                    : ""
+                            }
                             ${event.properties
                                 .map((it) => {
                                     if (it.description) {
@@ -59,9 +63,11 @@ export function generateEventTable(
                                 })
                                 .join("")}
                             ${haveProperties ? `</ul>` : ""}
-                            ${event.deprecated
-                                ? `<p class="docs-api__deprecated docs-deprecated">Deprecated: ${renderInline(event.deprecated)}</p>`
-                                : ""}
+                            ${
+                                event.deprecated
+                                    ? `<p class="docs-api__deprecated docs-deprecated">Deprecated: ${renderInline(event.deprecated)}</p>`
+                                    : ""
+                            }
                         </dd>
                     `;
                 })

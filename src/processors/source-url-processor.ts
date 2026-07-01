@@ -46,8 +46,7 @@ export function sourceUrlProcessor(
 
 export function sourceUrlProcessor(
     ...args:
-        | [PackageJson, SourceUrlProcessorOptions]
-        | [SourceUrlProcessorOptions]
+        [PackageJson, SourceUrlProcessorOptions] | [SourceUrlProcessorOptions]
 ): Processor {
     const pkg = args.length === 2 ? args[0] : {};
     const options = args.length === 2 ? args[1] : args[0];

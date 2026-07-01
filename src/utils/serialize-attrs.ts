@@ -1,10 +1,6 @@
 /** @public */
 export type AttributeValue =
-    | string
-    | number
-    | boolean
-    | null
-    | { [key: string]: AttributeValue };
+    string | number | boolean | null | { [key: string]: AttributeValue };
 
 /** @public */
 export type AttributeTable = Record<string, AttributeValue>;

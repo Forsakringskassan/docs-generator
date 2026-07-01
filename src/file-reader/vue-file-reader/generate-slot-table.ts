@@ -40,15 +40,19 @@ export function generateSlotTable(
                                     ></a
                                 ></code
                             >
-                            ${slot.deprecated === null
-                                ? ""
-                                : `<span class="docs-tag docs-tag--deprecated">Deprecated</span>`}
+                            ${
+                                slot.deprecated === null
+                                    ? ""
+                                    : `<span class="docs-tag docs-tag--deprecated">Deprecated</span>`
+                            }
                         </dt>
                         <dd>
                             ${render(slot.description)}
-                            ${haveBindings
-                                ? `<p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">`
-                                : ""}
+                            ${
+                                haveBindings
+                                    ? `<p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">`
+                                    : ""
+                            }
                             ${slot.bindings
                                 .map((it) => {
                                     if (it.description) {
@@ -59,9 +63,11 @@ export function generateSlotTable(
                                 })
                                 .join("")}
                             ${haveBindings ? `</ul>` : ""}
-                            ${slot.deprecated
-                                ? `<p class="docs-api__deprecated docs-deprecated">Deprecated: ${renderInline(slot.deprecated)}</p>`
-                                : ""}
+                            ${
+                                slot.deprecated
+                                    ? `<p class="docs-api__deprecated docs-deprecated">Deprecated: ${renderInline(slot.deprecated)}</p>`
+                                    : ""
+                            }
                         </dd>
                     `;
                 })

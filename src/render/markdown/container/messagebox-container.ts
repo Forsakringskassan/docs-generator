@@ -55,12 +55,14 @@ export function messageboxContainer(
         const text = token.content.trim();
         return /* HTML */ `
             <div class="docs-messagebox docs-messagebox--${variant}">
-                ${title
-                    ? `<p class="docs-messagebox__title">${md.renderInline(
-                          title,
-                          env,
-                      )}</p>`
-                    : ""}
+                ${
+                    title
+                        ? `<p class="docs-messagebox__title">${md.renderInline(
+                              title,
+                              env,
+                          )}</p>`
+                        : ""
+                }
                 ${md.render(text, env)}
             </div>
         `;

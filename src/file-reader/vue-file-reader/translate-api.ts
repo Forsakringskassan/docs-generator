@@ -48,8 +48,7 @@ function getEventDeprecated(
         return null;
     }
     const tag = tags.find((it) => it.title === "deprecated") as
-        | EventDeprecatedTag
-        | undefined;
+        EventDeprecatedTag | undefined;
     if (!tag?.content) {
         return null;
     }

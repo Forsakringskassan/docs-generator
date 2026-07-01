@@ -193,8 +193,7 @@ export function generateNavtree(docs: DocumentPage[]): NavigationSection {
             };
 
             const existing = section[name] as
-                | MutableNavigationSection
-                | undefined;
+                MutableNavigationSection | undefined;
             if (existing) {
                 existing.title = title;
                 existing.path = leafNode.path;

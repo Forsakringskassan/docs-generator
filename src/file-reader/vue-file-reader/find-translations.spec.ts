@@ -292,8 +292,7 @@ it("should find parameters", () => {
                         baz: null,
                     })
                 }}
-            </pre
-            >
+            </pre>
         </template>
     `);
     const result = findTranslations("AwesomeComponent.vue", content);
@@ -330,8 +329,7 @@ it("should find default translation and parameters", () => {
                         foo: 'bar',
                     })
                 }}
-            </pre
-            >
+            </pre>
         </template>
     `);
     const result = findTranslations("AwesomeComponent.vue", content);
@@ -360,8 +358,7 @@ it("should find description", () => {
                     /** short description */
                     $t('my.awesome.key')
                 }}
-            </pre
-            >
+            </pre>
             <pre>
                 {{
                     /**
@@ -371,8 +368,7 @@ it("should find description", () => {
                      */
                     $t('another.awesome.key')
                 }}
-            </pre
-            >
+            </pre>
         </template>
     `);
     const result = findTranslations("AwesomeComponent.vue", content);

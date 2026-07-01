@@ -43,9 +43,7 @@ export interface DocumentAttributes {
 
     /** component(s) this page corresponds to */
     component?:
-        | string
-        | ComponentAttribute
-        | Array<string | ComponentAttribute>;
+        string | ComponentAttribute | Array<string | ComponentAttribute>;
 
     /** link to external page in navigation */
     href?: string;

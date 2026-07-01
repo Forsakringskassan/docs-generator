@@ -24,9 +24,7 @@ const docs = new Generator(import.meta.url, {
     processors: [livereloadProcessor({ enabled: true })],
 });
 
-docs.build([
-    /* ... */
-]);
+docs.build([/* ... */]);
 
 docs.serve();
 ```

@@ -20,8 +20,7 @@ Given `item` is `{ foo: "bar" }` this outputs:
 <pre>
 {
   foo: "bar"
-}</pre
->
+}</pre>
 ```
 
 ### `json(value: unknown)`

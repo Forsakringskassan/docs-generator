@@ -21,8 +21,7 @@ export interface TemplateData {
  * @public
  */
 export type TemplateBlockRenderer<T> =
-    | { filename: string; data?: T }
-    | { render(): string };
+    { filename: string; data?: T } | { render(): string };
 
 /**
  * @internal
