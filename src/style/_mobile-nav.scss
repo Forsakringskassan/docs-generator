@@ -30,7 +30,6 @@
         display: none;
         justify-content: center;
     }
-
     &__toggle:checked ~ .docs-mobile-navigation {
         display: flex;
         flex-direction: column;

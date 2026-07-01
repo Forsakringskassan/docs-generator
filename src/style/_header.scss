@@ -5,6 +5,9 @@
     visibility: hidden;
 }
 header {
+    @media screen and (width >= #{bp.$breakpoint-lg}) {
+        border-bottom: 1px solid var(--docs-header-border-color);
+    }
     .docs-page-header {
         display: flex;
         flex-wrap: wrap;
@@ -14,11 +17,19 @@ header {
         align-items: center;
         overflow: hidden;
         background-color: var(--docs-header-background-color);
-        border-bottom: 1px solid var(--docs-header-border-color);
         gap: 1rem;
 
         --docs-text-color-default: var(--docs-header-text-color-default);
         --docs-text-color-discrete: var(--docs-header-text-color-discrete);
+
+        @media screen and (width >= #{bp.$breakpoint-lg}) {
+            width: 1280px;
+            margin: 0 auto;
+        }
+
+        @media screen and (width < #{bp.$breakpoint-lg}) {
+            border-bottom: 1px solid var(--docs-header-border-color);
+        }
 
         &__left {
             flex-grow: 0;
