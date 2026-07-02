@@ -18,6 +18,9 @@
     --docs-font-line-height: var(--f-line-height-large);
     --docs-font-size: var(--f-font-size-default-rem);
     --docs-font-family: var(--f-font-family);
+    --docs-focus-box-shadow:
+        0 0 0 2px var(--fkds-focus-indicator-color-background), 0 0 0 4px var(--fkds-focus-indicator-color),
+        0 0 0 6px var(--fkds-focus-indicator-color-background);
 
     // Headings
     --docs-heading-font-family: var(--f-font-family);
@@ -49,14 +52,15 @@
 
     // Top-nav
     --docs-topnav-background-color: var(--fkds-color-background-primary);
-
-    // menu
-    --docs-menu-background-color: var(--fkds-color-background-secondary);
     --docs-topnav-link-color-default: var(--fkds-color-text-primary);
     --docs-topnav-link-color-hover: var(--fkds-color-text-primary);
     --docs-topnav-link-color-highlight: var(--fkds-color-text-primary);
     --docs-topnav-border-color-hover: var(--fkds-color-select-background-secondary-hover);
-    --docs-topnav-border-color-highlighr: var(--fkds-color-select-background-secondary-default);
+    --docs-topnav-border-color-highlight: var(--fkds-color-select-background-secondary-default);
+    --docs-topnav-border-color-highlight-background-color: var(--fkds-color-background-tertiary);
+
+    // menu
+    --docs-menu-background-color: var(--fkds-color-background-secondary);
 
     // code
     --docs-code-background-color: var(--fkds-color-background-secondary);
