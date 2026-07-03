@@ -6,16 +6,16 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Datatabell och interaktiv tabell - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-0a1719.css"
+            href="../../assets/docs-a33e50.css"
             crossorigin
-            integrity="sha384-3fpLRxJldW1uaBQW1uc0KZDDDGrBtjakX9DZEHZ6/9xNTgfaEQl2kvaHzQWjQBrz"
+            integrity="sha384-kwaQJj+nTBMN400lj5LZKZc7ECt2mUJNMtovkZzCw0Tj9K+PqJfGb2uWG/nicjxJ"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-fkui-1bd311.css"
+            href="../../assets/docs-fkui-b0ff62.css"
             crossorigin
-            integrity="sha384-RAxKrvJslJJVEHRayvpOgICwDpZpZLVC0axGSieKq79oyTUK98MmqGg5PR2PiWie"
+            integrity="sha384-n5Bk8lVpp7/O0eP0iy73kPjRDu1fGr+VjToQptVEfGUnwiWn1f6u/XXtJi75oN46"
             
         />
 
@@ -23,19 +23,19 @@
             {
   "imports": {
     "vue": "../../assets/vendor-vue-5ec080.js",
-    "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-2e0001.js",
+    "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-7437b8.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-9ed948.js",
     "@fkui/date": "../../assets/vendor-fkui-date-4ec930.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-8e8ae5.js",
-    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-cc95ed.js"
+    "@fkui/vue": "../../assets/vendor-fkui-vue-37c32b.js",
+    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-e8652e.js"
   },
   "integrity": {
     "../../assets/vendor-vue-5ec080.js": "sha384-gs192ncfFJwhno/cvRdXGH+jYE5XKrbqOaSi2xM8w6DAe1aLfFy8JHgNkDCx+isP",
-    "../../assets/vendor-fkui-vue-selectors-2e0001.js": "sha384-V1Wer3dMsjVpAFS/PrSjSFNHJYDQRv8k1RtPZLszEx/tnYmzbuPR4YIkP21Fwap0",
+    "../../assets/vendor-fkui-vue-selectors-7437b8.js": "sha384-6ZLIYXLAGPpu9fSj/Y+gWAoZK247lHziMCMtcTvjpLCyP4xLuWGB61qNEmUGJx8p",
     "../../assets/vendor-fkui-logic-9ed948.js": "sha384-5mW5y/PYSM5vHGddH/4Shn8prsUJrV4tEXpuxjA1ZI0z1NDh2JjokIoTk3viQFgU",
     "../../assets/vendor-fkui-date-4ec930.js": "sha384-pq05tS3yKOrr/fsY3iZ74ZrIeKXlAnLfHhLBVljCdO+ZS0Ulow1fh9oRg+c8zSuE",
-    "../../assets/vendor-fkui-vue-8e8ae5.js": "sha384-PQ9d0nrZg3CyX1LI6ts7kNGvZxOLeLn+bTrVwqeI3IUl9db63H+gkaFDt1Q9U0ng",
-    "../../assets/vendor-forsakringskassan-docs-live-example-cc95ed.js": "sha384-ww/FkpHTezQk6gkvnB4+FYFxFFYRO9jwMpgWWpEvJ81/9K/+rxthjh0qPJkHExyh"
+    "../../assets/vendor-fkui-vue-37c32b.js": "sha384-bA4LKQxEsm4fG8xB/YLalMXVe2A0bzUi6iO/2UyxS52ROQ7GiRoxBS1KiDVzUJ+Q",
+    "../../assets/vendor-forsakringskassan-docs-live-example-e8652e.js": "sha384-d82rZvzXpCRrN3u2oiPl0nMQP2A2dJrXryj6w8aaJwrxHSw7C2V18uERg89m4CAL"
   }
 }
         </script><script
@@ -46,10 +46,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-7b759f.json"
+    href="../../search-data-697abf.json"
     as="fetch"
     crossorigin
-    integrity="sha384-ol8LEv1EsxW7UWGltruf+IE1CKwG0NWGi2opmUDE4+Y3W4JMV4ZVirxGGHrA6eS9"
+    integrity="sha384-tFS8Gd2Eup2UExxW7oWOV1i+MaSG7QjB92LMELvMkytrE3p0EhnL8JdBCCXXu0NZ"
     id="search-data"
 />
 <script>
@@ -139,12 +139,7 @@
             <a class="docs-page-header__app-name" href="../../index.html"> FK Designsystem </a>
         </div>
         <div class="docs-page-header__right"><div class="docs-mobile-nav">
-    <input
-        id="mobile-toggle"
-        type="checkbox"
-        class="docs-mobile-nav__toggle"
-        aria-label="Öppen/stängd meny"
-    />
+    <input id="mobile-toggle" type="checkbox" class="sr-only" aria-label="Öppen/stängd meny" />
     <label for="mobile-toggle" class="docs-mobile-nav-label">
         <svg class="docs-icon"><use href="#docs-icon-menu"></use></svg>
         <span>Meny</span>
@@ -158,7 +153,7 @@
                 </svg>
             </label>
         </div><div id="mobile-sidenav">
-<div class="docs-mobile-nav-wrapper">
+<div class="docs-mobile-nav-wrapper" >
 <ul class="docs-mobile-nav__list">
 
 
@@ -5431,6 +5426,8 @@
                 
                     
                 
+                    
+                
 
                 
                 
@@ -5475,6 +5472,19 @@
             
         >
             Jest
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../functions/test-utils/vitest.html"
+            
+            
+            
+            data-path="functions/test-utils/vitest.html"
+            
+        >
+            Vitest
         </a>
     </li>
 
@@ -7090,25 +7100,25 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/8300d0ed01768fcc06acf9317406f58db9908a2b/packages/vue/src/components/FDataTable/FDataTable.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/77e1d225c2f7694ef2a5ac9e456437befd619e3c/packages/vue/src/components/FDataTable/FDataTable.vue">
                 FDataTable
             </a>
             
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/8300d0ed01768fcc06acf9317406f58db9908a2b/packages/vue/src/components/FInteractiveTable/FInteractiveTable.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/77e1d225c2f7694ef2a5ac9e456437befd619e3c/packages/vue/src/components/FInteractiveTable/FInteractiveTable.vue">
                 FInteractiveTable
             </a>
             
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/8300d0ed01768fcc06acf9317406f58db9908a2b/packages/vue/src/components/FTableButton/FTableButton.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/77e1d225c2f7694ef2a5ac9e456437befd619e3c/packages/vue/src/components/FTableButton/FTableButton.vue">
                 FTableButton
             </a>
             
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/8300d0ed01768fcc06acf9317406f58db9908a2b/packages/vue/src/components/FTableColumn/FTableColumn.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/77e1d225c2f7694ef2a5ac9e456437befd619e3c/packages/vue/src/components/FTableColumn/FTableColumn.vue">
                 FTableColumn
             </a>
             
@@ -7187,13 +7197,13 @@
                     data-language="vue"
                 >
                     
-        <div id="example-48b757"></div>
+        <div id="example-6db992"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FDataTableLiveExample-48b757.js"></script>
+        <script type="module" src="./FDataTableLiveExample-6db992.js"></script>
     
                 </div>
             <h3 id="anvandning" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#anvandning">Användning</a></h3><p class="docs-paragraph">Komponenten har en prop <code>rows</code> som du sätter till de rader som ska presenteras.</p>
@@ -7275,13 +7285,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-82feaa"></div>
+        <div id="example-555962"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FDataTableErrorExample-82feaa.js"></script>
+        <script type="module" src="./FDataTableErrorExample-555962.js"></script>
     
                     </div>
                 </div>
@@ -7296,13 +7306,13 @@
                     data-language="vue"
                 >
                     
-        <div id="example-6bce51"></div>
+        <div id="example-0e6f53"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FInteractiveTableLiveExample-6bce51.js"></script>
+        <script type="module" src="./FInteractiveTableLiveExample-0e6f53.js"></script>
     
                 </div>
             <h3 id="anvandning--1" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#anvandning--1">Användning</a></h3><p class="docs-paragraph">Komponenten har en prop <code>rows</code> som du sätter till de rader som ska presenteras.</p>
@@ -7402,13 +7412,13 @@ Felmeddelandet visas när det felmarkerade fältet har fokus.</p>
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-21b37b"></div>
+        <div id="example-643d87"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FInteractiveTableInputExample-21b37b.js"></script>
+        <script type="module" src="./FInteractiveTableInputExample-643d87.js"></script>
     
                 </div>
                 <div>
@@ -7529,13 +7539,13 @@ Kolumnens typ ska sättas till <code>action</code>.</p>
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-9c9047"></div>
+        <div id="example-496dc5"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./TableButton-9c9047.js"></script>
+        <script type="module" src="./TableButton-496dc5.js"></script>
     
                     </div>
                 </div>
@@ -7573,13 +7583,13 @@ En <code>&lt;span&gt;</code> med <code>sr-only</code> kan användas för att ge 
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-8c30ee"></div>
+        <div id="example-2f2c8e"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./TableButton-sronly-8c30ee.js"></script>
+        <script type="module" src="./TableButton-sronly-2f2c8e.js"></script>
     
                     </div>
                 </div>
@@ -7619,13 +7629,13 @@ En <code>&lt;span&gt;</code> med <code>sr-only</code> kan användas för att ge 
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-1dedd3"></div>
+        <div id="example-8299f3"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./TableLink-1dedd3.js"></script>
+        <script type="module" src="./TableLink-8299f3.js"></script>
     
                     </div>
                 </div>
@@ -7756,13 +7766,13 @@ Innehållet måste då följa samma datastruktur som ordinarie rader.</p>
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-685c81"></div>
+        <div id="example-73800f"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FInteractiveTableExpandableExample-685c81.js"></script>
+        <script type="module" src="./FInteractiveTableExpandableExample-73800f.js"></script>
     
                     </div>
                 </div>
@@ -7803,13 +7813,13 @@ Ditt innehåll placeras i en cell som sträcker sig över hela raden och vad som
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-d448d5"></div>
+        <div id="example-5fb739"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FInteractiveTableExpandableRows-d448d5.js"></script>
+        <script type="module" src="./FInteractiveTableExpandableRows-5fb739.js"></script>
     
                     </div>
                 </div>
@@ -7989,13 +7999,13 @@ Texten bör innehålla något som tydligt identifierar raden från andra rader.<
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-eea795"></div>
+        <div id="example-c242ec"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FInteractiveTableSelectable-eea795.js"></script>
+        <script type="module" src="./FInteractiveTableSelectable-c242ec.js"></script>
     
                     </div>
                 </div>
@@ -8032,13 +8042,13 @@ En radrubrik underlättar för skärmläsareanvändare genom att markera vilken 
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-9d0ce7"></div>
+        <div id="example-418a63"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./TableRowHeader-9d0ce7.js"></script>
+        <script type="module" src="./TableRowHeader-418a63.js"></script>
     
                     </div>
                 </div>
@@ -8060,13 +8070,13 @@ Det är ett fel att sätta både <code>expand</code> och <code>shrink</code> sam
                     data-language="vue"
                 >
                     
-        <div id="example-916015"></div>
+        <div id="example-2309b1"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ExpandShrinkExample-916015.js"></script>
+        <script type="module" src="./ExpandShrinkExample-2309b1.js"></script>
     
                 </div>
             <h2 id="kolumntyper" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#kolumntyper">Kolumntyper</a></h2><p class="docs-paragraph">Kolumner har fyra olika typer som påverkar hur cellen presenteras:</p>
@@ -9220,9 +9230,9 @@ or deselected.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">bugfix/screen-size (<a href="https://github.com/Forsakringskassan/designsystem/commits/8300d0ed01768fcc06acf9317406f58db9908a2b">8300d0e</a>)<br />
+<div class="footer__right"><div class="version">bugfix/screen-size (<a href="https://github.com/Forsakringskassan/designsystem/commits/77e1d225c2f7694ef2a5ac9e456437befd619e3c">77e1d22</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/446">PR 446</a><br />
-        2026-06-30 11:29
+        2026-07-03 06:25
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -9368,16 +9378,16 @@ or deselected.</p>
             integrity="sha384-MiyHuq1hbcemP/RGZgotKZC8qlPOYjlrbQ/VNcrv6ju3y4SnFHj2CvLfATECOQdA"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-801459.js"
+            src="../../assets/processors/selectable-version/select-version-fbf7e5.js"
             type="module"
             crossorigin
-            integrity="sha384-nVGvrRuncTDhwriMxkXJW7p9SE+YZkDgIn9Gxv0MwqL5N0MeqzNPH8But3UIrgD6"
+            integrity="sha384-flGf7NT3393JR3Qgum8tzPaJEjCoLnPNIgraUDLPeFOaJdG6y+3Fu8gsWFW4tbxn"
             
         ></script><script
-            src="../../assets/main-1c86eb.js"
+            src="../../assets/main-b932af.js"
             type="module"
             crossorigin
-            integrity="sha384-lAWjYW1IfAutGpOc8VEwby0Q0zo9QlSJMSea8yVktvA9xgr0CYC8qrcWAoUvCz8o"
+            integrity="sha384-iVFZ2faFoAQpmbVwAU1IgFtpHnEj/Pj4moE9z5xF9FCKJ+e3sEaXXFk6PMwQlwl/"
             
         ></script>
     </body>

@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>FK Documentation generator - FK Documentation generator</title><link
             rel="stylesheet"
-            href="./assets/docs-6737fe.css"
+            href="./assets/docs-f01f00.css"
             crossorigin
-            integrity="sha384-lCl1LqZsfOIpZEt6XMchanSYueDU8Rm/BTPFBScUNXdm/0twi9O919oiUOklUIH+"
+            integrity="sha384-MhViHIByy0d5QFMAVuO9sTt+JfVRBx6QK9rXklFi77nzVcRv8OfrLA9rFp/lW2UU"
             
         />
         <link
@@ -22,12 +22,12 @@
         <script type="importmap">
             {
   "imports": {
-    "vue": "./assets/vendor-vue-5ec080.js",
-    "@forsakringskassan/docs-live-example": "./assets/vendor-forsakringskassan-docs-live-example-e77205.js"
+    "vue": "./assets/vendor-vue-013b25.js",
+    "@forsakringskassan/docs-live-example": "./assets/vendor-forsakringskassan-docs-live-example-e8652e.js"
   },
   "integrity": {
-    "./assets/vendor-vue-5ec080.js": "sha384-gs192ncfFJwhno/cvRdXGH+jYE5XKrbqOaSi2xM8w6DAe1aLfFy8JHgNkDCx+isP",
-    "./assets/vendor-forsakringskassan-docs-live-example-e77205.js": "sha384-DsovFPooLKpiiaZiNa3CqNblTphlEp/J+pqN41M1kxsCiie+UVPgLJD/7vEfv84K"
+    "./assets/vendor-vue-013b25.js": "sha384-tWAgGQLHH35yZtbioh8SahIP+aEUDHSmyk17aGbk6usyy1TUUfqSlOzThQ6kFOGU",
+    "./assets/vendor-forsakringskassan-docs-live-example-e8652e.js": "sha384-d82rZvzXpCRrN3u2oiPl0nMQP2A2dJrXryj6w8aaJwrxHSw7C2V18uERg89m4CAL"
   }
 }
         </script><script
@@ -38,10 +38,10 @@
             
         ></script><link
     rel="preload"
-    href="./search-data-b1112c.json"
+    href="./search-data-5ef4ef.json"
     as="fetch"
     crossorigin
-    integrity="sha384-hr0VVfUt7o6G+FAGff9LzQUJI38ZKKKmMtok0e+LLmMqxAN4/B4E5cXRGCqgMqS1"
+    integrity="sha384-DQgsMfFCNxDubrbqYJHaBktt6UoqYPHZEiRGnMRVS0iWRQh5ZXAP9AUhuIug5koV"
     id="search-data"
 />
 
@@ -96,17 +96,12 @@
             <a class="docs-page-header__app-name" href="./index.html"> FK Documentation generator </a>
         </div>
         <div class="docs-page-header__right"><div class="docs-mobile-nav">
-    <input
-        id="mobile-toggle"
-        type="checkbox"
-        class="docs-mobile-nav__toggle"
-        aria-label="Open/close menu"
-    />
+    <input id="mobile-toggle" type="checkbox" class="sr-only" aria-label="Open/close menu" />
     <label for="mobile-toggle" class="docs-mobile-nav-label">
         <svg class="docs-icon"><use href="#docs-icon-menu"></use></svg>
         <span>Menu</span>
     </label>
-    <nav id="nav-container" class="docs-mobile-navigation" aria-label="Mobile primär">
+    <nav id="nav-container" class="docs-mobile-navigation" aria-label="Mobile primary">
         <div class="docs-mobile-nav__header">
             <label for="mobile-toggle" class="docs-mobile-nav-close">
                 <span class="docs-mobile-nav-close__text">Close</span>
@@ -115,7 +110,7 @@
                 </svg>
             </label>
         </div><div id="mobile-sidenav">
-<div class="docs-mobile-nav-wrapper">
+<div class="docs-mobile-nav-wrapper" >
 <ul class="docs-mobile-nav__list">
 
 
@@ -1371,9 +1366,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        bugfix/screen-size (<a href="https://github.com/Forsakringskassan/docs-generator/commits/e6b154086ca6612d8741c442150aaf200ffeec5d">e6b1540</a>)<br />
+        bugfix/screen-size (<a href="https://github.com/Forsakringskassan/docs-generator/commits/9163a13478b2a7b5eb38cf9f0f7f6d76f6134b86">9163a13</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/446">PR 446</a><br />
-        2026-06-30 11:26
+        2026-07-03 06:22
     </span>
 </div>
 </div>
@@ -1404,7 +1399,7 @@
             <h2 id="setup" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#setup">Setup</a></h2><h3 id="watch_development_mode" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#watch_development_mode">Watch (development mode)</a></h3><p class="docs-paragraph">You can start a development server with watch for incremental builds using <code>.serve()</code>.</p>
 
                 <div
-                    id="example-58b7c2"
+                    id="example-ec4044"
                     class="code-preview code-preview--default"
                     data-test="watch"
                     
@@ -1424,9 +1419,7 @@
     <span class="hljs-attr">processors</span>: [<span class="hljs-title function_">livereloadProcessor</span>({ <span class="hljs-attr">enabled</span>: <span class="hljs-literal">true</span> })],
 });
 
-docs.<span class="hljs-title function_">build</span>([
-    <span class="hljs-comment">/* ... */</span>
-]);
+docs.<span class="hljs-title function_">build</span>([<span class="hljs-comment">/* ... */</span>]);
 
 docs.<span class="hljs-title function_">serve</span>();
 </code></pre>
@@ -1434,7 +1427,7 @@ docs.<span class="hljs-title function_">serve</span>();
             <h3 id="vendor_alias" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#vendor_alias">Vendor alias</a></h3><p class="docs-paragraph">Vendor alias is optional, it lets you substitute one package for another when bundling. The example below substitutes the package <code>vue</code> with the package <code>vue/dist/esm.bundle.js</code>. When an alias is given the package can be imported using the given alias as well as the original package name. For instance, when using the following configuration &quot;vue&quot; can be imported and resolved as &quot;vue/dist/esm.bundle.js&quot;.</p>
 
                 <div
-                    id="example-6b2bf7"
+                    id="example-fa3877"
                     class="code-preview code-preview--default"
                     data-test="vendor-alias"
                     
@@ -1464,7 +1457,7 @@ docs.<span class="hljs-title function_">serve</span>();
             <h2 id="usage" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#usage">Usage</a></h2><h3 id="using_with_vue_2" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#using_with_vue_2">Using with Vue 2</a></h3><p class="docs-paragraph">Vue 2 requires an additional dependency to be installed:</p>
 
                 <div
-                    id="example-9c0018"
+                    id="example-21aa36"
                     class="code-preview code-preview--default"
                     
                     
@@ -1477,7 +1470,7 @@ docs.<span class="hljs-title function_">serve</span>();
             <p class="docs-paragraph">Create the <code>setup</code> callback in <code>docs/src/setup.ts</code>:</p>
 
                 <div
-                    id="example-1bba10"
+                    id="example-c1e40c"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile"
@@ -1500,7 +1493,7 @@ docs.<span class="hljs-title function_">serve</span>();
             <h3 id="using_with_vue_3" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#using_with_vue_3">Using with Vue 3</a></h3><p class="docs-paragraph">Create the <code>setup</code> callback in <code>docs/src/setup.ts</code>:</p>
 
                 <div
-                    id="example-19eab2"
+                    id="example-7f5c65"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile"
@@ -1532,7 +1525,7 @@ docs.<span class="hljs-title function_">serve</span>();
 <p class="docs-paragraph">Style can be compiled with <code>compileStyle(name, src, [options])</code>:</p>
 
                 <div
-                    id="example-d12e3d"
+                    id="example-f2574c"
                     class="code-preview code-preview--default"
                     
                     
@@ -1556,7 +1549,7 @@ docs.<span class="hljs-title function_">compileStyle</span>(<span class="hljs-st
             <p class="docs-paragraph">Where <code>docs/src/style.scss</code> contains:</p>
 
                 <div
-                    id="example-1dba58"
+                    id="example-6f45d6"
                     class="code-preview code-preview--default"
                     
                     
@@ -1569,7 +1562,7 @@ docs.<span class="hljs-title function_">compileStyle</span>(<span class="hljs-st
             <h3 id="markdown" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#markdown">Markdown</a></h3><h4 id="links_link" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#links_link">Links <code>&lcub;@link ...&rcub;</code></a></h4><p class="docs-paragraph">To create link to a different document use <code>&lcub;@link ID [TITLE]&rcub;</code>, e.g.:</p>
 
                 <div
-                    id="example-80ad66"
+                    id="example-f0e9c0"
                     class="code-preview code-preview--default"
                     
                     
@@ -1582,7 +1575,7 @@ docs.<span class="hljs-title function_">compileStyle</span>(<span class="hljs-st
             <p class="docs-paragraph">will be rendered as:</p>
 
             <div
-                id="example-732c88"
+                id="example-01d55c"
                 class="code-preview code-preview--default"
                 
                 
@@ -1640,7 +1633,7 @@ The following tags can be used:</p>
 <p class="docs-paragraph"><code>static</code> and <code>live</code> are used to manually set whenever the code should be run as a live example or not.</p>
 
                 <div
-                    id="example-86a5ce"
+                    id="example-ad17fd"
                     class="code-preview code-preview--default"
                     
                     
@@ -1654,7 +1647,7 @@ The following tags can be used:</p>
                 </div>
             
                 <div
-                    id="example-ef5a05"
+                    id="example-58a716"
                     class="code-preview code-preview--default"
                     
                     
@@ -1669,7 +1662,7 @@ alert(&quot;This is run in the browser&quot;);
             <p class="docs-paragraph">Examples can be imported using the <code>import</code> directive:</p>
 
                 <div
-                    id="example-a7ff72"
+                    id="example-0f0d32"
                     class="code-preview code-preview--default"
                     
                     
@@ -1686,7 +1679,7 @@ HTML-comments may be placed before or after the filename.</p>
 <p class="docs-paragraph">To import an example that uses the <a href="https://github.com/Forsakringskassan/docs-live-example">LiveExample</a> component you also need to use the <code>live-example</code> tag.</p>
 
                 <div
-                    id="example-9b133d"
+                    id="example-55bb59"
                     class="code-preview code-preview--default"
                     
                     
@@ -1718,7 +1711,7 @@ Default <code>true</code>.</p>
 <h3 id="inline_tags" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#inline_tags">Inline tags</a></h3><h4 id="link" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#link"><code>{@link ...}</code></a></h4><p class="docs-paragraph">Implicit title:</p>
 
                 <div
-                    id="example-a791c6"
+                    id="example-6e8973"
                     class="code-preview code-preview--default"
                     
                     
@@ -1731,7 +1724,7 @@ Default <code>true</code>.</p>
             <p class="docs-paragraph">Explicit title:</p>
 
                 <div
-                    id="example-338a33"
+                    id="example-61229a"
                     class="code-preview code-preview--default"
                     
                     
@@ -1745,7 +1738,7 @@ Default <code>true</code>.</p>
 <p class="docs-paragraph"><strong>Input:</strong></p>
 
                 <div
-                    id="example-6f592b"
+                    id="example-c08437"
                     class="code-preview code-preview--default"
                     
                     
@@ -1762,7 +1755,7 @@ See <a href="https://mozilla.github.io/nunjucks/templating.html">templating docu
 <p class="docs-paragraph">These custom filters and tags are available:</p>
 <h4 id="container" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#container"><code>container</code></a></h4>
                 <div
-                    id="example-d4beb7"
+                    id="example-bbf350"
                     class="code-preview code-preview--default"
                     
                     
@@ -1779,7 +1772,7 @@ Makes it possible to dynamically load icons and get access to icon metadata.
 The library must have been built using <code>@fkui/icon-lib-builder</code>.</p>
 
                 <div
-                    id="example-9abd37"
+                    id="example-514649"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile"
@@ -1795,7 +1788,7 @@ The library must have been built using <code>@fkui/icon-lib-builder</code>.</p>
                 </div>
             <h2 id="processors" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#processors">Processors</a></h2><h3 id="matomo" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#matomo">Matomo</a></h3>
                 <div
-                    id="example-38d31d"
+                    id="example-4ed1fb"
                     class="code-preview code-preview--default"
                     
                     
@@ -1816,7 +1809,7 @@ The library must have been built using <code>@fkui/icon-lib-builder</code>.</p>
             <p class="docs-paragraph">Optionally set <code>hostname</code> to limit which hostnames can run Matomo analytics:</p>
 
                 <div
-                    id="example-950eee"
+                    id="example-f596e9"
                     class="code-preview code-preview--default"
                     
                     
@@ -1988,16 +1981,16 @@ Multiple hostnames can be specified as an array.</p>
             integrity="sha384-zAoLcKQxzwmKl8WDuv2SdmMjcqkFzdJo6p4UsXF27ONwO6eGqJD0F2C0Aipv2cAC"
             
         ></script><script
-            src="./assets/processors/selectable-version/select-version-b72097.js"
+            src="./assets/processors/selectable-version/select-version-0a8e04.js"
             type="module"
             crossorigin
-            integrity="sha384-16DfYRRkg05OOPgEHirZ3T2fQNSBMw6cydd9rhJMuaouj42HE0/MbeE+P/EA5unk"
+            integrity="sha384-hVwTojm5R2qsXZaUolXJJ1KxgWjQ8GoiRUit9Ygml+rvuDwgFHgRUggdT9smLVap"
             
         ></script><script
-            src="./assets/main-190384.js"
+            src="./assets/main-152b95.js"
             type="module"
             crossorigin
-            integrity="sha384-M9CVvA+XTzhsisY3ujHcbTi5gWzf2dPoy2LDzBbxIvTrxPcsDc9k/vzUm/NFaWCX"
+            integrity="sha384-UHKkikbrZiETRACq7X+zhD+TkUQAbwQTlvpQdlyGYd3BEGEhchs9W7UY8/P2c6sZ"
             
         ></script>
     </body>
