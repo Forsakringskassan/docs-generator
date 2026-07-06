@@ -9,6 +9,9 @@ header {
         display: flex;
         flex-wrap: wrap;
         width: 100%;
+        // Keeps the right-aligned content (top-nav/toolbar) from drifting far away
+        // from the main page content on very wide/ultra-wide screens.
+        max-width: 1800px;
         color: var(--docs-header-text-color-default);
         padding: 1rem 2rem;
         align-items: center;
