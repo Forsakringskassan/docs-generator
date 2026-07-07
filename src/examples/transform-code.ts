@@ -57,6 +57,7 @@ function cutSnippets(code: string): string {
                     begin: 0,
                     end: index,
                 });
+                /* eslint-disable-next-line unicorn/no-break-in-nested-loop -- technical debt */
                 break;
             /* --- cut below --- */
             case "below":
@@ -65,6 +66,7 @@ function cutSnippets(code: string): string {
                     begin: index,
                     end: lines.length - 1,
                 });
+                /* eslint-disable-next-line unicorn/no-break-in-nested-loop -- technical debt */
                 break;
             /* --- cut begin --- */
             case "begin":
@@ -73,6 +75,7 @@ function cutSnippets(code: string): string {
                 if (buffer === -1) {
                     buffer = index;
                 }
+                /* eslint-disable-next-line unicorn/no-break-in-nested-loop -- technical debt */
                 break;
             /* --- cut end --- */
             case "end":
@@ -81,8 +84,10 @@ function cutSnippets(code: string): string {
                     end: index,
                 });
                 buffer = -1;
+                /* eslint-disable-next-line unicorn/no-break-in-nested-loop -- technical debt */
                 break;
             default:
+                /* eslint-disable-next-line unicorn/no-break-in-nested-loop -- technical debt */
                 break;
         }
     }
