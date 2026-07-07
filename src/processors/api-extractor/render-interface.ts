@@ -81,7 +81,11 @@ function collectMembers(
     >();
 
     for (const iface of hierarchy) {
-        for (const member of iface.members.filter(isSupported)) {
+        for (const member of iface.members) {
+            if (!isSupported(member)) {
+                /* eslint-disable-next-line unicorn/no-break-in-nested-loop -- technical debt */
+                continue;
+            }
             /* intentionally load the last seen member: overloaded members should only be displayed once */
             members.set(member.name, member);
         }
