@@ -112,7 +112,7 @@ export function generateNavtree(docs: DocumentPage[]): NavigationSection {
         let current = parent;
         while (anchestor !== ".") {
             anchestor = getParentKey(anchestor);
-            if (section[anchestor] as MutableNavigationSection | undefined) {
+            if (Object.hasOwn(section, anchestor)) {
                 section[anchestor].children.push(current);
                 break;
             }

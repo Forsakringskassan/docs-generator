@@ -13,7 +13,7 @@ export { type MOTDMessage } from "./motd-message";
  */
 export const motdProxy: MOTDApi = {
     get enabled() {
-        return Boolean(window[motdSymbol]);
+        return Object.hasOwn(window, motdSymbol);
     },
     showMessage(...args) {
         const api = window[motdSymbol] as MOTDApi | undefined;

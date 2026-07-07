@@ -101,7 +101,6 @@ export default [
 
     {
         rules: {
-            "unicorn/no-computed-property-existence-check": "off",
             "unicorn/no-declarations-before-early-exit": "off",
             "unicorn/no-duplicate-loops": "off",
             "unicorn/no-global-object-property-assignment": "off",
