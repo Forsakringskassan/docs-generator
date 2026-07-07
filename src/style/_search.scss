@@ -16,8 +16,11 @@ kbd {
     box-shadow: none;
     cursor: text;
     min-height: 2.5rem;
-    padding: 0 0.75rem;
     width: 100%;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding-inline-end: 0;
 }
 
 #search button:hover {
@@ -37,11 +40,11 @@ kbd {
 #search .search__icon {
     display: inline-block;
     height: 1rem;
-    margin-right: 0.5rem;
     max-height: 100%;
     max-width: 100%;
     pointer-events: none;
     width: 1rem;
+    flex-shrink: 0;
 }
 
 #search-dialog {
