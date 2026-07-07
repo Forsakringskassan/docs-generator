@@ -12,7 +12,7 @@ function* extractTerms(doc: DocumentPage): Generator<string> {
         yield doc.name;
     }
     if (component) {
-        for (const name of component.map((it) => it.name)) {
+        for (const { name } of component) {
             yield name;
         }
     }

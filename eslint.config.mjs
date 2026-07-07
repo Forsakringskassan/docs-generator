@@ -101,7 +101,6 @@ export default [
 
     {
         rules: {
-            "unicorn/no-duplicate-loops": "off",
             "unicorn/no-global-object-property-assignment": "off",
             "unicorn/no-top-level-assignment-in-function": "off",
             "unicorn/no-top-level-side-effects": "off",

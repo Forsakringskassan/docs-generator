@@ -33,7 +33,13 @@ export function htmlRedirectProcessor(): Processor {
         after: "render",
         async handler(context) {
             const { docs, outputFolder } = context;
-            for (const doc of docs.filter(isDocumentPage).filter(haveOutput)) {
+            for (const doc of docs) {
+                if (!isDocumentPage(doc)) {
+                    continue;
+                }
+                if (!haveOutput(doc)) {
+                    continue;
+                }
                 if (doc.format !== "redirect") {
                     continue;
                 }
