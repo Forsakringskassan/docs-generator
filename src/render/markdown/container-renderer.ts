@@ -23,14 +23,13 @@ function container(
     endLine: number,
     silent: boolean,
 ): boolean {
-    let pos = state.bMarks[startLine] + state.tShift[startLine];
-    let max = state.eMarks[startLine];
-
     // if it's indented more than 3 spaces, it should be a code block
     if (state.sCount[startLine] - state.blkIndent >= 4) {
         return false;
     }
 
+    let pos = state.bMarks[startLine] + state.tShift[startLine];
+    let max = state.eMarks[startLine];
     if (pos + 3 > max) {
         return false;
     }
@@ -52,15 +51,15 @@ function container(
         return false;
     }
 
-    const markup = state.src.slice(mem, pos);
-    const params = state.src.slice(pos, max).trim().split(/\s+/);
-    const kind = params[0];
-    const info = params.slice(1).join(" ");
-
     // Since start is found, we can report success here in validation mode
     if (silent) {
         return true;
     }
+
+    const markup = state.src.slice(mem, pos);
+    const params = state.src.slice(pos, max).trim().split(/\s+/);
+    const kind = params[0];
+    const info = params.slice(1).join(" ");
 
     // search end of block
     let nextLine = startLine;
