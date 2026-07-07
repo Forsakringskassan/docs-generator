@@ -34,12 +34,12 @@ export function tableOfContents(
 
 onContentReady(() => {
     const toc = document.querySelector("#outline");
-    const headings = document.querySelectorAll("#content h2");
 
     if (!toc) {
         return;
     }
 
+    const headings = document.querySelectorAll("#content h2");
     tableOfContents(toc, headings);
 });
 

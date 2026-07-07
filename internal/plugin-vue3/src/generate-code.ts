@@ -69,7 +69,6 @@ export function generateCode(options: ExampleOptions): ExampleResult {
     const selector = `#${exampleId}`;
     const asset = `${slug}-${id}.js`;
     const { descriptor, errors } = parse(code, { filename });
-    const scopeId = `data-v-${id}`;
 
     if (errors.length > 0) {
         if (isCI) {
@@ -87,6 +86,7 @@ export function generateCode(options: ExampleOptions): ExampleResult {
         };
     }
 
+    const scopeId = `data-v-${id}`;
     const hasScoped = descriptor.styles.some((e) => e.scoped);
     const styleContent = descriptor.styles
         .map((stylePart) => {

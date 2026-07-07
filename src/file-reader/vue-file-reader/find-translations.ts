@@ -241,11 +241,11 @@ export function findTranslations(
             const { node } = path;
             if (isTranslateCall(node)) {
                 const [name, ...defaultOrParams] = node.arguments;
-                const textArgument = defaultOrParams.find(isStringLiteral);
-                const paramArgument = defaultOrParams.find(isObjectExpression);
                 if (name.type !== "StringLiteral") {
                     return;
                 }
+                const textArgument = defaultOrParams.find(isStringLiteral);
+                const paramArgument = defaultOrParams.find(isObjectExpression);
                 const defaultTranslation = textArgument
                     ? textArgument.value
                     : null;
