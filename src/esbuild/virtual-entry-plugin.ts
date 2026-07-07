@@ -7,7 +7,7 @@ export type VirtualEntries = Record<string, string>;
 
 export function virtualEntryPlugin(entries: VirtualEntries): Plugin {
     function haveEntry(key: string): boolean {
-        return Boolean(entries[key]);
+        return Object.hasOwn(entries, key);
     }
 
     function getEntry(key: string): string {
