@@ -47,12 +47,15 @@ export function cssAssetProcessor(
                 };
                 switch (asset.options.appendTo) {
                     case "none":
+                        /* eslint-disable-next-line unicorn/no-break-in-nested-loop -- technical debt */
                         break;
                     case "head":
                         head.push(inject);
+                        /* eslint-disable-next-line unicorn/no-break-in-nested-loop -- technical debt */
                         break;
                     case "body":
                         body.push(inject);
+                        /* eslint-disable-next-line unicorn/no-break-in-nested-loop -- technical debt */
                         break;
                 }
                 context.log(info.filename, formatSize(info.size));

@@ -101,7 +101,6 @@ export default [
 
     {
         rules: {
-            "unicorn/no-break-in-nested-loop": "off",
             "unicorn/no-computed-property-existence-check": "off",
             "unicorn/no-declarations-before-early-exit": "off",
             "unicorn/no-duplicate-loops": "off",
