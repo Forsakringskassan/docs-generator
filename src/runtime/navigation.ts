@@ -174,7 +174,9 @@ function replaceContentOnClick(
         event.preventDefault();
         await replaceContent(href);
         history.pushState("", "", href);
+
         previousPath = location.pathname;
+
         window.scrollTo({ top: 0, behavior: "smooth" });
 
         /* remove old active link */

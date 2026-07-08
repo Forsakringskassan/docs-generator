@@ -101,7 +101,6 @@ export default [
 
     {
         rules: {
-            "unicorn/no-top-level-assignment-in-function": "off",
             "unicorn/no-top-level-side-effects": "off",
             "unicorn/no-unnecessary-boolean-comparison": "off",
             "unicorn/no-unreadable-for-of-expression": "off",
