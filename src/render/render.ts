@@ -43,6 +43,8 @@ interface ActiveNavigationSection extends NavigationSection {
 type ActiveNavigationNode = ActiveNavigationLeaf | ActiveNavigationSection;
 
 const exampleWorker = new Worker(exampleWorkerUrl);
+
+/* eslint-disable-next-line unicorn/no-top-level-side-effects -- technical debt */
 exampleWorker.unref();
 
 let taskRef = 1;
