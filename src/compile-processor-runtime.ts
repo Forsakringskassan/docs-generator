@@ -18,8 +18,8 @@ export function compileProcessorRuntime(
         if (processor.enabled === false) {
             continue;
         }
-        const { runtime } = processor;
-        for (const entry of runtime ?? []) {
+        const { runtime = [] } = processor;
+        for (const entry of runtime) {
             const assetName = [
                 "processors",
                 processor.name.replace(/-processor/, ""),
