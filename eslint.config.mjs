@@ -104,7 +104,6 @@ export default [
 
     {
         rules: {
-            "unicorn/no-unreadable-for-of-expression": "off",
             "unicorn/no-useless-else": "off",
             "unicorn/no-useless-recursion": "off",
             "unicorn/no-useless-template-literals": "off",

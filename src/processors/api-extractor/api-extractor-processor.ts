@@ -133,7 +133,8 @@ export function apiExtractorProcessor(
                 interface: [] as ApiInterface[],
             };
 
-            for (const filename of await getFilenames(patterns)) {
+            const filenames = await getFilenames(patterns);
+            for (const filename of filenames) {
                 const apiModel = new ApiModel();
                 const apiPackage = apiModel.loadPackage(filename);
                 walk(apiPackage, {
