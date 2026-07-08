@@ -20,4 +20,5 @@ declare global {
     }
 }
 
+/* eslint-disable-next-line unicorn/no-global-object-property-assignment -- technical debt */
 window.toggleMarkup = toggleMarkup;
