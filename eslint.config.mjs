@@ -104,7 +104,6 @@ export default [
 
     {
         rules: {
-            "unicorn/no-unnecessary-boolean-comparison": "off",
             "unicorn/no-unreadable-for-of-expression": "off",
             "unicorn/no-useless-else": "off",
             "unicorn/no-useless-recursion": "off",

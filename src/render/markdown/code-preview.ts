@@ -174,7 +174,7 @@ export function codePreview(
         );
         const testId = findTestId(tags) ?? findTag(tags, "name")?.value;
         const liveExample = tags.includes("live-example");
-        const staticCode = example.runtime === false || tags.includes("static");
+        const staticCode = !example.runtime || tags.includes("static");
         const noMarkup = tags.includes("nomarkup");
         const fullscreen = tags.includes("fullscreen");
         const modifier = getClassModifier(tags);
