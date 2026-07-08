@@ -25,4 +25,5 @@ export async function formatCode(
     return formatted.trim();
 }
 
+/* eslint-disable-next-line unicorn/no-top-level-side-effects -- required for worker to function */
 runAsWorker(formatCode);

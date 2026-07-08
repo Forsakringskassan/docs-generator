@@ -20,6 +20,7 @@ const docs = new Generator(import.meta.url, {
 
 /* --- cut above --- */
 
+/* eslint-disable-next-line unicorn/no-top-level-side-effects -- intended */
 await docs.build([
     {
         include: ["./docs/**/*.md"],

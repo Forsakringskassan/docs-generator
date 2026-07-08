@@ -55,11 +55,14 @@ export default [
 
     {
         name: "local/browser",
-        files: ["src/shims/vue.js"],
+        files: ["src/shims/vue.js", "src/runtime/**/*.ts"],
         languageOptions: {
             globals: {
                 ...globals.browser,
             },
+        },
+        rules: {
+            "unicorn/no-top-level-side-effects": "off",
         },
     },
 
@@ -101,7 +104,6 @@ export default [
 
     {
         rules: {
-            "unicorn/no-top-level-side-effects": "off",
             "unicorn/no-unnecessary-boolean-comparison": "off",
             "unicorn/no-unreadable-for-of-expression": "off",
             "unicorn/no-useless-else": "off",
