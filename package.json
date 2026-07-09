@@ -173,7 +173,7 @@
     "sass": "1.101.0",
     "ts-node": "10.9.2",
     "typescript": "6.0.3",
-    "vitest": "4.1.9"
+    "vitest": "4.1.10"
   },
   "peerDependencies": {
     "esbuild": "0.x",
