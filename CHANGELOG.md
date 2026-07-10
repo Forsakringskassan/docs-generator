@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [3.3.2](https://github.com/Forsakringskassan/docs-generator/compare/v3.3.1...v3.3.2) (2026-07-10)
+
+### Bug Fixes
+
+* **deps:** update dependency fs-extra to v11.3.6 ([eea23ac](https://github.com/Forsakringskassan/docs-generator/commit/eea23ac38fbd90099e2dd599dd696661ad5e94dd))
+* **deps:** update dependency i18next to v26.3.4 ([3433e18](https://github.com/Forsakringskassan/docs-generator/commit/3433e18d85bead086d0dc9e75155aa11e12bac1c))
+* **deps:** update dependency markdown-it to v14.3.0 ([3986030](https://github.com/Forsakringskassan/docs-generator/commit/3986030349922f67e0a169ea29783f9d17ce1886))
+
 ## [3.3.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.3.0...v3.3.1) (2026-07-03)
 
 ### Bug Fixes
