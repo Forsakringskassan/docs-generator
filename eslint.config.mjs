@@ -104,7 +104,6 @@ export default [
 
     {
         rules: {
-            "unicorn/prefer-queue-microtask": "off",
             "unicorn/prefer-split-limit": "off",
             "unicorn/prefer-string-repeat": "off",
             "unicorn/prefer-unicode-code-point-escapes": "off",

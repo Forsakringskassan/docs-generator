@@ -32,10 +32,10 @@ export function toggleMarkup(button: HTMLElement): void {
         expand.style.height = `${String(rect.height)}px`;
         expand.classList.add("animate-expand");
         expand.classList.add("animate-expand--expanded");
-        setTimeout(() => {
+        queueMicrotask(() => {
             expand.classList.remove("animate-expand--expanded");
             expand.style.height = "0px";
-        }, 0);
+        });
         setTimeout(() => {
             expand.hidden = true;
         }, 500);

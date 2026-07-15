@@ -7,7 +7,7 @@
 export function onContentReady(callback: () => void): void {
     const { readyState } = document;
     if (readyState === "complete" || readyState === "interactive") {
-        setTimeout(callback, 0);
+        queueMicrotask(callback);
     } else {
         document.addEventListener("DOMContentLoaded", callback);
     }
