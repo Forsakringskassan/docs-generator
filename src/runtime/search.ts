@@ -89,7 +89,6 @@ function setup(): void {
             return [];
         }
 
-        /* eslint-disable-next-line unicorn/no-array-method-this-argument -- false positive */
         const idxs = uf.filter(index.terms, searchTerm);
         if (!idxs) {
             return [];
