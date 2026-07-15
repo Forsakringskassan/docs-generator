@@ -39,6 +39,7 @@ export function highlight({
         case "plaintext":
             return `<code>${escapeHtml(source)}</code>`;
         case "vue":
+            /* eslint-disable-next-line unicorn/no-useless-recursion -- technical debt */
             return highlight({ source, language: "html" });
         case "html":
     }

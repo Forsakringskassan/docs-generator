@@ -13,7 +13,7 @@ async function globAll(
     }
 
     if (!Array.isArray(pattern)) {
-        return globAll([pattern]);
+        pattern = [pattern];
     }
 
     const results = await Promise.all(
