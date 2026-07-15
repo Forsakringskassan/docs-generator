@@ -53,9 +53,8 @@ function mockRootUrl(fromPath: string): string {
             .split("/")
             .map(() => "..")
             .join("/");
-    } else {
-        return ".";
     }
+    return ".";
 }
 
 function mockDocument(fromPath: string): DocumentLike {

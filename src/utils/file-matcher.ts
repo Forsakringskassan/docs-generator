@@ -46,12 +46,12 @@ export function fileMatcher(patterns: string[]): FileMatcher {
             const additionalInfo = context ? ` (${context})` : "";
             const message = `No files matched pattern "${filename}"${additionalInfo}`;
             throw new Error(message);
-        } else if (matches.length > 1) {
+        }
+        if (matches.length > 1) {
             const additionalInfo = context ? ` (${context})` : "";
             const message = `Multiple files matched pattern "${filename}"${additionalInfo}. Searched in [${patterns.join(", ")}]`;
             throw new Error(message);
-        } else {
-            return matches[0];
         }
+        return matches[0];
     });
 }

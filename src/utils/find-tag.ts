@@ -13,7 +13,6 @@ export function findTag(
     }
     if (match === tag) {
         return { tag, value: null };
-    } else {
-        return { tag, value: match.slice(tag.length + 1) };
     }
+    return { tag, value: match.slice(tag.length + 1) };
 }

@@ -76,9 +76,8 @@ async function getGitBranch(): Promise<string> {
     );
     if (branch === "HEAD" || branch === "") {
         return "unknown";
-    } else {
-        return branch;
     }
+    return branch;
 }
 
 async function getSCMData(

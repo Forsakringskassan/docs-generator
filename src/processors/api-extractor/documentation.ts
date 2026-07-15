@@ -18,9 +18,8 @@ export function documentation(node: ApiItem | undefined): string | undefined {
     if (node && isDocumentedItem(node)) {
         const { tsdocComment } = node;
         return renderNode(tsdocComment?.summarySection).trim();
-    } else {
-        return undefined;
     }
+    return undefined;
 }
 
 /**

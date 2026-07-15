@@ -82,13 +82,12 @@ function fillActiveNavigation(
             active,
             children,
         };
-    } else {
-        const active = doc.id === node.id;
-        return {
-            ...node,
-            active,
-        };
     }
+    const active = doc.id === node.id;
+    return {
+        ...node,
+        active,
+    };
 }
 
 function findSidenav(
@@ -116,9 +115,8 @@ function cache(
         if (existsSync(cacheFile)) {
             copyFileSync(cacheFile, outputFile);
             return false;
-        } else {
-            return true;
         }
+        return true;
     };
 }
 
@@ -427,9 +425,8 @@ export async function render(
     const expandedDst = dst.replaceAll(/\[([\s\S]+)\]/g, (match, key) => {
         if (key === "hash") {
             return getFingerprint(doc.body);
-        } else {
-            return match;
         }
+        return match;
     });
     const writeFile = fs.writeFile(expandedDst, content, "utf8");
 

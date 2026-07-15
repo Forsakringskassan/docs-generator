@@ -10,7 +10,8 @@ export function sortNavigationTree(tree: NavigationSection): void {
     tree.children.sort((a, b) => {
         if (a.sortorder < b.sortorder) {
             return -1;
-        } else if (a.sortorder > b.sortorder) {
+        }
+        if (a.sortorder > b.sortorder) {
             return 1;
         }
 

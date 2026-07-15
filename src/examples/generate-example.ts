@@ -78,18 +78,17 @@ function generateVueExample(options: ExampleOptions): ExampleResult {
                 parent,
             },
         };
-    } else {
-        return {
-            source: sourcecode,
-            language: "plaintext",
-            comments: [],
-            tags,
-            markup,
-            output: null,
-            runtime: true,
-            task: null,
-        };
     }
+    return {
+        source: sourcecode,
+        language: "plaintext",
+        comments: [],
+        tags,
+        markup,
+        output: null,
+        runtime: true,
+        task: null,
+    };
 }
 
 function generateStaticExample(options: ExampleOptions): ExampleResult {

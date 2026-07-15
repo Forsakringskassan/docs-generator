@@ -20,7 +20,8 @@ function getTextContent(element: HTMLElement): string {
     return Array.from(element.childNodes, (child) => {
         if (isTextNode(child)) {
             return child.data;
-        } else if (isHTMLElementNode(child)) {
+        }
+        if (isHTMLElementNode(child)) {
             return getTextContent(child);
         }
     }).join("");

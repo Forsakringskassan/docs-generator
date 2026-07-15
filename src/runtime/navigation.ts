@@ -214,11 +214,10 @@ function getVisibleHeight(el: HTMLElement): number {
     const rect = el.getBoundingClientRect();
     if (rect.bottom < 0 || rect.top > clientHeight) {
         return 0;
-    } else {
-        const top = Math.max(-rect.top, 0);
-        const bottom = rect.height - Math.max(rect.bottom - clientHeight, 0);
-        return Math.floor(bottom - top);
     }
+    const top = Math.max(-rect.top, 0);
+    const bottom = rect.height - Math.max(rect.bottom - clientHeight, 0);
+    return Math.floor(bottom - top);
 }
 
 /**

@@ -54,9 +54,8 @@ export function generateTranslationTable(
                                 .map((it) => {
                                     if (it.description) {
                                         return `<li><code>${htmlencode(it.name)}</code> ${EM_DASH} ${renderInline(it.description)}</li>`;
-                                    } else {
-                                        return `<li><code>${htmlencode(it.name)}</code></li>`;
                                     }
+                                    return `<li><code>${htmlencode(it.name)}</code></li>`;
                                 })
                                 .join("")}
                             ${haveParameters ? `</ul>` : ""}

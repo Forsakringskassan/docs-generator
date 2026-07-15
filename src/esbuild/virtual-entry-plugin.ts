@@ -23,9 +23,8 @@ export function virtualEntryPlugin(entries: VirtualEntries): Plugin {
                         path: args.path,
                         namespace: pluginName,
                     };
-                } else {
-                    return undefined;
                 }
+                return undefined;
             });
             build.onLoad({ filter: /.*/, namespace: pluginName }, (args) => {
                 /* args.path is "virtual:${sourceFile}:${outputFile}" */

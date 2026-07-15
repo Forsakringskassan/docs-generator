@@ -55,9 +55,8 @@ function getStandalonePath(output: string | null): string | null {
 function ensureTrailingNewline(text: string): string {
     if (text.endsWith("\n")) {
         return text;
-    } else {
-        return `${text}\n`;
     }
+    return `${text}\n`;
 }
 
 export function codePreview(

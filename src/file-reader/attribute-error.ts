@@ -93,10 +93,10 @@ export class AttributeError extends Error {
                 message: suggestion,
             });
             return [message, "", codeframe].join("\n");
-        } else if (d <= threshold) {
-            return [message, "", suggestion].join("\n");
-        } else {
-            return message;
         }
+        if (d <= threshold) {
+            return [message, "", suggestion].join("\n");
+        }
+        return message;
     }
 }

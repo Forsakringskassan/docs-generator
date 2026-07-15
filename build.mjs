@@ -27,9 +27,8 @@ const sassCSSVariableImporter = {
         const filePath = fileURLToPath(canonicalUrl);
         if (existsSync(filePath)) {
             return canonicalUrl;
-        } else {
-            return null;
         }
+        return null;
     },
     async load(canonicalUrl) {
         const { default: module } = await import(canonicalUrl);

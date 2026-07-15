@@ -10,7 +10,6 @@ import { runCommand } from "../run-command";
 export const gitCommitHash = memoize((format: "full" | "short" = "short") => {
     if (format === "full") {
         return runCommand(`git rev-parse HEAD`);
-    } else {
-        return runCommand(`git rev-parse --short HEAD`);
     }
+    return runCommand(`git rev-parse --short HEAD`);
 });

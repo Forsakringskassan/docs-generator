@@ -12,9 +12,8 @@ export function getActualMessage(message: string): string {
     const match = messageRegex.exec(message);
     if (match) {
         return match[1].trim();
-    } else {
-        return message;
     }
+    return message;
 }
 
 /**

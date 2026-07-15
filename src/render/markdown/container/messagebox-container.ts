@@ -26,9 +26,8 @@ export function messageboxContainer(
     ): string {
         if (customTitle && customTitle.length > 0) {
             return customTitle.join(" ");
-        } else {
-            return options.title[variant] ?? defaultTitle[variant] ?? "";
         }
+        return options.title[variant] ?? defaultTitle[variant] ?? "";
     }
 
     function parseInfo(info: string | undefined): {
@@ -40,13 +39,10 @@ export function messageboxContainer(
             const customTitle = info ? info.split(" ") : [];
             const title = getTitle(variant, customTitle);
             return { variant, title };
-        } else {
-            const [variant = "info", ...customTitle] = info
-                ? info.split(" ")
-                : [];
-            const title = getTitle(variant, customTitle);
-            return { variant, title };
         }
+        const [variant = "info", ...customTitle] = info ? info.split(" ") : [];
+        const title = getTitle(variant, customTitle);
+        return { variant, title };
     }
 
     return (tokens, index) => {

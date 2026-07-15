@@ -57,9 +57,8 @@ export function generateEventTable(
                                 .map((it) => {
                                     if (it.description) {
                                         return `<li><code>${htmlencode(it.name)}: ${htmlencode(it.type)}</code> ${EM_DASH} ${renderInline(it.description)}</li>`;
-                                    } else {
-                                        return `<li><code>${htmlencode(it.name)}: ${htmlencode(it.type)}</code></li>`;
                                     }
+                                    return `<li><code>${htmlencode(it.name)}: ${htmlencode(it.type)}</code></li>`;
                                 })
                                 .join("")}
                             ${haveProperties ? `</ul>` : ""}

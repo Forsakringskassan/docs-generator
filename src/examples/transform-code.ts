@@ -159,9 +159,8 @@ function maybeDedent(value: string): string {
      */
     if (/^\s/.test(value)) {
         return dedent(value);
-    } else {
-        return value;
     }
+    return value;
 }
 
 /* transformations to apply based on language, transforms are run from left to right */

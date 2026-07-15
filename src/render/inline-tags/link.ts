@@ -17,11 +17,11 @@ function getRelativeUrl(from: DocumentPage, to: DocumentPage): string {
     const relative = path.relative(fromDir, toResolved);
     if (fromDir === toDir) {
         return relative === "index.html" ? "./" : `./${relative}`;
-    } else if (relative.endsWith("/index.html")) {
-        return path.dirname(relative);
-    } else {
-        return relative;
     }
+    if (relative.endsWith("/index.html")) {
+        return path.dirname(relative);
+    }
+    return relative;
 }
 
 function getLinkTitle(
@@ -35,9 +35,8 @@ function getLinkTitle(
     const { title, component } = doc.attributes;
     if (component?.some((it) => it.name === key)) {
         return `<code>${key}</code>`;
-    } else {
-        return title ?? doc.name;
     }
+    return title ?? doc.name;
 }
 
 function renderLink(link: {

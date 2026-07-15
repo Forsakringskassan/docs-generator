@@ -82,9 +82,8 @@ async function importExpress(): Promise<typeof import("express")> {
                 "docs-generator serve() requires the optional peerDependency express to be installed",
                 { cause: err },
             );
-        } else {
-            throw err;
         }
+        throw err;
     }
 }
 
