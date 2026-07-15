@@ -79,6 +79,7 @@ export function codePreview(
         if (language === "import") {
             const parsed = parseImport(content);
             const importedContent = getImportedSource(parsed.filename);
+            /* eslint-disable-next-line unicorn/no-useless-recursion -- technical debt */
             return getSource(importedContent, parsed.extension, tags, env);
         }
 
