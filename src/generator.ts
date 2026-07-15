@@ -174,7 +174,7 @@ async function stage(
         try {
             const prefix = (() => {
                 if (verbose) {
-                    return isLast ? "      " : "  │   ";
+                    return isLast ? " ".repeat(6) : "  │   ";
                 }
                 return "";
             })();

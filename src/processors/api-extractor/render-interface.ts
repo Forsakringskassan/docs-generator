@@ -138,7 +138,7 @@ function renderProperties(
                       if (it.trim() === "") {
                           return "\n";
                       }
-                      const prefix = i === 0 ? ": " : "    ";
+                      const prefix = i === 0 ? ": " : " ".repeat(4);
                       return `${prefix}${it.trim()}\n`;
                   })
                 : [": &dash;\n"];
