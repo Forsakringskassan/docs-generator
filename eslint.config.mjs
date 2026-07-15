@@ -104,7 +104,6 @@ export default [
 
     {
         rules: {
-            "unicorn/numeric-separators-style": "off",
             "unicorn/prefer-array-some": "off",
             "unicorn/prefer-await": "off",
             "unicorn/prefer-direct-iteration": "off",
