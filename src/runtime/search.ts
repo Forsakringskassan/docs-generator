@@ -199,7 +199,9 @@ function setup(): void {
 
     /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
     fetch(url)
+        /* eslint-disable-next-line unicorn/prefer-await -- technical debt */
         .then((response) => response.json())
+        /* eslint-disable-next-line unicorn/prefer-await -- technical debt */
         .then((value: SearchIndex) => {
             index = value;
             updateResults();
