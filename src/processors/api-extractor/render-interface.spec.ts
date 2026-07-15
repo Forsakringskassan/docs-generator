@@ -20,9 +20,7 @@ expect.addSnapshotSerializer({
     test() {
         return true;
     },
-    serialize(value) {
-        return String(value);
-    },
+    serialize: String,
 });
 
 function isApiFunction(item: ApiItem): item is ApiInterface {

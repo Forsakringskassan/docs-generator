@@ -5,9 +5,7 @@ expect.addSnapshotSerializer({
     test() {
         return true;
     },
-    serialize(value: unknown) {
-        return String(value);
-    },
+    serialize: String,
 });
 
 describe("formatCode()", () => {
