@@ -37,7 +37,7 @@ export function headingLevel(options: {
             ids.add(id);
 
             return tag.replace(/h(\d)/, (_, n: string) => {
-                const level = Number.parseInt(n, 10) + offset;
+                const level = Number(n) + offset;
                 env.currentHeading = level;
                 return `<h${String(level)} id="${id}" class="docs-heading docs-heading--h${n}"><a class="header-anchor" href="#${id}">`;
             });
@@ -46,7 +46,7 @@ export function headingLevel(options: {
         md.renderer.rules.heading_close = function (tokens, idx) {
             const { tag } = tokens[idx];
             return tag.replace(/h(\d)/, (_, n: string) => {
-                const level = Number.parseInt(n, 10) + offset;
+                const level = Number(n) + offset;
                 return `</a></h${String(level)}>`;
             });
         };
