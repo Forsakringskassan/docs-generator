@@ -98,7 +98,7 @@ export async function serve(options: ServeOptions): Promise<void> {
     printMenu(server.address() as AddressInfo);
 
     const livereload = tinylr();
-    livereload.listen(35729);
+    livereload.listen(35_729);
 
     const watcher = watch(options.watch);
     const rebuild = createRebuilder(options.rebuild, (filePath: string[]) => {
