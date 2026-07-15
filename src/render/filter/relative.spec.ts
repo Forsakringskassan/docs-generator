@@ -39,6 +39,7 @@ it("should handle when url is the same as the current path", () => {
 
 it("should return url as-is when url is external", () => {
     expect.assertions(3);
+    /* eslint-disable-next-line unicorn/prefer-https -- intentional for test */
     const url = ["http://example.net", "https://example.net", "//example.net"];
     const doc = { fileInfo: { path: "./foo" } };
     expect(relative(url[0], doc)).toBe(url[0]);

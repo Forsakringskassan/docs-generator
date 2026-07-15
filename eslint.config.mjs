@@ -104,7 +104,6 @@ export default [
 
     {
         rules: {
-            "unicorn/prefer-https": "off",
             "unicorn/prefer-iterator-to-array": "off",
             "unicorn/prefer-native-coercion-functions": "off",
             "unicorn/prefer-number-coercion": "off",

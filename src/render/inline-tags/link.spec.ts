@@ -144,9 +144,11 @@ it("should handle hash and title", () => {
 
 it("should handle absolute url (http)", () => {
     expect.assertions(1);
+    /* eslint-disable-next-line unicorn/prefer-https -- intentional for test */
     const text = "{@link http://example.net foo}";
     const result = processInlineTags(tags, doc, docs, text, rethrow);
     expect(result).toMatchInlineSnapshot(
+        /* eslint-disable-next-line unicorn/prefer-https -- intentional for test */
         `<a href="http://example.net">foo</a>`,
     );
 });
