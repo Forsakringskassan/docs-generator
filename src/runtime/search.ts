@@ -146,7 +146,7 @@ function setup(): void {
     function updateResults(): void {
         const searchResults = getSearchResults(searchTerm);
         if (searchResults.length === 0) {
-            results.innerHTML = "";
+            results.replaceChildren();
             return;
         }
 
@@ -179,7 +179,7 @@ function setup(): void {
             fragment.append(li);
         }
 
-        results.innerHTML = "";
+        results.replaceChildren();
         results.append(fragment);
     }
 

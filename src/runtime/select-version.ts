@@ -124,7 +124,7 @@ function updateVersionList(element: Element | null, versions: string[]): void {
     }
     /* eslint-enable @typescript-eslint/no-non-null-assertion */
 
-    element.innerHTML = "";
+    element.replaceChildren();
     element.append(ul);
 }
 
@@ -134,7 +134,7 @@ function setErrorMessage(element: Element | null): void {
     }
     const p = document.createElement("p");
     p.textContent = "Det gick inte att hitta några tidigare versioner!";
-    element.innerHTML = "";
+    element.replaceChildren();
     element.append(p);
 }
 
