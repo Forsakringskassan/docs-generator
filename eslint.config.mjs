@@ -104,7 +104,6 @@ export default [
 
     {
         rules: {
-            "unicorn/prefer-split-limit": "off",
             "unicorn/prefer-string-repeat": "off",
             "unicorn/prefer-unicode-code-point-escapes": "off",
             "unicorn/prefer-url-href": "off",
