@@ -104,7 +104,6 @@ export default [
 
     {
         rules: {
-            "unicorn/prefer-direct-iteration": "off",
             "unicorn/prefer-dom-node-replace-children": "off",
             "unicorn/prefer-early-return": "off",
             "unicorn/prefer-https": "off",

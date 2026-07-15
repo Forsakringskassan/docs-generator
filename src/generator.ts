@@ -300,7 +300,7 @@ function createContext(options: {
         },
 
         getAllTemplateData() {
-            return Object.fromEntries(templateData.entries()) as TemplateData &
+            return Object.fromEntries(templateData) as TemplateData &
                 Record<string, unknown>;
         },
 
