@@ -104,7 +104,6 @@ export default [
 
     {
         rules: {
-            "unicorn/no-useless-template-literals": "off",
             "unicorn/numeric-separators-style": "off",
             "unicorn/prefer-array-some": "off",
             "unicorn/prefer-await": "off",

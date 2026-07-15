@@ -31,7 +31,7 @@ function capitalize(value) {
 async function cssVariablesFileReader(filePath) {
     const { default: module } = await import(`./${filePath}`);
     const groups = Object.entries(module).map(([key, entry]) => {
-        const name = key === "*" ? "Global" : `${capitalize(key)}`;
+        const name = key === "*" ? "Global" : capitalize(key);
         const prefix = key === "*" ? "--docs-" : `--docs-${key}-`;
         const heading = `## ${name}`;
         const description = entry.description;
