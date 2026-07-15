@@ -7,11 +7,7 @@ const replacements = {
 function findVersion(text: string): [number, number, number] | null {
     const match = /(\d+)\.(\d+)\.(\d+) \(\d+-\d+-\d+\)/.exec(text);
     if (match) {
-        return [
-            Number.parseInt(match[1], 10),
-            Number.parseInt(match[2], 10),
-            Number.parseInt(match[3], 10),
-        ];
+        return [Number(match[1]), Number(match[2]), Number(match[3])];
     }
     return null;
 }

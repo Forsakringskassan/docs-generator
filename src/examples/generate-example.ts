@@ -6,7 +6,7 @@ import { type ExampleResult } from "./example-result";
 import { getExampleName } from "./get-example-name";
 import { generateCode as vue3 } from "plugin-vue3";
 
-const vueMajor = Number.parseInt(version.split(".", 2)[0], 10) as 2 | 3;
+const vueMajor = Number(version.split(".", 2)[0]) as 2 | 3;
 
 function vueGenerator(): typeof vue3 {
     switch (vueMajor) {
