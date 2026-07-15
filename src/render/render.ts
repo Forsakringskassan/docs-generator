@@ -158,11 +158,13 @@ async function compileExamples(options: {
 
     return new Promise((resolve, reject) => {
         function onmessage(message: CompileResponse<number>): void {
-            if (message.ref === ref) {
-                exampleWorker.off("message", onmessage);
-                exampleWorker.off("error", onerror);
-                resolve();
+            if (message.ref !== ref) {
+                return;
             }
+
+            exampleWorker.off("message", onmessage);
+            exampleWorker.off("error", onerror);
+            resolve();
         }
 
         function onerror(err: Error): void {

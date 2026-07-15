@@ -251,14 +251,16 @@ function setup(): void {
     });
 
     document.addEventListener("keydown", (event) => {
-        if (event.ctrlKey && event.key === "k") {
-            event.preventDefault();
-            input.value = searchTerm = "";
-            updateResults();
-            dialog.showModal();
-            document.body.addEventListener("click", clickOutside);
-            document.body.classList.add("docs-modal-active");
+        if (!(event.ctrlKey && event.key === "k")) {
+            return;
         }
+
+        event.preventDefault();
+        input.value = searchTerm = "";
+        updateResults();
+        dialog.showModal();
+        document.body.addEventListener("click", clickOutside);
+        document.body.classList.add("docs-modal-active");
     });
 
     window.addEventListener("docs:navigation", () => {
