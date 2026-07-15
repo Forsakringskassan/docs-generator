@@ -95,7 +95,7 @@ function findSidenav(
     tree: NavigationSection,
 ): ActiveNavigationNode | undefined {
     const { path, name } = doc.fileInfo;
-    const category = path === "." ? name : path.split("/")[1];
+    const category = path === "." ? name : path.split("/", 2)[1];
     const sidenav = tree.children
         .filter(isNavigationSection)
         .find((it) => it.key === `./${category}`);
