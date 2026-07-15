@@ -91,7 +91,7 @@ function collectMembers(
         }
     }
 
-    return [...members.values()];
+    return members.values().toArray();
 }
 
 function isSupported(item: {
