@@ -76,7 +76,7 @@ export function findTemplate(
     const searchPaths = folders.map((it) => {
         return path.join(it, template);
     });
-    const found = searchPaths.find((it) => fs.existsSync(it));
+    const found = searchPaths.some((it) => fs.existsSync(it));
     if (!found) {
         throw new MissingTemplateError(from, template, format, folders);
     }

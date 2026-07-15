@@ -4,6 +4,6 @@
  * @internal
  */
 export function hasTag(tags: string[], tag: string): boolean {
-    const match = tags.find((it) => it === tag || it.startsWith(`${tag}=`));
-    return Boolean(match);
+    const match = tags.some((it) => it === tag || it.startsWith(`${tag}=`));
+    return match;
 }

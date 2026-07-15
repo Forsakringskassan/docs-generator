@@ -104,7 +104,6 @@ export default [
 
     {
         rules: {
-            "unicorn/prefer-array-some": "off",
             "unicorn/prefer-await": "off",
             "unicorn/prefer-direct-iteration": "off",
             "unicorn/prefer-dom-node-replace-children": "off",
