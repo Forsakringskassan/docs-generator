@@ -45,12 +45,11 @@ export function isNavigationSection(
 function pathFromDoc({ fileInfo }: DocumentPage): [string, boolean] {
     if (fileInfo.name === "index") {
         return [fileInfo.path.replaceAll("\\", "/"), true];
-    } else {
-        return [
-            `./${path.join(fileInfo.path, fileInfo.name).replaceAll("\\", "/")}`,
-            false,
-        ];
     }
+    return [
+        `./${path.join(fileInfo.path, fileInfo.name).replaceAll("\\", "/")}`,
+        false,
+    ];
 }
 
 function getParentKey(name: string): string {
@@ -227,14 +226,13 @@ export function generateNavtree(docs: DocumentPage[]): NavigationSection {
     const root = section["."] as MutableNavigationSection | undefined;
     if (root) {
         return root;
-    } else {
-        return {
-            key: ".",
-            title: "",
-            path: "",
-            sortorder: Infinity,
-            children: [],
-            visible: true,
-        };
     }
+    return {
+        key: ".",
+        title: "",
+        path: "",
+        sortorder: Infinity,
+        children: [],
+        visible: true,
+    };
 }

@@ -76,9 +76,8 @@ function getSuffix(tags: string[]): string {
     const relevant = tags.filter((it) => ["nocompile", "nolint"].includes(it));
     if (relevant.length > 0) {
         return `-${relevant.join("-")}`;
-    } else {
-        return "";
     }
+    return "";
 }
 
 function getExtension(lang: string): string {

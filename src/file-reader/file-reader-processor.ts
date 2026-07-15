@@ -57,9 +57,8 @@ async function getDocumentsForSource(
         const docs = await src.fileReader(it, src.basePath);
         if (transform) {
             return docs.map((it) => transform(it));
-        } else {
-            return docs;
         }
+        return docs;
     });
     const docs = await Promise.all(promises);
     return docs.flat();

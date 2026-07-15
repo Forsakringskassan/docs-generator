@@ -80,9 +80,8 @@ function normalizeComponent(
         return {
             name: value,
         };
-    } else {
-        return value;
     }
+    return value;
 }
 
 function getComponentAlias(value: string | ComponentAttribute): string {

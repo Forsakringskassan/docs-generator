@@ -175,9 +175,8 @@ async function stage(
             const prefix = (() => {
                 if (verbose) {
                     return isLast ? "      " : "  │   ";
-                } else {
-                    return "";
                 }
+                return "";
             })();
             const result = await processor.handler({
                 ...context,
@@ -308,12 +307,12 @@ function createContext(options: {
         getTemplateData(key: string, defaultValue?: unknown): unknown {
             if (templateData.has(key)) {
                 return templateData.get(key);
-            } else if (defaultValue) {
+            }
+            if (defaultValue) {
                 templateData.set(key, defaultValue);
                 return defaultValue;
-            } else {
-                return undefined;
             }
+            return undefined;
         },
 
         setTemplateData(key: string, value: unknown) {
@@ -327,9 +326,8 @@ function getWorkingDir(value: string | URL | null): string {
         const url = typeof value === "string" ? new URL(value) : value;
         const normalized = normalizePath(fileURLToPath(url));
         return path.posix.dirname(normalized);
-    } else {
-        return normalizePath(process.cwd());
     }
+    return normalizePath(process.cwd());
 }
 
 /**

@@ -35,9 +35,8 @@ function getPropSlotDeprecated(
     }
     if (tag.description === true) {
         return "";
-    } else {
-        return tag.description;
     }
+    return tag.description;
 }
 
 function getEventDeprecated(
@@ -54,9 +53,8 @@ function getEventDeprecated(
     }
     if (tag.content === true) {
         return "";
-    } else {
-        return tag.content;
     }
+    return tag.content;
 }
 
 /**
@@ -101,9 +99,8 @@ function getPropType(prop: PropDescriptor): string | null {
         }
         if (isSimpleName(element.name)) {
             return `${element.name}[]`;
-        } else {
-            return `Array<${element.name}>`;
         }
+        return `Array<${element.name}>`;
     }
 
     /* similar to "Array" but this time the `elements` property contains each

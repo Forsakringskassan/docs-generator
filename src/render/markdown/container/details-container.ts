@@ -17,9 +17,8 @@ export function detailsContainer(
         const customTitle = info ? info.split(" ") : [];
         if (customTitle.length > 0) {
             return customTitle.join(" ");
-        } else {
-            return options.title.details ?? "Details";
         }
+        return options.title.details ?? "Details";
     }
 
     return (tokens, index) => {

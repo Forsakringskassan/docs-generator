@@ -43,9 +43,8 @@ export function processInlineTags(
             } catch (err) {
                 if (err instanceof SoftError) {
                     return handleSoftError(err);
-                } else {
-                    throw err;
                 }
+                throw err;
             }
         },
     );

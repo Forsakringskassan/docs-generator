@@ -12,9 +12,8 @@ function findVersion(text: string): [number, number, number] | null {
             Number.parseInt(match[2], 10),
             Number.parseInt(match[3], 10),
         ];
-    } else {
-        return null;
     }
+    return null;
 }
 
 /**

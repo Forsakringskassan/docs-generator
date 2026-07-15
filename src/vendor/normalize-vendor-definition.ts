@@ -14,10 +14,9 @@ export function normalizeVendorDefinition(
             package: vendor,
             alias: undefined,
         };
-    } else {
-        return {
-            package: vendor.package,
-            alias: vendor.alias ?? undefined,
-        };
     }
+    return {
+        package: vendor.package,
+        alias: vendor.alias ?? undefined,
+    };
 }
