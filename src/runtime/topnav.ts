@@ -68,10 +68,12 @@ function togglePopover(event: Event, refs: Refs): void {
 }
 
 function closePopoverOnEsc(event: KeyboardEvent, refs: Refs): void {
-    if (event.key === "Escape") {
-        setPopoverVisibility(false, refs);
-        refs.moreButton.focus();
+    if (event.key !== "Escape") {
+        return;
     }
+
+    setPopoverVisibility(false, refs);
+    refs.moreButton.focus();
 }
 
 function onClickPopover(event: Event): void {
