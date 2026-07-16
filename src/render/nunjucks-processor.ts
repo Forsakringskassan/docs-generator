@@ -6,8 +6,8 @@ import { type RenderOptions } from "./render-options";
 
 const progressbar = new cliProgress.SingleBar({
     format: " {bar} {percentage}% | {value}/{total} documents | {filename}",
-    barCompleteChar: "\u2588",
-    barIncompleteChar: "\u2591",
+    barCompleteChar: "\u{2588}",
+    barIncompleteChar: "\u{2591}",
     hideCursor: true,
     clearOnComplete: true,
 });
