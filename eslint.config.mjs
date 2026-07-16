@@ -104,7 +104,6 @@ export default [
 
     {
         rules: {
-            "unicorn/prefer-url-href": "off",
             "unicorn/require-css-escape": "off",
         },
     },
