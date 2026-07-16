@@ -112,7 +112,9 @@ async function replaceContent(href: string): Promise<void> {
         if (!path) {
             continue;
         }
-        const element = doc.querySelector(`#sidenav a[data-path="${path}"]`);
+        const element = doc.querySelector(
+            `#sidenav a[data-path="${CSS.escape(path)}"]`,
+        );
         const href = element?.getAttribute("href");
         if (href) {
             link.setAttribute("href", href);
