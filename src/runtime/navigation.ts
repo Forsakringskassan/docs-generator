@@ -53,7 +53,7 @@ function cloneScripts(element: HTMLElement, href: string): void {
         if (src) {
             const url = new URL(src, href);
             url.searchParams.append("ts", ts);
-            copy.src = url.toString();
+            copy.src = url.href;
         }
 
         /* if the <script> have text content we clone it as well */
