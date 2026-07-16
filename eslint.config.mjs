@@ -101,10 +101,4 @@ export default [
             "vue/no-unused-properties": "off",
         },
     },
-
-    {
-        rules: {
-            "unicorn/require-css-escape": "off",
-        },
-    },
 ];

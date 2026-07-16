@@ -14,7 +14,7 @@ export function tableOfContents(
                 li.classList.remove("active");
             }
             const href = `#${target.id}`;
-            const link = toc.querySelector(`a[href="${href}"]`);
+            const link = toc.querySelector(`a[href="${CSS.escape(href)}"]`);
             const li = link?.closest("li");
             li?.classList.add("active");
         }
