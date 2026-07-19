@@ -96,7 +96,7 @@
     "@babel/traverse": "^8.0.0",
     "@fontsource-variable/inter": "5.2.8",
     "@leeoniya/ufuzzy": "1.0.19",
-    "@microsoft/api-extractor-model": "7.33.8",
+    "@microsoft/api-extractor-model": "7.33.9",
     "@microsoft/tsdoc": "0.16.0",
     "chokidar": "5.0.0",
     "cli-progress": "3.12.0",
