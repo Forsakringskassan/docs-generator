@@ -136,7 +136,7 @@
     "@forsakringskassan/vitest-config": "2.5.0",
     "@forsakringskassan/vitest-config-jsdom": "2.5.0",
     "@html-validate/release-scripts": "7.3.6",
-    "@microsoft/api-extractor": "7.58.9",
+    "@microsoft/api-extractor": "7.58.10",
     "@rollup/plugin-commonjs": "29.0.3",
     "@rollup/plugin-json": "6.1.0",
     "@rollup/plugin-node-resolve": "16.0.3",
