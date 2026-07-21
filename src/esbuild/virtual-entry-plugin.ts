@@ -28,7 +28,7 @@ export function virtualEntryPlugin(entries: VirtualEntries): Plugin {
             });
             build.onLoad({ filter: /.*/, namespace: pluginName }, (args) => {
                 /* args.path is "virtual:${sourceFile}:${outputFile}" */
-                const [, resolveFrom] = args.path.split(":");
+                const [, resolveFrom] = args.path.split(":", 2);
                 const contents = getEntry(args.path);
                 return {
                     contents,
