@@ -91,7 +91,7 @@ export interface GeneratorOptions {
     /** Path to file with exported `setup` function, responsible for mounting of component.
      * `function setup(options: { rootComponent: string, selector: string }): void`
      */
-    setupPath: string | null;
+    setupPath?: string | null;
 
     /**
      * Options for markdown renderer.
