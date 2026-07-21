@@ -47,8 +47,9 @@
     "templates"
   ],
   "workspaces": [
+    "docs",
     "internal/*",
-    "docs"
+    "tests/*"
   ],
   "scripts": {
     "prebuild": "npm run --workspaces --if-present build",

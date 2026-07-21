@@ -163,7 +163,7 @@ export interface GeneratorOptions {
     };
     outputFolder?: string;
     processors?: Processor[];
-    setupPath: string | null;
+    setupPath?: string | null;
     site: GeneratorSiteOptions;
     templateFolders?: string[];
     vendor?: VendorDefinition[];
