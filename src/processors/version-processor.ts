@@ -1,5 +1,5 @@
 import { type PackageJson } from "../package-json";
-import { type Processor } from "../processor";
+import { type Processor, type ProcessorOptions } from "../processor";
 import {
     getPullRequestID,
     getRepositoryUrl,
@@ -13,8 +13,7 @@ import {
  *
  * @public
  */
-export interface VersionProcessorOptions {
-    readonly enabled: boolean;
+export interface VersionProcessorOptions extends ProcessorOptions {
     readonly scm?: {
         readonly commitUrlFormat: string;
         readonly prUrlFormat: string;

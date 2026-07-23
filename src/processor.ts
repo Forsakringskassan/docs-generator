@@ -7,7 +7,7 @@ import { type ProcessorStage } from "./processor-stage";
  */
 export interface ProcessorOptions {
     /** Enable/disable processor. Default: `true` */
-    enabled?: boolean;
+    readonly enabled?: boolean;
 }
 
 /**

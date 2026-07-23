@@ -396,7 +396,7 @@ export type ProcessorHook<K extends "before" | "stage" | "after"> = {
 
 // @public (undocumented)
 export interface ProcessorOptions {
-    enabled?: boolean;
+    readonly enabled?: boolean;
 }
 
 // @public
@@ -538,9 +538,7 @@ export function versionProcessor(pkg: {
 }, container: string, options?: VersionProcessorOptions): Processor;
 
 // @public
-export interface VersionProcessorOptions {
-    // (undocumented)
-    readonly enabled: boolean;
+export interface VersionProcessorOptions extends ProcessorOptions {
     // (undocumented)
     readonly scm?: {
         readonly commitUrlFormat: string;
