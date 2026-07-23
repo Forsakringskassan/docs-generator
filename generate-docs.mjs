@@ -76,10 +76,6 @@ const docs = new Generator(import.meta.url, {
     setupPath: path.resolve("docs/src/setup.ts"),
 });
 
-docs.compileScript("main", "./docs/src/main.js", {
-    appendTo: "body",
-});
-
 docs.compileStyle("docs", "./docs/src/docs-theme.scss", {
     appendTo: "head",
 });
