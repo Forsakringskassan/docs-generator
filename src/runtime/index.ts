@@ -1,7 +1,6 @@
 import { toggleMarkup } from "./code-preview";
 import "./mermaid";
 import "./navigation";
-import "./search";
 import "./table-of-contents";
 import "./version-banner";
 import "./topnav";

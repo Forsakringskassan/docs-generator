@@ -8,6 +8,7 @@ import {
     topnavProcessor,
     versionProcessor,
 } from "./processors";
+import { searchProcessor } from "./search";
 
 /**
  * Used by build-script to find all runtime scripts that needs compilation.
@@ -19,6 +20,7 @@ export const availableProcessors = [
     manifestProcessor(),
     matomoProcessor({ siteId: "", trackerUrl: "" }),
     motdProcessor({ message: "" }),
+    searchProcessor(),
     selectableVersionProcessor({ name: "", version: "" }, ""),
     sourceUrlProcessor({ urlFormat: "" }),
     topnavProcessor("", ""),
