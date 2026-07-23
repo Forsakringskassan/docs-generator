@@ -52,12 +52,13 @@
     "tests/*"
   ],
   "scripts": {
-    "prebuild": "npm run --workspaces --if-present build",
+    "prebuild": "npm run $(node scope.mjs 'internal/*') --if-present build",
     "build": "tsc && node build.mjs",
     "postbuild": "node --enable-source-maps generate-docs.mjs && html-validate public",
     "build:docs": "node generate-docs.mjs",
     "eslint": "eslint --cache .",
     "eslint:fix": "eslint --fix .",
+    "integration-tests": "npm run $(node scope.mjs 'tests/*') --if-present build",
     "lint": "run-s prettier:check eslint stylelint",
     "prepack": "release-prepack --bundle --retain-scripts",
     "postpack": "release-postpack",

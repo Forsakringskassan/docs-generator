@@ -1,0 +1,13 @@
+{
+  "name": "integration-test-base",
+  "version": "0.0.0",
+  "private": true,
+  "homepage": "https://example.net",
+  "scripts": {
+    "prebuild": "tsc",
+    "build": "node build.mts"
+  },
+  "dependencies": {
+    "@forsakringskassan/docs-generator": "file:../.."
+  }
+}
