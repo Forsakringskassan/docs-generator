@@ -1,0 +1,12 @@
+{
+  "name": "integration-test-minimal",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "prebuild": "tsc",
+    "build": "node build.mts"
+  },
+  "dependencies": {
+    "@forsakringskassan/docs-generator": "file:../.."
+  }
+}
