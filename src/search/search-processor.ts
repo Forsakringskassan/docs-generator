@@ -45,6 +45,7 @@ export function searchProcessor(): Processor {
     return {
         after: "generate-docs",
         name: "search-processor",
+        runtime: [{ src: "src/runtime/search.ts" }],
         handler(context) {
             const entries = context.docs
                 .filter(isDocumentPage)
