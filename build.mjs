@@ -173,7 +173,8 @@ async function build() {
     const result = await esbuild.build({
         entryPoints: [
             { in: "src/runtime/bootstrap.ts", out: "runtime-bootstrap" },
-            { in: "src/runtime/index.ts", out: "runtime" },
+            { in: "src/runtime/index.ts", out: "runtime-internal" },
+            { in: "src/runtime/stub.ts", out: "runtime" },
             ...processorScripts,
         ],
         bundle: true,

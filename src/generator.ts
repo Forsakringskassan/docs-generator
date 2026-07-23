@@ -409,6 +409,11 @@ export class Generator {
                 format: "iife",
             },
         );
+
+        const runtimeUrl = new URL("runtime-internal.mjs", import.meta.url);
+        this.compileScript("runtime", runtimeUrl, {
+            appendTo: "body",
+        });
     }
 
     public compileScript(

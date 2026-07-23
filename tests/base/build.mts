@@ -37,10 +37,6 @@ const docs = new Generator(import.meta.url, {
     ],
 });
 
-docs.compileScript("main", "./docs/src/main.ts", {
-    appendTo: "body",
-});
-
 docs.compileStyle("main", "./docs/src/main.scss", {
     appendTo: "head",
 });
