@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## [3.4.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.3.3...v3.4.0) (2026-07-24)
+
+### Features
+
+* automatically include required runtime scripts ([348be06](https://github.com/Forsakringskassan/docs-generator/commit/348be0690dc5549a93c40aaa4d52fe9b9483964f))
+
+### Bug Fixes
+
+* `versionProcessor` `enabled` option is no longer required ([42795a3](https://github.com/Forsakringskassan/docs-generator/commit/42795a3295972bb19100d9eb0d2c2a6e2692dced))
+* configuration option `setupPath` optional (not just nullable) ([14ad371](https://github.com/Forsakringskassan/docs-generator/commit/14ad371bd32bd3d115a6469c84f2f74196c3db0c))
+* **deps:** update dependency @fontsource-variable/inter to v5.3.0 ([7ee658e](https://github.com/Forsakringskassan/docs-generator/commit/7ee658e224656d9dcbdffa721da34564895fee72))
+* **deps:** update dependency @microsoft/api-extractor-model to v7.33.10 ([0dd2c36](https://github.com/Forsakringskassan/docs-generator/commit/0dd2c36ac8dd010b76ff52c31435db2fca8d6e83))
+* **deps:** update dependency @microsoft/api-extractor-model to v7.33.9 ([e73c97a](https://github.com/Forsakringskassan/docs-generator/commit/e73c97a2900d5573f2e54f3258d662a78949055c))
+
 ## [3.3.3](https://github.com/Forsakringskassan/docs-generator/compare/v3.3.2...v3.3.3) (2026-07-17)
 
 ### Bug Fixes
