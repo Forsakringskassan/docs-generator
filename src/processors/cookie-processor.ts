@@ -11,6 +11,7 @@ export function cookieProcessor(options: ProcessorOptions = {}): Processor {
     return {
         after: "generate-docs",
         name: "cookie-processor",
+        runtime: [{ src: "src/runtime/cookie.ts" }],
         handler(context) {
             if (!enabled) {
                 return;
