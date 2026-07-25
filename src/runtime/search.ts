@@ -192,20 +192,23 @@ function setup(): void {
         }
     }
 
+    queueMicrotask(async () => {
+        try {
+            const response = await fetch(url);
+            if (response.ok) {
+                index = (await response.json()) as SearchIndex;
+                updateResults();
+            }
+        } catch (err) {
+            /* eslint-disable-next-line no-console -- expected to log */
+            console.error("Failed to fetch search index", err);
+        }
+    });
+
     dialog.addEventListener("close", () => {
         document.body.removeEventListener("click", clickOutside);
         document.body.classList.remove("docs-modal-active");
     });
-
-    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
-    fetch(url)
-        /* eslint-disable-next-line unicorn/prefer-await -- technical debt */
-        .then((response) => response.json())
-        /* eslint-disable-next-line unicorn/prefer-await -- technical debt */
-        .then((value: SearchIndex) => {
-            index = value;
-            updateResults();
-        });
 
     dialogCloseButton.addEventListener("click", () => {
         dialog.close();
