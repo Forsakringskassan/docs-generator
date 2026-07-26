@@ -123,7 +123,7 @@
   },
   "devDependencies": {
     "@babel/types": "8.0.4",
-    "@forsakringskassan/commitlint-config": "4.2.3",
+    "@forsakringskassan/commitlint-config": "4.2.4",
     "@forsakringskassan/docs-live-example": "3.0.0",
     "@forsakringskassan/eslint-config": "15.4.1",
     "@forsakringskassan/eslint-config-cli": "15.4.0",
