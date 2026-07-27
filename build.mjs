@@ -216,6 +216,12 @@ async function build() {
     }
     console.groupEnd();
 
+    const fixtureDir = "src/processors/api-extractor/__fixtures__";
+    await fs.cp(
+        path.join(fixtureDir, "model.api.json"),
+        path.join(fixtureDir, "duplicate.api.json"),
+    );
+
     await buildFonts();
     await buildStyle([
         { src: "src/style/core.scss", dst: "dist/style/core.css" },
