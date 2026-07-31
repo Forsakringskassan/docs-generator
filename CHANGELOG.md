@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [3.4.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.4.0...v3.4.1) (2026-07-31)
+
+### Bug Fixes
+
+* **deps:** update dependency fs-extra to v11.4.0 ([2d83878](https://github.com/Forsakringskassan/docs-generator/commit/2d83878b6c9b9efbc220cfb1b99944273b819af0))
+* only include cookie processor runtime if processor is enabled ([73319dc](https://github.com/Forsakringskassan/docs-generator/commit/73319dc44a92ed0716928482243e3e1e02a0679c))
+* only include search processor runtime if search is enabled ([65b016d](https://github.com/Forsakringskassan/docs-generator/commit/65b016d5804b03bdbbfbb98c92ac2d93daf1c3b8))
+
 ## [3.4.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.3.3...v3.4.0) (2026-07-24)
 
 ### Features
