@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [3.5.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.4.1...v3.5.0) (2026-08-01)
+
+### Features
+
+* **deps:** update dependency markdown-it-deflist to v4 ([baa8c4b](https://github.com/Forsakringskassan/docs-generator/commit/baa8c4ba16c9f3a1e05bda426af569df5635d2c8))
+
 ## [3.4.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.4.0...v3.4.1) (2026-07-31)
 
 ### Bug Fixes
