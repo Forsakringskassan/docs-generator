@@ -1,0 +1,85 @@
+@use "breakpoints" as bp;
+
+.docs-mobile-nav {
+    width: 100%;
+    display: inline;
+
+    &-wrapper {
+        ul ul {
+            background-color: var(--docs-menu-background-color);
+        }
+    }
+    &-label {
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+        gap: 8px;
+        .docs-icon {
+            min-width: var(--docs-icon-size);
+            min-height: var(--docs-icon-size);
+        }
+    }
+
+    &__toggle {
+        position: sticky;
+        height: min-content;
+        width: min-content;
+        padding: 0.5rem;
+        cursor: pointer;
+        appearance: none;
+        display: none;
+        justify-content: center;
+    }
+
+    &-close {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        color: var(--docs-text-color-default);
+
+        &__text {
+            line-height: 1;
+        }
+
+        .docs-icon {
+            display: block;
+        }
+    }
+
+    &__header {
+        display: flex;
+        justify-content: flex-end;
+        padding: 0.5rem;
+        box-sizing: border-box;
+    }
+
+    &__list {
+        list-style: none;
+        margin: 0;
+
+        &:not(details *) {
+            padding: 0;
+        }
+
+        a {
+            display: flex;
+            justify-content: space-between; /* Text till vänster, pil till höger */
+            align-items: center;
+            padding: 20px;
+            text-decoration: none;
+            color: var(--docs-header-text-color-default);
+            font-size: 16px;
+        }
+        ul {
+            padding-left: 1.5rem;
+        }
+    }
+}
+
+@media (width >= #{bp.$breakpoint-sm}) {
+    .docs-mobile-nav {
+        display: none;
+    }
+}

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ site.lang }}" class="{{ layoutClass }}" data-root-url="{{ rootUrl(doc) }}">
+<html lang="{{ site.lang }}" class="{{ layoutClass }} loading" data-root-url="{{ rootUrl(doc) }}">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -48,6 +48,8 @@
             <header>
                 <!-- prettier-ignore -->
                 {%- include "partials/header.html" -%}
+                {%- block mobilenav %}
+                {%- endblock %}
             </header>
 
             <div id="primary">
