@@ -1,5 +1,4 @@
-import type MarkdownIt from "markdown-it";
-import type Token from "markdown-it/lib/token.mjs";
+import { type Env, type MarkdownIt, type Token } from "markdown-it";
 import { generateId } from "../../utils/generate-id";
 import { type MarkdownEnv } from "../markdown-env";
 
@@ -22,8 +21,11 @@ export function headingLevel(options: {
             tokens,
             idx,
             _options,
-            env: MarkdownEnv,
+            rawEnv: Env | undefined,
         ) {
+            /* technical debt: we always pass in env but this cast isn't really safe */
+            const env = rawEnv as MarkdownEnv;
+
             const { ids } = env;
             const { tag } = tokens[idx];
             const title = getTokensText(tokens[idx + 1]?.children ?? []);

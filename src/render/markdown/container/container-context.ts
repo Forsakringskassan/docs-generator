@@ -1,4 +1,4 @@
-import type MarkdownIt from "markdown-it";
+import { type MarkdownIt } from "markdown-it";
 import { type Document } from "../../../document";
 import { type MarkdownEnv } from "../../markdown-env";
 import { type SoftErrorType } from "../../soft-error";

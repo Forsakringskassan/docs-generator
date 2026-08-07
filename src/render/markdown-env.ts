@@ -1,3 +1,4 @@
+import { type Env } from "markdown-it";
 import { type FileInfo } from "../document";
 
 /**
@@ -13,7 +14,7 @@ export interface MarkdownNamedExample {
 /**
  * @internal
  */
-export interface MarkdownEnv {
+export interface MarkdownEnv extends Env {
     fileInfo: FileInfo;
 
     /** Set of all heading IDs present (so far) in the markdown document */

@@ -1,19 +1,22 @@
-import type MarkdownIt from "markdown-it";
-import type { RenderRule } from "markdown-it/lib/renderer.mjs";
-
-const renderToken: RenderRule = (...args) => {
-    const [tokens, idx, options, , self] = args;
-    return self.renderToken(tokens, idx, options);
-};
+/* eslint-disable camelcase -- property is defined in upstream library */
+import { type MarkdownIt, type RendererRule } from "markdown-it";
 
 export function paragraph(): (md: MarkdownIt) => void {
     return function (md: MarkdownIt): void {
-        /* eslint-disable camelcase -- property is defined in upstream library */
-        const renderRule = md.renderer.rules.paragraph_open ?? renderToken;
-        md.renderer.rules.paragraph_open = (tokens, idx, index, env, self) => {
+        const original = md.renderer.rules.paragraph_open as
+            RendererRule | undefined;
+        md.renderer.rules.paragraph_open = (
+            tokens,
+            idx,
+            options,
+            env,
+            self,
+        ) => {
             tokens[idx].attrJoin("class", "docs-paragraph");
-            return renderRule(tokens, idx, index, env, self);
+            if (original) {
+                return original(tokens, idx, options, env, self);
+            }
+            return self.renderToken(tokens, idx, options);
         };
-        /* eslint-enable camelcase */
     };
 }

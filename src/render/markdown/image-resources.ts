@@ -1,9 +1,12 @@
 import crypto from "node:crypto";
 import path from "node:path/posix";
-import type MarkdownIt from "markdown-it";
-import type { Options } from "markdown-it";
-import type Renderer from "markdown-it/lib/renderer.mjs";
-import type Token from "markdown-it/lib/token.mjs";
+import {
+    type Env,
+    type MarkdownIt,
+    type MarkdownItOptions,
+    type Renderer,
+    type Token,
+} from "markdown-it";
 import { type FileInfo } from "../../document";
 import { type MarkdownEnv } from "../markdown-env";
 
@@ -26,18 +29,18 @@ export function imageResources(options: {
     function imageResource(
         tokens: Token[],
         index: number,
-        options: Options,
-        env: MarkdownEnv,
+        options: Required<MarkdownItOptions>,
+        env: Env | undefined,
         self: Renderer,
     ): string {
-        const { fileInfo } = env;
+        const { fileInfo } = env as MarkdownEnv;
         const token = tokens[index];
 
         token.attrs ??= [];
 
         /* copy image asset into the `assets/images` directory and rewrite the url to match */
         const srcAttr = token.attrGet("src");
-        if (srcAttr) {
+        if (srcAttr && typeof srcAttr === "string") {
             const dst = getFilename(fileInfo, srcAttr);
             const src = path.join(path.dirname(fileInfo.fullPath), srcAttr);
             const url = path.relative(fileInfo.path, path.join("assets", dst));

@@ -1,4 +1,4 @@
-import markdownIt from "markdown-it";
+import markdownIt, { type Env } from "markdown-it";
 import { type DocumentOutline, type DocumentPage } from "../document";
 import { parseInfostring } from "../examples";
 import { type ProcessorContext } from "../processor-context";
@@ -23,7 +23,7 @@ type ManifestPage = Manifest["pages"][number];
 type ManifestOutline = ManifestPage["outline"];
 type ManifestExamples = ManifestPage["examples"];
 
-interface MarkdownEnv {
+interface MarkdownEnv extends Env {
     readonly collected: ManifestExamples;
     readonly exampleFileMatcher: FileMatcher;
 }
@@ -34,10 +34,10 @@ md.renderer.rules.fence = (
     tokens,
     idx,
     _options,
-    env: MarkdownEnv,
+    env,
     /* eslint-disable-next-line sonarjs/no-invariant-returns -- function works as intended */
 ) => {
-    const { collected, exampleFileMatcher } = env;
+    const { collected, exampleFileMatcher } = env as MarkdownEnv;
     const { content, info, map } = tokens[idx];
     const { language: rawLanguage, tags } = parseInfostring(info);
     const hashContent = `${String(map?.[0])}:${String(map?.[1])}:${info}:${content}`;
