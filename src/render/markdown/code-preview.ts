@@ -1,8 +1,11 @@
 import path from "node:path";
 import { createTwoFilesPatch } from "diff";
-import type MarkdownIt from "markdown-it";
-import type { Options } from "markdown-it";
-import type Token from "markdown-it/lib/token.mjs";
+import {
+    type Env,
+    type MarkdownIt,
+    type MarkdownItOptions,
+    type Token,
+} from "markdown-it";
 import {
     type ExampleResult,
     parseInfostring,
@@ -72,9 +75,9 @@ export function codePreview(
         content: string,
         language: string,
         tags: string[],
-        env: Pick<MarkdownEnv, "namedExamples">,
+        env: Env | undefined,
     ): { source: string; language: string } {
-        const { namedExamples } = env;
+        const { namedExamples } = env as MarkdownEnv;
 
         if (language === "import") {
             const parsed = parseImport(content);
@@ -117,9 +120,12 @@ export function codePreview(
         _md: MarkdownIt,
         tokens: Token[],
         idx: number,
-        _options: Options,
-        env: MarkdownEnv,
+        _options: MarkdownItOptions,
+        rawEnv: Env | undefined,
     ): string {
+        /* technical debt: we always pass in env but this cast isn't really safe */
+        const env = rawEnv as MarkdownEnv;
+
         const { fileInfo } = env;
         const { content: rawContent, info, map } = tokens[idx];
         const { language: rawLanguage, tags: rawTags } = parseInfostring(info);

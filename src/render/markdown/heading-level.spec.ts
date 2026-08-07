@@ -1,11 +1,11 @@
 /**
  * @vitest-environment jsdom
  */
-import markdownIt from "markdown-it";
+import markdownIt, { type MarkdownIt } from "markdown-it";
 import { beforeEach, expect, it } from "vitest";
 import { headingLevel } from "./heading-level";
 
-let md: markdownIt;
+let md: MarkdownIt;
 
 beforeEach(() => {
     md = markdownIt();

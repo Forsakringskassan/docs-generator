@@ -42,7 +42,9 @@ type DocumentLike = Pick<DocumentWithOutput, "fileInfo" | "body" | "format">;
 const md = markdownIt();
 
 /* eslint-disable-next-line sonarjs/no-invariant-returns -- function works as intended */
-md.renderer.rules.fence = (tokens, idx, _options, collected: Example[]) => {
+md.renderer.rules.fence = (tokens, idx, _options, rawEnv) => {
+    const { collected } = rawEnv as { collected: Example[] };
+
     const { content, info } = tokens[idx];
     const { language, tags } = parseInfostring(info);
 
@@ -68,7 +70,7 @@ function findExamples(doc: DocumentLike): Example[] {
         return [];
     }
     const collected: Example[] = [];
-    md.render(doc.body, collected);
+    md.render(doc.body, { collected });
     return collected;
 }
 

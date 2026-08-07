@@ -1,6 +1,4 @@
-import type { Options } from "markdown-it";
-import type Renderer from "markdown-it/lib/renderer.mjs";
-import type Token from "markdown-it/lib/token.mjs";
+import { type MarkdownItOptions, type Renderer, type Token } from "markdown-it";
 import { type MarkdownEnv } from "../../markdown-env";
 
 /**
@@ -9,7 +7,7 @@ import { type MarkdownEnv } from "../../markdown-env";
 export type ContainerCallback = (
     tokens: Token[],
     index: number,
-    options: Options,
+    options: MarkdownItOptions,
     env: MarkdownEnv,
     self: Renderer,
 ) => string;

@@ -1,5 +1,8 @@
-import type MarkdownIt from "markdown-it";
-import type StateBlock from "markdown-it/lib/rules_block/state_block.mjs";
+import {
+    type MarkdownIt,
+    type RendererRule,
+    type StateBlock,
+} from "markdown-it";
 import { type Document } from "../../document";
 import { type MarkdownEnv } from "../markdown-env";
 import { type SoftErrorType } from "../soft-error";
@@ -134,7 +137,7 @@ export function containerParser(md: MarkdownIt, options: Options): void {
     });
 
     for (const [kind, fn] of Object.entries(options)) {
-        md.renderer.rules[`doc_${kind}`] = fn;
+        md.renderer.rules[`doc_${kind}`] = fn as RendererRule;
     }
 }
 
