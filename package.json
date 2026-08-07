@@ -158,7 +158,7 @@
     "@types/pug": "2.0.10",
     "@types/semver": "7.8.0",
     "@typescript/native": "npm:typescript@7.0.2",
-    "cypress": "15.19.0",
+    "cypress": "15.20.0",
     "cypress-html-validate": "9.0.0",
     "esbuild": "0.28.1",
     "express": "5.2.1",
