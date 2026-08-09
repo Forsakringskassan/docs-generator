@@ -16,6 +16,11 @@ export {
     versionBannerProcessor, // eslint-disable-line @typescript-eslint/no-deprecated -- intentional, we still want to export it
 } from "./motd-processor";
 export {
+    type PlaygroundProcessorEntry,
+    type PlaygroundProcessorOptions,
+    playgroundProcessor,
+} from "./playground-processor";
+export {
     htmlRedirectProcessor,
     redirectFileProcessor,
     redirectProcessor,

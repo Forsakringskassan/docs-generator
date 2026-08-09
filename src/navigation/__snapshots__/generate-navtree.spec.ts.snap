@@ -338,6 +338,13 @@ exports[`smoketest 1`] = `
         },
         {
           "external": false,
+          "id": "fs:docs/processors/playground-processor.md",
+          "path": "./processors/playground-processor.html",
+          "sortorder": Infinity,
+          "title": "Playground",
+        },
+        {
+          "external": false,
           "id": "fs:docs/processors/search.md",
           "path": "./processors/search.html",
           "sortorder": Infinity,
