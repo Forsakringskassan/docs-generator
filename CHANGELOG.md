@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [3.6.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.5.0...v3.6.0) (2026-08-09)
+
+### Features
+
+* **deps:** update dependency markdown-it to v15 ([3e5df16](https://github.com/Forsakringskassan/docs-generator/commit/3e5df168907d4260bac46e314782bfa9e044478e))
+* new `playgroundProcessor` for generating playground urls ([268ab3c](https://github.com/Forsakringskassan/docs-generator/commit/268ab3cc55c65b0673cc37f03a13ff5382f209ea))
+
 ## [3.5.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.4.1...v3.5.0) (2026-08-01)
 
 ### Features
