@@ -51,6 +51,7 @@ processors/index.html
 processors/manifest.html
 processors/motd.html
 processors/nunjucks.html
+processors/playground-processor.html
 processors/search.html
 processors/source-url.html
 processors/topnav.html

@@ -321,6 +321,25 @@ export interface PackageJson {
     readonly version: string;
 }
 
+// @public
+export function playgroundProcessor(options: PlaygroundProcessorOptions): Processor;
+
+// @public
+export interface PlaygroundProcessorEntry {
+    readonly folder?: string;
+    readonly id: string;
+    serialize?(this: void, context: {
+        readonly files: Map<string, string>;
+    }): string | Promise<string>;
+    readonly urlFormat: string;
+    readonly variable?: string;
+}
+
+// @public
+export interface PlaygroundProcessorOptions extends ProcessorOptions {
+    readonly entries?: PlaygroundProcessorEntry[];
+}
+
 // @public (undocumented)
 export type Processor = ProcessorDescriptor<"before"> | ProcessorDescriptor<"stage"> | ProcessorDescriptor<"after">;
 

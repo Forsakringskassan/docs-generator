@@ -8,6 +8,7 @@ import {
     topnavProcessor,
     versionProcessor,
 } from "./processors";
+import { playgroundProcessor } from "./processors/playground-processor";
 import { searchProcessor } from "./search";
 
 /**
@@ -16,6 +17,7 @@ import { searchProcessor } from "./search";
  * @internal
  */
 export const availableProcessors = [
+    playgroundProcessor({ entries: [] }),
     cookieProcessor(),
     manifestProcessor(),
     matomoProcessor({ siteId: "", trackerUrl: "" }),
