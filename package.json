@@ -161,7 +161,7 @@
     "@typescript/native": "npm:typescript@7.0.2",
     "cypress": "15.20.0",
     "cypress-html-validate": "9.0.0",
-    "esbuild": "0.28.1",
+    "esbuild": "0.28.2",
     "express": "5.2.1",
     "html-validate": "11.6.2",
     "http-server": "14.1.1",
