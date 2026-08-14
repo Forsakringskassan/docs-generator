@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Kolumntyp dropplista i tabell - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../../../assets/docs-15f34b.css"
+            href="../../../../assets/docs-80e95a.css"
             crossorigin
-            integrity="sha384-qrkxGDbauTQB4yY+tqgbRtSFohcLUQnf3cyhimYf8HHPnaG58xGKr6r47YCTiCKT"
+            integrity="sha384-i7vr8u4qDKWwqhYx9+u8ocog5UpG2NiZAII98/zv5qKf6vTFMSb2ib0s6B3hkiXJ"
             
         />
         <link
@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../../../assets/vendor-fkui-vue-selectors-cba73f.js",
     "@fkui/logic": "../../../../assets/vendor-fkui-logic-9591ee.js",
     "@fkui/date": "../../../../assets/vendor-fkui-date-1a27ab.js",
-    "@fkui/vue": "../../../../assets/vendor-fkui-vue-015d83.js",
+    "@fkui/vue": "../../../../assets/vendor-fkui-vue-fa0e87.js",
     "@forsakringskassan/docs-live-example": "../../../../assets/vendor-forsakringskassan-docs-live-example-f2dba9.js"
   },
   "integrity": {
@@ -34,7 +34,7 @@
     "../../../../assets/vendor-fkui-vue-selectors-cba73f.js": "sha384-SaJecW2ObIUIuEnO+5qmMjFw9Yyo64+xMbIrjvDQol1Znm2N1FJD6zX1bcv230xq",
     "../../../../assets/vendor-fkui-logic-9591ee.js": "sha384-sktoLviDHXsiB2lm2hWly0KdUdn7YqJNcPgzVY/3CAbgpuGS0ubsXkl9OoJ4znSi",
     "../../../../assets/vendor-fkui-date-1a27ab.js": "sha384-WIsjwfLaDqeOimfnc5gS/DFmVv/1BDdGyow7RILJnWl4OP38ocmTvEMggmCsKUun",
-    "../../../../assets/vendor-fkui-vue-015d83.js": "sha384-8rEpGEnJLYd5WGFEj+aQ7zujd8RjPMAcnr0o7TiM5raENdwuLlwShZWIzcntdfMY",
+    "../../../../assets/vendor-fkui-vue-fa0e87.js": "sha384-dryzEFmgPsBndNd4kayxkQTtVGDLQUOfSh9FqXX43xhyGcVzZPP8Z2ZSRTDzXCn7",
     "../../../../assets/vendor-forsakringskassan-docs-live-example-f2dba9.js": "sha384-UD6GYm3c8+uyO/HE6UD/CkzOimyLSzEtI2zsMXEFOYxG5ITkplPDrHIeJBmVI79s"
   }
 }
@@ -46,10 +46,10 @@
             
         ></script><link
     rel="preload"
-    href="../../../../search-data-6a695c.json"
+    href="../../../../search-data-f3504c.json"
     as="fetch"
     crossorigin
-    integrity="sha384-543ofRIa1+5/edQZtZ/hHQM0lq4mcK6JaDjjQQUvHFONYLcrB6Cmxe+iO9P6AX8o"
+    integrity="sha384-SSAVbACLzIRUi6dFgY5xWM2lWPTTtkKdj1I14iP+qXFHf8k+3EbjiIgNN8sGVuYL"
     id="search-data"
 />
 <script>
@@ -7108,6 +7108,8 @@
                                 
                                 <li><a href="#bra_att_veta">Bra att veta</a></li>
                                 
+                                <li><a href="#redigerbarhet">Redigerbarhet</a></li>
+                                
                                 <li><a href="#parametrar">Parametrar</a></li>
                                 
                             </ul>
@@ -7150,7 +7152,63 @@
 <li><code>selected(row)</code> kan användas om du inte vill läsa från <code>key</code>.</li>
 <li><code>update(row, newValue, oldValue)</code> används när du behöver egen uppdateringslogik.</li>
 </ul>
-<h2 id="parametrar" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#parametrar">Parametrar</a></h2> <div><dl>
+<h2 id="redigerbarhet" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#redigerbarhet">Redigerbarhet</a></h2><p class="docs-paragraph">Som standard är det alltid möjligt att välja alternativ från en lista.</p>
+<p class="docs-paragraph">Om cellen ska vara redigerbar baserat på en rad tillhandahåller du en <code>editable</code>-funktion
+som returnerar <code>true</code> eller <code>false</code>.</p>
+
+                <div
+                    id="example-9e05be"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">Row</span> {
+    <span class="hljs-attr">fruit</span>: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Frukt&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;fruit&quot;</span>,
+        <span class="hljs-title function_">editable</span>(<span class="hljs-params">row</span>) {
+            <span class="hljs-keyword">return</span> row.<span class="hljs-property">fruit</span> !== <span class="hljs-string">&quot;banana&quot;</span>;
+        },
+    },
+]);
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Det är också möjligt att stänga av redigering för samtliga rader genom att sätta <code>editable</code> till värdet <code>false</code>.</p>
+
+                <div
+                    id="example-057336"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">Row</span> {
+    <span class="hljs-attr">fruit</span>: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Frukt&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;fruit&quot;</span>,
+        <span class="hljs-attr">editable</span>: <span class="hljs-literal">false</span>,
+    },
+]);
+</code></pre>
+                </div>
+            <h2 id="parametrar" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#parametrar">Parametrar</a></h2> <div><dl>
 <dt><code>description?: string | Readonly&lt;Ref&lt;string | null&gt;&gt;;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
 <dd>Format description (shown in header)</dd>
 <dt><code>enabled?: MaybeRef&lt;boolean&gt;;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
@@ -7168,6 +7226,8 @@
 </dd>
 <dt><code>sort?: boolean;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
 <dd>‐</dd>
+<dt><code>editable?: boolean | ((this: void, row: T) =&gt; boolean);</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>When enabled, the cells are editable. Default: <code>true</code></dd>
 <dt><code>key?: K;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
 <dd>‐</dd>
 <dt><code>label?(this: void, row: T): string;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
@@ -7229,9 +7289,9 @@
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">feature/fixa-sajten-visuellt-sfkui-7490 (<a href="https://github.com/Forsakringskassan/designsystem/commits/818795484164250fc4686ce6385212d02bc7fd42">8187954</a>)<br />
+<div class="footer__right"><div class="version">feature/fixa-sajten-visuellt-sfkui-7490 (<a href="https://github.com/Forsakringskassan/designsystem/commits/a1f787ea4e516ee1dcc35d02a6d0d375244458f3">a1f787e</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/439">PR 439</a><br />
-        2026-08-13 11:28
+        2026-08-14 05:28
 </div>
 <div class="toolbar__item">
     <form id="version">
