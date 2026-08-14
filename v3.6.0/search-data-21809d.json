@@ -5,6 +5,15 @@
     "Theme",
     "Font",
     "Smoketest: tables",
+    "Navigation",
+    "Child Page 3",
+    "Child Page 2",
+    "Child Page 1",
+    "Redirects",
+    "Mermaid",
+    "Markdown",
+    "Images",
+    "Definition lists",
     "Version",
     "Topnav",
     "Source url",
@@ -20,26 +29,13 @@
     "Extract examples",
     "Cookie",
     "API Extractor",
-    "Navigation",
-    "Child Page 3",
-    "Child Page 2",
-    "Child Page 1",
-    "Redirects",
-    "Mermaid",
-    "Markdown",
-    "Images",
-    "Definition lists",
     "Example",
+    "Scripts",
+    "Configuration",
     "Plumbing",
     "Overriding templates",
     "Layout",
     "Custom layout",
-    "Scripts",
-    "Configuration",
-    "Top page",
-    "Sorted Page 3",
-    "Sorted Page 2",
-    "Sorted Page 1",
     "Nested Page 3",
     "Nested Page 2",
     "Nested Page 1",
@@ -53,6 +49,10 @@
     "Code preview",
     "Documenting Vue components",
     "Documenting TypeScript",
+    "Top page",
+    "Sorted Page 3",
+    "Sorted Page 2",
+    "Sorted Page 1",
     "FK Documentation generator",
     "Live example",
     "Changelog"
@@ -81,6 +81,51 @@
     {
       "url": "smoketest/table.html",
       "title": "Smoketest: tables",
+      "terms": []
+    },
+    {
+      "url": "navigation/index.html",
+      "title": "Navigation",
+      "terms": []
+    },
+    {
+      "url": "navigation/child-page-3.html",
+      "title": "Child Page 3",
+      "terms": []
+    },
+    {
+      "url": "navigation/child-page-2.html",
+      "title": "Child Page 2",
+      "terms": []
+    },
+    {
+      "url": "navigation/child-page-1.html",
+      "title": "Child Page 1",
+      "terms": []
+    },
+    {
+      "url": "markdown/redirects.html",
+      "title": "Redirects",
+      "terms": []
+    },
+    {
+      "url": "markdown/mermaid.html",
+      "title": "Mermaid",
+      "terms": []
+    },
+    {
+      "url": "markdown/index.html",
+      "title": "Markdown",
+      "terms": []
+    },
+    {
+      "url": "markdown/images.html",
+      "title": "Images",
+      "terms": []
+    },
+    {
+      "url": "markdown/definition-lists.html",
+      "title": "Definition lists",
       "terms": []
     },
     {
@@ -149,53 +194,18 @@
       "terms": []
     },
     {
-      "url": "navigation/index.html",
-      "title": "Navigation",
-      "terms": []
-    },
-    {
-      "url": "navigation/child-page-3.html",
-      "title": "Child Page 3",
-      "terms": []
-    },
-    {
-      "url": "navigation/child-page-2.html",
-      "title": "Child Page 2",
-      "terms": []
-    },
-    {
-      "url": "navigation/child-page-1.html",
-      "title": "Child Page 1",
-      "terms": []
-    },
-    {
-      "url": "markdown/redirects.html",
-      "title": "Redirects",
-      "terms": []
-    },
-    {
-      "url": "markdown/mermaid.html",
-      "title": "Mermaid",
-      "terms": []
-    },
-    {
-      "url": "markdown/index.html",
-      "title": "Markdown",
-      "terms": []
-    },
-    {
-      "url": "markdown/images.html",
-      "title": "Images",
-      "terms": []
-    },
-    {
-      "url": "markdown/definition-lists.html",
-      "title": "Definition lists",
-      "terms": []
-    },
-    {
       "url": "live-example/example.html",
       "title": "Example",
+      "terms": []
+    },
+    {
+      "url": "configuration/scripts.html",
+      "title": "Scripts",
+      "terms": []
+    },
+    {
+      "url": "configuration/index.html",
+      "title": "Configuration",
       "terms": []
     },
     {
@@ -216,36 +226,6 @@
     {
       "url": "layout/custom-layout.html",
       "title": "Custom layout",
-      "terms": []
-    },
-    {
-      "url": "configuration/scripts.html",
-      "title": "Scripts",
-      "terms": []
-    },
-    {
-      "url": "configuration/index.html",
-      "title": "Configuration",
-      "terms": []
-    },
-    {
-      "url": "navigation/sorted-group/top-page.html",
-      "title": "Top page",
-      "terms": []
-    },
-    {
-      "url": "navigation/sorted-group/sorted-page-3.html",
-      "title": "Sorted Page 3",
-      "terms": []
-    },
-    {
-      "url": "navigation/sorted-group/sorted-page-2.html",
-      "title": "Sorted Page 2",
-      "terms": []
-    },
-    {
-      "url": "navigation/sorted-group/sorted-page-1.html",
-      "title": "Sorted Page 1",
       "terms": []
     },
     {
@@ -314,6 +294,26 @@
       "terms": []
     },
     {
+      "url": "navigation/sorted-group/top-page.html",
+      "title": "Top page",
+      "terms": []
+    },
+    {
+      "url": "navigation/sorted-group/sorted-page-3.html",
+      "title": "Sorted Page 3",
+      "terms": []
+    },
+    {
+      "url": "navigation/sorted-group/sorted-page-2.html",
+      "title": "Sorted Page 2",
+      "terms": []
+    },
+    {
+      "url": "navigation/sorted-group/sorted-page-1.html",
+      "title": "Sorted Page 1",
+      "terms": []
+    },
+    {
       "url": "index.html",
       "title": "FK Documentation generator",
       "terms": []
@@ -338,18 +338,18 @@
     "5": 5,
     "6": 6,
     "7": 7,
-    "8": 7,
-    "9": 7,
-    "10": 8,
-    "11": 8,
-    "12": 9,
-    "13": 10,
-    "14": 11,
-    "15": 12,
-    "16": 13,
-    "17": 14,
-    "18": 15,
-    "19": 16,
+    "8": 8,
+    "9": 9,
+    "10": 10,
+    "11": 11,
+    "12": 12,
+    "13": 13,
+    "14": 14,
+    "15": 15,
+    "16": 16,
+    "17": 16,
+    "18": 16,
+    "19": 17,
     "20": 17,
     "21": 18,
     "22": 19,
