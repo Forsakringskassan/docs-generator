@@ -61,6 +61,7 @@ jobs:
               if: github.event.action != 'closed'
               working-directory: ./fkui
               run: |
+                  rm .npmrc
                   npm ci
                   npm install "${{ steps.prerelease.outputs.pkg }}"
                   npm install --workspaces "${{ steps.prerelease.outputs.pkg }}"
