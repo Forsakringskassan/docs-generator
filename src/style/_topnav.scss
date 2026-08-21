@@ -1,8 +1,19 @@
+@use "breakpoints" as bp;
+
+@media (width < #{bp.$breakpoint-sm}) {
+    .docs-topnav {
+        display: none;
+    }
+}
+
 .docs-topnav {
     background-color: var(--docs-topnav-background-color);
-    margin: 0 -0.5rem;
     overflow: hidden;
     flex-grow: 1;
+
+    &.is-mobile {
+        display: none;
+    }
 
     &__list {
         display: flex;
@@ -20,16 +31,10 @@
         &.highlight {
             color: var(--docs-topnav-link-color-highlight);
             font-weight: bold;
-
             :where(.docs-topnav__anchor) {
                 border-color: var(--docs-topnav-border-color-highlight);
                 font-weight: bold;
             }
-        }
-
-        &--more {
-            position: absolute;
-            visibility: hidden;
         }
     }
 
