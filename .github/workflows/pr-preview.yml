@@ -25,7 +25,7 @@ jobs:
               with:
                   node-version: 24.x
             - name: Checkout public folder
-              uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+              uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
             - name: Prepare public
               id: public
               run: |
@@ -33,7 +33,7 @@ jobs:
                   mkdir temp
                   echo "dir=${GITHUB_WORKSPACE}/temp" | tee -a $GITHUB_OUTPUT
             - name: Checkout Forsakringskassan/docs-generator
-              uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+              uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
               with:
                   path: "./docs-generator"
             - name: Install and build
@@ -53,7 +53,7 @@ jobs:
                   echo "version=${VERSION}" | tee -a $GITHUB_OUTPUT
                   echo "pkg=${GITHUB_WORKSPACE}/docs-generator/forsakringskassan-docs-generator-${VERSION}.tgz" | tee -a $GITHUB_OUTPUT
             - name: Checkout Forsakringskassan/designsystem
-              uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+              uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
               with:
                   path: "./fkui"
                   repository: "Forsakringskassan/designsystem"
