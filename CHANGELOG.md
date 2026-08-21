@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [3.6.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.6.0...v3.6.1) (2026-08-21)
+
+### Bug Fixes
+
+* **deps:** update dependency highlight.js to v11.11.2 ([17ca2b1](https://github.com/Forsakringskassan/docs-generator/commit/17ca2b1d2e03719783e0f6044385b490ab71e0bc))
+* **deps:** update dependency highlight.js to v11.12.0 ([173d21c](https://github.com/Forsakringskassan/docs-generator/commit/173d21c2716816d2e022f9a11bccdfd86c841595))
+
 ## [3.6.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.5.0...v3.6.0) (2026-08-09)
 
 ### Features
