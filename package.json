@@ -137,7 +137,7 @@
     "@forsakringskassan/sass-module-importer": "3.0.0",
     "@forsakringskassan/stylelint-config": "3.4.5",
     "@forsakringskassan/vitest-config": "2.7.0",
-    "@forsakringskassan/vitest-config-jsdom": "2.6.0",
+    "@forsakringskassan/vitest-config-jsdom": "2.7.0",
     "@html-validate/release-scripts": "7.6.0",
     "@microsoft/api-extractor": "7.58.12",
     "@rollup/plugin-commonjs": "29.0.3",
