@@ -22,7 +22,6 @@
         "noUncheckedIndexedAccess": false,
 
         /* technical debt */
-        "allowUnreachableCode": false,
         "exactOptionalPropertyTypes": false,
         "noImplicitReturns": false,
         "noPropertyAccessFromIndexSignature": false,
