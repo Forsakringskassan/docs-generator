@@ -88,6 +88,7 @@ function checkLayout(nav: HTMLElement): void {
     header.classList.remove("is-multi-row", "is-single-row");
     mobileMeny.classList.remove("is-mobile");
     nav.classList.remove("is-mobile");
+    setMenuItemVisibility(menuItems, true);
 
     const leftWidth = left.getBoundingClientRect().width;
     const rightWidth = right.getBoundingClientRect().width;
@@ -132,7 +133,10 @@ export function headerLayoutDetector(nav: HTMLElement): void {
     document.documentElement.classList.remove("loading");
     resizeObserver.observe(document.body);
     window.addEventListener("docs:navigation", () => {
-        checkLayout(nav);
+        const nav = document.querySelector<HTMLElement>("#topnav");
+        if (nav) {
+            checkLayout(nav);
+        }
     });
     checkLayout(nav);
 }
