@@ -23,11 +23,11 @@
             {
   "imports": {
     "vue": "../assets/vendor-vue-b984a8.js",
-    "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-f2dba9.js"
+    "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-6d2d9d.js"
   },
   "integrity": {
     "../assets/vendor-vue-b984a8.js": "sha384-RuFta7Ma1Ej/QiKmbY4zSvZUMv82wYEgfbDWyQ32nxbtxCtr7nll3Bh2Gw4XGIj2",
-    "../assets/vendor-forsakringskassan-docs-live-example-f2dba9.js": "sha384-UD6GYm3c8+uyO/HE6UD/CkzOimyLSzEtI2zsMXEFOYxG5ITkplPDrHIeJBmVI79s"
+    "../assets/vendor-forsakringskassan-docs-live-example-6d2d9d.js": "sha384-T8jkOagoFX6LDj2QbCvP8DkKMrMPgdAFrg/sYvtRagV4DTNYut32ghIjZatx0QE3"
   }
 }
         </script><script
@@ -38,10 +38,10 @@
             
         ></script><link
     rel="preload"
-    href="../search-data-8fcd4c.json"
+    href="../search-data-5e745a.json"
     as="fetch"
     crossorigin
-    integrity="sha384-Ylb2XhQeOyo+Z5+bfAQAjh81zKUCJAi565uPsCD5eqBsd31e/klW9ruPWp1cWeYQ"
+    integrity="sha384-ZprtLGkJ4jvAgehKaJsqkK48RKuaC2r1W7PW2ImiLvU7fxuNJxyhjkHWwX+u44f6"
     id="search-data"
 />
 
@@ -1319,9 +1319,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        feature/fixa-sajten-visuellt-sfkui-7490 (<a href="https://github.com/Forsakringskassan/docs-generator/commits/54b0719db1c5a731c87c363215836d612b3cfb29">54b0719</a>)<br />
+        feature/fixa-sajten-visuellt-sfkui-7490 (<a href="https://github.com/Forsakringskassan/docs-generator/commits/99fd9068bf1443897a9f05a2c9fd39658df09931">99fd906</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/439">PR 439</a><br />
-        2026-08-21 07:54
+        2026-08-25 07:21
     </span>
 </div>
 </div>
@@ -1408,7 +1408,7 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
 <p class="docs-paragraph">Följande boilerplate kan användas:</p>
 
                 <div
-                    id="example-33c381"
+                    id="example-20f545"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1433,14 +1433,10 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
     },
     <span class="hljs-attr">computed</span>: {
         <span class="hljs-title function_">livedata</span>(): unknown {
-            <span class="hljs-keyword">return</span> {
-                <span class="hljs-comment">/* data used by generated code */</span>
-            };
+            <span class="hljs-keyword">return</span> {<span class="hljs-comment">/* data used by generated code */</span>};
         },
         <span class="hljs-title function_">components</span>(): unknown {
-            <span class="hljs-keyword">return</span> {
-                <span class="hljs-comment">/* components used by generated code */</span>
-            };
+            <span class="hljs-keyword">return</span> {<span class="hljs-comment">/* components used by generated code */</span>};
         },
         <span class="hljs-title function_">template</span>(): string {
             <span class="hljs-keyword">return</span> <span class="hljs-comment">/* HTML */</span> <span class="hljs-string">` &lt;div&gt;Hello World!&lt;/div&gt; `</span>;
@@ -1453,7 +1449,7 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
             <p class="docs-paragraph">För att skapa en inställning lägger vi först in komponenter:</p>
 
                 <div
-                    id="example-aec9c6"
+                    id="example-f3be56"
                     class="code-preview code-preview--default"
                     
                     
@@ -1475,7 +1471,7 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
                 </div>
             
                 <div
-                    id="example-2d7da0"
+                    id="example-4b58f7"
                     class="code-preview code-preview--default"
                     
                     
@@ -1494,7 +1490,7 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
             <p class="docs-paragraph">Därefter kan vi modifiera <code>template</code> att nyttja inställningar:</p>
 
                 <div
-                    id="example-bff67b"
+                    id="example-f361da"
                     class="code-preview code-preview--default"
                     
                     
@@ -1512,7 +1508,7 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
             <p class="docs-paragraph">Det går också med fördel att använda <code>createElement</code> (se beskrivning längre ner):</p>
 
                 <div
-                    id="example-c7bb36"
+                    id="example-3d93c2"
                     class="code-preview code-preview--default"
                     
                     
@@ -1530,7 +1526,7 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
             <p class="docs-paragraph">Resultatet:</p>
 
                 <div
-                    id="example-27a572"
+                    id="example-635fca"
                     class="code-preview code-preview--borderless"
                     
                     data-tags="live-example"
@@ -1549,7 +1545,7 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
             <h2 id="createelement" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#createelement"><code>createElement</code></a></h2><p class="docs-paragraph">A helper function to render the markup for the live example.</p>
 
                 <div
-                    id="example-4628f6"
+                    id="example-270f59"
                     class="code-preview code-preview--default"
                     
                     
@@ -1565,7 +1561,7 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
             <p class="docs-paragraph">Create markup for a simple element:</p>
 
                 <div
-                    id="example-1f0ac3"
+                    id="example-63c44a"
                     class="code-preview code-preview--default"
                     
                     
@@ -1579,7 +1575,7 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
             <p class="docs-paragraph">Adding attributes:</p>
 
                 <div
-                    id="example-08baac"
+                    id="example-0eced6"
                     class="code-preview code-preview--default"
                     
                     
@@ -1602,7 +1598,7 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
 <p class="docs-paragraph">Content can be added:</p>
 
                 <div
-                    id="example-ede7c3"
+                    id="example-8067a6"
                     class="code-preview code-preview--default"
                     
                     
@@ -1622,7 +1618,7 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
             <p class="docs-paragraph">Combined:</p>
 
                 <div
-                    id="example-3b33e1"
+                    id="example-830959"
                     class="code-preview code-preview--default"
                     
                     
@@ -1802,10 +1798,10 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
             integrity="sha384-zjw4Drj+44WcWNmSilk/Xnqcpe/0QgcB3sAMeDzXvNJTbPbJWxJvmO3voyRR1Whk"
             
         ></script><script
-            src="../assets/runtime-2edfd3.js"
+            src="../assets/runtime-cfc8c9.js"
             type="module"
             crossorigin
-            integrity="sha384-GrgaFWf2iE8A53qB5wg6SO0TJlWFfMLR86qfzy6C4OXsd7Uh1/SL675/hR5EUF0I"
+            integrity="sha384-A4MMXEtQAcJcZhUh/lSZeCK4xNR2T5vi7hbwfdRmCsGr73bsLLMIgEvrqJfKUNBG"
             
         ></script>
     </body>
