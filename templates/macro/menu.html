@@ -1,5 +1,5 @@
 {% macro sidenav_item(doc, node) %}
-<ol>
+<ul>
     {%- for item in node.children -%}
 
     {# section node #}
@@ -36,7 +36,7 @@
     {%- endif -%}
 
     {%- endfor -%}
-</ol>
+</ul>
 {% endmacro %}
 
 {% macro sidenav(doc, node, label) %}
