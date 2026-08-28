@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [3.6.2](https://github.com/Forsakringskassan/docs-generator/compare/v3.6.1...v3.6.2) (2026-08-28)
+
+### Bug Fixes
+
+* **deps:** update dependency @microsoft/api-extractor-model to v7.33.11 ([ff11610](https://github.com/Forsakringskassan/docs-generator/commit/ff1161019b9a6490d784c088a8ee47c07ac8b80d))
+* **deps:** update dependency mermaid to v11.17.0 ([dfe6a09](https://github.com/Forsakringskassan/docs-generator/commit/dfe6a09d1f83d2790f4709cffae94ffe3f35986a))
+* **deps:** update dependency mermaid to v11.17.1 ([9aef1ce](https://github.com/Forsakringskassan/docs-generator/commit/9aef1ceb721cf0bb76f2ea8d4aeeab4dc3eadcda))
+
 ## [3.6.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.6.0...v3.6.1) (2026-08-21)
 
 ### Bug Fixes
