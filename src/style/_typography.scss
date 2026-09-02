@@ -101,7 +101,7 @@
     margin-top: 3rem;
 }
 
-.code-preview + .docs-paragraph {
+:where(.code-preview + .docs-paragraph) {
     margin-top: 3rem;
 }
 

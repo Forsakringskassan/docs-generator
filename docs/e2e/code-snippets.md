@@ -39,5 +39,3 @@ const name = "World";
 ```import name=vue-import
 CodeSnippetsVue.vue
 ```
-
-Paragraph after code preview.
