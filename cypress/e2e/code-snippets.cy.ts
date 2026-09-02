@@ -39,4 +39,13 @@ describe("code snippets", () => {
             .should("exist")
             .and("contain.text", `<p>Hello {{ name }}!</p>`);
     });
+
+    it("should preserve spacing after code previews", () => {
+        cy.get("[data-test=vue-inline]")
+            .next(".docs-heading")
+            .should("have.css", "margin-top", "48px");
+        cy.get("[data-test=vue-import]")
+            .next(".docs-paragraph")
+            .should("have.css", "margin-top", "48px");
+    });
 });
