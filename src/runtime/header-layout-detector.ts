@@ -128,7 +128,10 @@ function checkLayout(nav: HTMLElement): void {
  */
 export function headerLayoutDetector(nav: HTMLElement): void {
     const resizeObserver = new ResizeObserver(() => {
-        checkLayout(nav);
+        const nav = document.querySelector<HTMLElement>("#topnav");
+        if (nav) {
+            checkLayout(nav);
+        }
     });
     document.documentElement.classList.remove("loading");
     resizeObserver.observe(document.body);
