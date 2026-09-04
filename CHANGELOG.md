@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [3.6.3](https://github.com/Forsakringskassan/docs-generator/compare/v3.6.2...v3.6.3) (2026-09-04)
+
+### Bug Fixes
+
+* **deps:** update dependency i18next to v26.4.0 ([9e9d511](https://github.com/Forsakringskassan/docs-generator/commit/9e9d5114f62e9bcda45c3beb9f22f79738013737))
+* **deps:** update dependency markdown-it to v15.0.1 ([bb1a2b1](https://github.com/Forsakringskassan/docs-generator/commit/bb1a2b189dcbfe2285a715121aea6a434de5777b))
+* **deps:** update dependency mermaid to v11.17.2 ([b80ac09](https://github.com/Forsakringskassan/docs-generator/commit/b80ac0906920b75997c56166805260f4efc85687))
+* ensure spacing between code previews and paragraphs ([9d734c8](https://github.com/Forsakringskassan/docs-generator/commit/9d734c8097645d68d4374aafddb43e05c20133ac))
+* preserve zero specificity for code preview spacing ([cf656c7](https://github.com/Forsakringskassan/docs-generator/commit/cf656c70b0712a81ff5bf97f14b078d957622b35))
+* side menu, mobile menu ol to ul (refs SFKUI-7490) ([0682342](https://github.com/Forsakringskassan/docs-generator/commit/0682342147436914230559cb426195ccdc5a23d4))
+
 ## [3.6.2](https://github.com/Forsakringskassan/docs-generator/compare/v3.6.1...v3.6.2) (2026-08-28)
 
 ### Bug Fixes
