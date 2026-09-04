@@ -18,7 +18,7 @@
   "devDependencies": {
     "@fkui/font-default": "6.56.0",
     "@fkui/theme-default": "6.56.0",
-    "@forsakringskassan/docs-live-example": "3.0.1",
+    "@forsakringskassan/docs-live-example": "3.0.2",
     "vue": "3.5.42"
   },
   "engines": {
