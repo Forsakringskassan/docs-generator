@@ -40,6 +40,11 @@
 {% endmacro %}
 
 {% macro sidenav(doc, node, label) %}
-<input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
+
+    <input id="nav-toggle" type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
+    <label for="nav-toggle">
+         <svg class="docs-icon icon-menu"><use href="#docs-icon-menu"></use></svg>
+         <svg class="docs-icon icon-back"><use href="#docs-icon-chevrons-left"></use></svg>
+    </label>
 <nav class="navigation" aria-label="{{ label }}">{{ sidenav_item(doc, node) }}</nav>
 {% endmacro %}

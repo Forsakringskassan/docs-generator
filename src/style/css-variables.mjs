@@ -240,6 +240,17 @@ export default {
         },
     },
 
+    focus: {
+        description: "Style for outline on focus",
+        variables: {
+            "box-shadow": {
+                type: "shadow",
+                value: "0 0 0 2px #1b1e23, 0 0 0 4px #ffffff,0 0 0 6px #1b1e23",
+                description: "Triple-layer focus ring for accessibility.",
+            },
+        },
+    },
+
     footer: {
         description: "Style related to page footer",
         variables: {
