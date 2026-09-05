@@ -167,7 +167,7 @@
     "http-server": "14.1.1",
     "is-ci": "4.1.0",
     "jsdom": "30.0.1",
-    "memfs": "4.69.0",
+    "memfs": "4.69.1",
     "npm-pkg-lint": "5.2.4",
     "npm-run-all2": "9.0.3",
     "rollup": "4.63.1",
