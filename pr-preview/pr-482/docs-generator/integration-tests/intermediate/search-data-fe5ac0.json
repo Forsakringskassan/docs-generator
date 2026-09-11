@@ -1,0 +1,92 @@
+{
+  "terms": [
+    "Integration test: intermediate",
+    "Themes",
+    "Navigation",
+    "Layout",
+    "Markdown",
+    "Foo",
+    "Third",
+    "Second",
+    "First",
+    "Configuration",
+    "Baz",
+    "Bar"
+  ],
+  "results": [
+    {
+      "url": "index.html",
+      "title": "Integration test: intermediate",
+      "terms": []
+    },
+    {
+      "url": "themes/index.html",
+      "title": "Themes",
+      "terms": []
+    },
+    {
+      "url": "navigation/index.html",
+      "title": "Navigation",
+      "terms": []
+    },
+    {
+      "url": "layout/index.html",
+      "title": "Layout",
+      "terms": []
+    },
+    {
+      "url": "markdown/index.html",
+      "title": "Markdown",
+      "terms": []
+    },
+    {
+      "url": "foo/index.html",
+      "title": "Foo",
+      "terms": []
+    },
+    {
+      "url": "foo/foo-3.html",
+      "title": "Third",
+      "terms": []
+    },
+    {
+      "url": "foo/foo-2.html",
+      "title": "Second",
+      "terms": []
+    },
+    {
+      "url": "foo/foo-1.html",
+      "title": "First",
+      "terms": []
+    },
+    {
+      "url": "configuration/index.html",
+      "title": "Configuration",
+      "terms": []
+    },
+    {
+      "url": "baz/index.html",
+      "title": "Baz",
+      "terms": []
+    },
+    {
+      "url": "bar/index.html",
+      "title": "Bar",
+      "terms": []
+    }
+  ],
+  "mapping": {
+    "0": 0,
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 5,
+    "6": 6,
+    "7": 7,
+    "8": 8,
+    "9": 9,
+    "10": 10,
+    "11": 11
+  }
+}

@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Live example - FK Documentation generator</title><link
             rel="stylesheet"
-            href="../assets/docs-8d7fea.css"
+            href="../assets/docs-9e76ba.css"
             crossorigin
-            integrity="sha384-M+j9hjN2IONKwhs65Q4ETnNx7002BgLa0upw0Ad5s4rHz0bPKZ4laLh1g8N7/rug"
+            integrity="sha384-2dUPbtLnARWDC08hTDCSNj1jaVRYMx0VGi4V/wLX8+546SR0IG+dLy4/7WDWO0Ww"
             
         />
         <link
@@ -22,12 +22,12 @@
         <script type="importmap">
             {
   "imports": {
-    "vue": "../assets/vendor-vue-b984a8.js",
-    "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-f2dba9.js"
+    "vue": "../assets/vendor-vue-de7570.js",
+    "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-6d2d9d.js"
   },
   "integrity": {
-    "../assets/vendor-vue-b984a8.js": "sha384-RuFta7Ma1Ej/QiKmbY4zSvZUMv82wYEgfbDWyQ32nxbtxCtr7nll3Bh2Gw4XGIj2",
-    "../assets/vendor-forsakringskassan-docs-live-example-f2dba9.js": "sha384-UD6GYm3c8+uyO/HE6UD/CkzOimyLSzEtI2zsMXEFOYxG5ITkplPDrHIeJBmVI79s"
+    "../assets/vendor-vue-de7570.js": "sha384-WPWz93taK2QwJ4Wn4+VnBNQQCRrMi6sDR9z8/jDQyCsimuklI/LF0cmvQb6bBq1C",
+    "../assets/vendor-forsakringskassan-docs-live-example-6d2d9d.js": "sha384-T8jkOagoFX6LDj2QbCvP8DkKMrMPgdAFrg/sYvtRagV4DTNYut32ghIjZatx0QE3"
   }
 }
         </script><script
@@ -1319,9 +1319,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        buggfix/hamburgarmenyn (<a href="https://github.com/Forsakringskassan/docs-generator/commits/f858aeac583df392b07e2c3d1399c6b1c0c8920f">f858aea</a>)<br />
+        buggfix/hamburgarmenyn (<a href="https://github.com/Forsakringskassan/docs-generator/commits/a199b316040d882808bccac4046c4fe0af1a501a">a199b31</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/482">PR 482</a><br />
-        2026-09-10 10:16
+        2026-09-11 11:38
     </span>
 </div>
 </div>
@@ -1408,7 +1408,7 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
 <p class="docs-paragraph">Följande boilerplate kan användas:</p>
 
                 <div
-                    id="example-33c381"
+                    id="example-20f545"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1433,14 +1433,10 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
     },
     <span class="hljs-attr">computed</span>: {
         <span class="hljs-title function_">livedata</span>(): unknown {
-            <span class="hljs-keyword">return</span> {
-                <span class="hljs-comment">/* data used by generated code */</span>
-            };
+            <span class="hljs-keyword">return</span> {<span class="hljs-comment">/* data used by generated code */</span>};
         },
         <span class="hljs-title function_">components</span>(): unknown {
-            <span class="hljs-keyword">return</span> {
-                <span class="hljs-comment">/* components used by generated code */</span>
-            };
+            <span class="hljs-keyword">return</span> {<span class="hljs-comment">/* components used by generated code */</span>};
         },
         <span class="hljs-title function_">template</span>(): string {
             <span class="hljs-keyword">return</span> <span class="hljs-comment">/* HTML */</span> <span class="hljs-string">` &lt;div&gt;Hello World!&lt;/div&gt; `</span>;
@@ -1453,7 +1449,7 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
             <p class="docs-paragraph">För att skapa en inställning lägger vi först in komponenter:</p>
 
                 <div
-                    id="example-aec9c6"
+                    id="example-f3be56"
                     class="code-preview code-preview--default"
                     
                     
@@ -1475,7 +1471,7 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
                 </div>
             
                 <div
-                    id="example-2d7da0"
+                    id="example-4b58f7"
                     class="code-preview code-preview--default"
                     
                     
@@ -1494,7 +1490,7 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
             <p class="docs-paragraph">Därefter kan vi modifiera <code>template</code> att nyttja inställningar:</p>
 
                 <div
-                    id="example-bff67b"
+                    id="example-f361da"
                     class="code-preview code-preview--default"
                     
                     
@@ -1512,7 +1508,7 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
             <p class="docs-paragraph">Det går också med fördel att använda <code>createElement</code> (se beskrivning längre ner):</p>
 
                 <div
-                    id="example-c7bb36"
+                    id="example-3d93c2"
                     class="code-preview code-preview--default"
                     
                     
@@ -1530,7 +1526,7 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
             <p class="docs-paragraph">Resultatet:</p>
 
                 <div
-                    id="example-27a572"
+                    id="example-635fca"
                     class="code-preview code-preview--borderless"
                     
                     data-tags="live-example"
@@ -1549,7 +1545,7 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
             <h2 id="createelement" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#createelement"><code>createElement</code></a></h2><p class="docs-paragraph">A helper function to render the markup for the live example.</p>
 
                 <div
-                    id="example-4628f6"
+                    id="example-270f59"
                     class="code-preview code-preview--default"
                     
                     
@@ -1565,7 +1561,7 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
             <p class="docs-paragraph">Create markup for a simple element:</p>
 
                 <div
-                    id="example-1f0ac3"
+                    id="example-63c44a"
                     class="code-preview code-preview--default"
                     
                     
@@ -1579,7 +1575,7 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
             <p class="docs-paragraph">Adding attributes:</p>
 
                 <div
-                    id="example-08baac"
+                    id="example-0eced6"
                     class="code-preview code-preview--default"
                     
                     
@@ -1602,7 +1598,7 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
 <p class="docs-paragraph">Content can be added:</p>
 
                 <div
-                    id="example-ede7c3"
+                    id="example-8067a6"
                     class="code-preview code-preview--default"
                     
                     
@@ -1622,7 +1618,7 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
             <p class="docs-paragraph">Combined:</p>
 
                 <div
-                    id="example-3b33e1"
+                    id="example-830959"
                     class="code-preview code-preview--default"
                     
                     
@@ -1796,16 +1792,16 @@ Vi rekommenderar att använda <code>LiveExample</code> som suffix på alla live-
             integrity="sha384-zAoLcKQxzwmKl8WDuv2SdmMjcqkFzdJo6p4UsXF27ONwO6eGqJD0F2C0Aipv2cAC"
             
         ></script><script
-            src="../assets/processors/selectable-version/select-version-26316a.js"
+            src="../assets/processors/selectable-version/select-version-9c227f.js"
             type="module"
             crossorigin
-            integrity="sha384-7r7mgrkO8pdn+IndkgzjjylaYjgnUKNgj4QtTK6eRWkLTSI8Zs4ZnBQImFaVy84x"
+            integrity="sha384-s8SwchWn9pjrI+p0sGi/R1nHwaVmor5kNk7xvAcu/eidDI6Mk+bYqfMAGWPN6ukf"
             
         ></script><script
-            src="../assets/runtime-efb8c2.js"
+            src="../assets/runtime-b2f738.js"
             type="module"
             crossorigin
-            integrity="sha384-pxUbC/N+4dfn6RMcRHDZaWxHmvyG9ZQ515zw3VUCM5k6UAJhqZI3v60D8YF5Ha5m"
+            integrity="sha384-dE+L34lrmv08G+1yUnIQaxcdemgYI/wnYEpeafSa8wMBdaK0O8YGqhsr0g9Lv+2p"
             
         ></script>
     </body>
