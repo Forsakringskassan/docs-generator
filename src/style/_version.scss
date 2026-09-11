@@ -1,11 +1,21 @@
+@use "breakpoints" as bp;
+
 .version {
     color: var(--docs-text-color-discrete);
     text-wrap: nowrap;
     margin-left: 1rem;
 
+    @media (width < #{bp.$breakpoint-sm}) {
+        text-wrap: auto;
+        span {
+            text-wrap: nowrap;
+            display: block;
+        }
+    }
+
     a {
         color: var(--docs-link-color-discrete);
-
+        text-wrap: nowrap;
         &:hover,
         &:focus,
         &:active {
