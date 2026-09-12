@@ -27,6 +27,12 @@
             "instructions": "<kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja",
             "title": "Sök",
             "placeholder": "Skriv för att börja söka"
+        },
+        "mobile-nav": {
+            "close": "Stäng",
+            "menu": "Meny",
+            "aria-label": "Öppen/stängd meny",
+            "nav": "Mobile primär"
         }
     }
 }
