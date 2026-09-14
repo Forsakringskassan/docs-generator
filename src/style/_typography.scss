@@ -26,6 +26,7 @@
     font-size: 2.5rem;
     color: inherit;
     letter-spacing: var(--docs-heading-letter-spacing-h1);
+    overflow-wrap: break-word;
 }
 
 :where(.docs-heading--h1 code) {
