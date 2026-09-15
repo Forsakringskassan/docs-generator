@@ -201,7 +201,8 @@
     "cypress": true,
     "esbuild": true,
     "fsevents": false,
-    "unrs-resolver": true
+    "unrs-resolver": true,
+    "@forsakringskassan/docs-generator@3.6.0": true
   },
   "externalDependencies": [
     "@babel/code-frame",
