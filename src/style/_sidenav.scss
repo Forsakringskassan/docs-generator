@@ -40,6 +40,17 @@
     justify-content: center;
     opacity: 0;
     pointer-events: none;
+    &-label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 3rem;
+        height: 3rem;
+        cursor: pointer;
+    }
+    &-label:hover {
+        background-color: #ddddde;
+    }
 }
 
 .docs-icon.icon-back {
@@ -67,18 +78,6 @@
     display: block;
 }
 
-label[for="nav-toggle"] {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 3rem;
-    height: 3rem;
-    cursor: pointer;
-}
-label[for="nav-toggle"]:hover {
-    background-color: #ddddde;
-}
-
 @media screen and (width >= #{bp.$breakpoint-md}) {
     .sidenav__toggle {
         display: none;
@@ -87,7 +86,7 @@ label[for="nav-toggle"]:hover {
     .docs-icon.icon-menu {
         display: none;
     }
-    label[for="nav-toggle"] {
+    .sidenav__toggle-label {
         display: none;
     }
 }

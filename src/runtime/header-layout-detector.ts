@@ -36,7 +36,6 @@ function getContentWidth(header: HTMLDivElement): number {
 }
 
 function getTopnavMaxWidht(right: HTMLElement): number {
-    // let width = 0;
     const rightSlot = right.querySelector(".docs-page-header__right-slot");
     const rightSlotWidth = rightSlot
         ? rightSlot.getBoundingClientRect().width
