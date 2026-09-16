@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## [3.7.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.6.4...v3.7.0) (2026-09-16)
+
+### Features
+
+* **deps:** update dependency mermaid to v12 ([ab4f81c](https://github.com/Forsakringskassan/docs-generator/commit/ab4f81cbdcd456d60fec1bf4e78328ffcf923366))
+
+### Bug Fixes
+
+* **deps:** update dependency @microsoft/api-extractor-model to v7.33.12 ([9cb9e3f](https://github.com/Forsakringskassan/docs-generator/commit/9cb9e3ff26db190ec153971905a1c6358fd73ba9))
+* **deps:** update dependency markdown-it to v15.0.2 ([51b5811](https://github.com/Forsakringskassan/docs-generator/commit/51b5811938d07d45ff0053f37ddb1581e61e9e92))
+* word-wrap headings on small viewports (refs SFKUI-8025) ([5495ae9](https://github.com/Forsakringskassan/docs-generator/commit/5495ae987f8b318dec2194d397c65e753fc0ba73))
+
 ## [3.6.4](https://github.com/Forsakringskassan/docs-generator/compare/v3.6.3...v3.6.4) (2026-09-11)
 
 ### Bug Fixes
