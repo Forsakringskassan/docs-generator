@@ -75,6 +75,8 @@ function createMockContext(): ProcessorContext {
                 injectBody: [],
             };
         },
+        setState: noop,
+        getState: noop,
         vendors: [],
         resources: [],
         outputFolder: "",

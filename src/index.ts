@@ -82,6 +82,7 @@ export {
 export { searchProcessor } from "./search";
 export { livereloadProcessor } from "./serve";
 export { type SetupOptions } from "./setup-options";
+export { type StateMap } from "./state-map";
 export {
     type AttributeTable,
     type AttributeValue,
