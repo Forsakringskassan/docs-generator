@@ -49,9 +49,11 @@ it("should compile and create asset in assets folder", async () => {
     expect.assertions(3);
     volume = Volume.fromJSON({});
     const result = await compileScript({
-        assetFolder: "public/assets",
         name: "asset-name",
         src: "src/my-file.ts",
+        rootDir: "public",
+        outputFolder: "public/assets",
+        outputName: "[name]-[hash]",
         buildOptions: {},
         assets: [],
         vendor: [],
@@ -65,13 +67,59 @@ it("should compile and create asset in assets folder", async () => {
     expect(volume.existsSync(expectedFilePath)).toBeTruthy();
 });
 
+it("should handle custom outputName", async () => {
+    expect.assertions(3);
+    volume = Volume.fromJSON({});
+    const result = await compileScript({
+        name: "asset-name",
+        src: "src/my-file.ts",
+        rootDir: "public",
+        outputFolder: "public/assets",
+        outputName: "foo-[hash]-bar-[name]-baz",
+        buildOptions: {},
+        assets: [],
+        vendor: [],
+        fs: volume.promises as unknown as FSLike,
+    });
+    const expectedFilename = `foo-${fingerprint}-bar-asset-name-baz.js`;
+    const expectedPublicPath = `./assets/${expectedFilename}`;
+    const expectedFilePath = `public/assets/${expectedFilename}`;
+    expect(result.filename).toBe(expectedFilename);
+    expect(result.publicPath).toBe(expectedPublicPath);
+    expect(volume.existsSync(expectedFilePath)).toBeTruthy();
+});
+
+it("should handle when outputFolder and rootDir are the same", async () => {
+    expect.assertions(3);
+    volume = Volume.fromJSON({});
+    const result = await compileScript({
+        name: "asset-name",
+        src: "src/my-file.ts",
+        rootDir: "public",
+        outputFolder: "public",
+        outputName: "[name]-[hash]",
+        buildOptions: {},
+        assets: [],
+        vendor: [],
+        fs: volume.promises as unknown as FSLike,
+    });
+    const expectedFilename = `asset-name-${fingerprint}.js`;
+    const expectedPublicPath = `./${expectedFilename}`;
+    const expectedFilePath = `public/${expectedFilename}`;
+    expect(result.filename).toBe(expectedFilename);
+    expect(result.publicPath).toBe(expectedPublicPath);
+    expect(volume.existsSync(expectedFilePath)).toBeTruthy();
+});
+
 it("should set assets and vendor libraries as external", async () => {
     expect.assertions(1);
     volume = Volume.fromJSON({});
     await compileScript({
-        assetFolder: "public/assets",
         name: "asset-name",
         src: "src/my-file.ts",
+        rootDir: "public",
+        outputFolder: "public/assets",
+        outputName: "[name]-[hash]",
         assets: ["baz"],
         vendor: ["foo", { package: "bar" }],
         buildOptions: {},
@@ -88,9 +136,11 @@ it("should set additional build options", async () => {
     expect.assertions(1);
     volume = Volume.fromJSON({});
     await compileScript({
-        assetFolder: "public/assets",
         name: "asset-name",
         src: "src/my-file.ts",
+        rootDir: "public",
+        outputFolder: "public/assets",
+        outputName: "[name]-[hash]",
         assets: [],
         vendor: [],
         buildOptions: {

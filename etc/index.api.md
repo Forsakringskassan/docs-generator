@@ -144,6 +144,10 @@ class Generator_2 {
     }): void;
     // (undocumented)
     compileStyle(name: string, src: string | URL, options?: Partial<CompileOptions>): void;
+    compileWorker(name: string, src: string | URL, buildOptions?: {
+        format?: "iife" | "cjs" | "esm";
+        define?: Record<string, string>;
+    }): void;
     // (undocumented)
     copyResource(dst: string, src: string): void;
     manifest(sourceFiles: SourceFiles[]): Promise<Manifest>;

@@ -425,14 +425,56 @@ export class Generator {
             define?: Record<string, string>;
         },
     ): void {
+        const { assetFolder } = this;
         this.scripts.push({
             name,
             src,
+            outputFolder: assetFolder,
+            outputName: "[name]-[hash]",
             options: {
                 appendTo: "none",
                 attributes: {},
                 priority: 0,
                 ...options,
+            },
+            buildOptions: {
+                ...buildOptions,
+            },
+        });
+    }
+
+    /**
+     * Compile a worker script.
+     *
+     * This is mostly the same as {@link Generator.compileScript} with some differences:
+     *
+     * - The script is written directly to `outputFolder` instead of `assetFolder` (i.e. to the web root).
+     * - The output filename does not include a hash.
+     *
+     * @public
+     * @since %version%
+     * @param name - Asset name.
+     * @param src - Asset entrypoint.
+     * @param buildOptions - Options passed to `esbuild`.
+     */
+    public compileWorker(
+        name: string,
+        src: string | URL,
+        buildOptions?: {
+            format?: "iife" | "cjs" | "esm";
+            define?: Record<string, string>;
+        },
+    ): void {
+        const { outputFolder } = this;
+        this.scripts.push({
+            name,
+            src,
+            outputFolder,
+            outputName: "[name]",
+            options: {
+                appendTo: "none",
+                attributes: {},
+                priority: 0,
             },
             buildOptions: {
                 ...buildOptions,
@@ -537,7 +579,7 @@ export class Generator {
             redirectProcessor(),
             vendorProcessor(assetFolder, this.vendor),
             cssAssetProcessor(assetFolder, this.styles),
-            jsAssetProcessor(assetFolder, this.scripts, this.vendor),
+            jsAssetProcessor(outputFolder, this.scripts, this.vendor),
             staticResourcesProcessor(assetFolder, this.resources),
             navigationProcessor(),
             nunjucksProcessor({
