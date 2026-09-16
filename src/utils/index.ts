@@ -28,3 +28,4 @@ export {
 export { difference } from "./set-utils";
 export { slugify } from "./slugify";
 export { isRelease } from "./is-release";
+export { zip } from "./zip";
