@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [3.8.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.7.0...v3.8.0) (2026-09-16)
+
+### Features
+
+* new mobile layout (refs SFKUI-7490) ([29207f4](https://github.com/Forsakringskassan/docs-generator/commit/29207f45fe7b1e5857715c478f032a80620457f5))
+
 ## [3.7.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.6.4...v3.7.0) (2026-09-16)
 
 ### Features
