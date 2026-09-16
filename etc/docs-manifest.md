@@ -6,6 +6,7 @@
 changelog.html
 configuration/index.html
 configuration/scripts.html
+configuration/workers.html
 e2e/code-snippets.html
 e2e/examples.html
 example/redirect.html -> markdown/redirects.html

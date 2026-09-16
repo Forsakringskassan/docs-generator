@@ -424,6 +424,13 @@ exports[`smoketest 1`] = `
           "sortorder": Infinity,
           "title": "Scripts",
         },
+        {
+          "external": false,
+          "id": "fs:docs/configuration/workers.md",
+          "path": "./configuration/workers.html",
+          "sortorder": Infinity,
+          "title": "Workers",
+        },
       ],
       "key": "./configuration",
       "path": "./configuration/",

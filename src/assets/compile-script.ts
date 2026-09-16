@@ -22,9 +22,11 @@ export interface FSLike {
  * @internal
  */
 export interface CompileScriptOptions {
-    assetFolder: string;
     name: string;
     src: string | URL;
+    rootDir: string;
+    outputFolder: string;
+    outputName: string;
     assets: string[];
     vendor: VendorDefinition[];
     buildOptions: BuildOptions;
@@ -42,9 +44,11 @@ export async function compileScript(
     options: CompileScriptOptions,
 ): Promise<AssetInfo> {
     const {
-        assetFolder,
         name,
         src,
+        rootDir,
+        outputFolder,
+        outputName,
         assets,
         vendor,
         buildOptions,
@@ -75,15 +79,21 @@ export async function compileScript(
         const content = await fs.readFile(outfile, "utf8");
         const fingerprint = getFingerprint(content);
         const integrity = getIntegrity(content);
-        const filename = `${name}-${fingerprint}.js`;
-        const dst = path.join(assetFolder, filename);
+        const filename = `${outputName}.js`
+            .replaceAll("[name]", () => name)
+            .replaceAll("[hash]", () => fingerprint);
+        const dst = path.join(outputFolder, filename);
+        const publicPath = path.posix.join(
+            path.posix.relative(rootDir, outputFolder),
+            filename,
+        );
         await fs.mkdir(path.dirname(dst), { recursive: true });
         await fs.rename(outfile, dst);
         const stat = await fs.stat(dst);
         return {
             name,
             filename,
-            publicPath: `./assets/${filename}`,
+            publicPath: `./${publicPath}`,
             integrity,
             format,
             size: stat.size,

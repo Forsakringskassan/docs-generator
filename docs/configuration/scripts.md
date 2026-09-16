@@ -1,5 +1,6 @@
 ---
 title: Scripts
+name: compileScript
 layout: article
 ---
 
@@ -36,3 +37,12 @@ Generator.compileScript(name, src, options, buildOptions);
 
     `priority: number` {@optional}
     : Assets with higher priority is sorted and loaded earlier than assets with lower.
+
+`buildOptions: object` {@optional}
+: Options passed to `esbuild`.
+
+    `format: "iife" | "cjs" | "esm"` {@optional}
+    : Output format.
+
+    `define: Record<string, string>` {@optional}
+    : Global identifiers to replace.

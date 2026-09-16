@@ -11,6 +11,8 @@ import { compileScript } from "./compile-script";
 export interface JSAsset {
     name: string;
     src: string | URL;
+    outputFolder: string;
+    outputName: string;
     options: CompileOptions;
     buildOptions: Pick<BuildOptions, "define">;
 }
@@ -27,7 +29,7 @@ function isExternal(asset: JSAsset): boolean {
  * @internal
  */
 export function jsAssetProcessor(
-    assetFolder: string,
+    rootDir: string,
     assets: JSAsset[],
     vendor: VendorDefinition[],
 ): Processor {
@@ -41,9 +43,11 @@ export function jsAssetProcessor(
             const body = context.getTemplateData("injectBody", []);
             for (const asset of assets.toSorted(byPriority)) {
                 const info = await compileScript({
-                    assetFolder,
                     name: asset.name,
                     src: asset.src,
+                    rootDir,
+                    outputFolder: asset.outputFolder,
+                    outputName: asset.outputName,
                     assets: externalAssets,
                     vendor,
                     buildOptions: asset.buildOptions,
