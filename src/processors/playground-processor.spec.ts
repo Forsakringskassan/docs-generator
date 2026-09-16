@@ -9,16 +9,6 @@ import {
 
 /* @ts-expect-error -- technical debt: memfs is not 100% type compatible */
 vi.mock(import("node:fs/promises"), () => {
-    const original = fs.promises.glob;
-
-    /* @ts-expect-error -- workaround for https://github.com/streamich/memfs/issues/1161 */
-    fs.promises.glob = async function* (...args) {
-        const arr = await original(...args);
-        for (const s of arr) {
-            yield s;
-        }
-    };
-
     return {
         default: fs.promises,
     };
