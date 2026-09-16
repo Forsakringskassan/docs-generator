@@ -1,18 +1,18 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { moduleImporter } from "@forsakringskassan/sass-module-importer";
-import { NodePackageImporter, compileStringAsync } from "sass";
+import { NodePackageImporter, compileAsync } from "sass";
 
 /**
  * @public
  * @param dst - Destination filename.
- * @param style - Inline SCSS string.
+ * @param filePath - Sass path.
  */
 export async function compileSassString(
     dst: string,
-    style: string,
+    filePath: string,
 ): Promise<void> {
-    const result = await compileStringAsync(style, {
+    const result = await compileAsync(filePath, {
         style: "expanded",
         importers: [new NodePackageImporter(), moduleImporter()],
     });
