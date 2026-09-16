@@ -27,5 +27,6 @@ export {
 } from "./serialize-attrs";
 export { difference } from "./set-utils";
 export { slugify } from "./slugify";
+export { takeWhile } from "./take-while";
 export { isRelease } from "./is-release";
 export { zip } from "./zip";
