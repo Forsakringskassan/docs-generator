@@ -1,6 +1,7 @@
 import { type ResourceTask } from "./assets";
 import { type Document } from "./document";
 import { type NavigationSection } from "./navigation";
+import { type StateMap } from "./state-map";
 import { type FileMatcher } from "./utils";
 import { type VendorAsset } from "./vendor";
 
@@ -42,6 +43,9 @@ export interface ProcessorContext {
     readonly sidenav: NavigationSection;
     readonly resources: ResourceTask[];
     readonly outputFolder: string;
+
+    setState<K extends keyof StateMap>(key: K, value: StateMap[K]): void;
+    getState<K extends keyof StateMap>(key: K): StateMap[K] | null;
 
     addDocument(document: Document | Document[]): void;
     addVendorAsset(asset: VendorAsset | VendorAsset[]): void;

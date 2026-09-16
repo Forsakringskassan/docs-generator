@@ -35,6 +35,7 @@ import { redirectProcessor } from "./processors";
 import { type TemplateLoader, nunjucksProcessor } from "./render";
 import { createTemplateLoader } from "./render/render";
 import { serve } from "./serve";
+import { type StateMap } from "./state-map";
 import {
     type FileMatcher,
     fileMatcher,
@@ -234,6 +235,7 @@ function createContext(options: {
         visible: true,
     };
     const templateData = new Map<string, unknown>();
+    const stateData = new Map<PropertyKey, unknown>();
     return {
         get docs(): Document[] {
             return docs;
@@ -317,6 +319,17 @@ function createContext(options: {
 
         setTemplateData(key: string, value: unknown) {
             templateData.set(key, value);
+        },
+
+        setState(key, value) {
+            stateData.set(key, value);
+        },
+
+        getState<K extends keyof StateMap>(key: K): StateMap[K] | null {
+            if (!stateData.has(key)) {
+                return null;
+            }
+            return stateData.get(key) as StateMap[K];
         },
     };
 }

@@ -377,6 +377,8 @@ export interface ProcessorContext {
     // (undocumented)
     getAllTemplateData(): TemplateData & Record<string, unknown>;
     // (undocumented)
+    getState<K extends keyof StateMap>(key: K): StateMap[K] | null;
+    // (undocumented)
     getTemplateData<K extends keyof TemplateData>(key: K): TemplateData[K] | undefined;
     // (undocumented)
     getTemplateData<K extends keyof TemplateData>(key: K, defaultValue: TemplateData[K]): TemplateData[K];
@@ -391,6 +393,8 @@ export interface ProcessorContext {
     readonly resources: ResourceTask[];
     // (undocumented)
     setSideNavigation(root: NavigationSection): void;
+    // (undocumented)
+    setState<K extends keyof StateMap>(key: K, value: StateMap[K]): void;
     // (undocumented)
     setTemplateData<K extends keyof TemplateData>(key: K, value: TemplateData[K]): void;
     // (undocumented)
@@ -505,6 +509,10 @@ export interface SourceUrlProcessorOptions extends ProcessorOptions {
     readonly sourceFiles?: string[];
     // (undocumented)
     readonly urlFormat: string;
+}
+
+// @public (undocumented)
+export interface StateMap {
 }
 
 // @internal (undocumented)
