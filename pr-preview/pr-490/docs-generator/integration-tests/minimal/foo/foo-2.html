@@ -1,14 +1,14 @@
 <!doctype html>
-<html lang="en" class="layout--article" data-root-url="..">
+<html lang="en" class="layout--article loading" data-root-url="..">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Second - Integration test: minimal</title><link
             rel="stylesheet"
-            href="../assets/main-7c9d5b.css"
+            href="../assets/main-240a41.css"
             crossorigin
-            integrity="sha384-NHRWFt2ZFIhpz116cebkj6daBqFZzPt8QbiiI2HsSEvqQcNhAQSXmiqpA1HMJny7"
+            integrity="sha384-itn7tGGaALjnaq7xjT2xKy4VtGjtpd/6r0e8mx03u0mjFYSKJcz6krGR7eJW7+CL"
             
         />
 
@@ -25,13 +25,214 @@
             
         ></script></head>
     <body><div class="layout-wrapper">
-            <header><div class="page-header__root">
-    <div class="page-header">
-        <a class="page-header__logo" href="../index.html">
-            <span aria-label="Integration test: minimal" role="img" class="page-header__logo--small"> </span>
+            <header><div class="docs-page-header__root">
+    <div class="docs-page-header">
+        <div class="docs-page-header__left">
+            <a class="docs-page-header__logo" href="../index.html">
+                <span aria-label="Integration test: minimal" role="img" class="docs-page-header__logo--pipe"> </span>
+            </a>
+            <a class="docs-page-header__app-name" href="../index.html"> Integration test: minimal </a>
+        </div>
+        <div class="docs-page-header__right"><div class="docs-mobile-nav">
+    <input id="mobile-toggle" type="checkbox" class="sr-only" aria-label="Open/close menu" />
+    <label for="mobile-toggle" class="docs-mobile-nav-label">
+        <svg class="docs-icon"><use href="#docs-icon-menu"></use></svg>
+        <span>Menu</span>
+    </label>
+    <nav id="nav-container" class="docs-mobile-navigation" aria-label="Mobile primary">
+        <div class="docs-mobile-nav__header">
+            <label for="mobile-toggle" class="docs-mobile-nav__close">
+                <span class="docs-mobile-nav__close__text">Close</span>
+                <svg class="docs-icon" focusable="false" aria-hidden="true">
+                    <use href="#docs-icon-close"></use>
+                </svg>
+            </label>
+        </div><div id="mobile-sidenav">
+<div class="docs-mobile-nav-wrapper" >
+<ul class="docs-mobile-nav__list">
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Bar <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                        
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../bar/"
+            
+            
+            
+            data-path="bar/"
+            
+        >
+            Bar
         </a>
-        <a class="page-header__app-name" href="../index.html"> Integration test: minimal </a>
-        <div class="page-header__right"><nav id="topnav" class="docs-topnav" aria-label="Primär">
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Baz <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                        
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../baz/"
+            
+            
+            
+            data-path="baz/"
+            
+        >
+            Baz
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details open>
+            <summary>Foo <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+                    
+                        
+                    
+                
+                    
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="./foo-1.html"
+            
+            
+            
+            data-path="foo/foo-1.html"
+            
+        >
+            First
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="./"
+            
+            
+            
+            data-path="foo/"
+            
+        >
+            Foo
+        </a>
+    </li>
+
+<li class="link highlight">
+        <a
+            href="./foo-2.html"
+            
+            
+            
+            data-path="foo/foo-2.html"
+            
+        >
+            Second
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="./foo-3.html"
+            
+            
+            
+            data-path="foo/foo-3.html"
+            
+        >
+            Third
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    </ul>
+</div>
+</div>
+        
+    </nav>
+</div>
+<nav id="topnav" class="docs-topnav" aria-label="Primär">
     <ul class="docs-topnav__list"><li class="docs-topnav__item ">
             <a class="docs-topnav__anchor" href="../bar/"> Bar </a>
         </li>
@@ -49,47 +250,25 @@
         <li class="docs-topnav__item highlight">
             <a class="docs-topnav__anchor" href="./"> Foo </a>
         </li>
-        <li class="docs-topnav__item docs-topnav__item--more" style="visibility: hidden">
-            <button type="button" class="docs-topnav__anchor" aria-expanded="false">
-                <span>Mer</span>
-                <svg class="docs-icon" focusable="false" aria-hidden="true">
-                    <use xlink:href="#docs-icon-arrow-down"></use>
-                </svg>
-            </button>
-            <div class="docs-contextmenu">
-                <ul class="docs-contextmenu__list"><li class="docs-contextmenu__item " style="display: none">
-                        <a class="docs-contextmenu__anchor" href="../bar/"> Bar </a>
-                    </li>
-                    
-                    
-                    
-                    
-                    <li class="docs-contextmenu__item " style="display: none">
-                        <a class="docs-contextmenu__anchor" href="../baz/"> Baz </a>
-                    </li>
-                    
-                    
-                    
-                    
-                    <li class="docs-contextmenu__item highlight" style="display: none">
-                        <a class="docs-contextmenu__anchor" href="./"> Foo </a>
-                    </li>
-                    </ul>
-            </div>
-        </li>
-    </ul>
+        </ul>
 </nav>
 
-            <div class="page-header__right-slot">
+            <div class="docs-page-header__right-slot">
                 <div class="toolbar"></div>
             </div>
         </div>
     </div>
 </div>
-</header>
+
+            </header>
 
             <div id="primary"><div id="sidenav">
-<input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
+
+    <input id="nav-toggle" type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
+    <label for="nav-toggle" class="sidenav__toggle-label">
+         <svg class="docs-icon icon-menu"><use href="#docs-icon-menu"></use></svg>
+         <svg class="docs-icon icon-back"><use href="#docs-icon-chevrons-left"></use></svg>
+    </label>
 <nav class="navigation" aria-label="Sekundär">
 <ul><li class="link ">
         <a
@@ -185,6 +364,18 @@
                 d="M239.373 380.982 45.03 186.638c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04l154.746 154.021L411.089 129.99c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L273.315 380.982c-9.373 9.372-24.569 9.372-33.942 0"
             ></path>
         </symbol>
+        <symbol id="docs-icon-chevrons-left" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="M111.3 256L281.2 78.4c17.3-18.1 16.8-46.9-1.4-64.3-18.1-17.3-46.9-16.7-64.3 1.4l-200 209.1C7.2 233.4 3 244.7 3 256c0 11.3 4.2 22.6 12.6 31.4l200 209.1c17.4 18.1 46.1 18.8 64.3 1.4 18.1-17.3 18.7-46.1 1.4-64.3L111.3 256z M329.5 256L499.4 78.4c17.3-18.1 16.8-46.9-1.4-64.3-18.1-17.3-46.9-16.7-64.3 1.4l-200 209.1c-8.4 8.8-12.6 20.1-12.6 31.4c0 11.3 4.2 22.6 12.6 31.4l200 209.1c17.4 18.1 46.1 18.8 64.3 1.4 18.1-17.3 18.8-46.1 1.4-64.3L329.5 256z"
+            />
+        </symbol>
+        <symbol id="docs-icon-menu" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="M475.4 209.6H36.6C16.4 209.6 0 225.9 0 246.1s16.4 36.6 36.6 36.6h438.9c20.2 0 36.6-16.4 36.6-36.6s-16.4-36.5-36.6-36.5zM475.4 392.4H36.6C16.4 392.4 0 408.8 0 429s16.4 36.6 36.6 36.6h438.9c20.2 0 36.6-16.4 36.6-36.6s-16.4-36.6-36.6-36.6zM475.4 26.7H36.6C16.4 26.7 0 43.1 0 63.3s16.4 36.6 36.6 36.6h438.9c20.2 0 36.6-16.4 36.6-36.6s-16.4-36.6-36.6-36.6z"
+            ></path>
+        </symbol>
         <symbol id="docs-icon-circle" xml:space="preserve" viewBox="0 0 512 512">
             <path
                 d="M489.5 256c0 129-104.6 233.5-233.5 233.5C127 489.5 22.5 385 22.5 256S127 22.5 256 22.5 489.5 127 489.5 256"
@@ -221,10 +412,10 @@
         </symbol>
     </svg>
 </div><script
-            src="../assets/runtime-0941bf.js"
+            src="../assets/runtime-62b711.js"
             type="module"
             crossorigin
-            integrity="sha384-tNfeiRUboVP2BFLg2y8QrFDc66kBu3QGugNG85V608zEPeikmKhmtln90guqpBi6"
+            integrity="sha384-4aPvtGl4OozUASFUT+wmbHreZWM6XXs+K0QQTa1BB5fPSWEORglPXbiL25+RyCAK"
             
         ></script>
     </body>
