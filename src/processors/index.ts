@@ -2,6 +2,11 @@ export {
     type ApiExtractorProcessorOptions,
     apiExtractorProcessor,
 } from "./api-extractor";
+export { cookieProcessor } from "./cookie-processor";
+export {
+    type ExtractMarkdownOptions,
+    extractMarkdownProcessor,
+} from "./extract-markdown-processor";
 export {
     type ExtractExamplesOptions,
     extractExamplesProcessor,
@@ -29,13 +34,12 @@ export {
     type SelectableVersionProcessorOptions,
     selectableVersionProcessor,
 } from "./selectable-version-processor";
+export {
+    type SourceUrlProcessorOptions,
+    sourceUrlProcessor,
+} from "./source-url-processor";
 export { type TopnavEntry, topnavProcessor } from "./topnav-processor";
 export {
     type VersionProcessorOptions,
     versionProcessor,
 } from "./version-processor";
-export {
-    type SourceUrlProcessorOptions,
-    sourceUrlProcessor,
-} from "./source-url-processor";
-export { cookieProcessor } from "./cookie-processor";

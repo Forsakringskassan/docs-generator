@@ -112,6 +112,14 @@ export interface ExtractExamplesOptions extends ProcessorOptions {
 // @public
 export function extractExamplesProcessor(options: ExtractExamplesOptions): Processor;
 
+// @public
+export interface ExtractMarkdownOptions extends ProcessorOptions {
+    outputFolder: string;
+}
+
+// @public
+export function extractMarkdownProcessor(options: ExtractMarkdownOptions): Processor;
+
 // @public (undocumented)
 export interface FileInfo {
     fullPath: string;

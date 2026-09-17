@@ -57,6 +57,7 @@ export { type ProcessorStage } from "./processor-stage";
 export {
     type ApiExtractorProcessorOptions,
     type ExtractExamplesOptions,
+    type ExtractMarkdownOptions,
     type MOTDOptions,
     type ManifestProcessorOptions,
     type PlaygroundProcessorEntry,
@@ -68,6 +69,7 @@ export {
     apiExtractorProcessor,
     cookieProcessor,
     extractExamplesProcessor,
+    extractMarkdownProcessor,
     htmlRedirectProcessor,
     manifestProcessor,
     motdProcessor,
