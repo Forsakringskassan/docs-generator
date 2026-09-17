@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [3.10.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.9.0...v3.10.0) (2026-09-17)
+
+### Features
+
+* **api:** add `{get,set}State()` to `ProcessorContext` for sharing state between processors ([1c43c2a](https://github.com/Forsakringskassan/docs-generator/commit/1c43c2aad5361ad9287ef3e0587af6c3210308bc))
+* new `extractMarkdownProcessor` ([dea413f](https://github.com/Forsakringskassan/docs-generator/commit/dea413f248ce880a048e514ddcd3f568b110c204))
+
 ## [3.9.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.8.0...v3.9.0) (2026-09-17)
 
 ### Features
