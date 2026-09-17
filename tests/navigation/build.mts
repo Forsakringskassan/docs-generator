@@ -3,9 +3,6 @@ import path from "node:path";
 import {
     Generator,
     frontMatterFileReader,
-    searchProcessor,
-    selectableVersionProcessor,
-    versionProcessor,
 } from "@forsakringskassan/docs-generator";
 
 import pkg from "./package.json" with { type: "json" };
@@ -19,15 +16,17 @@ const docs = new Generator(import.meta.url, {
         lang: "en",
     },
     outputFolder,
+    templateFolders: ["./docs/templates"],
     processors: [
-        searchProcessor(),
-        selectableVersionProcessor(pkg, "footer"),
-        versionProcessor(pkg, "toolbar", {
-            scm: {
-                commitUrlFormat: "{{ repository }}/commits/{{ hash }}",
-                prUrlFormat: "{{ repository }}/pull/{{ pr }}",
+        {
+            name: "awesome-widget",
+            before: "render",
+            handler(context) {
+                context.addTemplateBlock("toolbar", "awesome-widget", {
+                    filename: "partials/awesome-widget.html",
+                });
             },
-        }),
+        },
     ],
 });
 
