@@ -8,7 +8,10 @@ export default defineConfig({
             enabled: true,
             exclude: ["**/index.ts"],
         },
-        exclude: ["**/node_modules/**"],
+        exclude: [
+            "**/node_modules/**",
+            "**/tests/**", // fixtures have their own test suites
+        ],
         projects: [
             {
                 extends: true,

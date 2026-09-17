@@ -5,7 +5,16 @@ import { type Manifest, manifestPageFromDocument } from "../manifest";
 import { type Processor } from "../processor";
 import { haveOutput } from "../utils";
 
+declare module "../state-map" {
+    export interface StateMap {
+        [manifestState]: Manifest;
+    }
+}
+
 type ManifestPage = Manifest["pages"][number];
+
+/** @internal */
+export const manifestState = Symbol("manifest");
 
 /**
  * Options for {@link manifestProcessor}.
@@ -94,6 +103,7 @@ export function manifestProcessor(
                 return a.path.localeCompare(b.path);
             });
             const manifest: Manifest = { pages };
+            context.setState(manifestState, manifest);
             if (markdown) {
                 const content = normalize(renderMarkdown(manifest));
                 await fs.mkdir(path.dirname(markdown), { recursive: true });
