@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [3.9.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.8.0...v3.9.0) (2026-09-17)
+
+### Features
+
+* add `Generator.compileWorker()` ([77184ac](https://github.com/Forsakringskassan/docs-generator/commit/77184ac2d92551f1d87fa8328afeca3d54e6cf1a))
+* new `partialFileReader()` for importing document partials ([a66b828](https://github.com/Forsakringskassan/docs-generator/commit/a66b8280118a525f7887b0468ccfcba5aff4283c))
+
 ## [3.8.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.7.0...v3.8.0) (2026-09-16)
 
 ### Features
