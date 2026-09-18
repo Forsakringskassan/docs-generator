@@ -170,7 +170,7 @@
     "memfs": "4.78.0",
     "npm-pkg-lint": "5.2.5",
     "npm-run-all2": "9.0.3",
-    "rollup": "4.63.2",
+    "rollup": "4.63.3",
     "rollup-plugin-esbuild": "6.2.1",
     "rollup-plugin-visualizer": "7.1.1",
     "sass": "1.104.1",
