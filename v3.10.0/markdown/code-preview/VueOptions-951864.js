@@ -10,7 +10,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/markdown/code-preview/VueOptions.vue:VueOptions-732957.js
+// virtual-entry:virtual:docs/markdown/code-preview/VueOptions.vue:VueOptions-951864.js
 import { defineComponent } from "vue";
 import { toDisplayString as _toDisplayString, createElementVNode as _createElementVNode, createTextVNode as _createTextVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
 var exampleComponent = defineComponent({
@@ -37,10 +37,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ]);
 }
 exampleComponent.render = render;
-exampleComponent.__scopeId = "data-v-732957";
+exampleComponent.__scopeId = "data-v-951864";
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-732957"
+  selector: "#example-951864"
 });
 export {
   render
