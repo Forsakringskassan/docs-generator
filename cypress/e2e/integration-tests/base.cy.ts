@@ -132,3 +132,10 @@ describe("versionProcessor", () => {
         cy.visit("/integration-tests/base");
     });
 });
+
+describe("mermaid", () => {
+    it("mermaid 10 blocks inside md file", () => {
+        cy.visit("/integration-tests/base/mermaid");
+        cy.get('.mermaid[data-processed="true"]').should("have.length", 10);
+    });
+});
