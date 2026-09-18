@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [3.10.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.10.0...v3.10.1) (2026-09-18)
+
+### Bug Fixes
+
+* support relative paths in sass files ([6e7a364](https://github.com/Forsakringskassan/docs-generator/commit/6e7a364a281db067a56180f116ee20a61a4fcf3d))
+
 ## [3.10.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.9.0...v3.10.0) (2026-09-17)
 
 ### Features
