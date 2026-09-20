@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [3.11.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.10.1...v3.11.0) (2026-09-20)
+
+### Features
+
+* `extractMarkdownFiles` includes more metadata ([e87d133](https://github.com/Forsakringskassan/docs-generator/commit/e87d133c35a0f983d5326092903f5217301aabc7))
+
 ## [3.10.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.10.0...v3.10.1) (2026-09-18)
 
 ### Bug Fixes
