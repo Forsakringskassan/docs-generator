@@ -239,24 +239,23 @@ export function findTranslations(
     traverse(ast, {
         CallExpression(path) {
             const { node } = path;
-            if (isTranslateCall(node)) {
-                const [name, ...defaultOrParams] = node.arguments;
-                if (name.type !== "StringLiteral") {
-                    return;
-                }
-                const textArgument = defaultOrParams.find(isStringLiteral);
-                const paramArgument = defaultOrParams.find(isObjectExpression);
-                const defaultTranslation = textArgument
-                    ? textArgument.value
-                    : null;
-                const docComment = findDocComment(path, node);
-                result.push({
-                    name: name.value,
-                    defaultTranslation,
-                    description: getDescription(docComment),
-                    parameters: getParameters(paramArgument),
-                });
+            if (!isTranslateCall(node)) {
+                return;
             }
+            const [name, ...defaultOrParams] = node.arguments;
+            if (name.type !== "StringLiteral") {
+                return;
+            }
+            const textArgument = defaultOrParams.find(isStringLiteral);
+            const paramArgument = defaultOrParams.find(isObjectExpression);
+            const defaultTranslation = textArgument ? textArgument.value : null;
+            const docComment = findDocComment(path, node);
+            result.push({
+                name: name.value,
+                defaultTranslation,
+                description: getDescription(docComment),
+                parameters: getParameters(paramArgument),
+            });
         },
     });
 
