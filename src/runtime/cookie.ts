@@ -26,29 +26,31 @@ onContentReady(() => {
         return;
     }
 
-    if (!hasCookie("doc-hide-cookie-warning")) {
-        showCookieWarning(el);
+    if (hasCookie("doc-hide-cookie-warning")) {
+        return;
+    }
 
-        const consentAllButton = document.querySelector<HTMLButtonElement>(
-            "#consent-all-button",
-        );
-        if (consentAllButton) {
-            consentAllButton.addEventListener("click", () => {
-                setCookie("doc-hide-cookie-warning");
-                setCookie("doc-cookie-consent");
-                hideCookieWarning(el);
-                window.dispatchEvent(new Event("doc-cookie-consent"));
-            });
-        }
+    showCookieWarning(el);
 
-        const consentFunctionalButton = document.querySelector(
-            "#consent-functional-button",
-        );
-        if (consentFunctionalButton) {
-            consentFunctionalButton.addEventListener("click", () => {
-                setCookie("doc-hide-cookie-warning");
-                hideCookieWarning(el);
-            });
-        }
+    const consentAllButton = document.querySelector<HTMLButtonElement>(
+        "#consent-all-button",
+    );
+    if (consentAllButton) {
+        consentAllButton.addEventListener("click", () => {
+            setCookie("doc-hide-cookie-warning");
+            setCookie("doc-cookie-consent");
+            hideCookieWarning(el);
+            window.dispatchEvent(new Event("doc-cookie-consent"));
+        });
+    }
+
+    const consentFunctionalButton = document.querySelector(
+        "#consent-functional-button",
+    );
+    if (consentFunctionalButton) {
+        consentFunctionalButton.addEventListener("click", () => {
+            setCookie("doc-hide-cookie-warning");
+            hideCookieWarning(el);
+        });
     }
 });

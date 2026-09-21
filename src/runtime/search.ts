@@ -179,8 +179,7 @@ function setup(): void {
             fragment.append(li);
         }
 
-        results.replaceChildren();
-        results.append(fragment);
+        results.replaceChildren(fragment);
     }
 
     function clickOutside(event: MouseEvent): void {

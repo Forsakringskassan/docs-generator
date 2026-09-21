@@ -118,6 +118,7 @@ export function manifestProcessor(
                     await fs.writeFile(markdown, content, "utf8");
                 }
             }
+            /* eslint-disable-next-line unicorn/prefer-early-return -- for consistency with other ifs */
             if (json) {
                 const content = renderJSON(manifest);
                 await fs.mkdir(path.dirname(json), { recursive: true });

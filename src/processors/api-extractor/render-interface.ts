@@ -53,10 +53,12 @@ function getInheritance(item: ApiInterface): ApiInterface[] {
         for (const { excerpt } of current.extendsTypes) {
             const name = getNameFromExcerpt(excerpt);
             const parentInterface = findMemberByName(name, pkg);
-            if (parentInterface) {
-                traverseParents(parentInterface, pkg);
-                hierarchy.push(parentInterface);
+            if (!parentInterface) {
+                continue;
             }
+
+            traverseParents(parentInterface, pkg);
+            hierarchy.push(parentInterface);
         }
     }
 

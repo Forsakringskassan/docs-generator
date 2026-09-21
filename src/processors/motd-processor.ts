@@ -66,16 +66,18 @@ export function motdProcessor(options: MOTDOptions = {}): Processor {
             });
 
             /* legacy for backwards compatibility */
-            if (useLegacyTemplate) {
-                /* eslint-disable-next-line no-console -- expected to log */
-                console.warn(
-                    `[deprecated] using the "partial/version-banner.html" template for motdProcessor is deprecated`,
-                );
-                context.addTemplateBlock(container, "version-banner", {
-                    filename: "partials/version-banner.html",
-                    data,
-                });
+            if (!useLegacyTemplate) {
+                return;
             }
+
+            /* eslint-disable-next-line no-console -- expected to log */
+            console.warn(
+                `[deprecated] using the "partial/version-banner.html" template for motdProcessor is deprecated`,
+            );
+            context.addTemplateBlock(container, "version-banner", {
+                filename: "partials/version-banner.html",
+                data,
+            });
         },
     };
 }

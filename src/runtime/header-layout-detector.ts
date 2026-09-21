@@ -120,16 +120,18 @@ function checkLayout(nav: HTMLElement): void {
     header.classList.toggle("is-single-row", headerFit);
 
     // In multi-row mode, check if the topnav menu fits; if not, toggle to the mobile layout.
-    if (!headerFit) {
-        const topnavMaxWidth = getTopnavMaxWidht(right);
-        const topnavWidth = getMenuItemsWidth(menuItems);
-
-        const topnavFit = topnavWidth < topnavMaxWidth;
-
-        document.body.classList.toggle("is-mobile", !topnavFit);
-
-        setMenuItemVisibility(menuItems, topnavFit);
+    if (headerFit) {
+        return;
     }
+
+    const topnavMaxWidth = getTopnavMaxWidht(right);
+    const topnavWidth = getMenuItemsWidth(menuItems);
+
+    const topnavFit = topnavWidth < topnavMaxWidth;
+
+    document.body.classList.toggle("is-mobile", !topnavFit);
+
+    setMenuItemVisibility(menuItems, topnavFit);
 }
 
 /**

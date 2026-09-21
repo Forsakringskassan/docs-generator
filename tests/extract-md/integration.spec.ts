@@ -36,20 +36,20 @@ async function generateTree(rootPath: string): Promise<string> {
         }
 
         const stats = await fs.stat(currentPath);
-        if (stats.isDirectory()) {
-            const entries = await fs.readdir(currentPath);
-            const sortedEntries = entries.toSorted((a, b) =>
-                a.localeCompare(b),
-            );
+        if (!stats.isDirectory()) {
+            return;
+        }
 
-            const extension = isLast ? " ".repeat(4) : "│   ";
-            const newPrefix = name ? prefix + extension : "";
+        const entries = await fs.readdir(currentPath);
+        const sortedEntries = entries.toSorted((a, b) => a.localeCompare(b));
 
-            for (let i = 0; i < sortedEntries.length; i++) {
-                const entryPath = path.join(currentPath, sortedEntries[i]!);
-                const isLastEntry = i === sortedEntries.length - 1;
-                await walk(entryPath, newPrefix, isLastEntry);
-            }
+        const extension = isLast ? " ".repeat(4) : "│   ";
+        const newPrefix = name ? prefix + extension : "";
+
+        for (let i = 0; i < sortedEntries.length; i++) {
+            const entryPath = path.join(currentPath, sortedEntries[i]!);
+            const isLastEntry = i === sortedEntries.length - 1;
+            await walk(entryPath, newPrefix, isLastEntry);
         }
     }
 
