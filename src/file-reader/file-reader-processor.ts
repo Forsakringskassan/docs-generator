@@ -27,7 +27,7 @@ async function getDocumentsForSource(
     src: Partial<SourceFiles>,
     index: number,
 ): Promise<Document[]> {
-    const { transform } = src;
+    const { transform, filter = () => true } = src;
     const include = await globAll(src.include);
     const exclude = await globAll(src.exclude);
     const files = Array.from(difference(include, exclude));
@@ -54,7 +54,8 @@ async function getDocumentsForSource(
             return [];
         }
 
-        const docs = await src.fileReader(it, src.basePath);
+        const allDocs = await src.fileReader(it, src.basePath);
+        const docs = allDocs.filter(filter);
         if (transform) {
             return docs.map((it) => transform(it));
         }

@@ -500,6 +500,7 @@ export interface SourceFiles {
     exclude?: string | string[];
     // (undocumented)
     fileReader: FileReader_2;
+    filter?(this: void, doc: Document_2): boolean;
     // (undocumented)
     include: string | string[];
     transform?(this: void, doc: Document_2): Document_2;
