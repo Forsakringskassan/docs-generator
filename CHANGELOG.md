@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [3.12.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.11.1...v3.12.0) (2026-09-23)
+
+### Features
+
+* support filtering documents ([cbf1326](https://github.com/Forsakringskassan/docs-generator/commit/cbf1326b3f396cb580a50cbe9e58d1db3e1584e6))
+
 ## [3.11.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.11.0...v3.11.1) (2026-09-23)
 
 ### Bug Fixes
