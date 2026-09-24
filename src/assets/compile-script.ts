@@ -56,10 +56,11 @@ export async function compileScript(
     } = options;
 
     const iconLib = process.env.DOCS_ICON_LIB ?? "@fkui/icon-lib-default";
+    const sanitizedName = name.replaceAll(/[^a-z0-9-]+/gi, "_");
 
     try {
         const entryPoints = [src instanceof URL ? fileURLToPath(src) : src];
-        const outfile = path.join("temp", `asset-${name}.js`);
+        const outfile = path.join("temp", `asset-${sanitizedName}.js`);
         const external = [...assets, ...vendor.map(toExternalVendor)];
         const format = buildOptions.format ?? "esm";
         await esbuild({
@@ -80,7 +81,7 @@ export async function compileScript(
         const fingerprint = getFingerprint(content);
         const integrity = getIntegrity(content);
         const filename = `${outputName}.js`
-            .replaceAll("[name]", () => name)
+            .replaceAll("[name]", () => sanitizedName)
             .replaceAll("[hash]", () => fingerprint);
         const dst = path.join(outputFolder, filename);
         const publicPath = path.posix.join(
