@@ -1,6 +1,6 @@
 function setViewPort(width: number, height: number): void {
     cy.viewport(width, height);
-    cy.visit("/");
+    cy.visit("/integration-tests/navigation/");
 }
 
 function getHeaderRects(): Cypress.Chainable<{
