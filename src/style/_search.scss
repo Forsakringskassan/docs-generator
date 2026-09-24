@@ -1,3 +1,4 @@
+@use "breakpoints" as bp;
 @use "modal";
 
 kbd {
@@ -54,7 +55,9 @@ kbd {
     background: var(--docs-search-background-color);
     border: 1px solid var(--docs-search-border-color);
     color: var(--docs-text-color-default);
-    width: 580px;
+    @media (width > #{bp.$breakpoint-sm}) {
+        width: 580px;
+    }
 }
 
 .docs-search-dialog {
@@ -96,6 +99,11 @@ kbd {
         max-height: 60vh;
         margin: 0.5rem 0 1.5rem;
         padding: 0.2rem;
+    }
+    &__instructions {
+        @media (width < #{bp.$breakpoint-sm}) {
+            display: none;
+        }
     }
 
     &__item {
