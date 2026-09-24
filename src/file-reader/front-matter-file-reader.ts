@@ -165,6 +165,7 @@ export function parseFile(
                 : `./${normalizePath(urlpath)}`,
             name: filename,
             fullPath: normalizePath(filePath),
+            /* eslint-disable-next-line unicorn/prefer-logical-operator-over-ternary -- false positive? */
             outputName: include ? `${filename}.html` : false,
         },
     };
