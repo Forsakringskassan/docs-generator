@@ -44,16 +44,16 @@
     "Nested Page 3",
     "Nested Page 2",
     "Nested Page 1",
-    "Vue examples",
-    "Javascript and Typescript",
-    "Fullscreen examples",
-    "Diff",
-    "Code preview",
     "Messagebox",
     "Details",
     "Alternative text",
     "Documenting Vue components",
     "Documenting TypeScript",
+    "Vue examples",
+    "Javascript and Typescript",
+    "Fullscreen examples",
+    "Diff",
+    "Code preview",
     "FK Documentation generator",
     "Live example",
     "Changelog"
@@ -270,31 +270,6 @@
       "terms": []
     },
     {
-      "url": "markdown/code-preview/vue.html",
-      "title": "Vue examples",
-      "terms": []
-    },
-    {
-      "url": "markdown/code-preview/javascript.html",
-      "title": "Javascript and Typescript",
-      "terms": []
-    },
-    {
-      "url": "markdown/code-preview/fullscreen.html",
-      "title": "Fullscreen examples",
-      "terms": []
-    },
-    {
-      "url": "markdown/code-preview/diff.html",
-      "title": "Diff",
-      "terms": []
-    },
-    {
-      "url": "markdown/code-preview/index.html",
-      "title": "Code preview",
-      "terms": []
-    },
-    {
       "url": "markdown/containers/messagebox.html",
       "title": "Messagebox",
       "terms": []
@@ -317,6 +292,31 @@
     {
       "url": "markdown/api/typescript.html",
       "title": "Documenting TypeScript",
+      "terms": []
+    },
+    {
+      "url": "markdown/code-preview/vue.html",
+      "title": "Vue examples",
+      "terms": []
+    },
+    {
+      "url": "markdown/code-preview/javascript.html",
+      "title": "Javascript and Typescript",
+      "terms": []
+    },
+    {
+      "url": "markdown/code-preview/fullscreen.html",
+      "title": "Fullscreen examples",
+      "terms": []
+    },
+    {
+      "url": "markdown/code-preview/diff.html",
+      "title": "Diff",
+      "terms": []
+    },
+    {
+      "url": "markdown/code-preview/index.html",
+      "title": "Code preview",
       "terms": []
     },
     {
