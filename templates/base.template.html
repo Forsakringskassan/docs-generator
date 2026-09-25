@@ -71,44 +71,48 @@
                 {%- endfor -%}
 
                 <main>
-                    <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
-                    <h1 class="docs-heading docs-heading--h1" id="title">{{ doc.attributes.title }}</h1>
+                    <div class="docs-container">
+                        <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
+                        <h1 class="docs-heading docs-heading--h1" id="title">{{ doc.attributes.title }}</h1>
 
-                    {% if showAside %}
-                    <div id="aside">
-                        <!-- prettier-ignore -->
-                        {%- block aside %}
-                        {%- endblock %}
+                        {% if showAside %}
+                        <div id="aside">
+                            <!-- prettier-ignore -->
+                            {%- block aside %}
+                            {%- endblock %}
 
-                        {% if doc.outline | length %}
-                        <details id="outline">
-                            <summary class="outline__heading">
-                                {{ $t('outline.in-this-article') }}
-                                <svg focusable="false" class="docs-icon" aria-hidden="true">
-                                    <use href="#docs-icon-arrow-down"></use>
-                                </svg>
-                            </summary>
-                            <ul>
-                                {% for heading in doc.outline %}
-                                <li><a href="#{{ heading.anchor }}">{{ heading.title | escape }}</a></li>
-                                {% endfor %}
-                            </ul>
-                        </details>
+                            {% if doc.outline | length %}
+                            <details id="outline">
+                                <summary class="outline__heading">
+                                    {{ $t('outline.in-this-article') }}
+                                    <svg focusable="false" class="docs-icon" aria-hidden="true">
+                                        <use href="#docs-icon-arrow-down"></use>
+                                    </svg>
+                                </summary>
+                                <ul>
+                                    {% for heading in doc.outline %}
+                                    <li><a href="#{{ heading.anchor }}">{{ heading.title | escape }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </details>
+                            {% endif %}
+                        </div>
                         {% endif %}
-                    </div>
-                    {% endif %}
 
-                    <div id="content">
-                        <!-- prettier-ignore -->
-                        {%- block content %}
-                        {%- endblock %}
+                        <div id="content">
+                            <!-- prettier-ignore -->
+                            {%- block content %}
+                            {%- endblock %}
+                        </div>
                     </div>
                 </main>
             </div>
 
             <footer>
-                <!-- prettier-ignore -->
-                {%- include "partials/footer.html" -%}
+                <div class="docs-footer-content">
+                    <!-- prettier-ignore -->
+                    {%- include "partials/footer.html" -%}
+                </div>
             </footer>
         </div>
 
