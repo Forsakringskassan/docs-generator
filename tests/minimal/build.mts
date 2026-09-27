@@ -13,16 +13,17 @@ const docs = new Generator(import.meta.url, {
         lang: "en",
     },
     outputFolder,
+    sourceFiles: [
+        {
+            include: "docs/**/*.md",
+            basePath: "./docs/",
+            fileReader: frontMatterFileReader,
+        },
+    ],
 });
 
 docs.compileStyle("main", "./docs/src/main.scss", {
     appendTo: "head",
 });
 
-await docs.build([
-    {
-        include: "docs/**/*.md",
-        basePath: "./docs/",
-        fileReader: frontMatterFileReader,
-    },
-]);
+await docs.build();

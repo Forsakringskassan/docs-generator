@@ -10,6 +10,7 @@ const docs = new Generator(import.meta.url, {
         lang: "en",
     },
     outputFolder,
+    sourceFiles: [],
 });
 
-await docs.build([]);
+await docs.build();

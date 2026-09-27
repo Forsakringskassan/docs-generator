@@ -33,23 +33,21 @@ import {
 
 const docs = new Generator(import.meta.url, {
     site: { name: "" },
-    setupPath: "docs/src/setup.ts",
+    sourceFiles: [
+        {
+            include: "docs/**/*.md",
+            basePath: "./docs/",
+            fileReader: frontMatterFileReader,
+        },
+        {
+            include: "docs/**/*.json",
+            basePath: "./docs/",
+            fileReader: navigationFileReader,
+        },
+    ],
 });
 
-/* --- cut above --- */
-
-await docs.build([
-    {
-        include: "docs/**/*.md",
-        basePath: "./docs/",
-        fileReader: frontMatterFileReader,
-    },
-    {
-        include: "docs/**/*.json",
-        basePath: "./docs/",
-        fileReader: navigationFileReader,
-    },
-]);
+await docs.build();
 ```
 
 ## Hiding pages

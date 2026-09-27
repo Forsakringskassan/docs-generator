@@ -89,6 +89,11 @@ export interface GeneratorOptions {
     /** List of vendor assets to compile */
     vendor?: VendorDefinition[];
 
+    /**
+     * List of source files to build documents from.
+     */
+    sourceFiles?: SourceFiles[];
+
     /** Path to file with exported `setup` function, responsible for mounting of component.
      * `function setup(options: { rootComponent: string, selector: string }): void`
      */
@@ -407,7 +412,7 @@ export class Generator {
         this.scripts = [];
         this.styles = [];
         this.resources = [];
-        this.sourceFiles = [];
+        this.sourceFiles = options.sourceFiles ?? [];
         this.markdownOptions = options.markdown;
 
         const bootstrapUrl = new URL("runtime-bootstrap.mjs", import.meta.url);
@@ -532,7 +537,34 @@ export class Generator {
      *
      * @public
      */
-    public async manifest(sourceFiles: SourceFiles[]): Promise<Manifest> {
+    public manifest(): Promise<Manifest>;
+
+    /**
+     * Generate a manifest listing all generated documents that will be present
+     * in `outputFolder`.
+     *
+     * Note: this only collects documents from the `generate-docs` stage,
+     * potential documents generated at later stages will not be present.
+     *
+     * @public
+     * @deprecated Pass in the sourceFiles in the construction options instead.
+     */
+    /* eslint-disable-next-line @typescript-eslint/unified-signatures -- only one prototype is deprecated so cannot be unified */
+    public manifest(explicitSourceFiles: SourceFiles[]): Promise<Manifest>;
+
+    public async manifest(
+        explicitSourceFiles?: SourceFiles[],
+    ): Promise<Manifest> {
+        if (explicitSourceFiles) {
+            this.sourceFiles = explicitSourceFiles;
+            /* eslint-disable-next-line no-console -- expected to log */
+            console.error(
+                "[docs-generator] deprecated: passing in `sourceFiles` as a parameter to `Generator.manifest()` is deprecated, should be passed into the constructor options instead.",
+            );
+        }
+
+        const { sourceFiles } = this;
+
         const processors: Processor[] = [
             fileReaderProcessor(sourceFiles),
             redirectProcessor(),
@@ -556,8 +588,33 @@ export class Generator {
         return { pages };
     }
 
-    public async build(sourceFiles: SourceFiles[]): Promise<string[]> {
-        this.sourceFiles = sourceFiles;
+    /**
+     * Build the documentation project.
+     *
+     * @public
+     * @returns A promise resolving to a list of generated files.
+     */
+    public build(): Promise<string[]>;
+
+    /**
+     * Build the documentation project.
+     *
+     * @public
+     * @deprecated Pass in the sourceFiles in the construction options instead.
+     * @returns A promise resolving to a list of generated files.
+     */
+    /* eslint-disable-next-line @typescript-eslint/unified-signatures -- only one prototype is deprecated so cannot be unified */
+    public build(sourceFiles: SourceFiles[]): Promise<string[]>;
+
+    public async build(explicitSourceFiles?: SourceFiles[]): Promise<string[]> {
+        if (explicitSourceFiles) {
+            this.sourceFiles = explicitSourceFiles;
+            /* eslint-disable-next-line no-console -- expected to log */
+            console.error(
+                "[docs-generator] deprecated: passing in `sourceFiles` as a parameter to `Generator.build()` is deprecated, should be passed into the constructor options instead.",
+            );
+        }
+
         const {
             site,
             outputFolder,
@@ -566,6 +623,7 @@ export class Generator {
             exampleFolders,
             templateFolders,
             setupPath,
+            sourceFiles,
             markdownOptions,
         } = this;
         const examplePatterns = this.exampleFolders.map((it) => `${it}/**/*`);
@@ -639,7 +697,7 @@ export class Generator {
             outputFolder,
             watch,
             rebuild: (_filePath: string[]) => {
-                return this.build(sourceFiles);
+                return this.build();
             },
         });
     }

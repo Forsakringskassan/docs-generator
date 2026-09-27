@@ -74,6 +74,7 @@ const docs = new Generator(import.meta.url, {
         selectableVersionProcessor(pkg, "footer"),
     ],
     setupPath: path.resolve("docs/src/setup.ts"),
+    sourceFiles: config.sourceFiles,
 });
 
 docs.compileStyle("docs", "./docs/src/docs-theme.scss", {
@@ -85,7 +86,7 @@ docs.compileStyle("fkui", "./docs/src/fkui.css", {
 });
 
 try {
-    await docs.build(config.sourceFiles);
+    await docs.build();
 } catch (err) {
     console.error(err.prettyError ? err.prettyError() : err);
     process.exitCode = 1;
