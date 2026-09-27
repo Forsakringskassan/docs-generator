@@ -19,16 +19,17 @@ const docs = new Generator(import.meta.url, {
         }),
         manifestProcessor(),
     ],
+    sourceFiles: [
+        {
+            include: "docs/**/*.md",
+            basePath: "./docs/",
+            fileReader: frontMatterFileReader,
+        },
+        {
+            include: ["src/**/*.vue"],
+            fileReader: vueFileReader,
+        },
+    ],
 });
 
-await docs.build([
-    {
-        include: "docs/**/*.md",
-        basePath: "./docs/",
-        fileReader: frontMatterFileReader,
-    },
-    {
-        include: ["src/**/*.vue"],
-        fileReader: vueFileReader,
-    },
-]);
+await docs.build();

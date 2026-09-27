@@ -35,19 +35,20 @@ const docs = new Generator(import.meta.url, {
             },
         }),
     ],
+    sourceFiles: [
+        {
+            include: "docs/**/*.md",
+            basePath: "./docs/",
+            fileReader: frontMatterFileReader,
+        },
+    ],
 });
 
 docs.compileStyle("main", "./docs/src/main.scss", {
     appendTo: "head",
 });
 
-await docs.build([
-    {
-        include: "docs/**/*.md",
-        basePath: "./docs/",
-        fileReader: frontMatterFileReader,
-    },
-]);
+await docs.build();
 
 const latest = `v${pkg.version}`;
 const versions = JSON.stringify({ latest, versions: [latest] }, null, 2);

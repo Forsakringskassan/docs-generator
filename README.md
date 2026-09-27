@@ -22,10 +22,10 @@ const docs = new Generator(import.meta.url, {
     },
     setupPath: "docs/src/setup.ts",
     processors: [livereloadProcessor({ enabled: true })],
+    sourceFiles: [/* ... */],
 });
 
-docs.build([/* ... */]);
-
+docs.build();
 docs.serve();
 ```
 

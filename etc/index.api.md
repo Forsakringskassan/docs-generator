@@ -143,7 +143,8 @@ class Generator_2 {
     // @deprecated
     constructor(options: GeneratorOptions);
     constructor(importMetaUrl: string | URL, options: GeneratorOptions);
-    // (undocumented)
+    build(): Promise<string[]>;
+    // @deprecated
     build(sourceFiles: SourceFiles[]): Promise<string[]>;
     // (undocumented)
     compileScript(name: string, src: string | URL, options?: Partial<CompileOptions>, buildOptions?: {
@@ -158,7 +159,9 @@ class Generator_2 {
     }): void;
     // (undocumented)
     copyResource(dst: string, src: string): void;
-    manifest(sourceFiles: SourceFiles[]): Promise<Manifest>;
+    manifest(): Promise<Manifest>;
+    // @deprecated
+    manifest(explicitSourceFiles: SourceFiles[]): Promise<Manifest>;
     serve(): Promise<void>;
 }
 export { Generator_2 as Generator }
@@ -177,6 +180,7 @@ export interface GeneratorOptions {
     processors?: Processor[];
     setupPath?: string | null;
     site: GeneratorSiteOptions;
+    sourceFiles?: SourceFiles[];
     templateFolders?: string[];
     vendor?: VendorDefinition[];
 }

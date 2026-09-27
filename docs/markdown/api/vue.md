@@ -15,26 +15,19 @@ import {
 
 const docs = new Generator(import.meta.url, {
     site: { name: "My Awesome Site" },
-    setupPath: "setup.ts",
+    sourceFiles: [
+        {
+            include: ["./docs/**/*.md"],
+            fileReader: frontMatterFileReader,
+        },
+        {
+            include: ["./src/**/*.vue"],
+            fileReader: vueFileReader,
+        },
+    ],
 });
 
-/* --- cut above --- */
-
-/* eslint-disable-next-line unicorn/no-top-level-side-effects -- intended */
-await docs.build([
-    {
-        include: ["./docs/**/*.md"],
-        fileReader: frontMatterFileReader,
-    },
-    {
-        include: ["./src/**/*.vue"],
-        fileReader: vueFileReader,
-    },
-]);
-
-/* --- cut below --- */
-
-export {}; // for TLA to work
+await docs.build();
 ```
 
 This will read each component and generate API documentation which can later be included in markdown with:
