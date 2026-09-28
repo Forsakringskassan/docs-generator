@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [3.13.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.12.1...v3.13.0) (2026-09-28)
+
+### Features
+
+* support passing in `sourceFiles` in constructor ([0971d78](https://github.com/Forsakringskassan/docs-generator/commit/0971d784764d745e0fa4d7b08e0ea94b5338d6a0))
+
+### Bug Fixes
+
+* **deps:** update dependency fs-extra to v11.4.1 ([f277b37](https://github.com/Forsakringskassan/docs-generator/commit/f277b37374470e29fa2e0960d2f7294e445670e0))
+
 ## [3.12.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.12.0...v3.12.1) (2026-09-24)
 
 ### Bug Fixes
