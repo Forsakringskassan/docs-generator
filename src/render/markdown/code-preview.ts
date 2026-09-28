@@ -6,11 +6,9 @@ import {
     type MarkdownItOptions,
     type Token,
 } from "markdown-it";
-import {
-    type ExampleResult,
-    parseInfostring,
-    transformCode,
-} from "../../examples";
+import { type ExampleResult } from "../../examples/example-result";
+import { parseInfostring } from "../../examples/parse-infostring";
+import { transformCode } from "../../examples/transform-code";
 import {
     findTag,
     getFingerprint,
@@ -187,11 +185,19 @@ export function codePreview(
         const standalonePath = getStandalonePath(example.output);
         const showFullscreen = Boolean(standalonePath) && fullscreen;
         const testIdAttr = testId ? `data-test="${testId}"` : "";
+        const hasRenderedPreview = liveExample || !staticCode;
+        const hasSolidBackground =
+            hasRenderedPreview &&
+            findTag(tags, "background")?.value === "solid";
+        const exampleBackgroundAttr = hasSolidBackground
+            ? 'data-example-background="solid"'
+            : "";
         const filteredTags = tags.filter((it) => {
             if (
                 it.startsWith("test-id=") ||
                 it.startsWith("name") ||
-                it.startsWith("compare")
+                it.startsWith("compare") ||
+                (hasSolidBackground && it === "background=solid")
             ) {
                 return false;
             }
@@ -209,6 +215,7 @@ export function codePreview(
                     class="code-preview code-preview--borderless"
                     ${testIdAttr}
                     ${dataTagsAttr}
+                    ${exampleBackgroundAttr}
                     data-language="${example.language}"
                 >
                     ${example.markup}
@@ -238,6 +245,7 @@ export function codePreview(
                     class="code-preview ${modifier}"
                     ${testIdAttr}
                     ${dataTagsAttr}
+                    ${exampleBackgroundAttr}
                     data-language="${example.language}"
                 >
                     ${example.comments.join("\n")}
@@ -286,6 +294,7 @@ export function codePreview(
                 class="code-preview ${modifier}"
                 ${testIdAttr}
                 ${dataTagsAttr}
+                ${exampleBackgroundAttr}
                 data-language="${example.language}"
             >
                 ${example.comments.join("\n")}
