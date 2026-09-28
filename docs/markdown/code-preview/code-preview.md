@@ -191,6 +191,38 @@ my-file.html
 my-file.html
 ```
 
+### `background`
+
+Rendered examples use a checkered background by default.
+The background follows the user's light or dark color-scheme preference.
+This applies to both regular examples and imports tagged with `live-example`.
+
+#### Checkered background
+
+Omit `background` to use the default background:
+
+```html
+<p>Hello world!</p>
+```
+
+#### Solid background
+
+Use `background=solid` to use a solid background instead.
+It follows the same light or dark color-scheme preference as the checkered background:
+
+````md
+```html background=solid
+<p>Hello world!</p>
+```
+````
+
+```html background=solid
+<p>Hello world!</p>
+```
+
+The selected background is exposed as `data-example-background="solid"` on `.code-preview`.
+Static code blocks, other background names, and CSS values are not supported.
+
 ## Runnable examples
 
 ```import
