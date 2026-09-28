@@ -220,9 +220,6 @@ It follows the same light or dark color-scheme preference as the checkered backg
 <p>Hello world!</p>
 ```
 
-The selected background is exposed as `data-example-background="solid"` on `.code-preview`.
-Static code blocks, other background names, and CSS values are not supported.
-
 ## Runnable examples
 
 ```import
