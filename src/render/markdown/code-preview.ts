@@ -189,8 +189,8 @@ export function codePreview(
         const hasSolidBackground =
             hasRenderedPreview &&
             findTag(tags, "background")?.value === "solid";
-        const exampleBackgroundAttr = hasSolidBackground
-            ? 'data-example-background="solid"'
+        const backgroundAttr = hasSolidBackground
+            ? 'data-background="solid"'
             : "";
         const filteredTags = tags.filter((it) => {
             if (
@@ -215,7 +215,7 @@ export function codePreview(
                     class="code-preview code-preview--borderless"
                     ${testIdAttr}
                     ${dataTagsAttr}
-                    ${exampleBackgroundAttr}
+                    ${backgroundAttr}
                     data-language="${example.language}"
                 >
                     ${example.markup}
@@ -245,7 +245,7 @@ export function codePreview(
                     class="code-preview ${modifier}"
                     ${testIdAttr}
                     ${dataTagsAttr}
-                    ${exampleBackgroundAttr}
+                    ${backgroundAttr}
                     data-language="${example.language}"
                 >
                     ${example.comments.join("\n")}
@@ -294,7 +294,7 @@ export function codePreview(
                 class="code-preview ${modifier}"
                 ${testIdAttr}
                 ${dataTagsAttr}
-                ${exampleBackgroundAttr}
+                ${backgroundAttr}
                 data-language="${example.language}"
             >
                 ${example.comments.join("\n")}
