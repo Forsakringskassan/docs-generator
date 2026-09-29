@@ -320,7 +320,7 @@
         {
           "kind": "Variable",
           "canonicalReference": "@forsakringskassan/docs-generator!docMarkdown:var",
-          "docComment": "/**\n * Lorem ipsum dolor sit amet.\n *\n * - List item 1 - List item 2 - List item 3\n *\n * * Another list * using asterisks * instead of dashes.\n *\n * Markdown **formatting**.\n */\n",
+          "docComment": "/**\n * Lorem ipsum dolor sit amet.\n *\n * - List item 1\n * - List item 2\n * - List item 3\n *\n * * Another list\n * * using asterisks\n * * instead of dashes.\n *\n * Markdown **formatting**.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -347,7 +347,7 @@
         {
           "kind": "Variable",
           "canonicalReference": "@forsakringskassan/docs-generator!docMultiline:var",
-          "docComment": "/**\n * Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n *\n * Duis tincidunt justo ut augue volutpat ultricies.\n */\n",
+          "docComment": "/**\n * Lorem ipsum dolor\n * sit amet, consectetur\n * adipiscing elit.\n *\n * Duis tincidunt justo ut\n * augue volutpat ultricies.\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",

@@ -43,9 +43,12 @@ describe("documentation()", () => {
         const item = findItem("docMultiline");
         const result = documentation(item);
         expect(result).toMatchInlineSnapshot(`
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Lorem ipsum dolor
+          sit amet, consectetur
+          adipiscing elit.
 
-            Duis tincidunt justo ut augue volutpat ultricies.
+          Duis tincidunt justo ut
+          augue volutpat ultricies.
         `);
     });
 
@@ -169,11 +172,14 @@ describe("documentationComment()", () => {
         const item = findItem("docMultiline");
         const result = documentationComment(item);
         expect(result).toMatchInlineSnapshot(`
-            /**
-             * Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-             *
-             * Duis tincidunt justo ut augue volutpat ultricies.
-             */
+          /**
+           * Lorem ipsum dolor
+           * sit amet, consectetur
+           * adipiscing elit.
+           *
+           * Duis tincidunt justo ut
+           * augue volutpat ultricies.
+           */
         `);
     });
 
