@@ -47,6 +47,24 @@ it("should find document by alias", () => {
     });
 });
 
+it("should prefer an alias over another document name", () => {
+    expect.assertions(1);
+    const docs = [
+        createMockDocument("component:FTable", "foo.html"),
+        createMockDocument("FTable", "bar.html", {
+            alias: ["component:FTable"],
+        }),
+    ];
+    const result = findDocument(docs, "component:FTable");
+    expect(result).toEqual({
+        kind: "alias",
+        reference: "component:FTable",
+        document: expect.objectContaining({
+            name: "FTable",
+        }),
+    });
+});
+
 it("should return null if no document matches", () => {
     expect.assertions(1);
     const docs = [createMockDocument("mock-name", "foo.html")];

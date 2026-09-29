@@ -26,11 +26,15 @@ export function findDocument(
         if (document.id === needle) {
             return { document, kind: "id", reference: needle };
         }
-        if (document.name === needle) {
-            return { document, kind: "name", reference: needle };
-        }
+    }
+    for (const document of haystack) {
         if (document.alias.includes(needle)) {
             return { document, kind: "alias", reference: needle };
+        }
+    }
+    for (const document of haystack) {
+        if (document.name === needle) {
+            return { document, kind: "name", reference: needle };
         }
     }
     return { document: null, kind: null, reference: null };
