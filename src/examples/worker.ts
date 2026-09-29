@@ -1,7 +1,7 @@
 import { parentPort } from "node:worker_threads";
 import { version } from "vue";
 import { type Plugin, build as esbuild } from "esbuild";
-import { virtualEntryPlugin } from "../esbuild";
+import { dependencyTrackerPlugin, virtualEntryPlugin } from "../esbuild";
 import { tsconfigPath as tsconfig } from "../tsconfig-path";
 import { type ExampleCompileTask } from "./example-task";
 import { vuePlugin as Vue3Plugin } from "plugin-vue3";
@@ -39,7 +39,10 @@ export interface CompileResponse<T = unknown> {
 /**
  * @internal
  */
-export type CompileResult = ExampleCompileTask;
+export interface CompileResult extends ExampleCompileTask {
+    /** files that was used during the compilation of this task */
+    dependencies: Set<string>;
+}
 
 /**
  * @internal
@@ -80,6 +83,7 @@ async function compileExample(
     ];
     const virtualEntries = { [virtualEntryPoint(task)]: task.sourcecode };
     const iconLib = process.env.DOCS_ICON_LIB ?? "@fkui/icon-lib-default";
+    const dependencies = new Set<string>();
     await esbuild({
         entryPoints,
         outdir,
@@ -92,9 +96,13 @@ async function compileExample(
             "process.env.NODE_ENV": JSON.stringify("development"),
             "process.env.DOCS_ICON_LIB": JSON.stringify(iconLib),
         },
-        plugins: [virtualEntryPlugin(virtualEntries), VuePlugin()],
+        plugins: [
+            virtualEntryPlugin(virtualEntries),
+            VuePlugin(),
+            dependencyTrackerPlugin(dependencies),
+        ],
     });
-    return { ...task };
+    return { ...task, dependencies };
 }
 
 async function compileExampleMultiple(
