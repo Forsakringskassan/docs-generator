@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Navigation - FK Documentation generator</title><link
             rel="stylesheet"
-            href="../assets/docs-117839.css"
+            href="../assets/docs-c93137.css"
             crossorigin
-            integrity="sha384-qVsbZEuPvTxfDX2q2scOoN5Zh5HKuN7THCplS2/QoEIVh5mAQ8BSm7Wriv/K8Kbt"
+            integrity="sha384-ZIsLMr3Dnn4zAIvLyZGJqsWvejqzFGVi3zcKkcUkLk25zsMHGW3eRIbRzOZnWulf"
             
         />
         <link
@@ -23,11 +23,11 @@
             {
   "imports": {
     "vue": "../assets/vendor-vue-f8f1bb.js",
-    "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-4d3df1.js"
+    "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-a7dd47.js"
   },
   "integrity": {
     "../assets/vendor-vue-f8f1bb.js": "sha384-2h0pGXLCmTwD41SU1sbbk/H1O2eu5RpROsi5Z8hiFjhf2+Zv2bz5rFA2uLqKMqfz",
-    "../assets/vendor-forsakringskassan-docs-live-example-4d3df1.js": "sha384-qEH0EU6KJjNMvGkeASBkzstMsX+itOgTluNoPYIzAY+XrsBRHjbb5CCwdk7n8yot"
+    "../assets/vendor-forsakringskassan-docs-live-example-a7dd47.js": "sha384-VKppHxCeZq82kVDB1OYOYbpV834R6UMQhJGy0Ljiv1cQlksKAiIBgmXoroQOISfR"
   }
 }
         </script><script
@@ -38,10 +38,10 @@
             
         ></script><link
     rel="preload"
-    href="../search-data-a23b04.json"
+    href="../search-data-8e3df9.json"
     as="fetch"
     crossorigin
-    integrity="sha384-CWoqdGw9xY3VcZkzQAc5O3SKpEfd3LaOBcTFLdgD/hxXOMNWGT2EPhkn14Ht1FKD"
+    integrity="sha384-wctf9rKaPV9lHgSmo1y6mPC5qPTADPnS/XyN+1CiuFrUxh8S6nTFmjQtcbS69YIV"
     id="search-data"
 />
 
@@ -1334,9 +1334,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        <span class="version-text-block">buggfix/mermaid-async-problem</span>  (<a href="https://github.com/Forsakringskassan/docs-generator/commits/eb056db542244e68d1c82867162bddf9bc9badab">eb056db</a>)<br />
+        <span class="version-text-block">buggfix/mermaid-async-problem</span>  (<a href="https://github.com/Forsakringskassan/docs-generator/commits/94f8c80049c22a1d870154b77c0c7a0daa705565">94f8c80</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/497">PR 497</a><br />
-       <span class="version-text-block">2026-09-24 11:40</span>
+       <span class="version-text-block">2026-09-29 13:16</span>
     </span>
 </div>
 </div>
@@ -1556,31 +1556,42 @@
             <p class="docs-paragraph">It uses the <code>frontMatterFileReader</code> and <code>navigationFileReader</code> to read the documents:</p>
 
                 <div
-                    id="example-7dcbf2"
+                    id="example-3a34d3"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">await</span> docs.<span class="hljs-title function_">build</span>([
-    {
-        <span class="hljs-attr">include</span>: <span class="hljs-string">&quot;docs/**/*.md&quot;</span>,
-        <span class="hljs-attr">basePath</span>: <span class="hljs-string">&quot;./docs/&quot;</span>,
-        <span class="hljs-attr">fileReader</span>: frontMatterFileReader,
-    },
-    {
-        <span class="hljs-attr">include</span>: <span class="hljs-string">&quot;docs/**/*.json&quot;</span>,
-        <span class="hljs-attr">basePath</span>: <span class="hljs-string">&quot;./docs/&quot;</span>,
-        <span class="hljs-attr">fileReader</span>: navigationFileReader,
-    },
-]);
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">Generator</span>,
+    frontMatterFileReader,
+    navigationFileReader,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@forsakringskassan/docs-generator&quot;</span>;
+
+<span class="hljs-keyword">const</span> docs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Generator</span>(<span class="hljs-keyword">import</span>.<span class="hljs-property">meta</span>.<span class="hljs-property">url</span>, {
+    <span class="hljs-attr">site</span>: { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;&quot;</span> },
+    <span class="hljs-attr">sourceFiles</span>: [
+        {
+            <span class="hljs-attr">include</span>: <span class="hljs-string">&quot;docs/**/*.md&quot;</span>,
+            <span class="hljs-attr">basePath</span>: <span class="hljs-string">&quot;./docs/&quot;</span>,
+            <span class="hljs-attr">fileReader</span>: frontMatterFileReader,
+        },
+        {
+            <span class="hljs-attr">include</span>: <span class="hljs-string">&quot;docs/**/*.json&quot;</span>,
+            <span class="hljs-attr">basePath</span>: <span class="hljs-string">&quot;./docs/&quot;</span>,
+            <span class="hljs-attr">fileReader</span>: navigationFileReader,
+        },
+    ],
+});
+
+<span class="hljs-keyword">await</span> docs.<span class="hljs-title function_">build</span>();
 </code></pre>
                 </div>
             <h2 id="hiding_pages" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#hiding_pages">Hiding pages</a></h2><p class="docs-paragraph">Each file will be present in the navigation unless the <code>visible</code> attribute is set to <code>false</code>, e.g.:</p>
 
                 <div
-                    id="example-5ab3cb"
+                    id="example-4735cc"
                     class="code-preview code-preview--default"
                     
                     
@@ -1601,7 +1612,7 @@ It can be linked to by other means.
 To set the title of the group create a new <code>index.json</code> with the <code>title</code> attribute set:</p>
 
                 <div
-                    id="example-064c7d"
+                    id="example-214282"
                     class="code-preview code-preview--default"
                     
                     
@@ -1616,7 +1627,7 @@ To set the title of the group create a new <code>index.json</code> with the <cod
             <h2 id="links" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#links">Links</a></h2><p class="docs-paragraph">Custom links can be created by adding a json file with both the <code>title</code> and <code>href</code> property set, e.g. <code>external-link.json</code>:</p>
 
                 <div
-                    id="example-46768b"
+                    id="example-adc4b3"
                     class="code-preview code-preview--default"
                     
                     
@@ -1635,7 +1646,7 @@ It is recommended to start such hrefs with a single <code>/</code> for better cl
 <h2 id="sorting" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#sorting">Sorting</a></h2><p class="docs-paragraph">Sorting uses the optional <code>sortorder</code> attribute:</p>
 
                 <div
-                    id="example-6040a0"
+                    id="example-df4329"
                     class="code-preview code-preview--default"
                     
                     
@@ -1662,7 +1673,7 @@ Pages sharing the same <code>sortorder</code> or when <code>sortorder</code> is 
 If the <code>shortTitle</code> attribute is set it is used instead.</p>
 
                 <div
-                    id="example-8f9f51"
+                    id="example-8da1f4"
                     class="code-preview code-preview--default"
                     
                     
@@ -1820,34 +1831,34 @@ title: A longer title unsuitable for the navigation
         <a class="docs-selectable-version__link"></a>
     </li>
 </template><script
-            src="../assets/processors/search/search-da8e04.js"
+            src="../assets/processors_search_search-da8e04.js"
             type="module"
             crossorigin
             integrity="sha384-52FGbmhXt7S6HsBHFvoE9+n+e7HoPwWn9HhX7epRYhsPZHrpuN8QwyJ5Tz5i9rqh"
             
         ></script><script
-            src="../assets/processors/cookie/cookie-914342.js"
+            src="../assets/processors_cookie_cookie-914342.js"
             type="module"
             crossorigin
             integrity="sha384-MBBvCIP3fEWHIqviIqG/9GbTtORyBZ56kM59D1TJ8/THxON/pPugVWrY5f3OUYWi"
             
         ></script><script
-            src="../assets/processors/motd/index-db684d.js"
+            src="../assets/processors_motd_index-db684d.js"
             type="module"
             crossorigin
             integrity="sha384-zAoLcKQxzwmKl8WDuv2SdmMjcqkFzdJo6p4UsXF27ONwO6eGqJD0F2C0Aipv2cAC"
             
         ></script><script
-            src="../assets/processors/selectable-version/select-version-2c9431.js"
+            src="../assets/processors_selectable-version_select-version-33379f.js"
             type="module"
             crossorigin
-            integrity="sha384-9hQ43N1Z1PTTyXzJZqvUhhviok2j0gM38EPJSPuNZQm5+PsJ9cfLi3h6BcLfIEpq"
+            integrity="sha384-HGcJPTbU4YeNuT41ssAVx2U4Nwd7G6PIIs3y8/4DCUHwhy/QoaH5/9wQaPN9LILL"
             
         ></script><script
-            src="../assets/runtime-d83128.js"
+            src="../assets/runtime-be9b9e.js"
             type="module"
             crossorigin
-            integrity="sha384-D7uUf+ouPChpnOsXumOTKIGHxIvp5wbBvQeNbV13Ve831yreADyEeAroU3SnPMK5"
+            integrity="sha384-31UlQRc/7pS9mfEj69F23dnPXEqK1sYaH0SVCvGtNlnIBDIjxOpxE0bgPf6xTU8D"
             
         ></script>
     </body>
