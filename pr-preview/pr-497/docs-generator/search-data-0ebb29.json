@@ -5,10 +5,6 @@
     "Theme",
     "Font",
     "Smoketest: tables",
-    "Navigation",
-    "Child Page 3",
-    "Child Page 2",
-    "Child Page 1",
     "Version",
     "Topnav",
     "Source url",
@@ -29,6 +25,10 @@
     "Markdown",
     "Images",
     "Definition lists",
+    "Navigation",
+    "Child Page 3",
+    "Child Page 2",
+    "Child Page 1",
     "Example",
     "Plumbing",
     "Overriding templates",
@@ -37,6 +37,16 @@
     "Workers",
     "Scripts",
     "Configuration",
+    "Messagebox",
+    "Details",
+    "Alternative text",
+    "Vue examples",
+    "Javascript and Typescript",
+    "Fullscreen examples",
+    "Diff",
+    "Code preview",
+    "Documenting Vue components",
+    "Documenting TypeScript",
     "Top page",
     "Sorted Page 3",
     "Sorted Page 2",
@@ -44,16 +54,6 @@
     "Nested Page 3",
     "Nested Page 2",
     "Nested Page 1",
-    "Documenting Vue components",
-    "Documenting TypeScript",
-    "Vue examples",
-    "Javascript and Typescript",
-    "Fullscreen examples",
-    "Diff",
-    "Code preview",
-    "Messagebox",
-    "Details",
-    "Alternative text",
     "FK Documentation generator",
     "Live example",
     "Changelog"
@@ -82,26 +82,6 @@
     {
       "url": "smoketest/table.html",
       "title": "Smoketest: tables",
-      "terms": []
-    },
-    {
-      "url": "navigation/index.html",
-      "title": "Navigation",
-      "terms": []
-    },
-    {
-      "url": "navigation/child-page-3.html",
-      "title": "Child Page 3",
-      "terms": []
-    },
-    {
-      "url": "navigation/child-page-2.html",
-      "title": "Child Page 2",
-      "terms": []
-    },
-    {
-      "url": "navigation/child-page-1.html",
-      "title": "Child Page 1",
       "terms": []
     },
     {
@@ -195,6 +175,26 @@
       "terms": []
     },
     {
+      "url": "navigation/index.html",
+      "title": "Navigation",
+      "terms": []
+    },
+    {
+      "url": "navigation/child-page-3.html",
+      "title": "Child Page 3",
+      "terms": []
+    },
+    {
+      "url": "navigation/child-page-2.html",
+      "title": "Child Page 2",
+      "terms": []
+    },
+    {
+      "url": "navigation/child-page-1.html",
+      "title": "Child Page 1",
+      "terms": []
+    },
+    {
       "url": "live-example/example.html",
       "title": "Example",
       "terms": []
@@ -235,6 +235,56 @@
       "terms": []
     },
     {
+      "url": "markdown/containers/messagebox.html",
+      "title": "Messagebox",
+      "terms": []
+    },
+    {
+      "url": "markdown/containers/details.html",
+      "title": "Details",
+      "terms": []
+    },
+    {
+      "url": "markdown/containers/alt-text.html",
+      "title": "Alternative text",
+      "terms": []
+    },
+    {
+      "url": "markdown/code-preview/vue.html",
+      "title": "Vue examples",
+      "terms": []
+    },
+    {
+      "url": "markdown/code-preview/javascript.html",
+      "title": "Javascript and Typescript",
+      "terms": []
+    },
+    {
+      "url": "markdown/code-preview/fullscreen.html",
+      "title": "Fullscreen examples",
+      "terms": []
+    },
+    {
+      "url": "markdown/code-preview/diff.html",
+      "title": "Diff",
+      "terms": []
+    },
+    {
+      "url": "markdown/code-preview/index.html",
+      "title": "Code preview",
+      "terms": []
+    },
+    {
+      "url": "markdown/api/vue.html",
+      "title": "Documenting Vue components",
+      "terms": []
+    },
+    {
+      "url": "markdown/api/typescript.html",
+      "title": "Documenting TypeScript",
+      "terms": []
+    },
+    {
       "url": "navigation/sorted-group/top-page.html",
       "title": "Top page",
       "terms": []
@@ -270,56 +320,6 @@
       "terms": []
     },
     {
-      "url": "markdown/api/vue.html",
-      "title": "Documenting Vue components",
-      "terms": []
-    },
-    {
-      "url": "markdown/api/typescript.html",
-      "title": "Documenting TypeScript",
-      "terms": []
-    },
-    {
-      "url": "markdown/code-preview/vue.html",
-      "title": "Vue examples",
-      "terms": []
-    },
-    {
-      "url": "markdown/code-preview/javascript.html",
-      "title": "Javascript and Typescript",
-      "terms": []
-    },
-    {
-      "url": "markdown/code-preview/fullscreen.html",
-      "title": "Fullscreen examples",
-      "terms": []
-    },
-    {
-      "url": "markdown/code-preview/diff.html",
-      "title": "Diff",
-      "terms": []
-    },
-    {
-      "url": "markdown/code-preview/index.html",
-      "title": "Code preview",
-      "terms": []
-    },
-    {
-      "url": "markdown/containers/messagebox.html",
-      "title": "Messagebox",
-      "terms": []
-    },
-    {
-      "url": "markdown/containers/details.html",
-      "title": "Details",
-      "terms": []
-    },
-    {
-      "url": "markdown/containers/alt-text.html",
-      "title": "Alternative text",
-      "terms": []
-    },
-    {
       "url": "index.html",
       "title": "FK Documentation generator",
       "terms": []
@@ -344,13 +344,13 @@
     "5": 5,
     "6": 6,
     "7": 7,
-    "8": 8,
-    "9": 9,
-    "10": 10,
-    "11": 11,
-    "12": 11,
-    "13": 11,
-    "14": 12,
+    "8": 7,
+    "9": 7,
+    "10": 8,
+    "11": 8,
+    "12": 9,
+    "13": 10,
+    "14": 11,
     "15": 12,
     "16": 13,
     "17": 14,

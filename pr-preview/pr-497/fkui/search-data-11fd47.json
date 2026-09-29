@@ -284,12 +284,6 @@
     "XRelativeTime",
     "XFileDragdrop",
     "XFileDragdrop",
-    "i18next",
-    "TranslationService",
-    "i18nextProvider",
-    "TranslationService",
-    "I18nextProvider",
-    "TranslationService",
     "Hjälpklasser",
     "helpers",
     "h-no-margin",
@@ -297,6 +291,12 @@
     "h-display-flex",
     "Skärmläsare",
     "NVDA",
+    "i18next",
+    "TranslationService",
+    "i18nextProvider",
+    "TranslationService",
+    "I18nextProvider",
+    "TranslationService",
     "useResize() composable",
     "justerbar yta",
     "useModal() composable",
@@ -559,6 +559,17 @@
     "Version 6 migreringsguide: @fkui/logic",
     "Version 6 migreringsguide: @fkui/design",
     "Version 6 migreringsguide: Cypress Pageobjects",
+    "openModal",
+    "modalfunktion",
+    "options API",
+    "formModal() function",
+    "modalfunktion",
+    "formulärsmodal",
+    "options API",
+    "confirmModal() function",
+    "modalfunktion",
+    "bekräftelsemodal",
+    "options API",
     "refIsVue",
     "DOM-funktion",
     "refIsVueArray",
@@ -606,17 +617,6 @@
     "ValidationErrorMessageBuilder: build() method",
     "feltext",
     "validator",
-    "openModal",
-    "modalfunktion",
-    "options API",
-    "formModal() function",
-    "modalfunktion",
-    "formulärsmodal",
-    "options API",
-    "confirmModal() function",
-    "modalfunktion",
-    "bekräftelsemodal",
-    "options API",
     "FYear",
     "årtal",
     "FYear: value property",
@@ -721,10 +721,6 @@
     "cypress",
     "FFileItemPageObject: typeOfFile() method",
     "FFileItemPageObject: fileName() method",
-    "FBadgePageObject: FBadgePageObject() constructor",
-    "cypress",
-    "FFileItemPageObject: status() method",
-    "FFileItemPageObject: inverted() method",
     "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
     "cypress",
     "FDetailsPanelPageObject: header() method",
@@ -732,6 +728,10 @@
     "FDetailsPanelPageObject: el() method",
     "FDetailsPanelPageObject: content() method",
     "FDetailsPanelPageObject: closeButton() method",
+    "FBadgePageObject: FBadgePageObject() constructor",
+    "cypress",
+    "FFileItemPageObject: status() method",
+    "FFileItemPageObject: inverted() method",
     "Kolumntyp dropplista i tabell",
     "select",
     "Kolumntyp radrubrik i tabell",
@@ -1430,6 +1430,23 @@
       ]
     },
     {
+      "url": "functions/helpers/index.html",
+      "title": "Hjälpklasser",
+      "terms": [
+        "helpers",
+        "h-no-margin",
+        "h-root-size",
+        "h-display-flex"
+      ]
+    },
+    {
+      "url": "functions/helpers/accessibility.html",
+      "title": "Skärmläsare",
+      "terms": [
+        "NVDA"
+      ]
+    },
+    {
       "url": "functions/i18next-translate/i18next.html",
       "title": "i18next",
       "terms": [
@@ -1448,23 +1465,6 @@
       "title": "I18nextProvider",
       "terms": [
         "TranslationService"
-      ]
-    },
-    {
-      "url": "functions/helpers/index.html",
-      "title": "Hjälpklasser",
-      "terms": [
-        "helpers",
-        "h-no-margin",
-        "h-root-size",
-        "h-display-flex"
-      ]
-    },
-    {
-      "url": "functions/helpers/accessibility.html",
-      "title": "Skärmläsare",
-      "terms": [
-        "NVDA"
       ]
     },
     {
@@ -2092,6 +2092,32 @@
       "terms": []
     },
     {
+      "url": "functions/functions/modal-functions/open-modal.html",
+      "title": "openModal",
+      "terms": [
+        "modalfunktion",
+        "options API"
+      ]
+    },
+    {
+      "url": "functions/functions/modal-functions/form-modal.html",
+      "title": "formModal() function",
+      "terms": [
+        "modalfunktion",
+        "formulärsmodal",
+        "options API"
+      ]
+    },
+    {
+      "url": "functions/functions/modal-functions/confirm-modal.html",
+      "title": "confirmModal() function",
+      "terms": [
+        "modalfunktion",
+        "bekräftelsemodal",
+        "options API"
+      ]
+    },
+    {
       "url": "functions/functions/dom-functions/ref-is-vue.html",
       "title": "refIsVue",
       "terms": [
@@ -2241,32 +2267,6 @@
       "terms": [
         "feltext",
         "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/modal-functions/open-modal.html",
-      "title": "openModal",
-      "terms": [
-        "modalfunktion",
-        "options API"
-      ]
-    },
-    {
-      "url": "functions/functions/modal-functions/form-modal.html",
-      "title": "formModal() function",
-      "terms": [
-        "modalfunktion",
-        "formulärsmodal",
-        "options API"
-      ]
-    },
-    {
-      "url": "functions/functions/modal-functions/confirm-modal.html",
-      "title": "confirmModal() function",
-      "terms": [
-        "modalfunktion",
-        "bekräftelsemodal",
-        "options API"
       ]
     },
     {
@@ -2638,23 +2638,6 @@
       "terms": []
     },
     {
-      "url": "functions/cypress/pageobjects/FBadgePageObject/index.html",
-      "title": "FBadgePageObject: FBadgePageObject() constructor",
-      "terms": [
-        "cypress"
-      ]
-    },
-    {
-      "url": "functions/cypress/pageobjects/FBadgePageObject/status.html",
-      "title": "FFileItemPageObject: status() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FBadgePageObject/is-inverted.html",
-      "title": "FFileItemPageObject: inverted() method",
-      "terms": []
-    },
-    {
       "url": "functions/cypress/pageobjects/FDetailsPanelPageObject/index.html",
       "title": "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
       "terms": [
@@ -2684,6 +2667,23 @@
     {
       "url": "functions/cypress/pageobjects/FDetailsPanelPageObject/close-button.html",
       "title": "FDetailsPanelPageObject: closeButton() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FBadgePageObject/index.html",
+      "title": "FBadgePageObject: FBadgePageObject() constructor",
+      "terms": [
+        "cypress"
+      ]
+    },
+    {
+      "url": "functions/cypress/pageobjects/FBadgePageObject/status.html",
+      "title": "FFileItemPageObject: status() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FBadgePageObject/is-inverted.html",
+      "title": "FFileItemPageObject: inverted() method",
       "terms": []
     },
     {
@@ -3153,13 +3153,13 @@
     "283": 72,
     "284": 73,
     "285": 73,
-    "286": 74,
-    "287": 74,
-    "288": 75,
-    "289": 75,
-    "290": 76,
-    "291": 76,
-    "292": 76,
+    "286": 73,
+    "287": 73,
+    "288": 73,
+    "289": 74,
+    "290": 74,
+    "291": 75,
+    "292": 75,
     "293": 76,
     "294": 76,
     "295": 77,
@@ -3428,59 +3428,59 @@
     "558": 153,
     "559": 154,
     "560": 154,
-    "561": 155,
+    "561": 154,
     "562": 155,
-    "563": 156,
-    "564": 156,
-    "565": 157,
-    "566": 157,
-    "567": 158,
-    "568": 158,
-    "569": 159,
-    "570": 159,
-    "571": 160,
-    "572": 160,
-    "573": 161,
-    "574": 161,
-    "575": 162,
-    "576": 162,
-    "577": 163,
-    "578": 163,
-    "579": 164,
-    "580": 164,
-    "581": 165,
-    "582": 165,
-    "583": 166,
-    "584": 166,
-    "585": 167,
-    "586": 167,
-    "587": 167,
-    "588": 168,
-    "589": 168,
-    "590": 169,
-    "591": 169,
-    "592": 170,
-    "593": 170,
-    "594": 171,
-    "595": 171,
-    "596": 171,
-    "597": 172,
-    "598": 172,
-    "599": 172,
-    "600": 173,
-    "601": 173,
-    "602": 173,
-    "603": 174,
-    "604": 174,
+    "563": 155,
+    "564": 155,
+    "565": 155,
+    "566": 156,
+    "567": 156,
+    "568": 156,
+    "569": 156,
+    "570": 157,
+    "571": 157,
+    "572": 158,
+    "573": 158,
+    "574": 159,
+    "575": 159,
+    "576": 160,
+    "577": 160,
+    "578": 161,
+    "579": 161,
+    "580": 162,
+    "581": 162,
+    "582": 163,
+    "583": 163,
+    "584": 164,
+    "585": 164,
+    "586": 165,
+    "587": 165,
+    "588": 166,
+    "589": 166,
+    "590": 167,
+    "591": 167,
+    "592": 168,
+    "593": 168,
+    "594": 169,
+    "595": 169,
+    "596": 170,
+    "597": 170,
+    "598": 170,
+    "599": 171,
+    "600": 171,
+    "601": 172,
+    "602": 172,
+    "603": 173,
+    "604": 173,
     "605": 174,
-    "606": 175,
-    "607": 175,
+    "606": 174,
+    "607": 174,
     "608": 175,
-    "609": 176,
-    "610": 176,
+    "609": 175,
+    "610": 175,
     "611": 176,
     "612": 176,
-    "613": 177,
+    "613": 176,
     "614": 177,
     "615": 177,
     "616": 177,
@@ -3593,9 +3593,9 @@
     "723": 238,
     "724": 239,
     "725": 240,
-    "726": 240,
-    "727": 241,
-    "728": 242,
+    "726": 241,
+    "727": 242,
+    "728": 243,
     "729": 243,
     "730": 244,
     "731": 245,
