@@ -89,6 +89,8 @@ export {
     type AttributeTable,
     type AttributeValue,
     type FileMatcher,
+    type PrettyError,
+    hasPrettyError,
     isRelease,
 } from "./utils";
 export {

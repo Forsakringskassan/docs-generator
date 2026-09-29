@@ -13,6 +13,7 @@ export { getRepositoryUrl } from "./get-repository-url";
 export { gitCommitHash } from "./git";
 export { formatCode } from "./format-code";
 export { haveOutput } from "./have-output";
+export { type PrettyError, hasPrettyError } from "./has-pretty-error";
 export { hasTag } from "./has-tag";
 export { htmlencode } from "./htmlencode";
 export { interpolate } from "./interpolate";
