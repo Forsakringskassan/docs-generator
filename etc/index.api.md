@@ -192,6 +192,9 @@ export interface GeneratorSiteOptions {
 }
 
 // @public
+export function hasPrettyError(value: unknown): value is PrettyError;
+
+// @public
 export function htmlRedirectProcessor(): Processor;
 
 // @public
@@ -367,6 +370,12 @@ export interface PlaygroundProcessorEntry {
 // @public
 export interface PlaygroundProcessorOptions extends ProcessorOptions {
     readonly entries?: PlaygroundProcessorEntry[];
+}
+
+// @public
+export interface PrettyError {
+    // (undocumented)
+    prettyError(): string;
 }
 
 // @public (undocumented)
