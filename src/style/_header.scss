@@ -104,7 +104,9 @@ header {
         padding: 1rem;
 
         &__right {
-            width: 100%;
+            width: auto;
+            flex-grow: 1;
+            flex-basis: 100%;
         }
     }
 }
