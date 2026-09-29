@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [3.14.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.13.0...v3.14.0) (2026-09-29)
+
+### Features
+
+* add configurable example backgrounds ([9b27b3f](https://github.com/Forsakringskassan/docs-generator/commit/9b27b3f8a42a4789bfb896c57749d94aa6d286de))
+* **api:** add `hasPrettyError()` helper ([d243ed9](https://github.com/Forsakringskassan/docs-generator/commit/d243ed99e914b32b5a55860ba3b9e7ce933efcfb))
+
+### Bug Fixes
+
+* **deps:** update dependency @microsoft/tsdoc to v0.17.0 ([#500](https://github.com/Forsakringskassan/docs-generator/issues/500)) ([84e56e7](https://github.com/Forsakringskassan/docs-generator/commit/84e56e7f1fbe39b912a5d51f652bc8ef8e4b30e1))
+
 ## [3.13.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.12.1...v3.13.0) (2026-09-28)
 
 ### Features
