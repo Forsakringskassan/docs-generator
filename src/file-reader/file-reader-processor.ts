@@ -1,9 +1,19 @@
-import { glob } from "glob";
+import fs from "node:fs/promises";
+import path from "node:path";
 import { type Document } from "../document";
 import { type Processor } from "../processor";
 import { type ProcessorContext } from "../processor-context";
 import { difference } from "../utils";
 import { type SourceFiles } from "./source-files";
+
+async function glob(pattern: string): Promise<string[]> {
+    const cwd = process.cwd();
+    const iterator = fs.glob(pattern, { withFileTypes: true });
+    const ents = await Array.fromAsync(iterator);
+    return ents
+        .filter((st) => st.isFile())
+        .map((st) => path.relative(cwd, path.join(st.parentPath, st.name)));
+}
 
 async function globAll(
     pattern: string | string[] | undefined,
@@ -16,9 +26,7 @@ async function globAll(
         pattern = [pattern];
     }
 
-    const results = await Promise.all(
-        pattern.map((it) => glob(it, { nodir: true })),
-    );
+    const results = await Promise.all(pattern.map(glob));
     return new Set(results.flat());
 }
 

@@ -1,5 +1,6 @@
+import { type Dirent } from "node:fs";
+import fs from "node:fs/promises";
 import path from "node:path";
-import { glob } from "glob";
 import { beforeEach, expect, it, vi } from "vitest";
 import { type Document } from "../document";
 import { type ProcessorContext } from "../processor-context";
@@ -8,7 +9,7 @@ import { type FileReader } from "./file-reader";
 import { fileReaderProcessor } from "./file-reader-processor";
 import { type SourceFiles } from "./source-files";
 
-vi.mock(import("glob"));
+vi.mock(import("node:fs/promises"));
 
 const fileReader = vi.fn<FileReader>().mockImplementation((filename) => {
     const { name } = path.parse(filename);
@@ -19,8 +20,24 @@ function noop(): void {
     /* do nothing */
 }
 
+function dirent(filename: string): Dirent {
+    return {
+        isFile: () => true,
+        name: path.basename(filename),
+        parentPath: path.dirname(filename),
+    } as Dirent;
+}
+
 function toArray<T>(value: T | T[]): T[] {
     return Array.isArray(value) ? value : [value];
+}
+
+async function* toAsyncIterator<U, T>(
+    values: U[],
+    fn: (it: U) => T,
+): AsyncGenerator<T> {
+    /* eslint-disable-next-line @typescript-eslint/await-thenable -- must force result to be async */
+    yield* await Array.from(values, fn);
 }
 
 function createMockContext(): ProcessorContext {
@@ -87,11 +104,15 @@ beforeEach(() => {
 
 it("should include all documents by default", async () => {
     expect.assertions(2);
-    vi.mocked(glob).mockResolvedValue(["foo.md", "bar.md"]);
+    vi.mocked(fs.glob).mockImplementation(() =>
+        toAsyncIterator(["foo.md", "bar.md"], dirent),
+    );
+
     const sourceFiles: SourceFiles[] = [{ include: "*.md", fileReader }];
     const context = createMockContext();
     const processor = fileReaderProcessor(sourceFiles);
     await processor.handler(context);
+
     expect(context.docs).toHaveLength(2);
     expect(context.docs).toEqual([
         expect.objectContaining({ name: "foo" }),
@@ -101,7 +122,10 @@ it("should include all documents by default", async () => {
 
 it("should exclude documents rejected by filter", async () => {
     expect.assertions(2);
-    vi.mocked(glob).mockResolvedValue(["foo.md", "bar.md"]);
+    vi.mocked(fs.glob).mockImplementation(() =>
+        toAsyncIterator(["foo.md", "bar.md"], dirent),
+    );
+
     const filter = vi.fn((doc: Document) => doc.name === "foo");
     const sourceFiles: SourceFiles[] = [
         { include: "*.md", fileReader, filter },
@@ -109,13 +133,17 @@ it("should exclude documents rejected by filter", async () => {
     const context = createMockContext();
     const processor = fileReaderProcessor(sourceFiles);
     await processor.handler(context);
+
     expect(context.docs).toHaveLength(1);
     expect(context.docs).toEqual([expect.objectContaining({ name: "foo" })]);
 });
 
 it("should run filter before transform", async () => {
     expect.assertions(2);
-    vi.mocked(glob).mockResolvedValue(["foo.md", "bar.md"]);
+    vi.mocked(fs.glob).mockImplementation(() =>
+        toAsyncIterator(["foo.md", "bar.md"], dirent),
+    );
+
     const transform = vi.fn((doc: Document) => doc);
     const sourceFiles: SourceFiles[] = [
         {
