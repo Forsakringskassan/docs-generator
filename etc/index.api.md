@@ -104,6 +104,22 @@ export interface DocumentPartialReference {
 }
 
 // @public
+export interface ExtractedDocsModule {
+    // (undocumented)
+    readonly basename: string;
+    // (undocumented)
+    readonly exampleFolders: string[];
+    // (undocumented)
+    readonly filesPath: string;
+    // (undocumented)
+    readonly linksPath: string;
+    // (undocumented)
+    readonly partialsPath: string;
+    // (undocumented)
+    sourceFiles(src: Partial<SourceFiles>): SourceFiles[];
+}
+
+// @public
 export interface ExtractExamplesOptions extends ProcessorOptions {
     languages?: string[];
     outputFolder: string;

@@ -5,6 +5,7 @@ export {
 export { cookieProcessor } from "./cookie-processor";
 export {
     type ExtractMarkdownOptions,
+    type ExtractedDocsModule,
     extractMarkdownProcessor,
 } from "./extract-markdown-processor";
 export {
