@@ -112,6 +112,8 @@ export interface ExtractedDocsModule {
     // (undocumented)
     readonly filesPath: string;
     // (undocumented)
+    readonly generatorVersion: string;
+    // (undocumented)
     readonly linksPath: string;
     // (undocumented)
     readonly partialsPath: string;
