@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import fm from "front-matter";
+import pkg from "../../package.json" with { type: "json" };
 import {
     type Document,
     type DocumentPage,
@@ -36,6 +37,7 @@ type ManifestPage = Manifest["pages"][number];
  * @since %version%
  */
 export interface ExtractedDocsModule {
+    readonly generatorVersion: string;
     readonly basename: string;
     readonly exampleFolders: string[];
     readonly filesPath: string;
@@ -216,6 +218,7 @@ async function writeIndex(options: { outputFolder: string }): Promise<void> {
         `import path from "node:path";`,
         `import { frontMatterFileReader, partialFileReader } from "@forsakringskassan/docs-generator";`,
         ``,
+        `export const generatorVersion = "${pkg.version}";`,
         `export const basename = import.meta.dirname;`,
         `export const exampleFolders = [path.join(basename, "files")];`,
         `export const filesPath = path.join(basename, "files");`,
@@ -249,6 +252,7 @@ async function writeDts(options: { outputFolder: string }): Promise<void> {
     const lines = [
         `import { SourceFiles } from "@forsakringskassan/docs-generator";`,
         ``,
+        `export declare const generatorVersion: string;`,
         `export declare const basename: string;`,
         `export declare const exampleFolders: string[];`,
         `export declare const filesPath: string;`,

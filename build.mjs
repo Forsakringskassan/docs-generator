@@ -99,6 +99,7 @@ async function getProcessorScripts() {
 async function build() {
     await fs.rm("dist", { recursive: true, force: true });
 
+    const packageJson = fileURLToPath(import.meta.resolve("./package.json"));
     const options = defineConfig({
         input: ["src/index.ts", "src/markdown.ts"],
         external: [
@@ -112,6 +113,7 @@ async function build() {
             "@vue/component-compiler",
             "@vue/component-compiler-utils",
             "typescript",
+            packageJson,
             ...externalDependencies,
             ...Object.keys(peerDependencies),
         ],
@@ -139,6 +141,7 @@ async function build() {
         sourcemap: true,
         entryFileNames: "[name].mjs",
         chunkFileNames: "[name]-[hash].mjs",
+        importAttributesKey: "with",
         banner: [
             `import { createRequire as $createRequire } from "node:module";`,
             ``,
