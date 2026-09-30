@@ -29,10 +29,10 @@ export type FileMatcher = (filename: string, context?: string) => string;
  * @internal
  * @param patterns - Glob patterns to match all possible files.
  */
-export function fileMatcher(
+export async function fileMatcher(
     patterns: string[],
     options: { ignore: string[] },
-): FileMatcher {
+): Promise<FileMatcher> {
     const { ignore } = options;
     const fileList = globSync(patterns, {
         posix: true,

@@ -8,47 +8,47 @@ beforeEach(() => {
     vi.clearAllMocks();
 });
 
-it("should return the matched file path", () => {
+it("should return the matched file path", async () => {
     expect.assertions(1);
     vi.mocked(globSync).mockReturnValue(["src/foo/bar.ts"]);
-    const match = fileMatcher(["src/**"], { ignore: [] });
+    const match = await fileMatcher(["src/**"], { ignore: [] });
     expect(match("bar.ts")).toBe("src/foo/bar.ts");
 });
 
-it("should match by partial path", () => {
+it("should match by partial path", async () => {
     expect.assertions(1);
     vi.mocked(globSync).mockReturnValue(["src/foo/bar.ts"]);
-    const match = fileMatcher(["src/**"], { ignore: [] });
+    const match = await fileMatcher(["src/**"], { ignore: [] });
     expect(match("foo/bar.ts")).toBe("src/foo/bar.ts");
 });
 
-it("should match with glob", () => {
+it("should match with glob", async () => {
     expect.assertions(1);
     vi.mocked(globSync).mockReturnValue(["src/foo/bar.ts"]);
-    const match = fileMatcher(["src/**"], { ignore: [] });
+    const match = await fileMatcher(["src/**"], { ignore: [] });
     expect(match("**/bar.ts")).toBe("src/foo/bar.ts");
 });
 
-it("should match in parent directory", () => {
+it("should match in parent directory", async () => {
     expect.assertions(1);
     vi.mocked(globSync).mockReturnValue(["../../src/foo/bar.ts"]);
-    const match = fileMatcher(["../../src/**"], { ignore: [] });
+    const match = await fileMatcher(["../../src/**"], { ignore: [] });
     expect(match("bar.ts")).toBe("../../src/foo/bar.ts");
 });
 
-it("should throw when no files match", () => {
+it("should throw when no files match", async () => {
     expect.assertions(1);
     vi.mocked(globSync).mockReturnValue([]);
-    const match = fileMatcher(["src/**"], { ignore: [] });
+    const match = await fileMatcher(["src/**"], { ignore: [] });
     expect(() => match("missing.ts")).toThrowErrorMatchingInlineSnapshot(
         `[Error: No files matched pattern "missing.ts"]`,
     );
 });
 
-it("should include context in error when no files match", () => {
+it("should include context in error when no files match", async () => {
     expect.assertions(1);
     vi.mocked(globSync).mockReturnValue([]);
-    const match = fileMatcher(["src/**"], { ignore: [] });
+    const match = await fileMatcher(["src/**"], { ignore: [] });
     expect(() =>
         match("missing.ts", "some context"),
     ).toThrowErrorMatchingInlineSnapshot(
@@ -56,19 +56,19 @@ it("should include context in error when no files match", () => {
     );
 });
 
-it("should throw when multiple files match", () => {
+it("should throw when multiple files match", async () => {
     expect.assertions(1);
     vi.mocked(globSync).mockReturnValue(["src/foo/bar.ts", "src/baz/bar.ts"]);
-    const match = fileMatcher(["src/**"], { ignore: [] });
+    const match = await fileMatcher(["src/**"], { ignore: [] });
     expect(() => match("bar.ts")).toThrowErrorMatchingInlineSnapshot(
         `[Error: Multiple files matched pattern "bar.ts". Searched in [src/**]]`,
     );
 });
 
-it("should include context in error when multiple files match", () => {
+it("should include context in error when multiple files match", async () => {
     expect.assertions(1);
     vi.mocked(globSync).mockReturnValue(["src/foo/bar.ts", "src/baz/bar.ts"]);
-    const match = fileMatcher(["src/foo/**", "src/baz/**"], { ignore: [] });
+    const match = await fileMatcher(["src/foo/**", "src/baz/**"], { ignore: [] });
     expect(() =>
         match("bar.ts", "some context"),
     ).toThrowErrorMatchingInlineSnapshot(
@@ -76,20 +76,20 @@ it("should include context in error when multiple files match", () => {
     );
 });
 
-it("should call globSync with given patterns", () => {
+it("should call globSync with given patterns", async () => {
     expect.assertions(1);
     vi.mocked(globSync).mockReturnValue([]);
-    fileMatcher(["src/**", "lib/**"], { ignore: ["**/*.spec.ts"] });
+    await fileMatcher(["src/**", "lib/**"], { ignore: ["**/*.spec.ts"] });
     expect(globSync).toHaveBeenCalledWith(["src/**", "lib/**"], {
         posix: true,
         ignore: ["**/*.spec.ts"],
     });
 });
 
-it("should only call globSync once per fileMatcher invocation", () => {
+it("should only call globSync once per fileMatcher invocation", async () => {
     expect.assertions(1);
     vi.mocked(globSync).mockReturnValue(["src/foo/bar.ts"]);
-    const match = fileMatcher(["src/**"], { ignore: [] });
+    const match = await fileMatcher(["src/**"], { ignore: [] });
     match("bar.ts");
     match("bar.ts");
     expect(globSync).toHaveBeenCalledTimes(1);
