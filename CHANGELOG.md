@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## [3.15.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.14.0...v3.15.0) (2026-09-30)
+
+### Features
+
+* **api:** add `ExtractedDocsModule` interface ([63889b1](https://github.com/Forsakringskassan/docs-generator/commit/63889b1cbb2378e13945a3efcac456554da69262))
+* include generator version when extracting markdown documentation ([0ee8ab6](https://github.com/Forsakringskassan/docs-generator/commit/0ee8ab636851d980721f40ace012188c6851a3a9))
+* use native glob when processing file readers ([5aa39a1](https://github.com/Forsakringskassan/docs-generator/commit/5aa39a149dd2e78288007c755318c7cc760d1308))
+
+### Bug Fixes
+
+* do not exclude `node_modules` when searching for examples ([0ee2ec2](https://github.com/Forsakringskassan/docs-generator/commit/0ee2ec2865babe53203d0c6dbdeeba87b906b351))
+* fix basePath typo in extracted markdown files ([14ea505](https://github.com/Forsakringskassan/docs-generator/commit/14ea50598f1c4a3ffb9a3f5c99004c6fcd4e634a))
+
 ## [3.14.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.13.0...v3.14.0) (2026-09-29)
 
 ### Features
