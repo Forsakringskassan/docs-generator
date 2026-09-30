@@ -275,15 +275,33 @@ function setup(): void {
 
     function initButton(): void {
         const button = document.querySelector("#search");
-        if (button) {
-            button.addEventListener("submit", (event) => {
-                event.preventDefault();
-                input.value = searchTerm = "";
-                dialog.showModal();
-                document.body.addEventListener("click", clickOutside);
-                document.body.classList.add("docs-modal-active");
-            });
+
+        if (!button) {
+            return;
         }
+
+        const searchForm = document.querySelector("#search-form");
+        if (searchForm) {
+            searchForm.classList.remove("is-touch");
+        }
+
+        button.addEventListener("submit", (event) => {
+            event.preventDefault();
+            input.value = searchTerm = "";
+            dialog.showModal();
+            document.body.addEventListener("click", clickOutside);
+            document.body.classList.add("docs-modal-active");
+        });
+
+        button.addEventListener(
+            "touchstart",
+            () => {
+                if (searchForm) {
+                    searchForm.classList.add("is-touch");
+                }
+            },
+            { passive: true },
+        );
     }
 }
 
