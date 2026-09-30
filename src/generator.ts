@@ -572,7 +572,9 @@ export class Generator {
         ];
 
         const examplePatterns = this.exampleFolders.map((it) => `${it}/**/*`);
-        const exampleFileMatcher = fileMatcher(examplePatterns, { ignore: [] });
+        const exampleFileMatcher = await fileMatcher(examplePatterns, {
+            ignore: [],
+        });
         const templateLoader = createTemplateLoader([]);
         const context = createContext({
             outputFolder: "",
@@ -672,10 +674,13 @@ export class Generator {
 
         compileProcessorRuntime(this, import.meta.url, processors);
 
+        const exampleFileMatcher = await fileMatcher(examplePatterns, {
+            ignore: [],
+        });
         const templateLoader = createTemplateLoader(templateFolders);
         const context = createContext({
             outputFolder,
-            exampleFileMatcher: fileMatcher(examplePatterns, { ignore: [] }),
+            exampleFileMatcher,
             templateLoader,
         });
 
