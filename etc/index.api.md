@@ -106,7 +106,7 @@ export interface DocumentPartialReference {
 // @public
 export interface ExtractedDocsModule {
     // (undocumented)
-    readonly basename: string;
+    readonly basePath: string;
     // (undocumented)
     readonly exampleFolders: string[];
     // (undocumented)
