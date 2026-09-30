@@ -572,7 +572,7 @@ export class Generator {
         ];
 
         const examplePatterns = this.exampleFolders.map((it) => `${it}/**/*`);
-        const exampleFileMatcher = fileMatcher(examplePatterns);
+        const exampleFileMatcher = fileMatcher(examplePatterns, { ignore: [] });
         const templateLoader = createTemplateLoader([]);
         const context = createContext({
             outputFolder: "",
@@ -675,7 +675,7 @@ export class Generator {
         const templateLoader = createTemplateLoader(templateFolders);
         const context = createContext({
             outputFolder,
-            exampleFileMatcher: fileMatcher(examplePatterns),
+            exampleFileMatcher: fileMatcher(examplePatterns, { ignore: [] }),
             templateLoader,
         });
         const generatedFiles = [

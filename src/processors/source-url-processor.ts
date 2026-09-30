@@ -58,7 +58,9 @@ export function sourceUrlProcessor(
     } = options;
 
     const repository = getRepositoryUrl(pkg) ?? "";
-    const matcher = fileMatcher(sourceFiles);
+    const matcher = fileMatcher(sourceFiles, {
+        ignore: ["**/node_modules/**"],
+    });
 
     return {
         after: "generate-docs",

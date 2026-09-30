@@ -29,10 +29,14 @@ export type FileMatcher = (filename: string, context?: string) => string;
  * @internal
  * @param patterns - Glob patterns to match all possible files.
  */
-export function fileMatcher(patterns: string[]): FileMatcher {
+export function fileMatcher(
+    patterns: string[],
+    options: { ignore: string[] },
+): FileMatcher {
+    const { ignore } = options;
     const fileList = globSync(patterns, {
         posix: true,
-        ignore: "**/node_modules/**",
+        ignore,
     });
 
     return memoize((filename: string, context?: string) => {
