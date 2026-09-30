@@ -3,6 +3,22 @@ title: Mermaid
 layout: content-with-menu
 ---
 
+:::: tabs
+
+::: tab Tab1
+
+Tab 1 content
+
+:::
+
+::: tab Tab2
+
+Tab 2 content
+
+:::
+
+::::
+
 Diagrams and charts can be created with [Mermaid](https://mermaid.js.org/) in markdown.
 The results are rendered as SVG in the browser.
 
