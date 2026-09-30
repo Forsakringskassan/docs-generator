@@ -1,5 +1,5 @@
+import fs from "node:fs/promises";
 import path from "node:path";
-import { globSync } from "glob";
 import { memoize } from "./memoize";
 
 /**
@@ -33,17 +33,14 @@ export async function fileMatcher(
     patterns: string[],
     options: { ignore: string[] },
 ): Promise<FileMatcher> {
-    const { ignore } = options;
-    const fileList = globSync(patterns, {
-        posix: true,
-        ignore,
-    });
-
+    const { ignore: exclude } = options;
+    const fileList = await Array.fromAsync(fs.glob(patterns, { exclude }));
     return memoize((filename: string, context?: string) => {
         const matches = fileList.filter((file) => {
             /* if the path starts with `../` we strip it out before matching or
              * `path.matchesGlob()` wont match */
-            const stem = file.replace(/^(?:\.\.\/)+/, "");
+            const regex = path.sep === "/" ? /^(?:\.\.\/)+/ : /^(?:\.\.\\)+/;
+            const stem = file.replace(regex, "");
             return path.matchesGlob(stem, `**/${filename}`);
         });
         if (matches.length === 0) {
