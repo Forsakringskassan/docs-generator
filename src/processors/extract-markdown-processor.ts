@@ -8,7 +8,7 @@ import {
     isDocumentPage,
     isDocumentPartial,
 } from "../document";
-import { type PartialFile } from "../file-reader";
+import { type PartialFile, type SourceFiles } from "../file-reader";
 import { type Manifest } from "../manifest";
 import { type Processor, type ProcessorOptions } from "../processor";
 import {
@@ -22,6 +22,27 @@ import {
 import { manifestState } from "./manifest-processor";
 
 type ManifestPage = Manifest["pages"][number];
+
+/**
+ * Type representing the exported docs module when extracting markdown
+ * documents.
+ *
+ * @privateRemarks
+ *
+ * Changes to this interface must be kept in sync with the output generated in
+ * `writeDts()`.
+ *
+ * @public
+ * @since %version%
+ */
+export interface ExtractedDocsModule {
+    readonly basename: string;
+    readonly exampleFolders: string[];
+    readonly filesPath: string;
+    readonly partialsPath: string;
+    readonly linksPath: string;
+    sourceFiles(src: Partial<SourceFiles>): SourceFiles[];
+}
 
 /**
  * Options for `extractMarkdownProcessor`.
@@ -223,6 +244,8 @@ async function writeIndex(options: { outputFolder: string }): Promise<void> {
 async function writeDts(options: { outputFolder: string }): Promise<void> {
     const { outputFolder } = options;
     const dst = path.join(outputFolder, "index.d.mts");
+
+    /* changes to this output must be in sync with the `ExtractedDocsModule` interface */
     const lines = [
         `import { SourceFiles } from "@forsakringskassan/docs-generator";`,
         ``,
@@ -234,6 +257,7 @@ async function writeDts(options: { outputFolder: string }): Promise<void> {
         ``,
         `export declare function sourceFiles(src: Partial<SourceFiles>): SourceFiles[];`,
     ];
+
     await fs.writeFile(dst, lines.join("\n"), "utf8");
 }
 
