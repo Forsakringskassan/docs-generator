@@ -58,9 +58,6 @@ export function sourceUrlProcessor(
     } = options;
 
     const repository = getRepositoryUrl(pkg) ?? "";
-    const matcher = fileMatcher(sourceFiles, {
-        ignore: ["**/node_modules/**"],
-    });
 
     return {
         after: "generate-docs",
@@ -69,6 +66,10 @@ export function sourceUrlProcessor(
             if (!enabled) {
                 return;
             }
+
+            const matcher = await fileMatcher(sourceFiles, {
+                ignore: ["**/node_modules/**"],
+            });
 
             const hash = (await gitCommitHash("full")) ?? "";
             const short = (await gitCommitHash("short")) ?? "";
