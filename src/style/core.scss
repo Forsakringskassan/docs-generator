@@ -12,6 +12,10 @@
 @use "version_banner";
 @use "highlight.js/styles/default";
 
+$code-preview-border-width: 1px;
+$code-preview-border-radius: 4px;
+$code-preview-inner-border-radius: max(0px, $code-preview-border-radius - $code-preview-border-width);
+
 dd > dl {
     border-left: 2px solid var(--docs-text-color-discrete);
     padding-left: 1rem;
@@ -102,23 +106,32 @@ main #aside dd {
 }
 
 .code-preview--default {
-    border: 1px solid var(--docs-code-border-color);
-    border-radius: 4px;
+    border: $code-preview-border-width solid var(--docs-code-border-color);
+    border-radius: $code-preview-border-radius;
     width: 100%;
     background-color: var(--docs-code-background-color);
     margin-bottom: 1rem;
 }
 
 .code-preview--default .code-preview__preview {
-    border-bottom: 1px solid var(--docs-code-border-color);
+    border-radius: $code-preview-inner-border-radius $code-preview-inner-border-radius 0 0;
+    border-bottom: $code-preview-border-width solid var(--docs-code-border-color);
     padding: 1.5rem;
     overflow: auto;
+
+    &:only-child {
+        border-radius: $code-preview-inner-border-radius;
+    }
 }
 
 .code-preview--borderless {
     width: 100%;
     background-color: var(--docs-code-background-color);
     margin-bottom: 1rem;
+
+    &[data-tags~="live-example"] {
+        border-radius: $code-preview-border-radius;
+    }
 }
 
 .code-preview__preview {
