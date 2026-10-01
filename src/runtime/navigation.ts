@@ -1,4 +1,5 @@
 import mermaid from "mermaid";
+import { onToggle } from "./close-all-details";
 import { tableOfContents, toggleTableOfContents } from "./table-of-contents";
 
 declare global {
@@ -17,15 +18,6 @@ const footer = document.querySelector("footer")!;
 
 // Save path to manage whether to replace content for new page or navigate to hash.
 let previousPath = location.pathname;
-
-/**
- * Close all nested `<details>` elements.
- */
-function closeNested(details: HTMLDetailsElement): void {
-    for (const nested of details.querySelectorAll("details")) {
-        nested.open = false;
-    }
-}
 
 /**
  * Clone script tags inside given element.
@@ -251,9 +243,7 @@ function updateSidenavHeight(navigation: HTMLElement): void {
 
 for (const details of document.querySelectorAll("details")) {
     details.addEventListener("toggle", () => {
-        if (!details.open) {
-            closeNested(details);
-        }
+        onToggle(details);
     });
 }
 
