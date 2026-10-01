@@ -300295,6 +300295,16 @@ function initCloseMenuForIOS() {
       openChildren.forEach((child) => {
         child.removeAttribute("open");
       });
+      const parentList = targetDetails.closest(
+        ".docs-mobile-nav__list"
+      );
+      if (!parentList) {
+        return;
+      }
+      const currentDisplay = parentList.style.display;
+      parentList.style.display = "none";
+      parentList.offsetHeight;
+      parentList.style.display = currentDisplay;
     },
     { capture: true }
   );
