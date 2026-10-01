@@ -1,3 +1,4 @@
+import { initCloseDetailMenu } from "./close-all-details";
 import { headerLayoutDetector } from "./header-layout-detector";
 import { onContentReady } from "./on-content-ready";
 
@@ -32,4 +33,5 @@ onContentReady(() => {
     }
 
     headerLayoutDetector(newRefs.nav);
+    initCloseDetailMenu();
 });
