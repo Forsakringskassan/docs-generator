@@ -266,6 +266,16 @@ export default {
                 type: "color",
                 value: "#5f6165",
             },
+            "text-color-link": {
+                description: "Link color",
+                type: "color",
+                value: "#4a52b6",
+            },
+            "text-color-link-hover": {
+                description: "Link color",
+                type: "color",
+                value: "#1b1e23",
+            },
             "background-color": {
                 type: "color",
                 value: "transparent",
