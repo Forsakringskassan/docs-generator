@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [3.15.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.15.0...v3.15.1) (2026-10-02)
+
+### Bug Fixes
+
+* reduced padding indent mobile menu (refs SFKUI-8272) ([b384278](https://github.com/Forsakringskassan/docs-generator/commit/b384278d400735a370db22a67d8c989a6251308a))
+
 ## [3.15.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.14.0...v3.15.0) (2026-09-30)
 
 ### Features
