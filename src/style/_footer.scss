@@ -1,7 +1,25 @@
 .docs-footer {
     --docs-text-color-default: var(--docs-footer-text-color-default);
     --docs-text-color-discrete: var(--docs-footer-text-color-discrete);
+    --docs-text-color-link: var(--docs-footer-text-color-link);
+    --docs-text-color-link-hover: var(--docs-footer-text-color-link-hover);
 
     background-color: var(--docs-footer-background-color);
     border-top: 1px solid var(--docs-footer-border-color);
+
+    &__anchor {
+        color: var(--docs-text-color-link);
+        font-weight: normal;
+        line-height: 1.5;
+        text-decoration-line: underline;
+        text-decoration-skip-ink: none;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 0.25em;
+
+        &:hover,
+        &:active {
+            color: var(--docs-text-color-link-hover);
+            text-decoration-color: var(--docs-text-link-hover);
+        }
+    }
 }
