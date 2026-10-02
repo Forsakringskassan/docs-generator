@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [3.15.2](https://github.com/Forsakringskassan/docs-generator/compare/v3.15.1...v3.15.2) (2026-10-02)
+
+### Bug Fixes
+
+* **deps:** update dependency @microsoft/api-extractor-model to v7.33.14 ([#507](https://github.com/Forsakringskassan/docs-generator/issues/507)) ([8207cb5](https://github.com/Forsakringskassan/docs-generator/commit/8207cb528a4c158f1a7509324e33f98218e12145))
+* render rounded example backgrounds ([6ec585b](https://github.com/Forsakringskassan/docs-generator/commit/6ec585b663c94ceb4f11ebca04b78be304e072b3))
+
 ## [3.15.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.15.0...v3.15.1) (2026-10-02)
 
 ### Bug Fixes
