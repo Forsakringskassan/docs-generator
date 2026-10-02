@@ -4,6 +4,7 @@ import "./navigation";
 import "./table-of-contents";
 import "./version-banner";
 import "./topnav";
+import "./tabs";
 
 export {
     type MOTDApi,

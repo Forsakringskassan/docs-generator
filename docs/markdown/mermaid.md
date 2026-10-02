@@ -3,6 +3,32 @@ title: Mermaid
 layout: content-with-menu
 ---
 
+## HEEEJ
+
+text
+
+§§§ tab Tab1
+
+Tab 1 content
+
+````md
+```mermaid
+flowchart TD
+  A-->B;
+  A-->C;
+  B-->D;
+  C-->D;
+```
+````
+
+§§§
+
+§§§ tab Tab2
+
+Tab 2 content
+
+§§§
+
 Diagrams and charts can be created with [Mermaid](https://mermaid.js.org/) in markdown.
 The results are rendered as SVG in the browser.
 
