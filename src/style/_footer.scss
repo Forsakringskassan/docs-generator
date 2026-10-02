@@ -1,3 +1,5 @@
+@use "breakpoints";
+
 .docs-footer {
     --docs-text-color-default: var(--docs-footer-text-color-default);
     --docs-text-color-discrete: var(--docs-footer-text-color-discrete);
@@ -6,6 +8,25 @@
 
     background-color: var(--docs-footer-background-color);
     border-top: 1px solid var(--docs-footer-border-color);
+    color: var(--docs-text-color-default);
+    padding: 3rem;
+
+    @media (width >= breakpoints.$breakpoint-md) {
+        display: flex;
+        gap: 5rem;
+    }
+
+    &__left {
+        flex: 0 0 auto;
+    }
+
+    &__center {
+        flex: 1 1 auto;
+    }
+
+    &__right {
+        flex: 0 0 auto;
+    }
 
     &__anchor {
         color: var(--docs-text-color-link);
@@ -15,11 +36,28 @@
         text-decoration-skip-ink: none;
         text-decoration-thickness: 2px;
         text-underline-offset: 0.25em;
+        margin-bottom: 0.5rem;
 
         &:hover,
         &:active {
             color: var(--docs-text-color-link-hover);
             text-decoration-color: var(--docs-text-link-hover);
         }
+    }
+
+    &__link-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        > li {
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    h1,
+    .heading--h1 {
+        font-size: 1.5rem;
+        font-weight: 600;
     }
 }
