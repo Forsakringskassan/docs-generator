@@ -678,6 +678,18 @@ export class Generator {
             exampleFileMatcher: fileMatcher(examplePatterns, { ignore: [] }),
             templateLoader,
         });
+
+        /* default template blocks */
+        context.addTemplateBlock("footer:left", "footer:left", {
+            filename: "partials/footer-left.html",
+        });
+        context.addTemplateBlock("footer:center", "footer:center", {
+            filename: "partials/footer-center.html",
+        });
+        context.addTemplateBlock("footer:right", "footer:right", {
+            filename: "partials/footer-right.html",
+        });
+
         const generatedFiles = [
             await stage("generate-docs", context, processors),
             await stage("generate-nav", context, processors),

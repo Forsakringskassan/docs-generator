@@ -50,6 +50,14 @@
     --docs-header-background-color: var(--fkds-color-background-primary);
     --docs-header-border-color: var(--fkds-color-border-weak);
 
+    // footer
+    --docs-footer-text-color-default: var(--fkds-color-text-inverted);
+    --docs-footer-text-color-discrete: var(--fkds-color-text-inverted);
+    --docs-footer-text-color-link: var(--fkds-color-text-inverted);
+    --docs-footer-text-color-link-hover: #1b1e23;
+    --docs-footer-background-color: #35805b;
+    --docs-footer-border-color: #35805b;
+
     // Top-nav
     --docs-topnav-background-color: var(--fkds-color-background-primary);
     --docs-topnav-link-color-default: var(--fkds-color-text-primary);

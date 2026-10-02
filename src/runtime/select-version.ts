@@ -61,7 +61,7 @@ const getVersions = memoize(fetchVersions);
 
 async function initVersionProcessor(): Promise<void> {
     const dialog = document.querySelector<HTMLDialogElement>("#version-dialog");
-    const form = document.querySelector("#version");
+    const form = document.querySelector(".docs-selectable-version__form");
     const dialogCloseButton = dialog?.querySelector("button");
 
     const { latest } = await getVersions();
