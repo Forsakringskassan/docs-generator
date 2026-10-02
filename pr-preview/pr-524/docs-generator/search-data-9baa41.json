@@ -47,11 +47,11 @@
     "Documenting TypeScript",
     "Documenting Vue components",
     "Example",
-    "Custom layout",
-    "Footer",
     "Layout",
     "Overriding templates",
     "Plumbing",
+    "Footer",
+    "Custom layout",
     "Configuration",
     "Scripts",
     "Workers",
@@ -286,16 +286,6 @@
       "terms": []
     },
     {
-      "url": "layout/custom-layout.html",
-      "title": "Custom layout",
-      "terms": []
-    },
-    {
-      "url": "layout/footer.html",
-      "title": "Footer",
-      "terms": []
-    },
-    {
       "url": "layout/index.html",
       "title": "Layout",
       "terms": []
@@ -308,6 +298,16 @@
     {
       "url": "layout/plumbing.html",
       "title": "Plumbing",
+      "terms": []
+    },
+    {
+      "url": "layout/custom-layout/footer.html",
+      "title": "Footer",
+      "terms": []
+    },
+    {
+      "url": "layout/custom-layout/index.html",
+      "title": "Custom layout",
       "terms": []
     },
     {
