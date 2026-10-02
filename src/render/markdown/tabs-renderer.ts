@@ -7,8 +7,7 @@ import { type Document } from "../../document";
 import { type MarkdownEnv } from "../markdown-env";
 import { type SoftErrorType } from "../soft-error";
 import { type ContainerCallback, type ContainerContext } from "./container";
-import { tabContainer } from "./container/tab-container";
-import { tabsContainer } from "./container/tabs-container";
+import { tabPanel } from "./tab-panel";
 
 type Options = Record<string, ContainerCallback>;
 
@@ -162,8 +161,7 @@ export function tabsRenderer(
             handleSoftError,
         };
         md.use(tabsParser, {
-            tabs: tabsContainer(context),
-            tab: tabContainer(context, options.messagebox),
+            tab: tabPanel(context, options.messagebox),
         });
     };
 }

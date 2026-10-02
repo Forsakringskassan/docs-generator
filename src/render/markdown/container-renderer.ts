@@ -14,8 +14,6 @@ import {
     detailsContainer,
     messageboxContainer,
 } from "./container";
-import { tabContainer } from "./container/tab-container";
-import { tabsContainer } from "./container/tabs-container";
 
 type Options = Record<string, ContainerCallback>;
 
@@ -182,8 +180,6 @@ export function containerRenderer(
                 "warning",
             ),
             danger: messageboxContainer(context, options.messagebox, "danger"),
-            tabs: tabsContainer(context),
-            tab: tabContainer(context, options.messagebox),
         });
     };
 }

@@ -1,13 +1,12 @@
-import { type ContainerCallback } from "./container-callback";
-import { type ContainerContext } from "./container-context";
+import { type ContainerCallback } from "./container/container-callback";
+import { type ContainerContext } from "./container/container-context";
 
 /**
- * Create a container renderer "details" to render details (special variant of
- * messagebox).
+ * Create a tab panel renderer.
  *
  * @internal
  */
-export function tabContainer(
+export function tabPanel(
     context: ContainerContext,
     options: { title: Record<string, string | undefined> },
 ): ContainerCallback {
@@ -25,9 +24,17 @@ export function tabContainer(
         const token = tokens[index];
         const title = parseInfo(token.info);
         const text = token.content.trim();
+
+        const id = "tabpanel-" + title.split(" ").join("-");
+        const labelledBy = "tab-" + title.split(" ").join("-");
         return /* HTML */ `
-            <div role="tab" class="docs-tab">
-                <span>${md.renderInline(title, env)}</span>
+            <div
+                id="${id}"
+                class="docs-tab hidden-tab"
+                role="tabpanel"
+                tabindex="0"
+                aria-labelledby="${labelledBy}"
+            >
                 ${md.render(text, env)}
             </div>
         `;
