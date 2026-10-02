@@ -147,18 +147,34 @@ exports[`smoketest 1`] = `
     {
       "children": [
         {
+          "children": [
+            {
+              "external": false,
+              "id": "fs:docs/layout/custom-layout/index.md",
+              "path": "./layout/custom-layout/",
+              "sortorder": 1,
+              "title": "Custom layout",
+            },
+            {
+              "external": false,
+              "id": "fs:docs/layout/custom-layout/footer.md",
+              "path": "./layout/custom-layout/footer.html",
+              "sortorder": 1,
+              "title": "Footer",
+            },
+          ],
+          "key": "./layout/custom-layout",
+          "path": "./layout/custom-layout/",
+          "sortorder": 1,
+          "title": "Custom layout",
+          "visible": true,
+        },
+        {
           "external": false,
           "id": "fs:docs/layout/layout.md",
           "path": "./layout/",
           "sortorder": 1,
           "title": "Layout",
-        },
-        {
-          "external": false,
-          "id": "fs:docs/layout/custom-layout.md",
-          "path": "./layout/custom-layout.html",
-          "sortorder": Infinity,
-          "title": "Custom layout",
         },
         {
           "external": false,
