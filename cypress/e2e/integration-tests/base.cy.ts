@@ -113,12 +113,12 @@ describe("selectableVersionProcessor", () => {
     });
 
     it("should add version selector widget to site", () => {
-        cy.get("#version").should("be.visible");
+        cy.get(".docs-selectable-version__form").should("be.visible");
     });
 
     it("should open version selector modal when clicked", () => {
         cy.get("#version-dialog").should("not.be.visible");
-        cy.get("#version button").click();
+        cy.get(".docs-selectable-version__button").click();
         cy.get("#version-dialog").should("be.visible");
     });
 });
