@@ -8,6 +8,7 @@ import {
     codeInline,
     codePreview,
     containerRenderer,
+    tabsRenderer,
     headingLevel,
     imageResources,
     paragraph,
@@ -134,6 +135,18 @@ export function createMarkdownRenderer(
     );
     md.use(
         containerRenderer(
+            getCurrentDocument,
+            docs,
+            env,
+            included,
+            options.handleSoftError,
+            {
+                messagebox: { title: {}, ...options.messagebox },
+            },
+        ),
+    );
+    md.use(
+        tabsRenderer(
             getCurrentDocument,
             docs,
             env,
