@@ -14,6 +14,11 @@
     .is-mobile & {
         display: none;
     }
+    .is-single-row & {
+        flex-grow: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
     &__list {
         display: flex;

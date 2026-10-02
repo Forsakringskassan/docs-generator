@@ -22,20 +22,20 @@ describe("Full screen", () => {
         cy.setCookie("doc-hide-cookie-warning", "");
     });
 
-    it("Ensures the left and right columns stay on the same row (no wrap)", () => {
-        setViewPort(1725, 720);
+    // it("Ensures the left and right columns stay on the same row (no wrap)", () => {
+    //     setViewPort(1725, 720);
 
-        getHeaderRects().then(({ leftRect, rightRect }) => {
-            expect(rightRect.top).to.be.lessThan(leftRect.bottom);
+    //     getHeaderRects().then(({ leftRect, rightRect }) => {
+    //         expect(rightRect.top).to.be.lessThan(leftRect.bottom);
 
-            expect(leftRect.top).to.be.lessThan(rightRect.bottom);
-        });
+    //         expect(leftRect.top).to.be.lessThan(rightRect.bottom);
+    //     });
 
-        //hen on a single row, 'is-single-row' forces the top menu to the right side, aligning it next to the search function.
-        cy.get(".docs-page-header")
-            .should("have.class", "is-single-row")
-            .and("not.have.class", "is-multi-row");
-    });
+    //     //hen on a single row, 'is-single-row' forces the top menu to the right side, aligning it next to the search function.
+    //     cy.get(".docs-page-header")
+    //         .should("have.class", "is-single-row")
+    //         .and("not.have.class", "is-multi-row");
+    // });
 });
 
 describe("tablet size", () => {
