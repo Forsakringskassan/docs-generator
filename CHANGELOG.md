@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## [3.16.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.15.2...v3.16.0) (2026-10-05)
+
+### Features
+
+* add styling for selectable version button ([364b828](https://github.com/Forsakringskassan/docs-generator/commit/364b828c14d52e85a08ccd31f70df6965f285643))
+* footer styling ([4e1a86e](https://github.com/Forsakringskassan/docs-generator/commit/4e1a86eb7cd1771dbcaab5d16001dd42410e59ba))
+
+### Bug Fixes
+
+* **deps:** update dependency @microsoft/tsdoc to v0.17.1 ([2fdc004](https://github.com/Forsakringskassan/docs-generator/commit/2fdc0046d226e42608322b871e37c18540747dd3))
+* prevent mobile search button from overflowing (refs SFKUI-8267) ([98cd8a8](https://github.com/Forsakringskassan/docs-generator/commit/98cd8a8533b30f558c09c1ed4ffb99737a831fd8))
+* rename hardcoded version id ([a0d96da](https://github.com/Forsakringskassan/docs-generator/commit/a0d96da283e7df56e45a89c9dd7195a4024d168f))
+
 ## [3.15.2](https://github.com/Forsakringskassan/docs-generator/compare/v3.15.1...v3.15.2) (2026-10-02)
 
 ### Bug Fixes
