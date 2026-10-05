@@ -1,4 +1,4 @@
-// ../../dist/processors/selectable-version.mjs
+// dist/processors/selectable-version.mjs
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -1969,7 +1969,7 @@ function memoize(callback) {
     return cache.get(key);
   };
 }
-var current = "v0.0.0";
+var current = "v3.16.0";
 var message = "Det finns en nyare version";
 function isOutside(rect, point) {
   if (point.y < rect.top || point.y > rect.top + rect.height) {
@@ -2005,7 +2005,7 @@ async function fetchVersions() {
 var getVersions = memoize(fetchVersions);
 async function initVersionProcessor() {
   const dialog = document.querySelector("#version-dialog");
-  const form = document.querySelector("#version");
+  const form = document.querySelector(".docs-selectable-version__form");
   const dialogCloseButton = dialog?.querySelector("button");
   const { latest } = await getVersions();
   if (motdProxy.enabled && latest !== current) {
