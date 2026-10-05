@@ -5,7 +5,7 @@ var __require = /* @__PURE__ */ ((x6) => typeof require !== "undefined" ? requir
   throw Error('Dynamic require of "' + x6 + '" is not supported');
 });
 
-// ../../dist/runtime-internal.mjs
+// node_modules/@forsakringskassan/docs-generator/dist/runtime-internal.mjs
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -300263,16 +300263,7 @@ if (banner) {
     }
   });
 }
-function isIOS() {
-  const userAgent = window.navigator.userAgent.toLowerCase();
-  const isIPhone = /iphone|ipod/.test(userAgent);
-  const isIPad = userAgent.includes("ipad") || window.navigator.platform === "MacIntel" && window.navigator.maxTouchPoints > 1;
-  return isIPhone || isIPad;
-}
 function initCloseMenuForIOS() {
-  if (!isIOS()) {
-    return;
-  }
   const mobileNav = document.querySelector(
     ".docs-mobile-nav-wrapper"
   );
@@ -300450,39 +300441,12 @@ export {
 };
 /*! Bundled license information:
 
-dompurify/dist/purify.es.mjs:
-  (*! @license DOMPurify 3.4.16 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.4.16/LICENSE *)
-  (*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE *)
-
-lodash-es/lodash.js:
-  (**
-   * @license
-   * Lodash (Custom Build) <https://lodash.com/>
-   * Build: `lodash modularize exports="es" -o ./`
-   * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
-   * Released under MIT license <https://lodash.com/license>
-   * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
-   * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
-   *)
-
-cytoscape/dist/cytoscape.esm.mjs:
-  (*!
-  Embeddable Minimum Strictly-Compliant Promises/A+ 1.1.1 Thenable
-  Copyright (c) 2013-2014 Ralf S. Engelschall (http://engelschall.com)
-  Licensed under The MIT License (http://opensource.org/licenses/MIT)
-  *)
-  (*!
-  Event object based on jQuery events, MIT license
-  
-  https://jquery.org/license/
-  https://tldrlegal.com/license/mit-license
-  https://github.com/jquery/jquery/blob/master/src/event.js
-  *)
-  (*! Bezier curve function generator. Copyright Gaetan Renaudeau. MIT License: http://en.wikipedia.org/wiki/MIT_License *)
-  (*! Runge-Kutta spring physics function generator. Adapted from Framer.js, copyright Koen Bok. MIT License: http://en.wikipedia.org/wiki/MIT_License *)
-
-@mermaid-js/parser/dist/chunks/mermaid-parser.core/chunk-FOHPRMQF.mjs:
+@forsakringskassan/docs-generator/dist/runtime-internal.mjs:
   (*! Bundled license information:
+  
+  dompurify/dist/purify.es.mjs:
+    (*! @license DOMPurify 3.4.16 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.4.16/LICENSE *)
+    (*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE *)
   
   lodash-es/lodash.js:
     (**
@@ -300494,11 +300458,42 @@ cytoscape/dist/cytoscape.esm.mjs:
      * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
      * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
      *)
+  
+  cytoscape/dist/cytoscape.esm.mjs:
+    (*!
+    Embeddable Minimum Strictly-Compliant Promises/A+ 1.1.1 Thenable
+    Copyright (c) 2013-2014 Ralf S. Engelschall (http://engelschall.com)
+    Licensed under The MIT License (http://opensource.org/licenses/MIT)
+    *)
+    (*!
+    Event object based on jQuery events, MIT license
+    
+    https://jquery.org/license/
+    https://tldrlegal.com/license/mit-license
+    https://github.com/jquery/jquery/blob/master/src/event.js
+    *)
+    (*! Bezier curve function generator. Copyright Gaetan Renaudeau. MIT License: http://en.wikipedia.org/wiki/MIT_License *)
+    (*! Runge-Kutta spring physics function generator. Adapted from Framer.js, copyright Koen Bok. MIT License: http://en.wikipedia.org/wiki/MIT_License *)
+  
+  @mermaid-js/parser/dist/chunks/mermaid-parser.core/chunk-FOHPRMQF.mjs:
+    (*! Bundled license information:
+    
+    lodash-es/lodash.js:
+      (**
+       * @license
+       * Lodash (Custom Build) <https://lodash.com/>
+       * Build: `lodash modularize exports="es" -o ./`
+       * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
+       * Released under MIT license <https://lodash.com/license>
+       * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+       * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+       *)
+    *)
+  
+  mermaid/dist/mermaid.core.mjs:
+    (*! Check if previously processed *)
+    (*!
+     * Wait for document loaded before starting the execution
+     *)
   *)
-
-mermaid/dist/mermaid.core.mjs:
-  (*! Check if previously processed *)
-  (*!
-   * Wait for document loaded before starting the execution
-   *)
 */
