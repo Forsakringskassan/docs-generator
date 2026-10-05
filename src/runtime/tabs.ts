@@ -51,12 +51,21 @@ onContentReady(() => {
 
 const switchTab = (event: MouseEvent) => {
     const button = event.target as HTMLElement;
-    const tabPanelId = button.getAttribute("aria-controls");
+
+    const buttons = document.querySelectorAll<HTMLElement>(
+        '.docs-tabs [role="tab"]',
+    );
+    buttons.forEach((button) => {
+        button.setAttribute("aria-selected", "false");
+        button.tabIndex = -1;
+    });
+    button.setAttribute("aria-selected", "true");
+    button.removeAttribute("tabIndex");
 
     const tabs = document.querySelectorAll<HTMLElement>(".docs-tab");
-
     tabs.forEach((tab) => tab.classList.add("hidden-tab"));
 
+    const tabPanelId = button.getAttribute("aria-controls");
     const tabPanel = document.querySelector<HTMLElement>(
         `.docs-tab[id="${tabPanelId}"]`,
     );
