@@ -3,6 +3,12 @@ import { onContentReady } from "./on-content-ready";
 onContentReady(() => {
     const tabs = document.querySelectorAll<HTMLElement>(".docs-tab");
 
+    if (tabs.length === 0) {
+        return;
+    }
+
+    tabs[0].classList.remove("hidden-tab");
+
     const tabsContainer = document.createElement("div");
     tabsContainer.classList.add("docs-tabs");
 
@@ -34,9 +40,25 @@ onContentReady(() => {
         tabButton.tabIndex = -1;
 
         tabList.appendChild(tabButton);
+
+        tabButton.addEventListener("click", switchTab);
     }
 
     const firstTabButton = tabList.firstChild as HTMLButtonElement;
     firstTabButton.removeAttribute("tabIndex");
     firstTabButton.setAttribute("aria-selected", "true");
 });
+
+const switchTab = (event: MouseEvent) => {
+    const button = event.target as HTMLElement;
+    const tabPanelId = button.getAttribute("aria-controls");
+
+    const tabs = document.querySelectorAll<HTMLElement>(".docs-tab");
+
+    tabs.forEach((tab) => tab.classList.add("hidden-tab"));
+
+    const tabPanel = document.querySelector<HTMLElement>(
+        `.docs-tab[id="${tabPanelId}"]`,
+    );
+    tabPanel?.classList.remove("hidden-tab");
+};

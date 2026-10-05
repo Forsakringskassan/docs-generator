@@ -11,16 +11,6 @@ text
 
 Tab 1 content
 
-````md
-```mermaid
-flowchart TD
-  A-->B;
-  A-->C;
-  B-->D;
-  C-->D;
-```
-````
-
 §§§
 
 §§§ tab Tab2
