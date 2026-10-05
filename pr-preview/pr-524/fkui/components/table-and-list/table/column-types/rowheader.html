@@ -7159,25 +7159,46 @@ Det förbättrar tabellens tillgänglighet.</p>
 </ul>
 <h2 id="parametrar" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#parametrar">Parametrar</a></h2> <div><dl>
 <dt><code>description?: string | Readonly&lt;Ref&lt;string | null&gt;&gt;;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>‐</dd>
+<dd>Format description (shown in header)</dd>
 <dt><code>enabled?: MaybeRef&lt;boolean&gt;;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>‐</dd>
+<dd>When enabled, the column is rendered. Set to <code>false</code> to hide the column
+and its cells. Default: <code>true</code>.</dd>
 <dt><code>header: string | Readonly&lt;Ref&lt;string&gt;&gt;;</code></dt>
-<dd>‐</dd>
+<dd>Column header</dd>
 <dt><code>size?: TableColumnSize | Readonly&lt;Ref&lt;TableColumnSize | null&gt;&gt;;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>‐</dd>
+<dd>
+<p class="docs-paragraph">Column size, can be one of:</p>
+<ul>
+<li><code>&quot;grow&quot;</code>: the column occupies as much space as it can.</li>
+<li><code>&quot;shrink&quot;</code>: the column occupies as little space as it can.</li>
+</ul>
+<p class="docs-paragraph">Default: <code>&quot;grow&quot;</code>.</p>
+</dd>
 <dt><code>sort?: boolean;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
 <dd>‐</dd>
 <dt><code>visible?: (this: void, row: T) =&gt; boolean;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>‐</dd>
+<dd>
+<p class="docs-paragraph">Show cell content.</p>
+<p class="docs-paragraph">A callback that can be used for hiding specific cells in the column.</p>
+<p class="docs-paragraph">Default <code>() =&gt; true</code>.</p>
+</dd>
 <dt><code>width?: TableColumnWidth;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>‐</dd>
+<dd>
+<p class="docs-paragraph">Used to set a more specific width than <code>size</code> can provide. Write like: <code>&quot;20%&quot;</code></p>
+<p class="docs-paragraph"><code>&quot;%&quot;</code>
+The column takes up the percent given of the grid. It can both grow and shrink.</p>
+<p class="docs-paragraph"><code>&quot;px&quot;</code>
+<code>&quot;rem&quot;</code>
+<code>&quot;ch&quot;</code>
+Should be used with caution, since they´re not as responsive as <code>size</code> or <code>&quot;%&quot;</code>.
+The column will grow if no other column is allowed to grow and the table can be wider.</p>
+</dd>
 <dt><code>key?: K;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
 <dd>‐</dd>
 <dt><code>text?(this: void, row: T): string;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>‐</dd>
+<dd>Header text</dd>
 <dt><code>type: &quot;rowheader&quot;;</code></dt>
-<dd>‐</dd>
+<dd>Column type</dd>
 </dl>
 </div> 
 
@@ -7227,9 +7248,9 @@ Det förbättrar tabellens tillgänglighet.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version"><span class="version-text-block">feature/footer-styling</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/2a62d315748e01372204928b2d0fd65e7890b33b">2a62d31</a>)<br />
+<div class="footer__right"><div class="version"><span class="version-text-block">feature/footer-styling</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/67b6c05112d18101da35f3a25639a0cc30f410b4">67b6c05</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/524">PR 524</a><br />
-       <span class="version-text-block">2026-10-02 22:58</span>
+       <span class="version-text-block">2026-10-05 12:27</span>
 </div>
 <div class="toolbar__item">
     <form id="version">
