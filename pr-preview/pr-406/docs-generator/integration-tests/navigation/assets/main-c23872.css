@@ -1730,7 +1730,7 @@ kbd {
 }
 
 .docs-modal__body.is-touch .docs-search-result__list:empty {
-  margin: 0.5rem 0 0.5rem;
+  margin: 0.5rem 0;
   padding: 0;
 }
 
