@@ -8972,6 +8972,10 @@ kbd {
   margin: 0 0 1.5rem;
 }
 
+.docs-modal__body.is-touch .docs-search-dialog__input {
+  margin: 0;
+}
+
 .docs-search-dialog__input:focus {
   border-radius: 0;
   box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #1b1e23, 0 0 0 6px #ffffff;
@@ -8991,6 +8995,11 @@ kbd {
   max-height: 60vh;
   margin: 0.5rem 0 1.5rem;
   padding: 0.2rem;
+}
+
+.docs-modal__body.is-touch .docs-search-result__list:empty {
+  margin: 0.5rem 0 0.5rem;
+  padding: 0;
 }
 
 @media (width < 640px) {
