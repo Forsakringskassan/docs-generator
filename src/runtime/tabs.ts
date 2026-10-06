@@ -16,6 +16,7 @@ function renderTabs() {
 
     const tabList = document.createElement("div");
     tabList.setAttribute("role", "tablist");
+    tabList.classList.add("docs-tablist");
 
     tabPanels[0].before(tabsContainer);
 
