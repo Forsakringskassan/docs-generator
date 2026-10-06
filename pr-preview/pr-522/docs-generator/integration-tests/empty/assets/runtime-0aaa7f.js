@@ -296968,6 +296968,7 @@ var footer = document.querySelector("footer");
 var previousPath = location.pathname;
 function closeNested(details) {
   for (const nested of details.querySelectorAll("details")) {
+    console.log("closeNested", nested);
     nested.open = false;
   }
 }
