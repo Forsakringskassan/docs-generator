@@ -28,9 +28,6 @@
     "Sorted Page 2",
     "Sorted Page 3",
     "Top page",
-    "Sorted Page 1",
-    "Sorted Page 2",
-    "Sorted Page 3",
     "Nested Page 1",
     "Nested Page 2",
     "Nested Page 3",
@@ -191,21 +188,6 @@
     {
       "url": "navigation/sorted-group/top-page.html",
       "title": "Top page",
-      "terms": []
-    },
-    {
-      "url": "navigation/sorted-group/sub-group/sorted-page-1.html",
-      "title": "Sorted Page 1",
-      "terms": []
-    },
-    {
-      "url": "navigation/sorted-group/sub-group/sorted-page-2.html",
-      "title": "Sorted Page 2",
-      "terms": []
-    },
-    {
-      "url": "navigation/sorted-group/sub-group/sorted-page-3.html",
-      "title": "Sorted Page 3",
       "terms": []
     },
     {
@@ -417,9 +399,6 @@
     "54": 51,
     "55": 52,
     "56": 53,
-    "57": 54,
-    "58": 55,
-    "59": 56,
-    "60": 57
+    "57": 54
   }
 }
