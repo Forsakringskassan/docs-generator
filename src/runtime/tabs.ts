@@ -14,6 +14,7 @@ onContentReady(() => {
 
     const tabList = document.createElement("div");
     tabList.setAttribute("role", "tablist");
+    tabList.classList.add("docs-tablist");
 
     tabs[0].before(tabsContainer);
 

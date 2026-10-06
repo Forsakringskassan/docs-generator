@@ -1,4 +1,24 @@
 .docs-tabs {
+    .docs-tablist {
+        border-bottom: var(--fkds-color-border-weak) 1px solid;
+        margin-bottom: 2rem;
+
+        button {
+            background-color: transparent;
+            border: none;
+            padding: 0.25rem 1rem;
+        }
+        button:not(:last-of-type) {
+            margin-right: 0.25rem;
+        }
+        button:hover {
+            border-bottom: var(--fkds-color-navigation-border-hover) 3px solid;
+        }
+        button[aria-selected="true"] {
+            border-bottom: var(--fkds-color-navigation-border-selected) 3px solid;
+            font-weight: 600;
+        }
+    }
     .docs-tab {
         &.hidden-tab {
             display: none;
