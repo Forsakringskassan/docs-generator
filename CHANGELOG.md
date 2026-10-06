@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [3.17.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.16.0...v3.17.0) (2026-10-06)
+
+### Features
+
+* use native glob when matching files ([a88f2e9](https://github.com/Forsakringskassan/docs-generator/commit/a88f2e959a8e188ad094edb6a979cd9d551ce95a))
+
+### Bug Fixes
+
+* **deps:** update dependency mermaid to v12.1.0 ([13458b7](https://github.com/Forsakringskassan/docs-generator/commit/13458b7d6ff98fa413010d1fb4b04755b7aa8efd))
+
 ## [3.16.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.15.2...v3.16.0) (2026-10-05)
 
 ### Features
