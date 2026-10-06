@@ -1,13 +1,15 @@
 import { onContentReady } from "./on-content-ready";
 
-onContentReady(() => {
-    const tabs = document.querySelectorAll<HTMLElement>(".docs-tab");
+onContentReady(() => renderTabs());
 
-    if (tabs.length === 0) {
+function renderTabs() {
+    const tabPanels = document.querySelectorAll<HTMLElement>(".docs-tab");
+
+    if (tabPanels.length === 0) {
         return;
     }
 
-    tabs[0].classList.remove("hidden-tab");
+    tabPanels[0].classList.remove("hidden-tab");
 
     const tabsContainer = document.createElement("div");
     tabsContainer.classList.add("docs-tabs");
@@ -15,18 +17,20 @@ onContentReady(() => {
     const tabList = document.createElement("div");
     tabList.setAttribute("role", "tablist");
 
-    tabs[0].before(tabsContainer);
+    tabPanels[0].before(tabsContainer);
 
     tabsContainer.appendChild(tabList);
-    tabs.forEach((tab) => tabsContainer.appendChild(tab));
+    tabPanels.forEach((tabPanel) => tabsContainer.appendChild(tabPanel));
 
     const tabNames: string[] = [];
-    tabs.forEach((tab) => tabNames.push(tab.id.split("-").slice(1).join(" ")));
+    tabPanels.forEach((tabPanel) =>
+        tabNames.push(tabPanel.id.split("-").slice(1).join(" ")),
+    );
     const tabIds: string[] = [];
-    tabs.forEach((tab) => tabIds.push(tab.id));
+    tabPanels.forEach((tabPanel) => tabIds.push(tabPanel.id));
     const tabButtonIds: string[] = [];
-    tabs.forEach((tab) =>
-        tabButtonIds.push(tab.getAttribute("aria-labelledby")!),
+    tabPanels.forEach((tabPanel) =>
+        tabButtonIds.push(tabPanel.getAttribute("aria-labelledby")!),
     );
 
     for (let i = 0; i < tabNames.length; i++) {
@@ -41,33 +45,99 @@ onContentReady(() => {
 
         tabList.appendChild(tabButton);
 
-        tabButton.addEventListener("click", switchTab);
+        tabButton.addEventListener("click", onClick);
+        tabButton.addEventListener("keydown", onKeydown);
     }
 
     const firstTabButton = tabList.firstChild as HTMLButtonElement;
     firstTabButton.removeAttribute("tabIndex");
     firstTabButton.setAttribute("aria-selected", "true");
-});
+}
 
-const switchTab = (event: MouseEvent) => {
-    const button = event.target as HTMLElement;
-
-    const buttons = document.querySelectorAll<HTMLElement>(
+const onKeydown = (event: KeyboardEvent) => {
+    const tabs = document.querySelectorAll<HTMLElement>(
         '.docs-tabs [role="tab"]',
     );
-    buttons.forEach((button) => {
-        button.setAttribute("aria-selected", "false");
-        button.tabIndex = -1;
+
+    let flag = false;
+    switch (event.key) {
+        case "ArrowLeft":
+            setSelectedTabToPrevious();
+            flag = true;
+            break;
+
+        case "ArrowRight":
+            setSelectedTabToNext();
+            flag = true;
+            break;
+
+        case "Home":
+            setSelectedTab(tabs[0] as HTMLButtonElement);
+            flag = true;
+            break;
+
+        case "End":
+            setSelectedTab(tabs[tabs.length - 1] as HTMLButtonElement);
+            flag = true;
+            break;
+
+        default:
+            break;
+    }
+
+    if (flag) {
+        event.stopPropagation();
+        event.preventDefault();
+    }
+};
+
+function onClick(event: MouseEvent) {
+    setSelectedTab(event.target as HTMLButtonElement);
+}
+
+function getCurrentTab(): HTMLButtonElement | null {
+    return document.querySelector<HTMLButtonElement>(
+        '.docs-tabs [role="tab"][aria-selected="true"]',
+    );
+}
+
+function setSelectedTabToPrevious() {
+    const currentTab = getCurrentTab();
+    const previousTab = currentTab?.previousElementSibling;
+
+    if (previousTab) {
+        setSelectedTab(previousTab as HTMLButtonElement);
+    }
+}
+
+function setSelectedTabToNext() {
+    const currentTab = getCurrentTab();
+    const nextTab = currentTab?.nextElementSibling;
+
+    if (nextTab) {
+        setSelectedTab(nextTab as HTMLButtonElement);
+    }
+}
+
+function setSelectedTab(newTab: HTMLButtonElement) {
+    const tabs = document.querySelectorAll<HTMLButtonElement>(
+        '.docs-tabs [role="tab"]',
+    );
+    tabs.forEach((tab) => {
+        tab.setAttribute("aria-selected", "false");
+        tab.tabIndex = -1;
     });
-    button.setAttribute("aria-selected", "true");
-    button.removeAttribute("tabIndex");
+    newTab.setAttribute("aria-selected", "true");
+    newTab.removeAttribute("tabIndex");
 
-    const tabs = document.querySelectorAll<HTMLElement>(".docs-tab");
-    tabs.forEach((tab) => tab.classList.add("hidden-tab"));
+    const tabPanels = document.querySelectorAll<HTMLElement>(".docs-tab");
+    tabPanels.forEach((tabPanel) => tabPanel.classList.add("hidden-tab"));
 
-    const tabPanelId = button.getAttribute("aria-controls");
+    const tabPanelId = newTab.getAttribute("aria-controls");
     const tabPanel = document.querySelector<HTMLElement>(
         `.docs-tab[id="${tabPanelId}"]`,
     );
     tabPanel?.classList.remove("hidden-tab");
-};
+
+    newTab.focus();
+}
