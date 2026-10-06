@@ -685,6 +685,9 @@ export class Generator {
         });
 
         /* default template blocks */
+        context.addTemplateBlock("header:left", "header:left", {
+            filename: "partials/brand.html",
+        });
         context.addTemplateBlock("footer:left", "footer:left", {
             filename: "partials/footer-left.html",
         });

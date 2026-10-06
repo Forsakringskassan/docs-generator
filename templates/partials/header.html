@@ -1,10 +1,8 @@
 <div class="docs-page-header__root">
     <div class="docs-page-header">
         <div class="docs-page-header__left">
-            <a class="docs-page-header__logo" href="{{ './index.html' | relative(doc) }}">
-                <span aria-label="{{ site.name }}" role="img" class="docs-page-header__logo--pipe"> </span>
-            </a>
-            <a class="docs-page-header__app-name" href="{{ './index.html' | relative(doc) }}"> {{ site.name }} </a>
+            <!-- prettier-ignore -->
+            {% container "header:left" %}
         </div>
         <div class="docs-page-header__right">
             {%- include "partials/mobile-nav.html" %} {%- include "partials/topnav.html" %}

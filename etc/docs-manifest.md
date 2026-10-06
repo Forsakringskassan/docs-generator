@@ -15,6 +15,7 @@ index.html
 index.html
 layout/custom-layout.html -> layout/custom-layout/index.html
 layout/custom-layout/footer.html
+layout/custom-layout/header.html
 layout/custom-layout/index.html
 layout/index.html
 layout/overriding-templates.html

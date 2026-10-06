@@ -157,9 +157,16 @@ exports[`smoketest 1`] = `
             },
             {
               "external": false,
+              "id": "fs:docs/layout/custom-layout/header.md",
+              "path": "./layout/custom-layout/header.html",
+              "sortorder": 1,
+              "title": "Header",
+            },
+            {
+              "external": false,
               "id": "fs:docs/layout/custom-layout/footer.md",
               "path": "./layout/custom-layout/footer.html",
-              "sortorder": 1,
+              "sortorder": 2,
               "title": "Footer",
             },
           ],
