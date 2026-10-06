@@ -28,6 +28,9 @@
     "Sorted Page 2",
     "Sorted Page 3",
     "Top page",
+    "Sorted Page 1",
+    "Sorted Page 2",
+    "Sorted Page 3",
     "Nested Page 1",
     "Nested Page 2",
     "Nested Page 3",
@@ -47,10 +50,11 @@
     "Documenting TypeScript",
     "Documenting Vue components",
     "Example",
-    "Custom layout",
     "Layout",
     "Overriding templates",
     "Plumbing",
+    "Footer",
+    "Custom layout",
     "Configuration",
     "Scripts",
     "Workers",
@@ -190,6 +194,21 @@
       "terms": []
     },
     {
+      "url": "navigation/sorted-group/sub-group/sorted-page-1.html",
+      "title": "Sorted Page 1",
+      "terms": []
+    },
+    {
+      "url": "navigation/sorted-group/sub-group/sorted-page-2.html",
+      "title": "Sorted Page 2",
+      "terms": []
+    },
+    {
+      "url": "navigation/sorted-group/sub-group/sorted-page-3.html",
+      "title": "Sorted Page 3",
+      "terms": []
+    },
+    {
       "url": "navigation/group/nested-page-1.html",
       "title": "Nested Page 1",
       "terms": []
@@ -285,11 +304,6 @@
       "terms": []
     },
     {
-      "url": "layout/custom-layout.html",
-      "title": "Custom layout",
-      "terms": []
-    },
-    {
       "url": "layout/index.html",
       "title": "Layout",
       "terms": []
@@ -302,6 +316,16 @@
     {
       "url": "layout/plumbing.html",
       "title": "Plumbing",
+      "terms": []
+    },
+    {
+      "url": "layout/custom-layout/footer.html",
+      "title": "Footer",
+      "terms": []
+    },
+    {
+      "url": "layout/custom-layout/index.html",
+      "title": "Custom layout",
       "terms": []
     },
     {
@@ -392,6 +416,10 @@
     "53": 50,
     "54": 51,
     "55": 52,
-    "56": 53
+    "56": 53,
+    "57": 54,
+    "58": 55,
+    "59": 56,
+    "60": 57
   }
 }
