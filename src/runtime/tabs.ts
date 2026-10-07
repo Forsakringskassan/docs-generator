@@ -1,4 +1,5 @@
 import { onContentReady } from "./on-content-ready";
+import { setupTabsOverflow } from "./tabs-overflow";
 
 onContentReady(() => renderTabs());
 
@@ -53,6 +54,8 @@ function renderTabs() {
     const firstTabButton = tabList.firstChild as HTMLButtonElement;
     firstTabButton.removeAttribute("tabIndex");
     firstTabButton.setAttribute("aria-selected", "true");
+
+    setupTabsOverflow(tabList);
 }
 
 const onKeydown = (event: KeyboardEvent) => {

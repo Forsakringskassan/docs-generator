@@ -2,11 +2,20 @@
     .docs-tablist {
         border-bottom: var(--fkds-color-border-weak) 1px solid;
         margin-bottom: 2rem;
+        display: flex;
+        flex-wrap: nowrap;
+        min-width: 0;
+        position: relative;
+
+        .docs-tabs-overflow {
+            position: absolute;
+        }
 
         button {
             background-color: transparent;
             border: none;
             padding: 0.25rem 1rem;
+            white-space: nowrap;
         }
         button:not(:last-of-type) {
             margin-right: 0.25rem;
