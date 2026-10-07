@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [3.18.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.17.0...v3.18.0) (2026-10-07)
+
+### Features
+
+* move site branding to separate partial ([b773589](https://github.com/Forsakringskassan/docs-generator/commit/b773589654a717a3bbb7fbe82b4b4901b42838f3))
+
+### Bug Fixes
+
+* use short-title from json files (fixes SFKUI-8314) ([14ebf2f](https://github.com/Forsakringskassan/docs-generator/commit/14ebf2f73b2b22204ecc180ce1c5961e8900872d))
+
 ## [3.17.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.16.0...v3.17.0) (2026-10-06)
 
 ### Features
