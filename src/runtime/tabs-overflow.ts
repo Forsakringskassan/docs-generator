@@ -1,36 +1,32 @@
 export function setupTabsOverflow(tabList: HTMLElement) {
+    // More tabs buton
     const moreButton = document.createElement("button");
-
     moreButton.type = "button";
     moreButton.textContent = "Fler flikar";
-    moreButton.classList.add("docs-tabs-more");
+    moreButton.classList.add("docs-tabs-more-button");
     moreButton.hidden = true;
+    moreButton.setAttribute("popovertarget", "tabs-overflow-container");
+    moreButton.tabIndex = -1;
 
+    // Overflow list
     const overflowList = document.createElement("div");
+    overflowList.classList.add("docs-tabs-overflow-container");
+    overflowList.id = "tabs-overflow-container";
+    overflowList.setAttribute("popover", "");
 
-    overflowList.classList.add("docs-tabs-overflow");
-    overflowList.hidden = true;
+    const originalTabsOrder = Array.from(
+        tabList.querySelectorAll<HTMLButtonElement>('[role="tab"]'),
+    );
 
-    console.log(tabList);
     tabList.appendChild(moreButton);
     tabList.appendChild(overflowList);
 
-    moreButton.addEventListener("click", () => {
-        overflowList.hidden = !overflowList.hidden;
-    });
-
     const updateOverflow = () => {
-        // Flytta tillbaka alla tabs från overflow
-        const overflowTabs = Array.from(
-            overflowList.querySelectorAll<HTMLButtonElement>('[role="tab"]'),
-        );
-
-        overflowTabs.reverse().forEach((tab) => {
+        originalTabsOrder.forEach((tab) => {
             tabList.insertBefore(tab, moreButton);
         });
 
         moreButton.hidden = true;
-        overflowList.hidden = true;
 
         const tabs = Array.from(
             tabList.querySelectorAll<HTMLButtonElement>(
@@ -40,7 +36,6 @@ export function setupTabsOverflow(tabList: HTMLElement) {
 
         const tabListWidth = tabList.clientWidth;
 
-        // Räkna ut den totala bredden på alla tabs
         const getTabsWidth = () =>
             Array.from(
                 tabList.querySelectorAll<HTMLButtonElement>(
@@ -48,15 +43,13 @@ export function setupTabsOverflow(tabList: HTMLElement) {
                 ),
             ).reduce((total, tab) => total + tab.offsetWidth, 0);
 
-        // Alla får plats utan More
+        // All tabs fit in tablist
         if (getTabsWidth() <= tabListWidth) {
             return;
         }
 
-        // Vi behöver More
         moreButton.hidden = false;
 
-        // Flytta sista tabben tills tabs + More får plats
         while (getTabsWidth() + moreButton.offsetWidth > tabListWidth) {
             const visibleTabs = Array.from(
                 tabList.querySelectorAll<HTMLButtonElement>(

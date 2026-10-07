@@ -2,6 +2,7 @@ import { onContentReady } from "./on-content-ready";
 import { setupTabsOverflow } from "./tabs-overflow";
 
 onContentReady(() => renderTabs());
+window.addEventListener("docs:navigation", renderTabs);
 
 function renderTabs() {
     const tabPanels = document.querySelectorAll<HTMLElement>(".docs-tab");
