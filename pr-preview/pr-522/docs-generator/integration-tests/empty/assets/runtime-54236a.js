@@ -297157,6 +297157,7 @@ for (const details of document.querySelectorAll("details")) {
       closeNested(details);
       console.log("detail open", details);
     } else {
+      console.log("open", details);
       onToggle(details);
     }
   });
