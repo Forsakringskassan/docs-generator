@@ -296899,6 +296899,7 @@ mermaid_default.initialize({
   }
 });
 function forceReflow(element3) {
+  console.log("reflow", element3);
   element3.style.display = "none";
   element3.offsetHeight;
   element3.style.removeProperty("display");
@@ -296917,10 +296918,9 @@ function onToggle(event3) {
   const openChildren = targetDetails.querySelectorAll("details[open]");
   openChildren.forEach((child) => {
     child.removeAttribute("open");
+    console.log("remove");
   });
-  const parentList = targetDetails.closest(
-    ".docs-mobile-nav__list"
-  );
+  const parentList = targetDetails.closest("ul");
   if (!parentList) {
     return;
   }
