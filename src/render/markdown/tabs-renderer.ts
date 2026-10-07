@@ -6,10 +6,8 @@ import {
 import { type Document } from "../../document";
 import { type MarkdownEnv } from "../markdown-env";
 import { type SoftErrorType } from "../soft-error";
-import { type ContainerCallback, type ContainerContext } from "./container";
+import { type ContainerContext } from "./container";
 import { tabPanel } from "./tab-panel";
-
-type Options = Record<string, ContainerCallback>;
 
 const markerStr = "§";
 const markerChar = markerStr.codePointAt(0);
@@ -55,9 +53,7 @@ function tabs(
     }
 
     const markup = state.src.slice(mem, pos);
-    const params = state.src.slice(pos, max).trim().split(/\s+/);
-    const kind = params[0]; // §§§
-    const info = params.slice(1).join(" "); // tab name
+    const tabName = state.src.slice(pos, max).trim();
 
     // search end of block
     let nextLine = startLine;
@@ -101,7 +97,8 @@ function tabs(
         pos = state.skipSpaces(pos);
 
         if (pos < max) {
-            continue;
+            // found another tab
+            break;
         }
 
         haveEndMarker = true;
@@ -112,28 +109,16 @@ function tabs(
     // If a fence has heading spaces, they should be removed from its inner block
     len = state.sCount[startLine];
 
+    // Only move to next line when all tabs are done (have an end marker)
     state.line = nextLine + (haveEndMarker ? 1 : 0);
 
-    const token = state.push(`doc_${kind}`, "div", 0);
-    token.info = info.trim();
+    const token = state.push(`doc_tab`, "div", 0);
+    token.info = tabName;
     token.content = state.getLines(startLine + 1, nextLine, len, true);
     token.markup = markup;
     token.map = [startLine, state.line];
 
     return true;
-}
-
-/**
- * @internal
- */
-export function tabsParser(md: MarkdownIt, options: Options): void {
-    md.block.ruler.before("container_include", "tabs_include", tabs, {
-        alt: ["paragraph", "reference", "blockquote", "list"],
-    });
-
-    for (const [kind, fn] of Object.entries(options)) {
-        md.renderer.rules[`doc_${kind}`] = fn as RendererRule;
-    }
 }
 
 /* eslint-disable-next-line @typescript-eslint/max-params -- technical debt: should create and interface or similar */
@@ -160,8 +145,14 @@ export function tabsRenderer(
             included,
             handleSoftError,
         };
-        md.use(tabsParser, {
-            tab: tabPanel(context, options.messagebox),
+
+        md.block.ruler.before("container_include", "tabs_include", tabs, {
+            alt: ["paragraph", "reference", "blockquote", "list"],
         });
+
+        md.renderer.rules[`doc_tab`] = tabPanel(
+            context,
+            options.messagebox,
+        ) as RendererRule;
     };
 }
