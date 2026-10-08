@@ -5,7 +5,7 @@ var __require = /* @__PURE__ */ ((x6) => typeof require !== "undefined" ? requir
   throw Error('Dynamic require of "' + x6 + '" is not supported');
 });
 
-// ../../dist/runtime-internal.mjs
+// dist/runtime-internal.mjs
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -296899,7 +296899,6 @@ mermaid_default.initialize({
   }
 });
 function forceReflow(element3) {
-  console.log("reflow", element3);
   element3.style.display = "none";
   element3.offsetHeight;
   element3.style.removeProperty("display");
@@ -296918,7 +296917,6 @@ function onToggle(event3) {
   const openChildren = targetDetails.querySelectorAll("details[open]");
   openChildren.forEach((child) => {
     child.removeAttribute("open");
-    console.log("remove");
   });
   const parentList = targetDetails.closest("ul");
   if (!parentList) {

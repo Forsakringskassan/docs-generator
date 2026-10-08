@@ -5,7 +5,7 @@ var __require = /* @__PURE__ */ ((x6) => typeof require !== "undefined" ? requir
   throw Error('Dynamic require of "' + x6 + '" is not supported');
 });
 
-// ../../dist/runtime-internal.mjs
+// node_modules/@forsakringskassan/docs-generator/dist/runtime-internal.mjs
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -296899,7 +296899,6 @@ mermaid_default.initialize({
   }
 });
 function forceReflow(element3) {
-  console.log("reflow", element3);
   element3.style.display = "none";
   element3.offsetHeight;
   element3.style.removeProperty("display");
@@ -296918,7 +296917,6 @@ function onToggle(event3) {
   const openChildren = targetDetails.querySelectorAll("details[open]");
   openChildren.forEach((child) => {
     child.removeAttribute("open");
-    console.log("remove");
   });
   const parentList = targetDetails.closest("ul");
   if (!parentList) {
@@ -297331,40 +297329,44 @@ export {
 };
 /*! Bundled license information:
 
-dompurify/dist/purify.es.mjs:
-  (*! @license DOMPurify 3.4.16 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.4.16/LICENSE *)
-  (*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE *)
-
-lodash-es/lodash.js:
-  (**
-   * @license
-   * Lodash (Custom Build) <https://lodash.com/>
-   * Build: `lodash modularize exports="es" --repo lodash/lodash#4.18.1 -o ./`
-   * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
-   * Released under MIT license <https://lodash.com/license>
-   * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
-   * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
-   *)
-
-cytoscape/dist/cytoscape.esm.mjs:
-  (*!
-  Embeddable Minimum Strictly-Compliant Promises/A+ 1.1.1 Thenable
-  Copyright (c) 2013-2014 Ralf S. Engelschall (http://engelschall.com)
-  Licensed under The MIT License (http://opensource.org/licenses/MIT)
-  *)
-  (*!
-  Event object based on jQuery events, MIT license
+@forsakringskassan/docs-generator/dist/runtime-internal.mjs:
+  (*! Bundled license information:
   
-  https://jquery.org/license/
-  https://tldrlegal.com/license/mit-license
-  https://github.com/jquery/jquery/blob/master/src/event.js
+  dompurify/dist/purify.es.mjs:
+    (*! @license DOMPurify 3.4.16 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.4.16/LICENSE *)
+    (*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE *)
+  
+  lodash-es/lodash.js:
+    (**
+     * @license
+     * Lodash (Custom Build) <https://lodash.com/>
+     * Build: `lodash modularize exports="es" --repo lodash/lodash#4.18.1 -o ./`
+     * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
+     * Released under MIT license <https://lodash.com/license>
+     * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+     * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+     *)
+  
+  cytoscape/dist/cytoscape.esm.mjs:
+    (*!
+    Embeddable Minimum Strictly-Compliant Promises/A+ 1.1.1 Thenable
+    Copyright (c) 2013-2014 Ralf S. Engelschall (http://engelschall.com)
+    Licensed under The MIT License (http://opensource.org/licenses/MIT)
+    *)
+    (*!
+    Event object based on jQuery events, MIT license
+    
+    https://jquery.org/license/
+    https://tldrlegal.com/license/mit-license
+    https://github.com/jquery/jquery/blob/master/src/event.js
+    *)
+    (*! Bezier curve function generator. Copyright Gaetan Renaudeau. MIT License: http://en.wikipedia.org/wiki/MIT_License *)
+    (*! Runge-Kutta spring physics function generator. Adapted from Framer.js, copyright Koen Bok. MIT License: http://en.wikipedia.org/wiki/MIT_License *)
+  
+  mermaid/dist/mermaid.core.mjs:
+    (*! Check if previously processed *)
+    (*!
+     * Wait for document loaded before starting the execution
+     *)
   *)
-  (*! Bezier curve function generator. Copyright Gaetan Renaudeau. MIT License: http://en.wikipedia.org/wiki/MIT_License *)
-  (*! Runge-Kutta spring physics function generator. Adapted from Framer.js, copyright Koen Bok. MIT License: http://en.wikipedia.org/wiki/MIT_License *)
-
-mermaid/dist/mermaid.core.mjs:
-  (*! Check if previously processed *)
-  (*!
-   * Wait for document loaded before starting the execution
-   *)
 */
