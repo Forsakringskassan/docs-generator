@@ -1,7 +1,7 @@
 ---
 title: Header
 layout: article
-sortorder: 1
+sortorder: 20
 ---
 
 The default header uses tree columns (stacked in mobile):
