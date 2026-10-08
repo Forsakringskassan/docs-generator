@@ -1,4 +1,4 @@
-import path from "node:path/posix";
+import path from "node:path";
 import { type Plugin } from "esbuild";
 
 const pluginName = "virtual-entry";

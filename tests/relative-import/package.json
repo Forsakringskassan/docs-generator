@@ -1,0 +1,13 @@
+{
+  "name": "integration-test-relative-import",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prebuild": "tsc",
+    "build": "node build.mts"
+  },
+  "dependencies": {
+    "@forsakringskassan/docs-generator": "file:../.."
+  }
+}
