@@ -67,7 +67,7 @@ const docs = new Generator(import.meta.url, {
         sourceUrlProcessor(pkg, {
             sourceFiles: ["docs/**"],
             urlFormat: "{{ repository }}/tree/main/{{ path }}",
-            componentFileExtension: "baz",
+            componentFileExtension: ["baz", "vue"],
         }),
         cookieProcessor(),
         motdProcessor(),

@@ -4,6 +4,8 @@ short-title: Vue Components
 layout: article
 ---
 
+adsf {@link vue-component-example}.
+
 API documentation for Vue components can be enabled using the {@link vueFileReader}:
 
 ```ts
