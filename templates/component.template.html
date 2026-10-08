@@ -2,35 +2,11 @@
 {% extends "content-with-menu.template.html" %}
 
 {% block aside %}
-<dl>
-    {% if doc.attributes.component %}
-    <dt>{{ $t('component.component') }}</dt>
-    <dd>
-        <div class="docs-badge-list">
-            {% for component in doc.attributes.component %}
-            {% if componentSourceUrl and componentSourceUrl(component) %}
-            <a class="docs-badge docs-badge--component docs-badge-link" href="{{ componentSourceUrl(component) }}">
-                {{ component.name }}
-            </a>
-            {% else %}
-            <div class="docs-badge docs-badge--component">
-                {{ component.name }}
-            </div>
-            {% endif %}
-            {% endfor %}
-        </div>
-    </dd>
-    {% endif %}
-
-    {% if doc.attributes.status %}
-    <dt>{{ $t('component.status') }}</dt>
-    <dd>
-        <div class="badge badge--{{ doc.attributes.badge }}">{{ doc.attributes.status }}</div>
-    </dd>
-    {% endif %}
-</dl>
+    {% container "component:aside" %}
 {% endblock %}
 
 {% block content %}
-{{ doc.body | marked }}
+    {% container "component:top" %}
+    {{ doc.body | marked }}
+    {% container "component:bottom" %}
 {% endblock %}

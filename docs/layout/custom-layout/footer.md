@@ -1,7 +1,7 @@
 ---
 title: Footer
 layout: article
-sortorder: 2
+sortorder: 21
 ---
 
 The default footer uses three columns:

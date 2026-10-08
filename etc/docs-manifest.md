@@ -14,6 +14,7 @@ file-reader/vue-file-reader.html
 index.html
 index.html
 layout/custom-layout.html -> layout/custom-layout/index.html
+layout/custom-layout/component.html
 layout/custom-layout/footer.html
 layout/custom-layout/header.html
 layout/custom-layout/index.html

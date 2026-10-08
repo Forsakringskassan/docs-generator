@@ -697,6 +697,9 @@ export class Generator {
         context.addTemplateBlock("footer:right", "footer:right", {
             filename: "partials/footer-right.html",
         });
+        context.addTemplateBlock("component:aside", "component:aside", {
+            filename: "partials/component-aside.html",
+        });
 
         const generatedFiles = [
             await stage("generate-docs", context, processors),
