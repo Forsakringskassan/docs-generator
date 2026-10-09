@@ -149,7 +149,7 @@ export function findApiContainer(
     text: string,
     cb: (container: ApiContainerData) => string,
 ): string {
-    const regex = /^:::\s*api(.*)\n([\s\S]+?):::/gm;
+    const regex = /^:::\s*api(.*)\n([\s\S]+?):::\n/gm;
     return text.replaceAll(regex, (match, info: string, rawContent: string) => {
         const content = rawContent.trim();
         const trimmedInfo = info.trim();
