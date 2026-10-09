@@ -120,7 +120,7 @@ async function extractDocument(
 ): Promise<void> {
     const { outputFolder } = options;
     const markdown = doc.body.replaceAll(
-        /^:::\s*api(.*)\n([\s\S]+?):::/gm,
+        /^:::\s*api([^\r\n]*)\r?\n([\s\S]+?):::/gm,
         (match, info: string, content: string) => {
             const needle = content.trim();
             const trimmedInfo = info.trim();
