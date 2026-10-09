@@ -1969,7 +1969,7 @@ function memoize(callback) {
     return cache.get(key);
   };
 }
-var current = "v3.18.0";
+var current = "v3.19.0";
 var message = "Det finns en nyare version";
 function isOutside(rect, point) {
   if (point.y < rect.top || point.y > rect.top + rect.height) {
