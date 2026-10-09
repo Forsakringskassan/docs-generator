@@ -1,4 +1,5 @@
 export { createMockDocument } from "./create-mock-document";
+export { createMockPartial } from "./create-mock-partial";
 export { type FileMatcher, fileMatcher } from "./file-matcher";
 export { findDocument } from "./find-document";
 export { findTag } from "./find-tag";
