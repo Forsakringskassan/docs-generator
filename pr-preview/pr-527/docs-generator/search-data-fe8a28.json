@@ -50,6 +50,7 @@
     "Layout",
     "Overriding templates",
     "Plumbing",
+    "Component",
     "Footer",
     "Header",
     "Custom layout",
@@ -302,6 +303,11 @@
       "terms": []
     },
     {
+      "url": "layout/custom-layout/component.html",
+      "title": "Component",
+      "terms": []
+    },
+    {
       "url": "layout/custom-layout/footer.html",
       "title": "Footer",
       "terms": []
@@ -406,6 +412,7 @@
     "55": 52,
     "56": 53,
     "57": 54,
-    "58": 55
+    "58": 55,
+    "59": 56
   }
 }
