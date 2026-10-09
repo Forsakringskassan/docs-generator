@@ -58,6 +58,18 @@ export interface ExtractMarkdownOptions extends ProcessorOptions {
     outputFolder: string;
 }
 
+/**
+ * @internal
+ */
+export interface ApiContainerData {
+    /** full matched string including the begin and end `:::` markers. */
+    match: string;
+    /** infostring tags */
+    tags: string[];
+    /** body of the container */
+    content: string;
+}
+
 async function copyFile(src: string, dst: string): Promise<void> {
     await fs.mkdir(path.dirname(dst), { recursive: true });
     await fs.cp(src, dst);
@@ -112,6 +124,83 @@ async function getFrontMatter(filePath: string): Promise<string> {
 function cmp(this: void, a: [string, string], b: [string, string]): number {
     return a[0].localeCompare(b[0]);
 }
+
+/**
+ * Finds and replaces API container blocks in markdown content.
+ *
+ * ```md
+ * ::: api foo bar
+ * lorem ipsum
+ * :::
+ * ```
+ *
+ * Given the above example the `cb` callback would be called with:
+ *
+ * - `match` - the full string including the begin and end `:::` markers.
+ * - `tags` - `["foo", "bar"]`.
+ * - `content` - `"lorem ipsum"`.
+ *
+ * @internal
+ * @param text - markdown content
+ * @param cb - callback called once for every api container block
+ * @returns updated markdown content
+ */
+export function findApiContainer(
+    text: string,
+    cb: (container: ApiContainerData) => string,
+): string {
+    const regex = /^:::\s*api(.*)\n([\s\S]+?):::/gm;
+    return text.replaceAll(regex, (match, info: string, rawContent: string) => {
+        const content = rawContent.trim();
+        const trimmedInfo = info.trim();
+        const tags = trimmedInfo ? trimmedInfo.split(/\s+/) : [];
+        return cb({ match, tags, content });
+    });
+}
+
+/**
+ * Extracts and replaces the API container with a placeholder value (later
+ * stored in the `partials.json` file).
+ *
+ * @internal
+ * @param docs - All available documents.
+ * @param partials - Extracted partials are written to this map with the placeholder value as key.
+ * @param container - Container data from `findApiContainer()`.
+ * @returns updated markdown content.
+ */
+export function onApiContainer(
+    docs: Document[],
+    partials: Map<string, PartialFile>,
+    container: ApiContainerData,
+): string {
+    const { match, tags, content } = container;
+
+    const result = findDocument(docs, content);
+    if (!result.document) {
+        return match;
+    }
+
+    const { document, kind, reference } = result;
+    if (!isDocumentPartial(document)) {
+        return match;
+    }
+
+    const body = getDocumentBody(document, tags, {
+        kind,
+        reference,
+    });
+    const fingerprint = getFingerprint(body);
+    const id = `partial:${document.format}:${fingerprint}`;
+
+    partials.set(id, {
+        id,
+        format: document.format,
+        body,
+    });
+
+    return `:::api\n${id}\n:::\n`;
+}
+
 async function extractDocument(
     doc: DocumentPage,
     docs: Document[],
@@ -119,38 +208,10 @@ async function extractDocument(
     options: { outputFolder: string },
 ): Promise<void> {
     const { outputFolder } = options;
-    const markdown = doc.body.replaceAll(
-        /^:::\s*api(.*)\n([\s\S]+?):::/gm,
-        (match, info: string, content: string) => {
-            const needle = content.trim();
-            const trimmedInfo = info.trim();
-            const tags = trimmedInfo ? trimmedInfo.split(/\s+/) : [];
-            const result = findDocument(docs, needle);
-            if (!result.document) {
-                return match;
-            }
+    const markdown = findApiContainer(doc.body, (container) => {
+        return onApiContainer(docs, partials, container);
+    });
 
-            const { document, kind, reference } = result;
-            if (!isDocumentPartial(document)) {
-                return match;
-            }
-
-            const body = getDocumentBody(document, tags, {
-                kind,
-                reference,
-            });
-            const fingerprint = getFingerprint(body);
-            const id = `partial:${document.format}:${fingerprint}`;
-
-            partials.set(id, {
-                id,
-                format: document.format,
-                body,
-            });
-
-            return `:::api\n${id}\n:::\n`;
-        },
-    );
     const src = doc.fileInfo.fullPath;
     const dst = path.join(outputFolder, "files", doc.fileInfo.fullPath);
     const fm = await getFrontMatter(src);
