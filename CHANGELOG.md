@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [3.19.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.18.0...v3.19.0) (2026-10-09)
+
+### Features
+
+* move component aside to separate partial ([93cf3f5](https://github.com/Forsakringskassan/docs-generator/commit/93cf3f5607274ecd44820fddbd18345fbfa6c178))
+
+### Bug Fixes
+
+* allow setting multiple filename extensions to `sourceUrlProcesor()` ([5a4a991](https://github.com/Forsakringskassan/docs-generator/commit/5a4a991b09d83ad3de29290464aaf101ba582662))
+
 ## [3.18.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.17.0...v3.18.0) (2026-10-07)
 
 ### Features
