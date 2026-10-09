@@ -113,6 +113,22 @@ function getComponent(
 }
 
 /**
+ * Normalizes markdown body:
+ *
+ * - Converts CRLF to LF
+ * - Inserts trailing newline if missing
+ *
+ * @internal
+ */
+export function normalizeBody(text: string): string {
+    text = text.replaceAll("\r\n", "\n");
+    if (!text.endsWith("\n")) {
+        text += "\n";
+    }
+    return text;
+}
+
+/**
  * @internal
  */
 export function parseFile(
@@ -154,7 +170,7 @@ export function parseFile(
             },
             sortorder: attributes.sortorder ?? Infinity,
         },
-        body: blocks.body,
+        body: normalizeBody(blocks.body),
         outline,
         format: "markdown",
         tags: [],
