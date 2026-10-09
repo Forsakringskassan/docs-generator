@@ -28,7 +28,7 @@ describe("findApiContainer()", () => {
         findApiContainer(markdown, fn);
         expect(fn).toHaveBeenCalledTimes(1);
         expect(fn).toHaveBeenCalledWith({
-            match: [":::api\n", "foo\n", ":::"].join(""),
+            match: [":::api\n", "foo\n", ":::\n"].join(""),
             tags: [],
             content: "foo",
         });
