@@ -1,6 +1,10 @@
 import { describe, expect, it } from "vitest";
 import { type DocumentAttributes } from "../document";
-import { getDocumentAlias, parseFile } from "./front-matter-file-reader";
+import {
+    getDocumentAlias,
+    normalizeBody,
+    parseFile,
+} from "./front-matter-file-reader";
 
 describe("getDocumentAlias()", () => {
     it("should use explicit alias as alias (string)", () => {
@@ -236,5 +240,39 @@ describe("fileInfo", () => {
               "path": ".",
             }
         `);
+    });
+});
+
+describe("normalizeBody()", () => {
+    describe("line endings", () => {
+        it("should normalize LF", () => {
+            expect.assertions(1);
+            const markdown = "foo\nbar\nbaz\n";
+            const result = normalizeBody(markdown);
+            expect(result).toBe("foo\nbar\nbaz\n");
+        });
+
+        it("should normalize CRLF", () => {
+            expect.assertions(1);
+            const markdown = "foo\r\nbar\r\nbaz\r\n";
+            const result = normalizeBody(markdown);
+            expect(result).toBe("foo\nbar\nbaz\n");
+        });
+    });
+
+    describe("trailing newline", () => {
+        it("should normalize omitted newline", () => {
+            expect.assertions(1);
+            const markdown = "foo";
+            const result = normalizeBody(markdown);
+            expect(result).toBe("foo\n");
+        });
+
+        it("should normalize included newline", () => {
+            expect.assertions(1);
+            const markdown = "foo\n";
+            const result = normalizeBody(markdown);
+            expect(result).toBe("foo\n");
+        });
     });
 });
