@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## [3.19.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.19.0...v3.19.1) (2026-10-12)
+
+### Bug Fixes
+
+* **deps:** update dependency @microsoft/api-extractor-model to v7.33.15 ([2446aa0](https://github.com/Forsakringskassan/docs-generator/commit/2446aa049ee4257aae70b822985eed8ed83a91b3))
+* normalize line endings (to LF) when parsing markdown document ([04f1087](https://github.com/Forsakringskassan/docs-generator/commit/04f1087fd1eb9d95a93e5541e708e7a4204b4ac4))
+* require newline after `:::` when extracting partials from api container ([813ec9f](https://github.com/Forsakringskassan/docs-generator/commit/813ec9f715bac477c7c14c7fcacf8efadd28cea0))
+* resolve virtual entry directory for Windows source paths ([4bd7fcc](https://github.com/Forsakringskassan/docs-generator/commit/4bd7fccb8bed8673477885153ceaaeac2a19587f))
+
 ## [3.19.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.18.0...v3.19.0) (2026-10-09)
 
 ### Features
