@@ -68,6 +68,24 @@ describe("findApiContainer()", () => {
         });
     });
 
+    it("should not match marker on separate line", () => {
+        expect.assertions(2);
+        const markdown = [":::\n", "api\n", "mock:foo\n", ":::\n"].join("");
+        const fn = vi.fn();
+        const result = findApiContainer(markdown, fn);
+        expect(fn).not.toHaveBeenCalled();
+        expect(result).toBe(markdown);
+    });
+
+    it("should not match suffixed marker", () => {
+        expect.assertions(2);
+        const markdown = [":::apiv2\n", "mock:foo\n", ":::\n"].join("");
+        const fn = vi.fn();
+        const result = findApiContainer(markdown, fn);
+        expect(fn).not.toHaveBeenCalled();
+        expect(result).toBe(markdown);
+    });
+
     it("should handle whitespace around content", () => {
         expect.assertions(2);
         const markdown = ["::: api\n", "\n", "  foo\n", "\n", ":::\n"].join("");
