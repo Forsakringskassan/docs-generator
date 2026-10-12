@@ -117,10 +117,8 @@ function getComponent(
  *
  * - Converts CRLF to LF
  * - Inserts trailing newline if missing
- *
- * @internal
  */
-export function normalizeBody(text: string): string {
+function normalizeBody(text: string): string {
     text = text.replaceAll("\r\n", "\n");
     if (!text.endsWith("\n")) {
         text += "\n";

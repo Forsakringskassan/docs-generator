@@ -40,8 +40,8 @@ jobs:
               run: npm exec vitest run
             - name: Build
               run: npm run --if-present build
-            - name: Build (relative import integration test)
-              run: npm run build --workspace=integration-test-relative-import
+            - name: Build (integration tests)
+              run: npm run integration-tests
             - name: Compile examples
               run: npm exec tsc -- -b docs/examples
 
