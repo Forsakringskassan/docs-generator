@@ -38,6 +38,7 @@ type ManifestPage = Manifest["pages"][number];
  */
 export interface ExtractedDocsModule {
     readonly generatorVersion: string;
+    readonly version: string | null;
     readonly basePath: string;
     readonly exampleFolders: string[];
     readonly filesPath: string;
@@ -56,6 +57,11 @@ export interface ExtractMarkdownOptions extends ProcessorOptions {
      * Folder to write docs to.
      */
     outputFolder: string;
+
+    /**
+     * Version written to the `version` field of the generated `index.mjs`.
+     */
+    version?: string;
 }
 
 /**
@@ -272,14 +278,22 @@ async function extractLinks(
     await fs.writeFile(dst, content, "utf8");
 }
 
-async function writeIndex(options: { outputFolder: string }): Promise<void> {
-    const { outputFolder } = options;
-    const dst = path.join(outputFolder, "index.mjs");
-    const lines = [
+/**
+ * Generates the lines of the `index.mjs` module.
+ *
+ * @internal
+ */
+export function generateIndex(options: {
+    generatorVersion: string;
+    version: string | null;
+}): string[] {
+    const { generatorVersion, version } = options;
+    return [
         `import path from "node:path";`,
         `import { frontMatterFileReader, partialFileReader } from "@forsakringskassan/docs-generator";`,
         ``,
-        `export const generatorVersion = "${pkg.version}";`,
+        `export const generatorVersion = ${JSON.stringify(generatorVersion)};`,
+        `export const version = ${JSON.stringify(version)};`,
         `export const basePath = import.meta.dirname;`,
         `export const exampleFolders = [path.join(basePath, "files")];`,
         `export const filesPath = path.join(basePath, "files");`,
@@ -302,6 +316,15 @@ async function writeIndex(options: { outputFolder: string }): Promise<void> {
         `    ];`,
         `}`,
     ];
+}
+
+async function writeIndex(options: {
+    outputFolder: string;
+    version: string | null;
+}): Promise<void> {
+    const { outputFolder, version } = options;
+    const dst = path.join(outputFolder, "index.mjs");
+    const lines = generateIndex({ generatorVersion: pkg.version, version });
     await fs.writeFile(dst, lines.join("\n"), "utf8");
 }
 
@@ -314,6 +337,7 @@ async function writeDts(options: { outputFolder: string }): Promise<void> {
         `import { SourceFiles } from "@forsakringskassan/docs-generator";`,
         ``,
         `export declare const generatorVersion: string;`,
+        `export declare const version: string | null;`,
         `export declare const basePath: string;`,
         `export declare const exampleFolders: string[];`,
         `export declare const filesPath: string;`,
@@ -334,7 +358,7 @@ async function writeDts(options: { outputFolder: string }): Promise<void> {
 export function extractMarkdownProcessor(
     options: ExtractMarkdownOptions,
 ): Processor {
-    const { enabled = true, outputFolder } = options;
+    const { enabled = true, outputFolder, version = null } = options;
 
     return {
         after: "render",
@@ -373,7 +397,7 @@ export function extractMarkdownProcessor(
             await Promise.all(resources);
 
             /* write an index for programmatical usage */
-            await writeIndex({ outputFolder });
+            await writeIndex({ outputFolder, version });
             await writeDts({ outputFolder });
         },
     };

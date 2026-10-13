@@ -119,6 +119,8 @@ export interface ExtractedDocsModule {
     readonly partialsPath: string;
     // (undocumented)
     sourceFiles(src: Partial<SourceFiles>): SourceFiles[];
+    // (undocumented)
+    readonly version: string | null;
 }
 
 // @public
@@ -133,6 +135,7 @@ export function extractExamplesProcessor(options: ExtractExamplesOptions): Proce
 // @public
 export interface ExtractMarkdownOptions extends ProcessorOptions {
     outputFolder: string;
+    version?: string;
 }
 
 // @public
