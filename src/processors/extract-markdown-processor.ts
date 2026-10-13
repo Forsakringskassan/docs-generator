@@ -378,7 +378,7 @@ async function writeDts(options: { outputFolder: string }): Promise<void> {
         `export declare const partialsPath: string;`,
         `export declare const linksPath: string;`,
         ``,
-        `export declare function sourceFiles(src: Partial<SourceFiles>): SourceFiles[];`,
+        `export declare function sourceFiles(this: void, src: Partial<SourceFiles>): SourceFiles[];`,
     ];
 
     await fs.writeFile(dst, lines.join("\n"), "utf8");
