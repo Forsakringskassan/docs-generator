@@ -81,7 +81,7 @@ main {
     }
 
     #docs-title,
-    #content {
+    #docs-content {
         padding: 0 1rem;
     }
 
@@ -101,7 +101,7 @@ main {
     margin-top: 1.2rem;
 }
 
-#content {
+#docs-content {
     grid-area: content;
     padding-bottom: 1rem;
     overflow-x: auto;

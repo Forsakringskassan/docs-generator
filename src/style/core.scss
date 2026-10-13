@@ -44,11 +44,11 @@ p:not(.code-preview p) {
     visibility: visible;
 }
 
-#content a:where(:not(.code-preview a)) {
+#docs-content a:where(:not(.code-preview a)) {
     color: var(--docs-text-color-default);
 }
 
-#content a:where(:not(.code-preview a, .header-anchor)),
+#docs-content a:where(:not(.code-preview a, .header-anchor)),
 footer a {
     text-decoration: underline;
     text-decoration-thickness: 1px;
