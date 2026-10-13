@@ -16,7 +16,7 @@ header {
     min-width: 0;
 }
 
-#primary {
+#docs-primary {
     display: grid;
     grid-area: primary;
     gap: 0 2rem;
@@ -51,7 +51,7 @@ main {
 .layout--article,
 .layout--component,
 .layout--pattern {
-    #primary {
+    #docs-primary {
         --sidenav-width: 350px;
 
         padding-right: 2rem;
