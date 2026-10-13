@@ -1,7 +1,11 @@
 import { describe, expect, it, vi } from "vitest";
 import { type PartialFile } from "../file-reader";
 import { createMockDocument, createMockPartial } from "../utils";
-import { findApiContainer, onApiContainer } from "./extract-markdown-processor";
+import {
+    findApiContainer,
+    generateIndex,
+    onApiContainer,
+} from "./extract-markdown-processor";
 
 /* mock `getFingerprint()` for stable tests */
 vi.mock(import("../utils/get-fingerprint"), () => {
@@ -75,6 +79,46 @@ describe("findApiContainer()", () => {
             tags: [],
             content: "foo",
         });
+    });
+});
+
+describe("generateIndex()", () => {
+    it("should include generator version", () => {
+        expect.assertions(1);
+        const lines = generateIndex({
+            generatorVersion: "1.2.3",
+            version: null,
+        });
+        expect(lines).toContain(`export const generatorVersion = "1.2.3";`);
+    });
+
+    it("should include version as string", () => {
+        expect.assertions(1);
+        const lines = generateIndex({
+            generatorVersion: "1.2.3",
+            version: "4.5.6",
+        });
+        expect(lines).toContain(`export const version = "4.5.6";`);
+    });
+
+    it("should include version as null", () => {
+        expect.assertions(1);
+        const lines = generateIndex({
+            generatorVersion: "1.2.3",
+            version: null,
+        });
+        expect(lines).toContain(`export const version = null;`);
+    });
+
+    it("should escape version", () => {
+        expect.assertions(1);
+        const lines = generateIndex({
+            generatorVersion: "1.2.3",
+            version: `"; throw new Error("`,
+        });
+        expect(lines).toContain(
+            `export const version = "\\"; throw new Error(\\"";`,
+        );
     });
 });
 
