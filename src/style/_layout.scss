@@ -85,14 +85,14 @@ main {
         padding: 0 1rem;
     }
 
-    #aside {
+    #docs-aside {
         @media screen and (width < #{bp.$breakpoint-lg}) {
             padding-left: 1rem;
         }
     }
 }
 
-#aside {
+#docs-aside {
     grid-area: aside;
 }
 
