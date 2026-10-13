@@ -77,7 +77,7 @@ async function replaceContent(href: string): Promise<void> {
     const response = await fetch(href);
     const body = await response.text();
     const doc = parser.parseFromString(body, "text/html");
-    const sidenav = doc.querySelector("#sidenav");
+    const sidenav = doc.querySelector("#docs-sidenav");
     const rootUrl = doc.documentElement.dataset.rootUrl;
 
     /* replace only <main> if the response is OK and the sidenav is present on
@@ -104,7 +104,7 @@ async function replaceContent(href: string): Promise<void> {
     }
 
     /* update external urls in sidenav */
-    const anchorSelector = "#sidenav li.link a";
+    const anchorSelector = "#docs-sidenav li.link a";
     const anchorLinks =
         document.querySelectorAll<HTMLAnchorElement>(anchorSelector);
     for (const link of anchorLinks) {
@@ -113,7 +113,7 @@ async function replaceContent(href: string): Promise<void> {
             continue;
         }
         const element = doc.querySelector(
-            `#sidenav a[data-path="${CSS.escape(path)}"]`,
+            `#docs-sidenav a[data-path="${CSS.escape(path)}"]`,
         );
         const href = element?.getAttribute("href");
         if (href) {
@@ -243,7 +243,7 @@ function updateSidenavHeight(navigation: HTMLElement): void {
         return 0;
     })();
     variableBlock.textContent = /* CSS */ `
-        #sidenav {
+        #docs-sidenav {
             --header-footer-visible-height: ${String(offset)}px;
         }
     `;
@@ -258,11 +258,11 @@ for (const details of document.querySelectorAll("details")) {
 }
 
 const toggle = document.querySelector<HTMLInputElement>(
-    "#sidenav .sidenav__toggle",
+    "#docs-sidenav .sidenav__toggle",
 );
-const navigation = document.querySelector<HTMLElement>("#sidenav nav");
+const navigation = document.querySelector<HTMLElement>("#docs-sidenav nav");
 if (toggle && navigation) {
-    const anchorSelector = "#sidenav li.link a";
+    const anchorSelector = "#docs-sidenav li.link a";
     const anchorLinks =
         document.querySelectorAll<HTMLAnchorElement>(anchorSelector);
     for (const link of anchorLinks) {
