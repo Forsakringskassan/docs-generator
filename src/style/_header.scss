@@ -94,7 +94,7 @@ header {
 }
 
 @media screen and (width < #{bp.$breakpoint-md}) {
-    #search button kbd {
+    #docs-search button kbd {
         display: none;
     }
 }
