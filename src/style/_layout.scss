@@ -80,7 +80,7 @@ main {
         max-width: none;
     }
 
-    #title,
+    #docs-title,
     #content {
         padding: 0 1rem;
     }
@@ -96,7 +96,7 @@ main {
     grid-area: aside;
 }
 
-#title {
+#docs-title {
     grid-area: title;
     margin-top: 1.2rem;
 }
