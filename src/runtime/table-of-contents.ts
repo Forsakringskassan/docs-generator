@@ -33,7 +33,7 @@ export function tableOfContents(
 }
 
 onContentReady(() => {
-    const toc = document.querySelector("#outline");
+    const toc = document.querySelector("#docs-outline");
 
     if (!toc) {
         return;
@@ -52,7 +52,7 @@ tableOfContentsQuery.addEventListener("change", toggleTableOfContents);
 toggleTableOfContents();
 
 export function toggleTableOfContents(): void {
-    const toc = document.querySelector("#outline");
+    const toc = document.querySelector("#docs-outline");
     if (!toc) {
         return;
     }

@@ -127,7 +127,7 @@ async function replaceContent(href: string): Promise<void> {
     document.title = doc.title;
     target.replaceWith(element);
 
-    const toc = document.querySelector("#outline");
+    const toc = document.querySelector("#docs-outline");
     if (toc) {
         const headings = document.querySelectorAll("#content h2");
         tableOfContents(toc, headings);
