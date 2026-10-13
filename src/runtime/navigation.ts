@@ -129,7 +129,7 @@ async function replaceContent(href: string): Promise<void> {
 
     const toc = document.querySelector("#docs-outline");
     if (toc) {
-        const headings = document.querySelectorAll("#content h2");
+        const headings = document.querySelectorAll("#docs-content h2");
         tableOfContents(toc, headings);
         toggleTableOfContents();
     }
