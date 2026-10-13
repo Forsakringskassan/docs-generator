@@ -6,7 +6,7 @@ interface Refs {
 }
 
 function getElementsRefs(): Refs | undefined {
-    const nav = document.querySelector<HTMLElement>("#topnav");
+    const nav = document.querySelector<HTMLElement>("#docs-topnav");
     if (!nav) {
         return;
     }

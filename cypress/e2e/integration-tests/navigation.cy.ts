@@ -6,7 +6,7 @@ describe("is-mobile menu and sidemeny", () => {
     it("should show side menu width > 1024", () => {
         cy.viewport(1100, 720);
         cy.visit("/integration-tests/navigation/foo/foo-1.html");
-        cy.get("#topnav").should("not.be.visible");
+        cy.get("#docs-topnav").should("not.be.visible");
         cy.get(".docs-mobile-nav").should("be.visible");
         cy.get("#sidenav").should("be.visible");
     });
@@ -14,7 +14,7 @@ describe("is-mobile menu and sidemeny", () => {
     it("should not show side menu < 1024", () => {
         cy.viewport(1000, 720);
         cy.visit("/integration-tests/navigation/foo/foo-1.html");
-        cy.get("#topnav").should("not.be.visible");
+        cy.get("#docs-topnav").should("not.be.visible");
         cy.get(".docs-mobile-nav").should("be.visible");
         cy.get("#sidenav").should("not.be.visible");
     });
