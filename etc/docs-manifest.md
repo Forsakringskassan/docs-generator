@@ -53,6 +53,7 @@ navigation/sorted-group/top-page.html
 processors/api-extractor.html
 processors/cookie.html
 processors/extract-examples.html
+processors/extract-markdown.html
 processors/index.html
 processors/manifest.html
 processors/motd.html
