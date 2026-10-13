@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## [3.20.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.19.1...v3.20.0) (2026-10-13)
+
+### Features
+
+* add `metadata` field to extracted markdown content ([7fd3bb9](https://github.com/Forsakringskassan/docs-generator/commit/7fd3bb974c5c1d5ec57639fa80e3b661c058fa2b))
+* add `version` field to extracted markdown content ([9f34c65](https://github.com/Forsakringskassan/docs-generator/commit/9f34c65d444092780a19a967e694ede4a2bc65f1))
+
+### Bug Fixes
+
+* `src` parameter in `sourceFiles` in extracted markdown content is optional ([c1b2ffe](https://github.com/Forsakringskassan/docs-generator/commit/c1b2ffe2105d22e148030d4486021b2f0bf845e6))
+* declare `sourceFiles` in extracted markdown content as `void` ([05efdeb](https://github.com/Forsakringskassan/docs-generator/commit/05efdeb3c381924a08707571bdf792ec4c6f19be))
+* restrict api container opening tag ([fc893b6](https://github.com/Forsakringskassan/docs-generator/commit/fc893b68430b6d70f30d325ae8ce9ad89af8edc0)), closes [#538](https://github.com/Forsakringskassan/docs-generator/issues/538)
+
 ## [3.19.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.19.0...v3.19.1) (2026-10-12)
 
 ### Bug Fixes
