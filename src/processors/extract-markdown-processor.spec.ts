@@ -120,6 +120,31 @@ describe("generateIndex()", () => {
             `export const version = "\\"; throw new Error(\\"";`,
         );
     });
+
+    it("should serialize metadata", () => {
+        expect.assertions(1);
+        const metadata = {
+            revision: `"; throw new Error("`,
+            nested: { tags: ["foo", "bar"], published: true },
+        };
+        const lines = generateIndex({
+            generatorVersion: "1.2.3",
+            version: null,
+            metadata,
+        });
+        expect(lines).toContain(
+            `export const metadata = ${JSON.stringify(metadata)};`,
+        );
+    });
+
+    it("should include metadata as null by default", () => {
+        expect.assertions(1);
+        const lines = generateIndex({
+            generatorVersion: "1.2.3",
+            version: null,
+        });
+        expect(lines).toContain(`export const metadata = null;`);
+    });
 });
 
 describe("onApiContainer()", () => {

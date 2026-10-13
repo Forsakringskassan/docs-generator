@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import { expect, it } from "vitest";
+import { expect, expectTypeOf, it } from "vitest";
+import { metadata } from "./dist/index.mjs";
 
 expect.addSnapshotSerializer({
     test(value) {
@@ -82,6 +83,12 @@ it("should generate links.json", async () => {
     expect.assertions(1);
     const parsed = await readJsonFile<object>("links.json");
     expect(Object.keys(parsed).length).toBeGreaterThan(0);
+});
+
+it("should export metadata using the augmented interface", () => {
+    expect.assertions(1);
+    expect(metadata).toEqual({ revision: "foobar" });
+    expectTypeOf(metadata?.revision).toEqualTypeOf<string | undefined>();
 });
 
 it("should generate partials.json", async () => {

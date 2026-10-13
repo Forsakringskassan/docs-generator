@@ -5,9 +5,8 @@
   "homepage": "https://example.net",
   "type": "module",
   "scripts": {
-    "prebuild": "tsc",
     "build": "node build.mts",
-    "postbuild": "vitest run"
+    "postbuild": "tsc && vitest run"
   },
   "dependencies": {
     "@forsakringskassan/docs-generator": "file:../.."
