@@ -8,6 +8,7 @@
     "API Extractor",
     "Cookie",
     "Extract examples",
+    "Extract Markdown",
     "Processors",
     "Manifest",
     "MOTD",
@@ -100,6 +101,11 @@
     {
       "url": "processors/extract-examples.html",
       "title": "Extract examples",
+      "terms": []
+    },
+    {
+      "url": "processors/extract-markdown.html",
+      "title": "Extract Markdown",
       "terms": []
     },
     {
@@ -368,10 +374,10 @@
     "11": 11,
     "12": 12,
     "13": 13,
-    "14": 13,
+    "14": 14,
     "15": 14,
-    "16": 14,
-    "17": 14,
+    "16": 15,
+    "17": 15,
     "18": 15,
     "19": 16,
     "20": 17,
@@ -413,6 +419,7 @@
     "56": 53,
     "57": 54,
     "58": 55,
-    "59": 56
+    "59": 56,
+    "60": 57
   }
 }
