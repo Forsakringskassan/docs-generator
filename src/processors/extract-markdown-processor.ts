@@ -58,7 +58,7 @@ export interface ExtractedDocsModule {
     readonly filesPath: string;
     readonly partialsPath: string;
     readonly linksPath: string;
-    sourceFiles(src: Partial<SourceFiles>): SourceFiles[];
+    sourceFiles(src?: Partial<SourceFiles>): SourceFiles[];
 }
 
 /**
@@ -328,7 +328,7 @@ export function generateIndex(options: {
         `export const partialsPath = [path.join(basePath, "partials.json")];`,
         `export const linksPath = [path.join(basePath, "links.json")];`,
         ``,
-        `export function sourceFiles(src) {`,
+        `export function sourceFiles(src = {}) {`,
         `    return [`,
         `        { `,
         `            include: path.join(filesPath, "**/*.md"),`,
@@ -378,7 +378,7 @@ async function writeDts(options: { outputFolder: string }): Promise<void> {
         `export declare const partialsPath: string;`,
         `export declare const linksPath: string;`,
         ``,
-        `export declare function sourceFiles(this: void, src: Partial<SourceFiles>): SourceFiles[];`,
+        `export declare function sourceFiles(this: void, src?: Partial<SourceFiles>): SourceFiles[];`,
     ];
 
     await fs.writeFile(dst, lines.join("\n"), "utf8");
