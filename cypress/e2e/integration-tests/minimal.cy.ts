@@ -1,7 +1,7 @@
 function setViewPortMinimal(width: number, height: number): void {
     cy.viewport(width, height);
     cy.visit("/integration-tests/minimal");
-    cy.get("#topnav .docs-topnav__item").contains("Baz").click();
+    cy.get("#docs-topnav .docs-topnav__item").contains("Baz").click();
 }
 
 beforeEach(() => {
@@ -19,7 +19,7 @@ it("should have a populated frontpage", () => {
 });
 
 it("should have a populated topnav", () => {
-    cy.get("#topnav .docs-topnav__item:not(.docs-topnav__item--more)")
+    cy.get("#docs-topnav .docs-topnav__item:not(.docs-topnav__item--more)")
         .should("be.visible")
         .and("have.length", 3)
         .and("contain.text", "Foo")
@@ -29,7 +29,7 @@ it("should have a populated topnav", () => {
 
 describe("Foo", () => {
     beforeEach(() => {
-        cy.get("#topnav .docs-topnav__item").contains("Foo").click();
+        cy.get("#docs-topnav .docs-topnav__item").contains("Foo").click();
     });
 
     it("should be populated", () => {
@@ -78,7 +78,7 @@ describe("Foo", () => {
 
 describe("Bar", () => {
     beforeEach(() => {
-        cy.get("#topnav .docs-topnav__item").contains("Bar").click();
+        cy.get("#docs-topnav .docs-topnav__item").contains("Bar").click();
     });
 
     it("should be populated", () => {
@@ -98,7 +98,7 @@ describe("Bar", () => {
 
 describe("Baz", () => {
     beforeEach(() => {
-        cy.get("#topnav .docs-topnav__item").contains("Baz").click();
+        cy.get("#docs-topnav .docs-topnav__item").contains("Baz").click();
     });
 
     it("should be populated", () => {
