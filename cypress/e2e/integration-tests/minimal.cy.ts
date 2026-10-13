@@ -40,7 +40,7 @@ describe("Foo", () => {
     });
 
     it("should have a populated sidenav", () => {
-        cy.get("#sidenav .link")
+        cy.get("#docs-sidenav .link")
             .should("be.visible")
             .and("have.length", 4)
             .and("contain.text", "Foo")
@@ -50,25 +50,25 @@ describe("Foo", () => {
     });
 
     it("should have navigatable sidenav", () => {
-        cy.get("#sidenav .link").contains("Foo").click();
+        cy.get("#docs-sidenav .link").contains("Foo").click();
         cy.get("main h1").should("be.visible").and("contain.text", "Foo");
         cy.get("main p")
             .should("be.visible")
             .and("contain.text", "Lorem ipsum dolor foo amet.");
 
-        cy.get("#sidenav .link").contains("First").click();
+        cy.get("#docs-sidenav .link").contains("First").click();
         cy.get("main h1").should("be.visible").and("contain.text", "First");
         cy.get("main p")
             .should("be.visible")
             .and("contain.text", "Foo subpage 1.");
 
-        cy.get("#sidenav .link").contains("Second").click();
+        cy.get("#docs-sidenav .link").contains("Second").click();
         cy.get("main h1").should("be.visible").and("contain.text", "Second");
         cy.get("main p")
             .should("be.visible")
             .and("contain.text", "Foo subpage 2.");
 
-        cy.get("#sidenav .link").contains("Third").click();
+        cy.get("#docs-sidenav .link").contains("Third").click();
         cy.get("main h1").should("be.visible").and("contain.text", "Third");
         cy.get("main p")
             .should("be.visible")
@@ -89,7 +89,7 @@ describe("Bar", () => {
     });
 
     it("should have a populated sidenav", () => {
-        cy.get("#sidenav .link")
+        cy.get("#docs-sidenav .link")
             .should("be.visible")
             .and("have.length", 1)
             .and("contain.text", "Bar");
@@ -109,7 +109,7 @@ describe("Baz", () => {
     });
 
     it("should have a populated sidenav", () => {
-        cy.get("#sidenav .link")
+        cy.get("#docs-sidenav .link")
             .should("be.visible")
             .and("have.length", 1)
             .and("contain.text", "Baz");
@@ -119,14 +119,14 @@ describe("Baz", () => {
 describe("site menu layout", () => {
     it("desktop side menu", () => {
         setViewPortMinimal(1280, 720);
-        cy.get("#sidenav").should("be.visible");
+        cy.get("#docs-sidenav").should("be.visible");
         cy.get(".sidenav__toggle").should("not.be.visible");
         cy.get('label[for="nav-toggle"]').should("not.be.visible");
     });
 
     it("tablet side menu", () => {
         setViewPortMinimal(1000, 720);
-        cy.get("#sidenav").should("be.visible");
+        cy.get("#docs-sidenav").should("be.visible");
         cy.get(".sidenav__toggle").should("not.be.visible");
         cy.get('label[for="nav-toggle"]').should("be.visible");
     });
