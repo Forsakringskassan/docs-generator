@@ -347,6 +347,13 @@ exports[`smoketest 1`] = `
         },
         {
           "external": false,
+          "id": "fs:docs/processors/extract-markdown.md",
+          "path": "./processors/extract-markdown.html",
+          "sortorder": Infinity,
+          "title": "Extract Markdown",
+        },
+        {
+          "external": false,
           "id": "fs:docs/processors/manifest.md",
           "path": "./processors/manifest.html",
           "sortorder": Infinity,
