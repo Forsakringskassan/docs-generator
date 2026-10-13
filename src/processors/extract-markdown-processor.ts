@@ -25,6 +25,19 @@ import { manifestState } from "./manifest-processor";
 type ManifestPage = Manifest["pages"][number];
 
 /**
+ * Serializable metadata exported with extracted documentation.
+ *
+ * This interface can be augmented to describe application-specific metadata.
+ *
+ * @public
+ * @since %version%
+ */
+/* eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style -- interface supports module augmentation */
+export interface ExtractedDocsMetadata {
+    [key: string]: unknown;
+}
+
+/**
  * Type representing the exported docs module when extracting markdown
  * documents.
  *
@@ -39,6 +52,7 @@ type ManifestPage = Manifest["pages"][number];
 export interface ExtractedDocsModule {
     readonly generatorVersion: string;
     readonly version: string | null;
+    readonly metadata: ExtractedDocsMetadata | null;
     readonly basePath: string;
     readonly exampleFolders: string[];
     readonly filesPath: string;
@@ -62,6 +76,18 @@ export interface ExtractMarkdownOptions extends ProcessorOptions {
      * Version written to the `version` field of the generated `index.mjs`.
      */
     version?: string;
+
+    /**
+     * Callback providing serializable metadata for the generated `index.mjs`.
+     *
+     * Called once per extraction and awaited. Missing callbacks and nullish
+     * results are exported as `null`.
+     */
+    metadata?: () =>
+        | ExtractedDocsMetadata
+        | undefined
+        | null
+        | Promise<ExtractedDocsMetadata | undefined | null>;
 }
 
 /**
@@ -286,14 +312,16 @@ async function extractLinks(
 export function generateIndex(options: {
     generatorVersion: string;
     version: string | null;
+    metadata?: ExtractedDocsMetadata | null;
 }): string[] {
-    const { generatorVersion, version } = options;
+    const { generatorVersion, version, metadata = null } = options;
     return [
         `import path from "node:path";`,
         `import { frontMatterFileReader, partialFileReader } from "@forsakringskassan/docs-generator";`,
         ``,
         `export const generatorVersion = ${JSON.stringify(generatorVersion)};`,
         `export const version = ${JSON.stringify(version)};`,
+        `export const metadata = ${JSON.stringify(metadata)};`,
         `export const basePath = import.meta.dirname;`,
         `export const exampleFolders = [path.join(basePath, "files")];`,
         `export const filesPath = path.join(basePath, "files");`,
@@ -321,10 +349,15 @@ export function generateIndex(options: {
 async function writeIndex(options: {
     outputFolder: string;
     version: string | null;
+    metadata: ExtractedDocsMetadata | null;
 }): Promise<void> {
-    const { outputFolder, version } = options;
+    const { outputFolder, version, metadata } = options;
     const dst = path.join(outputFolder, "index.mjs");
-    const lines = generateIndex({ generatorVersion: pkg.version, version });
+    const lines = generateIndex({
+        generatorVersion: pkg.version,
+        version,
+        metadata,
+    });
     await fs.writeFile(dst, lines.join("\n"), "utf8");
 }
 
@@ -334,10 +367,11 @@ async function writeDts(options: { outputFolder: string }): Promise<void> {
 
     /* changes to this output must be in sync with the `ExtractedDocsModule` interface */
     const lines = [
-        `import { SourceFiles } from "@forsakringskassan/docs-generator";`,
+        `import { ExtractedDocsMetadata, SourceFiles } from "@forsakringskassan/docs-generator";`,
         ``,
         `export declare const generatorVersion: string;`,
         `export declare const version: string | null;`,
+        `export declare const metadata: ExtractedDocsMetadata | null;`,
         `export declare const basePath: string;`,
         `export declare const exampleFolders: string[];`,
         `export declare const filesPath: string;`,
@@ -358,7 +392,12 @@ async function writeDts(options: { outputFolder: string }): Promise<void> {
 export function extractMarkdownProcessor(
     options: ExtractMarkdownOptions,
 ): Processor {
-    const { enabled = true, outputFolder, version = null } = options;
+    const {
+        enabled = true,
+        outputFolder,
+        version = null,
+        metadata: metadataFn,
+    } = options;
 
     return {
         after: "render",
@@ -397,7 +436,12 @@ export function extractMarkdownProcessor(
             await Promise.all(resources);
 
             /* write an index for programmatical usage */
-            await writeIndex({ outputFolder, version });
+            const metadata = (await metadataFn?.()) ?? null;
+            await writeIndex({
+                outputFolder,
+                version,
+                metadata,
+            });
             await writeDts({ outputFolder });
         },
     };

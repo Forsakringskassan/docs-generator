@@ -104,6 +104,12 @@ export interface DocumentPartialReference {
 }
 
 // @public
+export interface ExtractedDocsMetadata {
+    // (undocumented)
+    [key: string]: unknown;
+}
+
+// @public
 export interface ExtractedDocsModule {
     // (undocumented)
     readonly basePath: string;
@@ -115,6 +121,8 @@ export interface ExtractedDocsModule {
     readonly generatorVersion: string;
     // (undocumented)
     readonly linksPath: string;
+    // (undocumented)
+    readonly metadata: ExtractedDocsMetadata | null;
     // (undocumented)
     readonly partialsPath: string;
     // (undocumented)
@@ -134,6 +142,7 @@ export function extractExamplesProcessor(options: ExtractExamplesOptions): Proce
 
 // @public
 export interface ExtractMarkdownOptions extends ProcessorOptions {
+    metadata?: () => ExtractedDocsMetadata | undefined | null | Promise<ExtractedDocsMetadata | undefined | null>;
     outputFolder: string;
     version?: string;
 }
