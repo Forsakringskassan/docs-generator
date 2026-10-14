@@ -5,7 +5,7 @@ var __require = /* @__PURE__ */ ((x6) => typeof require !== "undefined" ? requir
   throw Error('Dynamic require of "' + x6 + '" is not supported');
 });
 
-// dist/runtime-internal.mjs
+// ../../dist/runtime-internal.mjs
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -297130,6 +297130,7 @@ if (toggle && navigation) {
     if (previousPath !== location.pathname) {
       replaceContent(location.href);
     }
+    openActiveTab();
     previousPath = location.pathname;
   });
   document.head.append(variableBlock);
@@ -297141,13 +297142,12 @@ if (toggle && navigation) {
     updateSidenavHeight(navigation);
   });
 }
-var openActiveTab = (_3) => {
-  const locations = location.href.split("#");
-  if (locations.length < 2) {
+window.addEventListener("DOMContentLoaded", openActiveTab);
+function openActiveTab() {
+  if (!location.hash) {
     return;
   }
-  const elementId = locations[1];
-  const element3 = document.querySelector(`#${elementId}`);
+  const element3 = document.querySelector(location.hash);
   const tabPanel = element3?.closest(".docs-tab");
   if (!tabPanel?.classList.contains("hidden-tab")) {
     return;
@@ -297156,8 +297156,7 @@ var openActiveTab = (_3) => {
     `[aria-controls="${tabPanel.id}"]`
   );
   tab?.click();
-};
-window.addEventListener("DOMContentLoaded", openActiveTab);
+}
 var banner = document.querySelector("#version-banner");
 if (banner) {
   document.addEventListener("DOMContentLoaded", () => {
