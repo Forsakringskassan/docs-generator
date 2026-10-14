@@ -25,8 +25,8 @@ export function tabPanel(
         const title = parseInfo(token.info);
         const text = token.content.trim();
 
-        const id = "tabpanel-" + title.split(" ").join("-");
-        const labelledBy = "tab-" + title.split(" ").join("-");
+        const id = `tabpanel-${title.replaceAll(" ", "-")}`;
+        const labelledBy = `tab-${title.replaceAll(" ", "-")}`;
         return /* HTML */ `
             <!-- html-validate-disable-next no-missing-references -- Tab buttons are added with typescript -->
             <div

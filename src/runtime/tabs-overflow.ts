@@ -1,4 +1,7 @@
-export function setupTabsOverflow(tabList: HTMLElement) {
+export function setupTabsOverflow(tabList: HTMLElement): {
+    moreButton: HTMLButtonElement;
+    overflowList: HTMLDivElement;
+} {
     // more-tabs button
     const moreButton = document.createElement("button");
     const moreButtonSpan = document.createElement("span");
@@ -15,7 +18,7 @@ export function setupTabsOverflow(tabList: HTMLElement) {
     icon.setAttribute("aria-hidden", "true");
     const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
     use.setAttribute("href", "#docs-icon-arrow-down");
-    icon.appendChild(use);
+    icon.append(use);
     moreButtonSpan.append("Fler flikar", icon);
     moreButton.append(moreButtonSpan);
 
@@ -29,19 +32,19 @@ export function setupTabsOverflow(tabList: HTMLElement) {
         tabList.querySelectorAll<HTMLButtonElement>('[role="tab"]'),
     );
 
-    tabList.appendChild(moreButton);
-    tabList.appendChild(overflowList);
+    tabList.append(moreButton);
+    tabList.append(overflowList);
 
-    const updateOverflow = () => {
-        originalTabsOrder.forEach((tab) => {
-            tabList.insertBefore(tab, moreButton);
-        });
+    const updateOverflow = (): void => {
+        for (const tab of originalTabsOrder) {
+            moreButton.before(tab);
+        }
 
         moreButton.hidden = true;
 
         const tabListWidth = tabList.clientWidth;
 
-        const getTabsWidth = () =>
+        const getTabsWidth = (): number =>
             Array.from(
                 tabList.querySelectorAll<HTMLButtonElement>(
                     ':scope > [role="tab"]',

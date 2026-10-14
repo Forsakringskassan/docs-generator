@@ -1,12 +1,12 @@
 import { onContentReady } from "./on-content-ready";
 import { setupTabsOverflow } from "./tabs-overflow";
 
-onContentReady(() => renderTabs());
+onContentReady(() => {
+    renderTabs();
+});
 window.addEventListener("docs:navigation", renderTabs);
 
-let allTabs: HTMLButtonElement[] = [];
-
-function renderTabs() {
+function renderTabs(): void {
     const tabPanels = document.querySelectorAll<HTMLElement>(".docs-tab");
 
     if (tabPanels.length === 0) {
@@ -24,31 +24,39 @@ function renderTabs() {
 
     tabPanels[0].before(tabsContainer);
 
-    tabsContainer.appendChild(tabList);
-    tabPanels.forEach((tabPanel) => tabsContainer.appendChild(tabPanel));
+    tabsContainer.append(tabList);
+    tabPanels.forEach((tabPanel) => {
+        tabsContainer.append(tabPanel);
+    });
 
     const tabNames: string[] = [];
-    tabPanels.forEach((tabPanel) =>
-        tabNames.push(tabPanel.id.split("-").slice(1).join(" ")),
-    );
+    tabPanels.forEach((tabPanel) => {
+        tabNames.push(tabPanel.id.split("-").slice(1).join(" "));
+    });
     const tabIds: string[] = [];
-    tabPanels.forEach((tabPanel) => tabIds.push(tabPanel.id));
+    tabPanels.forEach((tabPanel) => {
+        tabIds.push(tabPanel.id);
+    });
     const tabButtonIds: string[] = [];
-    tabPanels.forEach((tabPanel) =>
-        tabButtonIds.push(tabPanel.getAttribute("aria-labelledby")!),
-    );
+    tabPanels.forEach((tabPanel) => {
+        const tabId = tabPanel.getAttribute("aria-labelledby");
+        if (!tabId) {
+            throw new Error("No aria-labelledby on tab");
+        }
+        tabButtonIds.push(tabId);
+    });
 
-    for (let i = 0; i < tabNames.length; i++) {
+    for (const [i, tabName] of tabNames.entries()) {
         const tabButton = document.createElement("button");
         tabButton.setAttribute("role", "tab");
         tabButton.setAttribute("type", "button");
         tabButton.setAttribute("aria-selected", "false");
         tabButton.setAttribute("aria-controls", tabIds[i]);
         tabButton.id = tabButtonIds[i];
-        tabButton.textContent = tabNames[i];
+        tabButton.textContent = tabName;
         tabButton.tabIndex = -1;
 
-        tabList.appendChild(tabButton);
+        tabList.append(tabButton);
 
         tabButton.addEventListener("click", onClick);
         tabButton.addEventListener("keydown", onKeydown);
@@ -58,24 +66,22 @@ function renderTabs() {
     firstTabButton.removeAttribute("tabIndex");
     firstTabButton.setAttribute("aria-selected", "true");
 
-    allTabs = Array.from(
-        tabList.querySelectorAll<HTMLButtonElement>('[role="tab"]'),
-    );
-
     const { moreButton, overflowList } = setupTabsOverflow(tabList);
     moreButton.addEventListener("keydown", onMoreButtonKeydown);
 
     overflowList.addEventListener("toggle", () => {
-        if (overflowList.matches(":popover-open")) {
-            const firstTab =
-                overflowList.querySelector<HTMLButtonElement>('[role="tab"]');
-
-            firstTab?.focus();
+        if (!overflowList.matches(":popover-open")) {
+            return;
         }
+
+        const firstTab =
+            overflowList.querySelector<HTMLButtonElement>('[role="tab"]');
+
+        firstTab?.focus();
     });
 }
 
-const onKeydown = (event: KeyboardEvent) => {
+const onKeydown = (event: KeyboardEvent): void => {
     const currentTab = event.currentTarget as HTMLButtonElement;
     const parent = currentTab.parentElement;
 
@@ -91,30 +97,32 @@ const onKeydown = (event: KeyboardEvent) => {
     let nextTab: HTMLButtonElement | undefined;
 
     switch (event.key) {
-        case "ArrowLeft":
-            nextTab =
-                currentIndex > 0
-                    ? tabs[currentIndex - 1]
-                    : parent.matches(":popover-open")
-                      ? tabs[tabs.length - 1]
-                      : undefined;
+        case "ArrowLeft": {
+            if (currentIndex > 0) {
+                nextTab = tabs[currentIndex - 1];
+            } else if (parent.matches(":popover-open")) {
+                nextTab = tabs.at(-1);
+            } else {
+                nextTab = undefined;
+            }
             break;
-
-        case "ArrowRight":
-            nextTab =
-                currentIndex < tabs.length - 1
-                    ? tabs[currentIndex + 1]
-                    : parent.matches(":popover-open")
-                      ? tabs[0]
-                      : undefined;
+        }
+        case "ArrowRight": {
+            if (currentIndex < tabs.length - 1) {
+                nextTab = tabs[currentIndex + 1];
+            } else if (parent.matches(":popover-open")) {
+                nextTab = tabs[0];
+            } else {
+                nextTab = undefined;
+            }
             break;
-
+        }
         case "Home":
             nextTab = tabs[0];
             break;
 
         case "End":
-            nextTab = tabs[tabs.length - 1];
+            nextTab = tabs.at(-1);
             break;
 
         default:
@@ -140,7 +148,7 @@ const onKeydown = (event: KeyboardEvent) => {
     }
 };
 
-function onClick(event: MouseEvent) {
+function onClick(event: MouseEvent): void {
     setSelectedTab(event.target as HTMLButtonElement);
 }
 
@@ -150,7 +158,7 @@ function getCurrentTab(): HTMLButtonElement | null {
     );
 }
 
-function moveSelectedTab(direction: -1 | 1) {
+function moveSelectedTab(direction: -1 | 1): void {
     const currentTab = getCurrentTab();
 
     if (!currentTab) {
@@ -168,7 +176,8 @@ function moveSelectedTab(direction: -1 | 1) {
     );
 
     const currentIndex = tabs.indexOf(currentTab);
-    const nextTab = tabs[currentIndex + direction];
+    const nextTab = tabs[currentIndex + direction] as
+        HTMLButtonElement | undefined;
 
     if (nextTab) {
         setSelectedTab(nextTab);
@@ -182,15 +191,14 @@ function moveSelectedTab(direction: -1 | 1) {
     if (
         parent.classList.contains("docs-tablist") &&
         moreButton &&
-        !moreButton.hidden
+        !moreButton.hidden &&
+        direction === 1
     ) {
-        if (direction === 1) {
-            moreButton.focus();
-        }
+        moreButton.focus();
     }
 }
 
-function onMoreButtonKeydown(event: KeyboardEvent) {
+function onMoreButtonKeydown(event: KeyboardEvent): void {
     if (event.key !== "ArrowLeft") {
         return;
     }
@@ -198,13 +206,15 @@ function onMoreButtonKeydown(event: KeyboardEvent) {
     const moreButton = event.currentTarget as HTMLButtonElement;
     const previousTab = moreButton.previousElementSibling;
 
-    if (previousTab instanceof HTMLButtonElement) {
-        event.preventDefault();
-        previousTab.focus();
+    if (!(previousTab instanceof HTMLButtonElement)) {
+        return;
     }
+
+    event.preventDefault();
+    previousTab.focus();
 }
 
-function setSelectedTab(newTab: HTMLButtonElement) {
+function setSelectedTab(newTab: HTMLButtonElement): void {
     const tabs = document.querySelectorAll<HTMLButtonElement>(
         '.docs-tabs [role="tab"]',
     );
@@ -216,9 +226,14 @@ function setSelectedTab(newTab: HTMLButtonElement) {
     newTab.removeAttribute("tabIndex");
 
     const tabPanels = document.querySelectorAll<HTMLElement>(".docs-tab");
-    tabPanels.forEach((tabPanel) => tabPanel.classList.add("hidden-tab"));
+    tabPanels.forEach((tabPanel) => {
+        tabPanel.classList.add("hidden-tab");
+    });
 
     const tabPanelId = newTab.getAttribute("aria-controls");
+    if (!tabPanelId) {
+        throw new Error("No aria-controls on tab panel");
+    }
     const tabPanel = document.querySelector<HTMLElement>(
         `.docs-tab[id="${tabPanelId}"]`,
     );

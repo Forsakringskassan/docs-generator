@@ -150,7 +150,8 @@ export function tabsRenderer(
             alt: ["paragraph", "reference", "blockquote", "list"],
         });
 
-        md.renderer.rules[`doc_tab`] = tabPanel(
+        /* eslint-disable-next-line @typescript-eslint/dot-notation -- want to use same notation as rest of rules */
+        md.renderer.rules["doc_tab"] = tabPanel(
             context,
             options.messagebox,
         ) as RendererRule;

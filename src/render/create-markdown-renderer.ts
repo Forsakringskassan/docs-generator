@@ -8,11 +8,11 @@ import {
     codeInline,
     codePreview,
     containerRenderer,
-    tabsRenderer,
     headingLevel,
     imageResources,
     paragraph,
     table,
+    tabsRenderer,
 } from "./markdown";
 import { type MarkdownEnv } from "./markdown-env";
 import { processInlineTags } from "./process-inline-tags";

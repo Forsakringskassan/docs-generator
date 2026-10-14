@@ -296,7 +296,7 @@ if (toggle && navigation) {
  * When navigating to an element using URL.
  * If the element is inside a non-active tab it will be activated.
  */
-const openActiveTab = (_: Event) => {
+const openActiveTab = (_: Event): void => {
     const locations = location.href.split("#");
 
     if (locations.length < 2) {
@@ -307,12 +307,14 @@ const openActiveTab = (_: Event) => {
     const element = document.querySelector(`#${elementId}`);
     const tabPanel = element?.closest(".docs-tab");
 
-    if (tabPanel?.classList.contains("hidden-tab")) {
-        const tab = tabPanel.parentElement?.querySelector(
-            `[aria-controls="${tabPanel.id}"]`,
-        ) as HTMLElement;
-        tab?.click(); // Activate the tab the element is inside.
+    if (!tabPanel?.classList.contains("hidden-tab")) {
+        return;
     }
+
+    const tab = tabPanel.parentElement?.querySelector(
+        `[aria-controls="${tabPanel.id}"]`,
+    ) as HTMLElement | undefined;
+    tab?.click(); // Activate the tab the element is inside.
 };
 
 window.addEventListener("DOMContentLoaded", openActiveTab);
