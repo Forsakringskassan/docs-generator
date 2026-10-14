@@ -426,6 +426,13 @@ exports[`smoketest 1`] = `
         },
         {
           "external": false,
+          "id": "fs:docs/theme/content-width.md",
+          "path": "./theme/content-width.html",
+          "sortorder": Infinity,
+          "title": "Content width",
+        },
+        {
+          "external": false,
           "id": "fs:docs/theme/font.md",
           "path": "./theme/font.html",
           "sortorder": Infinity,

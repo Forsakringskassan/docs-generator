@@ -1,0 +1,27 @@
+// Low specificity lets existing themes keep their own width rules.
+// Apply only to documentation, leaving example interiors alone.
+:where(#docs-title:not(.code-preview *), #docs-content :not(.code-preview *)) {
+    // Text blocks and the base messagebox style.
+    &:where(ul, ol, dl, blockquote, .docs-messagebox) {
+        box-sizing: border-box;
+        max-width: min(100%, var(--docs-content-max-width, 100%), var(--docs-text-max-width, 100%));
+    }
+
+    // Details use content width, overriding the messagebox rule above.
+    &:where(#docs-title, .docs-heading, .code-preview, pre, .table, .docs-messagebox--details) {
+        box-sizing: border-box;
+        max-width: min(100%, var(--docs-content-max-width, 100%));
+    }
+
+    // Live examples override the regular example width.
+    &:where(.code-preview[data-tags~="live-example"]) {
+        box-sizing: border-box;
+        max-width: min(100%, var(--docs-live-example-max-width, 100%));
+    }
+}
+
+// Keep the existing paragraph specificity and 680px fallback.
+:where(#docs-content) p:not(.code-preview p) {
+    box-sizing: border-box;
+    max-width: min(100%, var(--docs-content-max-width, 100%), var(--docs-text-max-width, 680px));
+}
