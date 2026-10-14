@@ -28,6 +28,7 @@ export function tabPanel(
         const id = "tabpanel-" + title.split(" ").join("-");
         const labelledBy = "tab-" + title.split(" ").join("-");
         return /* HTML */ `
+            <!-- html-validate-disable-next no-missing-references -- Tab buttons are added with typescript -->
             <div
                 id="${id}"
                 class="docs-tab hidden-tab"
