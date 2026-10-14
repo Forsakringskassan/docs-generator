@@ -279,6 +279,7 @@ if (toggle && navigation) {
             replaceContent(location.href);
         }
 
+        openActiveTab();
         previousPath = location.pathname;
     });
 
@@ -292,19 +293,18 @@ if (toggle && navigation) {
     });
 }
 
+window.addEventListener("DOMContentLoaded", openActiveTab);
+
 /**
  * When navigating to an element using URL.
  * If the element is inside a non-active tab it will be activated.
  */
-const openActiveTab = (_: Event): void => {
-    const locations = location.href.split("#");
-
-    if (locations.length < 2) {
+function openActiveTab(): void {
+    if (!location.hash) {
         return;
     }
 
-    const elementId = locations[1];
-    const element = document.querySelector(`#${elementId}`);
+    const element = document.querySelector(location.hash);
     const tabPanel = element?.closest(".docs-tab");
 
     if (!tabPanel?.classList.contains("hidden-tab")) {
@@ -315,6 +315,4 @@ const openActiveTab = (_: Event): void => {
         `[aria-controls="${tabPanel.id}"]`,
     ) as HTMLElement | undefined;
     tab?.click(); // Activate the tab the element is inside.
-};
-
-window.addEventListener("DOMContentLoaded", openActiveTab);
+}
