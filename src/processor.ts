@@ -55,7 +55,7 @@ export interface ProcessorHandler {
     /** List of runtime client scripts required by this processor */
     runtime?: ProcessorRuntime[];
 
-    handler(
+    handler?(
         context: ProcessorContext,
         /* eslint-disable-next-line @typescript-eslint/no-invalid-void-type --
          * technical debt: want implicit undefined (void) instead of explicit "return undefined" */

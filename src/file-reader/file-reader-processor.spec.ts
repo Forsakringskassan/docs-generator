@@ -111,7 +111,7 @@ it("should include all documents by default", async () => {
     const sourceFiles: SourceFiles[] = [{ include: "*.md", fileReader }];
     const context = createMockContext();
     const processor = fileReaderProcessor(sourceFiles);
-    await processor.handler(context);
+    await processor.handler?.(context);
 
     expect(context.docs).toHaveLength(2);
     expect(context.docs).toEqual([
@@ -132,7 +132,7 @@ it("should exclude documents rejected by filter", async () => {
     ];
     const context = createMockContext();
     const processor = fileReaderProcessor(sourceFiles);
-    await processor.handler(context);
+    await processor.handler?.(context);
 
     expect(context.docs).toHaveLength(1);
     expect(context.docs).toEqual([expect.objectContaining({ name: "foo" })]);
@@ -157,7 +157,7 @@ it("should run filter before transform", async () => {
     ];
     const context = createMockContext();
     const processor = fileReaderProcessor(sourceFiles);
-    await processor.handler(context);
+    await processor.handler?.(context);
     expect(transform).toHaveBeenCalledTimes(1);
     expect(transform).toHaveBeenCalledWith(
         expect.objectContaining({
