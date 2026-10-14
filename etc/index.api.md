@@ -24,7 +24,7 @@ export type AttributeValue = string | number | boolean | null | {
 };
 
 // @internal
-export const availableProcessors: Processor[];
+export const availableProcessors: ProcessorHandler[];
 
 // @public (undocumented)
 export interface CompileOptions {
@@ -409,7 +409,7 @@ export interface PrettyError {
 }
 
 // @public (undocumented)
-export type Processor = ProcessorDescriptor<"before"> | ProcessorDescriptor<"stage"> | ProcessorDescriptor<"after">;
+export type Processor = ProcessorHandler;
 
 // @public (undocumented)
 export interface ProcessorContext {
@@ -465,10 +465,8 @@ export type ProcessorDescriptor<K extends "before" | "stage" | "after"> = Proces
 
 // @public (undocumented)
 export interface ProcessorHandler {
-    // (undocumented)
-    after?: ProcessorStage;
-    // (undocumented)
-    before?: ProcessorStage;
+    after?: string | string[];
+    before?: string | string[];
     // (undocumented)
     enabled?: boolean;
     // (undocumented)
@@ -476,7 +474,6 @@ export interface ProcessorHandler {
     name: string;
     resolveLink?: LinkResolver;
     runtime?: ProcessorRuntime[];
-    // (undocumented)
     stage?: ProcessorStage;
 }
 

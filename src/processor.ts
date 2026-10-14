@@ -41,9 +41,22 @@ export type ProcessorHook<K extends "before" | "stage" | "after"> = {
  * @public
  */
 export interface ProcessorHandler {
-    before?: ProcessorStage;
+    /**
+     * Run before a stage (`generate-docs`, `generate-nav`, `assets` or
+     * `render`) or before another processor (by name).
+     */
+    before?: string | string[];
+
+    /**
+     * Run during a stage. Cannot be the name of another processor.
+     */
     stage?: ProcessorStage;
-    after?: ProcessorStage;
+
+    /**
+     * Run after a stage (`generate-docs`, `generate-nav`, `assets` or
+     * `render`) or after another processor (by name).
+     */
+    after?: string | string[];
 
     /**
      * Name of this processor. Only used for logging purposes.
@@ -76,7 +89,4 @@ export type ProcessorDescriptor<K extends "before" | "stage" | "after"> =
 /**
  * @public
  */
-export type Processor =
-    | ProcessorDescriptor<"before">
-    | ProcessorDescriptor<"stage">
-    | ProcessorDescriptor<"after">;
+export type Processor = ProcessorHandler;

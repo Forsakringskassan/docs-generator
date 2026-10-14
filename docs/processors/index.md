@@ -12,10 +12,42 @@ A procesor implements the `Processor` interface:
 interface:ProcessorHandler
 :::
 
-One of `before`, `stage` or `after` must be set and decides when the processor is run.
+One of `before`, `stage` or `after` decides when the processor is run.
+Any combination can be set, `before` and `after` can also be an array.
+A processor without any of them is run as early as possible.
 
 ```import
 processor-stage.ts
+```
+
+`stage`
+: Run during the given stage. Must be one of the stages above.
+
+`before`, `after`
+: Run before or after a stage, or before or after another processor (by `name`).
+When set to the name of another processor the processor is run in the same stage as the other processor.
+
+The processor is run once, in the earliest position satisfying all constraints.
+If a referenced processor does not exist the reference is ignored.
+For instance a processor with only `after: "missing-processor"` is run as early as possible.
+
+If the constraints cannot be satisfied (e.g. `before` and `after` set to the same name, circular dependencies or `stage` set to the name of a processor) the build fails with an error describing the conflict.
+
+```ts
+import { type Processor } from "@forsakringskassan/docs-generator";
+
+/* --- cut above --- */
+
+export function myProcessor(): Processor {
+    return {
+        name: "awesome-processor",
+        after: ["generate-nav", "other-processor"],
+        before: "render",
+        handler() {
+            /* ... */
+        },
+    };
+}
 ```
 
 The `handler` callback performs the actual work.

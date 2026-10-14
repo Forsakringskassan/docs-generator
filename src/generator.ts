@@ -34,6 +34,7 @@ import { type ProcessorStage } from "./processor-stage";
 import { redirectProcessor } from "./processors";
 import { type TemplateLoader, nunjucksProcessor } from "./render";
 import { createTemplateLoader } from "./render/render";
+import { resolveProcessorOrder } from "./resolve-processor-order";
 import { serve } from "./serve";
 import { type StateMap } from "./state-map";
 import {
@@ -134,30 +135,6 @@ function toArray<T>(value: T | T[]): T[] {
     return Array.isArray(value) ? value : [value];
 }
 
-function filterProcessors(
-    stage: ProcessorStage,
-    processors: Processor[],
-): Processor[] {
-    const before: Processor[] = [];
-    const during: Processor[] = [];
-    const after: Processor[] = [];
-    for (const processor of processors) {
-        if (processor.enabled === false) {
-            continue;
-        }
-        if (processor.before === stage) {
-            before.push(processor);
-        }
-        if (processor.stage === stage) {
-            during.push(processor);
-        }
-        if (processor.after === stage) {
-            after.push(processor);
-        }
-    }
-    return [...before, ...during, ...after];
-}
-
 /* eslint-disable no-console -- expected to log */
 async function stage(
     stage: ProcessorStage,
@@ -170,10 +147,9 @@ async function stage(
         console.log(`stage:${stage}`);
     }
     let generatedFiles: string[] = [];
-    const filteredProcessors = filterProcessors(stage, processors);
-    for (let i = 0; i < filteredProcessors.length; i++) {
-        const processor = filteredProcessors[i];
-        const isLast = i === filteredProcessors.length - 1;
+    for (let i = 0; i < processors.length; i++) {
+        const processor = processors[i];
+        const isLast = i === processors.length - 1;
         if (verbose) {
             console.log(isLast ? "  └─" : "  ├─", processor.name);
         }
@@ -570,6 +546,7 @@ export class Generator {
             redirectProcessor(),
             ...this.processors,
         ];
+        const order = resolveProcessorOrder(processors);
 
         const examplePatterns = this.exampleFolders.map((it) => `${it}/**/*`);
         const exampleFileMatcher = await fileMatcher(examplePatterns, {
@@ -581,7 +558,9 @@ export class Generator {
             exampleFileMatcher,
             templateLoader,
         });
-        await stage("generate-docs", context, processors, { verbose: false });
+        await stage("generate-docs", context, order["generate-docs"], {
+            verbose: false,
+        });
 
         const docs = context.docs.filter(isDocumentPage).filter(haveOutput);
         const pages = docs.map((doc) => {
@@ -672,6 +651,8 @@ export class Generator {
             ...this.processors,
         ];
 
+        const order = resolveProcessorOrder(processors);
+
         compileProcessorRuntime(this, import.meta.url, processors);
 
         const exampleFileMatcher = await fileMatcher(examplePatterns, {
@@ -702,10 +683,10 @@ export class Generator {
         });
 
         const generatedFiles = [
-            await stage("generate-docs", context, processors),
-            await stage("generate-nav", context, processors),
-            await stage("assets", context, processors),
-            await stage("render", context, processors),
+            await stage("generate-docs", context, order["generate-docs"]),
+            await stage("generate-nav", context, order["generate-nav"]),
+            await stage("assets", context, order.assets),
+            await stage("render", context, order.render),
         ];
         return generatedFiles.flat();
     }
