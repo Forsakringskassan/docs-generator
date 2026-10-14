@@ -1425,9 +1425,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        <span class="version-text-block">renovate/he-2.x</span>  (<a href="https://github.com/Forsakringskassan/docs-generator/commits/2b5371b620c9bbcc7257fd3b8d3f23ad4502e06d">2b5371b</a>)<br />
+        <span class="version-text-block">renovate/he-2.x</span>  (<a href="https://github.com/Forsakringskassan/docs-generator/commits/6743a4b2b3e6f5d1f3a31966e9d1a4bdd9cdd79b">6743a4b</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/527">PR 527</a><br />
-       <span class="version-text-block">2026-10-14 18:40</span>
+       <span class="version-text-block">2026-10-14 20:41</span>
     </span>
 </div>
 </div>
@@ -1600,7 +1600,7 @@
                     <div id="docs-content"><h2 id="writing_a_new_processor" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#writing_a_new_processor">Writing a new processor</a></h2><p class="docs-paragraph">A procesor implements the <code>Processor</code> interface:</p>
  <div>
                 <div
-                    id="example-659911"
+                    id="example-761d33"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile nolint"
@@ -1611,7 +1611,7 @@
     <span class="hljs-attr">after</span>?: <span class="hljs-title class_">ProcessorStage</span>;
     <span class="hljs-attr">before</span>?: <span class="hljs-title class_">ProcessorStage</span>;
     <span class="hljs-attr">enabled</span>?: <span class="hljs-built_in">boolean</span>;
-    <span class="hljs-title function_">handler</span>(
+    handler?(
         <span class="hljs-attr">context</span>: <span class="hljs-title class_">ProcessorContext</span>,
     ): <span class="hljs-built_in">void</span> | <span class="hljs-built_in">string</span>[] | <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt; | <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">string</span>[]&gt;;
     <span class="hljs-comment">/**
