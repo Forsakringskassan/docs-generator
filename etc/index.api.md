@@ -472,7 +472,7 @@ export interface ProcessorHandler {
     // (undocumented)
     enabled?: boolean;
     // (undocumented)
-    handler(context: ProcessorContext): void | string[] | Promise<void> | Promise<string[]>;
+    handler?(context: ProcessorContext): void | string[] | Promise<void> | Promise<string[]>;
     name: string;
     resolveLink?: LinkResolver;
     runtime?: ProcessorRuntime[];

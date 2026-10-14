@@ -177,6 +177,9 @@ async function stage(
         if (verbose) {
             console.log(isLast ? "  └─" : "  ├─", processor.name);
         }
+        if (!processor.handler) {
+            continue;
+        }
         try {
             const prefix = (() => {
                 if (verbose) {
