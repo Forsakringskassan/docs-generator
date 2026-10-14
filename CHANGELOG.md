@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [3.21.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.20.1...v3.21.0) (2026-10-14)
+
+### Features
+
+* **api:** processor `handler` optional ([44404c7](https://github.com/Forsakringskassan/docs-generator/commit/44404c78bf4a95ac5789c8c7efe7cb699ee32b5a))
+
+### Bug Fixes
+
+* **layout:** preserve page title bottom margin ([bfb79e6](https://github.com/Forsakringskassan/docs-generator/commit/bfb79e6f7d1b9e8342768ef0f889b30d7fe133ee))
+
 ## [3.20.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.20.0...v3.20.1) (2026-10-14)
 
 ### Bug Fixes
