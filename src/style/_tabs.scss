@@ -47,6 +47,14 @@
                 margin-bottom: 0.75rem;
             }
         }
+
+        .docs-tabs-more-button .docs-icon {
+            transition: transform 0.2s ease;
+        }
+
+        .docs-tabs-more-button:has(+ .docs-tabs-overflow-container:popover-open) .docs-icon {
+            transform: rotate(180deg);
+        }
     }
     .docs-tab {
         &.hidden-tab {

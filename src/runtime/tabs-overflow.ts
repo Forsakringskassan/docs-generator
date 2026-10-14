@@ -1,14 +1,25 @@
 export function setupTabsOverflow(tabList: HTMLElement) {
-    // More tabs buton
+    // more-tabs button
     const moreButton = document.createElement("button");
+    const moreButtonSpan = document.createElement("span");
     moreButton.type = "button";
-    moreButton.textContent = "Fler flikar";
     moreButton.classList.add("docs-tabs-more-button");
     moreButton.hidden = true;
     moreButton.setAttribute("popovertarget", "tabs-overflow-container");
     moreButton.tabIndex = -1;
 
-    // Overflow list
+    // arrow icon
+    const icon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    icon.setAttribute("focusable", "false");
+    icon.classList.add("docs-icon");
+    icon.setAttribute("aria-hidden", "true");
+    const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
+    use.setAttribute("href", "#docs-icon-arrow-down");
+    icon.appendChild(use);
+    moreButtonSpan.append("Fler flikar", icon);
+    moreButton.append(moreButtonSpan);
+
+    // overflow list
     const overflowList = document.createElement("div");
     overflowList.classList.add("docs-tabs-overflow-container");
     overflowList.id = "tabs-overflow-container";
@@ -28,12 +39,6 @@ export function setupTabsOverflow(tabList: HTMLElement) {
 
         moreButton.hidden = true;
 
-        const tabs = Array.from(
-            tabList.querySelectorAll<HTMLButtonElement>(
-                ':scope > [role="tab"]',
-            ),
-        );
-
         const tabListWidth = tabList.clientWidth;
 
         const getTabsWidth = () =>
@@ -43,8 +48,8 @@ export function setupTabsOverflow(tabList: HTMLElement) {
                 ),
             ).reduce((total, tab) => total + tab.offsetWidth, 0);
 
-        // All tabs fit in tablist
         if (getTabsWidth() <= tabListWidth) {
+            overflowList.hidePopover();
             return;
         }
 
@@ -72,4 +77,6 @@ export function setupTabsOverflow(tabList: HTMLElement) {
     resizeObserver.observe(tabList);
 
     updateOverflow();
+
+    return { moreButton, overflowList };
 }

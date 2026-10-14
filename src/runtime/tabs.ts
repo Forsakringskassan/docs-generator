@@ -4,6 +4,8 @@ import { setupTabsOverflow } from "./tabs-overflow";
 onContentReady(() => renderTabs());
 window.addEventListener("docs:navigation", renderTabs);
 
+let allTabs: HTMLButtonElement[] = [];
+
 function renderTabs() {
     const tabPanels = document.querySelectorAll<HTMLElement>(".docs-tab");
 
@@ -56,43 +58,85 @@ function renderTabs() {
     firstTabButton.removeAttribute("tabIndex");
     firstTabButton.setAttribute("aria-selected", "true");
 
-    setupTabsOverflow(tabList);
+    allTabs = Array.from(
+        tabList.querySelectorAll<HTMLButtonElement>('[role="tab"]'),
+    );
+
+    const { moreButton, overflowList } = setupTabsOverflow(tabList);
+    moreButton.addEventListener("keydown", onMoreButtonKeydown);
+
+    overflowList.addEventListener("toggle", () => {
+        if (overflowList.matches(":popover-open")) {
+            const firstTab =
+                overflowList.querySelector<HTMLButtonElement>('[role="tab"]');
+
+            firstTab?.focus();
+        }
+    });
 }
 
 const onKeydown = (event: KeyboardEvent) => {
-    const tabs = document.querySelectorAll<HTMLElement>(
-        '.docs-tabs [role="tab"]',
+    const currentTab = event.currentTarget as HTMLButtonElement;
+    const parent = currentTab.parentElement;
+
+    if (!parent) {
+        return;
+    }
+
+    const tabs = Array.from(
+        parent.querySelectorAll<HTMLButtonElement>(':scope > [role="tab"]'),
     );
 
-    let flag = false;
+    const currentIndex = tabs.indexOf(currentTab);
+    let nextTab: HTMLButtonElement | undefined;
+
     switch (event.key) {
         case "ArrowLeft":
-            setSelectedTabToPrevious();
-            flag = true;
+            nextTab =
+                currentIndex > 0
+                    ? tabs[currentIndex - 1]
+                    : parent.matches(":popover-open")
+                      ? tabs[tabs.length - 1]
+                      : undefined;
             break;
 
         case "ArrowRight":
-            setSelectedTabToNext();
-            flag = true;
+            nextTab =
+                currentIndex < tabs.length - 1
+                    ? tabs[currentIndex + 1]
+                    : parent.matches(":popover-open")
+                      ? tabs[0]
+                      : undefined;
             break;
 
         case "Home":
-            setSelectedTab(tabs[0] as HTMLButtonElement);
-            flag = true;
+            nextTab = tabs[0];
             break;
 
         case "End":
-            setSelectedTab(tabs[tabs.length - 1] as HTMLButtonElement);
-            flag = true;
+            nextTab = tabs[tabs.length - 1];
             break;
 
         default:
-            break;
+            return;
     }
 
-    if (flag) {
-        event.stopPropagation();
-        event.preventDefault();
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (nextTab) {
+        setSelectedTab(nextTab);
+    } else if (
+        event.key === "ArrowRight" &&
+        parent.classList.contains("docs-tablist")
+    ) {
+        const moreButton = parent.querySelector<HTMLButtonElement>(
+            ".docs-tabs-more-button",
+        );
+
+        if (moreButton && !moreButton.hidden) {
+            moreButton.focus();
+        }
     }
 };
 
@@ -106,21 +150,57 @@ function getCurrentTab(): HTMLButtonElement | null {
     );
 }
 
-function setSelectedTabToPrevious() {
+function moveSelectedTab(direction: -1 | 1) {
     const currentTab = getCurrentTab();
-    const previousTab = currentTab?.previousElementSibling;
 
-    if (previousTab) {
-        setSelectedTab(previousTab as HTMLButtonElement);
+    if (!currentTab) {
+        return;
+    }
+
+    const parent = currentTab.parentElement;
+
+    if (!parent) {
+        return;
+    }
+
+    const tabs = Array.from(
+        parent.querySelectorAll<HTMLButtonElement>(':scope > [role="tab"]'),
+    );
+
+    const currentIndex = tabs.indexOf(currentTab);
+    const nextTab = tabs[currentIndex + direction];
+
+    if (nextTab) {
+        setSelectedTab(nextTab);
+        return;
+    }
+
+    const moreButton = parent.querySelector<HTMLButtonElement>(
+        ".docs-tabs-more-button",
+    );
+
+    if (
+        parent.classList.contains("docs-tablist") &&
+        moreButton &&
+        !moreButton.hidden
+    ) {
+        if (direction === 1) {
+            moreButton.focus();
+        }
     }
 }
 
-function setSelectedTabToNext() {
-    const currentTab = getCurrentTab();
-    const nextTab = currentTab?.nextElementSibling;
+function onMoreButtonKeydown(event: KeyboardEvent) {
+    if (event.key !== "ArrowLeft") {
+        return;
+    }
 
-    if (nextTab) {
-        setSelectedTab(nextTab as HTMLButtonElement);
+    const moreButton = event.currentTarget as HTMLButtonElement;
+    const previousTab = moreButton.previousElementSibling;
+
+    if (previousTab instanceof HTMLButtonElement) {
+        event.preventDefault();
+        previousTab.focus();
     }
 }
 
