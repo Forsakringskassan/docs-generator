@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## [3.20.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.20.0...v3.20.1) (2026-10-14)
+
+### Bug Fixes
+
+* **deps:** update dependency i18next to v26.4.3 ([27e203d](https://github.com/Forsakringskassan/docs-generator/commit/27e203d9802ef00c3b3b505435adc55b42017014))
+* **layout:** prefix `aside` id with `docs-` ([b7fa168](https://github.com/Forsakringskassan/docs-generator/commit/b7fa168953723c3d0d4d95fcfb80a836c9772e2f))
+* **layout:** prefix `content` id with `docs-` ([eb592bb](https://github.com/Forsakringskassan/docs-generator/commit/eb592bb63281b8e620d285c1cbd12898a91f8528))
+* **layout:** prefix `outline` id with `docs-` ([e213fd0](https://github.com/Forsakringskassan/docs-generator/commit/e213fd088f8858edea9166cfa8cc73a45ff08390))
+* **layout:** prefix `primary` id with `docs-` ([bfe1ddc](https://github.com/Forsakringskassan/docs-generator/commit/bfe1ddc548ab0847bd7a4fc5c0bbcaddcd4dbc5c))
+* **layout:** prefix `search` id with `docs-` ([ec22224](https://github.com/Forsakringskassan/docs-generator/commit/ec22224de4f8b176621adfbfed68706ac0a61930))
+* **layout:** prefix `sidenav` id with `docs-` ([2d01f76](https://github.com/Forsakringskassan/docs-generator/commit/2d01f766b1c89381b2c341a24e74d8fd429d333c))
+* **layout:** prefix `title` id with `docs-` ([0887464](https://github.com/Forsakringskassan/docs-generator/commit/088746416f014a380b0918c263aa21e92d17a82f))
+* **layout:** prefix `topnav` id with `docs-` ([54c23c5](https://github.com/Forsakringskassan/docs-generator/commit/54c23c586e9b02b9bb21fc67296369700bbda7de))
+
 ## [3.20.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.19.1...v3.20.0) (2026-10-13)
 
 ### Features
