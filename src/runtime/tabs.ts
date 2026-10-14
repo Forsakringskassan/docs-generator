@@ -152,52 +152,6 @@ function onClick(event: MouseEvent): void {
     setSelectedTab(event.target as HTMLButtonElement);
 }
 
-function getCurrentTab(): HTMLButtonElement | null {
-    return document.querySelector<HTMLButtonElement>(
-        '.docs-tabs [role="tab"][aria-selected="true"]',
-    );
-}
-
-function moveSelectedTab(direction: -1 | 1): void {
-    const currentTab = getCurrentTab();
-
-    if (!currentTab) {
-        return;
-    }
-
-    const parent = currentTab.parentElement;
-
-    if (!parent) {
-        return;
-    }
-
-    const tabs = Array.from(
-        parent.querySelectorAll<HTMLButtonElement>(':scope > [role="tab"]'),
-    );
-
-    const currentIndex = tabs.indexOf(currentTab);
-    const nextTab = tabs[currentIndex + direction] as
-        HTMLButtonElement | undefined;
-
-    if (nextTab) {
-        setSelectedTab(nextTab);
-        return;
-    }
-
-    const moreButton = parent.querySelector<HTMLButtonElement>(
-        ".docs-tabs-more-button",
-    );
-
-    if (
-        parent.classList.contains("docs-tablist") &&
-        moreButton &&
-        !moreButton.hidden &&
-        direction === 1
-    ) {
-        moreButton.focus();
-    }
-}
-
 function onMoreButtonKeydown(event: KeyboardEvent): void {
     if (event.key !== "ArrowLeft") {
         return;
