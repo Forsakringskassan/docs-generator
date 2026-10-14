@@ -1,4 +1,5 @@
 import markdownIt, { type Env } from "markdown-it";
+import { type DependencyTree } from "../dependency-tree";
 import { type DocumentOutline, type DocumentPage } from "../document";
 import { parseInfostring } from "../examples/parse-infostring";
 import { type ProcessorContext } from "../processor-context";
@@ -100,11 +101,14 @@ function findExamples(
 /**
  * @internal
  */
-export function manifestPageFromDocument(
-    context: Pick<ProcessorContext, "exampleFileMatcher">,
+export async function manifestPageFromDocument(
+    context: Pick<ProcessorContext, "exampleFileMatcher"> & {
+        dependencyTree?: DependencyTree | null;
+    },
     doc: DocumentPageLike,
-): ManifestPage {
+): Promise<ManifestPage> {
     const { body, fileInfo, format } = doc;
+    const { dependencyTree } = context;
     return {
         path: getOutputFilePath("", fileInfo),
         src: doc.fileInfo.fullPath,
@@ -112,5 +116,8 @@ export function manifestPageFromDocument(
         redirect: format === "redirect" ? body : null,
         outline: flattenOutline(doc.outline),
         examples: findExamples(context, doc),
+        dependencies: dependencyTree
+            ? await dependencyTree.getDependencies(fileInfo.fullPath)
+            : [],
     };
 }

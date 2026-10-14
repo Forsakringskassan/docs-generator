@@ -17,5 +17,10 @@ export interface Manifest {
             language: string;
             tags: string[];
         }>;
+        /**
+         * Files (relative to project root) required to build the document,
+         * including transitive dependencies (e.g. images and imported examples).
+         */
+        dependencies: string[];
     }>;
 }

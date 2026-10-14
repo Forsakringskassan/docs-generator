@@ -33,6 +33,14 @@ const docs = new Generator(import.meta.url, {
 const manifest = await docs.manifest(config.sourceFiles);
 ```
 
+## Dependencies
+
+Each page in the manifest has a `dependencies` field listing all files (relative to the project root) required to build the document.
+This includes images, imported examples and files imported by examples (transitively), but not packages from `node_modules`.
+The list is deduplicated and sorted.
+
+Dependencies are collected when examples are compiled so when using `docs.manifest()` the list is only populated if the project has been built previously (the dependencies are read from the `cacheFolder`).
+
 ## Usage
 
 ```ts

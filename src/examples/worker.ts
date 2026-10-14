@@ -4,6 +4,10 @@ import { type Plugin, build as esbuild } from "esbuild";
 import { virtualEntryPlugin } from "../esbuild";
 import { tsconfigPath as tsconfig } from "../tsconfig-path";
 import { type ExampleCompileTask } from "./example-task";
+import {
+    type ExtractedDependencies,
+    extractDependencies,
+} from "./extract-dependencies";
 import { vuePlugin as Vue3Plugin } from "plugin-vue3";
 
 /**
@@ -39,7 +43,10 @@ export interface CompileResponse<T = unknown> {
 /**
  * @internal
  */
-export type CompileResult = ExampleCompileTask;
+export interface CompileResult extends ExampleCompileTask {
+    /** files the compiled example depends on */
+    readonly dependencies: ExtractedDependencies;
+}
 
 /**
  * @internal
@@ -80,9 +87,10 @@ async function compileExample(
     ];
     const virtualEntries = { [virtualEntryPoint(task)]: task.sourcecode };
     const iconLib = process.env.DOCS_ICON_LIB ?? "@fkui/icon-lib-default";
-    await esbuild({
+    const { metafile } = await esbuild({
         entryPoints,
         outdir,
+        metafile: true,
         bundle: true,
         format: "esm",
         platform: "browser",
@@ -94,7 +102,10 @@ async function compileExample(
         },
         plugins: [virtualEntryPlugin(virtualEntries), VuePlugin()],
     });
-    return { ...task };
+    return {
+        ...task,
+        dependencies: extractDependencies(metafile, process.cwd()),
+    };
 }
 
 async function compileExampleMultiple(

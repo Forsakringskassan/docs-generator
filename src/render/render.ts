@@ -6,6 +6,7 @@ import { promisify } from "node:util";
 import { Worker } from "node:worker_threads";
 import nunjucks from "nunjucks";
 import { type AssetInfo } from "../assets";
+import { type DependencyTree } from "../dependency-tree";
 import { type Document, type DocumentPage, type FileInfo } from "../document";
 import {
     type CompileMessage,
@@ -23,7 +24,12 @@ import {
     isNavigationSection,
     sortNavigationTree,
 } from "../navigation";
-import { type FileMatcher, getFingerprint, getOutputFilePath } from "../utils";
+import {
+    type FileMatcher,
+    getFingerprint,
+    getOutputFilePath,
+    parseImport,
+} from "../utils";
 import { type VendorAsset } from "../vendor";
 import { createMarkdownRenderer } from "./create-markdown-renderer";
 import * as filter from "./filter";
@@ -127,8 +133,9 @@ async function compileExamples(options: {
     tasks: ExampleCompileTask[];
     assets: AssetInfo[];
     vendors: VendorAsset[];
+    dependencyTree: DependencyTree;
 }): Promise<void> {
-    const { fileInfo, tasks, assets, vendors } = options;
+    const { fileInfo, tasks, assets, vendors, dependencyTree } = options;
     if (tasks.length === 0) {
         return;
     }
@@ -140,7 +147,20 @@ async function compileExamples(options: {
     const cacheFolder = path.posix.join(options.cacheFolder, fileInfo.path);
     const outputFolder = path.posix.join(options.outputFolder, fileInfo.path);
     const cacheMiss = cache(cacheFolder, outputFolder);
-    const dirtyTasks = tasks.filter(cacheMiss);
+    const dirtyTasks = tasks.filter((task) => {
+        const miss = cacheMiss(task);
+        /* a cached file without known dependencies would never be tracked */
+        if (
+            !miss &&
+            !dependencyTree.hasExample(fileInfo.fullPath, task.outputFile)
+        ) {
+            return true;
+        }
+        if (!miss) {
+            dependencyTree.touchExample(fileInfo.fullPath, task.outputFile);
+        }
+        return miss;
+    });
 
     /* skip forking if there are no tasks to be run anyway */
     if (dirtyTasks.length === 0) {
@@ -164,6 +184,25 @@ async function compileExamples(options: {
 
             exampleWorker.off("message", onmessage);
             exampleWorker.off("error", onerror);
+            for (const result of message.results) {
+                const { files, entry } = result.dependencies;
+                for (const [file, deps] of Object.entries(files)) {
+                    dependencyTree.setFileDependencies(file, deps);
+                }
+                /* imported examples are tracked via their source file, inline ones directly */
+                const isImported = result.sourceFile !== result.parent;
+                if (isImported) {
+                    dependencyTree.setFileDependencies(
+                        result.sourceFile,
+                        entry,
+                    );
+                }
+                dependencyTree.setExample(
+                    fileInfo.fullPath,
+                    result.outputFile,
+                    isImported ? [result.sourceFile] : entry,
+                );
+            }
             resolve();
         }
 
@@ -250,6 +289,7 @@ export async function render(
         templateFolders,
         vendors,
         linkResolvers,
+        dependencyTree,
     } = options;
 
     /* skip rendering files which have no output */
@@ -314,6 +354,7 @@ export async function render(
 
     const generatedExamples: ExampleCompileTask[] = [];
     const generatedStandalone: ExampleStandaloneTask[] = [];
+    const resources = new Set<string>();
 
     const markdownRenderer = createMarkdownRenderer({
         docs,
@@ -328,6 +369,11 @@ export async function render(
                 tags,
                 fileMatcher: exampleFileMatcher,
             });
+
+            if (language === "import") {
+                const { filename: imported } = parseImport(source);
+                resources.add(exampleFileMatcher(imported));
+            }
 
             if (example.output) {
                 const { dir, name } = path.parse(example.output);
@@ -345,12 +391,14 @@ export async function render(
         getImportedSource(filename) {
             const context = `when importing example from "${fileInfo.fullPath}"`;
             const match = exampleFileMatcher(filename, context);
+            resources.add(match);
             return readFileSync(match, "utf8");
         },
         addResource(dst, src) {
             if (!existsSync(src)) {
                 throw new Error(`Failed to find image "${src}"`);
             }
+            resources.add(src);
             options.addResource(dst, src);
         },
         handleSoftError(error) {
@@ -424,6 +472,8 @@ export async function render(
         throw new Error(`${prefix}: ${message}`, { cause: err });
     }
 
+    dependencyTree.setDocumentResources(fileInfo.fullPath, [...resources]);
+
     const expandedDst = dst.replaceAll(/\[([\s\S]+)\]/g, (match, key) => {
         if (key === "hash") {
             return getFingerprint(doc.body);
@@ -443,6 +493,7 @@ export async function render(
             tasks: generatedExamples,
             assets,
             vendors,
+            dependencyTree,
         });
     } catch (err: unknown) {
         const prefix = `Failed to compile examples from "${fileInfo.fullPath}"`;

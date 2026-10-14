@@ -1,4 +1,5 @@
 import { type i18n } from "i18next";
+import { type DependencyTree } from "../dependency-tree";
 import { type LinkResolver } from "../link-resolver";
 import {
     type TemplateBlockData,
@@ -22,6 +23,7 @@ export interface RenderOptions {
     templateBlocks: Map<string, Array<TemplateBlockData<unknown>>>;
     templateData: TemplateData & Record<string, unknown>;
     readonly linkResolvers: LinkResolver[];
+    readonly dependencyTree: DependencyTree;
 
     markdown: {
         messagebox?: {

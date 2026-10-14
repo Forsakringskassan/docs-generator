@@ -20,7 +20,7 @@ import {
     takeWhile,
     zip,
 } from "../utils";
-import { manifestState } from "./manifest-processor";
+import { createManifest, manifestState } from "./manifest-processor";
 
 type ManifestPage = Manifest["pages"][number];
 
@@ -413,12 +413,11 @@ export function extractMarkdownProcessor(
                 );
             }
 
-            const manifest = context.getState(manifestState);
-            if (!manifest) {
-                throw new Error(
-                    `"extractMarkdownProcessor()" requires "manifestProcess()"`,
-                );
-            }
+            /* the manifest is created by `manifestProcessor()` but if it is listed
+             * after this processor it has not run yet */
+            const manifest =
+                context.getState(manifestState) ??
+                (await createManifest(context));
 
             /* clear and recreate old output folder */
             await fs.rm(outputFolder, { recursive: true, force: true });

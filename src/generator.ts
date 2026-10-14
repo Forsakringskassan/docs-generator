@@ -16,6 +16,7 @@ import {
     staticResourcesProcessor,
 } from "./assets";
 import { compileProcessorRuntime } from "./compile-processor-runtime";
+import { DependencyTree, dependencyTreeState } from "./dependency-tree";
 import { type Document, isDocumentPage } from "./document";
 import { type SourceFiles, fileReaderProcessor } from "./file-reader";
 import langEn from "./i18n/en.json";
@@ -584,9 +585,17 @@ export class Generator {
         await stage("generate-docs", context, processors, { verbose: false });
 
         const docs = context.docs.filter(isDocumentPage).filter(haveOutput);
-        const pages = docs.map((doc) => {
-            return manifestPageFromDocument({ exampleFileMatcher }, doc);
+        const dependencyTree = await DependencyTree.load(this.cacheFolder, {
+            cwd: this.cwd,
         });
+        const pages = await Promise.all(
+            docs.map((doc) => {
+                return manifestPageFromDocument(
+                    { exampleFileMatcher, dependencyTree },
+                    doc,
+                );
+            }),
+        );
         return { pages };
     }
 
@@ -630,6 +639,11 @@ export class Generator {
         } = this;
         const examplePatterns = this.exampleFolders.map((it) => `${it}/**/*`);
 
+        /* must be loaded before `_prepareFolders()` clears the cache folder */
+        const dependencyTree = await DependencyTree.load(cacheFolder, {
+            cwd: this.cwd,
+        });
+
         const i18n = i18next({
             lng: site.lang,
             fallbackLng: "en",
@@ -668,6 +682,7 @@ export class Generator {
                 setupPath,
                 linkResolvers,
                 markdown: markdownOptions ?? {},
+                dependencyTree,
             }),
             ...this.processors,
         ];
@@ -700,6 +715,7 @@ export class Generator {
         context.addTemplateBlock("component:aside", "component:aside", {
             filename: "partials/component-aside.html",
         });
+        context.setState(dependencyTreeState, dependencyTree);
 
         const generatedFiles = [
             await stage("generate-docs", context, processors),
@@ -707,6 +723,7 @@ export class Generator {
             await stage("assets", context, processors),
             await stage("render", context, processors),
         ];
+        await dependencyTree.save(cacheFolder);
         return generatedFiles.flat();
     }
 

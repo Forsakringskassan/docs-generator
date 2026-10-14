@@ -264,6 +264,7 @@ export interface Manifest {
             language: string;
             tags: string[];
         }>;
+        dependencies: string[];
     }>;
 }
 

@@ -1,8 +1,10 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import { dependencyTreeState } from "../dependency-tree";
 import { isDocumentPage } from "../document";
 import { type Manifest, manifestPageFromDocument } from "../manifest";
 import { type Processor } from "../processor";
+import { type ProcessorContext } from "../processor-context";
 import { haveOutput } from "../utils";
 
 declare module "../state-map" {
@@ -82,6 +84,37 @@ class ManifestError extends Error {
 }
 
 /**
+ * Create manifest from the documents (and dependencies) currently known by the
+ * context.
+ *
+ * @internal
+ */
+export async function createManifest(
+    context: Pick<
+        ProcessorContext,
+        "docs" | "exampleFileMatcher" | "getState" | "setState"
+    >,
+): Promise<Manifest> {
+    const docs = context.docs.filter(isDocumentPage).filter(haveOutput);
+    const dependencyTree = context.getState(dependencyTreeState);
+    const pages = await Promise.all(
+        docs.map((doc) => {
+            const { exampleFileMatcher } = context;
+            return manifestPageFromDocument(
+                { exampleFileMatcher, dependencyTree },
+                doc,
+            );
+        }),
+    );
+    pages.sort((a, b) => {
+        return a.path.localeCompare(b.path);
+    });
+    const manifest: Manifest = { pages };
+    context.setState(manifestState, manifest);
+    return manifest;
+}
+
+/**
  * Write out a manifest listing all generated documents that will be present in
  * `outputFolder`.
  *
@@ -93,17 +126,10 @@ export function manifestProcessor(
     const { markdown, json, verify } = options;
     return {
         name: "manifestProcessor",
-        before: "render",
+        /* examples are compiled during render so dependencies are not known until after */
+        after: "render",
         async handler(context) {
-            const docs = context.docs.filter(isDocumentPage).filter(haveOutput);
-            const pages = docs.map((doc) =>
-                manifestPageFromDocument(context, doc),
-            );
-            pages.sort((a, b) => {
-                return a.path.localeCompare(b.path);
-            });
-            const manifest: Manifest = { pages };
-            context.setState(manifestState, manifest);
+            const manifest = await createManifest(context);
             if (markdown) {
                 const content = normalize(renderMarkdown(manifest));
                 await fs.mkdir(path.dirname(markdown), { recursive: true });

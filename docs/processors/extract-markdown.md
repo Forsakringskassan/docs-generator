@@ -9,7 +9,8 @@ layout: article
 `extractMarkdownProcessor()` extracts rendered Markdown documentation and the resources it references to a separate folder.
 The generated folder can be published as a package or loaded by another `Generator`.
 
-The processor runs after rendering and requires `manifestProcessor()` to have run earlier in the build.
+The processor runs after rendering.
+It uses the manifest created by `manifestProcessor()` if present and otherwise creates one itself.
 It removes and recreates its `outputFolder` before writing the extracted files.
 
 ## Usage
