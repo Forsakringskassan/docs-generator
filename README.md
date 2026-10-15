@@ -6,6 +6,9 @@ npm install --save-dev --save-exact @forsakringskassan/docs-generator
 
 ## Setup
 
+Pass `import.meta.dirname` as the first argument to `Generator` to use the directory of your configuration file as the working directory.
+Paths in the generator options are resolved relative to this directory.
+
 ### Watch (development mode)
 
 You can start a development server with watch for incremental builds using `.serve()`.
@@ -16,7 +19,7 @@ import {
     livereloadProcessor,
 } from "@forsakringskassan/docs-generator";
 
-const docs = new Generator(import.meta.url, {
+const docs = new Generator(import.meta.dirname, {
     site: {
         name: "My Awesome Site",
     },
@@ -39,7 +42,7 @@ import {
     livereloadProcessor,
 } from "@forsakringskassan/docs-generator";
 
-const docs = new Generator(import.meta.url, {
+const docs = new Generator(import.meta.dirname, {
     site: {
         name: "My Awesome Site",
     },
@@ -115,7 +118,7 @@ Style can be compiled with `compileStyle(name, src, [options])`:
 ```ts
 import { Generator } from "@forsakringskassan/docs-generator";
 
-const docs = new Generator(import.meta.url, {
+const docs = new Generator(import.meta.dirname, {
     site: {
         name: "My Awesome Site",
     },
@@ -302,7 +305,7 @@ for (const entry of Object.values(icons)) {
 ### Matomo
 
 ```diff
- const docs = new Generator(import.meta.url, {
+ const docs = new Generator(import.meta.dirname, {
      processors: [
 +        matomoProcessor({
 +            siteId: "1",
@@ -316,7 +319,7 @@ for (const entry of Object.values(icons)) {
 Optionally set `hostname` to limit which hostnames can run Matomo analytics:
 
 ```diff
- const docs = new Generator(import.meta.url, {
+ const docs = new Generator(import.meta.dirname, {
      processors: [
          matomoProcessor({
              siteId: "1",

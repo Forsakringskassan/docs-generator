@@ -40,7 +40,7 @@ import {
     type FileMatcher,
     fileMatcher,
     haveOutput,
-    normalizePath,
+    normalizeWorkingDirectory,
 } from "./utils";
 import {
     type VendorAsset,
@@ -342,15 +342,6 @@ function createContext(options: {
     };
 }
 
-function getWorkingDir(value: string | URL | null): string {
-    if (value) {
-        const url = typeof value === "string" ? new URL(value) : value;
-        const normalized = normalizePath(fileURLToPath(url));
-        return path.posix.dirname(normalized);
-    }
-    return normalizePath(process.cwd());
-}
-
 /**
  * @public
  */
@@ -373,26 +364,35 @@ export class Generator {
     private markdownOptions: GeneratorOptions["markdown"];
 
     /**
-     * @deprecated Pass in `import.meta.url` as first argument instead.
+     * @deprecated Pass in `import.meta.dirname` as first argument instead.
      */
     public constructor(options: GeneratorOptions);
 
     /**
      * Create a new Generator instance.
+     *
+     * @param workingDirectory - Working directory, typically `import.meta.dirname`,
+     * or a file URL whose directory is used.
+     * @param options - Generator options.
      */
-    public constructor(importMetaUrl: string | URL, options: GeneratorOptions);
+    public constructor(
+        workingDirectory: string | URL,
+        options: GeneratorOptions,
+    );
     public constructor(
         ...args:
             | [options: GeneratorOptions]
-            | [importMetaUrl: string | URL, options: GeneratorOptions]
+            | [workingDirectory: string | URL, options: GeneratorOptions]
     ) {
-        const cwd = getWorkingDir(args.length === 2 ? args[0] : null);
+        const cwd = normalizeWorkingDirectory(
+            args.length === 2 ? args[0] : null,
+        );
         const options = args.length === 2 ? args[1] : args[0];
 
         if (args.length === 1) {
             /* eslint-disable-next-line no-console -- expected to log */
             console.error(
-                "[docs-generator] deprecated: not passing import.meta.url as the first argument is deprecated, assuming `process.cwd()`.",
+                "[docs-generator] deprecated: not passing import.meta.dirname as the first argument is deprecated, assuming `process.cwd()`.",
             );
         }
 
