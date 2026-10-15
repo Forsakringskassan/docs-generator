@@ -172,7 +172,7 @@ export function frontMatterFileReader(filePath: string, basePath?: string): Prom
 class Generator_2 {
     // @deprecated
     constructor(options: GeneratorOptions);
-    constructor(importMetaUrl: string | URL, options: GeneratorOptions);
+    constructor(workingDirectory: string | URL, options: GeneratorOptions);
     build(): Promise<string[]>;
     // @deprecated
     build(sourceFiles: SourceFiles[]): Promise<string[]>;
