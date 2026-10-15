@@ -23,7 +23,7 @@ import {
 
 /* --- cut above --- */
 
-const docs = new Generator(import.meta.url, {
+const docs = new Generator(import.meta.dirname, {
     /* --- cut begin --- */
     site: { name: ".." },
     setupPath: "..",
@@ -78,7 +78,7 @@ The generated `sourceFiles()` helper configures the extracted Markdown pages and
 import { Generator } from "@forsakringskassan/docs-generator";
 import { exampleFolders, sourceFiles } from "./dist/docs/index.mjs";
 
-const docs = new Generator(import.meta.url, {
+const docs = new Generator(import.meta.dirname, {
     site: { name: "My documentation site" },
     exampleFolders,
     sourceFiles: sourceFiles(),

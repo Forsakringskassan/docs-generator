@@ -16,7 +16,7 @@ import {
     apiExtractorProcessor,
 } from "@forsakringskassan/docs-generator";
 
-const docs = new Generator(import.meta.url, {
+const docs = new Generator(import.meta.dirname, {
     /* --- cut begin --- */
     site: { name: ".." },
     setupPath: "..",

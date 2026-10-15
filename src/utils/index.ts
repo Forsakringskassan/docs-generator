@@ -20,6 +20,7 @@ export { htmlencode } from "./htmlencode";
 export { interpolate } from "./interpolate";
 export { naturalJoin } from "./natural-join";
 export { normalizePath } from "./normalize-path";
+export { normalizeWorkingDirectory } from "./normalize-working-directory";
 export { parseImport } from "./parse-import";
 export { runCommand } from "./run-command";
 export {

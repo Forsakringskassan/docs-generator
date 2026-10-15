@@ -7,7 +7,7 @@ import config from "./docs.config.mjs";
 /* eslint-enable import-x/extensions */
 
 async function getDocsPages(): Promise<Manifest["pages"]> {
-    const docs = new Generator(import.meta.url, {
+    const docs = new Generator(import.meta.dirname, {
         site: {
             name: "FK Documentation generator",
             lang: "en",
