@@ -5,7 +5,7 @@ var __require = /* @__PURE__ */ ((x6) => typeof require !== "undefined" ? requir
   throw Error('Dynamic require of "' + x6 + '" is not supported');
 });
 
-// dist/runtime-internal.mjs
+// ../../dist/runtime-internal.mjs
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -297337,6 +297337,7 @@ function renderTabs() {
   const firstTabButton = tabList.firstChild;
   firstTabButton.removeAttribute("tabIndex");
   firstTabButton.setAttribute("aria-selected", "true");
+  setupOverflow(tabsContainer, tabList);
 }
 var onKeydown = (event3) => {
   const tabs = Array.from(
@@ -297411,6 +297412,86 @@ function setSelectedTab(newTab) {
   );
   tabPanel?.classList.remove("hidden-tab");
   newTab.focus();
+}
+function setupOverflow(tabsContainer, tabList) {
+  const moreRightButton = document.createElement("button");
+  moreRightButton.type = "button";
+  moreRightButton.hidden = true;
+  moreRightButton.classList.add(
+    "docs-more-button",
+    "docs-more-button--right"
+  );
+  moreRightButton.tabIndex = -1;
+  moreRightButton.onclick = () => {
+    scrollTabs(tabList, "right");
+    updateOverflowButtons();
+  };
+  const moreRightIcon = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "svg"
+  );
+  moreRightIcon.setAttribute("focusable", "false");
+  moreRightIcon.classList.add("docs-more-icon", "docs-more-icon--right");
+  moreRightIcon.setAttribute("aria-hidden", "true");
+  const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
+  use.setAttribute("href", "#docs-icon-arrow-down");
+  moreRightIcon.append(use);
+  moreRightButton.append(moreRightIcon);
+  tabsContainer.append(moreRightButton);
+  const moreLeftButton = document.createElement("button");
+  moreLeftButton.type = "button";
+  moreLeftButton.hidden = true;
+  moreLeftButton.classList.add("docs-more-button", "docs-more-button--left");
+  moreLeftButton.tabIndex = -1;
+  moreLeftButton.onclick = () => {
+    scrollTabs(tabList, "left");
+    updateOverflowButtons();
+  };
+  const moreLeftIcon = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "svg"
+  );
+  moreLeftIcon.setAttribute("focusable", "false");
+  moreLeftIcon.classList.add("docs-more-icon", "docs-more-icon--left");
+  moreLeftIcon.setAttribute("aria-hidden", "true");
+  const useLeft = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "use"
+  );
+  useLeft.setAttribute("href", "#docs-icon-arrow-down");
+  moreLeftIcon.append(useLeft);
+  moreLeftButton.append(moreLeftIcon);
+  tabsContainer.append(moreLeftButton);
+  const updateOverflowButtons = () => {
+    const showRightButton = tabList.scrollWidth - tabList.clientWidth - tabList.scrollLeft > 1;
+    moreRightButton.hidden = !showRightButton;
+    moreRightIcon.setAttribute("aria-hidden", `${!showRightButton}`);
+    const showLeftButton = tabList.scrollLeft > 1;
+    moreLeftButton.hidden = !showLeftButton;
+    moreLeftIcon.setAttribute("aria-hidden", `${!showLeftButton}`);
+  };
+  const resizeObserver = new ResizeObserver(updateOverflowButtons);
+  resizeObserver.observe(tabList);
+  updateOverflowButtons();
+}
+function scrollTabs(tabList, direction2) {
+  const tabs = Array.from(tabList.children);
+  const tabListRect = tabList.getBoundingClientRect();
+  if (direction2 === "right") {
+    const nextTab = tabs.find((tab) => {
+      return tab.getBoundingClientRect().right > tabListRect.right + 1;
+    });
+    if (nextTab) {
+      tabList.scrollLeft += nextTab.getBoundingClientRect().right - tabListRect.right;
+    }
+  } else {
+    const prevTab = [...tabs].reverse().find((tab) => {
+      return tab.getBoundingClientRect().left < tabListRect.left - 1;
+    });
+    if (prevTab) {
+      tabList.scrollLeft -= tabListRect.left - prevTab.getBoundingClientRect().left;
+    }
+  }
 }
 var motdSymbol = /* @__PURE__ */ Symbol.for("motd");
 var motdProxy = {
