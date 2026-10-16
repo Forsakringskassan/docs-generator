@@ -64,6 +64,8 @@ function renderTabs(): void {
     const firstTabButton = tabList.firstChild as HTMLButtonElement;
     firstTabButton.removeAttribute("tabIndex");
     firstTabButton.setAttribute("aria-selected", "true");
+
+    setupOverflow(tabsContainer, tabList);
 }
 
 const onKeydown = (event: KeyboardEvent): void => {
@@ -159,4 +161,106 @@ function setSelectedTab(newTab: HTMLButtonElement): void {
     tabPanel?.classList.remove("hidden-tab");
 
     newTab.focus();
+}
+
+function setupOverflow(tabsContainer: HTMLElement, tabList: HTMLElement): void {
+    // more tabs to right button
+    const moreRightButton = document.createElement("button");
+    moreRightButton.type = "button";
+    moreRightButton.hidden = true;
+    moreRightButton.classList.add(
+        "docs-more-button",
+        "docs-more-button--right",
+    );
+    moreRightButton.tabIndex = -1;
+    moreRightButton.onclick = () => {
+        scrollTabs(tabList, "right");
+        updateOverflowButtons();
+    };
+
+    const moreRightIcon = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "svg",
+    );
+    moreRightIcon.setAttribute("focusable", "false");
+    moreRightIcon.classList.add("docs-more-icon", "docs-more-icon--right");
+    moreRightIcon.setAttribute("aria-hidden", "true");
+    const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
+    use.setAttribute("href", "#docs-icon-arrow-down");
+    moreRightIcon.append(use);
+    moreRightButton.append(moreRightIcon);
+
+    tabsContainer.append(moreRightButton);
+
+    // more tabs to left button
+    const moreLeftButton = document.createElement("button");
+    moreLeftButton.type = "button";
+    moreLeftButton.hidden = true;
+    moreLeftButton.classList.add("docs-more-button", "docs-more-button--left");
+    moreLeftButton.tabIndex = -1;
+    moreLeftButton.onclick = () => {
+        scrollTabs(tabList, "left");
+        updateOverflowButtons();
+    };
+
+    const moreLeftIcon = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "svg",
+    );
+    moreLeftIcon.setAttribute("focusable", "false");
+    moreLeftIcon.classList.add("docs-more-icon", "docs-more-icon--left");
+    moreLeftIcon.setAttribute("aria-hidden", "true");
+    const useLeft = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "use",
+    );
+    useLeft.setAttribute("href", "#docs-icon-arrow-down");
+    moreLeftIcon.append(useLeft);
+    moreLeftButton.append(moreLeftIcon);
+
+    tabsContainer.append(moreLeftButton);
+
+    const updateOverflowButtons = () => {
+        const showRightButton =
+            tabList.scrollWidth - tabList.clientWidth - tabList.scrollLeft > 1;
+        moreRightButton.hidden = !showRightButton;
+        moreRightIcon.setAttribute("aria-hidden", `${!showRightButton}`);
+        const showLeftButton = tabList.scrollLeft > 1;
+        moreLeftButton.hidden = !showLeftButton;
+        moreLeftIcon.setAttribute("aria-hidden", `${!showLeftButton}`);
+    };
+
+    const resizeObserver = new ResizeObserver(updateOverflowButtons);
+    resizeObserver.observe(tabList);
+
+    updateOverflowButtons();
+}
+
+function scrollTabs(tabList: HTMLElement, direction: "left" | "right"): void {
+    const tabs = Array.from(tabList.children);
+    const tabListRect = tabList.getBoundingClientRect();
+
+    if (direction === "right") {
+        // Find first tab that is cut off to the right
+        const nextTab = tabs.find((tab) => {
+            return tab.getBoundingClientRect().right > tabListRect.right + 1;
+        });
+
+        if (nextTab) {
+            // Scroll so that the hidden tab is visible
+            tabList.scrollLeft +=
+                nextTab.getBoundingClientRect().right - tabListRect.right;
+        }
+    } else {
+        // Find first tab that is cut off to the left
+        const prevTab = [...tabs].reverse().find((tab) => {
+            return tab.getBoundingClientRect().left < tabListRect.left - 1;
+        });
+
+        if (prevTab) {
+            // Scroll so that the hidden tab is visible
+            tabList.scrollLeft -=
+                tabListRect.left - prevTab.getBoundingClientRect().left;
+        }
+    }
 }

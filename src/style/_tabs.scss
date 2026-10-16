@@ -1,10 +1,13 @@
 .docs-tabs {
+    position: relative;
+
     .docs-tablist {
         border-bottom: var(--fkds-color-border-weak) 1px solid;
         margin-bottom: 2rem;
         display: flex;
         flex-wrap: nowrap;
         min-width: 0;
+        overflow-x: hidden;
 
         button {
             background-color: transparent;
@@ -27,6 +30,30 @@
     .docs-tab {
         &.hidden-tab {
             display: none;
+        }
+    }
+
+    .docs-more-button {
+        position: absolute;
+        top: 0;
+
+        &--right {
+            right: 0;
+        }
+        &--left {
+            left: 0;
+        }
+    }
+
+    .docs-more-icon {
+        width: 16px;
+        height: 16px;
+
+        &--right {
+            transform: rotate(-90deg);
+        }
+        &--left {
+            transform: rotate(90deg);
         }
     }
 }
