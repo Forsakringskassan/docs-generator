@@ -126,7 +126,7 @@ export interface ExtractedDocsModule {
     // (undocumented)
     readonly partialsPath: string;
     // (undocumented)
-    sourceFiles(src?: Partial<SourceFiles>): SourceFiles[];
+    sourceFiles(this: void, src?: Partial<SourceFiles>): SourceFiles[];
     // (undocumented)
     readonly version: string | null;
 }

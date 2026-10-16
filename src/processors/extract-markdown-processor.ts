@@ -58,7 +58,7 @@ export interface ExtractedDocsModule {
     readonly filesPath: string;
     readonly partialsPath: string;
     readonly linksPath: string;
-    sourceFiles(src?: Partial<SourceFiles>): SourceFiles[];
+    sourceFiles(this: void, src?: Partial<SourceFiles>): SourceFiles[];
 }
 
 /**
