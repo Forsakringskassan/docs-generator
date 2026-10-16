@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [3.22.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.21.1...v3.22.0) (2026-10-16)
+
+### Features
+
+* add configurable documentation widths ([27623f5](https://github.com/Forsakringskassan/docs-generator/commit/27623f585e97a92deb9bd8c89f61dd3c489c26e4))
+
+### Bug Fixes
+
+* correct documentation line-height variable ([7987d15](https://github.com/Forsakringskassan/docs-generator/commit/7987d1549718c5a1e3bfd4d7076967f7124fc6c4))
+
 ## [3.21.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.21.0...v3.21.1) (2026-10-16)
 
 ### Bug Fixes
