@@ -297363,7 +297363,9 @@ var onKeydown = (event3) => {
     default:
       return;
   }
-  if (!flag) return;
+  if (!flag) {
+    return;
+  }
   event3.preventDefault();
   event3.stopPropagation();
 };
@@ -297377,9 +297379,13 @@ function getCurrentTab() {
 }
 function moveSelectedTab(direction2) {
   const currentTab = getCurrentTab();
-  if (!currentTab) return;
+  if (!currentTab) {
+    return;
+  }
   const siblingTab = direction2 === -1 ? currentTab.previousElementSibling : currentTab.nextElementSibling;
-  if (!siblingTab) return;
+  if (!siblingTab) {
+    return;
+  }
   setSelectedTab(siblingTab);
 }
 function setSelectedTab(newTab) {
