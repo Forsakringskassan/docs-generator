@@ -64,13 +64,13 @@ export function generateNavtree(docs: DocumentPage[]): NavigationSection {
         key: string,
         title: string,
         sortorder: number,
-        { visible }: { visible?: boolean } = {},
+        { visible = true }: { visible?: boolean } = {},
     ): void {
         const existing = section[key] as MutableNavigationSection | undefined;
         if (existing) {
             existing.title = title;
             existing.sortorder = sortorder;
-            existing.visible = visible ?? true;
+            existing.visible = visible;
         } else {
             const node: MutableNavigationSection = {
                 key,
@@ -78,7 +78,7 @@ export function generateNavtree(docs: DocumentPage[]): NavigationSection {
                 path: "",
                 sortorder,
                 children: [],
-                visible: visible ?? true,
+                visible,
             };
             section[key] = node;
             if (key !== ".") {

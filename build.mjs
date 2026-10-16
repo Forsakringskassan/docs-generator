@@ -15,8 +15,9 @@ import esbuildPlugin from "rollup-plugin-esbuild";
 import { visualizer } from "rollup-plugin-visualizer";
 import * as sass from "sass";
 
-const pkg = JSON.parse(await fs.readFile("package.json", "utf8"));
-const { externalDependencies, peerDependencies } = pkg;
+const { externalDependencies, peerDependencies } = JSON.parse(
+    await fs.readFile("package.json", "utf8"),
+);
 
 const rootDir = import.meta.dirname;
 

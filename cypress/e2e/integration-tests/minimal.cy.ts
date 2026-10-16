@@ -1,3 +1,4 @@
+/* eslint-disable-next-line unicorn/no-unnecessary-parameters -- technical debt  */
 function setViewPortMinimal(width: number, height: number): void {
     cy.viewport(width, height);
     cy.visit("/integration-tests/minimal");

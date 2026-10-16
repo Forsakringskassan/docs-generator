@@ -34,6 +34,7 @@ function toArray<T>(value: T | T[]): T[] {
 
 async function* toAsyncIterator<U, T>(
     values: U[],
+    /* eslint-disable-next-line unicorn/no-unnecessary-parameters -- technical debt */
     fn: (it: U) => T,
 ): AsyncGenerator<T> {
     /* eslint-disable-next-line @typescript-eslint/await-thenable -- must force result to be async */
