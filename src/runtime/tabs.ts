@@ -96,7 +96,9 @@ const onKeydown = (event: KeyboardEvent): void => {
             return;
     }
 
-    if (!flag) return;
+    if (!flag) {
+        return;
+    }
 
     event.preventDefault();
     event.stopPropagation();
@@ -115,14 +117,18 @@ function getCurrentTab(): HTMLButtonElement | null {
 function moveSelectedTab(direction: -1 | 1) {
     const currentTab = getCurrentTab();
 
-    if (!currentTab) return;
+    if (!currentTab) {
+        return;
+    }
 
     const siblingTab =
         direction === -1
             ? currentTab.previousElementSibling
             : currentTab.nextElementSibling;
 
-    if (!siblingTab) return;
+    if (!siblingTab) {
+        return;
+    }
 
     setSelectedTab(siblingTab as HTMLButtonElement);
 }
