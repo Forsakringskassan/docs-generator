@@ -279,6 +279,7 @@ if (toggle && navigation) {
             replaceContent(location.href);
         }
 
+        openActiveTab();
         previousPath = location.pathname;
     });
 
@@ -290,4 +291,28 @@ if (toggle && navigation) {
     window.addEventListener("resize", () => {
         updateSidenavHeight(navigation);
     });
+}
+
+window.addEventListener("DOMContentLoaded", openActiveTab);
+
+/**
+ * When navigating to an element using URL.
+ * If the element is inside a non-active tab it will be activated.
+ */
+function openActiveTab(): void {
+    if (!location.hash) {
+        return;
+    }
+
+    const element = document.querySelector(location.hash);
+    const tabPanel = element?.closest(".docs-tab");
+
+    if (!tabPanel?.classList.contains("hidden-tab")) {
+        return;
+    }
+
+    const tab = tabPanel.parentElement?.querySelector(
+        `[aria-controls="${tabPanel.id}"]`,
+    ) as HTMLElement | undefined;
+    tab?.click(); // Activate the tab the element is inside.
 }
