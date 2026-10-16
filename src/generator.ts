@@ -697,19 +697,24 @@ export class Generator {
         context.addTemplateBlock("footer:center", "footer:center", {
             filename: "partials/footer-center.html",
         });
-        context.addTemplateBlock("footer:right", "footer:right", {
-            filename: "partials/footer-right.html",
-        });
         context.addTemplateBlock("component:aside", "component:aside", {
             filename: "partials/component-aside.html",
         });
 
         const generatedFiles = [
             await stage("generate-docs", context, processors),
+        ];
+
+        /* register last so processor blocks render before consumer footer content */
+        context.addTemplateBlock("footer:right", "footer:right", {
+            filename: "partials/footer-right.html",
+        });
+
+        generatedFiles.push(
             await stage("generate-nav", context, processors),
             await stage("assets", context, processors),
             await stage("render", context, processors),
-        ];
+        );
         return generatedFiles.flat();
     }
 
