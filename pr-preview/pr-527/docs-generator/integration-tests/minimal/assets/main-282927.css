@@ -1248,7 +1248,8 @@ pre.mermaid:not([data-processed])::after {
 :root {
   --docs-background-color: #ffffff;
   --docs-font-family: "Inter Variable", sans-serif;
-  --docs-font-line-height: 1.5;
+  --docs-line-height: 1.5;
+  --docs-font-line-height: var(--docs-line-height);
   --docs-font-size: 16px;
   --docs-font-weight: normal;
   --docs-text-color-default: #1b1e23;
