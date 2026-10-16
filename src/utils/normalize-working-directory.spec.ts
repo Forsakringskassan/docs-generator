@@ -23,6 +23,7 @@ it.each([
     ["./docs", "docs"],
     ["docs with spaces/#examples", "docs with spaces/#examples"],
     ["C:\\path\\to\\docs", "/path/to/docs"],
+    ["C:\\path\\to\\docs\\", "/path/to/docs"],
 ])("should normalize directory path %s", (value, expected) => {
     expect.assertions(1);
     expect(normalizeWorkingDirectory(value)).toBe(expected);
