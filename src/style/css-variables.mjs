@@ -12,9 +12,14 @@ export default {
                 type: "font",
                 value: `"Inter Variable", sans-serif`,
             },
-            "font-line-height": {
-                description: "Default `font-line-height`.",
+            "line-height": {
+                description: "Default `line-height`.",
                 value: "1.5",
+            },
+            "font-line-height": {
+                description:
+                    "Deprecated alias for `--docs-line-height`. Set `--docs-line-height` to customize line height.",
+                value: "var(--docs-line-height)",
             },
             "font-size": {
                 description: "Default `font-size`.",
