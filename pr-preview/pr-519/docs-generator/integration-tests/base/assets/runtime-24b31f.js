@@ -5,7 +5,7 @@ var __require = /* @__PURE__ */ ((x6) => typeof require !== "undefined" ? requir
   throw Error('Dynamic require of "' + x6 + '" is not supported');
 });
 
-// dist/runtime-internal.mjs
+// ../../dist/runtime-internal.mjs
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -297353,11 +297353,11 @@ var onKeydown = (event3) => {
       flag = true;
       break;
     case "Home":
-      setSelectedTab(tabs[0]);
+      setSelectedTab(tabs.at(0));
       flag = true;
       break;
     case "End":
-      setSelectedTab(tabs[tabs.length - 1]);
+      setSelectedTab(tabs.at(-1));
       flag = true;
       break;
     default:

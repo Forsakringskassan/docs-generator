@@ -297353,11 +297353,11 @@ var onKeydown = (event3) => {
       flag = true;
       break;
     case "Home":
-      setSelectedTab(tabs[0]);
+      setSelectedTab(tabs.at(0));
       flag = true;
       break;
     case "End":
-      setSelectedTab(tabs[tabs.length - 1]);
+      setSelectedTab(tabs.at(-1));
       flag = true;
       break;
     default:
