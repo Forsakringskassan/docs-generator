@@ -83,12 +83,12 @@ const onKeydown = (event: KeyboardEvent): void => {
             flag = true;
             break;
         case "Home":
-            setSelectedTab(tabs[0] as HTMLButtonElement);
+            setSelectedTab(tabs.at(0) as HTMLButtonElement);
             flag = true;
             break;
 
         case "End":
-            setSelectedTab(tabs[tabs.length - 1] as HTMLButtonElement);
+            setSelectedTab(tabs.at(-1) as HTMLButtonElement);
             flag = true;
             break;
 
