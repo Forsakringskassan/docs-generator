@@ -1,5 +1,4 @@
 import { onContentReady } from "./on-content-ready";
-import { setupTabsOverflow } from "./tabs-overflow";
 
 onContentReady(() => {
     renderTabs();
@@ -65,64 +64,32 @@ function renderTabs(): void {
     const firstTabButton = tabList.firstChild as HTMLButtonElement;
     firstTabButton.removeAttribute("tabIndex");
     firstTabButton.setAttribute("aria-selected", "true");
-
-    const { moreButton, overflowList } = setupTabsOverflow(tabList);
-    moreButton.addEventListener("keydown", onMoreButtonKeydown);
-
-    overflowList.addEventListener("toggle", () => {
-        if (!overflowList.matches(":popover-open")) {
-            return;
-        }
-
-        const firstTab =
-            overflowList.querySelector<HTMLButtonElement>('[role="tab"]');
-
-        firstTab?.focus();
-    });
 }
 
 const onKeydown = (event: KeyboardEvent): void => {
-    const currentTab = event.currentTarget as HTMLButtonElement;
-    const parent = currentTab.parentElement;
-
-    if (!parent) {
-        return;
-    }
-
     const tabs = Array.from(
-        parent.querySelectorAll<HTMLButtonElement>(':scope > [role="tab"]'),
+        document.querySelectorAll<HTMLButtonElement>(':scope > [role="tab"]'),
     );
 
-    const currentIndex = tabs.indexOf(currentTab);
-    let nextTab: HTMLButtonElement | undefined;
+    let flag = false;
 
     switch (event.key) {
-        case "ArrowLeft": {
-            if (currentIndex > 0) {
-                nextTab = tabs[currentIndex - 1];
-            } else if (parent.matches(":popover-open")) {
-                nextTab = tabs.at(-1);
-            } else {
-                nextTab = undefined;
-            }
+        case "ArrowLeft":
+            moveSelectedTab(-1);
+            flag = true;
             break;
-        }
-        case "ArrowRight": {
-            if (currentIndex < tabs.length - 1) {
-                nextTab = tabs[currentIndex + 1];
-            } else if (parent.matches(":popover-open")) {
-                nextTab = tabs[0];
-            } else {
-                nextTab = undefined;
-            }
+        case "ArrowRight":
+            moveSelectedTab(1);
+            flag = true;
             break;
-        }
         case "Home":
-            nextTab = tabs[0];
+            setSelectedTab(tabs[0] as HTMLButtonElement);
+            flag = true;
             break;
 
         case "End":
-            nextTab = tabs.at(-1);
+            setSelectedTab(tabs[tabs.length - 1] as HTMLButtonElement);
+            flag = true;
             break;
 
         default:
@@ -131,41 +98,31 @@ const onKeydown = (event: KeyboardEvent): void => {
 
     event.preventDefault();
     event.stopPropagation();
-
-    if (nextTab) {
-        setSelectedTab(nextTab);
-    } else if (
-        event.key === "ArrowRight" &&
-        parent.classList.contains("docs-tablist")
-    ) {
-        const moreButton = parent.querySelector<HTMLButtonElement>(
-            ".docs-tabs-more-button",
-        );
-
-        if (moreButton && !moreButton.hidden) {
-            moreButton.focus();
-        }
-    }
 };
 
 function onClick(event: MouseEvent): void {
     setSelectedTab(event.target as HTMLButtonElement);
 }
 
-function onMoreButtonKeydown(event: KeyboardEvent): void {
-    if (event.key !== "ArrowLeft") {
-        return;
-    }
+function getCurrentTab(): HTMLButtonElement | null {
+    return document.querySelector<HTMLButtonElement>(
+        '.docs-tabs [role="tab"][aria-selected="true"]',
+    );
+}
 
-    const moreButton = event.currentTarget as HTMLButtonElement;
-    const previousTab = moreButton.previousElementSibling;
+function moveSelectedTab(direction: -1 | 1) {
+    const currentTab = getCurrentTab();
 
-    if (!(previousTab instanceof HTMLButtonElement)) {
-        return;
-    }
+    if (!currentTab) return;
 
-    event.preventDefault();
-    previousTab.focus();
+    const siblingTab =
+        direction === -1
+            ? currentTab.previousElementSibling
+            : currentTab.nextElementSibling;
+
+    if (!siblingTab) return;
+
+    setSelectedTab(siblingTab as HTMLButtonElement);
 }
 
 function setSelectedTab(newTab: HTMLButtonElement): void {

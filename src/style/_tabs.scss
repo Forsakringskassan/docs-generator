@@ -5,12 +5,6 @@
         display: flex;
         flex-wrap: nowrap;
         min-width: 0;
-        position: relative;
-        anchor-name: --tabs-more;
-
-        .docs-tabs-overflow-container {
-            position: absolute;
-        }
 
         button {
             background-color: transparent;
@@ -28,39 +22,6 @@
         button[aria-selected="true"] {
             border-bottom: var(--fkds-color-navigation-border-selected) 3px solid;
             font-weight: 600;
-        }
-
-        .docs-tabs-overflow-container {
-            position: absolute;
-            position-anchor: --tabs-more;
-            position-area: bottom span-right;
-            border: #bbbbbd 1px solid;
-            box-shadow: 0 0 20 0 #0000004d;
-            width: anchor-size(width);
-            margin-top: 4px;
-            padding: 1rem 1rem 1rem 0.5rem;
-
-            button {
-                display: block;
-            }
-            button:not(:last-of-type) {
-                margin-bottom: 0.75rem;
-            }
-        }
-
-        .docs-tabs-more-button span {
-            display: flex;
-            align-items: center;
-            gap: 9px;
-        }
-
-        .docs-tabs-more-button .docs-icon {
-            transition: transform 0.2s ease;
-            flex-shrink: 0;
-        }
-
-        .docs-tabs-more-button:has(+ .docs-tabs-overflow-container:popover-open) .docs-icon {
-            transform: rotate(180deg);
         }
     }
     .docs-tab {
