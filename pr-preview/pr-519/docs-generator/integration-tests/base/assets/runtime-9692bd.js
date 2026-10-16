@@ -297363,6 +297363,7 @@ var onKeydown = (event3) => {
     default:
       return;
   }
+  if (!flag) return;
   event3.preventDefault();
   event3.stopPropagation();
 };
