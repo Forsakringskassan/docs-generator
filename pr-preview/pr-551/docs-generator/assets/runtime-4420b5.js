@@ -5,7 +5,7 @@ var __require = /* @__PURE__ */ ((x6) => typeof require !== "undefined" ? requir
   throw Error('Dynamic require of "' + x6 + '" is not supported');
 });
 
-// ../../dist/runtime-internal.mjs
+// dist/runtime-internal.mjs
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -3398,15 +3398,16 @@ function getImplicitDefault(type3) {
   }
 }
 function getDefaultValue(schema2) {
-  if (schema2.default !== void 0) {
+  if (Object.prototype.hasOwnProperty.call(schema2, "default") && schema2.default !== void 0) {
     return schema2.default;
   }
   var type3 = Array.isArray(schema2.type) ? schema2.type[0] : schema2.type;
   return getImplicitDefault(type3);
 }
 function applySetting(target, prop, options2, schema2) {
-  var optionValue = options2[prop];
-  target[prop] = optionValue !== void 0 ? schema2.processor ? schema2.processor(optionValue) : optionValue : getDefaultValue(schema2);
+  var optionValue = Object.prototype.hasOwnProperty.call(options2, prop) ? options2[prop] : void 0;
+  var processor = Object.prototype.hasOwnProperty.call(schema2, "processor") ? schema2.processor : void 0;
+  target[prop] = optionValue !== void 0 ? processor ? processor(optionValue) : optionValue : getDefaultValue(schema2);
 }
 function scriptFromCodepoint(codepoint) {
   for (var i4 = 0; i4 < scriptData.length; i4++) {
@@ -3486,10 +3487,8 @@ function getGlobalMetrics(size4) {
     var metrics = fontMetricsBySizeIndex[sizeIndex] = {
       cssEmPerMu: sigmasAndXis.quad[sizeIndex] / 18
     };
-    for (var key in sigmasAndXis) {
-      if (sigmasAndXis.hasOwnProperty(key)) {
-        metrics[key] = sigmasAndXis[key][sizeIndex];
-      }
+    for (var key of Object.keys(sigmasAndXis)) {
+      metrics[key] = sigmasAndXis[key][sizeIndex];
     }
   }
   return fontMetricsBySizeIndex[sizeIndex];
@@ -3504,27 +3503,8 @@ function defineSymbol(mode, font, group2, replace2, name, acceptUnicodeChar) {
     symbols[mode][replace2] = symbols[mode][name];
   }
 }
-function defineFunction(_ref2) {
-  var {
-    type: type3,
-    names,
-    props,
-    handler,
-    htmlBuilder: htmlBuilder3,
-    mathmlBuilder: mathmlBuilder3
-  } = _ref2;
-  var data6 = {
-    type: type3,
-    numArgs: props.numArgs,
-    argTypes: props.argTypes,
-    allowedInArgument: !!props.allowedInArgument,
-    allowedInText: !!props.allowedInText,
-    allowedInMath: props.allowedInMath === void 0 ? true : props.allowedInMath,
-    numOptionalArgs: props.numOptionalArgs || 0,
-    infix: !!props.infix,
-    primitive: !!props.primitive,
-    handler
-  };
+function defineFunction(data6) {
+  var type3 = data6.type, names = data6.names, htmlBuilder3 = data6.htmlBuilder, mathmlBuilder3 = data6.mathmlBuilder;
   for (var i4 = 0; i4 < names.length; ++i4) {
     _functions[names[i4]] = data6;
   }
@@ -3538,27 +3518,17 @@ function defineFunction(_ref2) {
   }
 }
 function defineFunctionBuilders(_ref2) {
-  var {
-    type: type3,
-    htmlBuilder: htmlBuilder3,
-    mathmlBuilder: mathmlBuilder3
-  } = _ref2;
-  defineFunction({
-    type: type3,
-    names: [],
-    props: {
-      numArgs: 0
-    },
-    handler() {
-      throw new Error("Should never be called.");
-    },
-    htmlBuilder: htmlBuilder3,
-    mathmlBuilder: mathmlBuilder3
-  });
+  var type3 = _ref2.type, htmlBuilder3 = _ref2.htmlBuilder, mathmlBuilder3 = _ref2.mathmlBuilder;
+  if (htmlBuilder3) {
+    _htmlGroupBuilders[type3] = htmlBuilder3;
+  }
+  if (mathmlBuilder3) {
+    _mathmlGroupBuilders[type3] = mathmlBuilder3;
+  }
 }
 function buildHTMLUnbreakable(children2, options2) {
-  var body = makeSpan(["base"], children2, options2);
-  var strut = makeSpan(["strut"]);
+  var body = makeSpan(["katex-base"], children2, options2);
+  var strut = makeSpan(["katex-strut"]);
   strut.style.height = makeEm(body.height + body.depth);
   if (body.depth) {
     strut.style.verticalAlign = makeEm(-body.depth);
@@ -3574,7 +3544,7 @@ function buildHTML(tree, options2) {
   }
   var expression = buildExpression$1(tree, options2, "root");
   var eqnNum;
-  if (expression.length === 2 && expression[1].hasClass("tag")) {
+  if (expression.length === 2 && expression[1].hasClass("katex-tag")) {
     eqnNum = expression.pop();
   }
   var children2 = [];
@@ -3583,7 +3553,7 @@ function buildHTML(tree, options2) {
     parts.push(expression[i4]);
     if (expression[i4].hasClass("mbin") || expression[i4].hasClass("mrel") || expression[i4].hasClass("allowbreak")) {
       var nobreak = false;
-      while (i4 < expression.length - 1 && expression[i4 + 1].hasClass("mspace") && !expression[i4 + 1].hasClass("newline")) {
+      while (i4 < expression.length - 1 && expression[i4 + 1].hasClass("mspace") && !expression[i4 + 1].hasClass("katex-newline")) {
         i4++;
         parts.push(expression[i4]);
         if (expression[i4].hasClass("nobreak")) {
@@ -3594,7 +3564,7 @@ function buildHTML(tree, options2) {
         children2.push(buildHTMLUnbreakable(parts, options2));
         parts = [];
       }
-    } else if (expression[i4].hasClass("newline")) {
+    } else if (expression[i4].hasClass("katex-newline")) {
       parts.pop();
       if (parts.length > 0) {
         children2.push(buildHTMLUnbreakable(parts, options2));
@@ -3609,7 +3579,7 @@ function buildHTML(tree, options2) {
   var tagChild;
   if (tag) {
     tagChild = buildHTMLUnbreakable(buildExpression$1(tag, options2, true), options2);
-    tagChild.classes = ["tag"];
+    tagChild.classes = ["katex-tag"];
     children2.push(tagChild);
   } else if (eqnNum) {
     children2.push(eqnNum);
@@ -3662,7 +3632,7 @@ function buildMathML(tree, texExpression, options2, isDisplayMode, forMathmlOnly
   return makeSpan([wrapperClass], [math2]);
 }
 function isAtom(value2) {
-  return value2 in ATOMS;
+  return Atoms.has(value2);
 }
 function assertNodeType(node2, type3) {
   if (!node2 || node2.type !== type3) {
@@ -3678,10 +3648,23 @@ function assertSymbolNodeType(node2) {
   return typedNode;
 }
 function checkSymbolNodeType(node2) {
-  if (node2 && (node2.type === "atom" || NON_ATOMS.hasOwnProperty(node2.type))) {
+  if (node2.type === "atom" || NonAtoms.has(node2.type)) {
     return node2;
   }
   return null;
+}
+function assertCharacterGroup(group2, errorMessage2, allowSpaces) {
+  var text4 = "";
+  for (var node2 of group2.body) {
+    if (node2.type === "textord") {
+      text4 += node2.text;
+    } else if (allowSpaces && node2.type === "spacing" && node2.text === " ") {
+      text4 += " ";
+    } else {
+      throw new ParseError(errorMessage2, group2);
+    }
+  }
+  return text4;
 }
 function htmlBuilder$9(group2, options2) {
   var elements2 = buildExpression$1(group2.body, options2, true);
@@ -3715,9 +3698,6 @@ function mathmlBuilder$8(group2, options2) {
     } else if (group2.mclass === "mopen" || group2.mclass === "mclose") {
       node2.attributes.lspace = "0em";
       node2.attributes.rspace = "0em";
-    } else if (group2.mclass === "minner") {
-      node2.attributes.lspace = "0.0556em";
-      node2.attributes.width = "+0.1111em";
     }
   }
   return node2;
@@ -3892,20 +3872,13 @@ function assertParsed(group2) {
   }
 }
 function defineEnvironment(_ref2) {
-  var {
-    type: type3,
-    names,
-    props,
-    handler,
-    htmlBuilder: htmlBuilder3,
-    mathmlBuilder: mathmlBuilder3
-  } = _ref2;
+  var type3 = _ref2.type, names = _ref2.names, props = _ref2.props, handler2 = _ref2.handler, htmlBuilder3 = _ref2.htmlBuilder, mathmlBuilder3 = _ref2.mathmlBuilder;
   var data6 = {
     type: type3,
     numArgs: props.numArgs || 0,
     allowedInText: false,
     numOptionalArgs: 0,
-    handler
+    handler: handler2
   };
   for (var i4 = 0; i4 < names.length; ++i4) {
     _environments[names[i4]] = data6;
@@ -3943,18 +3916,7 @@ function getAutoTag(name) {
   }
 }
 function parseArray(parser37, _ref2, style4) {
-  var {
-    hskipBeforeAndAfter,
-    addJot,
-    cols,
-    arraystretch,
-    colSeparationType,
-    autoTag,
-    singleRow,
-    emptySingleRow,
-    maxNumCols,
-    leqno
-  } = _ref2;
+  var hskipBeforeAndAfter = _ref2.hskipBeforeAndAfter, addJot = _ref2.addJot, cols = _ref2.cols, arraystretch = _ref2.arraystretch, colSeparationType = _ref2.colSeparationType, autoTag = _ref2.autoTag, singleRow = _ref2.singleRow, emptySingleRow = _ref2.emptySingleRow, maxNumCols = _ref2.maxNumCols, leqno = _ref2.leqno;
   parser37.gullet.beginGroup();
   if (!singleRow) {
     parser37.gullet.macros.set("\\cr", "\\\\\\relax");
@@ -4024,7 +3986,7 @@ function parseArray(parser37, _ref2, style4) {
       parser37.consume();
     } else if (next3 === "\\end") {
       endRow();
-      if (row.length === 1 && cell.type === "styling" && cell.body.length === 1 && cell.body[0].type === "ordgroup" && cell.body[0].body.length === 0 && (body.length > 1 || !emptySingleRow)) {
+      if (row.length === 1 && cell.type === "styling" && cell.body.length === 1 && cell.body[0].type === "ordgroup" && cell.body[0].body.length === 0 && (body.length > 1 || !emptySingleRow) && !Array.isArray(tags2 == null ? void 0 : tags2[tags2.length - 1]) && !(autoTag && (tags2 == null ? void 0 : tags2[tags2.length - 1]) === true)) {
         body.pop();
       }
       if (hLinesBeforeRow.length < body.length + 1) {
@@ -4075,7 +4037,7 @@ function sizingGroup(value2, options2, baseOptions) {
   var inner2 = buildExpression$1(value2, options2, false);
   var multiplier = options2.sizeMultiplier / baseOptions.sizeMultiplier;
   for (var i4 = 0; i4 < inner2.length; i4++) {
-    var pos = inner2[i4].classes.indexOf("sizing");
+    var pos = inner2[i4].classes.indexOf("katex-sizing");
     if (pos < 0) {
       Array.prototype.push.apply(inner2[i4].classes, options2.sizingClasses(baseOptions));
     } else if (inner2[i4].classes[pos + 1] === "reset-size" + options2.size) {
@@ -4275,8 +4237,10 @@ var katexImagesData;
 var wideAccentLabels;
 var stretchySvg;
 var stretchyEnclose;
-var ATOMS;
-var NON_ATOMS;
+var atomList;
+var nonAtomList;
+var Atoms;
+var NonAtoms;
 var getBaseSymbol;
 var htmlBuilder$a;
 var mathmlBuilder$9;
@@ -4357,6 +4321,7 @@ var singleCharBigOps;
 var singleCharIntegrals;
 var htmlBuilder$1;
 var mathmlBuilder2;
+var handler;
 var sizeFuncs;
 var htmlBuilder2;
 var styleMap;
@@ -8597,16 +8562,12 @@ var init_katex = __esm({
         };
       }
     };
-    makeOrd = function makeOrd2(group2, options2, type3) {
+    makeOrd = function makeOrd2(group2, options2) {
+      var type3 = group2.type === "mathord" ? "mathord" : "textord";
       var mode = group2.mode;
       var text4 = group2.text;
       var classes3 = ["mord"];
-      var {
-        font,
-        fontFamily,
-        fontWeight,
-        fontShape
-      } = options2;
+      var font = options2.font, fontFamily = options2.fontFamily, fontWeight = options2.fontWeight, fontShape = options2.fontShape;
       var useFont = mode === "math" || mode === "text" && !!font;
       var fontOrFamily = useFont ? font : fontFamily;
       var wideFontName = "";
@@ -8634,7 +8595,7 @@ var init_katex = __esm({
         }
         if (lookupSymbol(text4, fontName, mode).metrics) {
           return makeSymbol(text4, fontName, mode, options2, classes3.concat(fontClasses));
-        } else if (ligatures.hasOwnProperty(text4) && fontName.slice(0, 10) === "Typewriter") {
+        } else if (Object.prototype.hasOwnProperty.call(ligatures, text4) && fontName.slice(0, 10) === "Typewriter") {
           var parts = [];
           for (var i4 = 0; i4 < text4.length; i4++) {
             parts.push(makeSymbol(text4[i4], fontName, mode, options2, classes3.concat(fontClasses)));
@@ -8796,10 +8757,7 @@ var init_katex = __esm({
       };
     };
     makeVList = function makeVList2(params, options2) {
-      var {
-        children: children2,
-        depth
-      } = getVListChildrenAndDepth(params);
+      var _getVListChildrenAndD = getVListChildrenAndDepth(params), children2 = _getVListChildrenAndD.children, depth = _getVListChildrenAndD.depth;
       var pstrutSize = 0;
       for (var i4 = 0; i4 < children2.length; i4++) {
         var child = children2[i4];
@@ -8959,7 +8917,7 @@ var init_katex = __esm({
       oiiintSize2: ["oiiintSize2", 1.98, 0.659]
     };
     staticSvg = function staticSvg2(value2, options2) {
-      var [pathName, width3, height2] = svgData[value2];
+      var _svgData$value = svgData[value2], pathName = _svgData$value[0], width3 = _svgData$value[1], height2 = _svgData$value[2];
       var path4 = new PathNode(pathName);
       var svgNode2 = new SvgNode([path4], {
         "width": makeEm(width3),
@@ -8969,7 +8927,7 @@ var init_katex = __esm({
         "viewBox": "0 0 " + 1e3 * width3 + " " + 1e3 * height2,
         "preserveAspectRatio": "xMinYMin"
       });
-      var span = makeSvgSpan(["overlay"], [svgNode2], options2);
+      var span = makeSvgSpan(["katex-overlay"], [svgNode2], options2);
       span.height = height2;
       span.style.height = makeEm(height2);
       span.style.width = makeEm(width3);
@@ -9164,7 +9122,7 @@ var init_katex = __esm({
         }
         if (nonspace) {
           prev2.node = node2;
-        } else if (isRoot && node2.hasClass("newline")) {
+        } else if (isRoot && node2.hasClass("katex-newline")) {
           prev2.node = makeSpan(["leftmost"]);
         }
         prev2.insertAfter = /* @__PURE__ */ ((index) => (n2) => {
@@ -9256,10 +9214,10 @@ var init_katex = __esm({
        */
       toNode() {
         var node2 = document.createElementNS("http://www.w3.org/1998/Math/MathML", this.type);
-        for (var attr in this.attributes) {
-          if (Object.prototype.hasOwnProperty.call(this.attributes, attr)) {
-            node2.setAttribute(attr, this.attributes[attr]);
-          }
+        for (var _ref2 of Object.entries(this.attributes)) {
+          var attr = _ref2[0];
+          var value2 = _ref2[1];
+          node2.setAttribute(attr, value2);
         }
         if (this.classes.length > 0) {
           node2.className = createClass(this.classes);
@@ -9282,12 +9240,12 @@ var init_katex = __esm({
        */
       toMarkup() {
         var markup = "<" + this.type;
-        for (var attr in this.attributes) {
-          if (Object.prototype.hasOwnProperty.call(this.attributes, attr)) {
-            markup += " " + attr + '="';
-            markup += escape2(this.attributes[attr]);
-            markup += '"';
-          }
+        for (var _ref4 of Object.entries(this.attributes)) {
+          var attr = _ref4[0];
+          var value2 = _ref4[1];
+          markup += " " + attr + '="';
+          markup += escape2(value2);
+          markup += '"';
         }
         if (this.classes.length > 0) {
           markup += ' class ="' + escape2(createClass(this.classes)) + '"';
@@ -9396,7 +9354,8 @@ var init_katex = __esm({
     noVariantSymbols = /* @__PURE__ */ new Set(["\\imath", "\\jmath"]);
     rowLikeTypes = /* @__PURE__ */ new Set(["mrow", "mtable"]);
     makeText = function makeText2(text4, mode, options2) {
-      if (symbols[mode][text4] && symbols[mode][text4].replace && text4.charCodeAt(0) !== 55349 && !(ligatures.hasOwnProperty(text4) && options2 && (options2.fontFamily && options2.fontFamily.slice(4, 6) === "tt" || options2.font && options2.font.slice(4, 6) === "tt"))) {
+      var _options$fontFamily, _options$font;
+      if (symbols[mode][text4] && symbols[mode][text4].replace && text4.charCodeAt(0) !== 55349 && !(Object.prototype.hasOwnProperty.call(ligatures, text4) && ((options2 == null || (_options$fontFamily = options2.fontFamily) == null ? void 0 : _options$fontFamily.slice(4, 6)) === "tt" || (options2 == null || (_options$font = options2.font) == null ? void 0 : _options$font.slice(4, 6)) === "tt"))) {
         text4 = symbols[mode][text4].replace;
       }
       return new TextNode(text4);
@@ -9756,7 +9715,7 @@ var init_katex = __esm({
        */
       sizingClasses(oldOptions) {
         if (oldOptions.size !== this.size) {
-          return ["sizing", "reset-size" + oldOptions.size, "size" + this.size];
+          return ["katex-sizing", "reset-size" + oldOptions.size, "size" + this.size];
         } else {
           return [];
         }
@@ -9767,7 +9726,7 @@ var init_katex = __esm({
        */
       baseSizingClasses() {
         if (this.size !== _Options.BASESIZE) {
-          return ["sizing", "reset-size" + this.size, "size" + _Options.BASESIZE];
+          return ["katex-sizing", "reset-size" + this.size, "size" + _Options.BASESIZE];
         } else {
           return [];
         }
@@ -9991,7 +9950,7 @@ var init_katex = __esm({
           if (!data6) {
             throw new Error('No SVG data for "' + label + '".');
           }
-          var [paths, _minWidth, _viewBoxHeight] = data6;
+          var paths = data6[0], _minWidth = data6[1], _viewBoxHeight = data6[2];
           var _height2 = _viewBoxHeight / 1e3;
           var numSvgChildren = paths.length;
           var widthClasses;
@@ -10032,17 +9991,13 @@ var init_katex = __esm({
             }
           }
           return {
-            span: makeSpan(["stretchy"], spans, options2),
+            span: makeSpan(["katex-stretchy"], spans, options2),
             minWidth: _minWidth,
             height: _height2
           };
         }
       }
-      var {
-        span,
-        minWidth,
-        height: height2
-      } = buildSvgSpan_();
+      var _buildSvgSpan_ = buildSvgSpan_(), span = _buildSvgSpan_.span, minWidth = _buildSvgSpan_.minWidth, height2 = _buildSvgSpan_.height;
       span.height = height2;
       span.style.height = makeEm(height2);
       if (minWidth > 0) {
@@ -10054,7 +10009,7 @@ var init_katex = __esm({
       var img;
       var totalHeight = inner2.height + inner2.depth + topPad + bottomPad;
       if (/fbox|color|angl/.test(label)) {
-        img = makeSpan(["stretchy", label], [], options2);
+        img = makeSpan(["katex-stretchy", label], [], options2);
         if (label === "fbox") {
           var color2 = options2.color && options2.getColor();
           if (color2) {
@@ -10091,21 +10046,10 @@ var init_katex = __esm({
       img.style.height = makeEm(totalHeight);
       return img;
     };
-    ATOMS = {
-      "bin": 1,
-      "close": 1,
-      "inner": 1,
-      "open": 1,
-      "punct": 1,
-      "rel": 1
-    };
-    NON_ATOMS = {
-      "accent-token": 1,
-      "mathord": 1,
-      "op-token": 1,
-      "spacing": 1,
-      "textord": 1
-    };
+    atomList = ["bin", "close", "inner", "open", "punct", "rel"];
+    nonAtomList = ["accent-token", "mathord", "op-token", "spacing", "textord"];
+    Atoms = new Set(atomList);
+    NonAtoms = new Set(nonAtomList);
     getBaseSymbol = (group2) => {
       if (group2 instanceof SymbolNode) {
         return group2;
@@ -10149,7 +10093,7 @@ var init_katex = __esm({
             type: "textord",
             mode: group2.mode,
             text: group2.label
-          }, options2, "textord");
+          }, options2);
           accent2 = assertSymbolDomNode(accent2);
           accent2.italic = 0;
           width3 = accent2.width;
@@ -10202,7 +10146,7 @@ var init_katex = __esm({
           }]
         });
       }
-      var accentWrap = makeSpan(["mord", "accent"], [accentBody], options2);
+      var accentWrap = makeSpan(["mord", "katex-accent"], [accentBody], options2);
       if (supSubGroup) {
         supSubGroup.children[0] = accentWrap;
         supSubGroup.height = Math.max(accentWrap.height, supSubGroup.height);
@@ -10222,9 +10166,7 @@ var init_katex = __esm({
     defineFunction({
       type: "accent",
       names: ["\\acute", "\\grave", "\\ddot", "\\tilde", "\\bar", "\\breve", "\\check", "\\hat", "\\vec", "\\dot", "\\mathring", "\\widecheck", "\\widehat", "\\widetilde", "\\overrightarrow", "\\overleftarrow", "\\Overrightarrow", "\\overleftrightarrow", "\\overgroup", "\\overlinesegment", "\\overleftharpoon", "\\overrightharpoon"],
-      props: {
-        numArgs: 1
-      },
+      numArgs: 1,
       handler: (context, args) => {
         var base = normalizeArgument(args[0]);
         var isStretchy = !NON_STRETCHY_ACCENT_REGEX.test(context.funcName);
@@ -10244,13 +10186,11 @@ var init_katex = __esm({
     defineFunction({
       type: "accent",
       names: ["\\'", "\\`", "\\^", "\\~", "\\=", "\\u", "\\.", '\\"', "\\c", "\\r", "\\H", "\\v", "\\textcircled"],
-      props: {
-        numArgs: 1,
-        allowedInText: true,
-        allowedInMath: true,
-        // unless in strict mode
-        argTypes: ["primitive"]
-      },
+      numArgs: 1,
+      allowedInText: true,
+      allowedInMath: true,
+      // unless in strict mode
+      argTypes: ["primitive"],
       handler: (context, args) => {
         var base = args[0];
         var mode = context.parser.mode;
@@ -10266,21 +10206,14 @@ var init_katex = __esm({
           isShifty: true,
           base
         };
-      },
-      htmlBuilder: htmlBuilder$a,
-      mathmlBuilder: mathmlBuilder$9
+      }
     });
     defineFunction({
       type: "accentUnder",
       names: ["\\underleftarrow", "\\underrightarrow", "\\underleftrightarrow", "\\undergroup", "\\underlinesegment", "\\utilde"],
-      props: {
-        numArgs: 1
-      },
+      numArgs: 1,
       handler: (_ref2, args) => {
-        var {
-          parser: parser37,
-          funcName
-        } = _ref2;
+        var parser37 = _ref2.parser, funcName = _ref2.funcName;
         var base = args[0];
         return {
           type: "accentUnder",
@@ -10355,15 +10288,10 @@ var init_katex = __esm({
         "\\\\cdleftarrow",
         "\\\\cdlongequal"
       ],
-      props: {
-        numArgs: 1,
-        numOptionalArgs: 1
-      },
+      numArgs: 1,
+      numOptionalArgs: 1,
       handler(_ref2, args, optArgs) {
-        var {
-          parser: parser37,
-          funcName
-        } = _ref2;
+        var parser37 = _ref2.parser, funcName = _ref2.funcName;
         return {
           type: "xArrow",
           mode: parser37.mode,
@@ -10452,21 +10380,15 @@ var init_katex = __esm({
     defineFunction({
       type: "mclass",
       names: ["\\mathord", "\\mathbin", "\\mathrel", "\\mathopen", "\\mathclose", "\\mathpunct", "\\mathinner"],
-      props: {
-        numArgs: 1,
-        primitive: true
-      },
+      numArgs: 1,
+      primitive: true,
       handler(_ref2, args) {
-        var {
-          parser: parser37,
-          funcName
-        } = _ref2;
+        var parser37 = _ref2.parser, funcName = _ref2.funcName;
         var body = args[0];
         return {
           type: "mclass",
           mode: parser37.mode,
           mclass: "m" + funcName.slice(5),
-          // TODO(kevinb): don't prefix with 'm'
           body: ordargument(body),
           isCharacterBox: isCharacterBox(body)
         };
@@ -10485,13 +10407,9 @@ var init_katex = __esm({
     defineFunction({
       type: "mclass",
       names: ["\\@binrel"],
-      props: {
-        numArgs: 2
-      },
+      numArgs: 2,
       handler(_ref2, args) {
-        var {
-          parser: parser37
-        } = _ref2;
+        var parser37 = _ref2.parser;
         return {
           type: "mclass",
           mode: parser37.mode,
@@ -10504,14 +10422,9 @@ var init_katex = __esm({
     defineFunction({
       type: "mclass",
       names: ["\\stackrel", "\\overset", "\\underset"],
-      props: {
-        numArgs: 2
-      },
+      numArgs: 2,
       handler(_ref3, args) {
-        var {
-          parser: parser37,
-          funcName
-        } = _ref3;
+        var parser37 = _ref3.parser, funcName = _ref3.funcName;
         var baseArg = args[1];
         var shiftedArg = args[0];
         var mclass;
@@ -10530,12 +10443,16 @@ var init_katex = __esm({
           suppressBaseShift: funcName !== "\\stackrel",
           body: ordargument(baseArg)
         };
-        var supsub = {
+        var supsub = funcName === "\\underset" ? {
           type: "supsub",
           mode: shiftedArg.mode,
           base: baseOp,
-          sup: funcName === "\\underset" ? null : shiftedArg,
-          sub: funcName === "\\underset" ? shiftedArg : null
+          sub: shiftedArg
+        } : {
+          type: "supsub",
+          mode: shiftedArg.mode,
+          base: baseOp,
+          sup: shiftedArg
         };
         return {
           type: "mclass",
@@ -10544,21 +10461,15 @@ var init_katex = __esm({
           body: [supsub],
           isCharacterBox: isCharacterBox(supsub)
         };
-      },
-      htmlBuilder: htmlBuilder$9,
-      mathmlBuilder: mathmlBuilder$8
+      }
     });
     defineFunction({
       type: "pmb",
       names: ["\\pmb"],
-      props: {
-        numArgs: 1,
-        allowedInText: true
-      },
+      numArgs: 1,
+      allowedInText: true,
       handler(_ref2, args) {
-        var {
-          parser: parser37
-        } = _ref2;
+        var parser37 = _ref2.parser;
         return {
           type: "pmb",
           mode: parser37.mode,
@@ -10606,14 +10517,9 @@ var init_katex = __esm({
     defineFunction({
       type: "cdlabel",
       names: ["\\\\cdleft", "\\\\cdright"],
-      props: {
-        numArgs: 1
-      },
+      numArgs: 1,
       handler(_ref2, args) {
-        var {
-          parser: parser37,
-          funcName
-        } = _ref2;
+        var parser37 = _ref2.parser, funcName = _ref2.funcName;
         return {
           type: "cdlabel",
           mode: parser37.mode,
@@ -10647,13 +10553,9 @@ var init_katex = __esm({
     defineFunction({
       type: "cdlabelparent",
       names: ["\\\\cdparent"],
-      props: {
-        numArgs: 1
-      },
+      numArgs: 1,
       handler(_ref2, args) {
-        var {
-          parser: parser37
-        } = _ref2;
+        var parser37 = _ref2.parser;
         return {
           type: "cdlabelparent",
           mode: parser37.mode,
@@ -10672,26 +10574,17 @@ var init_katex = __esm({
     defineFunction({
       type: "textord",
       names: ["\\@char"],
-      props: {
-        numArgs: 1,
-        allowedInText: true
-      },
+      numArgs: 1,
+      allowedInText: true,
       handler(_ref2, args) {
-        var {
-          parser: parser37
-        } = _ref2;
+        var parser37 = _ref2.parser;
         var arg = assertNodeType(args[0], "ordgroup");
-        var group2 = arg.body;
-        var number7 = "";
-        for (var i4 = 0; i4 < group2.length; i4++) {
-          var node2 = assertNodeType(group2[i4], "textord");
-          number7 += node2.text;
-        }
+        var number7 = assertCharacterGroup(arg, "\\@char has non-numeric argument");
         var code = parseInt(number7);
         var text4;
         if (isNaN(code)) {
           throw new ParseError("\\@char has non-numeric argument " + number7);
-        } else if (code < 0 || code >= 1114111) {
+        } else if (code < 0 || code > 1114111) {
           throw new ParseError("\\@char with invalid code point " + number7);
         } else if (code <= 65535) {
           text4 = String.fromCharCode(code);
@@ -10719,15 +10612,11 @@ var init_katex = __esm({
     defineFunction({
       type: "color",
       names: ["\\textcolor"],
-      props: {
-        numArgs: 2,
-        allowedInText: true,
-        argTypes: ["color", "original"]
-      },
+      numArgs: 2,
+      allowedInText: true,
+      argTypes: ["color", "original"],
       handler(_ref2, args) {
-        var {
-          parser: parser37
-        } = _ref2;
+        var parser37 = _ref2.parser;
         var color2 = assertNodeType(args[0], "color-token").color;
         var body = args[1];
         return {
@@ -10743,16 +10632,11 @@ var init_katex = __esm({
     defineFunction({
       type: "color",
       names: ["\\color"],
-      props: {
-        numArgs: 1,
-        allowedInText: true,
-        argTypes: ["color"]
-      },
+      numArgs: 1,
+      allowedInText: true,
+      argTypes: ["color"],
       handler(_ref2, args) {
-        var {
-          parser: parser37,
-          breakOnTokenText
-        } = _ref2;
+        var parser37 = _ref2.parser, breakOnTokenText = _ref2.breakOnTokenText;
         var color2 = assertNodeType(args[0], "color-token").color;
         parser37.gullet.macros.set("\\current@color", color2);
         var body = parser37.parseExpression(true, breakOnTokenText);
@@ -10762,22 +10646,16 @@ var init_katex = __esm({
           color: color2,
           body
         };
-      },
-      htmlBuilder: htmlBuilder$8,
-      mathmlBuilder: mathmlBuilder$7
+      }
     });
     defineFunction({
       type: "cr",
       names: ["\\\\"],
-      props: {
-        numArgs: 0,
-        numOptionalArgs: 0,
-        allowedInText: true
-      },
+      numArgs: 0,
+      numOptionalArgs: 0,
+      allowedInText: true,
       handler(_ref2, args, optArgs) {
-        var {
-          parser: parser37
-        } = _ref2;
+        var parser37 = _ref2.parser;
         var size4 = parser37.gullet.future().text === "[" ? parser37.parseSizeGroup(true) : null;
         var newLine = !parser37.settings.displayMode || !parser37.settings.useStrictBehavior("newLineInDisplayMode", "In LaTeX, \\\\ or \\newline does nothing in display mode");
         return {
@@ -10792,7 +10670,7 @@ var init_katex = __esm({
       htmlBuilder(group2, options2) {
         var span = makeSpan(["mspace"], [], options2);
         if (group2.newLine) {
-          span.classes.push("newline");
+          span.classes.push("katex-newline");
           if (group2.size) {
             span.style.marginTop = makeEm(calculateSize(group2.size, options2));
           }
@@ -10859,15 +10737,10 @@ var init_katex = __esm({
         "\\\\globallong"
         // can’t be entered directly
       ],
-      props: {
-        numArgs: 0,
-        allowedInText: true
-      },
+      numArgs: 0,
+      allowedInText: true,
       handler(_ref2) {
-        var {
-          parser: parser37,
-          funcName
-        } = _ref2;
+        var parser37 = _ref2.parser, funcName = _ref2.funcName;
         parser37.consumeSpaces();
         var token2 = parser37.fetch();
         if (globalMap[token2.text]) {
@@ -10882,16 +10755,11 @@ var init_katex = __esm({
     defineFunction({
       type: "internal",
       names: ["\\def", "\\gdef", "\\edef", "\\xdef"],
-      props: {
-        numArgs: 0,
-        allowedInText: true,
-        primitive: true
-      },
+      numArgs: 0,
+      allowedInText: true,
+      primitive: true,
       handler(_ref2) {
-        var {
-          parser: parser37,
-          funcName
-        } = _ref2;
+        var parser37 = _ref2.parser, funcName = _ref2.funcName;
         var tok = parser37.gullet.popToken();
         var name = tok.text;
         if (/^(?:[\\{}$&#^_]|EOF)$/.test(name)) {
@@ -10923,9 +10791,7 @@ var init_katex = __esm({
             delimiters2[numArgs].push(tok.text);
           }
         }
-        var {
-          tokens: tokens2
-        } = parser37.gullet.consumeArg();
+        var _parser$gullet$consum = parser37.gullet.consumeArg(), tokens2 = _parser$gullet$consum.tokens;
         if (insert) {
           tokens2.unshift(insert);
         }
@@ -10951,16 +10817,11 @@ var init_katex = __esm({
         "\\\\globallet"
         // can’t be entered directly
       ],
-      props: {
-        numArgs: 0,
-        allowedInText: true,
-        primitive: true
-      },
+      numArgs: 0,
+      allowedInText: true,
+      primitive: true,
       handler(_ref3) {
-        var {
-          parser: parser37,
-          funcName
-        } = _ref3;
+        var parser37 = _ref3.parser, funcName = _ref3.funcName;
         var name = checkControlSequence(parser37.gullet.popToken());
         parser37.gullet.consumeSpaces();
         var tok = getRHS(parser37);
@@ -10978,16 +10839,11 @@ var init_katex = __esm({
         "\\\\globalfuture"
         // can’t be entered directly
       ],
-      props: {
-        numArgs: 0,
-        allowedInText: true,
-        primitive: true
-      },
+      numArgs: 0,
+      allowedInText: true,
+      primitive: true,
       handler(_ref4) {
-        var {
-          parser: parser37,
-          funcName
-        } = _ref4;
+        var parser37 = _ref4.parser, funcName = _ref4.funcName;
         var name = checkControlSequence(parser37.gullet.popToken());
         var middle = parser37.gullet.popToken();
         var tok = parser37.gullet.popToken();
@@ -11553,12 +11409,10 @@ var init_katex = __esm({
     defineFunction({
       type: "delimsizing",
       names: ["\\bigl", "\\Bigl", "\\biggl", "\\Biggl", "\\bigr", "\\Bigr", "\\biggr", "\\Biggr", "\\bigm", "\\Bigm", "\\biggm", "\\Biggm", "\\big", "\\Big", "\\bigg", "\\Bigg"],
-      props: {
-        numArgs: 1,
-        argTypes: ["primitive"]
-      },
+      numArgs: 1,
+      argTypes: ["primitive"],
       handler: (context, args) => {
-        var delim = checkDelimiter(args[0], context);
+        var delim = checkDelimiter(normalizeArgument(args[0]), context);
         return {
           type: "delimsizing",
           mode: context.parser.mode,
@@ -11594,10 +11448,8 @@ var init_katex = __esm({
     defineFunction({
       type: "leftright-right",
       names: ["\\right"],
-      props: {
-        numArgs: 1,
-        primitive: true
-      },
+      numArgs: 1,
+      primitive: true,
       handler: (context, args) => {
         var color2 = context.parser.gullet.macros.get("\\current@color");
         if (color2 && typeof color2 !== "string") {
@@ -11615,10 +11467,8 @@ var init_katex = __esm({
     defineFunction({
       type: "leftright",
       names: ["\\left"],
-      props: {
-        numArgs: 1,
-        primitive: true
-      },
+      numArgs: 1,
+      primitive: true,
       handler: (context, args) => {
         var delim = checkDelimiter(args[0], context);
         var parser37 = context.parser;
@@ -11701,10 +11551,8 @@ var init_katex = __esm({
     defineFunction({
       type: "middle",
       names: ["\\middle"],
-      props: {
-        numArgs: 1,
-        primitive: true
-      },
+      numArgs: 1,
+      primitive: true,
       handler: (context, args) => {
         var delim = checkDelimiter(args[0], context);
         if (!context.parser.leftrightDepth) {
@@ -11746,7 +11594,7 @@ var init_katex = __esm({
       var imgShift;
       var isSingleChar = isCharacterBox(group2.body);
       if (label === "sout") {
-        img = makeSpan(["stretchy", "sout"]);
+        img = makeSpan(["katex-stretchy", "katex-sout"]);
         img.height = options2.fontMetrics().defaultRuleThickness / scale3;
         imgShift = -0.5 * options2.fontMetrics().xHeight;
       } else if (label === "phase") {
@@ -11916,16 +11764,11 @@ var init_katex = __esm({
     defineFunction({
       type: "enclose",
       names: ["\\colorbox"],
-      props: {
-        numArgs: 2,
-        allowedInText: true,
-        argTypes: ["color", "hbox"]
-      },
+      numArgs: 2,
+      allowedInText: true,
+      argTypes: ["color", "hbox"],
       handler(_ref2, args, optArgs) {
-        var {
-          parser: parser37,
-          funcName
-        } = _ref2;
+        var parser37 = _ref2.parser, funcName = _ref2.funcName;
         var color2 = assertNodeType(args[0], "color-token").color;
         var body = args[1];
         return {
@@ -11942,16 +11785,11 @@ var init_katex = __esm({
     defineFunction({
       type: "enclose",
       names: ["\\fcolorbox"],
-      props: {
-        numArgs: 3,
-        allowedInText: true,
-        argTypes: ["color", "color", "hbox"]
-      },
+      numArgs: 3,
+      allowedInText: true,
+      argTypes: ["color", "color", "hbox"],
       handler(_ref2, args, optArgs) {
-        var {
-          parser: parser37,
-          funcName
-        } = _ref2;
+        var parser37 = _ref2.parser, funcName = _ref2.funcName;
         var borderColor = assertNodeType(args[0], "color-token").color;
         var backgroundColor = assertNodeType(args[1], "color-token").color;
         var body = args[2];
@@ -11963,22 +11801,16 @@ var init_katex = __esm({
           borderColor,
           body
         };
-      },
-      htmlBuilder: htmlBuilder$7,
-      mathmlBuilder: mathmlBuilder$6
+      }
     });
     defineFunction({
       type: "enclose",
       names: ["\\fbox"],
-      props: {
-        numArgs: 1,
-        argTypes: ["hbox"],
-        allowedInText: true
-      },
+      numArgs: 1,
+      argTypes: ["hbox"],
+      allowedInText: true,
       handler(_ref3, args) {
-        var {
-          parser: parser37
-        } = _ref3;
+        var parser37 = _ref3.parser;
         return {
           type: "enclose",
           mode: parser37.mode,
@@ -11990,14 +11822,9 @@ var init_katex = __esm({
     defineFunction({
       type: "enclose",
       names: ["\\cancel", "\\bcancel", "\\xcancel", "\\phase"],
-      props: {
-        numArgs: 1
-      },
+      numArgs: 1,
       handler(_ref4, args) {
-        var {
-          parser: parser37,
-          funcName
-        } = _ref4;
+        var parser37 = _ref4.parser, funcName = _ref4.funcName;
         var body = args[0];
         return {
           type: "enclose",
@@ -12005,22 +11832,15 @@ var init_katex = __esm({
           label: funcName,
           body
         };
-      },
-      htmlBuilder: htmlBuilder$7,
-      mathmlBuilder: mathmlBuilder$6
+      }
     });
     defineFunction({
       type: "enclose",
       names: ["\\sout"],
-      props: {
-        numArgs: 1,
-        allowedInText: true
-      },
+      numArgs: 1,
+      allowedInText: true,
       handler(_ref5, args) {
-        var {
-          parser: parser37,
-          funcName
-        } = _ref5;
+        var parser37 = _ref5.parser, funcName = _ref5.funcName;
         if (parser37.mode === "math") {
           parser37.settings.reportNonstrict("mathVsSout", "LaTeX's \\sout works only in text mode");
         }
@@ -12031,22 +11851,16 @@ var init_katex = __esm({
           label: funcName,
           body
         };
-      },
-      htmlBuilder: htmlBuilder$7,
-      mathmlBuilder: mathmlBuilder$6
+      }
     });
     defineFunction({
       type: "enclose",
       names: ["\\angl"],
-      props: {
-        numArgs: 1,
-        argTypes: ["hbox"],
-        allowedInText: false
-      },
+      numArgs: 1,
+      argTypes: ["hbox"],
+      allowedInText: false,
       handler(_ref6, args) {
-        var {
-          parser: parser37
-        } = _ref6;
+        var parser37 = _ref6.parser;
         return {
           type: "enclose",
           mode: parser37.mode,
@@ -12307,8 +12121,8 @@ var init_katex = __esm({
       }
       var tableBody = makeSpan(["mtable"], cols);
       if (hlines.length > 0) {
-        var line2 = makeLineSpan("hline", options2, ruleThickness);
-        var dashes = makeLineSpan("hdashline", options2, ruleThickness);
+        var line2 = makeLineSpan("katex-hline", options2, ruleThickness);
+        var dashes = makeLineSpan("katex-hdashline", options2, ruleThickness);
         var vListElems = [{
           type: "elem",
           elem: tableBody,
@@ -12343,7 +12157,7 @@ var init_katex = __esm({
           positionType: "individualShift",
           children: tagSpans
         });
-        var tagCol = makeSpan(["tag"], [eqnNumCol], options2);
+        var tagCol = makeSpan(["katex-tag"], [eqnNumCol], options2);
         return makeFragment([tableBody, tagCol]);
       }
     };
@@ -12453,14 +12267,13 @@ var init_katex = __esm({
         validateAmsEnvironmentContext(context);
       }
       var cols = [];
-      var separationType = context.envName.includes("at") ? "alignat" : "align";
       var isSplit = context.envName === "split";
       var res = parseArray(context.parser, {
         cols,
         addJot: true,
         autoTag: isSplit ? void 0 : getAutoTag(context.envName),
         emptySingleRow: true,
-        colSeparationType: separationType,
+        colSeparationType: context.envName.includes("at") ? "alignat" : "align",
         maxNumCols: isSplit ? 2 : void 0,
         leqno: context.parser.settings.leqno
       }, "display");
@@ -12472,18 +12285,18 @@ var init_katex = __esm({
         body: []
       };
       if (args[0] && args[0].type === "ordgroup") {
-        var arg0 = "";
-        for (var i4 = 0; i4 < args[0].body.length; i4++) {
-          var textord2 = assertNodeType(args[0].body[i4], "textord");
-          arg0 += textord2.text;
+        var message = "Number of columns should be a positive integer";
+        var numColumns = assertCharacterGroup(args[0], message);
+        if (!/^[0-9]+$/.test(numColumns) || Number(numColumns) < 1) {
+          throw new ParseError(message, args[0]);
         }
-        numMaths = Number(arg0);
+        numMaths = Number(numColumns);
         numCols = numMaths * 2;
       }
       var isAligned = !numCols;
       res.body.forEach(function(row) {
-        for (var _i42 = 1; _i42 < row.length; _i42 += 2) {
-          var styling = assertNodeType(row[_i42], "styling");
+        for (var i5 = 1; i5 < row.length; i5 += 2) {
+          var styling = assertNodeType(row[i5], "styling");
           var ordgroup = assertNodeType(styling.body[0], "ordgroup");
           ordgroup.body.unshift(emptyGroup);
         }
@@ -12496,15 +12309,15 @@ var init_katex = __esm({
           numCols = row.length;
         }
       });
-      for (var _i52 = 0; _i52 < numCols; ++_i52) {
+      for (var i4 = 0; i4 < numCols; ++i4) {
         var align = "r";
         var pregap = 0;
-        if (_i52 % 2 === 1) {
+        if (i4 % 2 === 1) {
           align = "l";
-        } else if (_i52 > 0 && isAligned) {
+        } else if (i4 > 0 && isAligned) {
           pregap = 1;
         }
-        cols[_i52] = {
+        cols[i4] = {
           type: "align",
           align,
           pregap,
@@ -12795,11 +12608,9 @@ var init_katex = __esm({
       type: "text",
       // Doesn't matter what this is.
       names: ["\\hline", "\\hdashline"],
-      props: {
-        numArgs: 0,
-        allowedInText: true,
-        allowedInMath: true
-      },
+      numArgs: 0,
+      allowedInText: true,
+      allowedInMath: true,
       handler(context, args) {
         throw new ParseError(context.funcName + " valid only within array environment");
       }
@@ -12808,32 +12619,21 @@ var init_katex = __esm({
     defineFunction({
       type: "environment",
       names: ["\\begin", "\\end"],
-      props: {
-        numArgs: 1,
-        argTypes: ["text"]
-      },
+      numArgs: 1,
+      argTypes: ["text"],
       handler(_ref2, args) {
-        var {
-          parser: parser37,
-          funcName
-        } = _ref2;
+        var parser37 = _ref2.parser, funcName = _ref2.funcName;
         var nameGroup = args[0];
         if (nameGroup.type !== "ordgroup") {
           throw new ParseError("Invalid environment name", nameGroup);
         }
-        var envName = "";
-        for (var i4 = 0; i4 < nameGroup.body.length; ++i4) {
-          envName += assertNodeType(nameGroup.body[i4], "textord").text;
-        }
+        var envName = assertCharacterGroup(nameGroup, "Environment name should contain only text characters and spaces", true);
         if (funcName === "\\begin") {
-          if (!environments.hasOwnProperty(envName)) {
+          if (!Object.prototype.hasOwnProperty.call(environments, envName)) {
             throw new ParseError("No such environment: " + envName, nameGroup);
           }
           var env = environments[envName];
-          var {
-            args: _args,
-            optArgs
-          } = parser37.parseArguments("\\begin{" + envName + "}", env);
+          var _parser$parseArgument = parser37.parseArguments("\\begin{" + envName + "}", env), _args = _parser$parseArgument.args, optArgs = _parser$parseArgument.optArgs;
           var context = {
             mode: parser37.mode,
             envName,
@@ -12892,20 +12692,12 @@ var init_katex = __esm({
         "\\bold",
         "\\frak"
       ],
-      props: {
-        numArgs: 1,
-        allowedInArgument: true
-      },
+      numArgs: 1,
+      allowedInArgument: true,
       handler: (_ref2, args) => {
-        var {
-          parser: parser37,
-          funcName
-        } = _ref2;
+        var parser37 = _ref2.parser, funcName = _ref2.funcName;
         var body = normalizeArgument(args[0]);
-        var func = funcName;
-        if (func in fontAliases) {
-          func = fontAliases[func];
-        }
+        var func = funcName in fontAliases ? fontAliases[funcName] : funcName;
         return {
           type: "font",
           mode: parser37.mode,
@@ -12919,13 +12711,9 @@ var init_katex = __esm({
     defineFunction({
       type: "mclass",
       names: ["\\boldsymbol", "\\bm"],
-      props: {
-        numArgs: 1
-      },
+      numArgs: 1,
       handler: (_ref2, args) => {
-        var {
-          parser: parser37
-        } = _ref2;
+        var parser37 = _ref2.parser;
         var body = args[0];
         return {
           type: "mclass",
@@ -12944,19 +12732,11 @@ var init_katex = __esm({
     defineFunction({
       type: "font",
       names: ["\\rm", "\\sf", "\\tt", "\\bf", "\\it", "\\cal"],
-      props: {
-        numArgs: 0,
-        allowedInText: true
-      },
+      numArgs: 0,
+      allowedInText: true,
       handler: (_ref3, args) => {
-        var {
-          parser: parser37,
-          funcName,
-          breakOnTokenText
-        } = _ref3;
-        var {
-          mode
-        } = parser37;
+        var parser37 = _ref3.parser, funcName = _ref3.funcName, breakOnTokenText = _ref3.breakOnTokenText;
+        var mode = parser37.mode;
         var body = parser37.parseExpression(true, breakOnTokenText);
         return {
           type: "font",
@@ -12968,9 +12748,7 @@ var init_katex = __esm({
             body
           }
         };
-      },
-      htmlBuilder: htmlBuilder$5,
-      mathmlBuilder: mathmlBuilder$4
+      }
     });
     htmlBuilder$4 = (group2, options2) => {
       var style4 = options2.style;
@@ -13150,15 +12928,10 @@ var init_katex = __esm({
         "\\\\brackfrac"
         // ditto
       ],
-      props: {
-        numArgs: 2,
-        allowedInArgument: true
-      },
+      numArgs: 2,
+      allowedInArgument: true,
       handler: (_ref2, args) => {
-        var {
-          parser: parser37,
-          funcName
-        } = _ref2;
+        var parser37 = _ref2.parser, funcName = _ref2.funcName;
         var numer = args[0];
         var denom = args[1];
         var hasBarLine;
@@ -13219,16 +12992,10 @@ var init_katex = __esm({
     defineFunction({
       type: "infix",
       names: ["\\over", "\\choose", "\\atop", "\\brace", "\\brack"],
-      props: {
-        numArgs: 0,
-        infix: true
-      },
+      numArgs: 0,
+      infix: true,
       handler(_ref2) {
-        var {
-          parser: parser37,
-          funcName,
-          token: token2
-        } = _ref2;
+        var parser37 = _ref2.parser, funcName = _ref2.funcName, token2 = _ref2.token;
         var replaceWith;
         switch (funcName) {
           case "\\over":
@@ -13269,15 +13036,11 @@ var init_katex = __esm({
     defineFunction({
       type: "genfrac",
       names: ["\\genfrac"],
-      props: {
-        numArgs: 6,
-        allowedInArgument: true,
-        argTypes: ["math", "math", "size", "text", "math", "math"]
-      },
+      numArgs: 6,
+      allowedInArgument: true,
+      argTypes: ["math", "math", "size", "text", "math", "math"],
       handler(_ref3, args) {
-        var {
-          parser: parser37
-        } = _ref3;
+        var parser37 = _ref3.parser;
         var numer = args[4];
         var denom = args[5];
         var leftNode = normalizeArgument(args[0]);
@@ -13320,17 +13083,13 @@ var init_katex = __esm({
     defineFunction({
       type: "infix",
       names: ["\\above"],
-      props: {
-        numArgs: 1,
-        argTypes: ["size"],
-        infix: true
-      },
+      numArgs: 1,
+      argTypes: ["size"],
+      infix: true,
       handler(_ref4, args) {
-        var {
-          parser: parser37,
-          funcName,
-          token: token2
-        } = _ref4;
+        var parser37 = _ref4.parser;
+        _ref4.funcName;
+        var token2 = _ref4.token;
         return {
           type: "infix",
           mode: parser37.mode,
@@ -13343,15 +13102,11 @@ var init_katex = __esm({
     defineFunction({
       type: "genfrac",
       names: ["\\\\abovefrac"],
-      props: {
-        numArgs: 3,
-        argTypes: ["math", "size", "math"]
-      },
+      numArgs: 3,
+      argTypes: ["math", "size", "math"],
       handler: (_ref5, args) => {
-        var {
-          parser: parser37,
-          funcName
-        } = _ref5;
+        var parser37 = _ref5.parser;
+        _ref5.funcName;
         var numer = args[0];
         var barSize = assertNodeType(args[1], "infix").size;
         if (!barSize) {
@@ -13459,14 +13214,9 @@ var init_katex = __esm({
     defineFunction({
       type: "horizBrace",
       names: ["\\overbrace", "\\underbrace", "\\overbracket", "\\underbracket"],
-      props: {
-        numArgs: 1
-      },
+      numArgs: 1,
       handler(_ref2, args) {
-        var {
-          parser: parser37,
-          funcName
-        } = _ref2;
+        var parser37 = _ref2.parser, funcName = _ref2.funcName;
         return {
           type: "horizBrace",
           mode: parser37.mode,
@@ -13481,15 +13231,11 @@ var init_katex = __esm({
     defineFunction({
       type: "href",
       names: ["\\href"],
-      props: {
-        numArgs: 2,
-        argTypes: ["url", "original"],
-        allowedInText: true
-      },
+      numArgs: 2,
+      argTypes: ["url", "original"],
+      allowedInText: true,
       handler: (_ref2, args) => {
-        var {
-          parser: parser37
-        } = _ref2;
+        var parser37 = _ref2.parser;
         var body = args[1];
         var href = assertNodeType(args[0], "url").url;
         if (!parser37.settings.isTrusted({
@@ -13521,15 +13267,11 @@ var init_katex = __esm({
     defineFunction({
       type: "href",
       names: ["\\url"],
-      props: {
-        numArgs: 1,
-        argTypes: ["url"],
-        allowedInText: true
-      },
+      numArgs: 1,
+      argTypes: ["url"],
+      allowedInText: true,
       handler: (_ref2, args) => {
-        var {
-          parser: parser37
-        } = _ref2;
+        var parser37 = _ref2.parser;
         var href = assertNodeType(args[0], "url").url;
         if (!parser37.settings.isTrusted({
           command: "\\url",
@@ -13566,16 +13308,12 @@ var init_katex = __esm({
     defineFunction({
       type: "hbox",
       names: ["\\hbox"],
-      props: {
-        numArgs: 1,
-        argTypes: ["text"],
-        allowedInText: true,
-        primitive: true
-      },
+      numArgs: 1,
+      argTypes: ["text"],
+      allowedInText: true,
+      primitive: true,
       handler(_ref2, args) {
-        var {
-          parser: parser37
-        } = _ref2;
+        var parser37 = _ref2.parser;
         return {
           type: "hbox",
           mode: parser37.mode,
@@ -13593,17 +13331,12 @@ var init_katex = __esm({
     defineFunction({
       type: "html",
       names: ["\\htmlClass", "\\htmlId", "\\htmlStyle", "\\htmlData"],
-      props: {
-        numArgs: 2,
-        argTypes: ["raw", "original"],
-        allowedInText: true
-      },
+      numArgs: 2,
+      argTypes: ["raw", "original"],
+      allowedInText: true,
       handler: (_ref2, args) => {
-        var {
-          parser: parser37,
-          funcName,
-          token: token2
-        } = _ref2;
+        var parser37 = _ref2.parser, funcName = _ref2.funcName;
+        _ref2.token;
         var value2 = assertNodeType(args[0], "raw").string;
         var body = args[1];
         if (parser37.settings.strict) {
@@ -13634,9 +13367,23 @@ var init_katex = __esm({
             };
             break;
           case "\\htmlData": {
-            var data6 = value2.split(",");
-            for (var i4 = 0; i4 < data6.length; i4++) {
-              var item = data6[i4];
+            var ESCAPED_COMMA = "{,}";
+            var data6 = [];
+            var current = "";
+            for (var i4 = 0; i4 < value2.length; i4++) {
+              if (value2.startsWith(ESCAPED_COMMA, i4)) {
+                current += ",";
+                i4 += ESCAPED_COMMA.length - 1;
+              } else if (value2[i4] === ",") {
+                data6.push(current);
+                current = "";
+              } else {
+                current += value2[i4];
+              }
+            }
+            data6.push(current);
+            for (var _i6 = 0; _i6 < data6.length; _i6++) {
+              var item = data6[_i6];
               var firstEquals = item.indexOf("=");
               if (firstEquals < 0) {
                 throw new ParseError("\\htmlData key/value '" + item + "' missing equals sign");
@@ -13671,9 +13418,11 @@ var init_katex = __esm({
           classes3.push(...group2.attributes.class.trim().split(/\s+/));
         }
         var span = makeSpan(classes3, elements2, options2);
-        for (var attr in group2.attributes) {
-          if (attr !== "class" && group2.attributes.hasOwnProperty(attr)) {
-            span.setAttribute(attr, group2.attributes[attr]);
+        for (var _ref3 of Object.entries(group2.attributes)) {
+          var attr = _ref3[0];
+          var value2 = _ref3[1];
+          if (attr !== "class") {
+            span.setAttribute(attr, value2);
           }
         }
         return span;
@@ -13685,15 +13434,11 @@ var init_katex = __esm({
     defineFunction({
       type: "htmlmathml",
       names: ["\\html@mathml"],
-      props: {
-        numArgs: 2,
-        allowedInArgument: true,
-        allowedInText: true
-      },
+      numArgs: 2,
+      allowedInArgument: true,
+      allowedInText: true,
       handler: (_ref2, args) => {
-        var {
-          parser: parser37
-        } = _ref2;
+        var parser37 = _ref2.parser;
         return {
           type: "htmlmathml",
           mode: parser37.mode,
@@ -13734,16 +13479,12 @@ var init_katex = __esm({
     defineFunction({
       type: "includegraphics",
       names: ["\\includegraphics"],
-      props: {
-        numArgs: 1,
-        numOptionalArgs: 1,
-        argTypes: ["raw", "url"],
-        allowedInText: false
-      },
+      numArgs: 1,
+      numOptionalArgs: 1,
+      argTypes: ["raw", "url"],
+      allowedInText: false,
       handler: (_ref2, args, optArgs) => {
-        var {
-          parser: parser37
-        } = _ref2;
+        var parser37 = _ref2.parser;
         var width3 = {
           number: 0,
           unit: "em"
@@ -13850,17 +13591,12 @@ var init_katex = __esm({
     defineFunction({
       type: "kern",
       names: ["\\kern", "\\mkern", "\\hskip", "\\mskip"],
-      props: {
-        numArgs: 1,
-        argTypes: ["size"],
-        primitive: true,
-        allowedInText: true
-      },
+      numArgs: 1,
+      argTypes: ["size"],
+      primitive: true,
+      allowedInText: true,
       handler(_ref2, args) {
-        var {
-          parser: parser37,
-          funcName
-        } = _ref2;
+        var parser37 = _ref2.parser, funcName = _ref2.funcName;
         var size4 = assertNodeType(args[0], "size");
         if (parser37.settings.strict) {
           var mathFunction = funcName[1] === "m";
@@ -13895,15 +13631,10 @@ var init_katex = __esm({
     defineFunction({
       type: "lap",
       names: ["\\mathllap", "\\mathrlap", "\\mathclap"],
-      props: {
-        numArgs: 1,
-        allowedInText: true
-      },
+      numArgs: 1,
+      allowedInText: true,
       handler: (_ref2, args) => {
-        var {
-          parser: parser37,
-          funcName
-        } = _ref2;
+        var parser37 = _ref2.parser, funcName = _ref2.funcName;
         var body = args[0];
         return {
           type: "lap",
@@ -13916,20 +13647,20 @@ var init_katex = __esm({
         var inner2;
         if (group2.alignment === "clap") {
           inner2 = makeSpan([], [buildGroup$1(group2.body, options2)]);
-          inner2 = makeSpan(["inner"], [inner2], options2);
+          inner2 = makeSpan(["katex-inner"], [inner2], options2);
         } else {
-          inner2 = makeSpan(["inner"], [buildGroup$1(group2.body, options2)]);
+          inner2 = makeSpan(["katex-inner"], [buildGroup$1(group2.body, options2)]);
         }
-        var fix = makeSpan(["fix"], []);
+        var fix = makeSpan(["katex-fix"], []);
         var node2 = makeSpan([group2.alignment], [inner2, fix], options2);
-        var strut = makeSpan(["strut"]);
+        var strut = makeSpan(["katex-strut"]);
         strut.style.height = makeEm(node2.height + node2.depth);
         if (node2.depth) {
           strut.style.verticalAlign = makeEm(-node2.depth);
         }
         node2.children.unshift(strut);
-        node2 = makeSpan(["thinbox"], [node2], options2);
-        return makeSpan(["mord", "vbox"], [node2], options2);
+        node2 = makeSpan(["katex-thinbox"], [node2], options2);
+        return makeSpan(["mord", "katex-vbox"], [node2], options2);
       },
       mathmlBuilder: (group2, options2) => {
         var node2 = new MathNode("mpadded", [buildGroup2(group2.body, options2)]);
@@ -13944,16 +13675,11 @@ var init_katex = __esm({
     defineFunction({
       type: "styling",
       names: ["\\(", "$"],
-      props: {
-        numArgs: 0,
-        allowedInText: true,
-        allowedInMath: false
-      },
+      numArgs: 0,
+      allowedInText: true,
+      allowedInMath: false,
       handler(_ref2, args) {
-        var {
-          funcName,
-          parser: parser37
-        } = _ref2;
+        var funcName = _ref2.funcName, parser37 = _ref2.parser;
         var outerMode = parser37.mode;
         parser37.switchMode("math");
         var close2 = funcName === "\\(" ? "\\)" : "$";
@@ -13973,11 +13699,9 @@ var init_katex = __esm({
       type: "text",
       // Doesn't matter what this is.
       names: ["\\)", "\\]"],
-      props: {
-        numArgs: 0,
-        allowedInText: true,
-        allowedInMath: false
-      },
+      numArgs: 0,
+      allowedInText: true,
+      allowedInMath: false,
       handler(context, args) {
         throw new ParseError("Mismatched " + context.funcName);
       }
@@ -13999,14 +13723,10 @@ var init_katex = __esm({
     defineFunction({
       type: "mathchoice",
       names: ["\\mathchoice"],
-      props: {
-        numArgs: 4,
-        primitive: true
-      },
+      numArgs: 4,
+      primitive: true,
       handler: (_ref2, args) => {
-        var {
-          parser: parser37
-        } = _ref2;
+        var parser37 = _ref2.parser;
         return {
           type: "mathchoice",
           mode: parser37.mode,
@@ -14244,14 +13964,9 @@ var init_katex = __esm({
     defineFunction({
       type: "op",
       names: ["\\coprod", "\\bigvee", "\\bigwedge", "\\biguplus", "\\bigcap", "\\bigcup", "\\intop", "\\prod", "\\sum", "\\bigotimes", "\\bigoplus", "\\bigodot", "\\bigsqcup", "\\smallint", "\u220F", "\u2210", "\u2211", "\u22C0", "\u22C1", "\u22C2", "\u22C3", "\u2A00", "\u2A01", "\u2A02", "\u2A04", "\u2A06"],
-      props: {
-        numArgs: 0
-      },
+      numArgs: 0,
       handler: (_ref2, args) => {
-        var {
-          parser: parser37,
-          funcName
-        } = _ref2;
+        var parser37 = _ref2.parser, funcName = _ref2.funcName;
         var fName = funcName;
         if (fName.length === 1) {
           fName = singleCharBigOps[fName];
@@ -14271,14 +13986,10 @@ var init_katex = __esm({
     defineFunction({
       type: "op",
       names: ["\\mathop"],
-      props: {
-        numArgs: 1,
-        primitive: true
-      },
+      numArgs: 1,
+      primitive: true,
       handler: (_ref2, args) => {
-        var {
-          parser: parser37
-        } = _ref2;
+        var parser37 = _ref2.parser;
         var body = args[0];
         return {
           type: "op",
@@ -14288,9 +13999,7 @@ var init_katex = __esm({
           symbol: false,
           body: ordargument(body)
         };
-      },
-      htmlBuilder: htmlBuilder$2,
-      mathmlBuilder: mathmlBuilder$1
+      }
     });
     singleCharIntegrals = {
       "\u222B": "\\int",
@@ -14303,14 +14012,9 @@ var init_katex = __esm({
     defineFunction({
       type: "op",
       names: ["\\arcsin", "\\arccos", "\\arctan", "\\arctg", "\\arcctg", "\\arg", "\\ch", "\\cos", "\\cosec", "\\cosh", "\\cot", "\\cotg", "\\coth", "\\csc", "\\ctg", "\\cth", "\\deg", "\\dim", "\\exp", "\\hom", "\\ker", "\\lg", "\\ln", "\\log", "\\sec", "\\sin", "\\sinh", "\\sh", "\\tan", "\\tanh", "\\tg", "\\th"],
-      props: {
-        numArgs: 0
-      },
+      numArgs: 0,
       handler(_ref3) {
-        var {
-          parser: parser37,
-          funcName
-        } = _ref3;
+        var parser37 = _ref3.parser, funcName = _ref3.funcName;
         return {
           type: "op",
           mode: parser37.mode,
@@ -14319,21 +14023,14 @@ var init_katex = __esm({
           symbol: false,
           name: funcName
         };
-      },
-      htmlBuilder: htmlBuilder$2,
-      mathmlBuilder: mathmlBuilder$1
+      }
     });
     defineFunction({
       type: "op",
       names: ["\\det", "\\gcd", "\\inf", "\\lim", "\\max", "\\min", "\\Pr", "\\sup"],
-      props: {
-        numArgs: 0
-      },
+      numArgs: 0,
       handler(_ref4) {
-        var {
-          parser: parser37,
-          funcName
-        } = _ref4;
+        var parser37 = _ref4.parser, funcName = _ref4.funcName;
         return {
           type: "op",
           mode: parser37.mode,
@@ -14342,22 +14039,15 @@ var init_katex = __esm({
           symbol: false,
           name: funcName
         };
-      },
-      htmlBuilder: htmlBuilder$2,
-      mathmlBuilder: mathmlBuilder$1
+      }
     });
     defineFunction({
       type: "op",
       names: ["\\int", "\\iint", "\\iiint", "\\oint", "\\oiint", "\\oiiint", "\u222B", "\u222C", "\u222D", "\u222E", "\u222F", "\u2230"],
-      props: {
-        numArgs: 0,
-        allowedInArgument: true
-      },
+      numArgs: 0,
+      allowedInArgument: true,
       handler(_ref5) {
-        var {
-          parser: parser37,
-          funcName
-        } = _ref5;
+        var parser37 = _ref5.parser, funcName = _ref5.funcName;
         var fName = funcName;
         if (fName.length === 1) {
           fName = singleCharIntegrals[fName];
@@ -14370,9 +14060,7 @@ var init_katex = __esm({
           symbol: true,
           name: fName
         };
-      },
-      htmlBuilder: htmlBuilder$2,
-      mathmlBuilder: mathmlBuilder$1
+      }
     });
     htmlBuilder$1 = (grp, options2) => {
       var supGroup;
@@ -14464,14 +14152,9 @@ var init_katex = __esm({
     defineFunction({
       type: "operatorname",
       names: ["\\operatorname@", "\\operatornamewithlimits"],
-      props: {
-        numArgs: 1
-      },
+      numArgs: 1,
       handler: (_ref2, args) => {
-        var {
-          parser: parser37,
-          funcName
-        } = _ref2;
+        var parser37 = _ref2.parser, funcName = _ref2.funcName;
         var body = args[0];
         return {
           type: "operatorname",
@@ -14501,13 +14184,9 @@ var init_katex = __esm({
     defineFunction({
       type: "overline",
       names: ["\\overline"],
-      props: {
-        numArgs: 1
-      },
+      numArgs: 1,
       handler(_ref2, args) {
-        var {
-          parser: parser37
-        } = _ref2;
+        var parser37 = _ref2.parser;
         var body = args[0];
         return {
           type: "overline",
@@ -14535,7 +14214,7 @@ var init_katex = __esm({
             size: defaultRuleThickness
           }]
         });
-        return makeSpan(["mord", "overline"], [vlist], options2);
+        return makeSpan(["mord", "katex-overline"], [vlist], options2);
       },
       mathmlBuilder(group2, options2) {
         var operator = new MathNode("mo", [new TextNode("\u203E")]);
@@ -14548,14 +14227,10 @@ var init_katex = __esm({
     defineFunction({
       type: "phantom",
       names: ["\\phantom"],
-      props: {
-        numArgs: 1,
-        allowedInText: true
-      },
+      numArgs: 1,
+      allowedInText: true,
       handler: (_ref2, args) => {
-        var {
-          parser: parser37
-        } = _ref2;
+        var parser37 = _ref2.parser;
         var body = args[0];
         return {
           type: "phantom",
@@ -14576,14 +14251,10 @@ var init_katex = __esm({
     defineFunction({
       type: "vphantom",
       names: ["\\vphantom"],
-      props: {
-        numArgs: 1,
-        allowedInText: true
-      },
+      numArgs: 1,
+      allowedInText: true,
       handler: (_ref2, args) => {
-        var {
-          parser: parser37
-        } = _ref2;
+        var parser37 = _ref2.parser;
         var body = args[0];
         return {
           type: "vphantom",
@@ -14592,8 +14263,8 @@ var init_katex = __esm({
         };
       },
       htmlBuilder: (group2, options2) => {
-        var inner2 = makeSpan(["inner"], [buildGroup$1(group2.body, options2.withPhantom())]);
-        var fix = makeSpan(["fix"], []);
+        var inner2 = makeSpan(["katex-inner"], [buildGroup$1(group2.body, options2.withPhantom())]);
+        var fix = makeSpan(["katex-fix"], []);
         return makeSpan(["mord", "rlap"], [inner2, fix], options2);
       },
       mathmlBuilder: (group2, options2) => {
@@ -14607,15 +14278,11 @@ var init_katex = __esm({
     defineFunction({
       type: "raisebox",
       names: ["\\raisebox"],
-      props: {
-        numArgs: 2,
-        argTypes: ["size", "hbox"],
-        allowedInText: true
-      },
+      numArgs: 2,
+      argTypes: ["size", "hbox"],
+      allowedInText: true,
       handler(_ref2, args) {
-        var {
-          parser: parser37
-        } = _ref2;
+        var parser37 = _ref2.parser;
         var amount = assertNodeType(args[0], "size").value;
         var body = args[1];
         return {
@@ -14644,18 +14311,43 @@ var init_katex = __esm({
         return node2;
       }
     });
+    handler = (_ref2, args) => {
+      var parser37 = _ref2.parser;
+      return {
+        type: "reflectbox",
+        mode: parser37.mode,
+        body: args[0]
+      };
+    };
+    defineFunction({
+      type: "reflectbox",
+      names: ["\\reflectbox"],
+      numArgs: 1,
+      argTypes: ["hbox"],
+      allowedInText: true,
+      handler,
+      htmlBuilder(group2, options2) {
+        return makeSpan(["mord", "reflectbox"], [buildGroup$1(group2.body, options2)], options2);
+      },
+      mathmlBuilder(group2, options2) {
+        return buildGroup2(group2.body, options2);
+      }
+    });
+    defineFunction({
+      type: "reflectbox",
+      names: ["\\mathreflectbox"],
+      numArgs: 1,
+      argTypes: ["math"],
+      handler
+    });
     defineFunction({
       type: "internal",
       names: ["\\relax"],
-      props: {
-        numArgs: 0,
-        allowedInText: true,
-        allowedInArgument: true
-      },
+      numArgs: 0,
+      allowedInText: true,
+      allowedInArgument: true,
       handler(_ref2) {
-        var {
-          parser: parser37
-        } = _ref2;
+        var parser37 = _ref2.parser;
         return {
           type: "internal",
           mode: parser37.mode
@@ -14665,17 +14357,13 @@ var init_katex = __esm({
     defineFunction({
       type: "rule",
       names: ["\\rule"],
-      props: {
-        numArgs: 2,
-        numOptionalArgs: 1,
-        allowedInText: true,
-        allowedInMath: true,
-        argTypes: ["size", "size", "size"]
-      },
+      numArgs: 2,
+      numOptionalArgs: 1,
+      allowedInText: true,
+      allowedInMath: true,
+      argTypes: ["size", "size", "size"],
       handler(_ref2, args, optArgs) {
-        var {
-          parser: parser37
-        } = _ref2;
+        var parser37 = _ref2.parser;
         var shift2 = optArgs[0];
         var width3 = assertNodeType(args[0], "size");
         var height2 = assertNodeType(args[1], "size");
@@ -14688,7 +14376,7 @@ var init_katex = __esm({
         };
       },
       htmlBuilder(group2, options2) {
-        var rule = makeSpan(["mord", "rule"], [], options2);
+        var rule = makeSpan(["mord", "katex-rule"], [], options2);
         var width3 = calculateSize(group2.width, options2);
         var height2 = calculateSize(group2.height, options2);
         var shift2 = group2.shift ? calculateSize(group2.shift, options2) : 0;
@@ -14729,16 +14417,10 @@ var init_katex = __esm({
     defineFunction({
       type: "sizing",
       names: sizeFuncs,
-      props: {
-        numArgs: 0,
-        allowedInText: true
-      },
+      numArgs: 0,
+      allowedInText: true,
       handler: (_ref2, args) => {
-        var {
-          breakOnTokenText,
-          funcName,
-          parser: parser37
-        } = _ref2;
+        var breakOnTokenText = _ref2.breakOnTokenText, funcName = _ref2.funcName, parser37 = _ref2.parser;
         var body = parser37.parseExpression(false, breakOnTokenText);
         return {
           type: "sizing",
@@ -14760,15 +14442,11 @@ var init_katex = __esm({
     defineFunction({
       type: "smash",
       names: ["\\smash"],
-      props: {
-        numArgs: 1,
-        numOptionalArgs: 1,
-        allowedInText: true
-      },
+      numArgs: 1,
+      numOptionalArgs: 1,
+      allowedInText: true,
       handler: (_ref2, args, optArgs) => {
-        var {
-          parser: parser37
-        } = _ref2;
+        var parser37 = _ref2.parser;
         var smashHeight = false;
         var smashDepth = false;
         var tbArg = optArgs[0] && assertNodeType(optArgs[0], "ordgroup");
@@ -14812,7 +14490,7 @@ var init_katex = __esm({
           node2.depth = 0;
         }
         if (group2.smashHeight && group2.smashDepth) {
-          return makeSpan(["mord", "smash"], [node2], options2);
+          return makeSpan(["mord", "katex-smash"], [node2], options2);
         }
         if (node2.children) {
           for (var i4 = 0; i4 < node2.children.length; i4++) {
@@ -14847,14 +14525,10 @@ var init_katex = __esm({
     defineFunction({
       type: "sqrt",
       names: ["\\sqrt"],
-      props: {
-        numArgs: 1,
-        numOptionalArgs: 1
-      },
+      numArgs: 1,
+      numOptionalArgs: 1,
       handler(_ref2, args, optArgs) {
-        var {
-          parser: parser37
-        } = _ref2;
+        var parser37 = _ref2.parser;
         var index = optArgs[0];
         var body = args[0];
         return {
@@ -14878,11 +14552,7 @@ var init_katex = __esm({
         }
         var lineClearance = theta + phi2 / 4;
         var minDelimiterHeight = inner2.height + inner2.depth + lineClearance + theta;
-        var {
-          span: img,
-          ruleWidth,
-          advanceWidth
-        } = makeSqrtImage(minDelimiterHeight, options2);
+        var _makeSqrtImage = makeSqrtImage(minDelimiterHeight, options2), img = _makeSqrtImage.span, ruleWidth = _makeSqrtImage.ruleWidth, advanceWidth = _makeSqrtImage.advanceWidth;
         var delimDepth = img.height - ruleWidth;
         if (delimDepth > inner2.height + inner2.depth + lineClearance) {
           lineClearance = (lineClearance + delimDepth - inner2.height - inner2.depth) / 2;
@@ -14920,15 +14590,12 @@ var init_katex = __esm({
               elem: rootm
             }]
           });
-          var rootVListWrap = makeSpan(["root"], [rootVList]);
+          var rootVListWrap = makeSpan(["katex-root"], [rootVList]);
           return makeSpan(["mord", "sqrt"], [rootVListWrap, body], options2);
         }
       },
       mathmlBuilder(group2, options2) {
-        var {
-          body,
-          index
-        } = group2;
+        var body = group2.body, index = group2.index;
         return index ? new MathNode("mroot", [buildGroup2(body, options2), buildGroup2(index, options2)]) : new MathNode("msqrt", [buildGroup2(body, options2)]);
       }
     });
@@ -14941,17 +14608,11 @@ var init_katex = __esm({
     defineFunction({
       type: "styling",
       names: ["\\displaystyle", "\\textstyle", "\\scriptstyle", "\\scriptscriptstyle"],
-      props: {
-        numArgs: 0,
-        allowedInText: true,
-        primitive: true
-      },
+      numArgs: 0,
+      allowedInText: true,
+      primitive: true,
       handler(_ref2, args) {
-        var {
-          breakOnTokenText,
-          funcName,
-          parser: parser37
-        } = _ref2;
+        var breakOnTokenText = _ref2.breakOnTokenText, funcName = _ref2.funcName, parser37 = _ref2.parser;
         var body = parser37.parseExpression(true, breakOnTokenText);
         var style4 = funcName.slice(1, funcName.length - 5);
         if (!isStyleStr(style4)) {
@@ -15020,11 +14681,7 @@ var init_katex = __esm({
         if (builderDelegate) {
           return builderDelegate(group2, options2);
         }
-        var {
-          base: valueBase,
-          sup: valueSup,
-          sub: valueSub
-        } = group2;
+        var valueBase = group2.base, valueSup = group2.sup, valueSub = group2.sub;
         var base = buildGroup$1(valueBase, options2);
         var supm;
         var subm;
@@ -15207,7 +14864,7 @@ var init_katex = __esm({
     defineFunctionBuilders({
       type: "mathord",
       htmlBuilder(group2, options2) {
-        return makeOrd(group2, options2, "mathord");
+        return makeOrd(group2, options2);
       },
       mathmlBuilder(group2, options2) {
         var node2 = new MathNode("mi", [makeText(group2.text, group2.mode, options2)]);
@@ -15221,7 +14878,7 @@ var init_katex = __esm({
     defineFunctionBuilders({
       type: "textord",
       htmlBuilder(group2, options2) {
-        return makeOrd(group2, options2, "textord");
+        return makeOrd(group2, options2);
       },
       mathmlBuilder(group2, options2) {
         var text4 = makeText(group2.text, group2.mode, options2);
@@ -15242,44 +14899,37 @@ var init_katex = __esm({
         return node2;
       }
     });
-    cssSpace = {
-      "\\nobreak": "nobreak",
-      "\\allowbreak": "allowbreak"
-    };
-    regularSpace = {
-      " ": {},
-      "\\ ": {},
-      "~": {
-        className: "nobreak"
-      },
-      "\\space": {},
-      "\\nobreakspace": {
-        className: "nobreak"
-      }
-    };
+    cssSpace = /* @__PURE__ */ new Map([["\\nobreak", "nobreak"], ["\\allowbreak", "allowbreak"]]);
+    regularSpace = /* @__PURE__ */ new Map([[" ", {}], ["\\ ", {}], ["~", {
+      className: "nobreak"
+    }], ["\\space", {}], ["\\nobreakspace", {
+      className: "nobreak"
+    }]]);
     defineFunctionBuilders({
       type: "spacing",
       htmlBuilder(group2, options2) {
-        if (regularSpace.hasOwnProperty(group2.text)) {
-          var className = regularSpace[group2.text].className || "";
+        var regularSpaceItem = regularSpace.get(group2.text);
+        var cssSpaceClass = cssSpace.get(group2.text);
+        if (regularSpaceItem) {
+          var className = regularSpaceItem.className || "";
           if (group2.mode === "text") {
-            var ord = makeOrd(group2, options2, "textord");
+            var ord = makeOrd(group2, options2);
             ord.classes.push(className);
             return ord;
           } else {
             return makeSpan(["mspace", className], [mathsym(group2.text, group2.mode, options2)], options2);
           }
-        } else if (cssSpace.hasOwnProperty(group2.text)) {
-          return makeSpan(["mspace", cssSpace[group2.text]], [], options2);
+        } else if (cssSpaceClass) {
+          return makeSpan(["mspace", cssSpaceClass], [], options2);
         } else {
           throw new ParseError('Unknown type of space "' + group2.text + '"');
         }
       },
       mathmlBuilder(group2, options2) {
         var node2;
-        if (regularSpace.hasOwnProperty(group2.text)) {
+        if (regularSpace.has(group2.text)) {
           node2 = new MathNode("mtext", [new TextNode("\xA0")]);
-        } else if (cssSpace.hasOwnProperty(group2.text)) {
+        } else if (cssSpace.has(group2.text)) {
           return new MathNode("mspace");
         } else {
           throw new ParseError('Unknown type of space "' + group2.text + '"');
@@ -15345,17 +14995,12 @@ var init_katex = __esm({
         "\\textup",
         "\\emph"
       ],
-      props: {
-        numArgs: 1,
-        argTypes: ["text"],
-        allowedInArgument: true,
-        allowedInText: true
-      },
+      numArgs: 1,
+      argTypes: ["text"],
+      allowedInArgument: true,
+      allowedInText: true,
       handler(_ref2, args) {
-        var {
-          parser: parser37,
-          funcName
-        } = _ref2;
+        var parser37 = _ref2.parser, funcName = _ref2.funcName;
         var body = args[0];
         return {
           type: "text",
@@ -15377,14 +15022,10 @@ var init_katex = __esm({
     defineFunction({
       type: "underline",
       names: ["\\underline"],
-      props: {
-        numArgs: 1,
-        allowedInText: true
-      },
+      numArgs: 1,
+      allowedInText: true,
       handler(_ref2, args) {
-        var {
-          parser: parser37
-        } = _ref2;
+        var parser37 = _ref2.parser;
         return {
           type: "underline",
           mode: parser37.mode,
@@ -15412,7 +15053,7 @@ var init_katex = __esm({
             elem: innerGroup
           }]
         });
-        return makeSpan(["mord", "underline"], [vlist], options2);
+        return makeSpan(["mord", "katex-underline"], [vlist], options2);
       },
       mathmlBuilder(group2, options2) {
         var operator = new MathNode("mo", [new TextNode("\u203E")]);
@@ -15425,16 +15066,12 @@ var init_katex = __esm({
     defineFunction({
       type: "vcenter",
       names: ["\\vcenter"],
-      props: {
-        numArgs: 1,
-        argTypes: ["original"],
-        // In LaTeX, \vcenter can act only on a box.
-        allowedInText: false
-      },
+      numArgs: 1,
+      argTypes: ["original"],
+      // In LaTeX, \vcenter can act only on a box.
+      allowedInText: false,
       handler(_ref2, args) {
-        var {
-          parser: parser37
-        } = _ref2;
+        var parser37 = _ref2.parser;
         return {
           type: "vcenter",
           mode: parser37.mode,
@@ -15462,10 +15099,8 @@ var init_katex = __esm({
     defineFunction({
       type: "verb",
       names: ["\\verb"],
-      props: {
-        numArgs: 0,
-        allowedInText: true
-      },
+      numArgs: 0,
+      allowedInText: true,
       handler(context, args, optArgs) {
         throw new ParseError("\\verb ended by end of line instead of matching delimiter");
       },
@@ -15588,13 +15223,11 @@ var init_katex = __esm({
           throw new ParseError("Unbalanced namespace destruction: attempt to pop global namespace; please report this as a bug");
         }
         var undefs = this.undefStack.pop();
-        for (var undef2 in undefs) {
-          if (undefs.hasOwnProperty(undef2)) {
-            if (undefs[undef2] == null) {
-              delete this.current[undef2];
-            } else {
-              this.current[undef2] = undefs[undef2];
-            }
+        for (var key of Object.keys(undefs)) {
+          if (undefs[key] === void 0) {
+            delete this.current[key];
+          } else {
+            this.current[key] = undefs[key];
           }
         }
       }
@@ -15612,7 +15245,7 @@ var init_katex = __esm({
        * `get(name) != null`.
        */
       has(name) {
-        return this.current.hasOwnProperty(name) || this.builtins.hasOwnProperty(name);
+        return Object.prototype.hasOwnProperty.call(this.current, name) || Object.prototype.hasOwnProperty.call(this.builtins, name);
       }
       /**
        * Get the current value of a name, or `undefined` if there is no value.
@@ -15623,10 +15256,12 @@ var init_katex = __esm({
        * `if (namespace.has(...))`.
        */
       get(name) {
-        if (this.current.hasOwnProperty(name)) {
+        if (Object.prototype.hasOwnProperty.call(this.current, name)) {
           return this.current[name];
-        } else {
+        } else if (Object.prototype.hasOwnProperty.call(this.builtins, name)) {
           return this.builtins[name];
+        } else {
+          return void 0;
         }
       }
       /**
@@ -15649,8 +15284,8 @@ var init_katex = __esm({
           }
         } else {
           var top2 = this.undefStack[this.undefStack.length - 1];
-          if (top2 && !top2.hasOwnProperty(name)) {
-            top2[name] = this.current[name];
+          if (top2 && !Object.prototype.hasOwnProperty.call(top2, name)) {
+            top2[name] = Object.prototype.hasOwnProperty.call(this.current, name) ? this.current[name] : void 0;
           }
         }
         if (value2 == null) {
@@ -16142,6 +15777,8 @@ var init_katex = __esm({
     defineMacro("\u27E7", "\\rrbracket");
     defineMacro("\\lBrace", "\\html@mathml{\\mathopen{\\{\\mkern-3.2mu[}}{\\mathopen{\\char`\u2983}}");
     defineMacro("\\rBrace", "\\html@mathml{\\mathclose{]\\mkern-3.2mu\\}}}{\\mathclose{\\char`\u2984}}");
+    defineMacro("\u21A4", "\\mapsfrom");
+    defineMacro("\\mapsfrom", "\\html@mathml{\\mathrel{\\mathreflectbox{\\mapsto}}}{\\mathrel{\\char`\u21A4}}");
     defineMacro("\u2983", "\\lBrace");
     defineMacro("\u2984", "\\rBrace");
     defineMacro("\\minuso", "\\mathbin{\\html@mathml{{\\mathrlap{\\mathchoice{\\kern{0.145em}}{\\kern{0.145em}}{\\kern{0.1015em}}{\\kern{0.0725em}}\\circ}{-}}}{\\char`\u29B5}}");
@@ -16425,16 +16062,14 @@ var init_katex = __esm({
             return null;
           }
           start2 = this.popToken();
-          ({
-            tokens: tokens2,
-            end
-          } = this.consumeArg(["]"]));
+          var _this$consumeArg = this.consumeArg(["]"]);
+          tokens2 = _this$consumeArg.tokens;
+          end = _this$consumeArg.end;
         } else {
-          ({
-            tokens: tokens2,
-            start: start2,
-            end
-          } = this.consumeArg());
+          var _this$consumeArg2 = this.consumeArg();
+          tokens2 = _this$consumeArg2.tokens;
+          start2 = _this$consumeArg2.start;
+          end = _this$consumeArg2.end;
         }
         this.pushToken(new Token("EOF", end.loc));
         this.pushTokens(tokens2);
@@ -16703,14 +16338,17 @@ var init_katex = __esm({
        * `implicitCommands`.
        */
       isDefined(name) {
-        return this.macros.has(name) || functions.hasOwnProperty(name) || symbols.math.hasOwnProperty(name) || symbols.text.hasOwnProperty(name) || implicitCommands.hasOwnProperty(name);
+        return this.macros.has(name) || Object.prototype.hasOwnProperty.call(functions, name) || Object.prototype.hasOwnProperty.call(symbols.math, name) || Object.prototype.hasOwnProperty.call(symbols.text, name) || Object.prototype.hasOwnProperty.call(implicitCommands, name);
       }
       /**
        * Determine whether a command is expandable.
        */
       isExpandable(name) {
         var macro = this.macros.get(name);
-        return macro != null ? typeof macro === "string" || typeof macro === "function" || !macro.unexpandable : functions.hasOwnProperty(name) && !functions[name].primitive;
+        if (macro != null) {
+          return typeof macro === "string" || typeof macro === "function" || !macro.unexpandable;
+        }
+        return Object.prototype.hasOwnProperty.call(functions, name) && !functions[name].primitive;
       }
     };
     unicodeSubRegEx = /^[₊₋₌₍₎₀₁₂₃₄₅₆₇₈₉ₐₑₕᵢⱼₖₗₘₙₒₚᵣₛₜᵤᵥₓᵦᵧᵨᵩᵪ]/;
@@ -17455,8 +17093,7 @@ var init_katex = __esm({
           var lex = this.fetch();
           if (lex.text === "\\limits" || lex.text === "\\nolimits") {
             if (base && base.type === "op") {
-              var limits = lex.text === "\\limits";
-              base.limits = limits;
+              base.limits = lex.text === "\\limits";
               base.alwaysHandleSupSub = true;
             } else if (base && base.type === "operatorname") {
               if (base.alwaysHandleSupSub) {
@@ -17533,12 +17170,26 @@ var init_katex = __esm({
             break;
           }
         }
-        if (superscript || subscript) {
+        if (superscript && subscript) {
           return {
             type: "supsub",
             mode: this.mode,
             base,
             sup: superscript,
+            sub: subscript
+          };
+        } else if (superscript) {
+          return {
+            type: "supsub",
+            mode: this.mode,
+            base,
+            sup: superscript
+          };
+        } else if (subscript) {
+          return {
+            type: "supsub",
+            mode: this.mode,
+            base,
             sub: subscript
           };
         } else {
@@ -17563,10 +17214,7 @@ var init_katex = __esm({
         } else if (this.mode === "math" && funcData.allowedInMath === false) {
           throw new ParseError("Can't use function '" + func + "' in math mode", token2);
         }
-        var {
-          args,
-          optArgs
-        } = this.parseArguments(func, funcData);
+        var _this$parseArguments = this.parseArguments(func, funcData), args = _this$parseArguments.args, optArgs = _this$parseArguments.optArgs;
         return this.callFunction(func, args, optArgs, token2, breakOnTokenText);
       }
       /**
@@ -17590,7 +17238,9 @@ var init_katex = __esm({
        * Parses the arguments of a function or environment
        */
       parseArguments(func, funcData) {
-        var totalArgs = funcData.numArgs + funcData.numOptionalArgs;
+        var _funcData$numOptional;
+        var numOptionalArgs = (_funcData$numOptional = funcData.numOptionalArgs) != null ? _funcData$numOptional : 0;
+        var totalArgs = funcData.numArgs + numOptionalArgs;
         if (totalArgs === 0) {
           return {
             args: [],
@@ -17600,8 +17250,9 @@ var init_katex = __esm({
         var args = [];
         var optArgs = [];
         for (var i4 = 0; i4 < totalArgs; i4++) {
-          var argType = funcData.argTypes && funcData.argTypes[i4];
-          var isOptional = i4 < funcData.numOptionalArgs;
+          var _funcData$argTypes;
+          var argType = (_funcData$argTypes = funcData.argTypes) == null ? void 0 : _funcData$argTypes[i4];
+          var isOptional = i4 < numOptionalArgs;
           if ("primitive" in funcData && funcData.primitive && argType == null || // \sqrt expands into primitive if optional argument doesn't exist
           funcData.type === "sqrt" && i4 === 1 && optArgs[0] == null) {
             argType = "primitive";
@@ -17646,7 +17297,7 @@ var init_katex = __esm({
             } : null;
           }
           case "raw": {
-            var token2 = this.parseStringGroup("raw", optional2);
+            var token2 = this.parseStringGroup(optional2);
             return token2 != null ? {
               type: "raw",
               mode: "text",
@@ -17664,7 +17315,6 @@ var init_katex = __esm({
             return _group2;
           }
           case "original":
-          case null:
           case void 0:
             return this.parseArgumentGroup(optional2);
           default:
@@ -17683,7 +17333,7 @@ var init_katex = __esm({
        * Parses a group, essentially returning the string formed by the
        * brace-enclosed tokens plus some position information.
        */
-      parseStringGroup(modeName, optional2) {
+      parseStringGroup(optional2) {
         var argToken = this.gullet.scanArgument(optional2);
         if (argToken == null) {
           return null;
@@ -17722,7 +17372,7 @@ var init_katex = __esm({
        * Parses a color description.
        */
       parseColorGroup(optional2) {
-        var res = this.parseStringGroup("color", optional2);
+        var res = this.parseStringGroup(optional2);
         if (res == null) {
           return null;
         }
@@ -17750,7 +17400,7 @@ var init_katex = __esm({
         if (!optional2 && this.gullet.future().text !== "{") {
           res = this.parseRegexGroup(/^[-+]? *(?:$|\d+|\d+\.\d*|\.\d*) *[a-z]{0,2} *$/, "size");
         } else {
-          res = this.parseStringGroup("size", optional2);
+          res = this.parseStringGroup(optional2);
         }
         if (!res) {
           return null;
@@ -17785,7 +17435,7 @@ var init_katex = __esm({
       parseUrlGroup(optional2) {
         this.gullet.lexer.setCatcode("%", 13);
         this.gullet.lexer.setCatcode("~", 12);
-        var res = this.parseStringGroup("url", optional2);
+        var res = this.parseStringGroup(optional2);
         this.gullet.lexer.setCatcode("%", 14);
         this.gullet.lexer.setCatcode("~", 13);
         if (res == null) {
@@ -17856,7 +17506,7 @@ var init_katex = __esm({
           };
         } else {
           result = this.parseFunction(breakOnTokenText, name) || this.parseSymbol();
-          if (result == null && text4[0] === "\\" && !implicitCommands.hasOwnProperty(text4)) {
+          if (result == null && text4[0] === "\\" && !Object.prototype.hasOwnProperty.call(implicitCommands, text4)) {
             if (this.settings.throwOnError) {
               throw new ParseError("Undefined control sequence: " + text4, firstToken);
             }
@@ -17942,7 +17592,7 @@ var init_katex = __esm({
             star: star2
           };
         }
-        if (unicodeSymbols.hasOwnProperty(text4[0]) && !symbols[this.mode][text4[0]]) {
+        if (Object.prototype.hasOwnProperty.call(unicodeSymbols, text4[0]) && !symbols[this.mode][text4[0]]) {
           if (this.settings.strict && this.mode === "math") {
             this.settings.reportNonstrict("unicodeTextInMathMode", 'Accented Unicode text character "' + text4[0] + '" used in math mode', nucleus);
           }
@@ -18095,7 +17745,7 @@ var init_katex = __esm({
         return renderError(error3, expression, settings);
       }
     };
-    version = "0.16.47";
+    version = "0.18.10";
     __domTree = {
       Span,
       Anchor,
@@ -18345,8 +17995,8 @@ var diagrams;
 var registerDiagram;
 var getDiagram;
 var DiagramNotFoundError;
-var init_chunk_VPRB5NB3 = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-VPRB5NB3.mjs"() {
+var init_chunk_DSNLSHJZ = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-DSNLSHJZ.mjs"() {
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_dist();
@@ -22676,6 +22326,7 @@ var init_chunk_VPRB5NB3 = __esm({
       },
       "mindmap": {
         "useMaxWidth": true,
+        "colorBy": "branch",
         "padding": 10,
         "maxNodeWidth": 200,
         "layoutAlgorithm": "cose-bilkent"
@@ -31144,9 +30795,9 @@ var init_src32 = __esm({
   }
 });
 var selectSvgElement;
-var init_chunk_Z6ETV63D = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-Z6ETV63D.mjs"() {
-    init_chunk_VPRB5NB3();
+var init_chunk_OYAV6JZA = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-OYAV6JZA.mjs"() {
+    init_chunk_DSNLSHJZ();
     init_chunk_Y2CYZVJY();
     init_src32();
     selectSvgElement = /* @__PURE__ */ __name((id38) => {
@@ -34422,9 +34073,9 @@ var isLabelStyle;
 var styles2String;
 var userNodeOverrides;
 var getStrokeDashArray;
-var init_chunk_4EA7E6EY = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-4EA7E6EY.mjs"() {
-    init_chunk_VPRB5NB3();
+var init_chunk_UHW7PFBP = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-UHW7PFBP.mjs"() {
+    init_chunk_DSNLSHJZ();
     init_chunk_Y2CYZVJY();
     solidStateFill = /* @__PURE__ */ __name((color2) => {
       const { handDrawnSeed } = getConfig2();
@@ -34905,9 +34556,9 @@ var registerIconPacks;
 var getRegisteredIconData;
 var isIconAvailable;
 var getIconSVG;
-var init_chunk_HJ2JQQFS = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-HJ2JQQFS.mjs"() {
-    init_chunk_VPRB5NB3();
+var init_chunk_YZO67HFG = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-YZO67HFG.mjs"() {
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_lib();
@@ -35887,9 +35538,9 @@ var utils_default2;
 var encodeEntities;
 var decodeEntities;
 var getEdgeId;
-var init_chunk_3YJQHVM4 = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-3YJQHVM4.mjs"() {
-    init_chunk_VPRB5NB3();
+var init_chunk_7S6XSTFO = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-7S6XSTFO.mjs"() {
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     import_sanitize_url = __toESM(require_dist(), 1);
@@ -37926,11 +37577,11 @@ var fastdom;
 var fastdom_default2;
 var maxSafeSizeForWidth;
 var createText;
-var init_chunk_E2ZNV5FY = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-E2ZNV5FY.mjs"() {
-    init_chunk_HJ2JQQFS();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+var init_chunk_AQDTSKZB = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-AQDTSKZB.mjs"() {
+    init_chunk_YZO67HFG();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_marked_esm();
@@ -40154,11 +39805,13 @@ function choice(parent4, node2) {
 async function circle(parent4, node2, options2) {
   const { labelStyles, nodeStyles } = styles2String(node2);
   node2.labelStyle = labelStyles;
-  const { shapeSvg, bbox, halfPadding } = await labelHelper(parent4, node2, getNodeClasses(node2));
+  const { shapeSvg, bbox, halfPadding } = await labelHelper(parent4, node2, getNodeClasses(node2), {
+    ignoreMinWidth: true
+  });
   const labelPadding = 16;
   const padding = options2?.padding ?? halfPadding;
   const labelRadius = Math.sqrt(bbox.width ** 2 + bbox.height ** 2) / 2;
-  const radius2 = node2.look === "neo" ? labelRadius + labelPadding * 2 : labelRadius + padding;
+  const radius2 = node2.look === "neo" ? labelRadius + labelPadding : labelRadius + padding;
   let circleElem;
   const { cssStyles } = node2;
   if (node2.look === "handDrawn") {
@@ -40881,7 +40534,9 @@ async function doublecircle(parent4, node2) {
   node2.labelStyle = labelStyles;
   const padding = node2.padding ?? 0;
   const labelPadding = node2.look === "neo" ? 16 : padding;
-  const { shapeSvg, bbox } = await labelHelper(parent4, node2, getNodeClasses(node2));
+  const { shapeSvg, bbox } = await labelHelper(parent4, node2, getNodeClasses(node2), {
+    ignoreMinWidth: true
+  });
   const labelRadius = Math.sqrt(bbox.width ** 2 + bbox.height ** 2) / 2;
   const innerRadius = (node2?.width ? node2?.width / 2 : labelRadius) + (labelPadding ?? 0);
   const outerRadius = innerRadius + gap;
@@ -44693,14 +44348,14 @@ var colorFromPriority;
 var shapesDefs;
 var generateShapeMap;
 var shapes;
-var init_chunk_XC4XBNZT = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-XC4XBNZT.mjs"() {
-    init_chunk_4EA7E6EY();
-    init_chunk_E2ZNV5FY();
-    init_chunk_HJ2JQQFS();
+var init_chunk_HAGFOTED = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-HAGFOTED.mjs"() {
+    init_chunk_UHW7PFBP();
+    init_chunk_AQDTSKZB();
+    init_chunk_YZO67HFG();
     init_chunk_J5ZVWO5B();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_src32();
@@ -44852,7 +44507,7 @@ var init_chunk_XC4XBNZT = __esm({
         toJSON: /* @__PURE__ */ __name(() => ({}), "toJSON")
       };
     }, "withMinWidth");
-    labelHelper = /* @__PURE__ */ __name(async (parent4, node2, _classes) => {
+    labelHelper = /* @__PURE__ */ __name(async (parent4, node2, _classes, { ignoreMinWidth = false } = {}) => {
       if (node2.stereotype !== void 0) {
         return c4LabelHelper(parent4, node2, _classes);
       }
@@ -44873,7 +44528,7 @@ var init_chunk_XC4XBNZT = __esm({
       }
       const addBackground = !!node2.icon || !!node2.img;
       const isMarkdown = node2.labelType === "markdown";
-      const minLabelWidth = label && !node2.width ? node2.minWidth ?? 0 : 0;
+      const minLabelWidth = label && !node2.width && !ignoreMinWidth ? node2.minWidth ?? 0 : 0;
       const text22 = await createText(
         labelEl,
         sanitizeText(decodeEntities(label), getConfig2()),
@@ -46179,10 +45834,10 @@ var nodeElems;
 var setNodeElem;
 var clear3;
 var positionNode;
-var init_chunk_DBDB3WZW = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-DBDB3WZW.mjs"() {
-    init_chunk_XC4XBNZT();
-    init_chunk_3YJQHVM4();
+var init_chunk_ZAUX2LTX = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-ZAUX2LTX.mjs"() {
+    init_chunk_HAGFOTED();
+    init_chunk_7S6XSTFO();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     getSubGraphTitleMargins = /* @__PURE__ */ __name(({
@@ -46244,14 +45899,14 @@ var clusterPaintsTitle;
 var clusterElems;
 var insertCluster;
 var clear4;
-var init_chunk_NTY3LDVX = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-NTY3LDVX.mjs"() {
-    init_chunk_DBDB3WZW();
-    init_chunk_XC4XBNZT();
-    init_chunk_4EA7E6EY();
-    init_chunk_E2ZNV5FY();
+var init_chunk_HNE4Q36P = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-HNE4Q36P.mjs"() {
+    init_chunk_ZAUX2LTX();
+    init_chunk_HAGFOTED();
+    init_chunk_UHW7PFBP();
+    init_chunk_AQDTSKZB();
     init_chunk_J5ZVWO5B();
-    init_chunk_VPRB5NB3();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_src32();
@@ -46264,7 +45919,7 @@ var init_chunk_NTY3LDVX = __esm({
       const { clusterBkg, clusterBorder, borderColorArray } = themeVariables;
       const laneStroke = clusterBorder;
       const { labelStyles, nodeStyles, borderStyles, backgroundStyles } = styles2String(node2);
-      const shapeSvg = parent4.insert("g").attr("class", "cluster swimlane " + (node2.cssClasses || "")).attr("id", node2.id).attr("data-id", node2.id).attr("data-et", "cluster").attr("data-look", node2.look);
+      const shapeSvg = parent4.insert("g").attr("class", "cluster swimlane " + (node2.cssClasses || "")).attr("id", node2.domId ?? node2.id).attr("data-id", node2.id).attr("data-et", "cluster").attr("data-look", node2.look);
       stampColorSlot(shapeSvg, node2.colorIndex, theme, borderColorArray);
       const useHtmlLabels = evaluate(siteConfig2.flowchart.htmlLabels);
       const isLR = node2.direction === "LR";
@@ -47094,14 +46749,14 @@ var requirement_contains_neo;
 var hierarchy2;
 var markers;
 var markers_default;
-var init_chunk_2BW5OAIV = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-2BW5OAIV.mjs"() {
-    init_chunk_DBDB3WZW();
-    init_chunk_XC4XBNZT();
-    init_chunk_4EA7E6EY();
-    init_chunk_E2ZNV5FY();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+var init_chunk_WQQL4CDK = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-WQQL4CDK.mjs"() {
+    init_chunk_ZAUX2LTX();
+    init_chunk_HAGFOTED();
+    init_chunk_UHW7PFBP();
+    init_chunk_AQDTSKZB();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_src32();
@@ -47785,13 +47440,14 @@ var init_chunk_2BW5OAIV = __esm({
       const dashArray = `0 ${oValueS} ${middlePattern} ${oValueE}`;
       return dashArray;
     }, "generateDashArray");
-    insertEdge = /* @__PURE__ */ __name(function(elem, edge, clusterDb2, diagramType, startNode, endNode, diagramId3, skipIntersect = false) {
+    insertEdge = /* @__PURE__ */ __name(function(elem, edge, clusterDb2, diagramType, startNode, endNode, diagramId3, skipIntersect = false, layoutAlgorithm = void 0) {
       if (!diagramId3) {
         throw new Error(
           `insertEdge: missing diagramId for edge "${edge.id}" \u2014 edge IDs require a diagram prefix for uniqueness`
         );
       }
-      const { handDrawnSeed, layout: layout7 } = getConfig2();
+      const { handDrawnSeed, layout: configuredLayout } = getConfig2();
+      const layout7 = layoutAlgorithm ?? configuredLayout;
       let points = edge.points;
       let pointsHasChanged = false;
       const tail = startNode;
@@ -47804,7 +47460,7 @@ var init_chunk_2BW5OAIV = __esm({
         edgeClassStyles.push(edge.cssCompiledStyles[key]);
       }
       if (layout7 === "swimlane") {
-        if (head.intersect && tail.intersect && Array.isArray(points) && points.length >= 2) {
+        if (!skipIntersect && head.intersect && tail.intersect && Array.isArray(points) && points.length >= 2) {
           if (points.length === 2) {
             points = [tail.intersect(points[0]), head.intersect(points[1])];
           } else {
@@ -48571,9 +48227,9 @@ var CORNER_EPSILON;
 var CORNER_JUMP_CLEARANCE;
 var MIN_USEFUL_RADIUS_RATIO;
 var ENDPOINT_EPSILON;
-var init_chunk_HTAEGDNF = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-HTAEGDNF.mjs"() {
-    init_chunk_2BW5OAIV();
+var init_chunk_4EMNKR2T = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-4EMNKR2T.mjs"() {
+    init_chunk_WQQL4CDK();
     init_chunk_Y2CYZVJY();
     ROUNDED_CORNER_RADIUS = 5;
     CORNER_EPSILON = 1e-5;
@@ -54028,7 +53684,8 @@ async function paintLayoutEdge(groups, edge, nodeById, data4Layout, options2, co
     getRenderedNode(edge.start, edge, nodeById, context, options2),
     getRenderedNode(edge.end, edge, nodeById, context, options2),
     data4Layout.diagramId,
-    shouldSkipIntersect(edge, options2)
+    shouldSkipIntersect(edge, options2),
+    data4Layout.layoutAlgorithm
   );
   if (hasEdgeLabel(edge)) {
     if (!edgeLabels.has(edge.id)) {
@@ -54095,14 +53752,14 @@ var sortNodesByHierarchy;
 var isNodeInExtractableCluster;
 var findSafeAnchorNode;
 var TERMINAL_LABEL_SIDES;
-var init_chunk_FVRAUYC3 = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-FVRAUYC3.mjs"() {
-    init_chunk_NTY3LDVX();
-    init_chunk_2BW5OAIV();
-    init_chunk_DBDB3WZW();
-    init_chunk_XC4XBNZT();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+var init_chunk_ZCHMQSOR = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-ZCHMQSOR.mjs"() {
+    init_chunk_HNE4Q36P();
+    init_chunk_WQQL4CDK();
+    init_chunk_ZAUX2LTX();
+    init_chunk_HAGFOTED();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_graphlib();
@@ -146743,8 +146400,8 @@ var require_elk_bundled = __commonJS({
     });
   }
 });
-var elk_IJKZMXRS_exports = {};
-__export(elk_IJKZMXRS_exports, {
+var elk_QONTBCTQ_exports = {};
+__export(elk_QONTBCTQ_exports, {
   render: () => render3
 });
 function childOnPath(id38, ancestorId, { parentById }) {
@@ -147729,8 +147386,38 @@ function projectLabelOntoStraightenedRun(label, runs) {
   }
   return best?.point ?? null;
 }
+function segmentHitsBox(a2, b3, box) {
+  let t03 = 0;
+  let t13 = 1;
+  const dx = b3.x - a2.x;
+  const dy = b3.y - a2.y;
+  for (const [p3, q3] of [
+    [-dx, a2.x - box.x1],
+    [dx, box.x2 - a2.x],
+    [-dy, a2.y - box.y1],
+    [dy, box.y2 - a2.y]
+  ]) {
+    if (p3 === 0) {
+      if (q3 < 0) {
+        return false;
+      }
+    } else if (p3 < 0) {
+      t03 = Math.max(t03, q3 / p3);
+    } else {
+      t13 = Math.min(t13, q3 / p3);
+    }
+  }
+  return t03 < t13;
+}
 function straightenEdgeTerminals(edges3) {
   const routes = edges3.map((edge) => edge.points ?? []);
+  const labels = edges3.map(
+    (edge) => edge.x == null || edge.y == null || !edge.label || !edge.width || !edge.height ? void 0 : { centre: { x: edge.x, y: edge.y }, size: { width: edge.width, height: edge.height } }
+  );
+  const covers = /* @__PURE__ */ __name((route, label) => {
+    const box = label && labelBox(label.centre, label.size);
+    return !!box && route.some((p3, i4) => i4 < route.length - 1 && segmentHitsBox(p3, route[i4 + 1], box));
+  }, "covers");
   const changed = [];
   for (const [index, edge] of edges3.entries()) {
     const original = routes[index];
@@ -147741,20 +147428,28 @@ function straightenEdgeTerminals(edges3) {
     if (candidate === original) {
       continue;
     }
+    const label = labels[index];
+    const moved = label && projectLabelOntoStraightenedRun(label.centre, runs);
+    const candidateLabel = label && moved ? { centre: moved, size: label.size } : label;
     let before = 0;
     let after = 0;
+    let coveredBefore = 0;
+    let coveredAfter = 0;
     for (const [other, route] of routes.entries()) {
       if (other === index || route.length < 2) {
         continue;
       }
       before += crossingCount(original, route);
       after += crossingCount(candidate, route);
+      coveredBefore += Number(covers(route, label)) + Number(covers(original, labels[other]));
+      coveredAfter += Number(covers(route, candidateLabel)) + Number(covers(candidate, labels[other]));
     }
-    if (after > before) {
+    if (after > before || coveredAfter > coveredBefore) {
       continue;
     }
     edge.points = candidate;
     routes[index] = candidate;
+    labels[index] = candidateLabel;
     changed.push({ edge, runs });
   }
   return changed;
@@ -147939,29 +147634,6 @@ function separateOppositeEdgeLabels(edges3) {
     a2.x = a2.x - sign2 * deficit / 2;
     b3.x = b3.x + sign2 * deficit / 2;
   }
-}
-function segmentHitsBox(a2, b3, box) {
-  let t03 = 0;
-  let t13 = 1;
-  const dx = b3.x - a2.x;
-  const dy = b3.y - a2.y;
-  for (const [p3, q3] of [
-    [-dx, a2.x - box.x1],
-    [dx, box.x2 - a2.x],
-    [-dy, a2.y - box.y1],
-    [dy, box.y2 - a2.y]
-  ]) {
-    if (p3 === 0) {
-      if (q3 < 0) {
-        return false;
-      }
-    } else if (p3 < 0) {
-      t03 = Math.max(t03, q3 / p3);
-    } else {
-      t13 = Math.min(t13, q3 / p3);
-    }
-  }
-  return t03 < t13;
 }
 function terminalLabelObstacles(edges3, nodes5) {
   const placed = nodes5.filter((node2) => node2.x !== void 0 && node2.y !== void 0);
@@ -148608,24 +148280,24 @@ var TERMINAL_LABEL_MARKER_CLEARANCE;
 var TERMINAL_JOG_MAX;
 var TERMINAL_RUN_MAX;
 var JOG_EPS;
+var labelBox;
 var OPPOSITE_LABEL_MIN_GAP;
 var boxesOverlap;
-var labelBox;
 var TERMINAL_LABEL_FRAME_CLEARANCE;
-var init_elk_IJKZMXRS = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/elk-IJKZMXRS.mjs"() {
-    init_chunk_HTAEGDNF();
-    init_chunk_FVRAUYC3();
-    init_chunk_NTY3LDVX();
-    init_chunk_2BW5OAIV();
-    init_chunk_DBDB3WZW();
-    init_chunk_XC4XBNZT();
-    init_chunk_4EA7E6EY();
-    init_chunk_E2ZNV5FY();
-    init_chunk_HJ2JQQFS();
+var init_elk_QONTBCTQ = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/elk-QONTBCTQ.mjs"() {
+    init_chunk_4EMNKR2T();
+    init_chunk_ZCHMQSOR();
+    init_chunk_HNE4Q36P();
+    init_chunk_WQQL4CDK();
+    init_chunk_ZAUX2LTX();
+    init_chunk_HAGFOTED();
+    init_chunk_UHW7PFBP();
+    init_chunk_AQDTSKZB();
+    init_chunk_YZO67HFG();
     init_chunk_J5ZVWO5B();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_src32();
@@ -149183,18 +148855,18 @@ var init_elk_IJKZMXRS = __esm({
     __name(paramOnSegment, "paramOnSegment");
     __name(pointAtParam, "pointAtParam");
     __name(projectLabelOntoStraightenedRun, "projectLabelOntoStraightenedRun");
-    __name(straightenEdgeTerminals, "straightenEdgeTerminals");
-    __name(applyElkEdgeLayout, "applyElkEdgeLayout");
-    OPPOSITE_LABEL_MIN_GAP = 4;
-    __name(separateOppositeEdgeLabels, "separateOppositeEdgeLabels");
     __name(segmentHitsBox, "segmentHitsBox");
-    boxesOverlap = /* @__PURE__ */ __name((a2, b3) => a2.x1 < b3.x2 && b3.x1 < a2.x2 && a2.y1 < b3.y2 && b3.y1 < a2.y2, "boxesOverlap");
     labelBox = /* @__PURE__ */ __name((center4, size4) => ({
       x1: center4.x - size4.width / 2,
       y1: center4.y - size4.height / 2,
       x2: center4.x + size4.width / 2,
       y2: center4.y + size4.height / 2
     }), "labelBox");
+    __name(straightenEdgeTerminals, "straightenEdgeTerminals");
+    __name(applyElkEdgeLayout, "applyElkEdgeLayout");
+    OPPOSITE_LABEL_MIN_GAP = 4;
+    __name(separateOppositeEdgeLabels, "separateOppositeEdgeLabels");
+    boxesOverlap = /* @__PURE__ */ __name((a2, b3) => a2.x1 < b3.x2 && b3.x1 < a2.x2 && a2.y1 < b3.y2 && b3.y1 < a2.y2, "boxesOverlap");
     __name(terminalLabelObstacles, "terminalLabelObstacles");
     __name(placedTerminalLabels, "placedTerminalLabels");
     TERMINAL_LABEL_FRAME_CLEARANCE = 2;
@@ -151439,8 +151111,8 @@ var init_dagre = __esm({
     init_rank();
   }
 });
-var dagre_W4DXFKR2_exports = {};
-__export(dagre_W4DXFKR2_exports, {
+var dagre_NK4GIZVX_exports = {};
+__export(dagre_NK4GIZVX_exports, {
   applyDagreLayoutResult: () => applyDagreLayoutResult,
   getEdgesToRender: () => getEdgesToRender,
   measureDagreLayout: () => measureDagreLayout,
@@ -151470,19 +151142,19 @@ var runDagreLayoutCore;
 var getDagrePaintNodes;
 var getDagreEdgeNode;
 var render4;
-var init_dagre_W4DXFKR2 = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/dagre-W4DXFKR2.mjs"() {
-    init_chunk_FVRAUYC3();
-    init_chunk_NTY3LDVX();
-    init_chunk_2BW5OAIV();
-    init_chunk_DBDB3WZW();
-    init_chunk_XC4XBNZT();
-    init_chunk_4EA7E6EY();
-    init_chunk_E2ZNV5FY();
-    init_chunk_HJ2JQQFS();
+var init_dagre_NK4GIZVX = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/dagre-NK4GIZVX.mjs"() {
+    init_chunk_ZCHMQSOR();
+    init_chunk_HNE4Q36P();
+    init_chunk_WQQL4CDK();
+    init_chunk_ZAUX2LTX();
+    init_chunk_HAGFOTED();
+    init_chunk_UHW7PFBP();
+    init_chunk_AQDTSKZB();
+    init_chunk_YZO67HFG();
     init_chunk_J5ZVWO5B();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_dagre();
@@ -152140,8 +151812,8 @@ var init_dagre_W4DXFKR2 = __esm({
     });
   }
 });
-var swimlanes_N4OXWK64_exports = {};
-__export(swimlanes_N4OXWK64_exports, {
+var swimlanes_B3ENRKFQ_exports = {};
+__export(swimlanes_B3ENRKFQ_exports, {
   render: () => render5
 });
 function applySwimlaneLineJumps(data4Layout, { measure: measure2 }) {
@@ -154237,7 +153909,7 @@ function liftObstacleHuggingSameSideRails(edges3, nodeByIdMap) {
     }
   }
 }
-function liftTopLaneTitleBandsAboveRails(edges3, nodeByIdMap) {
+function liftTopLaneTitleBandsAboveRails(edges3, nodeByIdMap, layoutDirection) {
   const CLEARANCE = 4;
   const validTitleRect = /* @__PURE__ */ __name((node2) => {
     const rect2 = node2.groupTitleRect;
@@ -154250,8 +153922,9 @@ function liftTopLaneTitleBandsAboveRails(edges3, nodeByIdMap) {
     if (!node2.isGroup || node2.parentId) {
       return void 0;
     }
-    const rawDirection = node2.direction;
-    const direction2 = typeof rawDirection === "string" ? rawDirection.toUpperCase() : "";
+    const direction2 = upperCaseDirection(
+      node2.direction ?? layoutDirection
+    );
     if (direction2 === "LR" || direction2 === "RL" || direction2 === "BT") {
       return void 0;
     }
@@ -154273,7 +153946,7 @@ function liftTopLaneTitleBandsAboveRails(edges3, nodeByIdMap) {
       return false;
     }
     const y6 = segment.a.y;
-    if (y6 <= rect2.top + EPS_LOCAL || y6 >= rect2.bottom - EPS_LOCAL) {
+    if (y6 < rect2.top - EPS_LOCAL || y6 > rect2.bottom + EPS_LOCAL) {
       return false;
     }
     return overlapLength(segment.a.x, segment.b.x, rect2.left, rect2.right) >= MIN_SHARED;
@@ -154315,7 +153988,7 @@ function liftTopLaneTitleBandsAboveRails(edges3, nodeByIdMap) {
     };
   }
 }
-function shiftLeftLaneTitleBandsLeftOfRails(edges3, nodeByIdMap) {
+function shiftLeftLaneTitleBandsLeftOfRails(edges3, nodeByIdMap, layoutDirection) {
   const CLEARANCE = 4;
   const validTitleRect = /* @__PURE__ */ __name((node2) => {
     const rect2 = node2.groupTitleRect;
@@ -154328,8 +154001,10 @@ function shiftLeftLaneTitleBandsLeftOfRails(edges3, nodeByIdMap) {
     if (!node2.isGroup || node2.parentId) {
       return void 0;
     }
-    const rawDirection = node2.direction;
-    if (rawDirection !== "LR") {
+    const direction2 = upperCaseDirection(
+      node2.direction ?? layoutDirection
+    );
+    if (direction2 !== "LR") {
       return void 0;
     }
     const rect2 = validTitleRect(node2);
@@ -154350,7 +154025,7 @@ function shiftLeftLaneTitleBandsLeftOfRails(edges3, nodeByIdMap) {
       return false;
     }
     const x6 = segment.a.x;
-    if (x6 <= rect2.left + EPS_LOCAL || x6 >= rect2.right - EPS_LOCAL) {
+    if (x6 < rect2.left - EPS_LOCAL || x6 > rect2.right + EPS_LOCAL) {
       return false;
     }
     return overlapLength(segment.a.y, segment.b.y, rect2.top, rect2.bottom) >= MIN_SHARED;
@@ -154360,7 +154035,7 @@ function shiftLeftLaneTitleBandsLeftOfRails(edges3, nodeByIdMap) {
       return false;
     }
     const y6 = segment.a.y;
-    if (y6 <= rect2.top + EPS_LOCAL || y6 >= rect2.bottom - EPS_LOCAL) {
+    if (y6 < rect2.top - EPS_LOCAL || y6 > rect2.bottom + EPS_LOCAL) {
       return false;
     }
     return overlapLength(segment.a.x, segment.b.x, rect2.left, rect2.right) >= MIN_SHARED;
@@ -156752,6 +156427,7 @@ function postProcessSwimlaneLayout(layout7, direction2) {
   swapDestinationTerminalTailsToReduceCrossings(edges3, nodeByIdMap);
   const finalizeRenderedEdges = /* @__PURE__ */ __name(() => {
     resolveRenderedOrthogonalCrossings(edges3, nodeByIdMap);
+    separateSharedRenderedTerminalLanes(edges3, nodeByIdMap);
     reassignCrossingExternalRailChannels(edges3, nodeByIdMap);
     shortcutRedundantOrthogonalJogs(edges3, nodeByIdMap);
     anchorLabelsToPolyline(edges3, nodeByIdMap);
@@ -156763,10 +156439,10 @@ function postProcessSwimlaneLayout(layout7, direction2) {
   finalizeRenderedEdges();
   nudgeSharedInteriorSubpaths(edges3, nodeByIdMap);
   finalizeRenderedEdges();
-  liftTopLaneTitleBandsAboveRails(edges3, nodeByIdMap);
-  shiftLeftLaneTitleBandsLeftOfRails(edges3, nodeByIdMap);
-  liftTopLaneTitleBandsAboveRails(edges3, nodeByIdMap);
-  shiftLeftLaneTitleBandsLeftOfRails(edges3, nodeByIdMap);
+  liftTopLaneTitleBandsAboveRails(edges3, nodeByIdMap, direction2);
+  shiftLeftLaneTitleBandsLeftOfRails(edges3, nodeByIdMap, direction2);
+  liftTopLaneTitleBandsAboveRails(edges3, nodeByIdMap, direction2);
+  shiftLeftLaneTitleBandsLeftOfRails(edges3, nodeByIdMap, direction2);
 }
 function normalizeGraph(g2) {
   const nodeById = new Map(g2.nodeById);
@@ -156816,8 +156492,13 @@ function buildInDegreeMap(g2) {
   }
   return indeg;
 }
-function sortedZeroInDegreeNodes(indeg) {
-  return [...indeg.entries()].filter(([, degree]) => degree === 0).map(([id38]) => id38).sort((a2, b3) => a2.localeCompare(b3));
+function sortedZeroInDegreeNodes(g2, indeg) {
+  const sorted = [...indeg.entries()].filter(([, degree]) => degree === 0).map(([id38]) => id38).sort((a2, b3) => a2.localeCompare(b3));
+  const linked = new Set(g2.edges.flatMap((e3) => [e3.src, e3.dst]));
+  const isUnconnected = /* @__PURE__ */ __name((id38) => !linked.has(id38) && !g2.nodeById.get(id38)?.isGroup, "isUnconnected");
+  const unconnected = [...indeg.keys()].filter((id38) => indeg.get(id38) === 0 && isUnconnected(id38));
+  let next3 = 0;
+  return sorted.map((id38) => isUnconnected(id38) ? unconnected[next3++] : id38);
 }
 function buildPredecessorSuccessorMaps(g2, includeEdge = () => true) {
   const preds = /* @__PURE__ */ new Map();
@@ -156854,7 +156535,7 @@ function buildLayersFromRanks(g2, order2, rankOf, opts) {
 }
 function topoSortIfAcyclic(g2) {
   const indeg = buildInDegreeMap(g2);
-  const queue = sortedZeroInDegreeNodes(indeg);
+  const queue = sortedZeroInDegreeNodes(g2, indeg);
   const order2 = [];
   const adj = buildSortedSuccessorMap(g2);
   while (queue.length) {
@@ -157826,7 +157507,7 @@ function assignLayers_Gravity(gAcyclic, opts) {
 function topoSortByGenerationIfAcyclic(g2) {
   const indeg = buildInDegreeMap(g2);
   const adj = buildSortedSuccessorMap(g2);
-  let frontier = sortedZeroInDegreeNodes(indeg);
+  let frontier = sortedZeroInDegreeNodes(g2, indeg);
   const order2 = [];
   while (frontier.length > 0) {
     const nextFrontier = [];
@@ -159971,6 +159652,7 @@ var PORT_SHIFT;
 var TRY_DELTAS;
 var EPS_LOCAL;
 var MIN_SHARED;
+var upperCaseDirection;
 var segmentsFor;
 var orthogonallyAligned;
 var EPS4;
@@ -159994,20 +159676,20 @@ var ROUTING_MARGIN;
 var ANCHOR_OFFSET;
 var TRACK_SPACING;
 var render5;
-var init_swimlanes_N4OXWK64 = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/swimlanes-N4OXWK64.mjs"() {
-    init_chunk_HTAEGDNF();
-    init_chunk_FVRAUYC3();
-    init_chunk_NTY3LDVX();
-    init_chunk_2BW5OAIV();
-    init_chunk_DBDB3WZW();
-    init_chunk_XC4XBNZT();
-    init_chunk_4EA7E6EY();
-    init_chunk_E2ZNV5FY();
-    init_chunk_HJ2JQQFS();
+var init_swimlanes_B3ENRKFQ = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/swimlanes-B3ENRKFQ.mjs"() {
+    init_chunk_4EMNKR2T();
+    init_chunk_ZCHMQSOR();
+    init_chunk_HNE4Q36P();
+    init_chunk_WQQL4CDK();
+    init_chunk_ZAUX2LTX();
+    init_chunk_HAGFOTED();
+    init_chunk_UHW7PFBP();
+    init_chunk_AQDTSKZB();
+    init_chunk_YZO67HFG();
     init_chunk_J5ZVWO5B();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     __name(applySwimlaneLineJumps, "applySwimlaneLineJumps");
@@ -160102,6 +159784,7 @@ var init_swimlanes_N4OXWK64 = __esm({
     __name(collapseShortTerminalStub, "collapseShortTerminalStub");
     EPS_LOCAL = 1e-3;
     MIN_SHARED = 8;
+    upperCaseDirection = /* @__PURE__ */ __name((raw) => typeof raw === "string" ? raw.toUpperCase() : "", "upperCaseDirection");
     segmentsFor = orthogonalSegmentsForPoints;
     orthogonallyAligned = /* @__PURE__ */ __name((a2, b3) => sameX(a2, b3, EPS_LOCAL) || sameY(a2, b3, EPS_LOCAL), "orthogonallyAligned");
     __name(separateSharedRenderedTerminalLanes, "separateSharedRenderedTerminalLanes");
@@ -162025,8 +161708,8 @@ function defineSwitchFunction(params) {
     var changedEles = [];
     if (args.length === 2) {
       var data6 = args[0];
-      var handler = args[1];
-      this.on(params.event, data6, handler);
+      var handler2 = args[1];
+      this.on(params.event, data6, handler2);
     } else if (args.length === 1 && fn$6(args[0])) {
       var _handler = args[0];
       this.on(params.event, _handler);
@@ -172647,7 +172330,7 @@ var init_cytoscape_esm = __esm({
     defaultsKeys = Object.keys(defaults$8);
     emptyOpts = {};
     p2 = Emitter.prototype;
-    forEachEvent = function forEachEvent2(self2, handler, events, qualifier, callback, conf4, confOverrides) {
+    forEachEvent = function forEachEvent2(self2, handler2, events, qualifier, callback, conf4, confOverrides) {
       if (fn$6(qualifier)) {
         callback = qualifier;
         qualifier = null;
@@ -172669,7 +172352,7 @@ var init_cytoscape_esm = __esm({
         if (match3) {
           var type3 = match3[1];
           var namespace = match3[2] ? match3[2] : null;
-          var ret = handler(self2, evt, type3, namespace, qualifier, callback, conf4);
+          var ret = handler2(self2, evt, type3, namespace, qualifier, callback, conf4);
           if (ret === false) {
             break;
           }
@@ -172680,12 +172363,12 @@ var init_cytoscape_esm = __esm({
       self2.addEventFields(self2.context, obj);
       return new Event2(obj.type, obj);
     };
-    forEachEventObj = function forEachEventObj2(self2, handler, events) {
+    forEachEventObj = function forEachEventObj2(self2, handler2, events) {
       if (event(events)) {
-        handler(self2, events);
+        handler2(self2, events);
         return;
       } else if (plainObject(events)) {
-        handler(self2, makeEventObj(self2, events));
+        handler2(self2, makeEventObj(self2, events));
         return;
       }
       var eventList = array2(events) ? events : events.split(/\s+/);
@@ -172703,7 +172386,7 @@ var init_cytoscape_esm = __esm({
             namespace,
             target: self2.context
           });
-          handler(self2, eventObj);
+          handler2(self2, eventObj);
         }
       }
     };
@@ -183647,7 +183330,7 @@ var init_cytoscape_esm = __esm({
       setGrabState(ele, false);
     };
     BRp$3 = {};
-    BRp$3.registerBinding = function(target, event3, handler, useCapture) {
+    BRp$3.registerBinding = function(target, event3, handler2, useCapture) {
       var args = Array.prototype.slice.apply(arguments, [1]);
       if (Array.isArray(target)) {
         var res = [];
@@ -183681,7 +183364,7 @@ var init_cytoscape_esm = __esm({
         }
         r2.supportsPassiveEvents = supportsPassive;
       }
-      var on3 = function on4(event3, handler, useCapture) {
+      var on3 = function on4(event3, handler2, useCapture) {
         var args = Array.prototype.slice.call(arguments);
         if (tgtIsDom && r2.supportsPassiveEvents) {
           args[2] = {
@@ -196200,15 +195883,15 @@ var registerDefaultLayoutLoaders;
 var render7;
 var LAST_RESORT_LAYOUT;
 var getRegisteredLayoutAlgorithm;
-var init_chunk_SVEVUXB4 = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-SVEVUXB4.mjs"() {
+var init_chunk_EJLWFMJV = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-EJLWFMJV.mjs"() {
     init_chunk_DUW6YSOI();
-    init_chunk_NTY3LDVX();
-    init_chunk_2BW5OAIV();
-    init_chunk_DBDB3WZW();
-    init_chunk_XC4XBNZT();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+    init_chunk_HNE4Q36P();
+    init_chunk_WQQL4CDK();
+    init_chunk_ZAUX2LTX();
+    init_chunk_HAGFOTED();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     internalHelpers = {
@@ -196239,7 +195922,7 @@ var init_chunk_SVEVUXB4 = __esm({
       }
     }, "registerLayoutLoaders");
     elkLayoutLoaders = /* @__PURE__ */ __name(() => {
-      const loader38 = /* @__PURE__ */ __name(async () => await Promise.resolve().then(() => (init_elk_IJKZMXRS(), elk_IJKZMXRS_exports)), "loader");
+      const loader38 = /* @__PURE__ */ __name(async () => await Promise.resolve().then(() => (init_elk_QONTBCTQ(), elk_QONTBCTQ_exports)), "loader");
       return [
         { name: "elk", loader: loader38, algorithm: "elk.layered" },
         ...ELK_ALGORITHMS.map((algorithm) => ({ name: algorithm, loader: loader38, algorithm }))
@@ -196249,11 +195932,11 @@ var init_chunk_SVEVUXB4 = __esm({
       registerLayoutLoaders([
         {
           name: "dagre",
-          loader: /* @__PURE__ */ __name(async () => await Promise.resolve().then(() => (init_dagre_W4DXFKR2(), dagre_W4DXFKR2_exports)), "loader")
+          loader: /* @__PURE__ */ __name(async () => await Promise.resolve().then(() => (init_dagre_NK4GIZVX(), dagre_NK4GIZVX_exports)), "loader")
         },
         {
           name: "swimlane",
-          loader: /* @__PURE__ */ __name(async () => await Promise.resolve().then(() => (init_swimlanes_N4OXWK64(), swimlanes_N4OXWK64_exports)), "loader")
+          loader: /* @__PURE__ */ __name(async () => await Promise.resolve().then(() => (init_swimlanes_B3ENRKFQ(), swimlanes_B3ENRKFQ_exports)), "loader")
         },
         // elkjs is ~1.6 MB of source, so it is excluded from the tiny build along
         // with the other large features. `getRegisteredLayoutAlgorithm` then falls
@@ -196311,9 +195994,9 @@ var drawEmbeddedImage;
 var getNoteRect;
 var getTextObj2;
 var createTooltip;
-var init_chunk_7TKQ45FW = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-7TKQ45FW.mjs"() {
-    init_chunk_VPRB5NB3();
+var init_chunk_55XCU76K = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-55XCU76K.mjs"() {
+    init_chunk_DSNLSHJZ();
     init_chunk_Y2CYZVJY();
     import_sanitize_url2 = __toESM(require_dist(), 1);
     init_src32();
@@ -196424,8 +196107,8 @@ var init_chunk_7TKQ45FW = __esm({
     }, "createTooltip");
   }
 });
-var c4Diagram_CRA5TL53_exports = {};
-__export(c4Diagram_CRA5TL53_exports, {
+var c4Diagram_XDPPPE54_exports = {};
+__export(c4Diagram_XDPPPE54_exports, {
   diagram: () => diagram
 });
 function calcC4ShapeTextWH(textType, c4Shape, c4ShapeTextWrap, textConf, textLimitWidth) {
@@ -196653,16 +196336,16 @@ var elementFontStyles;
 var getStyles2;
 var styles_default2;
 var diagram;
-var init_c4Diagram_CRA5TL53 = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/c4Diagram-CRA5TL53.mjs"() {
-    init_chunk_7TKQ45FW();
-    init_chunk_XC4XBNZT();
-    init_chunk_4EA7E6EY();
-    init_chunk_E2ZNV5FY();
-    init_chunk_HJ2JQQFS();
+var init_c4Diagram_XDPPPE54 = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/c4Diagram-XDPPPE54.mjs"() {
+    init_chunk_55XCU76K();
+    init_chunk_HAGFOTED();
+    init_chunk_UHW7PFBP();
+    init_chunk_AQDTSKZB();
+    init_chunk_YZO67HFG();
     init_chunk_J5ZVWO5B();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_src32();
@@ -198763,11 +198446,11 @@ var init_c4Diagram_CRA5TL53 = __esm({
       const diagramId3 = diagram210.attr("id") ?? "";
       const c4Shapes = c4ShapeKeys.map((key) => c4ShapeArray2[Number(key)]);
       const shapeHandlerFor = /* @__PURE__ */ __name((node2) => {
-        const handler = node2.shape ? shapes[node2.shape] : void 0;
-        if (!handler) {
+        const handler2 = node2.shape ? shapes[node2.shape] : void 0;
+        if (!handler2) {
           throw new Error(`C4: no shape handler for "${node2.shape}"`);
         }
-        return handler;
+        return handler2;
       }, "shapeHandlerFor");
       await Promise.all(
         c4Shapes.map(async (c4Shape) => {
@@ -199031,9 +198714,9 @@ var init_chunk_XXDRQBXY = __esm({
 var setupViewPortForSVG;
 var calculateDimensionsWithPadding;
 var createViewBox;
-var init_chunk_KQW6MTUR = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-KQW6MTUR.mjs"() {
-    init_chunk_VPRB5NB3();
+var init_chunk_VQ5W62QI = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-VQ5W62QI.mjs"() {
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     setupViewPortForSVG = /* @__PURE__ */ __name((svg2, padding, cssDiagram, useMaxWidth) => {
@@ -199073,18 +198756,18 @@ var getStyles3;
 var styles_default3;
 var createFlowDiagram;
 var diagram2;
-var init_chunk_EU5HNXII = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-EU5HNXII.mjs"() {
+var init_chunk_NQOKRVIF = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-NQOKRVIF.mjs"() {
     init_chunk_5VM5RSS4();
     init_chunk_XXDRQBXY();
-    init_chunk_KQW6MTUR();
+    init_chunk_VQ5W62QI();
     init_chunk_LNGE3PJU();
-    init_chunk_SVEVUXB4();
-    init_chunk_7TKQ45FW();
-    init_chunk_XC4XBNZT();
+    init_chunk_EJLWFMJV();
+    init_chunk_55XCU76K();
+    init_chunk_HAGFOTED();
     init_chunk_J5ZVWO5B();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_src32();
@@ -201715,37 +201398,37 @@ ${hasBkgColors ? `
     diagram2 = createFlowDiagram();
   }
 });
-var flowDiagram_OXPTDLAJ_exports = {};
-__export(flowDiagram_OXPTDLAJ_exports, {
+var flowDiagram_IUGLLWBU_exports = {};
+__export(flowDiagram_IUGLLWBU_exports, {
   createFlowDiagram: () => createFlowDiagram,
   diagram: () => diagram2
 });
-var init_flowDiagram_OXPTDLAJ = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/flowDiagram-OXPTDLAJ.mjs"() {
-    init_chunk_EU5HNXII();
+var init_flowDiagram_IUGLLWBU = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/flowDiagram-IUGLLWBU.mjs"() {
+    init_chunk_NQOKRVIF();
     init_chunk_5VM5RSS4();
     init_chunk_XXDRQBXY();
-    init_chunk_KQW6MTUR();
+    init_chunk_VQ5W62QI();
     init_chunk_LNGE3PJU();
-    init_chunk_SVEVUXB4();
+    init_chunk_EJLWFMJV();
     init_chunk_DUW6YSOI();
-    init_chunk_7TKQ45FW();
-    init_chunk_NTY3LDVX();
-    init_chunk_2BW5OAIV();
-    init_chunk_DBDB3WZW();
-    init_chunk_XC4XBNZT();
-    init_chunk_4EA7E6EY();
-    init_chunk_E2ZNV5FY();
-    init_chunk_HJ2JQQFS();
+    init_chunk_55XCU76K();
+    init_chunk_HNE4Q36P();
+    init_chunk_WQQL4CDK();
+    init_chunk_ZAUX2LTX();
+    init_chunk_HAGFOTED();
+    init_chunk_UHW7PFBP();
+    init_chunk_AQDTSKZB();
+    init_chunk_YZO67HFG();
     init_chunk_J5ZVWO5B();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
   }
 });
-var diagram_2UJZ2QOL_exports = {};
-__export(diagram_2UJZ2QOL_exports, {
+var diagram_TYUNFSNR_exports = {};
+__export(diagram_TYUNFSNR_exports, {
   diagram: () => diagram3
 });
 function resolveShapeAlias(shape) {
@@ -201901,25 +201584,25 @@ var fade2;
 var getStyles4;
 var styles_default4;
 var diagram3;
-var init_diagram_2UJZ2QOL = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/diagram-2UJZ2QOL.mjs"() {
+var init_diagram_TYUNFSNR = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/diagram-TYUNFSNR.mjs"() {
     init_chunk_5VM5RSS4();
     init_chunk_XXDRQBXY();
-    init_chunk_KQW6MTUR();
+    init_chunk_VQ5W62QI();
     init_chunk_LNGE3PJU();
-    init_chunk_SVEVUXB4();
+    init_chunk_EJLWFMJV();
     init_chunk_DUW6YSOI();
-    init_chunk_7TKQ45FW();
-    init_chunk_NTY3LDVX();
-    init_chunk_2BW5OAIV();
-    init_chunk_DBDB3WZW();
-    init_chunk_XC4XBNZT();
-    init_chunk_4EA7E6EY();
-    init_chunk_E2ZNV5FY();
-    init_chunk_HJ2JQQFS();
+    init_chunk_55XCU76K();
+    init_chunk_HNE4Q36P();
+    init_chunk_WQQL4CDK();
+    init_chunk_ZAUX2LTX();
+    init_chunk_HAGFOTED();
+    init_chunk_UHW7PFBP();
+    init_chunk_AQDTSKZB();
+    init_chunk_YZO67HFG();
     init_chunk_J5ZVWO5B();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_src32();
@@ -205558,33 +205241,33 @@ You have to call mermaid.initialize.`
     };
   }
 });
-var swimlanesDiagram_K3J5GTZL_exports = {};
-__export(swimlanesDiagram_K3J5GTZL_exports, {
+var swimlanesDiagram_AYQRV4AK_exports = {};
+__export(swimlanesDiagram_AYQRV4AK_exports, {
   diagram: () => diagram4
 });
 var getStyles5;
 var styles_default22;
 var diagram4;
-var init_swimlanesDiagram_K3J5GTZL = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/swimlanesDiagram-K3J5GTZL.mjs"() {
-    init_chunk_EU5HNXII();
+var init_swimlanesDiagram_AYQRV4AK = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/swimlanesDiagram-AYQRV4AK.mjs"() {
+    init_chunk_NQOKRVIF();
     init_chunk_5VM5RSS4();
     init_chunk_XXDRQBXY();
-    init_chunk_KQW6MTUR();
+    init_chunk_VQ5W62QI();
     init_chunk_LNGE3PJU();
-    init_chunk_SVEVUXB4();
+    init_chunk_EJLWFMJV();
     init_chunk_DUW6YSOI();
-    init_chunk_7TKQ45FW();
-    init_chunk_NTY3LDVX();
-    init_chunk_2BW5OAIV();
-    init_chunk_DBDB3WZW();
-    init_chunk_XC4XBNZT();
-    init_chunk_4EA7E6EY();
-    init_chunk_E2ZNV5FY();
-    init_chunk_HJ2JQQFS();
+    init_chunk_55XCU76K();
+    init_chunk_HNE4Q36P();
+    init_chunk_WQQL4CDK();
+    init_chunk_ZAUX2LTX();
+    init_chunk_HAGFOTED();
+    init_chunk_UHW7PFBP();
+    init_chunk_AQDTSKZB();
+    init_chunk_YZO67HFG();
     init_chunk_J5ZVWO5B();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     getStyles5 = /* @__PURE__ */ __name((options2) => `${styles_default3(options2)}
@@ -205599,8 +205282,8 @@ var init_swimlanesDiagram_K3J5GTZL = __esm({
     diagram4 = createFlowDiagram({ styles: styles_default22 });
   }
 });
-var erDiagram_O2IAPWRE_exports = {};
-__export(erDiagram_O2IAPWRE_exports, {
+var erDiagram_KYQIGQAA_exports = {};
+__export(erDiagram_KYQIGQAA_exports, {
   diagram: () => diagram5
 });
 var parser4;
@@ -205613,22 +205296,22 @@ var genColor3;
 var getStyles6;
 var styles_default5;
 var diagram5;
-var init_erDiagram_O2IAPWRE = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/erDiagram-O2IAPWRE.mjs"() {
+var init_erDiagram_KYQIGQAA = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/erDiagram-KYQIGQAA.mjs"() {
     init_chunk_XXDRQBXY();
-    init_chunk_KQW6MTUR();
-    init_chunk_SVEVUXB4();
+    init_chunk_VQ5W62QI();
+    init_chunk_EJLWFMJV();
     init_chunk_DUW6YSOI();
-    init_chunk_NTY3LDVX();
-    init_chunk_2BW5OAIV();
-    init_chunk_DBDB3WZW();
-    init_chunk_XC4XBNZT();
-    init_chunk_4EA7E6EY();
-    init_chunk_E2ZNV5FY();
-    init_chunk_HJ2JQQFS();
+    init_chunk_HNE4Q36P();
+    init_chunk_WQQL4CDK();
+    init_chunk_ZAUX2LTX();
+    init_chunk_HAGFOTED();
+    init_chunk_UHW7PFBP();
+    init_chunk_AQDTSKZB();
+    init_chunk_YZO67HFG();
     init_chunk_J5ZVWO5B();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_src32();
@@ -217420,24 +217103,24 @@ ${JSON.stringify(message, null, 4)}`);
                 throw error3;
               });
             }, "sendNotification"),
-            onNotification: /* @__PURE__ */ __name2((type3, handler) => {
+            onNotification: /* @__PURE__ */ __name2((type3, handler2) => {
               throwIfClosedOrDisposed();
               let method;
               if (Is2.func(type3)) {
                 starNotificationHandler = type3;
-              } else if (handler) {
+              } else if (handler2) {
                 if (Is2.string(type3)) {
                   method = type3;
-                  notificationHandlers.set(type3, { type: void 0, handler });
+                  notificationHandlers.set(type3, { type: void 0, handler: handler2 });
                 } else {
                   method = type3.method;
-                  notificationHandlers.set(type3.method, { type: type3, handler });
+                  notificationHandlers.set(type3.method, { type: type3, handler: handler2 });
                 }
               }
               return {
                 dispose: /* @__PURE__ */ __name2(() => {
                   if (method !== void 0) {
-                    if (notificationHandlers.get(method)?.handler === handler) {
+                    if (notificationHandlers.get(method)?.handler === handler2) {
                       notificationHandlers.delete(method);
                     }
                   } else if (starNotificationHandler === type3) {
@@ -217446,14 +217129,14 @@ ${JSON.stringify(message, null, 4)}`);
                 }, "dispose")
               };
             }, "onNotification"),
-            onProgress: /* @__PURE__ */ __name2((_type, token2, handler) => {
+            onProgress: /* @__PURE__ */ __name2((_type, token2, handler2) => {
               if (progressHandlers.has(token2)) {
                 throw new Error(`Progress handler for token ${token2} already registered`);
               }
-              progressHandlers.set(token2, handler);
+              progressHandlers.set(token2, handler2);
               return {
                 dispose: /* @__PURE__ */ __name2(() => {
-                  if (progressHandlers.get(token2) === handler) {
+                  if (progressHandlers.get(token2) === handler2) {
                     progressHandlers.delete(token2);
                   }
                 }, "dispose")
@@ -217564,7 +217247,7 @@ ${JSON.stringify(message, null, 4)}`);
                 }
               });
             }, "sendRequest"),
-            onRequest: /* @__PURE__ */ __name2((type3, handler) => {
+            onRequest: /* @__PURE__ */ __name2((type3, handler2) => {
               throwIfClosedOrDisposed();
               let method = null;
               if (StarRequestHandler.is(type3)) {
@@ -217572,14 +217255,14 @@ ${JSON.stringify(message, null, 4)}`);
                 starRequestHandler = type3;
               } else if (Is2.string(type3)) {
                 method = null;
-                if (handler !== void 0) {
+                if (handler2 !== void 0) {
                   method = type3;
-                  requestHandlers.set(type3, { handler, type: void 0 });
+                  requestHandlers.set(type3, { handler: handler2, type: void 0 });
                 }
               } else {
-                if (handler !== void 0) {
+                if (handler2 !== void 0) {
                   method = type3.method;
-                  requestHandlers.set(type3.method, { type: type3, handler });
+                  requestHandlers.set(type3.method, { type: type3, handler: handler2 });
                 }
               }
               return {
@@ -217588,7 +217271,7 @@ ${JSON.stringify(message, null, 4)}`);
                     return;
                   }
                   if (method !== void 0) {
-                    if (requestHandlers.get(method)?.handler === handler) {
+                    if (requestHandlers.get(method)?.handler === handler2) {
                       requestHandlers.delete(method);
                     }
                   } else if (starRequestHandler === type3) {
@@ -217668,9 +217351,9 @@ ${JSON.stringify(message, null, 4)}`);
             tracer.log(params.message, verbose ? params.verbose : void 0);
           });
           connection.onNotification(ProgressNotification.type, async (params) => {
-            const handler = progressHandlers.get(params.token);
-            if (handler) {
-              await handler(params.value);
+            const handler2 = progressHandlers.get(params.token);
+            if (handler2) {
+              await handler2(params.value);
             } else {
               unhandledProgressEmitter.fire(params);
             }
@@ -237672,8 +237355,8 @@ var init_mermaid_parser_core = __esm({
     };
   }
 });
-var gitGraphDiagram_XJZIOB7I_exports = {};
-__export(gitGraphDiagram_XJZIOB7I_exports, {
+var gitGraphDiagram_PDYL7XHY_exports = {};
+__export(gitGraphDiagram_PDYL7XHY_exports, {
   diagram: () => diagram6
 });
 function getID() {
@@ -237820,12 +237503,12 @@ var normalTheme;
 var getStyles7;
 var styles_default6;
 var diagram6;
-var init_gitGraphDiagram_XJZIOB7I = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/gitGraphDiagram-XJZIOB7I.mjs"() {
+var init_gitGraphDiagram_PDYL7XHY = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/gitGraphDiagram-PDYL7XHY.mjs"() {
     init_chunk_2Q5K7J3B();
     init_chunk_JWPE2WC7();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_mermaid_parser_core();
@@ -239999,8 +239682,8 @@ var require_duration = __commonJS({
     }));
   }
 });
-var ganttDiagram_R7TSEDQI_exports = {};
-__export(ganttDiagram_R7TSEDQI_exports, {
+var ganttDiagram_R7GPNTJY_exports = {};
+__export(ganttDiagram_R7GPNTJY_exports, {
   diagram: () => diagram7
 });
 function getTaskTags(data6, task, tags2) {
@@ -240111,10 +239794,10 @@ var ganttRenderer_default;
 var getStyles8;
 var styles_default7;
 var diagram7;
-var init_ganttDiagram_R7TSEDQI = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/ganttDiagram-R7TSEDQI.mjs"() {
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+var init_ganttDiagram_R7GPNTJY = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/ganttDiagram-R7GPNTJY.mjs"() {
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     import_sanitize_url3 = __toESM(require_dist(), 1);
@@ -242401,8 +242084,8 @@ var init_ganttDiagram_R7TSEDQI = __esm({
     };
   }
 });
-var infoDiagram_5W2HQ5XZ_exports = {};
-__export(infoDiagram_5W2HQ5XZ_exports, {
+var infoDiagram_MVDRKAX5_exports = {};
+__export(infoDiagram_MVDRKAX5_exports, {
   diagram: () => diagram8
 });
 var parser7;
@@ -242412,10 +242095,10 @@ var db2;
 var draw7;
 var renderer3;
 var diagram8;
-var init_infoDiagram_5W2HQ5XZ = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/infoDiagram-5W2HQ5XZ.mjs"() {
-    init_chunk_Z6ETV63D();
-    init_chunk_VPRB5NB3();
+var init_infoDiagram_MVDRKAX5 = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/infoDiagram-MVDRKAX5.mjs"() {
+    init_chunk_OYAV6JZA();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_mermaid_parser_core();
@@ -242426,7 +242109,7 @@ var init_infoDiagram_5W2HQ5XZ = __esm({
       }, "parse")
     };
     DEFAULT_INFO_DB = {
-      version: "12.1.0" + (true ? "" : "-tiny")
+      version: "12.2.0" + (true ? "" : "-tiny")
     };
     getVersion = /* @__PURE__ */ __name(() => DEFAULT_INFO_DB.version, "getVersion");
     db2 = {
@@ -242447,8 +242130,8 @@ var init_infoDiagram_5W2HQ5XZ = __esm({
     };
   }
 });
-var pieDiagram_CAPJLFHJ_exports = {};
-__export(pieDiagram_CAPJLFHJ_exports, {
+var pieDiagram_GNMPY74T_exports = {};
+__export(pieDiagram_GNMPY74T_exports, {
   diagram: () => diagram9
 });
 var DEFAULT_PIE_CONFIG;
@@ -242471,12 +242154,12 @@ var createPieArcs;
 var draw8;
 var renderer4;
 var diagram9;
-var init_pieDiagram_CAPJLFHJ = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/pieDiagram-CAPJLFHJ.mjs"() {
+var init_pieDiagram_GNMPY74T = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/pieDiagram-GNMPY74T.mjs"() {
     init_chunk_JWPE2WC7();
-    init_chunk_Z6ETV63D();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+    init_chunk_OYAV6JZA();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_mermaid_parser_core();
@@ -242738,8 +242421,8 @@ var init_pieDiagram_CAPJLFHJ = __esm({
     };
   }
 });
-var quadrantDiagram_GDMTTRAM_exports = {};
-__export(quadrantDiagram_GDMTTRAM_exports, {
+var quadrantDiagram_D57K4MC3_exports = {};
+__export(quadrantDiagram_D57K4MC3_exports, {
   diagram: () => diagram10
 });
 function validateHexCode(value2) {
@@ -242866,9 +242549,9 @@ var quadrantDb_default;
 var draw9;
 var quadrantRenderer_default;
 var diagram10;
-var init_quadrantDiagram_GDMTTRAM = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/quadrantDiagram-GDMTTRAM.mjs"() {
-    init_chunk_VPRB5NB3();
+var init_quadrantDiagram_D57K4MC3 = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/quadrantDiagram-D57K4MC3.mjs"() {
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_src32();
@@ -244146,8 +243829,8 @@ var init_quadrantDiagram_GDMTTRAM = __esm({
     };
   }
 });
-var xychartDiagram_TAQBALBS_exports = {};
-__export(xychartDiagram_TAQBALBS_exports, {
+var xychartDiagram_4URNHDU4_exports = {};
+__export(xychartDiagram_4URNHDU4_exports, {
   diagram: () => diagram11
 });
 function isBarPlot(data6) {
@@ -244381,13 +244064,13 @@ var xychartDb_default;
 var draw10;
 var xychartRenderer_default;
 var diagram11;
-var init_xychartDiagram_TAQBALBS = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/xychartDiagram-TAQBALBS.mjs"() {
-    init_chunk_Z6ETV63D();
-    init_chunk_E2ZNV5FY();
-    init_chunk_HJ2JQQFS();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+var init_xychartDiagram_4URNHDU4 = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/xychartDiagram-4URNHDU4.mjs"() {
+    init_chunk_OYAV6JZA();
+    init_chunk_AQDTSKZB();
+    init_chunk_YZO67HFG();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_src32();
@@ -246341,8 +246024,8 @@ var init_xychartDiagram_TAQBALBS = __esm({
     };
   }
 });
-var requirementDiagram_X7JNWC4A_exports = {};
-__export(requirementDiagram_X7JNWC4A_exports, {
+var requirementDiagram_EQYSW5RA_exports = {};
+__export(requirementDiagram_EQYSW5RA_exports, {
   diagram: () => diagram12
 });
 var parser11;
@@ -246354,22 +246037,22 @@ var styles_default8;
 var requirementRenderer_exports;
 var draw11;
 var diagram12;
-var init_requirementDiagram_X7JNWC4A = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/requirementDiagram-X7JNWC4A.mjs"() {
+var init_requirementDiagram_EQYSW5RA = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/requirementDiagram-EQYSW5RA.mjs"() {
     init_chunk_XXDRQBXY();
-    init_chunk_KQW6MTUR();
-    init_chunk_SVEVUXB4();
+    init_chunk_VQ5W62QI();
+    init_chunk_EJLWFMJV();
     init_chunk_DUW6YSOI();
-    init_chunk_NTY3LDVX();
-    init_chunk_2BW5OAIV();
-    init_chunk_DBDB3WZW();
-    init_chunk_XC4XBNZT();
-    init_chunk_4EA7E6EY();
-    init_chunk_E2ZNV5FY();
-    init_chunk_HJ2JQQFS();
+    init_chunk_HNE4Q36P();
+    init_chunk_WQQL4CDK();
+    init_chunk_ZAUX2LTX();
+    init_chunk_HAGFOTED();
+    init_chunk_UHW7PFBP();
+    init_chunk_AQDTSKZB();
+    init_chunk_YZO67HFG();
     init_chunk_J5ZVWO5B();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     parser11 = (function() {
@@ -247643,8 +247326,8 @@ var init_requirementDiagram_X7JNWC4A = __esm({
     };
   }
 });
-var sequenceDiagram_ZO4K6R2Y_exports = {};
-__export(sequenceDiagram_ZO4K6R2Y_exports, {
+var sequenceDiagram_BLEHNHQU_exports = {};
+__export(sequenceDiagram_BLEHNHQU_exports, {
   diagram: () => diagram13
 });
 async function boundMessage(_diagram, msgModel) {
@@ -247995,13 +247678,13 @@ var buildMessageModel;
 var calculateLoopBounds;
 var sequenceRenderer_default;
 var diagram13;
-var init_sequenceDiagram_ZO4K6R2Y = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/sequenceDiagram-ZO4K6R2Y.mjs"() {
+var init_sequenceDiagram_BLEHNHQU = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/sequenceDiagram-BLEHNHQU.mjs"() {
     init_chunk_2Q5K7J3B();
     init_chunk_LNGE3PJU();
-    init_chunk_7TKQ45FW();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+    init_chunk_55XCU76K();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_src32();
@@ -252486,8 +252169,8 @@ var init_sequenceDiagram_ZO4K6R2Y = __esm({
     };
   }
 });
-var classDiagram_v2_K4WV4PDN_exports = {};
-__export(classDiagram_v2_K4WV4PDN_exports, {
+var classDiagram_v2_4MYWR3UA_exports = {};
+__export(classDiagram_v2_4MYWR3UA_exports, {
   diagram: () => diagram14
 });
 var parser13;
@@ -252506,24 +252189,24 @@ var getClasses3;
 var draw13;
 var classRenderer_v3_unified_default;
 var diagram14;
-var init_classDiagram_v2_K4WV4PDN = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/classDiagram-v2-K4WV4PDN.mjs"() {
+var init_classDiagram_v2_4MYWR3UA = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/classDiagram-v2-4MYWR3UA.mjs"() {
     init_chunk_5VM5RSS4();
     init_chunk_XXDRQBXY();
-    init_chunk_KQW6MTUR();
-    init_chunk_SVEVUXB4();
+    init_chunk_VQ5W62QI();
+    init_chunk_EJLWFMJV();
     init_chunk_DUW6YSOI();
-    init_chunk_7TKQ45FW();
-    init_chunk_NTY3LDVX();
-    init_chunk_2BW5OAIV();
-    init_chunk_DBDB3WZW();
-    init_chunk_XC4XBNZT();
-    init_chunk_4EA7E6EY();
-    init_chunk_E2ZNV5FY();
-    init_chunk_HJ2JQQFS();
+    init_chunk_55XCU76K();
+    init_chunk_HNE4Q36P();
+    init_chunk_WQQL4CDK();
+    init_chunk_ZAUX2LTX();
+    init_chunk_HAGFOTED();
+    init_chunk_UHW7PFBP();
+    init_chunk_AQDTSKZB();
+    init_chunk_YZO67HFG();
     init_chunk_J5ZVWO5B();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_src32();
@@ -254672,8 +254355,8 @@ g.classGroup line {
     };
   }
 });
-var stateDiagram_v2_TBUQTH76_exports = {};
-__export(stateDiagram_v2_TBUQTH76_exports, {
+var stateDiagram_v2_A6IESKWZ_exports = {};
+__export(stateDiagram_v2_A6IESKWZ_exports, {
   diagram: () => diagram15
 });
 function stateDomId(itemId = "", counter = 0, type3 = "", typeSpacer = DOMID_TYPE_SPACER) {
@@ -254774,23 +254457,23 @@ var genColor7;
 var getStyles13;
 var styles_default11;
 var diagram15;
-var init_stateDiagram_v2_TBUQTH76 = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/stateDiagram-v2-TBUQTH76.mjs"() {
+var init_stateDiagram_v2_A6IESKWZ = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/stateDiagram-v2-A6IESKWZ.mjs"() {
     init_chunk_XXDRQBXY();
-    init_chunk_KQW6MTUR();
-    init_chunk_SVEVUXB4();
+    init_chunk_VQ5W62QI();
+    init_chunk_EJLWFMJV();
     init_chunk_DUW6YSOI();
-    init_chunk_7TKQ45FW();
-    init_chunk_NTY3LDVX();
-    init_chunk_2BW5OAIV();
-    init_chunk_DBDB3WZW();
-    init_chunk_XC4XBNZT();
-    init_chunk_4EA7E6EY();
-    init_chunk_E2ZNV5FY();
-    init_chunk_HJ2JQQFS();
+    init_chunk_55XCU76K();
+    init_chunk_HNE4Q36P();
+    init_chunk_WQQL4CDK();
+    init_chunk_ZAUX2LTX();
+    init_chunk_HAGFOTED();
+    init_chunk_UHW7PFBP();
+    init_chunk_AQDTSKZB();
+    init_chunk_YZO67HFG();
     init_chunk_J5ZVWO5B();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_src32();
@@ -256947,8 +256630,8 @@ g.stateGroup line {
     };
   }
 });
-var journeyDiagram_COXZFDF6_exports = {};
-__export(journeyDiagram_COXZFDF6_exports, {
+var journeyDiagram_BOSHW7O7_exports = {};
+__export(journeyDiagram_BOSHW7O7_exports, {
   diagram: () => diagram16
 });
 function drawActorLegend(diagram210) {
@@ -257067,11 +256750,11 @@ var textColours;
 var drawTasks;
 var journeyRenderer_default;
 var diagram16;
-var init_journeyDiagram_COXZFDF6 = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/journeyDiagram-COXZFDF6.mjs"() {
+var init_journeyDiagram_BOSHW7O7 = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/journeyDiagram-BOSHW7O7.mjs"() {
     init_chunk_5VM5RSS4();
-    init_chunk_7TKQ45FW();
-    init_chunk_VPRB5NB3();
+    init_chunk_55XCU76K();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_src32();
@@ -258274,8 +257957,8 @@ var init_journeyDiagram_COXZFDF6 = __esm({
     };
   }
 });
-var timeline_definition_YOQAKGHF_exports = {};
-__export(timeline_definition_YOQAKGHF_exports, {
+var timeline_definition_JXYKGLGB_exports = {};
+__export(timeline_definition_JXYKGLGB_exports, {
   diagram: () => diagram17
 });
 function wrap2(text4, width3) {
@@ -258362,12 +258045,12 @@ var getStyles15;
 var styles_default13;
 var rendererSelector;
 var diagram17;
-var init_timeline_definition_YOQAKGHF = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/timeline-definition-YOQAKGHF.mjs"() {
-    init_chunk_Z6ETV63D();
+var init_timeline_definition_JXYKGLGB = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/timeline-definition-JXYKGLGB.mjs"() {
+    init_chunk_OYAV6JZA();
     init_chunk_J5ZVWO5B();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_src32();
@@ -260032,8 +259715,8 @@ var init_dist2 = __esm({
     init_v4();
   }
 });
-var mindmap_definition_LZFPQGKD_exports = {};
-__export(mindmap_definition_LZFPQGKD_exports, {
+var mindmap_definition_6OY57UG3_exports = {};
+__export(mindmap_definition_6OY57UG3_exports, {
   diagram: () => diagram18
 });
 var parser17;
@@ -260048,22 +259731,22 @@ var genGradient;
 var getStyles16;
 var styles_default14;
 var diagram18;
-var init_mindmap_definition_LZFPQGKD = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/mindmap-definition-LZFPQGKD.mjs"() {
+var init_mindmap_definition_6OY57UG3 = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/mindmap-definition-6OY57UG3.mjs"() {
     init_chunk_XXDRQBXY();
-    init_chunk_KQW6MTUR();
-    init_chunk_SVEVUXB4();
+    init_chunk_VQ5W62QI();
+    init_chunk_EJLWFMJV();
     init_chunk_DUW6YSOI();
-    init_chunk_NTY3LDVX();
-    init_chunk_2BW5OAIV();
-    init_chunk_DBDB3WZW();
-    init_chunk_XC4XBNZT();
-    init_chunk_4EA7E6EY();
-    init_chunk_E2ZNV5FY();
-    init_chunk_HJ2JQQFS();
+    init_chunk_HNE4Q36P();
+    init_chunk_WQQL4CDK();
+    init_chunk_ZAUX2LTX();
+    init_chunk_HAGFOTED();
+    init_chunk_UHW7PFBP();
+    init_chunk_AQDTSKZB();
+    init_chunk_YZO67HFG();
     init_chunk_J5ZVWO5B();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_dist2();
@@ -260888,20 +260571,22 @@ var init_mindmap_definition_LZFPQGKD = __esm({
         }
       }
       /**
-       * Assign section numbers to nodes based on their position relative to root
+       * Assign color sections by top-level branch (default) or structural depth.
        * @param node - The mindmap node to process
        * @param sectionNumber - The section number to assign (undefined for root)
+       * @param depth - Distance from the root, independent of indentation width
+       * @param colorByDepth - Whether to assign sections by depth instead of top-level branch
        */
-      assignSections(node2, sectionNumber) {
+      assignSections(node2, sectionNumber, depth = 0, colorByDepth = false) {
         if (node2.level === 0) {
           node2.section = void 0;
         } else {
-          node2.section = sectionNumber;
+          node2.section = colorByDepth ? (depth - 1) % (MAX_SECTIONS - 1) : sectionNumber;
         }
         if (node2.children) {
           for (const [index, child] of node2.children.entries()) {
             const childSectionNumber = node2.level === 0 ? index % (MAX_SECTIONS - 1) : sectionNumber;
-            this.assignSections(child, childSectionNumber);
+            this.assignSections(child, childSectionNumber, depth + 1, colorByDepth);
           }
         }
       }
@@ -260957,6 +260642,9 @@ var init_mindmap_definition_LZFPQGKD = __esm({
           padding: node2.padding,
           cssClasses: classes3,
           cssStyles: [],
+          // Mindmap styles don't set text-anchor: middle, so SVG-text labels must be
+          // offset by half their width to be centred (issue #8387)
+          centerLabel: true,
           look: conf4.look,
           icon: node2.icon,
           x: node2.x,
@@ -261030,7 +260718,7 @@ var init_mindmap_definition_LZFPQGKD = __esm({
           };
         }
         log.debug("getData: mindmapRoot", mindmapRoot, config3);
-        this.assignSections(mindmapRoot);
+        this.assignSections(mindmapRoot, void 0, 0, config3.mindmap?.colorBy === "depth");
         const processedNodes = [];
         const processedEdges = [];
         this.flattenNodes(mindmapRoot, processedNodes);
@@ -261137,6 +260825,7 @@ var init_mindmap_definition_LZFPQGKD = __esm({
       }
       for (let i4 = 0; i4 < options2.THEME_COLOR_LIMIT; i4++) {
         const sw = "" + (look === "neo" ? Math.max(10 - (i4 - 1) * 2, 2) : 17 - 3 * i4);
+        const neoLabel = theme === "redux" || theme === "redux-dark" ? options2.nodeBorder : options2["cScaleLabel" + (theme === "neutral" ? 1 : i4)];
         sections6 += `
     .section-${i4 - 1} rect, .section-${i4 - 1} path, .section-${i4 - 1} circle, .section-${i4 - 1} polygon, .section-${i4 - 1} path  {
       fill: ${options2["cScale" + i4]};
@@ -261176,8 +260865,9 @@ var init_mindmap_definition_LZFPQGKD = __esm({
     [data-look="neo"].section-edge-${i4 - 1}{
       stroke: ${theme?.includes("redux") || theme === "neo-dark" ? options2.nodeBorder : options2["cScale" + i4]};
     }
-    [data-look="neo"].mindmap-node.section-${i4 - 1} text {
-     fill: ${theme === "redux" || theme === "redux-dark" ? options2.nodeBorder : options2["cScaleLabel" + (theme === "neutral" ? 1 : i4)]};
+    [data-look="neo"].mindmap-node.section-${i4 - 1} text, [data-look="neo"].mindmap-node.section-${i4 - 1} span {
+     fill: ${neoLabel};
+     color: ${neoLabel};
     }
     `;
       }
@@ -261200,6 +260890,7 @@ var init_mindmap_definition_LZFPQGKD = __esm({
     getStyles16 = /* @__PURE__ */ __name((options2) => {
       const { theme } = options2;
       const svgId = options2.svgId;
+      const neoRootLabel = theme?.includes("redux") ? options2.nodeBorder : options2["cScaleLabel" + (theme === "neutral" ? 1 : 0)];
       const scopedDropShadow = options2.dropShadow ? options2.dropShadow.replace("url(#drop-shadow)", `url(${svgId}-drop-shadow)`) : "none";
       return `
   .edge {
@@ -261237,8 +260928,9 @@ var init_mindmap_definition_LZFPQGKD = __esm({
   [data-look="neo"].mindmap-node.section-root rect, [data-look="neo"].mindmap-node.section-root path, [data-look="neo"].mindmap-node.section-root circle, [data-look="neo"].mindmap-node.section-root polygon  {
     fill: ${theme?.includes("redux") ? options2.mainBkg : options2.git0};
   }
-  [data-look="neo"].mindmap-node.section-root .text-inner-tspan {
-    fill:  ${theme?.includes("redux") ? options2.nodeBorder : options2["cScaleLabel" + (theme === "neutral" ? 1 : 0)]};
+  [data-look="neo"].mindmap-node.section-root .text-inner-tspan, [data-look="neo"].mindmap-node.section-root span {
+    fill: ${neoRootLabel};
+    color: ${neoRootLabel};
   }
   ${options2.useGradient && svgId && options2.mainBkg ? genGradient(options2.THEME_COLOR_LIMIT, svgId, options2.mainBkg) : ""}
 `;
@@ -261254,8 +260946,8 @@ var init_mindmap_definition_LZFPQGKD = __esm({
     };
   }
 });
-var kanban_definition_P3RFRI5V_exports = {};
-__export(kanban_definition_P3RFRI5V_exports, {
+var kanban_definition_FNSA4HC5_exports = {};
+__export(kanban_definition_FNSA4HC5_exports, {
   diagram: () => diagram19
 });
 var parser18;
@@ -261284,20 +260976,20 @@ var genSections3;
 var getStyles17;
 var styles_default15;
 var diagram19;
-var init_kanban_definition_P3RFRI5V = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/kanban-definition-P3RFRI5V.mjs"() {
-    init_chunk_Z6ETV63D();
+var init_kanban_definition_FNSA4HC5 = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/kanban-definition-FNSA4HC5.mjs"() {
+    init_chunk_OYAV6JZA();
     init_chunk_5VM5RSS4();
     init_chunk_LNGE3PJU();
-    init_chunk_NTY3LDVX();
-    init_chunk_DBDB3WZW();
-    init_chunk_XC4XBNZT();
-    init_chunk_4EA7E6EY();
-    init_chunk_E2ZNV5FY();
-    init_chunk_HJ2JQQFS();
+    init_chunk_HNE4Q36P();
+    init_chunk_ZAUX2LTX();
+    init_chunk_HAGFOTED();
+    init_chunk_UHW7PFBP();
+    init_chunk_AQDTSKZB();
+    init_chunk_YZO67HFG();
     init_chunk_J5ZVWO5B();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_dist();
@@ -263004,8 +262696,8 @@ var init_src36 = __esm({
     init_sankeyLinkHorizontal();
   }
 });
-var sankeyDiagram_UM26HJRW_exports = {};
-__export(sankeyDiagram_UM26HJRW_exports, {
+var sankeyDiagram_SY24JHO5_exports = {};
+__export(sankeyDiagram_SY24JHO5_exports, {
   diagram: () => diagram20
 });
 var parser19;
@@ -263032,9 +262724,9 @@ var getStyles18;
 var styles_default16;
 var originalParse;
 var diagram20;
-var init_sankeyDiagram_UM26HJRW = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/sankeyDiagram-UM26HJRW.mjs"() {
-    init_chunk_VPRB5NB3();
+var init_sankeyDiagram_SY24JHO5 = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/sankeyDiagram-SY24JHO5.mjs"() {
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_src32();
@@ -263798,8 +263490,8 @@ ${prefix}${Math.round(value2 * 100) / 100}${suffix}`;
     };
   }
 });
-var diagram_UMYRVEAY_exports = {};
-__export(diagram_UMYRVEAY_exports, {
+var diagram_I5XIIV2D_exports = {};
+__export(diagram_I5XIIV2D_exports, {
   diagram: () => diagram21
 });
 var DEFAULT_PACKET_CONFIG;
@@ -263814,12 +263506,12 @@ var renderer5;
 var defaultPacketStyleOptions;
 var styles2;
 var diagram21;
-var init_diagram_UMYRVEAY = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/diagram-UMYRVEAY.mjs"() {
+var init_diagram_I5XIIV2D = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/diagram-I5XIIV2D.mjs"() {
     init_chunk_JWPE2WC7();
-    init_chunk_Z6ETV63D();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+    init_chunk_OYAV6JZA();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_mermaid_parser_core();
@@ -264044,8 +263736,8 @@ var init_diagram_UMYRVEAY = __esm({
     };
   }
 });
-var diagram_YEKJPTXX_exports = {};
-__export(diagram_YEKJPTXX_exports, {
+var diagram_RJA3I4VV_exports = {};
+__export(diagram_RJA3I4VV_exports, {
   diagram: () => diagram22
 });
 function drawCurves(g2, axes, curves, minValue, maxValue, graticule, config3) {
@@ -264132,12 +263824,12 @@ var genIndexStyles;
 var buildRadarStyleOptions;
 var styles3;
 var diagram22;
-var init_diagram_YEKJPTXX = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/diagram-YEKJPTXX.mjs"() {
+var init_diagram_RJA3I4VV = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/diagram-RJA3I4VV.mjs"() {
     init_chunk_JWPE2WC7();
-    init_chunk_Z6ETV63D();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+    init_chunk_OYAV6JZA();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_mermaid_parser_core();
@@ -264390,8 +264082,8 @@ var init_diagram_YEKJPTXX = __esm({
     };
   }
 });
-var blockDiagram_E7TT5TSB_exports = {};
-__export(blockDiagram_E7TT5TSB_exports, {
+var blockDiagram_RJAE7QA3_exports = {};
+__export(blockDiagram_RJAE7QA3_exports, {
   diagram: () => diagram23
 });
 function typeStr2Type(typeStr) {
@@ -265003,19 +264695,19 @@ var getClasses22;
 var draw23;
 var blockRenderer_default;
 var diagram23;
-var init_blockDiagram_E7TT5TSB = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/blockDiagram-E7TT5TSB.mjs"() {
+var init_blockDiagram_RJAE7QA3 = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/blockDiagram-RJAE7QA3.mjs"() {
     init_chunk_5VM5RSS4();
     init_chunk_DUW6YSOI();
-    init_chunk_2BW5OAIV();
-    init_chunk_DBDB3WZW();
-    init_chunk_XC4XBNZT();
-    init_chunk_4EA7E6EY();
-    init_chunk_E2ZNV5FY();
-    init_chunk_HJ2JQQFS();
+    init_chunk_WQQL4CDK();
+    init_chunk_ZAUX2LTX();
+    init_chunk_HAGFOTED();
+    init_chunk_UHW7PFBP();
+    init_chunk_AQDTSKZB();
+    init_chunk_YZO67HFG();
     init_chunk_J5ZVWO5B();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_compat();
@@ -266530,8 +266222,8 @@ var init_blockDiagram_E7TT5TSB = __esm({
     };
   }
 });
-var diagram_PFPMY2P6_exports = {};
-__export(diagram_PFPMY2P6_exports, {
+var diagram_ODIL2UCW_exports = {};
+__export(diagram_ODIL2UCW_exports, {
   diagram: () => diagram24
 });
 function isBoxDrawingFormat(lines) {
@@ -266730,14 +266422,14 @@ var defaultTreeViewDiagramStyles;
 var styles4;
 var styles_default18;
 var diagram24;
-var init_diagram_PFPMY2P6 = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/diagram-PFPMY2P6.mjs"() {
+var init_diagram_ODIL2UCW = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/diagram-ODIL2UCW.mjs"() {
     init_chunk_2Q5K7J3B();
     init_chunk_JWPE2WC7();
-    init_chunk_Z6ETV63D();
-    init_chunk_HJ2JQQFS();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+    init_chunk_OYAV6JZA();
+    init_chunk_YZO67HFG();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_mermaid_parser_core();
@@ -274726,8 +274418,8 @@ var require_cytoscape_fcose = __commonJS({
     });
   }
 });
-var architectureDiagram_47P4ROYG_exports = {};
-__export(architectureDiagram_47P4ROYG_exports, {
+var architectureDiagram_ZHVYKT53_exports = {};
+__export(architectureDiagram_ZHVYKT53_exports, {
   diagram: () => diagram25
 });
 function withSeededRandom(seed, fn3) {
@@ -275208,14 +274900,14 @@ var drawJunctions;
 var draw25;
 var renderer8;
 var diagram25;
-var init_architectureDiagram_47P4ROYG = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/architectureDiagram-47P4ROYG.mjs"() {
+var init_architectureDiagram_ZHVYKT53 = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/architectureDiagram-ZHVYKT53.mjs"() {
     init_chunk_JWPE2WC7();
-    init_chunk_Z6ETV63D();
-    init_chunk_E2ZNV5FY();
-    init_chunk_HJ2JQQFS();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+    init_chunk_OYAV6JZA();
+    init_chunk_AQDTSKZB();
+    init_chunk_YZO67HFG();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_mermaid_parser_core();
@@ -276034,8 +275726,8 @@ var init_architectureDiagram_47P4ROYG = __esm({
     };
   }
 });
-var diagram_ZIFT7M5P_exports = {};
-__export(diagram_ZIFT7M5P_exports, {
+var diagram_PFBEJUXE_exports = {};
+__export(diagram_PFBEJUXE_exports, {
   diagram: () => diagram26
 });
 function reset4() {
@@ -276553,11 +276245,11 @@ var renderer_default3;
 var getStyles21;
 var styles_default19;
 var diagram26;
-var init_diagram_ZIFT7M5P = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/diagram-ZIFT7M5P.mjs"() {
+var init_diagram_PFBEJUXE = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/diagram-PFBEJUXE.mjs"() {
     init_chunk_JWPE2WC7();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_mermaid_parser_core();
@@ -276725,8 +276417,8 @@ var init_diagram_ZIFT7M5P = __esm({
     };
   }
 });
-var ishikawaDiagram_K3B6WC7H_exports = {};
-__export(ishikawaDiagram_K3B6WC7H_exports, {
+var ishikawaDiagram_HPEHV2GE_exports = {};
+__export(ishikawaDiagram_HPEHV2GE_exports, {
   diagram: () => diagram27
 });
 var parser26;
@@ -276757,11 +276449,11 @@ var renderer9;
 var getStyles22;
 var ishikawaStyles_default;
 var diagram27;
-var init_ishikawaDiagram_K3B6WC7H = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/ishikawaDiagram-K3B6WC7H.mjs"() {
-    init_chunk_Z6ETV63D();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+var init_ishikawaDiagram_HPEHV2GE = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/ishikawaDiagram-HPEHV2GE.mjs"() {
+    init_chunk_OYAV6JZA();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_rough_esm();
@@ -279193,8 +278885,8 @@ var init_venn_esm = __esm({
     SMALL = 1e-10;
   }
 });
-var vennDiagram_BLWOH2XV_exports = {};
-__export(vennDiagram_BLWOH2XV_exports, {
+var vennDiagram_Q3Y3IDCW_exports = {};
+__export(vennDiagram_Q3Y3IDCW_exports, {
   diagram: () => diagram28
 });
 function getConfig25() {
@@ -279335,11 +279027,11 @@ var styles_default20;
 var draw28;
 var renderer10;
 var diagram28;
-var init_vennDiagram_BLWOH2XV = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/vennDiagram-BLWOH2XV.mjs"() {
-    init_chunk_Z6ETV63D();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+var init_vennDiagram_Q3Y3IDCW = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/vennDiagram-Q3Y3IDCW.mjs"() {
+    init_chunk_OYAV6JZA();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_src32();
@@ -280331,8 +280023,8 @@ var init_vennDiagram_BLWOH2XV = __esm({
     };
   }
 });
-var diagram_OVF4WLC6_exports = {};
-__export(diagram_OVF4WLC6_exports, {
+var diagram_CBK3MWTC_exports = {};
+__export(diagram_CBK3MWTC_exports, {
   diagram: () => diagram29
 });
 function buildHierarchy(items) {
@@ -280386,14 +280078,14 @@ var defaultTreemapStyleOptions;
 var getStyles24;
 var styles_default21;
 var diagram29;
-var init_diagram_OVF4WLC6 = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/diagram-OVF4WLC6.mjs"() {
+var init_diagram_CBK3MWTC = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/diagram-CBK3MWTC.mjs"() {
     init_chunk_JWPE2WC7();
-    init_chunk_Z6ETV63D();
-    init_chunk_KQW6MTUR();
-    init_chunk_4EA7E6EY();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+    init_chunk_OYAV6JZA();
+    init_chunk_VQ5W62QI();
+    init_chunk_UHW7PFBP();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_mermaid_parser_core();
@@ -287916,8 +287608,8 @@ var init_api5 = __esm({
     init_render_public();
   }
 });
-var usecaseDiagram_VIAY4XPW_exports = {};
-__export(usecaseDiagram_VIAY4XPW_exports, {
+var usecaseDiagram_WPOLBNNX_exports = {};
+__export(usecaseDiagram_WPOLBNNX_exports, {
   diagram: () => diagram30
 });
 function runChevrotainParse(config3, input) {
@@ -288138,22 +287830,22 @@ var genColor9;
 var getStyles25;
 var styles_default23;
 var diagram30;
-var init_usecaseDiagram_VIAY4XPW = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/usecaseDiagram-VIAY4XPW.mjs"() {
+var init_usecaseDiagram_WPOLBNNX = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/usecaseDiagram-WPOLBNNX.mjs"() {
     init_chunk_XXDRQBXY();
-    init_chunk_KQW6MTUR();
-    init_chunk_SVEVUXB4();
+    init_chunk_VQ5W62QI();
+    init_chunk_EJLWFMJV();
     init_chunk_DUW6YSOI();
-    init_chunk_NTY3LDVX();
-    init_chunk_2BW5OAIV();
-    init_chunk_DBDB3WZW();
-    init_chunk_XC4XBNZT();
-    init_chunk_4EA7E6EY();
-    init_chunk_E2ZNV5FY();
-    init_chunk_HJ2JQQFS();
+    init_chunk_HNE4Q36P();
+    init_chunk_WQQL4CDK();
+    init_chunk_ZAUX2LTX();
+    init_chunk_HAGFOTED();
+    init_chunk_UHW7PFBP();
+    init_chunk_AQDTSKZB();
+    init_chunk_YZO67HFG();
     init_chunk_J5ZVWO5B();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_api5();
@@ -292015,8 +291707,8 @@ ${isHandDrawn ? "" : `
     };
   }
 });
-var wardleyDiagram_YMQ3BMBF_exports = {};
-__export(wardleyDiagram_YMQ3BMBF_exports, {
+var wardleyDiagram_IVAIDKWA_exports = {};
+__export(wardleyDiagram_IVAIDKWA_exports, {
   diagram: () => diagram31
 });
 function getConfig34() {
@@ -292119,12 +291811,12 @@ var draw31;
 var wardleyRenderer_default;
 var styles5;
 var diagram31;
-var init_wardleyDiagram_YMQ3BMBF = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/wardleyDiagram-YMQ3BMBF.mjs"() {
+var init_wardleyDiagram_IVAIDKWA = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/wardleyDiagram-IVAIDKWA.mjs"() {
     init_chunk_JWPE2WC7();
-    init_chunk_Z6ETV63D();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+    init_chunk_OYAV6JZA();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_mermaid_parser_core();
@@ -293015,8 +292707,8 @@ var init_wardleyDiagram_YMQ3BMBF = __esm({
     };
   }
 });
-var cynefinDiagram_3GCD6N5R_exports = {};
-__export(cynefinDiagram_3GCD6N5R_exports, {
+var cynefinDiagram_WF24UDRP_exports = {};
+__export(cynefinDiagram_WF24UDRP_exports, {
   diagram: () => diagram32
 });
 function seededRandom(seed) {
@@ -293134,12 +292826,12 @@ var getCynefinTheme;
 var styles6;
 var styles_default24;
 var diagram32;
-var init_cynefinDiagram_3GCD6N5R = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/cynefinDiagram-3GCD6N5R.mjs"() {
+var init_cynefinDiagram_WF24UDRP = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/cynefinDiagram-WF24UDRP.mjs"() {
     init_chunk_JWPE2WC7();
-    init_chunk_Z6ETV63D();
-    init_chunk_3YJQHVM4();
-    init_chunk_VPRB5NB3();
+    init_chunk_OYAV6JZA();
+    init_chunk_7S6XSTFO();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_mermaid_parser_core();
@@ -293537,10 +293229,10 @@ var RailroadRenderer;
 var configureRailroadSvgSize;
 var draw33;
 var renderer14;
-var init_chunk_AW2ZBBNX = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-AW2ZBBNX.mjs"() {
-    init_chunk_Z6ETV63D();
-    init_chunk_VPRB5NB3();
+var init_chunk_2E7WHVMD = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/chunk-2E7WHVMD.mjs"() {
+    init_chunk_OYAV6JZA();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     diagramTitle2 = "";
@@ -294399,8 +294091,8 @@ var init_chunk_AW2ZBBNX = __esm({
     renderer14 = { draw: draw33 };
   }
 });
-var railroadDiagram_SM67HX2B_exports = {};
-__export(railroadDiagram_SM67HX2B_exports, {
+var railroadDiagram_Y72NRBL7_exports = {};
+__export(railroadDiagram_Y72NRBL7_exports, {
   default: () => railroadDiagram_default,
   diagram: () => diagram33
 });
@@ -294411,12 +294103,12 @@ var populateDb4;
 var parser32;
 var diagram33;
 var railroadDiagram_default;
-var init_railroadDiagram_SM67HX2B = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/railroadDiagram-SM67HX2B.mjs"() {
-    init_chunk_AW2ZBBNX();
+var init_railroadDiagram_Y72NRBL7 = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/railroadDiagram-Y72NRBL7.mjs"() {
+    init_chunk_2E7WHVMD();
     init_chunk_JWPE2WC7();
-    init_chunk_Z6ETV63D();
-    init_chunk_VPRB5NB3();
+    init_chunk_OYAV6JZA();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_mermaid_parser_core();
@@ -294508,8 +294200,8 @@ var init_railroadDiagram_SM67HX2B = __esm({
     railroadDiagram_default = diagram33;
   }
 });
-var ebnfDiagram_VR2GEFS7_exports = {};
-__export(ebnfDiagram_VR2GEFS7_exports, {
+var ebnfDiagram_V4P3TTPT_exports = {};
+__export(ebnfDiagram_V4P3TTPT_exports, {
   diagram: () => diagram34
 });
 var langiumParser2;
@@ -294522,12 +294214,12 @@ var transformRule2;
 var populateDb5;
 var parser33;
 var diagram34;
-var init_ebnfDiagram_VR2GEFS7 = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/ebnfDiagram-VR2GEFS7.mjs"() {
-    init_chunk_AW2ZBBNX();
+var init_ebnfDiagram_V4P3TTPT = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/ebnfDiagram-V4P3TTPT.mjs"() {
+    init_chunk_2E7WHVMD();
     init_chunk_JWPE2WC7();
-    init_chunk_Z6ETV63D();
-    init_chunk_VPRB5NB3();
+    init_chunk_OYAV6JZA();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_mermaid_parser_core();
@@ -294664,8 +294356,8 @@ var init_ebnfDiagram_VR2GEFS7 = __esm({
     };
   }
 });
-var abnfDiagram_YUKMZFIV_exports = {};
-__export(abnfDiagram_YUKMZFIV_exports, {
+var abnfDiagram_WEYOIA3C_exports = {};
+__export(abnfDiagram_WEYOIA3C_exports, {
   diagram: () => diagram35
 });
 var langiumParser3;
@@ -294678,12 +294370,12 @@ var transformRule3;
 var populateDb6;
 var parser34;
 var diagram35;
-var init_abnfDiagram_YUKMZFIV = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/abnfDiagram-YUKMZFIV.mjs"() {
-    init_chunk_AW2ZBBNX();
+var init_abnfDiagram_WEYOIA3C = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/abnfDiagram-WEYOIA3C.mjs"() {
+    init_chunk_2E7WHVMD();
     init_chunk_JWPE2WC7();
-    init_chunk_Z6ETV63D();
-    init_chunk_VPRB5NB3();
+    init_chunk_OYAV6JZA();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_mermaid_parser_core();
@@ -294800,8 +294492,8 @@ var init_abnfDiagram_YUKMZFIV = __esm({
     };
   }
 });
-var pegDiagram_BGZESJAR_exports = {};
-__export(pegDiagram_BGZESJAR_exports, {
+var pegDiagram_ECIUJNBX_exports = {};
+__export(pegDiagram_ECIUJNBX_exports, {
   diagram: () => diagram36
 });
 var langiumParser4;
@@ -294815,12 +294507,12 @@ var transformRule4;
 var populateDb7;
 var parser35;
 var diagram36;
-var init_pegDiagram_BGZESJAR = __esm({
-  "node_modules/mermaid/dist/chunks/mermaid.core/pegDiagram-BGZESJAR.mjs"() {
-    init_chunk_AW2ZBBNX();
+var init_pegDiagram_ECIUJNBX = __esm({
+  "node_modules/mermaid/dist/chunks/mermaid.core/pegDiagram-ECIUJNBX.mjs"() {
+    init_chunk_2E7WHVMD();
     init_chunk_JWPE2WC7();
-    init_chunk_Z6ETV63D();
-    init_chunk_VPRB5NB3();
+    init_chunk_OYAV6JZA();
+    init_chunk_DSNLSHJZ();
     init_chunk_X3CZISLH();
     init_chunk_Y2CYZVJY();
     init_mermaid_parser_core();
@@ -294986,20 +294678,20 @@ function toggleMarkup(button) {
     }, 500);
   }
 }
-init_chunk_Z6ETV63D();
+init_chunk_OYAV6JZA();
 init_chunk_LNGE3PJU();
-init_chunk_SVEVUXB4();
+init_chunk_EJLWFMJV();
 init_chunk_DUW6YSOI();
-init_chunk_NTY3LDVX();
-init_chunk_2BW5OAIV();
-init_chunk_DBDB3WZW();
-init_chunk_XC4XBNZT();
-init_chunk_4EA7E6EY();
-init_chunk_E2ZNV5FY();
-init_chunk_HJ2JQQFS();
+init_chunk_HNE4Q36P();
+init_chunk_WQQL4CDK();
+init_chunk_ZAUX2LTX();
+init_chunk_HAGFOTED();
+init_chunk_UHW7PFBP();
+init_chunk_AQDTSKZB();
+init_chunk_YZO67HFG();
 init_chunk_J5ZVWO5B();
-init_chunk_3YJQHVM4();
-init_chunk_VPRB5NB3();
+init_chunk_7S6XSTFO();
+init_chunk_DSNLSHJZ();
 init_chunk_X3CZISLH();
 init_chunk_Y2CYZVJY();
 init_esm();
@@ -295373,7 +295065,7 @@ var detector = /* @__PURE__ */ __name((txt) => {
   return /^\s*C4Context|C4Container|C4Component|C4Dynamic|C4Deployment/.test(txt);
 }, "detector");
 var loader2 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_c4Diagram_CRA5TL53(), c4Diagram_CRA5TL53_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_c4Diagram_XDPPPE54(), c4Diagram_XDPPPE54_exports));
   return { id: id3, diagram: diagram210 };
 }, "loader");
 var plugin = {
@@ -295385,7 +295077,7 @@ var c4Detector_default = plugin;
 var id22 = "flowchart-v2";
 var detector2 = /* @__PURE__ */ __name((txt) => /^\s*(graph|flowchart)/.test(txt), "detector");
 var loader22 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_flowDiagram_OXPTDLAJ(), flowDiagram_OXPTDLAJ_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_flowDiagram_IUGLLWBU(), flowDiagram_IUGLLWBU_exports));
   return { id: id22, diagram: diagram210 };
 }, "loader");
 var plugin2 = {
@@ -295399,7 +295091,7 @@ var detector3 = /* @__PURE__ */ __name((txt) => {
   return /^\s*agentflow-beta\b/.test(txt);
 }, "detector");
 var loader3 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_diagram_2UJZ2QOL(), diagram_2UJZ2QOL_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_diagram_TYUNFSNR(), diagram_TYUNFSNR_exports));
   return { id: id32, diagram: diagram210 };
 }, "loader");
 var plugin3 = {
@@ -295413,7 +295105,7 @@ var detector4 = /* @__PURE__ */ __name((txt) => {
   return /^\s*swimlane-beta\b/.test(txt);
 }, "detector");
 var loader4 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_swimlanesDiagram_K3J5GTZL(), swimlanesDiagram_K3J5GTZL_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_swimlanesDiagram_AYQRV4AK(), swimlanesDiagram_AYQRV4AK_exports));
   return { id: id4, diagram: diagram210 };
 }, "loader");
 var plugin4 = {
@@ -295427,7 +295119,7 @@ var detector5 = /* @__PURE__ */ __name((txt) => {
   return /^\s*erDiagram/.test(txt);
 }, "detector");
 var loader5 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_erDiagram_O2IAPWRE(), erDiagram_O2IAPWRE_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_erDiagram_KYQIGQAA(), erDiagram_KYQIGQAA_exports));
   return { id: id5, diagram: diagram210 };
 }, "loader");
 var plugin5 = {
@@ -295441,7 +295133,7 @@ var detector6 = /* @__PURE__ */ __name((txt) => {
   return /^\s*gitGraph/.test(txt);
 }, "detector");
 var loader6 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_gitGraphDiagram_XJZIOB7I(), gitGraphDiagram_XJZIOB7I_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_gitGraphDiagram_PDYL7XHY(), gitGraphDiagram_PDYL7XHY_exports));
   return { id: id6, diagram: diagram210 };
 }, "loader");
 var plugin6 = {
@@ -295455,7 +295147,7 @@ var detector7 = /* @__PURE__ */ __name((txt) => {
   return /^\s*gantt/.test(txt);
 }, "detector");
 var loader7 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_ganttDiagram_R7TSEDQI(), ganttDiagram_R7TSEDQI_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_ganttDiagram_R7GPNTJY(), ganttDiagram_R7GPNTJY_exports));
   return { id: id7, diagram: diagram210 };
 }, "loader");
 var plugin7 = {
@@ -295469,7 +295161,7 @@ var detector8 = /* @__PURE__ */ __name((txt) => {
   return /^\s*info/.test(txt);
 }, "detector");
 var loader8 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_infoDiagram_5W2HQ5XZ(), infoDiagram_5W2HQ5XZ_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_infoDiagram_MVDRKAX5(), infoDiagram_MVDRKAX5_exports));
   return { id: id8, diagram: diagram210 };
 }, "loader");
 var info = {
@@ -295482,7 +295174,7 @@ var detector9 = /* @__PURE__ */ __name((txt) => {
   return /^\s*pie/.test(txt);
 }, "detector");
 var loader9 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_pieDiagram_CAPJLFHJ(), pieDiagram_CAPJLFHJ_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_pieDiagram_GNMPY74T(), pieDiagram_GNMPY74T_exports));
   return { id: id9, diagram: diagram210 };
 }, "loader");
 var pie = {
@@ -295495,7 +295187,7 @@ var detector10 = /* @__PURE__ */ __name((txt) => {
   return /^\s*quadrantChart/.test(txt);
 }, "detector");
 var loader10 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_quadrantDiagram_GDMTTRAM(), quadrantDiagram_GDMTTRAM_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_quadrantDiagram_D57K4MC3(), quadrantDiagram_D57K4MC3_exports));
   return { id: id10, diagram: diagram210 };
 }, "loader");
 var plugin8 = {
@@ -295509,7 +295201,7 @@ var detector11 = /* @__PURE__ */ __name((txt) => {
   return /^\s*xychart(-beta)?/.test(txt);
 }, "detector");
 var loader11 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_xychartDiagram_TAQBALBS(), xychartDiagram_TAQBALBS_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_xychartDiagram_4URNHDU4(), xychartDiagram_4URNHDU4_exports));
   return { id: id11, diagram: diagram210 };
 }, "loader");
 var plugin9 = {
@@ -295523,7 +295215,7 @@ var detector12 = /* @__PURE__ */ __name((txt) => {
   return /^\s*requirement(Diagram)?/.test(txt);
 }, "detector");
 var loader12 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_requirementDiagram_X7JNWC4A(), requirementDiagram_X7JNWC4A_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_requirementDiagram_EQYSW5RA(), requirementDiagram_EQYSW5RA_exports));
   return { id: id12, diagram: diagram210 };
 }, "loader");
 var plugin10 = {
@@ -295537,7 +295229,7 @@ var detector13 = /* @__PURE__ */ __name((txt) => {
   return /^\s*sequenceDiagram/.test(txt);
 }, "detector");
 var loader13 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_sequenceDiagram_ZO4K6R2Y(), sequenceDiagram_ZO4K6R2Y_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_sequenceDiagram_BLEHNHQU(), sequenceDiagram_BLEHNHQU_exports));
   return { id: id13, diagram: diagram210 };
 }, "loader");
 var plugin11 = {
@@ -295549,7 +295241,7 @@ var sequenceDetector_default = plugin11;
 var id14 = "classDiagram";
 var detector14 = /* @__PURE__ */ __name((txt) => /^\s*classDiagram/.test(txt), "detector");
 var loader14 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_classDiagram_v2_K4WV4PDN(), classDiagram_v2_K4WV4PDN_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_classDiagram_v2_4MYWR3UA(), classDiagram_v2_4MYWR3UA_exports));
   return { id: id14, diagram: diagram210 };
 }, "loader");
 var plugin12 = {
@@ -295561,7 +295253,7 @@ var classDetector_V2_default = plugin12;
 var id15 = "stateDiagram";
 var detector15 = /* @__PURE__ */ __name((txt) => /^\s*stateDiagram/.test(txt), "detector");
 var loader15 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_stateDiagram_v2_TBUQTH76(), stateDiagram_v2_TBUQTH76_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_stateDiagram_v2_A6IESKWZ(), stateDiagram_v2_A6IESKWZ_exports));
   return { id: id15, diagram: diagram210 };
 }, "loader");
 var plugin13 = {
@@ -295575,7 +295267,7 @@ var detector16 = /* @__PURE__ */ __name((txt) => {
   return /^\s*journey/.test(txt);
 }, "detector");
 var loader16 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_journeyDiagram_COXZFDF6(), journeyDiagram_COXZFDF6_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_journeyDiagram_BOSHW7O7(), journeyDiagram_BOSHW7O7_exports));
   return { id: id16, diagram: diagram210 };
 }, "loader");
 var plugin14 = {
@@ -295690,7 +295382,7 @@ var detector17 = /* @__PURE__ */ __name((txt, config3 = {}) => {
   return false;
 }, "detector");
 var loader17 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_flowDiagram_OXPTDLAJ(), flowDiagram_OXPTDLAJ_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_flowDiagram_IUGLLWBU(), flowDiagram_IUGLLWBU_exports));
   return { id: id17, diagram: diagram210 };
 }, "loader");
 var plugin15 = {
@@ -295704,7 +295396,7 @@ var detector18 = /* @__PURE__ */ __name((txt) => {
   return /^\s*timeline/.test(txt);
 }, "detector");
 var loader18 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_timeline_definition_YOQAKGHF(), timeline_definition_YOQAKGHF_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_timeline_definition_JXYKGLGB(), timeline_definition_JXYKGLGB_exports));
   return { id: id18, diagram: diagram210 };
 }, "loader");
 var plugin16 = {
@@ -295718,7 +295410,7 @@ var detector19 = /* @__PURE__ */ __name((txt) => {
   return /^\s*mindmap/.test(txt);
 }, "detector");
 var loader19 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_mindmap_definition_LZFPQGKD(), mindmap_definition_LZFPQGKD_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_mindmap_definition_6OY57UG3(), mindmap_definition_6OY57UG3_exports));
   return { id: id19, diagram: diagram210 };
 }, "loader");
 var plugin17 = {
@@ -295732,7 +295424,7 @@ var detector20 = /* @__PURE__ */ __name((txt) => {
   return /^\s*kanban/.test(txt);
 }, "detector");
 var loader20 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_kanban_definition_P3RFRI5V(), kanban_definition_P3RFRI5V_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_kanban_definition_FNSA4HC5(), kanban_definition_FNSA4HC5_exports));
   return { id: id20, diagram: diagram210 };
 }, "loader");
 var plugin18 = {
@@ -295746,7 +295438,7 @@ var detector21 = /* @__PURE__ */ __name((txt) => {
   return /^\s*sankey(-beta)?/.test(txt);
 }, "detector");
 var loader21 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_sankeyDiagram_UM26HJRW(), sankeyDiagram_UM26HJRW_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_sankeyDiagram_SY24JHO5(), sankeyDiagram_SY24JHO5_exports));
   return { id: id21, diagram: diagram210 };
 }, "loader");
 var plugin19 = {
@@ -295760,7 +295452,7 @@ var detector22 = /* @__PURE__ */ __name((txt) => {
   return /^\s*packet(-beta)?/.test(txt);
 }, "detector");
 var loader222 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_diagram_UMYRVEAY(), diagram_UMYRVEAY_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_diagram_I5XIIV2D(), diagram_I5XIIV2D_exports));
   return { id: id222, diagram: diagram210 };
 }, "loader");
 var packet = {
@@ -295773,7 +295465,7 @@ var detector23 = /* @__PURE__ */ __name((txt) => {
   return /^\s*radar-beta/.test(txt);
 }, "detector");
 var loader23 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_diagram_YEKJPTXX(), diagram_YEKJPTXX_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_diagram_RJA3I4VV(), diagram_RJA3I4VV_exports));
   return { id: id23, diagram: diagram210 };
 }, "loader");
 var radar = {
@@ -295786,7 +295478,7 @@ var detector24 = /* @__PURE__ */ __name((txt) => {
   return /^\s*block(-beta)?/.test(txt);
 }, "detector");
 var loader24 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_blockDiagram_E7TT5TSB(), blockDiagram_E7TT5TSB_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_blockDiagram_RJAE7QA3(), blockDiagram_RJAE7QA3_exports));
   return { id: id24, diagram: diagram210 };
 }, "loader");
 var plugin20 = {
@@ -295800,7 +295492,7 @@ var detector25 = /* @__PURE__ */ __name((txt) => {
   return /^\s*treeView-beta/.test(txt);
 }, "detector");
 var loader25 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_diagram_PFPMY2P6(), diagram_PFPMY2P6_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_diagram_ODIL2UCW(), diagram_ODIL2UCW_exports));
   return { id: id25, diagram: diagram210 };
 }, "loader");
 var plugin21 = {
@@ -295814,7 +295506,7 @@ var detector26 = /* @__PURE__ */ __name((txt) => {
   return /^\s*architecture/.test(txt);
 }, "detector");
 var loader26 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_architectureDiagram_47P4ROYG(), architectureDiagram_47P4ROYG_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_architectureDiagram_ZHVYKT53(), architectureDiagram_ZHVYKT53_exports));
   return { id: id26, diagram: diagram210 };
 }, "loader");
 var architecture = {
@@ -295828,7 +295520,7 @@ var detector27 = /* @__PURE__ */ __name((txt) => {
   return /^\s*eventmodeling/.test(txt);
 }, "detector");
 var loader27 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_diagram_ZIFT7M5P(), diagram_ZIFT7M5P_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_diagram_PFBEJUXE(), diagram_PFBEJUXE_exports));
   return { id: id27, diagram: diagram210 };
 }, "loader");
 var plugin22 = {
@@ -295842,7 +295534,7 @@ var detector28 = /* @__PURE__ */ __name((txt) => {
   return /^\s*ishikawa(-beta)?\b/i.test(txt);
 }, "detector");
 var loader28 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_ishikawaDiagram_K3B6WC7H(), ishikawaDiagram_K3B6WC7H_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_ishikawaDiagram_HPEHV2GE(), ishikawaDiagram_HPEHV2GE_exports));
   return { id: id28, diagram: diagram210 };
 }, "loader");
 var ishikawa = {
@@ -295855,7 +295547,7 @@ var detector29 = /* @__PURE__ */ __name((txt) => {
   return /^\s*venn-beta/.test(txt);
 }, "detector");
 var loader29 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_vennDiagram_BLWOH2XV(), vennDiagram_BLWOH2XV_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_vennDiagram_Q3Y3IDCW(), vennDiagram_Q3Y3IDCW_exports));
   return { id: id29, diagram: diagram210 };
 }, "loader");
 var plugin23 = {
@@ -295869,7 +295561,7 @@ var detector30 = /* @__PURE__ */ __name((txt) => {
   return /^\s*treemap/.test(txt);
 }, "detector");
 var loader30 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_diagram_OVF4WLC6(), diagram_OVF4WLC6_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_diagram_CBK3MWTC(), diagram_CBK3MWTC_exports));
   return { id: id30, diagram: diagram210 };
 }, "loader");
 var treemap = {
@@ -295882,7 +295574,7 @@ var detector31 = /* @__PURE__ */ __name((txt) => {
   return /^\s*usecase-beta(?:\s|$)/.test(txt);
 }, "detector");
 var loader31 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_usecaseDiagram_VIAY4XPW(), usecaseDiagram_VIAY4XPW_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_usecaseDiagram_WPOLBNNX(), usecaseDiagram_WPOLBNNX_exports));
   return { id: id31, diagram: diagram210 };
 }, "loader");
 var usecase = {
@@ -295895,7 +295587,7 @@ var detector32 = /* @__PURE__ */ __name((text4) => {
   return /^\s*wardley-beta/i.test(text4);
 }, "detector");
 var loader32 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_wardleyDiagram_YMQ3BMBF(), wardleyDiagram_YMQ3BMBF_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_wardleyDiagram_IVAIDKWA(), wardleyDiagram_IVAIDKWA_exports));
   return { id: id322, diagram: diagram210 };
 }, "loader");
 var plugin24 = {
@@ -295909,7 +295601,7 @@ var detector33 = /* @__PURE__ */ __name((txt) => {
   return /^\s*cynefin-beta(?:[\s:]|$)/.test(txt);
 }, "detector");
 var loader33 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_cynefinDiagram_3GCD6N5R(), cynefinDiagram_3GCD6N5R_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_cynefinDiagram_WF24UDRP(), cynefinDiagram_WF24UDRP_exports));
   return { id: id33, diagram: diagram210 };
 }, "loader");
 var cynefin = {
@@ -295922,7 +295614,7 @@ var detector34 = /* @__PURE__ */ __name((txt) => {
   return /^\s*railroad-beta/i.test(txt);
 }, "detector");
 var loader34 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_railroadDiagram_SM67HX2B(), railroadDiagram_SM67HX2B_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_railroadDiagram_Y72NRBL7(), railroadDiagram_Y72NRBL7_exports));
   return { id: id34, diagram: diagram210 };
 }, "loader");
 var railroad = {
@@ -295935,7 +295627,7 @@ var detector35 = /* @__PURE__ */ __name((txt) => {
   return /^\s*railroad-ebnf-beta/i.test(txt);
 }, "detector");
 var loader35 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_ebnfDiagram_VR2GEFS7(), ebnfDiagram_VR2GEFS7_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_ebnfDiagram_V4P3TTPT(), ebnfDiagram_V4P3TTPT_exports));
   return { id: id35, diagram: diagram210 };
 }, "loader");
 var railroadEbnf = {
@@ -295948,7 +295640,7 @@ var detector36 = /* @__PURE__ */ __name((txt) => {
   return /^\s*railroad-abnf-beta/i.test(txt);
 }, "detector");
 var loader36 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_abnfDiagram_YUKMZFIV(), abnfDiagram_YUKMZFIV_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_abnfDiagram_WEYOIA3C(), abnfDiagram_WEYOIA3C_exports));
   return { id: id36, diagram: diagram210 };
 }, "loader");
 var railroadAbnf = {
@@ -295961,7 +295653,7 @@ var detector37 = /* @__PURE__ */ __name((txt) => {
   return /^\s*railroad-peg-beta/i.test(txt);
 }, "detector");
 var loader37 = /* @__PURE__ */ __name(async () => {
-  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_pegDiagram_BGZESJAR(), pegDiagram_BGZESJAR_exports));
+  const { diagram: diagram210 } = await Promise.resolve().then(() => (init_pegDiagram_ECIUJNBX(), pegDiagram_ECIUJNBX_exports));
   return { id: id37, diagram: diagram210 };
 }, "loader");
 var railroadPeg = {
@@ -296549,15 +296241,15 @@ var renderDiagram = /* @__PURE__ */ __name(async function(id38, text4, svgContai
   svg2.insertBefore(style1, firstChild);
   try {
     if (false) {
-      await profiler.span("draw", () => diag.renderer.draw(text4, id38, "12.1.0", diag));
+      await profiler.span("draw", () => diag.renderer.draw(text4, id38, "12.2.0", diag));
     } else {
-      await diag.renderer.draw(text4, id38, "12.1.0", diag);
+      await diag.renderer.draw(text4, id38, "12.2.0", diag);
     }
   } catch (e3) {
     if (config3.suppressErrorRendering) {
       removeTempElements();
     } else {
-      errorRenderer_default.draw(text4, id38, "12.1.0");
+      errorRenderer_default.draw(text4, id38, "12.2.0");
     }
     throw e3;
   }
