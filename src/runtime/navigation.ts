@@ -228,6 +228,7 @@ function getVisibleHeight(el: HTMLElement): number {
  * The sidenav height varies depending on how much of the header element is
  * visible.
  */
+/* eslint-disable-next-line unicorn/no-unnecessary-parameters -- false positive but should refactor so the parameter isn't stored in the outer scope */
 function updateSidenavHeight(navigation: HTMLElement): void {
     const { clientHeight } = document.documentElement;
     const navHeight = navigation.getBoundingClientRect().height;
