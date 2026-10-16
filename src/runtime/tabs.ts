@@ -96,6 +96,8 @@ const onKeydown = (event: KeyboardEvent): void => {
             return;
     }
 
+    if (!flag) return;
+
     event.preventDefault();
     event.stopPropagation();
 };
