@@ -297285,66 +297285,6 @@ onContentReady(() => {
   }
   headerLayoutDetector(newRefs.nav);
 });
-function setupTabsOverflow(tabList) {
-  const moreButton = document.createElement("button");
-  const moreButtonSpan = document.createElement("span");
-  moreButton.type = "button";
-  moreButton.classList.add("docs-tabs-more-button");
-  moreButton.hidden = true;
-  moreButton.setAttribute("popovertarget", "tabs-overflow-container");
-  moreButton.tabIndex = -1;
-  const icon2 = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  icon2.setAttribute("focusable", "false");
-  icon2.classList.add("docs-icon");
-  icon2.setAttribute("aria-hidden", "true");
-  const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
-  use.setAttribute("href", "#docs-icon-arrow-down");
-  icon2.append(use);
-  moreButtonSpan.append("Fler flikar", icon2);
-  moreButton.append(moreButtonSpan);
-  const overflowList = document.createElement("div");
-  overflowList.classList.add("docs-tabs-overflow-container");
-  overflowList.id = "tabs-overflow-container";
-  overflowList.setAttribute("popover", "");
-  const originalTabsOrder = Array.from(
-    tabList.querySelectorAll('[role="tab"]')
-  );
-  tabList.append(moreButton);
-  tabList.append(overflowList);
-  const updateOverflow = () => {
-    for (const tab of originalTabsOrder) {
-      moreButton.before(tab);
-    }
-    moreButton.hidden = true;
-    const tabListWidth = tabList.clientWidth;
-    const getTabsWidth = () => Array.from(
-      tabList.querySelectorAll(
-        ':scope > [role="tab"]'
-      )
-    ).reduce((total, tab) => total + tab.offsetWidth, 0);
-    if (getTabsWidth() <= tabListWidth) {
-      overflowList.hidePopover();
-      return;
-    }
-    moreButton.hidden = false;
-    while (getTabsWidth() + moreButton.offsetWidth > tabListWidth) {
-      const visibleTabs = Array.from(
-        tabList.querySelectorAll(
-          ':scope > [role="tab"]'
-        )
-      );
-      const lastTab = visibleTabs.at(-1);
-      if (!lastTab) {
-        break;
-      }
-      overflowList.prepend(lastTab);
-    }
-  };
-  const resizeObserver = new ResizeObserver(updateOverflow);
-  resizeObserver.observe(tabList);
-  updateOverflow();
-  return { moreButton, overflowList };
-}
 onContentReady(() => {
   renderTabs();
 });
@@ -297397,84 +297337,49 @@ function renderTabs() {
   const firstTabButton = tabList.firstChild;
   firstTabButton.removeAttribute("tabIndex");
   firstTabButton.setAttribute("aria-selected", "true");
-  const { moreButton, overflowList } = setupTabsOverflow(tabList);
-  moreButton.addEventListener("keydown", onMoreButtonKeydown);
-  overflowList.addEventListener("toggle", () => {
-    if (!overflowList.matches(":popover-open")) {
-      return;
-    }
-    const firstTab = overflowList.querySelector('[role="tab"]');
-    firstTab?.focus();
-  });
 }
 var onKeydown = (event3) => {
-  const currentTab = event3.currentTarget;
-  const parent4 = currentTab.parentElement;
-  if (!parent4) {
-    return;
-  }
   const tabs = Array.from(
-    parent4.querySelectorAll(':scope > [role="tab"]')
+    document.querySelectorAll(':scope > [role="tab"]')
   );
-  const currentIndex = tabs.indexOf(currentTab);
-  let nextTab;
+  let flag = false;
   switch (event3.key) {
-    case "ArrowLeft": {
-      if (currentIndex > 0) {
-        nextTab = tabs[currentIndex - 1];
-      } else if (parent4.matches(":popover-open")) {
-        nextTab = tabs.at(-1);
-      } else {
-        nextTab = void 0;
-      }
+    case "ArrowLeft":
+      moveSelectedTab(-1);
+      flag = true;
       break;
-    }
-    case "ArrowRight": {
-      if (currentIndex < tabs.length - 1) {
-        nextTab = tabs[currentIndex + 1];
-      } else if (parent4.matches(":popover-open")) {
-        nextTab = tabs[0];
-      } else {
-        nextTab = void 0;
-      }
+    case "ArrowRight":
+      moveSelectedTab(1);
+      flag = true;
       break;
-    }
     case "Home":
-      nextTab = tabs[0];
+      setSelectedTab(tabs[0]);
+      flag = true;
       break;
     case "End":
-      nextTab = tabs.at(-1);
+      setSelectedTab(tabs[tabs.length - 1]);
+      flag = true;
       break;
     default:
       return;
   }
   event3.preventDefault();
   event3.stopPropagation();
-  if (nextTab) {
-    setSelectedTab(nextTab);
-  } else if (event3.key === "ArrowRight" && parent4.classList.contains("docs-tablist")) {
-    const moreButton = parent4.querySelector(
-      ".docs-tabs-more-button"
-    );
-    if (moreButton && !moreButton.hidden) {
-      moreButton.focus();
-    }
-  }
 };
 function onClick(event3) {
   setSelectedTab(event3.target);
 }
-function onMoreButtonKeydown(event3) {
-  if (event3.key !== "ArrowLeft") {
-    return;
-  }
-  const moreButton = event3.currentTarget;
-  const previousTab = moreButton.previousElementSibling;
-  if (!(previousTab instanceof HTMLButtonElement)) {
-    return;
-  }
-  event3.preventDefault();
-  previousTab.focus();
+function getCurrentTab() {
+  return document.querySelector(
+    '.docs-tabs [role="tab"][aria-selected="true"]'
+  );
+}
+function moveSelectedTab(direction2) {
+  const currentTab = getCurrentTab();
+  if (!currentTab) return;
+  const siblingTab = direction2 === -1 ? currentTab.previousElementSibling : currentTab.nextElementSibling;
+  if (!siblingTab) return;
+  setSelectedTab(siblingTab);
 }
 function setSelectedTab(newTab) {
   const tabs = document.querySelectorAll(
