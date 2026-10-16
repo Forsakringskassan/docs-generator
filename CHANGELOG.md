@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [3.21.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.21.0...v3.21.1) (2026-10-16)
+
+### Bug Fixes
+
+* **deps:** update dependency i18next to v26.4.4 ([3b33241](https://github.com/Forsakringskassan/docs-generator/commit/3b3324183b7adf88307621321355e50f775c52d7))
+* hide search instruction menu in mobile view (refs SFKUI-8008) ([cf3e034](https://github.com/Forsakringskassan/docs-generator/commit/cf3e0344ca544afe4b08757439fe428954b5ca9b))
+
 ## [3.21.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.20.1...v3.21.0) (2026-10-14)
 
 ### Features
