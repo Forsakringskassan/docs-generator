@@ -1440,9 +1440,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        <span class="version-text-block">renovate/eslint-config-monorepo</span>  (<a href="https://github.com/Forsakringskassan/docs-generator/commits/cd702b8f02ad77a1f01c2482d549fdf2f1d8a488">cd702b8</a>)<br />
+        <span class="version-text-block">renovate/eslint-config-monorepo</span>  (<a href="https://github.com/Forsakringskassan/docs-generator/commits/a0ee83e5a0af53d4ae53e9bab579cef74c6a159b">a0ee83e</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/551">PR 551</a><br />
-       <span class="version-text-block">2026-10-16 19:26</span>
+       <span class="version-text-block">2026-10-16 21:50</span>
     </span>
 </div>
 </div>
@@ -1777,7 +1777,7 @@ Link resolvers are called in the same order as they appear in the list of proces
 <h4 id="example" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#example">Example</a></h4><p class="docs-paragraph">To resolve a <code>&lcub;@link foo&rcub;</code> tag to a custom url:</p>
 
                 <div
-                    id="example-ddfed8"
+                    id="example-060254"
                     class="code-preview code-preview--default"
                     
                     
@@ -1791,11 +1791,11 @@ Link resolvers are called in the same order as they appear in the list of proces
         <span class="hljs-title function_">handler</span>(<span class="hljs-params"></span>) {
             <span class="hljs-comment">/* ... */</span>
         },
-        <span class="hljs-title function_">resolveLink</span>(<span class="hljs-params">{ key, title }</span>) {
+        <span class="hljs-title function_">resolveLink</span>(<span class="hljs-params">{ key, title = key }</span>) {
             <span class="hljs-keyword">if</span> (key === <span class="hljs-string">&quot;foo&quot;</span>) {
                 <span class="hljs-keyword">return</span> {
                     <span class="hljs-attr">href</span>: <span class="hljs-string">&quot;https://example.net/foo&quot;</span>,
-                    <span class="hljs-attr">title</span>: title ?? key,
+                    <span class="hljs-attr">title</span>: title,
                     <span class="hljs-attr">rel</span>: <span class="hljs-string">&quot;external&quot;</span>,
                 };
             }
