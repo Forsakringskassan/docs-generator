@@ -1495,6 +1495,14 @@ function lookupGetter(object3, prop) {
   }
   return fallbackValue;
 }
+function lookupAccessor(object3, prop) {
+  while (object3 !== null) {
+    const desc = getOwnPropertyDescriptor(object3, prop);
+    if (desc) return desc.get ? unapply(desc.get) : null;
+    object3 = getPrototypeOf(object3);
+  }
+  return null;
+}
 function isRegex(value2) {
   try {
     regExpTest(value2, "");
@@ -1506,7 +1514,7 @@ function isRegex(value2) {
 function createDOMPurify() {
   let window3 = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : getGlobal();
   const DOMPurify = (root4) => createDOMPurify(root4);
-  DOMPurify.version = "3.4.16";
+  DOMPurify.version = "3.4.17";
   DOMPurify.removed = [];
   if (!window3 || !window3.document || window3.document.nodeType !== NODE_TYPE.document || !window3.Element) {
     DOMPurify.isSupported = false;
@@ -1537,6 +1545,10 @@ function createDOMPurify() {
   };
   const _readNodeName = function _readNodeName2(node2) {
     return getNodeName ? getNodeName(node2) : node2.nodeName;
+  };
+  const getNamespaceURI = lookupAccessor(ElementPrototype, "namespaceURI");
+  const _readNamespaceURI = function _readNamespaceURI2(element3) {
+    return getNamespaceURI ? getNamespaceURI(element3) : element3.namespaceURI;
   };
   if (typeof HTMLTemplateElement === "function") {
     const template = document2.createElement("template");
@@ -1651,6 +1663,7 @@ function createDOMPurify() {
   const SANITIZE_NAMED_PROPS_PREFIX = "user-content-";
   let KEEP_CONTENT = true;
   let IN_PLACE = false;
+  let IN_PLACE_VISITED = null;
   let USE_PROFILES = {};
   let FORBID_CONTENTS = null;
   const DEFAULT_FORBID_CONTENTS = addToSet({}, [
@@ -1889,18 +1902,23 @@ function createDOMPurify() {
     return !ALL_MATHML_TAGS[tagName] && (COMMON_SVG_AND_HTML_ELEMENTS[tagName] || !ALL_SVG_TAGS[tagName]);
   };
   const _checkValidNamespace = function _checkValidNamespace2(element3) {
-    let parent4 = getParentNode(element3);
-    if (!parent4 || !parent4.tagName) parent4 = {
-      namespaceURI: NAMESPACE2,
-      tagName: "template"
-    };
-    const tagName = stringToLowerCase(element3.tagName);
-    const parentTagName = stringToLowerCase(parent4.tagName);
-    if (!ALLOWED_NAMESPACES[element3.namespaceURI]) return false;
-    if (element3.namespaceURI === SVG_NAMESPACE) return _checkSvgNamespace(tagName, parent4, parentTagName);
-    if (element3.namespaceURI === MATHML_NAMESPACE) return _checkMathMlNamespace(tagName, parent4, parentTagName);
-    if (element3.namespaceURI === HTML_NAMESPACE) return _checkHtmlNamespace(tagName, parent4, parentTagName);
-    if (PARSER_MEDIA_TYPE === "application/xhtml+xml" && ALLOWED_NAMESPACES[element3.namespaceURI]) return true;
+    const elementNamespace = _readNamespaceURI(element3);
+    const tagName = stringToLowerCase(_readNodeName(element3));
+    const parentNode = getParentNode(element3);
+    let parent4;
+    let parentTagName;
+    if (parentNode && _readNodeType(parentNode) === NODE_TYPE.element) {
+      parent4 = { namespaceURI: _readNamespaceURI(parentNode) };
+      parentTagName = stringToLowerCase(_readNodeName(parentNode));
+    } else {
+      parent4 = { namespaceURI: NAMESPACE2 };
+      parentTagName = "template";
+    }
+    if (!ALLOWED_NAMESPACES[elementNamespace]) return false;
+    if (elementNamespace === SVG_NAMESPACE) return _checkSvgNamespace(tagName, parent4, parentTagName);
+    if (elementNamespace === MATHML_NAMESPACE) return _checkMathMlNamespace(tagName, parent4, parentTagName);
+    if (elementNamespace === HTML_NAMESPACE) return _checkHtmlNamespace(tagName, parent4, parentTagName);
+    if (PARSER_MEDIA_TYPE === "application/xhtml+xml" && ALLOWED_NAMESPACES[elementNamespace]) return true;
     return false;
   };
   const _forceRemove = function _forceRemove2(node2) {
@@ -1925,19 +1943,13 @@ function createDOMPurify() {
   const _neutralizeRoot = function _neutralizeRoot2(root4) {
     _neutralizeSubtree(root4);
     const childNodes = getChildNodes(root4);
-    if (childNodes) {
-      const snapshot = [];
-      arrayForEach(childNodes, (child) => {
-        arrayPush(snapshot, child);
-      });
-      arrayForEach(snapshot, (child) => {
-        try {
-          remove3(child);
-        } catch (_3) {
-        }
-      });
-    }
-    const attributes = getAttributes(root4);
+    if (childNodes) arrayForEach(arraySlice(childNodes), (child) => {
+      try {
+        remove3(child);
+      } catch (_3) {
+      }
+    });
+    const attributes = _readNodeType(root4) === NODE_TYPE.element ? getAttributes(root4) : null;
     if (attributes) for (let i4 = attributes.length - 1; i4 >= 0; --i4) {
       const attribute = attributes[i4];
       const name = attribute && attribute.name;
@@ -1984,14 +1996,93 @@ function createDOMPurify() {
       _stripAttributeNode(element3, attribute, name);
     }
   };
-  const _neutralizeSubtree = function _neutralizeSubtree2(root4) {
+  const _walkTree = function _walkTree2(root4, visit) {
+    let intoShadow = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : false;
     const stack = [root4];
     while (stack.length > 0) {
       const node2 = stack.pop();
-      if (_readNodeType(node2) === NODE_TYPE.element) _stripDisallowedAttributes(node2);
+      if (visit(node2) === false) continue;
+      if (intoShadow && _readNodeType(node2) === NODE_TYPE.element) {
+        const shadowRoot = getShadowRoot(node2);
+        if (_isDocumentFragment(shadowRoot)) stack.push(shadowRoot);
+      }
       const childNodes = getChildNodes(node2);
       if (childNodes) for (let i4 = childNodes.length - 1; i4 >= 0; --i4) stack.push(childNodes[i4]);
     }
+  };
+  const _neutralizeSubtree = function _neutralizeSubtree2(root4) {
+    _walkTree(root4, (node2) => {
+      if (_readNodeType(node2) === NODE_TYPE.element) _stripDisallowedAttributes(node2);
+    });
+  };
+  const _collectLiveNodes = function _collectLiveNodes2(root4) {
+    const nodes5 = [];
+    _walkTree(root4, (node2) => {
+      nodes5.push(node2);
+    }, true);
+    return nodes5;
+  };
+  const _neutralizeEscapedElements = function _neutralizeEscapedElements2(root4, before) {
+    const reachable = setCreate();
+    arrayForEach(_collectLiveNodes(root4), (node2) => {
+      if (_readNodeType(node2) === NODE_TYPE.element) setAdd(reachable, node2);
+    });
+    arrayForEach(before, (node2) => {
+      if (_readNodeType(node2) === NODE_TYPE.element && !setHas(reachable, node2)) _stripDisallowedAttributes(node2);
+    });
+  };
+  const _neutralizeDiscarded = function _neutralizeDiscarded2(root4, before) {
+    let rootRemoved = false;
+    arrayForEach(DOMPurify.removed, (entry) => {
+      if (entry.element) {
+        rootRemoved = rootRemoved || entry.element === root4;
+        _neutralizeSubtree(entry.element);
+      }
+    });
+    _neutralizeEscapedElements(root4, before);
+    return rootRemoved;
+  };
+  const MAX_UNVISITED_ROUNDS = 8;
+  const _sanitizeUnvisitedNodes = function _sanitizeUnvisitedNodes2(root4, before) {
+    const visited = IN_PLACE_VISITED;
+    let original = null;
+    const getOriginal = () => {
+      if (!original) {
+        original = setCreate();
+        arrayForEach(before, (beforeNode) => {
+          setAdd(original, beforeNode);
+        });
+      }
+      return original;
+    };
+    for (let round = 0; ; round++) {
+      const live = _collectLiveNodes(root4);
+      const containers = [root4];
+      let pending = false;
+      arrayForEach(live, (node2) => {
+        if (_readNodeType(node2) === NODE_TYPE.documentFragment) arrayPush(containers, node2);
+        else if (!pending && !setHas(visited, node2)) pending = setHas(getOriginal(), node2);
+      });
+      if (!pending) return;
+      if (round >= MAX_UNVISITED_ROUNDS) throw typeErrorCreate("the tree kept changing during in-place sanitization; refusing to return it");
+      arrayForEach(containers, (container2, index) => {
+        _sanitizeUnvisitedIn(container2, index > 0, root4, getOriginal());
+      });
+    }
+  };
+  const _sanitizeUnvisitedIn = function _sanitizeUnvisitedIn2(container2, inShadow, root4, original) {
+    const iterator = _createNodeIterator(container2);
+    let node2;
+    while (node2 = iterator.nextNode()) {
+      if (!setHas(original, node2) || setHas(IN_PLACE_VISITED, node2)) continue;
+      if (inShadow) _executeHooks(hooks.uponSanitizeShadowNode, node2, null);
+      _sanitizeElements(node2, root4);
+      _sanitizeAttributes(node2, root4);
+      if (_isDocumentFragment(node2.content)) _sanitizeShadowDOM2(node2.content);
+    }
+  };
+  const _markVisited = function _markVisited2(node2) {
+    if (IN_PLACE_VISITED) setAdd(IN_PLACE_VISITED, node2);
   };
   const _isPatchLinkageAttribute = function _isPatchLinkageAttribute2(lcName, lcTag) {
     if (!SAFE_FOR_XML) return false;
@@ -2000,16 +2091,14 @@ function createDOMPurify() {
   };
   const _neutralizePatchLinkage = function _neutralizePatchLinkage2(root4) {
     if (!SAFE_FOR_XML) return;
-    const stack = [root4];
-    while (stack.length > 0) {
-      const node2 = stack.pop();
+    _walkTree(root4, (node2) => {
       const nodeType3 = _readNodeType(node2);
       if (nodeType3 === NODE_TYPE.processingInstruction || nodeType3 === NODE_TYPE.comment && regExpTest(COMMENT_MARKUP_PROBE, node2.data)) {
         try {
           remove3(node2);
         } catch (_3) {
         }
-        continue;
+        return false;
       }
       if (nodeType3 === NODE_TYPE.element) {
         const element3 = node2;
@@ -2020,9 +2109,8 @@ function createDOMPurify() {
         } catch (_3) {
         }
       }
-      const childNodes = getChildNodes(node2);
-      if (childNodes) for (let i4 = childNodes.length - 1; i4 >= 0; --i4) stack.push(childNodes[i4]);
-    }
+      return true;
+    });
   };
   const _initDocument = function _initDocument2(dirty) {
     let doc = null;
@@ -2062,6 +2150,13 @@ function createDOMPurify() {
   };
   const _scrubTemplateExpressions2 = function _scrubTemplateExpressions(node2) {
     var _node$querySelectorAl;
+    _scrubOwnCharacterData(node2);
+    const templates = (_node$querySelectorAl = node2.querySelectorAll) === null || _node$querySelectorAl === void 0 ? void 0 : _node$querySelectorAl.call(node2, "template");
+    if (templates) arrayForEach(templates, (tmpl) => {
+      if (_isDocumentFragment(tmpl.content)) _scrubTemplateExpressions2(tmpl.content);
+    });
+  };
+  const _scrubOwnCharacterData = function _scrubOwnCharacterData2(node2) {
     node2.normalize();
     const doc = getOwnerDocument ? getOwnerDocument(node2) : node2.ownerDocument;
     const walker = createNodeIterator.call(doc || node2, node2, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_COMMENT | NodeFilter.SHOW_CDATA_SECTION | NodeFilter.SHOW_PROCESSING_INSTRUCTION, null);
@@ -2070,10 +2165,6 @@ function createDOMPurify() {
       currentNode.data = _stripTemplateExpressions(currentNode.data);
       currentNode = walker.nextNode();
     }
-    const templates = (_node$querySelectorAl = node2.querySelectorAll) === null || _node$querySelectorAl === void 0 ? void 0 : _node$querySelectorAl.call(node2, "template");
-    if (templates) arrayForEach(templates, (tmpl) => {
-      if (_isDocumentFragment(tmpl.content)) _scrubTemplateExpressions2(tmpl.content);
-    });
   };
   const _isClobbered = function _isClobbered2(element3) {
     const realTagName = getNodeName ? getNodeName(element3) : null;
@@ -2105,7 +2196,7 @@ function createDOMPurify() {
   }
   const _isUnsafeNode = function _isUnsafeNode2(currentNode, tagName) {
     if (SAFE_FOR_XML && currentNode.hasChildNodes() && !_isNode(currentNode.firstElementChild) && regExpTest(ELEMENT_MARKUP_PROBE, currentNode.textContent) && regExpTest(ELEMENT_MARKUP_PROBE, currentNode.innerHTML)) return true;
-    if (SAFE_FOR_XML && currentNode.namespaceURI === HTML_NAMESPACE && LITERAL_TEXT_ELEMENTS[tagName] && (_isNode(currentNode.firstElementChild) || typeof currentNode.textContent === "string" && regExpTest(LITERAL_TEXT_CLOSE[tagName], currentNode.textContent))) return true;
+    if (SAFE_FOR_XML && LITERAL_TEXT_ELEMENTS[tagName] && _readNodeType(currentNode) === NODE_TYPE.element && _readNamespaceURI(currentNode) === HTML_NAMESPACE && (_isNode(currentNode.firstElementChild) || typeof currentNode.textContent === "string" && regExpTest(ELEMENT_MARKUP_PROBE, currentNode.textContent))) return true;
     if (currentNode.nodeType === NODE_TYPE.processingInstruction) return true;
     if (SAFE_FOR_XML && currentNode.nodeType === NODE_TYPE.comment && regExpTest(COMMENT_MARKUP_PROBE, currentNode.data)) return true;
     return false;
@@ -2120,7 +2211,7 @@ function createDOMPurify() {
   };
   const _sanitizeDisallowedNode = function _sanitizeDisallowedNode2(currentNode, tagName, root4) {
     if (!FORBID_TAGS[tagName] && _isBasicCustomElement(tagName) && _matchesNameCheck(CUSTOM_ELEMENT_HANDLING.tagNameCheck, tagName)) return false;
-    if (KEEP_CONTENT && !FORBID_CONTENTS[tagName]) {
+    if (KEEP_CONTENT && !FORBID_CONTENTS[tagName] && !FORBID_CONTENTS[stringToLowerCase(tagName)]) {
       const parentNode = getParentNode(currentNode);
       const childNodes = getChildNodes(currentNode);
       if (childNodes && parentNode) {
@@ -2144,6 +2235,7 @@ function createDOMPurify() {
     return true;
   };
   const _sanitizeElements = function _sanitizeElements2(currentNode, root4) {
+    _markVisited(currentNode);
     _executeHooks(hooks.beforeSanitizeElements, currentNode, null);
     if (_handleHookDetachedNode(currentNode, root4)) return true;
     if (_isClobbered(currentNode)) {
@@ -2237,6 +2329,10 @@ function createDOMPurify() {
       return false;
     }
   };
+  const _isUnsafeAttributeValue = function _isUnsafeAttributeValue2(name, value2) {
+    if (SAFE_FOR_XML && regExpTest(/((--!?|])>)|<\/(style|script|title|xmp|textarea|noscript|iframe|noembed|noframes)/i, value2)) return true;
+    return stringToLowerCase(name) === "attributename" && stringMatch(value2, "href") !== null;
+  };
   const _sanitizeAttributes = function _sanitizeAttributes2(currentNode, root4) {
     _executeHooks(hooks.beforeSanitizeAttributes, currentNode, null);
     if (_handleHookDetachedNode(currentNode, root4)) return;
@@ -2270,11 +2366,7 @@ function createDOMPurify() {
         value2 = SANITIZE_NAMED_PROPS_PREFIX + value2;
         recreatedNamedProp = true;
       }
-      if (SAFE_FOR_XML && regExpTest(/((--!?|])>)|<\/(style|script|title|xmp|textarea|noscript|iframe|noembed|noframes)/i, value2)) {
-        _removeAttribute(name, currentNode, attr);
-        continue;
-      }
-      if (lcName === "attributename" && stringMatch(value2, "href")) {
+      if (_isUnsafeAttributeValue(name, value2)) {
         _removeAttribute(name, currentNode, attr);
         continue;
       }
@@ -2317,6 +2409,7 @@ function createDOMPurify() {
         }
       }
     }
+    if (SAFE_FOR_TEMPLATES) _scrubOwnCharacterData(fragment);
     _executeHooks(hooks.afterSanitizeShadowDOM, fragment, null);
   };
   const _sanitizeAttachedShadowRoots = function _sanitizeAttachedShadowRoots2(root4) {
@@ -2380,6 +2473,8 @@ function createDOMPurify() {
     if (hooks.uponSanitizeAttribute.length > 0) ALLOWED_ATTR = clone(ALLOWED_ATTR);
     DOMPurify.removed = [];
     const inPlace = IN_PLACE && typeof dirty !== "string" && _isNode(dirty);
+    let inPlaceNodes = [];
+    const outerVisited = IN_PLACE_VISITED;
     if (inPlace) {
       _neutralizePatchLinkage(dirty);
       const nn = _readNodeName(dirty);
@@ -2394,12 +2489,8 @@ function createDOMPurify() {
         _neutralizeRoot(dirty);
         throw typeErrorCreate("root node is clobbered and cannot be sanitized in-place");
       }
-      try {
-        _sanitizeAttachedShadowRoots(dirty);
-      } catch (error3) {
-        _neutralizeRoot(dirty);
-        throw error3;
-      }
+      inPlaceNodes = _collectLiveNodes(dirty);
+      IN_PLACE_VISITED = setCreate();
     } else if (_isNode(dirty)) {
       body = _initDocument("<!---->");
       importedNode = body.ownerDocument.importNode(dirty, true);
@@ -2415,30 +2506,25 @@ function createDOMPurify() {
     if (body && FORCE_BODY) _forceRemove(body.firstChild);
     const walkRoot = inPlace ? dirty : body;
     try {
+      if (inPlace) _sanitizeAttachedShadowRoots(dirty);
       const nodeIterator = _createNodeIterator(walkRoot);
       while (currentNode = nodeIterator.nextNode()) {
         _sanitizeElements(currentNode, walkRoot);
         _sanitizeAttributes(currentNode, walkRoot);
         if (_isDocumentFragment(currentNode.content)) _sanitizeShadowDOM2(currentNode.content);
       }
+      if (inPlace) _sanitizeUnvisitedNodes(dirty, inPlaceNodes);
     } catch (error3) {
       if (inPlace) {
         _neutralizeRoot(dirty);
-        arrayForEach(DOMPurify.removed, (entry) => {
-          if (entry.element) _neutralizeSubtree(entry.element);
-        });
+        _neutralizeDiscarded(dirty, inPlaceNodes);
       }
       throw error3;
+    } finally {
+      IN_PLACE_VISITED = outerVisited;
     }
     if (inPlace) {
-      let rootWasRemoved = false;
-      arrayForEach(DOMPurify.removed, (entry) => {
-        if (entry.element) {
-          if (entry.element === dirty) rootWasRemoved = true;
-          _neutralizeSubtree(entry.element);
-        }
-      });
-      if (rootWasRemoved) throw typeErrorCreate("a node selected for removal could not be safely returned; refusing to sanitize in place");
+      if (_neutralizeDiscarded(dirty, inPlaceNodes)) throw typeErrorCreate("a node selected for removal could not be safely returned; refusing to sanitize in place");
       if (SAFE_FOR_TEMPLATES) _scrubTemplateExpressions2(dirty);
       return dirty;
     }
@@ -2475,6 +2561,7 @@ function createDOMPurify() {
     if (!CONFIG) _parseConfig({});
     const lcTag = transformCaseFunc(tag);
     const lcName = transformCaseFunc(attr);
+    if (typeof value2 === "string" && (_isUnsafeAttributeValue(attr, value2) || !ALLOW_SELF_CLOSE_IN_ATTR && regExpTest(SELF_CLOSING_TAG, value2))) return false;
     return _isValidAttribute(lcTag, lcName, value2);
   };
   DOMPurify.addHook = function(entryPoint, hookFunction) {
@@ -2514,8 +2601,12 @@ var arrayForEach;
 var arrayLastIndexOf;
 var arrayPop;
 var arrayPush;
+var arraySlice;
 var arraySplice;
 var arrayIsArray;
+var setCreate;
+var setAdd;
+var setHas;
 var stringToLowerCase;
 var stringToString;
 var stringMatch;
@@ -2556,9 +2647,7 @@ var COMMENT_MARKUP_PROBE;
 var FALLBACK_TAG_CLOSE;
 var SELF_CLOSING_TAG;
 var NODE_TYPE;
-var LITERAL_TEXT_ELEMENT_NAMES;
 var LITERAL_TEXT_ELEMENTS;
-var LITERAL_TEXT_CLOSE;
 var getGlobal;
 var _createTrustedTypesPolicy;
 var _createHooksMap;
@@ -2606,9 +2695,12 @@ var init_purify_es = __esm({
     arrayLastIndexOf = unapply(Array.prototype.lastIndexOf);
     arrayPop = unapply(Array.prototype.pop);
     arrayPush = unapply(Array.prototype.push);
-    Array.prototype.slice;
+    arraySlice = unapply(Array.prototype.slice);
     arraySplice = unapply(Array.prototype.splice);
     arrayIsArray = Array.isArray;
+    setCreate = unconstruct(Set);
+    setAdd = unapply(Set.prototype.add);
+    setHas = unapply(Set.prototype.has);
     stringToLowerCase = unapply(String.prototype.toLowerCase);
     stringToString = unapply(String.prototype.toString);
     stringMatch = unapply(String.prototype.match);
@@ -3299,7 +3391,7 @@ var init_purify_es = __esm({
       documentFragment: 11,
       notation: 12
     };
-    LITERAL_TEXT_ELEMENT_NAMES = [
+    LITERAL_TEXT_ELEMENTS = freeze(addToSet({}, [
       "style",
       "script",
       "xmp",
@@ -3308,15 +3400,7 @@ var init_purify_es = __esm({
       "noframes",
       "plaintext",
       "noscript"
-    ];
-    LITERAL_TEXT_ELEMENTS = freeze(addToSet({}, LITERAL_TEXT_ELEMENT_NAMES));
-    LITERAL_TEXT_CLOSE = (function() {
-      const map6 = {};
-      arrayForEach(LITERAL_TEXT_ELEMENT_NAMES, (name) => {
-        map6[name] = seal(new RegExp("</" + name + "(?=[\\t\\n\\f\\r />])", "i"));
-      });
-      return freeze(map6);
-    })();
+    ]));
     getGlobal = function getGlobal2() {
       return typeof window === "undefined" ? null : window;
     };
@@ -168497,12 +168581,17 @@ var init_cytoscape_esm = __esm({
         if (root4) startVertex = string(root4) ? this.filter(root4)[0].id() : root4[0].id();
         var nodes5 = {};
         var edges3 = {};
+        var subgraphEdges = eles.edges().filter(function(e3) {
+          return eles.has(e3.source()) && eles.has(e3.target());
+        });
         if (directed) {
           eles.forEach(function(ele) {
             var id38 = ele.id();
             if (ele.isNode()) {
-              var ind = ele.indegree(true);
-              var outd = ele.outdegree(true);
+              var incoming2 = ele.incomers().edges().intersection(subgraphEdges);
+              var outgoing = ele.outgoers().edges().intersection(subgraphEdges);
+              var ind = incoming2.length;
+              var outd = outgoing.length;
               var d1 = ind - outd;
               var d22 = outd - ind;
               if (d1 == 1) {
@@ -168515,8 +168604,8 @@ var init_cytoscape_esm = __esm({
                 dflag = true;
               }
               nodes5[id38] = [];
-              ele.outgoers().forEach(function(e3) {
-                if (e3.isEdge()) nodes5[id38].push(e3.id());
+              outgoing.forEach(function(e3) {
+                return nodes5[id38].push(e3.id());
               });
             } else {
               edges3[id38] = [void 0, ele.target().id()];
@@ -168526,14 +168615,17 @@ var init_cytoscape_esm = __esm({
           eles.forEach(function(ele) {
             var id38 = ele.id();
             if (ele.isNode()) {
-              var d4 = ele.degree(true);
+              var connected = ele.connectedEdges().intersection(subgraphEdges);
+              var d4 = connected.length + connected.filter(function(e3) {
+                return e3.isLoop();
+              }).length;
               if (d4 % 2) {
                 if (!oddIn) oddIn = id38;
                 else if (!oddOut) oddOut = id38;
                 else dflag = true;
               }
               nodes5[id38] = [];
-              ele.connectedEdges().forEach(function(e3) {
+              connected.forEach(function(e3) {
                 return nodes5[id38].push(e3.id());
               });
             } else {
@@ -190623,8 +190715,6 @@ var init_cytoscape_esm = __esm({
           buffCxt.translate(-bb.x1 * scale3, -bb.y1 * scale3);
           buffCxt.scale(scale3, scale3);
           this.drawElements(buffCxt, zsortedEles);
-          buffCxt.scale(1 / scale3, 1 / scale3);
-          buffCxt.translate(bb.x1 * scale3, bb.y1 * scale3);
         } else {
           var pan2 = cy.pan();
           var translation = {
@@ -190635,14 +190725,12 @@ var init_cytoscape_esm = __esm({
           buffCxt.translate(translation.x, translation.y);
           buffCxt.scale(scale3, scale3);
           this.drawElements(buffCxt, zsortedEles);
-          buffCxt.scale(1 / scale3, 1 / scale3);
-          buffCxt.translate(-translation.x, -translation.y);
         }
+        buffCxt.setTransform(1, 0, 0, 1, 0, 0);
         if (options2.bg) {
           buffCxt.globalCompositeOperation = "destination-over";
           buffCxt.fillStyle = options2.bg;
-          buffCxt.rect(0, 0, width3, height2);
-          buffCxt.fill();
+          buffCxt.fillRect(0, 0, width3, height2);
         }
       }
       return buffCanvas;
@@ -190850,7 +190938,7 @@ var init_cytoscape_esm = __esm({
       }
       return style4;
     };
-    version2 = "3.34.3";
+    version2 = "3.34.4";
     cytoscape2 = function cytoscape3(options2) {
       if (options2 === void 0) {
         options2 = {};
@@ -296985,7 +297073,7 @@ export {
 /*! Bundled license information:
 
 dompurify/dist/purify.es.mjs:
-  (*! @license DOMPurify 3.4.16 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.4.16/LICENSE *)
+  (*! @license DOMPurify 3.4.17 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.4.17/LICENSE *)
   (*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE *)
 
 lodash-es/lodash.js:
