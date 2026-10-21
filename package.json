@@ -72,6 +72,13 @@
     "pretest": "run-s prettier:check eslint stylelint",
     "test": "vitest run"
   },
+  "allowScripts": {
+    "@parcel/watcher": false,
+    "cypress": true,
+    "esbuild": true,
+    "fsevents": false,
+    "unrs-resolver": true
+  },
   "commitlint": {
     "extends": "@forsakringskassan/commitlint-config/no-jira"
   },
@@ -133,7 +140,7 @@
     "@forsakringskassan/eslint-config-typescript-typeinfo": "15.12.0",
     "@forsakringskassan/eslint-config-vitest": "15.12.5",
     "@forsakringskassan/eslint-config-vue": "15.12.1",
-    "@forsakringskassan/prettier-config": "3.7.12",
+    "@forsakringskassan/prettier-config": "3.7.13",
     "@forsakringskassan/sass-module-importer": "3.0.0",
     "@forsakringskassan/stylelint-config": "3.5.1",
     "@forsakringskassan/vitest-config": "5.0.1",
@@ -194,13 +201,6 @@
   "publishConfig": {
     "access": "public",
     "provenance": true
-  },
-  "allowScripts": {
-    "@parcel/watcher": false,
-    "cypress": true,
-    "esbuild": true,
-    "fsevents": false,
-    "unrs-resolver": true
   },
   "externalDependencies": [
     "@babel/code-frame",
