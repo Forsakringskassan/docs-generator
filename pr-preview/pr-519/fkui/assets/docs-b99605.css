@@ -8310,9 +8310,14 @@ code.hljs {
   position: relative;
 }
 
-.docs-tabs .docs-tablist {
-  border-bottom: var(--fkds-color-border-weak) 1px solid;
+.docs-tabs .docs-tablist-wrapper {
+  display: flex;
+  flex-direction: row;
   margin-bottom: 2rem;
+  border-bottom: var(--fkds-color-border-weak) 1px solid;
+}
+
+.docs-tabs .docs-tablist {
   display: flex;
   flex-wrap: nowrap;
   min-width: 0;
@@ -8345,21 +8350,24 @@ code.hljs {
 }
 
 .docs-tabs .docs-more-button {
-  position: absolute;
-  top: 0;
+  display: flex;
+  align-items: center;
+  border: none;
+  padding: 0 0.5rem;
+  background-color: inherit;
 }
 
-.docs-tabs .docs-more-button--right {
-  right: 0;
+.docs-tabs .docs-more-button[hidden] {
+  display: none;
 }
 
-.docs-tabs .docs-more-button--left {
-  left: 0;
+.docs-tabs .docs-more-button:hover, .docs-tabs .docs-more-button:active {
+  background-color: var(--fkds-color-navigation-background-hover);
 }
 
 .docs-tabs .docs-more-icon {
-  width: 16px;
-  height: 16px;
+  width: 1rem;
+  height: 1rem;
 }
 
 .docs-tabs .docs-more-icon--right {
