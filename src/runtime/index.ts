@@ -5,6 +5,7 @@ import "./table-of-contents";
 import "./version-banner";
 import "./topnav";
 import "./tabs";
+import "./tabs-overflow";
 
 export {
     type MOTDApi,
