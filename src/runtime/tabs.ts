@@ -171,58 +171,25 @@ function setupOverflow(
     tablistWrapper: HTMLElement,
     tabList: HTMLElement,
 ): void {
+    const leftButton = createOverflowArrowButton("left");
+    leftButton.onclick = () => {
+        scrollWithOverflowButton(tabList, leftButton, rightButton, "left");
+    };
+    tablistWrapper.insertBefore(leftButton, tablistWrapper.firstChild);
+
     const rightButton = createOverflowArrowButton("right");
     rightButton.onclick = () => {
-        const tab = findArrowToTab(tabList, "right");
-        if (!tab) {
-            return;
-        }
-        // Prescroll a bit to trigger buttons to dissapear for
-        // caluclation to be correct when scrolling fully.
-        tabList.scrollLeft += 1;
-        updateOverflowButtonsVisibility();
-        scrollToTab(tabList, tab, "right");
-        updateOverflowButtonsVisibility();
+        scrollWithOverflowButton(tabList, leftButton, rightButton, "right");
     };
 
     tablistWrapper.append(rightButton);
 
-    const leftButton = createOverflowArrowButton("left");
-    leftButton.onclick = () => {
-        const tab = findArrowToTab(tabList, "left");
-        if (!tab) {
-            return;
-        }
-
-        // Prescroll a bit to trigger buttons to dissapear for
-        // caluclation to be correct when scrolling fully.
-        tabList.scrollLeft -= 1;
-        updateOverflowButtonsVisibility();
-        scrollToTab(tabList, tab, "left");
-        updateOverflowButtonsVisibility();
-    };
-    tablistWrapper.insertBefore(leftButton, tablistWrapper.firstChild);
-
-    const updateOverflowButtonsVisibility = () => {
-        const showRightButton =
-            tabList.scrollWidth - tabList.clientWidth - tabList.scrollLeft > 1; // 1px error margin
-        rightButton.hidden = !showRightButton;
-        (rightButton.firstChild as SVGSVGElement).setAttribute(
-            "aria-hidden",
-            `${!showRightButton}`,
-        );
-        const showLeftButton = tabList.scrollLeft > 1; // 1px error margin
-        leftButton.hidden = !showLeftButton;
-        (leftButton.firstChild as SVGSVGElement).setAttribute(
-            "aria-hidden",
-            `${!showLeftButton}`,
-        );
-    };
-
-    const resizeObserver = new ResizeObserver(updateOverflowButtonsVisibility);
+    const resizeObserver = new ResizeObserver(() =>
+        updateOverflowButtonsVisibility(tabList, leftButton, rightButton),
+    );
     resizeObserver.observe(tabList);
 
-    updateOverflowButtonsVisibility();
+    updateOverflowButtonsVisibility(tabList, leftButton, rightButton);
 }
 
 function createOverflowArrowButton(
@@ -286,4 +253,47 @@ function scrollToTab(
         tabList.scrollLeft -=
             tabListRect.left - tab.getBoundingClientRect().left;
     }
+}
+
+function scrollWithOverflowButton(
+    tabList: HTMLElement,
+    leftButton: HTMLButtonElement,
+    rightButton: HTMLButtonElement,
+    direction: "left" | "right",
+) {
+    const tab = findArrowToTab(tabList, direction);
+    if (!tab) {
+        return;
+    }
+
+    // Prescroll a bit to trigger buttons to disappear for
+    // caluclation to be correct when scrolling fully.
+    if (direction == "left") {
+        tabList.scrollLeft -= 1;
+    } else {
+        tabList.scrollLeft += 1;
+    }
+    updateOverflowButtonsVisibility(tabList, leftButton, rightButton);
+    scrollToTab(tabList, tab, direction);
+    updateOverflowButtonsVisibility(tabList, leftButton, rightButton);
+}
+
+function updateOverflowButtonsVisibility(
+    tabList: HTMLElement,
+    leftButton: HTMLButtonElement,
+    rightButton: HTMLButtonElement,
+) {
+    const showRightButton =
+        tabList.scrollWidth - tabList.clientWidth - tabList.scrollLeft > 1; // 1px error margin
+    rightButton.hidden = !showRightButton;
+    (rightButton.firstChild as SVGSVGElement).setAttribute(
+        "aria-hidden",
+        `${!showRightButton}`,
+    );
+    const showLeftButton = tabList.scrollLeft > 1; // 1px error margin
+    leftButton.hidden = !showLeftButton;
+    (leftButton.firstChild as SVGSVGElement).setAttribute(
+        "aria-hidden",
+        `${!showLeftButton}`,
+    );
 }
