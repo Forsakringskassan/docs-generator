@@ -17,13 +17,17 @@ function renderTabs(): void {
     const tabsContainer = document.createElement("div");
     tabsContainer.classList.add("docs-tabs");
 
+    const tablistWrapper = document.createElement("div");
+    tablistWrapper.classList.add("docs-tablist-wrapper");
+
     const tabList = document.createElement("div");
     tabList.setAttribute("role", "tablist");
     tabList.classList.add("docs-tablist");
 
     tabPanels[0].before(tabsContainer);
 
-    tabsContainer.append(tabList);
+    tabsContainer.append(tablistWrapper);
+    tablistWrapper.append(tabList);
     tabPanels.forEach((tabPanel) => {
         tabsContainer.append(tabPanel);
     });
@@ -65,7 +69,7 @@ function renderTabs(): void {
     firstTabButton.removeAttribute("tabIndex");
     firstTabButton.setAttribute("aria-selected", "true");
 
-    setupOverflow(tabsContainer, tabList);
+    setupOverflow(tablistWrapper, tabList);
 }
 
 const onKeydown = (event: KeyboardEvent): void => {
@@ -163,7 +167,10 @@ function setSelectedTab(newTab: HTMLButtonElement): void {
     newTab.focus();
 }
 
-function setupOverflow(tabsContainer: HTMLElement, tabList: HTMLElement): void {
+function setupOverflow(
+    tablistWrapper: HTMLElement,
+    tabList: HTMLElement,
+): void {
     // more tabs to right button
     const moreRightButton = document.createElement("button");
     moreRightButton.type = "button";
@@ -174,7 +181,15 @@ function setupOverflow(tabsContainer: HTMLElement, tabList: HTMLElement): void {
     );
     moreRightButton.tabIndex = -1;
     moreRightButton.onclick = () => {
-        scrollTabs(tabList, "right");
+        const tab = findArrowToTab(tabList, "right");
+        if (!tab) {
+            return;
+        }
+        // Prescroll a bit to trigger buttons to dissapear for
+        // caluclation to be correct when scrolling fully.
+        tabList.scrollLeft += 1;
+        updateOverflowButtons();
+        scrollToTab(tabList, tab, "right");
         updateOverflowButtons();
     };
 
@@ -190,7 +205,7 @@ function setupOverflow(tabsContainer: HTMLElement, tabList: HTMLElement): void {
     moreRightIcon.append(use);
     moreRightButton.append(moreRightIcon);
 
-    tabsContainer.append(moreRightButton);
+    tablistWrapper.append(moreRightButton);
 
     // more tabs to left button
     const moreLeftButton = document.createElement("button");
@@ -199,7 +214,16 @@ function setupOverflow(tabsContainer: HTMLElement, tabList: HTMLElement): void {
     moreLeftButton.classList.add("docs-more-button", "docs-more-button--left");
     moreLeftButton.tabIndex = -1;
     moreLeftButton.onclick = () => {
-        scrollTabs(tabList, "left");
+        const tab = findArrowToTab(tabList, "left");
+        if (!tab) {
+            return;
+        }
+
+        // Prescroll a bit to trigger buttons to dissapear for
+        // caluclation to be correct when scrolling fully.
+        tabList.scrollLeft -= 1;
+        updateOverflowButtons();
+        scrollToTab(tabList, tab, "left");
         updateOverflowButtons();
     };
 
@@ -218,14 +242,14 @@ function setupOverflow(tabsContainer: HTMLElement, tabList: HTMLElement): void {
     moreLeftIcon.append(useLeft);
     moreLeftButton.append(moreLeftIcon);
 
-    tabsContainer.append(moreLeftButton);
+    tablistWrapper.insertBefore(moreLeftButton, tablistWrapper.firstChild);
 
     const updateOverflowButtons = () => {
         const showRightButton =
-            tabList.scrollWidth - tabList.clientWidth - tabList.scrollLeft > 1;
+            tabList.scrollWidth - tabList.clientWidth - tabList.scrollLeft > 1; // 1px error margin
         moreRightButton.hidden = !showRightButton;
         moreRightIcon.setAttribute("aria-hidden", `${!showRightButton}`);
-        const showLeftButton = tabList.scrollLeft > 1;
+        const showLeftButton = tabList.scrollLeft > 1; // 1px error margin
         moreLeftButton.hidden = !showLeftButton;
         moreLeftIcon.setAttribute("aria-hidden", `${!showLeftButton}`);
     };
@@ -236,31 +260,44 @@ function setupOverflow(tabsContainer: HTMLElement, tabList: HTMLElement): void {
     updateOverflowButtons();
 }
 
-function scrollTabs(tabList: HTMLElement, direction: "left" | "right"): void {
+function findArrowToTab(
+    tabList: HTMLElement,
+    direction: "left" | "right",
+): Element | undefined {
     const tabs = Array.from(tabList.children);
     const tabListRect = tabList.getBoundingClientRect();
 
     if (direction === "right") {
         // Find first tab that is cut off to the right
         const nextTab = tabs.find((tab) => {
-            return tab.getBoundingClientRect().right > tabListRect.right + 1;
+            return tab.getBoundingClientRect().right > tabListRect.right + 1; // 1px error margin
         });
 
-        if (nextTab) {
-            // Scroll so that the hidden tab is visible
-            tabList.scrollLeft +=
-                nextTab.getBoundingClientRect().right - tabListRect.right;
-        }
+        return nextTab;
     } else {
         // Find first tab that is cut off to the left
         const prevTab = [...tabs].reverse().find((tab) => {
-            return tab.getBoundingClientRect().left < tabListRect.left - 1;
+            return tab.getBoundingClientRect().left < tabListRect.left - 1; // 1px error margin
         });
 
-        if (prevTab) {
-            // Scroll so that the hidden tab is visible
-            tabList.scrollLeft -=
-                tabListRect.left - prevTab.getBoundingClientRect().left;
-        }
+        return prevTab;
+    }
+}
+
+function scrollToTab(
+    tabList: HTMLElement,
+    tab: Element,
+    direction: "left" | "right",
+): void {
+    const tabListRect = tabList.getBoundingClientRect();
+
+    if (direction === "right") {
+        // Scroll so that the hidden tab is visible
+        tabList.scrollLeft +=
+            tab.getBoundingClientRect().right - tabListRect.right;
+    } else {
+        // Scroll so that the hidden tab is visible
+        tabList.scrollLeft -=
+            tabListRect.left - tab.getBoundingClientRect().left;
     }
 }
