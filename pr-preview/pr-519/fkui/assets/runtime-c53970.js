@@ -297065,6 +297065,90 @@ onContentReady(() => {
   }
   headerLayoutDetector(newRefs.nav);
 });
+function setupOverflow(tablistWrapper, tabList) {
+  const leftButton = createOverflowArrowButton("left");
+  leftButton.onclick = () => {
+    scrollWithOverflowButton(tabList, leftButton, rightButton, "left");
+  };
+  tablistWrapper.insertBefore(leftButton, tablistWrapper.firstChild);
+  const rightButton = createOverflowArrowButton("right");
+  rightButton.onclick = () => {
+    scrollWithOverflowButton(tabList, leftButton, rightButton, "right");
+  };
+  tablistWrapper.append(rightButton);
+  const resizeObserver = new ResizeObserver(
+    () => updateOverflowButtonsVisibility(tabList, leftButton, rightButton)
+  );
+  resizeObserver.observe(tabList);
+  updateOverflowButtonsVisibility(tabList, leftButton, rightButton);
+}
+function createOverflowArrowButton(direction2) {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.hidden = true;
+  button.classList.add("docs-more-button", `docs-more-button--${direction2}`);
+  button.tabIndex = -1;
+  const icon2 = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  icon2.setAttribute("focusable", "false");
+  icon2.classList.add("docs-more-icon", `docs-more-icon--${direction2}`);
+  icon2.setAttribute("aria-hidden", "true");
+  const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
+  use.setAttribute("href", "#docs-icon-arrow-down");
+  icon2.append(use);
+  button.append(icon2);
+  return button;
+}
+function findArrowToTab(tabList, direction2) {
+  const tabs = Array.from(tabList.children);
+  const tabListRect = tabList.getBoundingClientRect();
+  if (direction2 === "right") {
+    const nextTab = tabs.find((tab) => {
+      return tab.getBoundingClientRect().right > tabListRect.right + 1;
+    });
+    return nextTab;
+  } else {
+    const prevTab = [...tabs].reverse().find((tab) => {
+      return tab.getBoundingClientRect().left < tabListRect.left - 1;
+    });
+    return prevTab;
+  }
+}
+function scrollToTab(tabList, tab, direction2) {
+  const tabListRect = tabList.getBoundingClientRect();
+  if (direction2 === "right") {
+    tabList.scrollLeft += tab.getBoundingClientRect().right - tabListRect.right;
+  } else {
+    tabList.scrollLeft -= tabListRect.left - tab.getBoundingClientRect().left;
+  }
+}
+function scrollWithOverflowButton(tabList, leftButton, rightButton, direction2) {
+  const tab = findArrowToTab(tabList, direction2);
+  if (!tab) {
+    return;
+  }
+  if (direction2 == "left") {
+    tabList.scrollLeft -= 1;
+  } else {
+    tabList.scrollLeft += 1;
+  }
+  updateOverflowButtonsVisibility(tabList, leftButton, rightButton);
+  scrollToTab(tabList, tab, direction2);
+  updateOverflowButtonsVisibility(tabList, leftButton, rightButton);
+}
+function updateOverflowButtonsVisibility(tabList, leftButton, rightButton) {
+  const showRightButton = tabList.scrollWidth - tabList.clientWidth - tabList.scrollLeft > 1;
+  rightButton.hidden = !showRightButton;
+  rightButton.firstChild.setAttribute(
+    "aria-hidden",
+    `${!showRightButton}`
+  );
+  const showLeftButton = tabList.scrollLeft > 1;
+  leftButton.hidden = !showLeftButton;
+  leftButton.firstChild.setAttribute(
+    "aria-hidden",
+    `${!showLeftButton}`
+  );
+}
 onContentReady(() => {
   renderTabs();
 });
@@ -297195,102 +297279,6 @@ function setSelectedTab(newTab) {
   );
   tabPanel?.classList.remove("hidden-tab");
   newTab.focus();
-}
-function setupOverflow(tablistWrapper, tabList) {
-  const moreRightButton = document.createElement("button");
-  moreRightButton.type = "button";
-  moreRightButton.hidden = true;
-  moreRightButton.classList.add(
-    "docs-more-button",
-    "docs-more-button--right"
-  );
-  moreRightButton.tabIndex = -1;
-  moreRightButton.onclick = () => {
-    const tab = findArrowToTab(tabList, "right");
-    if (!tab) {
-      return;
-    }
-    tabList.scrollLeft += 1;
-    updateOverflowButtons();
-    scrollToTab(tabList, tab, "right");
-    updateOverflowButtons();
-  };
-  const moreRightIcon = document.createElementNS(
-    "http://www.w3.org/2000/svg",
-    "svg"
-  );
-  moreRightIcon.setAttribute("focusable", "false");
-  moreRightIcon.classList.add("docs-more-icon", "docs-more-icon--right");
-  moreRightIcon.setAttribute("aria-hidden", "true");
-  const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
-  use.setAttribute("href", "#docs-icon-arrow-down");
-  moreRightIcon.append(use);
-  moreRightButton.append(moreRightIcon);
-  tablistWrapper.append(moreRightButton);
-  const moreLeftButton = document.createElement("button");
-  moreLeftButton.type = "button";
-  moreLeftButton.hidden = true;
-  moreLeftButton.classList.add("docs-more-button", "docs-more-button--left");
-  moreLeftButton.tabIndex = -1;
-  moreLeftButton.onclick = () => {
-    const tab = findArrowToTab(tabList, "left");
-    if (!tab) {
-      return;
-    }
-    tabList.scrollLeft -= 1;
-    updateOverflowButtons();
-    scrollToTab(tabList, tab, "left");
-    updateOverflowButtons();
-  };
-  const moreLeftIcon = document.createElementNS(
-    "http://www.w3.org/2000/svg",
-    "svg"
-  );
-  moreLeftIcon.setAttribute("focusable", "false");
-  moreLeftIcon.classList.add("docs-more-icon", "docs-more-icon--left");
-  moreLeftIcon.setAttribute("aria-hidden", "true");
-  const useLeft = document.createElementNS(
-    "http://www.w3.org/2000/svg",
-    "use"
-  );
-  useLeft.setAttribute("href", "#docs-icon-arrow-down");
-  moreLeftIcon.append(useLeft);
-  moreLeftButton.append(moreLeftIcon);
-  tablistWrapper.insertBefore(moreLeftButton, tablistWrapper.firstChild);
-  const updateOverflowButtons = () => {
-    const showRightButton = tabList.scrollWidth - tabList.clientWidth - tabList.scrollLeft > 1;
-    moreRightButton.hidden = !showRightButton;
-    moreRightIcon.setAttribute("aria-hidden", `${!showRightButton}`);
-    const showLeftButton = tabList.scrollLeft > 1;
-    moreLeftButton.hidden = !showLeftButton;
-    moreLeftIcon.setAttribute("aria-hidden", `${!showLeftButton}`);
-  };
-  const resizeObserver = new ResizeObserver(updateOverflowButtons);
-  resizeObserver.observe(tabList);
-  updateOverflowButtons();
-}
-function findArrowToTab(tabList, direction2) {
-  const tabs = Array.from(tabList.children);
-  const tabListRect = tabList.getBoundingClientRect();
-  if (direction2 === "right") {
-    const nextTab = tabs.find((tab) => {
-      return tab.getBoundingClientRect().right > tabListRect.right + 1;
-    });
-    return nextTab;
-  } else {
-    const prevTab = [...tabs].reverse().find((tab) => {
-      return tab.getBoundingClientRect().left < tabListRect.left - 1;
-    });
-    return prevTab;
-  }
-}
-function scrollToTab(tabList, tab, direction2) {
-  const tabListRect = tabList.getBoundingClientRect();
-  if (direction2 === "right") {
-    tabList.scrollLeft += tab.getBoundingClientRect().right - tabListRect.right;
-  } else {
-    tabList.scrollLeft -= tabListRect.left - tab.getBoundingClientRect().left;
-  }
 }
 var motdSymbol = /* @__PURE__ */ Symbol.for("motd");
 var motdProxy = {
