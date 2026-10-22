@@ -171,16 +171,8 @@ function setupOverflow(
     tablistWrapper: HTMLElement,
     tabList: HTMLElement,
 ): void {
-    // more tabs to right button
-    const moreRightButton = document.createElement("button");
-    moreRightButton.type = "button";
-    moreRightButton.hidden = true;
-    moreRightButton.classList.add(
-        "docs-more-button",
-        "docs-more-button--right",
-    );
-    moreRightButton.tabIndex = -1;
-    moreRightButton.onclick = () => {
+    const rightButton = createOverflowArrowButton("right");
+    rightButton.onclick = () => {
         const tab = findArrowToTab(tabList, "right");
         if (!tab) {
             return;
@@ -188,32 +180,15 @@ function setupOverflow(
         // Prescroll a bit to trigger buttons to dissapear for
         // caluclation to be correct when scrolling fully.
         tabList.scrollLeft += 1;
-        updateOverflowButtons();
+        updateOverflowButtonsVisibility();
         scrollToTab(tabList, tab, "right");
-        updateOverflowButtons();
+        updateOverflowButtonsVisibility();
     };
 
-    const moreRightIcon = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "svg",
-    );
-    moreRightIcon.setAttribute("focusable", "false");
-    moreRightIcon.classList.add("docs-more-icon", "docs-more-icon--right");
-    moreRightIcon.setAttribute("aria-hidden", "true");
-    const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
-    use.setAttribute("href", "#docs-icon-arrow-down");
-    moreRightIcon.append(use);
-    moreRightButton.append(moreRightIcon);
+    tablistWrapper.append(rightButton);
 
-    tablistWrapper.append(moreRightButton);
-
-    // more tabs to left button
-    const moreLeftButton = document.createElement("button");
-    moreLeftButton.type = "button";
-    moreLeftButton.hidden = true;
-    moreLeftButton.classList.add("docs-more-button", "docs-more-button--left");
-    moreLeftButton.tabIndex = -1;
-    moreLeftButton.onclick = () => {
+    const leftButton = createOverflowArrowButton("left");
+    leftButton.onclick = () => {
         const tab = findArrowToTab(tabList, "left");
         if (!tab) {
             return;
@@ -222,42 +197,53 @@ function setupOverflow(
         // Prescroll a bit to trigger buttons to dissapear for
         // caluclation to be correct when scrolling fully.
         tabList.scrollLeft -= 1;
-        updateOverflowButtons();
+        updateOverflowButtonsVisibility();
         scrollToTab(tabList, tab, "left");
-        updateOverflowButtons();
+        updateOverflowButtonsVisibility();
     };
+    tablistWrapper.insertBefore(leftButton, tablistWrapper.firstChild);
 
-    const moreLeftIcon = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "svg",
-    );
-    moreLeftIcon.setAttribute("focusable", "false");
-    moreLeftIcon.classList.add("docs-more-icon", "docs-more-icon--left");
-    moreLeftIcon.setAttribute("aria-hidden", "true");
-    const useLeft = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "use",
-    );
-    useLeft.setAttribute("href", "#docs-icon-arrow-down");
-    moreLeftIcon.append(useLeft);
-    moreLeftButton.append(moreLeftIcon);
-
-    tablistWrapper.insertBefore(moreLeftButton, tablistWrapper.firstChild);
-
-    const updateOverflowButtons = () => {
+    const updateOverflowButtonsVisibility = () => {
         const showRightButton =
             tabList.scrollWidth - tabList.clientWidth - tabList.scrollLeft > 1; // 1px error margin
-        moreRightButton.hidden = !showRightButton;
-        moreRightIcon.setAttribute("aria-hidden", `${!showRightButton}`);
+        rightButton.hidden = !showRightButton;
+        (rightButton.firstChild as SVGSVGElement).setAttribute(
+            "aria-hidden",
+            `${!showRightButton}`,
+        );
         const showLeftButton = tabList.scrollLeft > 1; // 1px error margin
-        moreLeftButton.hidden = !showLeftButton;
-        moreLeftIcon.setAttribute("aria-hidden", `${!showLeftButton}`);
+        leftButton.hidden = !showLeftButton;
+        (leftButton.firstChild as SVGSVGElement).setAttribute(
+            "aria-hidden",
+            `${!showLeftButton}`,
+        );
     };
 
-    const resizeObserver = new ResizeObserver(updateOverflowButtons);
+    const resizeObserver = new ResizeObserver(updateOverflowButtonsVisibility);
     resizeObserver.observe(tabList);
 
-    updateOverflowButtons();
+    updateOverflowButtonsVisibility();
+}
+
+function createOverflowArrowButton(
+    direction: "left" | "right",
+): HTMLButtonElement {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.hidden = true;
+    button.classList.add("docs-more-button", `docs-more-button--${direction}`);
+    button.tabIndex = -1;
+
+    const icon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    icon.setAttribute("focusable", "false");
+    icon.classList.add("docs-more-icon", `docs-more-icon--${direction}`);
+    icon.setAttribute("aria-hidden", "true");
+    const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
+    use.setAttribute("href", "#docs-icon-arrow-down");
+    icon.append(use);
+    button.append(icon);
+
+    return button;
 }
 
 function findArrowToTab(
