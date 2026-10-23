@@ -4,23 +4,126 @@ export function setupOverflow(
 ): void {
     const leftButton = createOverflowArrowButton("left");
     leftButton.onclick = () => {
-        scrollWithOverflowButton(tabList, leftButton, rightButton, "left");
+        scrollWithOverflowButton(tabList, "left");
     };
     tablistWrapper.insertBefore(leftButton, tablistWrapper.firstChild);
 
     const rightButton = createOverflowArrowButton("right");
     rightButton.onclick = () => {
-        scrollWithOverflowButton(tabList, leftButton, rightButton, "right");
+        scrollWithOverflowButton(tabList, "right");
     };
 
     tablistWrapper.append(rightButton);
 
     const resizeObserver = new ResizeObserver(() =>
-        updateOverflowButtonsVisibility(tabList, leftButton, rightButton),
+        updateOverflowButtonsVisibility(tabList),
     );
     resizeObserver.observe(tabList);
 
-    updateOverflowButtonsVisibility(tabList, leftButton, rightButton);
+    updateOverflowButtonsVisibility(tabList);
+}
+
+export function isTabCutOffLeft(tabListRect: DOMRect, tab: Element): boolean {
+    return tab.getBoundingClientRect().left < tabListRect.left - 1; // 1px error margin
+}
+
+export function isTabCutOffRight(tabListRect: DOMRect, tab: Element): boolean {
+    return tab.getBoundingClientRect().right > tabListRect.right + 1; // 1px error margin
+}
+
+export function scrollOverflow(
+    tablist: HTMLElement,
+    tab: Element,
+    direction: "left" | "right",
+) {
+    // Prescroll a bit to trigger buttons to disappear for
+    // caluclation to be correct when scrolling fully.
+    if (direction == "left") {
+        tablist.scrollLeft -= 1;
+    } else {
+        tablist.scrollLeft += 1;
+    }
+    updateOverflowButtonsVisibility(tablist);
+    scrollToTab(tablist, tab, direction);
+    updateOverflowButtonsVisibility(tablist);
+}
+
+export function updateOverflowButtonsVisibility(tabList: HTMLElement) {
+    const leftButton = document.querySelector<HTMLButtonElement>(
+        ".docs-tabs .docs-more-button--left",
+    );
+    const rightButton = document.querySelector<HTMLButtonElement>(
+        ".docs-tabs .docs-more-button--right",
+    );
+    if (!leftButton || !rightButton) {
+        return;
+    }
+
+    const showRightButton =
+        tabList.scrollWidth - tabList.clientWidth - tabList.scrollLeft > 1; // 1px error margin
+    rightButton.hidden = !showRightButton;
+    (rightButton.firstChild as SVGSVGElement).setAttribute(
+        "aria-hidden",
+        `${!showRightButton}`,
+    );
+    const showLeftButton = tabList.scrollLeft > 1; // 1px error margin
+    leftButton.hidden = !showLeftButton;
+    (leftButton.firstChild as SVGSVGElement).setAttribute(
+        "aria-hidden",
+        `${!showLeftButton}`,
+    );
+}
+
+function scrollWithOverflowButton(
+    tabList: HTMLElement,
+    direction: "left" | "right",
+) {
+    const tab = findArrowToTab(tabList, direction);
+    if (!tab) {
+        return;
+    }
+
+    scrollOverflow(tabList, tab, direction);
+}
+
+function scrollToTab(
+    tabList: HTMLElement,
+    tab: Element,
+    direction: "left" | "right",
+): void {
+    const tabListRect = tabList.getBoundingClientRect();
+
+    if (direction === "right") {
+        // Scroll so that the hidden tab is visible
+        tabList.scrollLeft +=
+            tab.getBoundingClientRect().right - tabListRect.right;
+    } else {
+        // Scroll so that the hidden tab is visible
+        tabList.scrollLeft -=
+            tabListRect.left - tab.getBoundingClientRect().left;
+    }
+}
+
+function findArrowToTab(
+    tabList: HTMLElement,
+    direction: "left" | "right",
+): Element | undefined {
+    const tabs = Array.from(tabList.children);
+    const tabListRect = tabList.getBoundingClientRect();
+
+    if (direction === "right") {
+        const nextTab = tabs.find((tab) => {
+            return isTabCutOffRight(tabListRect, tab);
+        });
+
+        return nextTab;
+    } else {
+        const prevTab = [...tabs].reverse().find((tab) => {
+            return isTabCutOffLeft(tabListRect, tab);
+        });
+
+        return prevTab;
+    }
 }
 
 function createOverflowArrowButton(
@@ -42,89 +145,4 @@ function createOverflowArrowButton(
     button.append(icon);
 
     return button;
-}
-
-function findArrowToTab(
-    tabList: HTMLElement,
-    direction: "left" | "right",
-): Element | undefined {
-    const tabs = Array.from(tabList.children);
-    const tabListRect = tabList.getBoundingClientRect();
-
-    if (direction === "right") {
-        // Find first tab that is cut off to the right
-        const nextTab = tabs.find((tab) => {
-            return tab.getBoundingClientRect().right > tabListRect.right + 1; // 1px error margin
-        });
-
-        return nextTab;
-    } else {
-        // Find first tab that is cut off to the left
-        const prevTab = [...tabs].reverse().find((tab) => {
-            return tab.getBoundingClientRect().left < tabListRect.left - 1; // 1px error margin
-        });
-
-        return prevTab;
-    }
-}
-
-function scrollToTab(
-    tabList: HTMLElement,
-    tab: Element,
-    direction: "left" | "right",
-): void {
-    const tabListRect = tabList.getBoundingClientRect();
-
-    if (direction === "right") {
-        // Scroll so that the hidden tab is visible
-        tabList.scrollLeft +=
-            tab.getBoundingClientRect().right - tabListRect.right;
-    } else {
-        // Scroll so that the hidden tab is visible
-        tabList.scrollLeft -=
-            tabListRect.left - tab.getBoundingClientRect().left;
-    }
-}
-
-function scrollWithOverflowButton(
-    tabList: HTMLElement,
-    leftButton: HTMLButtonElement,
-    rightButton: HTMLButtonElement,
-    direction: "left" | "right",
-) {
-    const tab = findArrowToTab(tabList, direction);
-    if (!tab) {
-        return;
-    }
-
-    // Prescroll a bit to trigger buttons to disappear for
-    // caluclation to be correct when scrolling fully.
-    if (direction == "left") {
-        tabList.scrollLeft -= 1;
-    } else {
-        tabList.scrollLeft += 1;
-    }
-    updateOverflowButtonsVisibility(tabList, leftButton, rightButton);
-    scrollToTab(tabList, tab, direction);
-    updateOverflowButtonsVisibility(tabList, leftButton, rightButton);
-}
-
-function updateOverflowButtonsVisibility(
-    tabList: HTMLElement,
-    leftButton: HTMLButtonElement,
-    rightButton: HTMLButtonElement,
-) {
-    const showRightButton =
-        tabList.scrollWidth - tabList.clientWidth - tabList.scrollLeft > 1; // 1px error margin
-    rightButton.hidden = !showRightButton;
-    (rightButton.firstChild as SVGSVGElement).setAttribute(
-        "aria-hidden",
-        `${!showRightButton}`,
-    );
-    const showLeftButton = tabList.scrollLeft > 1; // 1px error margin
-    leftButton.hidden = !showLeftButton;
-    (leftButton.firstChild as SVGSVGElement).setAttribute(
-        "aria-hidden",
-        `${!showLeftButton}`,
-    );
 }

@@ -1,5 +1,11 @@
 import { onContentReady } from "./on-content-ready";
-import { setupOverflow } from "./tabs-overflow";
+import {
+    isTabCutOffLeft,
+    isTabCutOffRight,
+    scrollOverflow,
+    setupOverflow,
+    updateOverflowButtonsVisibility,
+} from "./tabs-overflow";
 
 onContentReady(() => {
     renderTabs();
@@ -75,7 +81,7 @@ function renderTabs(): void {
 
 const onKeydown = (event: KeyboardEvent): void => {
     const tabs = Array.from(
-        document.querySelectorAll<HTMLButtonElement>(':scope > [role="tab"]'),
+        document.querySelectorAll<HTMLButtonElement>('.docs-tabs [role="tab"]'),
     );
 
     let flag = false;
@@ -113,6 +119,22 @@ const onKeydown = (event: KeyboardEvent): void => {
 
 function onClick(event: MouseEvent): void {
     setSelectedTab(event.target as HTMLButtonElement);
+}
+
+function scrollTabIntoView(tab: Element): void {
+    const tablist = tab.parentElement;
+
+    if (!tablist) {
+        return;
+    }
+
+    if (isTabCutOffLeft(tablist.getBoundingClientRect(), tab)) {
+        scrollOverflow(tablist, tab, "left");
+    } else if (isTabCutOffRight(tablist.getBoundingClientRect(), tab)) {
+        scrollOverflow(tablist, tab, "right");
+    } else {
+        updateOverflowButtonsVisibility(tablist);
+    }
 }
 
 function getCurrentTab(): HTMLButtonElement | null {
@@ -166,4 +188,5 @@ function setSelectedTab(newTab: HTMLButtonElement): void {
     tabPanel?.classList.remove("hidden-tab");
 
     newTab.focus();
+    scrollTabIntoView(newTab);
 }
