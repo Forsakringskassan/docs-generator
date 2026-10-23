@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [3.22.2](https://github.com/Forsakringskassan/docs-generator/compare/v3.22.1...v3.22.2) (2026-10-23)
+
+### Bug Fixes
+
+* resolve iOS WebKit rendering bug on nested menus (refs SFKUI-8273) ([7ebcda5](https://github.com/Forsakringskassan/docs-generator/commit/7ebcda5514d1134769765d5c3a24ba05cd68ee5f))
+
 ## [3.22.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.22.0...v3.22.1) (2026-10-23)
 
 ### Bug Fixes
