@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## [3.22.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.22.0...v3.22.1) (2026-10-23)
+
+### Bug Fixes
+
+* **api:** fix `this: void` for `sourceFiles` for `ExtractedDocsModule` as well ([16bfc5e](https://github.com/Forsakringskassan/docs-generator/commit/16bfc5e3b57fb0024d9fa6aaf81548013ad43efd))
+* **api:** normalize `Generator` working directory paths and file URLs ([5636071](https://github.com/Forsakringskassan/docs-generator/commit/5636071cb4ba6b70b8f9b50e9d84162088f7a26e))
+* **deps:** update dependency i18next to v26.4.5 ([1d5049c](https://github.com/Forsakringskassan/docs-generator/commit/1d5049c5c313fc0805a43123ff4088bef1b9d951))
+* **deps:** update dependency i18next to v26.4.6 ([532e326](https://github.com/Forsakringskassan/docs-generator/commit/532e3267343e033065007ee526dbf640f100d497))
+* **deps:** update dependency i18next to v26.5.2 ([4273fa8](https://github.com/Forsakringskassan/docs-generator/commit/4273fa8a5c845a510e4ae51197462e22169ebb1e))
+* **deps:** update dependency i18next to v26.5.3 ([1d183c1](https://github.com/Forsakringskassan/docs-generator/commit/1d183c169b7342d6ccebff6ffda8c7995cae8c10))
+* **deps:** update dependency livereload-js to v4.0.3 ([#554](https://github.com/Forsakringskassan/docs-generator/issues/554)) ([93ab23a](https://github.com/Forsakringskassan/docs-generator/commit/93ab23a1d78be9b80d5f9799c01f2bea729afa42))
+* **deps:** update dependency markdown-it to v15.0.3 [security] ([12c87f8](https://github.com/Forsakringskassan/docs-generator/commit/12c87f83d801fad6fe5451bb116954e687c95928))
+* **deps:** update dependency mermaid to v12.2.0 ([435ce80](https://github.com/Forsakringskassan/docs-generator/commit/435ce80c45efaa780f1574a9f7dab2b8b0abd11d))
+
 ## [3.22.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.21.1...v3.22.0) (2026-10-16)
 
 ### Features
