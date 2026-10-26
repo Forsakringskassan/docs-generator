@@ -84,33 +84,32 @@ const onKeydown = (event: KeyboardEvent): void => {
         document.querySelectorAll<HTMLButtonElement>('.docs-tabs [role="tab"]'),
     );
 
-    let flag = false;
-
     switch (event.key) {
         case "ArrowLeft":
             moveSelectedTab(-1);
-            flag = true;
             break;
         case "ArrowRight":
             moveSelectedTab(1);
-            flag = true;
             break;
-        case "Home":
-            setSelectedTab(tabs.at(0) as HTMLButtonElement);
-            flag = true;
+        case "Home": {
+            const tab = tabs.at(0);
+            if (!tab) {
+                return;
+            }
+            setSelectedTab(tab);
             break;
-
-        case "End":
-            setSelectedTab(tabs.at(-1) as HTMLButtonElement);
-            flag = true;
+        }
+        case "End": {
+            const tab = tabs.at(-1);
+            if (!tab) {
+                return;
+            }
+            setSelectedTab(tab);
             break;
+        }
 
         default:
             return;
-    }
-
-    if (!flag) {
-        return;
     }
 
     event.preventDefault();
@@ -143,7 +142,7 @@ function getCurrentTab(): HTMLButtonElement | null {
     );
 }
 
-function moveSelectedTab(direction: -1 | 1) {
+function moveSelectedTab(direction: -1 | 1): void {
     const currentTab = getCurrentTab();
 
     if (!currentTab) {
