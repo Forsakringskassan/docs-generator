@@ -5,7 +5,7 @@ var __require = /* @__PURE__ */ ((x6) => typeof require !== "undefined" ? requir
   throw Error('Dynamic require of "' + x6 + '" is not supported');
 });
 
-// dist/runtime-internal.mjs
+// ../../dist/runtime-internal.mjs
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -297147,7 +297147,7 @@ function updateOverflowButtonsVisibility(tabList) {
   }
   const showRightButton = tabList.scrollWidth - tabList.clientWidth - tabList.scrollLeft > 1;
   rightButton.hidden = !showRightButton;
-  const showLeftButton = tabList.scrollLeft > 1;
+  const showLeftButton = tabList.scrollLeft > 0;
   leftButton.hidden = !showLeftButton;
 }
 function scrollWithOverflowButton(tabList, direction2) {

@@ -297147,7 +297147,7 @@ function updateOverflowButtonsVisibility(tabList) {
   }
   const showRightButton = tabList.scrollWidth - tabList.clientWidth - tabList.scrollLeft > 1;
   rightButton.hidden = !showRightButton;
-  const showLeftButton = tabList.scrollLeft > 1;
+  const showLeftButton = tabList.scrollLeft > 0;
   leftButton.hidden = !showLeftButton;
 }
 function scrollWithOverflowButton(tabList, direction2) {
