@@ -62,7 +62,7 @@ export function updateOverflowButtonsVisibility(tabList: HTMLElement): void {
     const showRightButton =
         tabList.scrollWidth - tabList.clientWidth - tabList.scrollLeft > 1; // 1px error margin
     rightButton.hidden = !showRightButton;
-    const showLeftButton = tabList.scrollLeft > 1; // 1px error margin
+    const showLeftButton = tabList.scrollLeft > 0;
     leftButton.hidden = !showLeftButton;
 }
 
