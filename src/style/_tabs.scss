@@ -32,8 +32,9 @@
             font-weight: 600;
         }
     }
-    .docs-tab {
-        &.hidden-tab {
+
+    .docs-tabpanel {
+        &.hidden-tabpanel {
             display: none;
         }
     }

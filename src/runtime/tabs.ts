@@ -13,13 +13,13 @@ onContentReady(() => {
 window.addEventListener("docs:navigation", renderTabs);
 
 function renderTabs(): void {
-    const tabPanels = document.querySelectorAll<HTMLElement>(".docs-tab");
+    const tabPanels = document.querySelectorAll<HTMLElement>(".docs-tabpanel");
 
     if (tabPanels.length === 0) {
         return;
     }
 
-    tabPanels[0].classList.remove("hidden-tab");
+    tabPanels[0].classList.remove("hidden-tabpanel");
 
     const tabsContainer = document.createElement("div");
     tabsContainer.classList.add("docs-tabs");
@@ -172,9 +172,9 @@ function setSelectedTab(newTab: HTMLButtonElement): void {
     newTab.setAttribute("aria-selected", "true");
     newTab.removeAttribute("tabIndex");
 
-    const tabPanels = document.querySelectorAll<HTMLElement>(".docs-tab");
+    const tabPanels = document.querySelectorAll<HTMLElement>(".docs-tabpanel");
     tabPanels.forEach((tabPanel) => {
-        tabPanel.classList.add("hidden-tab");
+        tabPanel.classList.add("hidden-tabpanel");
     });
 
     const tabPanelId = newTab.getAttribute("aria-controls");
@@ -182,9 +182,9 @@ function setSelectedTab(newTab: HTMLButtonElement): void {
         throw new Error("No aria-controls on tab panel");
     }
     const tabPanel = document.querySelector<HTMLElement>(
-        `.docs-tab[id="${tabPanelId}"]`,
+        `.docs-tabpanel[id="${tabPanelId}"]`,
     );
-    tabPanel?.classList.remove("hidden-tab");
+    tabPanel?.classList.remove("hidden-tabpanel");
 
     newTab.focus();
     scrollTabIntoView(newTab);

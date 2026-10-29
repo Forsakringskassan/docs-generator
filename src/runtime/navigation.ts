@@ -305,9 +305,9 @@ function openActiveTab(): void {
     }
 
     const element = document.querySelector(location.hash);
-    const tabPanel = element?.closest(".docs-tab");
+    const tabPanel = element?.closest(".docs-tabpanel");
 
-    if (!tabPanel?.classList.contains("hidden-tab")) {
+    if (!tabPanel?.classList.contains("hidden-tabpanel")) {
         return;
     }
 

@@ -31,7 +31,7 @@ export function tabPanel(
             <!-- html-validate-disable-next no-missing-references -- Tab buttons are added with typescript -->
             <div
                 id="${id}"
-                class="docs-tab hidden-tab"
+                class="docs-tabpanel hidden-tabpanel"
                 role="tabpanel"
                 tabindex="0"
                 aria-labelledby="${labelledBy}"
