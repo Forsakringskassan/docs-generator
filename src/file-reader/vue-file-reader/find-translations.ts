@@ -18,7 +18,6 @@ import {
 } from "vue/compiler-sfc";
 import { type TranslationKey } from "./translation-key";
 
-type BabelTraverse = typeof traverseModule;
 type TranslationParameter = TranslationKey["parameters"][number];
 
 function isStringLiteral(node: Node): node is StringLiteral {
@@ -230,6 +229,7 @@ export function findTranslations(
     });
 
     /* hack as @babel/traverse doesnt play nicely with import */
+    type BabelTraverse = typeof traverseModule;
     const traverse: BabelTraverse =
         "default" in traverseModule
             ? (traverseModule.default as BabelTraverse)
