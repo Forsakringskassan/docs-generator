@@ -5,7 +5,7 @@ var __require = /* @__PURE__ */ ((x6) => typeof require !== "undefined" ? requir
   throw Error('Dynamic require of "' + x6 + '" is not supported');
 });
 
-// node_modules/@forsakringskassan/docs-generator/dist/runtime-internal.mjs
+// dist/runtime-internal.mjs
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -296964,8 +296964,8 @@ function openActiveTab() {
     return;
   }
   const element3 = document.querySelector(location.hash);
-  const tabPanel = element3?.closest(".docs-tab");
-  if (!tabPanel?.classList.contains("hidden-tab")) {
+  const tabPanel = element3?.closest(".docs-tabpanel");
+  if (!tabPanel?.classList.contains("hidden-tabpanel")) {
     return;
   }
   const tab = tabPanel.parentElement?.querySelector(
@@ -297199,11 +297199,13 @@ onContentReady(() => {
 });
 window.addEventListener("docs:navigation", renderTabs);
 function renderTabs() {
-  const tabPanels = document.querySelectorAll(".docs-tab");
+  const tabPanels = Array.from(
+    document.querySelectorAll(".docs-tabpanel")
+  );
   if (tabPanels.length === 0) {
     return;
   }
-  tabPanels[0].classList.remove("hidden-tab");
+  tabPanels[0].classList.remove("hidden-tabpanel");
   const tabsContainer = document.createElement("div");
   tabsContainer.classList.add("docs-tabs");
   const tablistWrapper = document.createElement("div");
@@ -297214,24 +297216,19 @@ function renderTabs() {
   tabPanels[0].before(tabsContainer);
   tabsContainer.append(tablistWrapper);
   tablistWrapper.append(tabList);
-  tabPanels.forEach((tabPanel) => {
+  for (const tabPanel of tabPanels) {
     tabsContainer.append(tabPanel);
-  });
-  const tabNames = [];
-  tabPanels.forEach((tabPanel) => {
-    tabNames.push(tabPanel.id.split("-").slice(1).join(" "));
-  });
-  const tabIds = [];
-  tabPanels.forEach((tabPanel) => {
-    tabIds.push(tabPanel.id);
-  });
-  const tabButtonIds = [];
-  tabPanels.forEach((tabPanel) => {
+  }
+  const tabNames = tabPanels.map(
+    (tabPanel) => tabPanel.id.split("-").slice(1).join(" ")
+  );
+  const tabIds = tabPanels.map((tabPanel) => tabPanel.id);
+  const tabButtonIds = tabPanels.map((tabPanel) => {
     const tabId = tabPanel.getAttribute("aria-labelledby");
     if (!tabId) {
       throw new Error("No aria-labelledby on tab");
     }
-    tabButtonIds.push(tabId);
+    return tabId;
   });
   for (const [i4, tabName] of tabNames.entries()) {
     const tabButton = document.createElement("button");
@@ -297320,24 +297317,24 @@ function setSelectedTab(newTab) {
   const tabs = document.querySelectorAll(
     '.docs-tabs [role="tab"]'
   );
-  tabs.forEach((tab) => {
+  for (const tab of tabs) {
     tab.setAttribute("aria-selected", "false");
     tab.tabIndex = -1;
-  });
+  }
   newTab.setAttribute("aria-selected", "true");
   newTab.removeAttribute("tabIndex");
-  const tabPanels = document.querySelectorAll(".docs-tab");
-  tabPanels.forEach((tabPanel2) => {
-    tabPanel2.classList.add("hidden-tab");
-  });
+  const tabPanels = document.querySelectorAll(".docs-tabpanel");
+  for (const tabPanel2 of tabPanels) {
+    tabPanel2.classList.add("hidden-tabpanel");
+  }
   const tabPanelId = newTab.getAttribute("aria-controls");
   if (!tabPanelId) {
     throw new Error("No aria-controls on tab panel");
   }
   const tabPanel = document.querySelector(
-    `.docs-tab[id="${tabPanelId}"]`
+    `.docs-tabpanel[id="${tabPanelId}"]`
   );
-  tabPanel?.classList.remove("hidden-tab");
+  tabPanel?.classList.remove("hidden-tabpanel");
   newTab.focus();
   scrollTabIntoView(newTab);
 }
@@ -297364,44 +297361,40 @@ export {
 };
 /*! Bundled license information:
 
-@forsakringskassan/docs-generator/dist/runtime-internal.mjs:
-  (*! Bundled license information:
-  
-  dompurify/dist/purify.es.mjs:
-    (*! @license DOMPurify 3.4.17 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.4.17/LICENSE *)
-    (*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE *)
-  
-  lodash-es/lodash.js:
-    (**
-     * @license
-     * Lodash (Custom Build) <https://lodash.com/>
-     * Build: `lodash modularize exports="es" --repo lodash/lodash#4.18.1 -o ./`
-     * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
-     * Released under MIT license <https://lodash.com/license>
-     * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
-     * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
-     *)
-  
-  cytoscape/dist/cytoscape.esm.mjs:
-    (*!
-    Embeddable Minimum Strictly-Compliant Promises/A+ 1.1.1 Thenable
-    Copyright (c) 2013-2014 Ralf S. Engelschall (http://engelschall.com)
-    Licensed under The MIT License (http://opensource.org/licenses/MIT)
-    *)
-    (*!
-    Event object based on jQuery events, MIT license
-    
-    https://jquery.org/license/
-    https://tldrlegal.com/license/mit-license
-    https://github.com/jquery/jquery/blob/master/src/event.js
-    *)
-    (*! Bezier curve function generator. Copyright Gaetan Renaudeau. MIT License: http://en.wikipedia.org/wiki/MIT_License *)
-    (*! Runge-Kutta spring physics function generator. Adapted from Framer.js, copyright Koen Bok. MIT License: http://en.wikipedia.org/wiki/MIT_License *)
-  
-  mermaid/dist/mermaid.core.mjs:
-    (*! Check if previously processed *)
-    (*!
-     * Wait for document loaded before starting the execution
-     *)
+dompurify/dist/purify.es.mjs:
+  (*! @license DOMPurify 3.4.17 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.4.17/LICENSE *)
+  (*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE *)
+
+lodash-es/lodash.js:
+  (**
+   * @license
+   * Lodash (Custom Build) <https://lodash.com/>
+   * Build: `lodash modularize exports="es" --repo lodash/lodash#4.18.1 -o ./`
+   * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
+   * Released under MIT license <https://lodash.com/license>
+   * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+   * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+   *)
+
+cytoscape/dist/cytoscape.esm.mjs:
+  (*!
+  Embeddable Minimum Strictly-Compliant Promises/A+ 1.1.1 Thenable
+  Copyright (c) 2013-2014 Ralf S. Engelschall (http://engelschall.com)
+  Licensed under The MIT License (http://opensource.org/licenses/MIT)
   *)
+  (*!
+  Event object based on jQuery events, MIT license
+  
+  https://jquery.org/license/
+  https://tldrlegal.com/license/mit-license
+  https://github.com/jquery/jquery/blob/master/src/event.js
+  *)
+  (*! Bezier curve function generator. Copyright Gaetan Renaudeau. MIT License: http://en.wikipedia.org/wiki/MIT_License *)
+  (*! Runge-Kutta spring physics function generator. Adapted from Framer.js, copyright Koen Bok. MIT License: http://en.wikipedia.org/wiki/MIT_License *)
+
+mermaid/dist/mermaid.core.mjs:
+  (*! Check if previously processed *)
+  (*!
+   * Wait for document loaded before starting the execution
+   *)
 */

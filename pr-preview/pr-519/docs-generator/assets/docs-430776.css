@@ -1280,6 +1280,7 @@ code.hljs {
   padding: 0.25rem 1rem;
   white-space: nowrap;
   border-bottom: transparent 3px solid;
+  cursor: pointer;
 }
 
 .docs-tabs .docs-tablist button:not(:last-of-type) {
@@ -1295,7 +1296,7 @@ code.hljs {
   font-weight: 600;
 }
 
-.docs-tabs .docs-tab.hidden-tab {
+.docs-tabs .docs-tabpanel.hidden-tabpanel {
   display: none;
 }
 
@@ -1305,6 +1306,7 @@ code.hljs {
   border: none;
   padding: 0 0.5rem;
   background-color: inherit;
+  cursor: pointer;
 }
 
 .docs-tabs .docs-more-button[hidden] {

@@ -296964,8 +296964,8 @@ function openActiveTab() {
     return;
   }
   const element3 = document.querySelector(location.hash);
-  const tabPanel = element3?.closest(".docs-tab");
-  if (!tabPanel?.classList.contains("hidden-tab")) {
+  const tabPanel = element3?.closest(".docs-tabpanel");
+  if (!tabPanel?.classList.contains("hidden-tabpanel")) {
     return;
   }
   const tab = tabPanel.parentElement?.querySelector(
@@ -297199,11 +297199,13 @@ onContentReady(() => {
 });
 window.addEventListener("docs:navigation", renderTabs);
 function renderTabs() {
-  const tabPanels = document.querySelectorAll(".docs-tab");
+  const tabPanels = Array.from(
+    document.querySelectorAll(".docs-tabpanel")
+  );
   if (tabPanels.length === 0) {
     return;
   }
-  tabPanels[0].classList.remove("hidden-tab");
+  tabPanels[0].classList.remove("hidden-tabpanel");
   const tabsContainer = document.createElement("div");
   tabsContainer.classList.add("docs-tabs");
   const tablistWrapper = document.createElement("div");
@@ -297214,24 +297216,19 @@ function renderTabs() {
   tabPanels[0].before(tabsContainer);
   tabsContainer.append(tablistWrapper);
   tablistWrapper.append(tabList);
-  tabPanels.forEach((tabPanel) => {
+  for (const tabPanel of tabPanels) {
     tabsContainer.append(tabPanel);
-  });
-  const tabNames = [];
-  tabPanels.forEach((tabPanel) => {
-    tabNames.push(tabPanel.id.split("-").slice(1).join(" "));
-  });
-  const tabIds = [];
-  tabPanels.forEach((tabPanel) => {
-    tabIds.push(tabPanel.id);
-  });
-  const tabButtonIds = [];
-  tabPanels.forEach((tabPanel) => {
+  }
+  const tabNames = tabPanels.map(
+    (tabPanel) => tabPanel.id.split("-").slice(1).join(" ")
+  );
+  const tabIds = tabPanels.map((tabPanel) => tabPanel.id);
+  const tabButtonIds = tabPanels.map((tabPanel) => {
     const tabId = tabPanel.getAttribute("aria-labelledby");
     if (!tabId) {
       throw new Error("No aria-labelledby on tab");
     }
-    tabButtonIds.push(tabId);
+    return tabId;
   });
   for (const [i4, tabName] of tabNames.entries()) {
     const tabButton = document.createElement("button");
@@ -297320,24 +297317,24 @@ function setSelectedTab(newTab) {
   const tabs = document.querySelectorAll(
     '.docs-tabs [role="tab"]'
   );
-  tabs.forEach((tab) => {
+  for (const tab of tabs) {
     tab.setAttribute("aria-selected", "false");
     tab.tabIndex = -1;
-  });
+  }
   newTab.setAttribute("aria-selected", "true");
   newTab.removeAttribute("tabIndex");
-  const tabPanels = document.querySelectorAll(".docs-tab");
-  tabPanels.forEach((tabPanel2) => {
-    tabPanel2.classList.add("hidden-tab");
-  });
+  const tabPanels = document.querySelectorAll(".docs-tabpanel");
+  for (const tabPanel2 of tabPanels) {
+    tabPanel2.classList.add("hidden-tabpanel");
+  }
   const tabPanelId = newTab.getAttribute("aria-controls");
   if (!tabPanelId) {
     throw new Error("No aria-controls on tab panel");
   }
   const tabPanel = document.querySelector(
-    `.docs-tab[id="${tabPanelId}"]`
+    `.docs-tabpanel[id="${tabPanelId}"]`
   );
-  tabPanel?.classList.remove("hidden-tab");
+  tabPanel?.classList.remove("hidden-tabpanel");
   newTab.focus();
   scrollTabIntoView(newTab);
 }
