@@ -37,7 +37,7 @@ export function scrollOverflow(
     direction: "left" | "right",
 ): void {
     // Prescroll a bit to trigger buttons to disappear for
-    // caluclation to be correct when scrolling fully.
+    // calculation to be correct when scrolling fully.
     if (direction === "left") {
         tablist.scrollLeft -= 1;
     } else {
@@ -85,12 +85,11 @@ function scrollToTab(
 ): void {
     const tabListRect = tabList.getBoundingClientRect();
 
+    // Scroll so that the hidden tab is visible
     if (direction === "right") {
-        // Scroll so that the hidden tab is visible
         tabList.scrollLeft +=
             tab.getBoundingClientRect().right - tabListRect.right;
     } else {
-        // Scroll so that the hidden tab is visible
         tabList.scrollLeft -=
             tabListRect.left - tab.getBoundingClientRect().left;
     }

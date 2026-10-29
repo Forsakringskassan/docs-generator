@@ -13,7 +13,9 @@ onContentReady(() => {
 window.addEventListener("docs:navigation", renderTabs);
 
 function renderTabs(): void {
-    const tabPanels = document.querySelectorAll<HTMLElement>(".docs-tabpanel");
+    const tabPanels = Array.from(
+        document.querySelectorAll<HTMLElement>(".docs-tabpanel"),
+    );
 
     if (tabPanels.length === 0) {
         return;
@@ -35,25 +37,20 @@ function renderTabs(): void {
 
     tabsContainer.append(tablistWrapper);
     tablistWrapper.append(tabList);
-    tabPanels.forEach((tabPanel) => {
+    for (const tabPanel of tabPanels) {
         tabsContainer.append(tabPanel);
-    });
+    }
 
-    const tabNames: string[] = [];
-    tabPanels.forEach((tabPanel) => {
-        tabNames.push(tabPanel.id.split("-").slice(1).join(" "));
-    });
-    const tabIds: string[] = [];
-    tabPanels.forEach((tabPanel) => {
-        tabIds.push(tabPanel.id);
-    });
-    const tabButtonIds: string[] = [];
-    tabPanels.forEach((tabPanel) => {
+    const tabNames = tabPanels.map((tabPanel) =>
+        tabPanel.id.split("-").slice(1).join(" "),
+    );
+    const tabIds = tabPanels.map((tabPanel) => tabPanel.id);
+    const tabButtonIds = tabPanels.map((tabPanel) => {
         const tabId = tabPanel.getAttribute("aria-labelledby");
         if (!tabId) {
             throw new Error("No aria-labelledby on tab");
         }
-        tabButtonIds.push(tabId);
+        return tabId;
     });
 
     for (const [i, tabName] of tabNames.entries()) {
@@ -165,17 +162,17 @@ function setSelectedTab(newTab: HTMLButtonElement): void {
     const tabs = document.querySelectorAll<HTMLButtonElement>(
         '.docs-tabs [role="tab"]',
     );
-    tabs.forEach((tab) => {
+    for (const tab of tabs) {
         tab.setAttribute("aria-selected", "false");
         tab.tabIndex = -1;
-    });
+    }
     newTab.setAttribute("aria-selected", "true");
     newTab.removeAttribute("tabIndex");
 
     const tabPanels = document.querySelectorAll<HTMLElement>(".docs-tabpanel");
-    tabPanels.forEach((tabPanel) => {
+    for (const tabPanel of tabPanels) {
         tabPanel.classList.add("hidden-tabpanel");
-    });
+    }
 
     const tabPanelId = newTab.getAttribute("aria-controls");
     if (!tabPanelId) {
