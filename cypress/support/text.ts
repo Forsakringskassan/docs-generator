@@ -38,7 +38,6 @@ const resolveTextFactory = (
     subject: Cypress.JQueryWithSelector,
 ): string | string[] => resolveText(subject);
 
-/* eslint-disable-next-line unicorn/no-top-level-side-effects -- intended */
 Cypress.Commands.addQuery("text", () => {
     return resolveTextFactory;
 });
