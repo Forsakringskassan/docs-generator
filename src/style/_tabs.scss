@@ -1,75 +1,75 @@
 .docs-tabs {
     position: relative;
+}
 
-    .docs-tablist-wrapper {
-        display: flex;
-        flex-direction: row;
-        margin-bottom: 2rem;
-        border-bottom: var(--fkds-color-border-weak) 1px solid;
+.docs-tablist-wrapper {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2rem;
+    border-bottom: var(--fkds-color-border-weak) 1px solid;
+}
+
+.docs-tablist {
+    display: flex;
+    flex-wrap: nowrap;
+    min-width: 0;
+    overflow-x: hidden;
+}
+
+.docs-tab {
+    background-color: transparent;
+    border: none;
+    padding: 0.25rem 1rem;
+    white-space: nowrap;
+    border-bottom: transparent 3px solid;
+    cursor: pointer;
+
+    &:not(:last-of-type) {
+        margin-right: 0.25rem;
     }
 
-    .docs-tablist {
-        display: flex;
-        flex-wrap: nowrap;
-        min-width: 0;
-        overflow-x: hidden;
-
-        .docs-tab {
-            background-color: transparent;
-            border: none;
-            padding: 0.25rem 1rem;
-            white-space: nowrap;
-            border-bottom: transparent 3px solid;
-            cursor: pointer;
-
-            &:not(:last-of-type) {
-                margin-right: 0.25rem;
-            }
-
-            &:hover {
-                border-bottom: var(--fkds-color-navigation-border-hover) 3px solid;
-            }
-
-            &[aria-selected="true"] {
-                border-bottom: var(--fkds-color-navigation-border-selected) 3px solid;
-                font-weight: 600;
-            }
-        }
+    &:hover {
+        border-bottom: var(--fkds-color-navigation-border-hover) 3px solid;
     }
 
-    .docs-tabpanel {
-        &.hidden-tabpanel {
-            display: none;
-        }
+    &[aria-selected="true"] {
+        border-bottom: var(--fkds-color-navigation-border-selected) 3px solid;
+        font-weight: 600;
+    }
+}
+
+.docs-tabpanel {
+    &.hidden-tabpanel {
+        display: none;
+    }
+}
+
+.docs-tabs-more-button {
+    display: flex;
+    align-items: center;
+    border: none;
+    padding: 0 0.5rem;
+    background-color: inherit;
+    cursor: pointer;
+
+    &[hidden] {
+        display: none;
     }
 
-    .docs-tabs-more-button {
-        display: flex;
-        align-items: center;
-        border: none;
-        padding: 0 0.5rem;
-        background-color: inherit;
-        cursor: pointer;
-
-        &[hidden] {
-            display: none;
-        }
-
-        &:hover,
-        &:active {
-            background-color: var(--fkds-color-navigation-background-hover);
-        }
+    &:hover,
+    &:active {
+        background-color: var(--fkds-color-navigation-background-hover);
     }
+}
 
-    .docs-tabs-more-icon {
-        width: 1rem;
-        height: 1rem;
+.docs-tabs-more-icon {
+    width: 1rem;
+    height: 1rem;
 
-        &--right {
-            transform: rotate(-90deg);
-        }
-        &--left {
-            transform: rotate(90deg);
-        }
+    &--right {
+        transform: rotate(-90deg);
+    }
+    &--left {
+        transform: rotate(90deg);
     }
 }
