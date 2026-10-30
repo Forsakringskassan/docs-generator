@@ -297137,10 +297137,10 @@ function scrollOverflow(tablist, tab, direction2) {
 }
 function updateOverflowButtonsVisibility(tabList) {
   const leftButton = document.querySelector(
-    ".docs-tabs .docs-more-button--left"
+    ".docs-tabs .docs-tabs-more-button--left"
   );
   const rightButton = document.querySelector(
-    ".docs-tabs .docs-more-button--right"
+    ".docs-tabs .docs-tabs-more-button--right"
   );
   if (!leftButton || !rightButton) {
     return;
@@ -297183,11 +297183,17 @@ function createOverflowArrowButton(direction2) {
   const button = document.createElement("button");
   button.type = "button";
   button.hidden = true;
-  button.classList.add("docs-more-button", `docs-more-button--${direction2}`);
+  button.classList.add(
+    "docs-tabs-more-button",
+    `docs-tabs-more-button--${direction2}`
+  );
   button.setAttribute("aria-hidden", "true");
   button.tabIndex = -1;
   const icon2 = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  icon2.classList.add("docs-more-icon", `docs-more-icon--${direction2}`);
+  icon2.classList.add(
+    "docs-tabs-more-icon",
+    `docs-tabs-more-icon--${direction2}`
+  );
   const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
   use.setAttribute("href", "#docs-icon-arrow-down");
   icon2.append(use);
@@ -297236,6 +297242,7 @@ function renderTabs() {
     tabButton.setAttribute("type", "button");
     tabButton.setAttribute("aria-selected", "false");
     tabButton.setAttribute("aria-controls", tabIds[i4]);
+    tabButton.classList.add("docs-tab");
     tabButton.id = tabButtonIds[i4];
     tabButton.textContent = tabName;
     tabButton.tabIndex = -1;
@@ -297248,7 +297255,7 @@ function renderTabs() {
   firstTabButton.setAttribute("aria-selected", "true");
   setupOverflow(tablistWrapper, tabList);
 }
-var onKeydown = (event3) => {
+function onKeydown(event3) {
   const tabs = Array.from(
     document.querySelectorAll('.docs-tabs [role="tab"]')
   );
@@ -297280,7 +297287,7 @@ var onKeydown = (event3) => {
   }
   event3.preventDefault();
   event3.stopPropagation();
-};
+}
 function onClick(event3) {
   setSelectedTab(event3.target);
 }
