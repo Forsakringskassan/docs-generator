@@ -8,10 +8,10 @@
 @use "mobile-navigation";
 @use "outline";
 @use "skeleton";
+@use "tabs";
 @use "tags";
 @use "version_banner";
 @use "highlight.js/styles/default";
-@use "tabs";
 
 dd > dl {
     border-left: 2px solid var(--docs-text-color-discrete);
