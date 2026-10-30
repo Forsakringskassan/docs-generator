@@ -14,23 +14,26 @@
         min-width: 0;
         overflow-x: hidden;
 
-        button {
+        .docs-tab {
             background-color: transparent;
             border: none;
             padding: 0.25rem 1rem;
             white-space: nowrap;
             border-bottom: transparent 3px solid;
             cursor: pointer;
-        }
-        button:not(:last-of-type) {
-            margin-right: 0.25rem;
-        }
-        button:hover {
-            border-bottom: var(--fkds-color-navigation-border-hover) 3px solid;
-        }
-        button[aria-selected="true"] {
-            border-bottom: var(--fkds-color-navigation-border-selected) 3px solid;
-            font-weight: 600;
+
+            &:not(:last-of-type) {
+                margin-right: 0.25rem;
+            }
+
+            &:hover {
+                border-bottom: var(--fkds-color-navigation-border-hover) 3px solid;
+            }
+
+            &[aria-selected="true"] {
+                border-bottom: var(--fkds-color-navigation-border-selected) 3px solid;
+                font-weight: 600;
+            }
         }
     }
 

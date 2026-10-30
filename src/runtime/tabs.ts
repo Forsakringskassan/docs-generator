@@ -59,6 +59,7 @@ function renderTabs(): void {
         tabButton.setAttribute("type", "button");
         tabButton.setAttribute("aria-selected", "false");
         tabButton.setAttribute("aria-controls", tabIds[i]);
+        tabButton.classList.add("docs-tab");
         tabButton.id = tabButtonIds[i];
         tabButton.textContent = tabName;
         tabButton.tabIndex = -1;
