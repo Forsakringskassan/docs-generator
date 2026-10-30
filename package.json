@@ -107,7 +107,7 @@
     "@leeoniya/ufuzzy": "1.0.19",
     "@microsoft/api-extractor-model": "7.33.15",
     "@microsoft/tsdoc": "0.17.1",
-    "chokidar": "5.0.0",
+    "chokidar": "6.0.0",
     "cli-progress": "3.12.0",
     "dedent": "1.7.2",
     "diff": "9.0.0",
@@ -196,7 +196,7 @@
     }
   },
   "engines": {
-    "node": "^22.18 || ^24.11 || >= 26"
+    "node": "^22.22 || ^24.11 || >= 26"
   },
   "publishConfig": {
     "access": "public",
