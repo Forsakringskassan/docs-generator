@@ -50,10 +50,10 @@ export function scrollOverflow(
 
 export function updateOverflowButtonsVisibility(tabList: HTMLElement): void {
     const leftButton = document.querySelector<HTMLButtonElement>(
-        ".docs-tabs .docs-more-button--left",
+        ".docs-tabs .docs-tabs-more-button--left",
     );
     const rightButton = document.querySelector<HTMLButtonElement>(
-        ".docs-tabs .docs-more-button--right",
+        ".docs-tabs .docs-tabs-more-button--right",
     );
     if (!leftButton || !rightButton) {
         return;
@@ -122,12 +122,18 @@ function createOverflowArrowButton(
     const button = document.createElement("button");
     button.type = "button";
     button.hidden = true;
-    button.classList.add("docs-more-button", `docs-more-button--${direction}`);
+    button.classList.add(
+        "docs-tabs-more-button",
+        `docs-tabs-more-button--${direction}`,
+    );
     button.setAttribute("aria-hidden", "true");
     button.tabIndex = -1;
 
     const icon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    icon.classList.add("docs-more-icon", `docs-more-icon--${direction}`);
+    icon.classList.add(
+        "docs-tabs-more-icon",
+        `docs-tabs-more-icon--${direction}`,
+    );
     const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
     use.setAttribute("href", "#docs-icon-arrow-down");
     icon.append(use);
