@@ -77,7 +77,7 @@ function renderTabs(): void {
     setupOverflow(tablistWrapper, tabList);
 }
 
-const onKeydown = (event: KeyboardEvent): void => {
+function onKeydown(event: KeyboardEvent): void {
     const tabs = Array.from(
         document.querySelectorAll<HTMLButtonElement>('.docs-tabs [role="tab"]'),
     );
@@ -112,7 +112,7 @@ const onKeydown = (event: KeyboardEvent): void => {
 
     event.preventDefault();
     event.stopPropagation();
-};
+}
 
 function onClick(event: MouseEvent): void {
     setSelectedTab(event.target as HTMLButtonElement);
