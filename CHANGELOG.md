@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [3.23.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.22.3...v3.23.0) (2026-10-31)
+
+### Features
+
+* **deps:** replace `glob` with native glob from `node:fs` ([486a8c2](https://github.com/Forsakringskassan/docs-generator/commit/486a8c2b299ad6df2f4e4159686c0b9fad0a1047))
+* **deps:** update dependency chokidar to v6 ([e57bcf6](https://github.com/Forsakringskassan/docs-generator/commit/e57bcf6efe5f3a29868fcf9886e2eae6095b649d))
+
+### Bug Fixes
+
+* **deps:** update dependency synckit to v0.12.1 ([#535](https://github.com/Forsakringskassan/docs-generator/issues/535)) ([ae9c81a](https://github.com/Forsakringskassan/docs-generator/commit/ae9c81a51bcf4634679b298dd910b1a911963dab))
+
 ## [3.22.3](https://github.com/Forsakringskassan/docs-generator/compare/v3.22.2...v3.22.3) (2026-10-30)
 
 ### Bug Fixes
