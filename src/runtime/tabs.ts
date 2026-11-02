@@ -16,8 +16,11 @@ function renderTabs(): void {
     const tabPanels = Array.from(
         document.querySelectorAll<HTMLElement>(".docs-tabpanel"),
     );
+    const tabs = Array.from(
+        document.querySelectorAll<HTMLElement>(".docs-tab"),
+    );
 
-    if (tabPanels.length === 0) {
+    if (tabPanels.length === 0 || tabPanels.length !== tabs.length) {
         return;
     }
 
@@ -41,38 +44,15 @@ function renderTabs(): void {
         tabsContainer.append(tabPanel);
     }
 
-    const tabNames = tabPanels.map((tabPanel) =>
-        tabPanel.id.split("-").slice(1).join(" "),
-    );
-    const tabIds = tabPanels.map((tabPanel) => tabPanel.id);
-    const tabButtonIds = tabPanels.map((tabPanel) => {
-        const tabId = tabPanel.getAttribute("aria-labelledby");
-        if (!tabId) {
-            throw new Error("No aria-labelledby on tab");
-        }
-        return tabId;
-    });
-
-    for (const [i, tabName] of tabNames.entries()) {
-        const tabButton = document.createElement("button");
-        tabButton.setAttribute("role", "tab");
-        tabButton.setAttribute("type", "button");
-        tabButton.setAttribute("aria-selected", "false");
-        tabButton.setAttribute("aria-controls", tabIds[i]);
-        tabButton.classList.add("docs-tab");
-        tabButton.id = tabButtonIds[i];
-        tabButton.textContent = tabName;
-        tabButton.tabIndex = -1;
-
-        tabList.append(tabButton);
-
-        tabButton.addEventListener("click", onClick);
-        tabButton.addEventListener("keydown", onKeydown);
+    for (const tab of tabs) {
+        tabList.append(tab);
+        tab.addEventListener("click", onClick);
+        tab.addEventListener("keydown", onKeydown);
     }
 
-    const firstTabButton = tabList.firstChild as HTMLButtonElement;
-    firstTabButton.removeAttribute("tabIndex");
-    firstTabButton.setAttribute("aria-selected", "true");
+    const firstTab = tabList.firstChild as HTMLButtonElement;
+    firstTab.removeAttribute("tabIndex");
+    firstTab.setAttribute("aria-selected", "true");
 
     setupOverflow(tablistWrapper, tabList);
 }

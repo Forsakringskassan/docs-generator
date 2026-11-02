@@ -6,7 +6,7 @@ import { type ContainerContext } from "./container/container-context";
  *
  * @internal
  */
-export function tabPanel(
+export function tab(
     context: ContainerContext,
     options: { title: Record<string, string | undefined> },
 ): ContainerCallback {
@@ -25,16 +25,26 @@ export function tabPanel(
         const title = parseInfo(token.info);
         const text = token.content.trim();
 
-        const id = `tabpanel-${title.replaceAll(" ", "-")}`;
-        const labelledBy = `tab-${title.replaceAll(" ", "-")}`;
+        const tabPanelId = `tabpanel-${title.replaceAll(" ", "-")}`;
+        const tabId = `tab-${title.replaceAll(" ", "-")}`;
         return /* HTML */ `
-            <!-- html-validate-disable-next no-missing-references -- Tab buttons are added with typescript -->
+            <button
+                id="${tabId}"
+                class="docs-tab"
+                role="tab"
+                type="button"
+                aria-selected="false"
+                aria-controls="${tabPanelId}"
+                tabindex="-1"
+            >
+                ${title}
+            </button>
             <div
-                id="${id}"
+                id="${tabPanelId}"
                 class="docs-tabpanel hidden-tabpanel"
                 role="tabpanel"
                 tabindex="0"
-                aria-labelledby="${labelledBy}"
+                aria-labelledby="${tabId}"
             >
                 ${md.render(text, env)}
             </div>
