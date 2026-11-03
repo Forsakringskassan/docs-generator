@@ -46,8 +46,10 @@ function renderTabs(): void {
 
     for (const tab of tabs) {
         tabList.append(tab);
-        tab.addEventListener("click", onClick);
-        tab.addEventListener("keydown", onKeydown);
+        tab.addEventListener("click", (event) => onClick(tabsContainer, event));
+        tab.addEventListener("keydown", (event) =>
+            onKeydown(tabsContainer, event),
+        );
     }
 
     const firstTab = tabList.firstChild as HTMLButtonElement;
@@ -57,24 +59,22 @@ function renderTabs(): void {
     setupOverflow(tablistWrapper, tabList);
 }
 
-function onKeydown(event: KeyboardEvent): void {
-    const tabs = Array.from(
-        document.querySelectorAll<HTMLButtonElement>('.docs-tabs [role="tab"]'),
-    );
+function onKeydown(tabsContainer: HTMLElement, event: KeyboardEvent): void {
+    const tabs = getTabs(tabsContainer);
 
     switch (event.key) {
         case "ArrowLeft":
-            moveSelectedTab(-1);
+            moveSelectedTab(tabsContainer, -1);
             break;
         case "ArrowRight":
-            moveSelectedTab(1);
+            moveSelectedTab(tabsContainer, 1);
             break;
         case "Home": {
             const tab = tabs.at(0);
             if (!tab) {
                 return;
             }
-            setSelectedTab(tab);
+            setSelectedTab(tabsContainer, tab);
             break;
         }
         case "End": {
@@ -82,7 +82,7 @@ function onKeydown(event: KeyboardEvent): void {
             if (!tab) {
                 return;
             }
-            setSelectedTab(tab);
+            setSelectedTab(tabsContainer, tab);
             break;
         }
 
@@ -94,8 +94,8 @@ function onKeydown(event: KeyboardEvent): void {
     event.stopPropagation();
 }
 
-function onClick(event: MouseEvent): void {
-    setSelectedTab(event.target as HTMLButtonElement);
+function onClick(tabsContainer: HTMLElement, event: MouseEvent): void {
+    setSelectedTab(tabsContainer, event.target as HTMLButtonElement);
 }
 
 function scrollTabIntoView(tab: Element): void {
@@ -114,14 +114,8 @@ function scrollTabIntoView(tab: Element): void {
     }
 }
 
-function getCurrentTab(): HTMLButtonElement | null {
-    return document.querySelector<HTMLButtonElement>(
-        '.docs-tabs [role="tab"][aria-selected="true"]',
-    );
-}
-
-function moveSelectedTab(direction: -1 | 1): void {
-    const currentTab = getCurrentTab();
+function moveSelectedTab(tabsContainer: HTMLElement, direction: -1 | 1): void {
+    const currentTab = getCurrentTab(tabsContainer);
 
     if (!currentTab) {
         return;
@@ -136,13 +130,15 @@ function moveSelectedTab(direction: -1 | 1): void {
         return;
     }
 
-    setSelectedTab(siblingTab as HTMLButtonElement);
+    setSelectedTab(tabsContainer, siblingTab as HTMLButtonElement);
 }
 
-function setSelectedTab(newTab: HTMLButtonElement): void {
-    const tabs = document.querySelectorAll<HTMLButtonElement>(
-        '.docs-tabs [role="tab"]',
-    );
+function setSelectedTab(
+    tabsContainer: HTMLElement,
+    newTab: HTMLButtonElement,
+): void {
+    const tabs = getTabs(tabsContainer);
+
     for (const tab of tabs) {
         tab.setAttribute("aria-selected", "false");
         tab.tabIndex = -1;
@@ -150,7 +146,8 @@ function setSelectedTab(newTab: HTMLButtonElement): void {
     newTab.setAttribute("aria-selected", "true");
     newTab.removeAttribute("tabIndex");
 
-    const tabPanels = document.querySelectorAll<HTMLElement>(".docs-tabpanel");
+    const tabPanels =
+        tabsContainer.querySelectorAll<HTMLElement>(".docs-tabpanel");
     for (const tabPanel of tabPanels) {
         tabPanel.classList.add("hidden-tabpanel");
     }
@@ -159,11 +156,23 @@ function setSelectedTab(newTab: HTMLButtonElement): void {
     if (!tabPanelId) {
         throw new Error("No aria-controls on tab panel");
     }
-    const tabPanel = document.querySelector<HTMLElement>(
+    const tabPanel = tabsContainer.querySelector<HTMLElement>(
         `.docs-tabpanel[id="${tabPanelId}"]`,
     );
     tabPanel?.classList.remove("hidden-tabpanel");
 
     newTab.focus();
     scrollTabIntoView(newTab);
+}
+
+function getCurrentTab(tabsContainer: HTMLElement): HTMLButtonElement | null {
+    return tabsContainer.querySelector<HTMLButtonElement>(
+        '[role="tab"][aria-selected="true"]',
+    );
+}
+
+function getTabs(tabsContainer: HTMLElement): HTMLButtonElement[] {
+    return Array.from(
+        tabsContainer.querySelectorAll<HTMLButtonElement>('[role="tab"]'),
+    );
 }
