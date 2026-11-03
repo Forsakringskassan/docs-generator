@@ -46,10 +46,12 @@ function renderTabs(): void {
 
     for (const tab of tabs) {
         tabList.append(tab);
-        tab.addEventListener("click", (event) => onClick(tabsContainer, event));
-        tab.addEventListener("keydown", (event) =>
-            onKeydown(tabsContainer, event),
-        );
+        tab.addEventListener("click", (event) => {
+            onClick(tabsContainer, event);
+        });
+        tab.addEventListener("keydown", (event) => {
+            onKeydown(tabsContainer, event);
+        });
     }
 
     const firstTab = tabList.firstChild as HTMLButtonElement;
