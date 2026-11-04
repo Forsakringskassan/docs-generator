@@ -6,8 +6,7 @@
     a {
         color: var(--docs-motd-link-color);
 
-        &:hover,
-        &:focus {
+        &:hover {
             color: var(--docs-motd-hover-color);
         }
     }
