@@ -7,7 +7,7 @@ import { type Document } from "../../document";
 import { type MarkdownEnv } from "../markdown-env";
 import { type SoftErrorType } from "../soft-error";
 import { type ContainerContext } from "./container";
-import { tabPanel } from "./tab-panel";
+import { tab } from "./tab";
 
 const markerStr = "§";
 const markerChar = markerStr.codePointAt(0);
@@ -151,7 +151,7 @@ export function tabsRenderer(
         });
 
         /* eslint-disable-next-line @typescript-eslint/dot-notation -- want to use same notation as rest of rules */
-        md.renderer.rules["doc_tab"] = tabPanel(
+        md.renderer.rules["doc_tab"] = tab(
             context,
             options.messagebox,
         ) as RendererRule;

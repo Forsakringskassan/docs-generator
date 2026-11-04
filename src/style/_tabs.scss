@@ -53,7 +53,7 @@
     cursor: pointer;
 
     &[hidden] {
-        display: none;
+        display: none; // Needed since user agent hidden is overriden på display flex.
     }
 
     &:hover,
