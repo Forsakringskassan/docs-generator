@@ -3,7 +3,11 @@ title: Tabs
 layout: article
 ---
 
-Tabs can be created like this:
+Tabs can be created using the custom syntax `§§§`.
+Titles of the tabs are set after the `§§§` marker, the last tab is terminated with an empty `§§§`.
+Any content between the markers are rendered as the tab content.
+
+Example:
 
 ```md
 §§§ Dog breeds
