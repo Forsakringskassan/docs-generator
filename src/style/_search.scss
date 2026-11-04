@@ -30,7 +30,6 @@ kbd {
 }
 
 #docs-search button:focus-visible {
-    border-radius: 0;
     box-shadow:
         0 0 0 2px #ffffff,
         0 0 0 4px #1b1e23,
@@ -79,7 +78,6 @@ kbd {
         }
 
         &:focus {
-            border-radius: 0;
             box-shadow:
                 0 0 0 2px #ffffff,
                 0 0 0 4px #1b1e23,
