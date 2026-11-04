@@ -6,27 +6,17 @@ import { type ContainerContext } from "./container/container-context";
  *
  * @internal
  */
-export function tab(
-    context: ContainerContext,
-    options: { title: Record<string, string | undefined> },
-): ContainerCallback {
+export function tab(context: ContainerContext): ContainerCallback {
     const { md, env } = context;
-
-    function parseInfo(info: string | undefined): string {
-        const customTitle = info ? info.split(" ") : [];
-        if (customTitle.length > 0) {
-            return customTitle.join(" ");
-        }
-        return options.title.details ?? "Details";
-    }
 
     return (tokens, index) => {
         const token = tokens[index];
         const title = parseInfo(token.info);
         const text = token.content.trim();
 
-        const tabPanelId = `tabpanel-${title.replaceAll(" ", "-")}`;
-        const tabId = `tab-${title.replaceAll(" ", "-")}`;
+        const titleSelector = parseCSSSelector(title);
+        const tabPanelId = `tabpanel-${titleSelector}`;
+        const tabId = `tab-${titleSelector}`;
         return /* HTML */ `
             <button
                 id="${tabId}"
@@ -50,4 +40,21 @@ export function tab(
             </div>
         `;
     };
+}
+
+function parseInfo(info: string | undefined): string {
+    if (!info) {
+        throw new Error("Missing tab title");
+    }
+    return info;
+}
+
+/**
+ * Parses a text to appropriate CSS selector syntax with only small letters, numbers and `-`.
+ */
+function parseCSSSelector(toSelector: string): string {
+    return toSelector
+        .toLowerCase()
+        .replaceAll(" ", "-")
+        .replace(/[^a-z0-9-]/g, "");
 }

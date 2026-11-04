@@ -128,11 +128,6 @@ export function tabsRenderer(
     env: MarkdownEnv,
     included: Map<string, string>,
     handleSoftError: (error: SoftErrorType) => string,
-    options: {
-        messagebox: {
-            title: Record<string, string>;
-        };
-    },
 ): (md: MarkdownIt) => void {
     return function (md: MarkdownIt): void {
         const context: ContainerContext = {
@@ -151,9 +146,6 @@ export function tabsRenderer(
         });
 
         /* eslint-disable-next-line @typescript-eslint/dot-notation -- want to use same notation as rest of rules */
-        md.renderer.rules["doc_tab"] = tab(
-            context,
-            options.messagebox,
-        ) as RendererRule;
+        md.renderer.rules["doc_tab"] = tab(context) as RendererRule;
     };
 }

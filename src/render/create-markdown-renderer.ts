@@ -152,9 +152,6 @@ export function createMarkdownRenderer(
             env,
             included,
             options.handleSoftError,
-            {
-                messagebox: { title: {}, ...options.messagebox },
-            },
         ),
     );
     md.use(paragraph());
