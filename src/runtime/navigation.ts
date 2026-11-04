@@ -311,8 +311,8 @@ function openActiveTab(): void {
         return;
     }
 
-    const tab = tabPanel.parentElement?.querySelector(
+    const tab = tabPanel.parentElement?.querySelector<HTMLElement>(
         `[aria-controls="${tabPanel.id}"]`,
-    ) as HTMLElement | undefined;
+    );
     tab?.click(); // Activate the tab the element is inside.
 }
