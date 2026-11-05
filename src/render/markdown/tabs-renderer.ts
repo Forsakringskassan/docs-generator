@@ -121,7 +121,6 @@ function tabs(
     return true;
 }
 
-/* eslint-disable-next-line @typescript-eslint/max-params -- technical debt: should create and interface or similar */
 export function tabsRenderer(
     doc: () => Document,
     docs: Document[],
