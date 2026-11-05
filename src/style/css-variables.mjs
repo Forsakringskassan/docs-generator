@@ -564,6 +564,7 @@ export default {
             },
         },
     },
+
     navigation: {
         description: "Style related to navigation",
         variables: {
@@ -581,6 +582,22 @@ export default {
                 description: "Link hover color",
                 type: "color",
                 value: "#ddd",
+            },
+        },
+    },
+
+    tab: {
+        description: "Style related to tabs",
+        variables: {
+            "hover-border": {
+                description: "Tab hover color",
+                type: "color",
+                value: "var(--docs-tab-hover-border-color)",
+            },
+            "border-color": {
+                description: "Tab active color",
+                type: "color",
+                value: "var(--docs-tab-active-border-color)",
             },
         },
     },

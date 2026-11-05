@@ -56,5 +56,5 @@ function parseCSSSelector(toSelector: string): string {
     return toSelector
         .toLowerCase()
         .replaceAll(" ", "-")
-        .replace(/[^a-z0-9-]/g, "");
+        .replaceAll(/[^a-z0-9-]/g, "");
 }
