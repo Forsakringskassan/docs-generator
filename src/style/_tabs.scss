@@ -29,11 +29,11 @@
     }
 
     &:hover {
-        border-bottom: var(--fkds-color-navigation-border-hover) 3px solid;
+        border-bottom: var(--docs-tab-hover-border-color) 3px solid;
     }
 
     &[aria-selected="true"] {
-        border-bottom: var(--fkds-color-navigation-border-selected) 3px solid;
+        border-bottom: var(--docs-tab-active-border-color) 3px solid;
         font-weight: 600;
     }
 }
@@ -58,7 +58,7 @@
 
     &:hover,
     &:active {
-        background-color: var(--fkds-color-navigation-background-hover);
+        background-color: var(--docs-tab-hover-border-color);
     }
 }
 
