@@ -60,12 +60,34 @@ it("2.1 - should render multiple tabs and their content from one Markdown source
     expect(result.match(/class="docs-tabpanel hidden-tabpanel"/g)).toHaveLength(
         2,
     );
-    expect(result).toContain('id="tabpanel-First-tab"');
+    expect(result).toContain('id="tabpanel-first-tab"');
     expect(result).toContain(
         '<p class="docs-paragraph">Content in the first tab.</p>',
     );
-    expect(result).toContain('id="tabpanel-Second-tab"');
+    expect(result).toContain('id="tabpanel-second-tab"');
     expect(result).toContain(
         '<p class="docs-paragraph">Content in the second tab.</p>',
+    );
+});
+
+it("should generate tab and panel IDs using lowercase letters, numbers, and hyphens", () => {
+    expect.assertions(4);
+    const source = dedent`
+        §§§ Cat breeds "Like we know" :D 67
+
+        Content.
+
+        §§§
+    `;
+
+    const result = renderer.render(doc, source);
+
+    expect(result).toContain('id="tab-cat-breeds-like-we-know-d-67"');
+    expect(result).toContain('id="tabpanel-cat-breeds-like-we-know-d-67"');
+    expect(result).toContain(
+        'aria-controls="tabpanel-cat-breeds-like-we-know-d-67"',
+    );
+    expect(result).toContain(
+        'aria-labelledby="tab-cat-breeds-like-we-know-d-67"',
     );
 });
