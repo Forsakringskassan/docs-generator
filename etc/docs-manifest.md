@@ -39,6 +39,7 @@ markdown/images.html
 markdown/index.html
 markdown/mermaid.html
 markdown/redirects.html
+markdown/tabs.html
 navigation/child-page-1.html
 navigation/child-page-2.html
 navigation/child-page-3.html
