@@ -127,6 +127,7 @@ function createOverflowArrowButton(
         `docs-tabs-more-button--${direction}`,
     );
     button.setAttribute("aria-hidden", "true");
+    button.setAttribute("aria-label", `More tabs ${direction}`);
     button.tabIndex = -1;
 
     const icon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
