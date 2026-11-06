@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [3.23.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.23.0...v3.23.1) (2026-11-06)
+
+### Bug Fixes
+
+* **deps:** update dependency @microsoft/api-extractor-model to v7.33.16 ([b9c063e](https://github.com/Forsakringskassan/docs-generator/commit/b9c063e26887246828c08fc36c85a4c4112085d1))
+* **deps:** update dependency i18next to v26.5.12 ([f868086](https://github.com/Forsakringskassan/docs-generator/commit/f868086f86c5f879e62ceb26c67e860dbbddbe8f))
+
 ## [3.23.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.22.3...v3.23.0) (2026-10-31)
 
 ### Features
