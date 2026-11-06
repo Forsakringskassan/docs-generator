@@ -1,6 +1,7 @@
 @use "api";
 @use "badges";
 @use "breakpoints" as bp;
+@use "focus" as *;
 @use "typography";
 @use "layout";
 @use "messagebox";
@@ -166,11 +167,7 @@ main #docs-aside dd {
     color: var(--docs-text-color-default);
 
     &:focus-visible {
-        box-shadow:
-            0 0 0 2px #ffffff,
-            0 0 0 4px #1b1e23,
-            0 0 0 6px #ffffff;
-        outline: 3px solid transparent;
+        @include focus-indicator;
     }
 
     .docs-icon {

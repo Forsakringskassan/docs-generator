@@ -1,4 +1,5 @@
 @use "breakpoints" as bp;
+@use "focus" as *;
 @use "modal";
 
 kbd {
@@ -30,11 +31,7 @@ kbd {
 }
 
 #docs-search button:focus-visible {
-    box-shadow:
-        0 0 0 2px #ffffff,
-        0 0 0 4px #1b1e23,
-        0 0 0 6px #ffffff;
-    outline: 3px solid transparent;
+    @include focus-indicator;
 }
 
 #docs-search .search__icon {
@@ -78,11 +75,7 @@ kbd {
         }
 
         &:focus-visible {
-            box-shadow:
-                0 0 0 2px #ffffff,
-                0 0 0 4px #1b1e23,
-                0 0 0 6px #ffffff;
-            outline: 3px solid transparent;
+            @include focus-indicator;
         }
 
         &::-ms-clear {
@@ -142,11 +135,7 @@ kbd {
         }
 
         &:focus-visible {
-            box-shadow:
-                0 0 0 2px #ffffff,
-                0 0 0 4px #1b1e23,
-                0 0 0 6px #ffffff;
-            outline: 3px solid transparent;
+            @include focus-indicator;
         }
     }
 }
