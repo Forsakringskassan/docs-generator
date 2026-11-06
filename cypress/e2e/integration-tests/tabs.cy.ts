@@ -165,7 +165,8 @@ describe("tabs", () => {
 
     it("1.8 - browser back navigates to the previous page after changing tabs", () => {
         cy.visit("/integration-tests/tabs/index.html");
-        cy.visit("/integration-tests/tabs/cats/");
+        cy.get(".docs-topnav").contains("a", "Cats").click();
+        cy.location("pathname").should("eq", "/integration-tests/tabs/cats/");
 
         cy.get('.docs-tabs [role="tab"]').eq(1).click();
 
