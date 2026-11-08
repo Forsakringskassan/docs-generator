@@ -25,9 +25,11 @@ kbd {
     padding-inline-end: 0;
 }
 
-#docs-search button:hover {
-    cursor: pointer;
-    background-color: var(--docs-search-button-color-hover);
+@media (hover: hover) {
+    #docs-search button:hover {
+        cursor: pointer;
+        background-color: var(--docs-search-button-color-hover);
+    }
 }
 
 #docs-search button:focus-visible {
@@ -112,9 +114,11 @@ kbd {
             border-bottom: none;
         }
 
-        &:hover {
-            background-color: #e5e5e5;
-            cursor: pointer;
+        @media (hover: hover) {
+            &:hover {
+                background-color: #e5e5e5;
+                cursor: pointer;
+            }
         }
     }
 

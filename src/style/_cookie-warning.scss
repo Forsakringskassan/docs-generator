@@ -43,7 +43,12 @@
             border-color: transparent;
             color: #fff;
 
-            &:hover,
+            @media (hover: hover) {
+                &:hover {
+                    background-color: #3b4292;
+                }
+            }
+
             &:active {
                 background-color: #3b4292;
             }
@@ -54,7 +59,12 @@
             border-color: #4a52b6;
             color: #4a52b6;
 
-            &:hover,
+            @media (hover: hover) {
+                &:hover {
+                    background-color: #e5e5f5;
+                }
+            }
+
             &:active {
                 background-color: #e5e5f5;
             }

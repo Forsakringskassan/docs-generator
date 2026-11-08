@@ -16,7 +16,13 @@
     a {
         color: var(--docs-link-color-discrete);
         text-wrap: nowrap;
-        &:hover,
+
+        @media (hover: hover) {
+            &:hover {
+                color: var(--docs-text-color-default);
+            }
+        }
+
         &:active {
             color: var(--docs-text-color-default);
         }

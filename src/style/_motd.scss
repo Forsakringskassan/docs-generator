@@ -6,8 +6,10 @@
     a {
         color: var(--docs-motd-link-color);
 
-        &:hover {
-            color: var(--docs-motd-hover-color);
+        @media (hover: hover) {
+            &:hover {
+                color: var(--docs-motd-hover-color);
+            }
         }
     }
 

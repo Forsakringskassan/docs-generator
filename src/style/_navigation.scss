@@ -35,9 +35,11 @@
             text-overflow: ellipsis;
             overflow: hidden;
 
-            &:hover {
-                background: var(--docs-navigation-hover-color);
-                border-color: var(--docs-navigation-highlight-color);
+            @media (hover: hover) {
+                &:hover {
+                    background: var(--docs-navigation-hover-color);
+                    border-color: var(--docs-navigation-highlight-color);
+                }
             }
         }
     }
@@ -49,9 +51,11 @@
         line-height: 1.5;
         padding: 0.5rem calc(0.25rem + var(--highlight-width)) 0.5rem 0.25rem;
 
-        &:hover {
-            background: var(--docs-navigation-hover-color);
-            border-color: var(--docs-navigation-highlight-color);
+        @media (hover: hover) {
+            &:hover {
+                background: var(--docs-navigation-hover-color);
+                border-color: var(--docs-navigation-highlight-color);
+            }
         }
 
         .docs-icon {

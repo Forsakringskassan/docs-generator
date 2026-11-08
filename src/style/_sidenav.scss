@@ -40,6 +40,7 @@
     justify-content: center;
     opacity: 0;
     pointer-events: none;
+
     &-label {
         display: flex;
         justify-content: center;
@@ -48,8 +49,11 @@
         height: 3rem;
         cursor: pointer;
     }
-    &-label:hover {
-        background-color: #ddddde;
+
+    @media (hover: hover) {
+        &-label:hover {
+            background-color: #ddddde;
+        }
     }
 }
 
