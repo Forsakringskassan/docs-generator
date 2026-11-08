@@ -59,9 +59,11 @@
             text-overflow: ellipsis;
             overflow: hidden;
 
-            &:hover {
-                background: var(--docs-navigation-hover-color);
-                border-color: var(--docs-navigation-highlight-color);
+            @media (hover: hover) {
+                &:hover {
+                    background: var(--docs-navigation-hover-color);
+                    border-color: var(--docs-navigation-highlight-color);
+                }
             }
         }
     }
@@ -74,9 +76,11 @@
         padding: 0.5rem calc(0.25rem + var(--highlight-width)) 0.5rem 0.25rem;
         align-items: center;
 
-        &:hover {
-            background: var(--docs-navigation-hover-color);
-            border-color: var(--docs-navigation-highlight-color);
+        @media (hover: hover) {
+            &:hover {
+                background: var(--docs-navigation-hover-color);
+                border-color: var(--docs-navigation-highlight-color);
+            }
         }
     }
     .docs-icon {

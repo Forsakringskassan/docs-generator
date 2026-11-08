@@ -64,8 +64,10 @@ $outline-border-duration: 300ms;
         border-radius: 10px;
     }
 
-    &::-webkit-scrollbar-thumb:hover {
-        background: #a7a7a7;
+    @media (hover: hover) {
+        &::-webkit-scrollbar-thumb:hover {
+            background: #a7a7a7;
+        }
     }
 
     .outline__heading {
@@ -108,13 +110,15 @@ $outline-border-duration: 300ms;
             }
         }
 
-        &:hover {
-            &::after {
-                background: var(--docs-outline-active-border-color);
-            }
+        @media (hover: hover) {
+            &:hover {
+                &::after {
+                    background: var(--docs-outline-active-border-color);
+                }
 
-            a {
-                background: var(--docs-outline-hover-background-color);
+                a {
+                    background: var(--docs-outline-hover-background-color);
+                }
             }
         }
     }

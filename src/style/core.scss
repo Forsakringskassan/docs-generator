@@ -27,8 +27,10 @@ p:not(.code-preview p) {
     max-width: 680px;
 }
 
-.header-anchor:hover {
-    text-decoration: underline;
+@media (hover: hover) {
+    .header-anchor:hover {
+        text-decoration: underline;
+    }
 }
 
 .header-anchor::before {
@@ -42,8 +44,10 @@ p:not(.code-preview p) {
     text-decoration: none;
 }
 
-.header-anchor:hover::before {
-    visibility: visible;
+@media (hover: hover) {
+    .header-anchor:hover::before {
+        visibility: visible;
+    }
 }
 
 #docs-content a:where(:not(.code-preview a)) {
@@ -58,9 +62,11 @@ footer a {
     text-decoration-color: var(--docs-text-color-link);
     text-underline-offset: 0.15rem;
 
-    &:hover {
-        color: var(--docs-text-color-default);
-        text-decoration-color: var(--docs-text-color-default);
+    @media (hover: hover) {
+        &:hover {
+            color: var(--docs-text-color-default);
+            text-decoration-color: var(--docs-text-color-default);
+        }
     }
 }
 

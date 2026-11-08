@@ -53,9 +53,11 @@
             color: var(--docs-topnav-link-color-default);
         }
 
-        &:hover {
-            color: var(--docs-topnav-link-color-hover);
-            border-color: var(--docs-topnav-border-color-hover);
+        @media (hover: hover) {
+            &:hover {
+                color: var(--docs-topnav-link-color-hover);
+                border-color: var(--docs-topnav-border-color-hover);
+            }
         }
 
         @at-root button#{&} {

@@ -26,8 +26,10 @@
     color: var(--docs-text-color-default);
     text-decoration: none;
 
-    &:hover {
-        text-decoration: underline;
+    @media (hover: hover) {
+        &:hover {
+            text-decoration: underline;
+        }
     }
 
     &::before {
@@ -41,7 +43,9 @@
         text-decoration: none;
     }
 
-    &:hover::before {
-        visibility: visible;
+    @media (hover: hover) {
+        &:hover::before {
+            visibility: visible;
+        }
     }
 }

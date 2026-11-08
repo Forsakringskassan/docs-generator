@@ -38,7 +38,13 @@
         text-underline-offset: 0.25em;
         margin-bottom: 0.5rem;
 
-        &:hover,
+        @media (hover: hover) {
+            &:hover {
+                color: var(--docs-text-color-link-hover);
+                text-decoration-color: var(--docs-text-link-hover);
+            }
+        }
+
         &:active {
             color: var(--docs-text-color-link-hover);
             text-decoration-color: var(--docs-text-link-hover);
