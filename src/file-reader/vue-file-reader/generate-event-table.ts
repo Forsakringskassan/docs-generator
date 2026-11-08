@@ -4,7 +4,7 @@ import { type ComponentEvent } from "./component-api";
 
 const md = markdownIt();
 const EMPTY_CHAR = "&#8208;";
-const EM_DASH = `<span role="presentation">&mdash;</span>`;
+const EM_DASH = `<span role="none">&mdash;</span>`;
 
 function render(text: string | null): string {
     return text ? md.render(text) : EMPTY_CHAR;
