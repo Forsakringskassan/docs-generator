@@ -1,4 +1,5 @@
 export { createMockDocument } from "./create-mock-document";
+export { createMockPartial } from "./create-mock-partial";
 export { type FileMatcher, fileMatcher } from "./file-matcher";
 export { findDocument } from "./find-document";
 export { findTag } from "./find-tag";
@@ -19,6 +20,7 @@ export { htmlencode } from "./htmlencode";
 export { interpolate } from "./interpolate";
 export { naturalJoin } from "./natural-join";
 export { normalizePath } from "./normalize-path";
+export { normalizeWorkingDirectory } from "./normalize-working-directory";
 export { parseImport } from "./parse-import";
 export { runCommand } from "./run-command";
 export {

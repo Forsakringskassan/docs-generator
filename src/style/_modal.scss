@@ -28,6 +28,9 @@
             min-width: 1rem;
         }
     }
+    &__body.is-touch p {
+        display: none;
+    }
 
     &::backdrop {
         background: rgb(0 0 0 / 75%);

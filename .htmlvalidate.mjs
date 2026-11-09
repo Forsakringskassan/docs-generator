@@ -26,10 +26,6 @@ export default {
             },
         ],
 
-        /* currently there are duplicate id where a title "title" clashes with
-         * base layout */
-        "no-dup-id": "off",
-
         "no-inline-style": "off",
         "no-trailing-whitespace": "off",
 

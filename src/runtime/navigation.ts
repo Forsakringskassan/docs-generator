@@ -1,4 +1,5 @@
 import mermaid from "mermaid";
+import { closeNested } from "./close-all-details";
 import { tableOfContents, toggleTableOfContents } from "./table-of-contents";
 
 declare global {
@@ -17,15 +18,6 @@ const footer = document.querySelector("footer")!;
 
 // Save path to manage whether to replace content for new page or navigate to hash.
 let previousPath = location.pathname;
-
-/**
- * Close all nested `<details>` elements.
- */
-function closeNested(details: HTMLDetailsElement): void {
-    for (const nested of details.querySelectorAll("details")) {
-        nested.open = false;
-    }
-}
 
 /**
  * Clone script tags inside given element.
@@ -77,7 +69,7 @@ async function replaceContent(href: string): Promise<void> {
     const response = await fetch(href);
     const body = await response.text();
     const doc = parser.parseFromString(body, "text/html");
-    const sidenav = doc.querySelector("#sidenav");
+    const sidenav = doc.querySelector("#docs-sidenav");
     const rootUrl = doc.documentElement.dataset.rootUrl;
 
     /* replace only <main> if the response is OK and the sidenav is present on
@@ -104,7 +96,7 @@ async function replaceContent(href: string): Promise<void> {
     }
 
     /* update external urls in sidenav */
-    const anchorSelector = "#sidenav li.link a";
+    const anchorSelector = "#docs-sidenav li.link a";
     const anchorLinks =
         document.querySelectorAll<HTMLAnchorElement>(anchorSelector);
     for (const link of anchorLinks) {
@@ -113,7 +105,7 @@ async function replaceContent(href: string): Promise<void> {
             continue;
         }
         const element = doc.querySelector(
-            `#sidenav a[data-path="${CSS.escape(path)}"]`,
+            `#docs-sidenav a[data-path="${CSS.escape(path)}"]`,
         );
         const href = element?.getAttribute("href");
         if (href) {
@@ -127,9 +119,9 @@ async function replaceContent(href: string): Promise<void> {
     document.title = doc.title;
     target.replaceWith(element);
 
-    const toc = document.querySelector("#outline");
+    const toc = document.querySelector("#docs-outline");
     if (toc) {
-        const headings = document.querySelectorAll("#content h2");
+        const headings = document.querySelectorAll("#docs-content h2");
         tableOfContents(toc, headings);
         toggleTableOfContents();
     }
@@ -228,6 +220,7 @@ function getVisibleHeight(el: HTMLElement): number {
  * The sidenav height varies depending on how much of the header element is
  * visible.
  */
+/* eslint-disable-next-line unicorn/no-unnecessary-parameters -- false positive but should refactor so the parameter isn't stored in the outer scope */
 function updateSidenavHeight(navigation: HTMLElement): void {
     const { clientHeight } = document.documentElement;
     const navHeight = navigation.getBoundingClientRect().height;
@@ -243,7 +236,7 @@ function updateSidenavHeight(navigation: HTMLElement): void {
         return 0;
     })();
     variableBlock.textContent = /* CSS */ `
-        #sidenav {
+        #docs-sidenav {
             --header-footer-visible-height: ${String(offset)}px;
         }
     `;
@@ -251,18 +244,16 @@ function updateSidenavHeight(navigation: HTMLElement): void {
 
 for (const details of document.querySelectorAll("details")) {
     details.addEventListener("toggle", () => {
-        if (!details.open) {
-            closeNested(details);
-        }
+        closeNested(details);
     });
 }
 
 const toggle = document.querySelector<HTMLInputElement>(
-    "#sidenav .sidenav__toggle",
+    "#docs-sidenav .sidenav__toggle",
 );
-const navigation = document.querySelector<HTMLElement>("#sidenav nav");
+const navigation = document.querySelector<HTMLElement>("#docs-sidenav nav");
 if (toggle && navigation) {
-    const anchorSelector = "#sidenav li.link a";
+    const anchorSelector = "#docs-sidenav li.link a";
     const anchorLinks =
         document.querySelectorAll<HTMLAnchorElement>(anchorSelector);
     for (const link of anchorLinks) {

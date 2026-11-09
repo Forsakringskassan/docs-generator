@@ -6,6 +6,12 @@ import {
     vueFileReader,
 } from "@forsakringskassan/docs-generator";
 
+declare module "@forsakringskassan/docs-generator" {
+    interface ExtractedDocsMetadata {
+        revision: string;
+    }
+}
+
 const docs = new Generator(import.meta.url, {
     site: {
         name: "Integration test: base",
@@ -16,6 +22,9 @@ const docs = new Generator(import.meta.url, {
     processors: [
         extractMarkdownProcessor({
             outputFolder: "dist",
+            metadata() {
+                return Promise.resolve({ revision: "foobar" });
+            },
         }),
         manifestProcessor(),
     ],

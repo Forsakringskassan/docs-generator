@@ -19,7 +19,7 @@ import { Generator } from "@forsakringskassan/docs-generator";
 
 /* --- cut above --- */
 
-const docs = new Generator(import.meta.url, {
+const docs = new Generator(import.meta.dirname, {
     site: { name: "Awesome Site", lang: "en" },
     setupPath: "src/setup.ts",
 });
@@ -30,7 +30,7 @@ import { Generator } from "@forsakringskassan/docs-generator";
 
 /* --- cut above --- */
 
-const docs = new Generator(import.meta.url, {
+const docs = new Generator(import.meta.dirname, {
     site: { name: "Awesome Site", lang: "en" },
     bundleDefaultFont: false,
     setupPath: "src/setup.ts",

@@ -73,12 +73,12 @@ describe("searchProcessor", () => {
     });
 
     it("should add search widget to site", () => {
-        cy.get("#search").should("be.visible");
+        cy.get("#docs-search").should("be.visible");
     });
 
     it("should open search modal when clicked", () => {
         cy.get("#search-dialog").should("not.be.visible");
-        cy.get("#search button").click();
+        cy.get("#docs-search button").click();
         cy.get("#search-dialog").should("be.visible");
     });
 
@@ -89,7 +89,7 @@ describe("searchProcessor", () => {
     });
 
     it("should display search results", () => {
-        cy.get("#search button").click();
+        cy.get("#docs-search button").click();
         cy.get("#search-dialog").should("be.visible");
         cy.get("#search-dialog .docs-search-result__item").should(
             "have.length",
@@ -113,12 +113,12 @@ describe("selectableVersionProcessor", () => {
     });
 
     it("should add version selector widget to site", () => {
-        cy.get("#version").should("be.visible");
+        cy.get(".docs-selectable-version__form").should("be.visible");
     });
 
     it("should open version selector modal when clicked", () => {
         cy.get("#version-dialog").should("not.be.visible");
-        cy.get("#version button").click();
+        cy.get(".docs-selectable-version__button").click();
         cy.get("#version-dialog").should("be.visible");
     });
 });

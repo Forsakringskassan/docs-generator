@@ -1,3 +1,4 @@
+/* eslint-disable-next-line unicorn/no-unnecessary-parameters -- technical debt  */
 function setViewPort(width: number, height: number): void {
     cy.viewport(width, height);
     cy.visit("/integration-tests/navigation/");

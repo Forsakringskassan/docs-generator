@@ -113,6 +113,20 @@ function getComponent(
 }
 
 /**
+ * Normalizes markdown body:
+ *
+ * - Converts CRLF to LF
+ * - Inserts trailing newline if missing
+ */
+function normalizeBody(text: string): string {
+    text = text.replaceAll("\r\n", "\n");
+    if (!text.endsWith("\n")) {
+        text += "\n";
+    }
+    return text;
+}
+
+/**
  * @internal
  */
 export function parseFile(
@@ -154,7 +168,7 @@ export function parseFile(
             },
             sortorder: attributes.sortorder ?? Infinity,
         },
-        body: blocks.body,
+        body: normalizeBody(blocks.body),
         outline,
         format: "markdown",
         tags: [],
@@ -165,7 +179,6 @@ export function parseFile(
                 : `./${normalizePath(urlpath)}`,
             name: filename,
             fullPath: normalizePath(filePath),
-            /* eslint-disable-next-line unicorn/prefer-logical-operator-over-ternary -- false positive? */
             outputName: include ? `${filename}.html` : false,
         },
     };

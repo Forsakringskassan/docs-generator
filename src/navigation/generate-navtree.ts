@@ -1,8 +1,6 @@
 import path from "node:path";
 import { type DocumentPage } from "../document";
 
-type Mutable<T> = { -readonly [P in keyof T]: T[P] };
-
 /**
  * @public
  */
@@ -31,8 +29,6 @@ export interface NavigationSection {
  */
 export type NavigationNode = NavigationLeaf | NavigationSection;
 
-type MutableNavigationSection = Mutable<NavigationSection>;
-
 /**
  * @public
  */
@@ -57,6 +53,9 @@ function getParentKey(name: string): string {
 }
 
 export function generateNavtree(docs: DocumentPage[]): NavigationSection {
+    type Mutable<T> = { -readonly [P in keyof T]: T[P] };
+    type MutableNavigationSection = Mutable<NavigationSection>;
+
     /** Lookup table for sections */
     const section: Record<string, MutableNavigationSection> = {};
 
@@ -64,13 +63,13 @@ export function generateNavtree(docs: DocumentPage[]): NavigationSection {
         key: string,
         title: string,
         sortorder: number,
-        { visible }: { visible?: boolean } = {},
+        { visible = true }: { visible?: boolean } = {},
     ): void {
         const existing = section[key] as MutableNavigationSection | undefined;
         if (existing) {
             existing.title = title;
             existing.sortorder = sortorder;
-            existing.visible = visible ?? true;
+            existing.visible = visible;
         } else {
             const node: MutableNavigationSection = {
                 key,
@@ -78,7 +77,7 @@ export function generateNavtree(docs: DocumentPage[]): NavigationSection {
                 path: "",
                 sortorder,
                 children: [],
-                visible: visible ?? true,
+                visible,
             };
             section[key] = node;
             if (key !== ".") {

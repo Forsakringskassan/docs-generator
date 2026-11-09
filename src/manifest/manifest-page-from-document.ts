@@ -1,6 +1,6 @@
 import markdownIt, { type Env } from "markdown-it";
 import { type DocumentOutline, type DocumentPage } from "../document";
-import { parseInfostring } from "../examples";
+import { parseInfostring } from "../examples/parse-infostring";
 import { type ProcessorContext } from "../processor-context";
 import {
     type FileMatcher,

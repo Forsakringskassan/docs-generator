@@ -22,6 +22,7 @@ public/
 *.njk.html
 templates/macro/*.html
 templates/component.template.html
+templates/partials/component-aside.html
 
 # not parsable as json (but the output it generates is)
 templates/json.template.json

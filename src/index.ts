@@ -58,6 +58,7 @@ export {
     type ApiExtractorProcessorOptions,
     type ExtractExamplesOptions,
     type ExtractMarkdownOptions,
+    type ExtractedDocsMetadata,
     type ExtractedDocsModule,
     type MOTDOptions,
     type ManifestProcessorOptions,

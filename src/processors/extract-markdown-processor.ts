@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import fm from "front-matter";
+import pkg from "../../package.json" with { type: "json" };
 import {
     type Document,
     type DocumentPage,
@@ -24,6 +25,19 @@ import { manifestState } from "./manifest-processor";
 type ManifestPage = Manifest["pages"][number];
 
 /**
+ * Serializable metadata exported with extracted documentation.
+ *
+ * This interface can be augmented to describe application-specific metadata.
+ *
+ * @public
+ * @since %version%
+ */
+/* eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style -- interface supports module augmentation */
+export interface ExtractedDocsMetadata {
+    [key: string]: unknown;
+}
+
+/**
  * Type representing the exported docs module when extracting markdown
  * documents.
  *
@@ -36,12 +50,15 @@ type ManifestPage = Manifest["pages"][number];
  * @since %version%
  */
 export interface ExtractedDocsModule {
-    readonly basename: string;
+    readonly generatorVersion: string;
+    readonly version: string | null;
+    readonly metadata: ExtractedDocsMetadata | null;
+    readonly basePath: string;
     readonly exampleFolders: string[];
     readonly filesPath: string;
     readonly partialsPath: string;
     readonly linksPath: string;
-    sourceFiles(src: Partial<SourceFiles>): SourceFiles[];
+    sourceFiles(this: void, src?: Partial<SourceFiles>): SourceFiles[];
 }
 
 /**
@@ -54,6 +71,35 @@ export interface ExtractMarkdownOptions extends ProcessorOptions {
      * Folder to write docs to.
      */
     outputFolder: string;
+
+    /**
+     * Version written to the `version` field of the generated `index.mjs`.
+     */
+    version?: string;
+
+    /**
+     * Callback providing serializable metadata for the generated `index.mjs`.
+     *
+     * Called once per extraction and awaited. Missing callbacks and nullish
+     * results are exported as `null`.
+     */
+    metadata?: () =>
+        | ExtractedDocsMetadata
+        | undefined
+        | null
+        | Promise<ExtractedDocsMetadata | undefined | null>;
+}
+
+/**
+ * @internal
+ */
+export interface ApiContainerData {
+    /** full matched string including the begin and end `:::` markers. */
+    match: string;
+    /** infostring tags */
+    tags: string[];
+    /** body of the container */
+    content: string;
 }
 
 async function copyFile(src: string, dst: string): Promise<void> {
@@ -110,6 +156,83 @@ async function getFrontMatter(filePath: string): Promise<string> {
 function cmp(this: void, a: [string, string], b: [string, string]): number {
     return a[0].localeCompare(b[0]);
 }
+
+/**
+ * Finds and replaces API container blocks in markdown content.
+ *
+ * ```md
+ * ::: api foo bar
+ * lorem ipsum
+ * :::
+ * ```
+ *
+ * Given the above example the `cb` callback would be called with:
+ *
+ * - `match` - the full string including the begin and end `:::` markers.
+ * - `tags` - `["foo", "bar"]`.
+ * - `content` - `"lorem ipsum"`.
+ *
+ * @internal
+ * @param text - markdown content
+ * @param cb - callback called once for every api container block
+ * @returns updated markdown content
+ */
+export function findApiContainer(
+    text: string,
+    cb: (container: ApiContainerData) => string,
+): string {
+    const regex = /^:::[ \t]*api(?=[ \t]|\r?\n)([^\n]*)\n([\s\S]+?):::\n/gm;
+    return text.replaceAll(regex, (match, info: string, rawContent: string) => {
+        const content = rawContent.trim();
+        const trimmedInfo = info.trim();
+        const tags = trimmedInfo ? trimmedInfo.split(/\s+/) : [];
+        return cb({ match, tags, content });
+    });
+}
+
+/**
+ * Extracts and replaces the API container with a placeholder value (later
+ * stored in the `partials.json` file).
+ *
+ * @internal
+ * @param docs - All available documents.
+ * @param partials - Extracted partials are written to this map with the placeholder value as key.
+ * @param container - Container data from `findApiContainer()`.
+ * @returns updated markdown content.
+ */
+export function onApiContainer(
+    docs: Document[],
+    partials: Map<string, PartialFile>,
+    container: ApiContainerData,
+): string {
+    const { match, tags, content } = container;
+
+    const result = findDocument(docs, content);
+    if (!result.document) {
+        return match;
+    }
+
+    const { document, kind, reference } = result;
+    if (!isDocumentPartial(document)) {
+        return match;
+    }
+
+    const body = getDocumentBody(document, tags, {
+        kind,
+        reference,
+    });
+    const fingerprint = getFingerprint(body);
+    const id = `partial:${document.format}:${fingerprint}`;
+
+    partials.set(id, {
+        id,
+        format: document.format,
+        body,
+    });
+
+    return `:::api\n${id}\n:::\n`;
+}
+
 async function extractDocument(
     doc: DocumentPage,
     docs: Document[],
@@ -117,38 +240,10 @@ async function extractDocument(
     options: { outputFolder: string },
 ): Promise<void> {
     const { outputFolder } = options;
-    const markdown = doc.body.replaceAll(
-        /^:::\s*api(.*)\n([\s\S]+?):::/gm,
-        (match, info: string, content: string) => {
-            const needle = content.trim();
-            const trimmedInfo = info.trim();
-            const tags = trimmedInfo ? trimmedInfo.split(/\s+/) : [];
-            const result = findDocument(docs, needle);
-            if (!result.document) {
-                return match;
-            }
+    const markdown = findApiContainer(doc.body, (container) => {
+        return onApiContainer(docs, partials, container);
+    });
 
-            const { document, kind, reference } = result;
-            if (!isDocumentPartial(document)) {
-                return match;
-            }
-
-            const body = getDocumentBody(document, tags, {
-                kind,
-                reference,
-            });
-            const fingerprint = getFingerprint(body);
-            const id = `partial:${document.format}:${fingerprint}`;
-
-            partials.set(id, {
-                id,
-                format: document.format,
-                body,
-            });
-
-            return `:::api\n${id}\n:::\n`;
-        },
-    );
     const src = doc.fileInfo.fullPath;
     const dst = path.join(outputFolder, "files", doc.fileInfo.fullPath);
     const fm = await getFrontMatter(src);
@@ -209,35 +304,60 @@ async function extractLinks(
     await fs.writeFile(dst, content, "utf8");
 }
 
-async function writeIndex(options: { outputFolder: string }): Promise<void> {
-    const { outputFolder } = options;
-    const dst = path.join(outputFolder, "index.mjs");
-    const lines = [
+/**
+ * Generates the lines of the `index.mjs` module.
+ *
+ * @internal
+ */
+export function generateIndex(options: {
+    generatorVersion: string;
+    version: string | null;
+    metadata?: ExtractedDocsMetadata | null;
+}): string[] {
+    const { generatorVersion, version, metadata = null } = options;
+    return [
         `import path from "node:path";`,
         `import { frontMatterFileReader, partialFileReader } from "@forsakringskassan/docs-generator";`,
         ``,
-        `export const basename = import.meta.dirname;`,
-        `export const exampleFolders = [path.join(basename, "files")];`,
-        `export const filesPath = path.join(basename, "files");`,
-        `export const partialsPath = [path.join(basename, "partials.json")];`,
-        `export const linksPath = [path.join(basename, "links.json")];`,
+        `export const generatorVersion = ${JSON.stringify(generatorVersion)};`,
+        `export const version = ${JSON.stringify(version)};`,
+        `export const metadata = ${JSON.stringify(metadata)};`,
+        `export const basePath = import.meta.dirname;`,
+        `export const exampleFolders = [path.join(basePath, "files")];`,
+        `export const filesPath = path.join(basePath, "files");`,
+        `export const partialsPath = [path.join(basePath, "partials.json")];`,
+        `export const linksPath = [path.join(basePath, "links.json")];`,
         ``,
-        `export function sourceFiles(src) {`,
+        `export function sourceFiles(src = {}) {`,
         `    return [`,
         `        { `,
-        `            include: path.join(basename, "files/**/*.md"),`,
-        `            basename,`,
+        `            include: path.join(filesPath, "**/*.md"),`,
+        `            basePath: filesPath,`,
         `            fileReader: frontMatterFileReader,`,
         `            ...src`,
         `        },`,
         `        { `,
-        `            include: path.join(basename, "partials.json"),`,
-        `            basename,`,
+        `            include: path.join(basePath, "partials.json"),`,
+        `            basePath,`,
         `            fileReader: partialFileReader,`,
         `        }`,
         `    ];`,
         `}`,
     ];
+}
+
+async function writeIndex(options: {
+    outputFolder: string;
+    version: string | null;
+    metadata: ExtractedDocsMetadata | null;
+}): Promise<void> {
+    const { outputFolder, version, metadata } = options;
+    const dst = path.join(outputFolder, "index.mjs");
+    const lines = generateIndex({
+        generatorVersion: pkg.version,
+        version,
+        metadata,
+    });
     await fs.writeFile(dst, lines.join("\n"), "utf8");
 }
 
@@ -247,15 +367,18 @@ async function writeDts(options: { outputFolder: string }): Promise<void> {
 
     /* changes to this output must be in sync with the `ExtractedDocsModule` interface */
     const lines = [
-        `import { SourceFiles } from "@forsakringskassan/docs-generator";`,
+        `import { ExtractedDocsMetadata, SourceFiles } from "@forsakringskassan/docs-generator";`,
         ``,
-        `export declare const basename: string;`,
+        `export declare const generatorVersion: string;`,
+        `export declare const version: string | null;`,
+        `export declare const metadata: ExtractedDocsMetadata | null;`,
+        `export declare const basePath: string;`,
         `export declare const exampleFolders: string[];`,
         `export declare const filesPath: string;`,
         `export declare const partialsPath: string;`,
         `export declare const linksPath: string;`,
         ``,
-        `export declare function sourceFiles(src: Partial<SourceFiles>): SourceFiles[];`,
+        `export declare function sourceFiles(this: void, src?: Partial<SourceFiles>): SourceFiles[];`,
     ];
 
     await fs.writeFile(dst, lines.join("\n"), "utf8");
@@ -269,7 +392,12 @@ async function writeDts(options: { outputFolder: string }): Promise<void> {
 export function extractMarkdownProcessor(
     options: ExtractMarkdownOptions,
 ): Processor {
-    const { enabled = true, outputFolder } = options;
+    const {
+        enabled = true,
+        outputFolder,
+        version = null,
+        metadata: metadataFn,
+    } = options;
 
     return {
         after: "render",
@@ -308,7 +436,12 @@ export function extractMarkdownProcessor(
             await Promise.all(resources);
 
             /* write an index for programmatical usage */
-            await writeIndex({ outputFolder });
+            const metadata = (await metadataFn?.()) ?? null;
+            await writeIndex({
+                outputFolder,
+                version,
+                metadata,
+            });
             await writeDts({ outputFolder });
         },
     };

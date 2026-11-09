@@ -13,13 +13,18 @@ example/redirect.html -> markdown/redirects.html
 file-reader/vue-file-reader.html
 index.html
 index.html
-layout/custom-layout.html
+layout/custom-layout.html -> layout/custom-layout/index.html
+layout/custom-layout/component.html
+layout/custom-layout/footer.html
+layout/custom-layout/header.html
+layout/custom-layout/index.html
 layout/index.html
 layout/overriding-templates.html
 layout/plumbing.html
 live-example/example.html
 live-example/index.html
 markdown/api/typescript.html
+markdown/api/vue-example.html
 markdown/api/vue.html
 markdown/code-preview/diff.html
 markdown/code-preview/fullscreen.html
@@ -49,6 +54,7 @@ navigation/sorted-group/top-page.html
 processors/api-extractor.html
 processors/cookie.html
 processors/extract-examples.html
+processors/extract-markdown.html
 processors/index.html
 processors/manifest.html
 processors/motd.html
@@ -61,6 +67,7 @@ processors/version.html
 search-data-[hash].json
 smoketest/index.html
 smoketest/table.html
+theme/content-width.html
 theme/font.html
 theme/index.html
 theme/predefined-themes.html

@@ -33,13 +33,13 @@ export function tableOfContents(
 }
 
 onContentReady(() => {
-    const toc = document.querySelector("#outline");
+    const toc = document.querySelector("#docs-outline");
 
     if (!toc) {
         return;
     }
 
-    const headings = document.querySelectorAll("#content h2");
+    const headings = document.querySelectorAll("#docs-content h2");
     tableOfContents(toc, headings);
 });
 
@@ -52,7 +52,7 @@ tableOfContentsQuery.addEventListener("change", toggleTableOfContents);
 toggleTableOfContents();
 
 export function toggleTableOfContents(): void {
-    const toc = document.querySelector("#outline");
+    const toc = document.querySelector("#docs-outline");
     if (!toc) {
         return;
     }

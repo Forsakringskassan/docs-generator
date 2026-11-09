@@ -154,18 +154,48 @@ exports[`smoketest 1`] = `
     {
       "children": [
         {
+          "children": [
+            {
+              "external": false,
+              "id": "fs:docs/layout/custom-layout/index.md",
+              "path": "./layout/custom-layout/",
+              "sortorder": 1,
+              "title": "Custom layout",
+            },
+            {
+              "external": false,
+              "id": "fs:docs/layout/custom-layout/component.md",
+              "path": "./layout/custom-layout/component.html",
+              "sortorder": 10,
+              "title": "Component",
+            },
+            {
+              "external": false,
+              "id": "fs:docs/layout/custom-layout/header.md",
+              "path": "./layout/custom-layout/header.html",
+              "sortorder": 20,
+              "title": "Header",
+            },
+            {
+              "external": false,
+              "id": "fs:docs/layout/custom-layout/footer.md",
+              "path": "./layout/custom-layout/footer.html",
+              "sortorder": 21,
+              "title": "Footer",
+            },
+          ],
+          "key": "./layout/custom-layout",
+          "path": "./layout/custom-layout/",
+          "sortorder": 1,
+          "title": "Custom layout",
+          "visible": true,
+        },
+        {
           "external": false,
           "id": "fs:docs/layout/layout.md",
           "path": "./layout/",
           "sortorder": 1,
           "title": "Layout",
-        },
-        {
-          "external": false,
-          "id": "fs:docs/layout/custom-layout.md",
-          "path": "./layout/custom-layout.html",
-          "sortorder": Infinity,
-          "title": "Custom layout",
         },
         {
           "external": false,
@@ -324,6 +354,13 @@ exports[`smoketest 1`] = `
         },
         {
           "external": false,
+          "id": "fs:docs/processors/extract-markdown.md",
+          "path": "./processors/extract-markdown.html",
+          "sortorder": Infinity,
+          "title": "Extract Markdown",
+        },
+        {
+          "external": false,
           "id": "fs:docs/processors/manifest.md",
           "path": "./processors/manifest.html",
           "sortorder": Infinity,
@@ -393,6 +430,13 @@ exports[`smoketest 1`] = `
           "path": "./theme/",
           "sortorder": 1,
           "title": "Theme",
+        },
+        {
+          "external": false,
+          "id": "fs:docs/theme/content-width.md",
+          "path": "./theme/content-width.html",
+          "sortorder": Infinity,
+          "title": "Content width",
         },
         {
           "external": false,

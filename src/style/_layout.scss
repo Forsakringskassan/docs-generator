@@ -16,7 +16,7 @@ header {
     min-width: 0;
 }
 
-#primary {
+#docs-primary {
     display: grid;
     grid-area: primary;
     gap: 0 2rem;
@@ -51,7 +51,7 @@ main {
 .layout--article,
 .layout--component,
 .layout--pattern {
-    #primary {
+    #docs-primary {
         --sidenav-width: 350px;
 
         padding-right: 2rem;
@@ -80,28 +80,29 @@ main {
         max-width: none;
     }
 
-    #title,
-    #content {
+    #docs-title,
+    #docs-content {
         padding: 0 1rem;
     }
 
-    #aside {
+    #docs-aside {
         @media screen and (width < #{bp.$breakpoint-lg}) {
             padding-left: 1rem;
         }
     }
 }
 
-#aside {
+#docs-aside {
     grid-area: aside;
 }
 
-#title {
+#docs-title {
     grid-area: title;
     margin-top: 1.2rem;
+    margin-bottom: var(--docs-heading-margin-bottom-h1);
 }
 
-#content {
+#docs-content {
     grid-area: content;
     padding-bottom: 1rem;
     overflow-x: auto;

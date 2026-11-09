@@ -78,6 +78,6 @@ const [cmd, ...argv] = commandline;
 /* execute command line */
 spawn(cmd, argv, {
     stdio: "inherit",
-}).on("close", (code) => {
-    process.exitCode = code ?? 1;
+}).on("close", (code = 1) => {
+    process.exitCode = code;
 });

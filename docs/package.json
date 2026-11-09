@@ -16,10 +16,10 @@
     "@forsakringskassan/docs-generator": "file:.."
   },
   "devDependencies": {
-    "@fkui/font-default": "6.60.0",
-    "@fkui/theme-default": "6.60.0",
-    "@forsakringskassan/docs-live-example": "3.0.2",
-    "vue": "3.5.43"
+    "@fkui/font-default": "6.64.0",
+    "@fkui/theme-default": "6.64.0",
+    "@forsakringskassan/docs-live-example": "3.0.3",
+    "vue": "3.5.45"
   },
   "engines": {
     "node": ">= 16"

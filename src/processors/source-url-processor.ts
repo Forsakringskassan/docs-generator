@@ -20,7 +20,27 @@ export interface SourceUrlProcessorOptions extends ProcessorOptions {
     readonly urlFormat: string;
 
     /** File extension used for finding component by name */
-    readonly componentFileExtension?: string;
+    readonly componentFileExtension?: string | string[];
+}
+
+/**
+ * @internal
+ */
+export function filenamePattern(
+    base: string,
+    extensions: string | string[],
+): string {
+    if (typeof extensions === "string") {
+        extensions = [extensions];
+    }
+    switch (extensions.length) {
+        case 0:
+            return base;
+        case 1:
+            return `${base}.${extensions[0]}`;
+        default:
+            return `${base}.{${extensions.join(",")}}`;
+    }
 }
 
 /**
@@ -54,11 +74,10 @@ export function sourceUrlProcessor(
         enabled = true,
         sourceFiles = ["**/*"],
         urlFormat,
-        componentFileExtension = "vue",
+        componentFileExtension = ["vue"],
     } = options;
 
     const repository = getRepositoryUrl(pkg) ?? "";
-    const matcher = fileMatcher(sourceFiles);
 
     return {
         after: "generate-docs",
@@ -68,6 +87,10 @@ export function sourceUrlProcessor(
                 return;
             }
 
+            const matcher = await fileMatcher(sourceFiles, {
+                ignore: ["**/node_modules/**"],
+            });
+
             const hash = (await gitCommitHash("full")) ?? "";
             const short = (await gitCommitHash("short")) ?? "";
 
@@ -75,7 +98,8 @@ export function sourceUrlProcessor(
                 component: ComponentAttribute,
             ): string | undefined {
                 const { source, name } = component;
-                const filename = source ?? `${name}.${componentFileExtension}`;
+                const filename =
+                    source ?? filenamePattern(name, componentFileExtension);
                 const path = matcher(filename, "when generating source url");
                 return interpolate(urlFormat, {
                     path,

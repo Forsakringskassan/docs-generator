@@ -33,6 +33,7 @@ export function parseFile(
         visible: attributes.href ? true : false,
         attributes: {
             title,
+            shortTitle: attributes["short-title"],
             href,
             sortorder: attributes.sortorder ?? Infinity,
             redirectFrom: [],

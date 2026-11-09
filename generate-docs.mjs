@@ -21,7 +21,7 @@ import config from "./docs.config.mjs";
 
 const pkg = JSON.parse(await fs.readFile("./package.json", "utf8"));
 
-const docs = new Generator(import.meta.url, {
+const docs = new Generator(import.meta.dirname, {
     site: {
         name: "FK Documentation generator",
         lang: "en",
@@ -67,7 +67,7 @@ const docs = new Generator(import.meta.url, {
         sourceUrlProcessor(pkg, {
             sourceFiles: ["docs/**"],
             urlFormat: "{{ repository }}/tree/main/{{ path }}",
-            componentFileExtension: "baz",
+            componentFileExtension: ["baz", "vue"],
         }),
         cookieProcessor(),
         motdProcessor(),

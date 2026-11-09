@@ -23,7 +23,7 @@ import {
 
 const pkg = JSON.parse(await fs.readFile("package.json", "utf8"));
 
-const docs = new Generator(import.meta.url, {
+const docs = new Generator(import.meta.dirname, {
     /* --- cut begin --- */
     site: { name: ".." },
     setupPath: "..",
@@ -76,10 +76,10 @@ The following placeholders can be used:
 
 ### `componentFileExtension`
 
-- Type: `string | undefined`
+- Type: `string | string[] | undefined`
 - Default: `vue`
 
-File extension searched for when trying to find a component by name.
+File extensions searched for when trying to find a component by name.
 
 ### Component template metadata
 

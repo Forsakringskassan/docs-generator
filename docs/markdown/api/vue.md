@@ -4,6 +4,8 @@ short-title: Vue Components
 layout: article
 ---
 
+adsf {@link vue-component-example}.
+
 API documentation for Vue components can be enabled using the {@link vueFileReader}:
 
 ```ts
@@ -13,7 +15,7 @@ import {
     vueFileReader,
 } from "@forsakringskassan/docs-generator";
 
-const docs = new Generator(import.meta.url, {
+const docs = new Generator(import.meta.dirname, {
     site: { name: "My Awesome Site" },
     sourceFiles: [
         {

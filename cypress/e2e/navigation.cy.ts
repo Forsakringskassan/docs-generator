@@ -1,8 +1,8 @@
-const groupExpandable = '#sidenav details:contains("Expandable group")';
-const linkChangelog = '#sidenav a:contains("Link to Changelog")';
-const linkSite = '#sidenav a:contains("Link to external site")';
-const linkChild2 = '#sidenav a:contains("Child Page 2")';
-const linkNested3 = '#sidenav a:contains("Nested Page 3")';
+const groupExpandable = '#docs-sidenav details:contains("Expandable group")';
+const linkChangelog = '#docs-sidenav a:contains("Link to Changelog")';
+const linkSite = '#docs-sidenav a:contains("Link to external site")';
+const linkChild2 = '#docs-sidenav a:contains("Child Page 2")';
+const linkNested3 = '#docs-sidenav a:contains("Nested Page 3")';
 const footerChangelog = 'footer a:contains("Changelog")';
 
 beforeEach(() => {

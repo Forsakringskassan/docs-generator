@@ -1,5 +1,5 @@
+import fs from "node:fs/promises";
 import path from "node:path";
-import { glob } from "glob";
 import { expect, it } from "vitest";
 import { type DocumentPage } from "../document";
 import { frontMatterFileReader } from "../file-reader";
@@ -459,22 +459,34 @@ it("should read title and sortorder from hidden index.md", () => {
     });
 });
 
-async function getDocsFromGlob(
+async function* getDocsFromGlob(
     pattern: string,
     basePath: string,
-): Promise<DocumentPage[]> {
-    const filenames = await glob(pattern, {
-        ignore: ["./docs/node_modules/**", "./docs/examples/**"],
-        nodir: true,
+): AsyncGenerator<DocumentPage> {
+    const cwd = process.cwd();
+    const iterator = fs.glob(pattern, {
+        exclude: ["./docs/node_modules/**", "./docs/examples/**"],
+        withFileTypes: true,
+        cwd,
     });
-    const parsed = filenames.map((it) => frontMatterFileReader(it, basePath));
-    const result = await Promise.all(parsed);
-    return result.flat();
+    for await (const dirent of iterator) {
+        if (!dirent.isFile()) {
+            continue;
+        }
+        const filePath = path.join(dirent.parentPath, dirent.name);
+        const relativePath = path.relative(cwd, filePath);
+        const documents = await frontMatterFileReader(relativePath, basePath);
+        for (const doc of documents) {
+            yield doc;
+        }
+    }
 }
 
 it("smoketest", async () => {
     expect.assertions(1);
-    const docs = await getDocsFromGlob("./docs/**/*.md", "./docs");
+    const docs = await Array.fromAsync(
+        getDocsFromGlob("./docs/**/*.md", "./docs"),
+    );
     const nav = generateNavtree(docs);
     sortNavigationTree(nav); // to prevent flakyness
     expect(nav).toMatchSnapshot();

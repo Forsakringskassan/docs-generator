@@ -52,7 +52,7 @@
                 {%- endblock %}
             </header>
 
-            <div id="primary">
+            <div id="docs-primary">
                 <!-- prettier-ignore -->
                 {%- block sidenav %}
                 {%- endblock %}
@@ -72,16 +72,16 @@
 
                 <main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
-                    <h1 class="docs-heading docs-heading--h1" id="title">{{ doc.attributes.title }}</h1>
+                    <h1 class="docs-heading docs-heading--h1" id="docs-title">{{ doc.attributes.title }}</h1>
 
-                    {% if showAside %}
-                    <div id="aside">
+                    {% ifAsync showAside %}
+                    <div id="docs-aside">
                         <!-- prettier-ignore -->
                         {%- block aside %}
                         {%- endblock %}
 
                         {% if doc.outline | length %}
-                        <details id="outline">
+                        <details id="docs-outline">
                             <summary class="outline__heading">
                                 {{ $t('outline.in-this-article') }}
                                 <svg focusable="false" class="docs-icon" aria-hidden="true">
@@ -98,7 +98,7 @@
                     </div>
                     {% endif %}
 
-                    <div id="content">
+                    <div id="docs-content">
                         <!-- prettier-ignore -->
                         {%- block content %}
                         {%- endblock %}

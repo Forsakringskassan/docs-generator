@@ -104,19 +104,31 @@ export interface DocumentPartialReference {
 }
 
 // @public
+export interface ExtractedDocsMetadata {
+    // (undocumented)
+    [key: string]: unknown;
+}
+
+// @public
 export interface ExtractedDocsModule {
     // (undocumented)
-    readonly basename: string;
+    readonly basePath: string;
     // (undocumented)
     readonly exampleFolders: string[];
     // (undocumented)
     readonly filesPath: string;
     // (undocumented)
+    readonly generatorVersion: string;
+    // (undocumented)
     readonly linksPath: string;
+    // (undocumented)
+    readonly metadata: ExtractedDocsMetadata | null;
     // (undocumented)
     readonly partialsPath: string;
     // (undocumented)
-    sourceFiles(src: Partial<SourceFiles>): SourceFiles[];
+    sourceFiles(this: void, src?: Partial<SourceFiles>): SourceFiles[];
+    // (undocumented)
+    readonly version: string | null;
 }
 
 // @public
@@ -130,7 +142,9 @@ export function extractExamplesProcessor(options: ExtractExamplesOptions): Proce
 
 // @public
 export interface ExtractMarkdownOptions extends ProcessorOptions {
+    metadata?: () => ExtractedDocsMetadata | undefined | null | Promise<ExtractedDocsMetadata | undefined | null>;
     outputFolder: string;
+    version?: string;
 }
 
 // @public
@@ -158,7 +172,7 @@ export function frontMatterFileReader(filePath: string, basePath?: string): Prom
 class Generator_2 {
     // @deprecated
     constructor(options: GeneratorOptions);
-    constructor(importMetaUrl: string | URL, options: GeneratorOptions);
+    constructor(workingDirectory: string | URL, options: GeneratorOptions);
     build(): Promise<string[]>;
     // @deprecated
     build(sourceFiles: SourceFiles[]): Promise<string[]>;
@@ -458,7 +472,7 @@ export interface ProcessorHandler {
     // (undocumented)
     enabled?: boolean;
     // (undocumented)
-    handler(context: ProcessorContext): void | string[] | Promise<void> | Promise<string[]>;
+    handler?(context: ProcessorContext): void | string[] | Promise<void> | Promise<string[]>;
     name: string;
     resolveLink?: LinkResolver;
     runtime?: ProcessorRuntime[];
@@ -543,7 +557,7 @@ export function sourceUrlProcessor(options: SourceUrlProcessorOptions): Processo
 
 // @public
 export interface SourceUrlProcessorOptions extends ProcessorOptions {
-    readonly componentFileExtension?: string;
+    readonly componentFileExtension?: string | string[];
     readonly sourceFiles?: string[];
     // (undocumented)
     readonly urlFormat: string;

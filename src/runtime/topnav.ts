@@ -1,3 +1,4 @@
+import { initCloseDetailMenu } from "./close-all-details";
 import { headerLayoutDetector } from "./header-layout-detector";
 import { onContentReady } from "./on-content-ready";
 
@@ -6,7 +7,7 @@ interface Refs {
 }
 
 function getElementsRefs(): Refs | undefined {
-    const nav = document.querySelector<HTMLElement>("#topnav");
+    const nav = document.querySelector<HTMLElement>("#docs-topnav");
     if (!nav) {
         return;
     }
@@ -32,4 +33,5 @@ onContentReady(() => {
     }
 
     headerLayoutDetector(newRefs.nav);
+    initCloseDetailMenu();
 });

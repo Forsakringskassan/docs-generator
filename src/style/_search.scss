@@ -1,3 +1,4 @@
+@use "breakpoints" as bp;
 @use "modal";
 
 kbd {
@@ -8,7 +9,7 @@ kbd {
     font-family: var(--docs-font-family);
 }
 
-#search button {
+#docs-search button {
     background: transparent;
     color: var(--docs-text-color-discrete);
     border-radius: 4px;
@@ -23,12 +24,12 @@ kbd {
     padding-inline-end: 0;
 }
 
-#search button:hover {
+#docs-search button:hover {
     cursor: pointer;
     background-color: var(--docs-search-button-color-hover);
 }
 
-#search button:focus-visible {
+#docs-search button:focus-visible {
     border-radius: 0;
     box-shadow:
         0 0 0 2px #ffffff,
@@ -37,7 +38,7 @@ kbd {
     outline: 3px solid transparent;
 }
 
-#search .search__icon {
+#docs-search .search__icon {
     display: inline-block;
     height: 1rem;
     max-height: 100%;
@@ -51,10 +52,15 @@ kbd {
     --docs-text-color-default: var(--docs-search-text-color);
 
     margin-top: 80px;
+    width: 580px;
     background: var(--docs-search-background-color);
     border: 1px solid var(--docs-search-border-color);
     color: var(--docs-text-color-default);
-    width: 580px;
+    @media (width < #{bp.$breakpoint-sm}) {
+        width: auto;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
 }
 
 .docs-search-dialog {
@@ -67,6 +73,10 @@ kbd {
         padding: 0 0.75rem;
         width: 100%;
         margin: 0 0 1.5rem;
+
+        .docs-modal__body.is-touch & {
+            margin: 0;
+        }
 
         &:focus {
             border-radius: 0;
@@ -96,8 +106,12 @@ kbd {
         max-height: 60vh;
         margin: 0.5rem 0 1.5rem;
         padding: 0.2rem;
-    }
 
+        .docs-modal__body.is-touch &:empty {
+            margin: 0.5rem 0;
+            padding: 0;
+        }
+    }
     &__item {
         display: flex;
         border: 2px solid #8d8e91;

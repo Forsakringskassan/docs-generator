@@ -89,7 +89,7 @@ it("should add partials for each symbol", async () => {
         apiModel: [fixture],
     });
     const context = createMockContext();
-    await processor.handler(context);
+    await processor.handler?.(context);
     expect(context.docs).toHaveLength(3);
     expect(context.docs).toContainEqual(
         expect.objectContaining({
@@ -117,7 +117,7 @@ it("should render interface", async () => {
         apiModel: [fixture],
     });
     const context = createMockContext();
-    await processor.handler(context);
+    await processor.handler?.(context);
     const result = findDocument(context.docs, "interface:Foo");
     assertDocumentExists(result);
     const { document, kind, reference } = result;
@@ -132,7 +132,7 @@ it("should throw error when name is ambiguous", async () => {
         apiModel: [fixture, duplicate],
     });
     const context = createMockContext();
-    await processor.handler(context);
+    await processor.handler?.(context);
     const result = findDocument(context.docs, "interface:Foo");
     assertDocumentExists(result);
     const { document, kind, reference } = result;

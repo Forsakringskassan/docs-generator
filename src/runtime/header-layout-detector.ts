@@ -142,7 +142,7 @@ function checkLayout(nav: HTMLElement): void {
  */
 export function headerLayoutDetector(nav: HTMLElement): void {
     const resizeObserver = new ResizeObserver(() => {
-        const nav = document.querySelector<HTMLElement>("#topnav");
+        const nav = document.querySelector<HTMLElement>("#docs-topnav");
         if (nav) {
             checkLayout(nav);
         }
@@ -150,7 +150,7 @@ export function headerLayoutDetector(nav: HTMLElement): void {
     document.documentElement.classList.remove("loading");
     resizeObserver.observe(document.body);
     window.addEventListener("docs:navigation", () => {
-        const nav = document.querySelector<HTMLElement>("#topnav");
+        const nav = document.querySelector<HTMLElement>("#docs-topnav");
         if (nav) {
             checkLayout(nav);
         }

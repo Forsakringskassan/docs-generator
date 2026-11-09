@@ -1,6 +1,10 @@
 ---
 title: Custom layout
+name: custom-layout
 layout: article
+sortorder: 1
+redirect_from:
+    - layout/custom-layout.html
 ---
 
 New layouts can be added similarly to {@link overriding-templates overriding templates} by creating a new file in the template folder with the `.template.html` extension.

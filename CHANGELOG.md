@@ -1,5 +1,186 @@
 # CHANGELOG
 
+## [3.23.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.23.0...v3.23.1) (2026-11-06)
+
+### Bug Fixes
+
+* **deps:** update dependency @microsoft/api-extractor-model to v7.33.16 ([b9c063e](https://github.com/Forsakringskassan/docs-generator/commit/b9c063e26887246828c08fc36c85a4c4112085d1))
+* **deps:** update dependency i18next to v26.5.12 ([f868086](https://github.com/Forsakringskassan/docs-generator/commit/f868086f86c5f879e62ceb26c67e860dbbddbe8f))
+
+## [3.23.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.22.3...v3.23.0) (2026-10-31)
+
+### Features
+
+* **deps:** replace `glob` with native glob from `node:fs` ([486a8c2](https://github.com/Forsakringskassan/docs-generator/commit/486a8c2b299ad6df2f4e4159686c0b9fad0a1047))
+* **deps:** update dependency chokidar to v6 ([e57bcf6](https://github.com/Forsakringskassan/docs-generator/commit/e57bcf6efe5f3a29868fcf9886e2eae6095b649d))
+
+### Bug Fixes
+
+* **deps:** update dependency synckit to v0.12.1 ([#535](https://github.com/Forsakringskassan/docs-generator/issues/535)) ([ae9c81a](https://github.com/Forsakringskassan/docs-generator/commit/ae9c81a51bcf4634679b298dd910b1a911963dab))
+
+## [3.22.3](https://github.com/Forsakringskassan/docs-generator/compare/v3.22.2...v3.22.3) (2026-10-30)
+
+### Bug Fixes
+
+* **deps:** update dependency i18next to v26.5.10 ([1f9762b](https://github.com/Forsakringskassan/docs-generator/commit/1f9762b55fcf219876f492dc2a366d974548cafa))
+* **deps:** update dependency i18next to v26.5.11 ([e2dc306](https://github.com/Forsakringskassan/docs-generator/commit/e2dc3067f132bb8b2574daac3e4f8b332c991cda))
+* **deps:** update dependency i18next to v26.5.4 ([7236ae3](https://github.com/Forsakringskassan/docs-generator/commit/7236ae3e71bacc834b2f714420663d58a31ca749))
+* **deps:** update dependency i18next to v26.5.5 ([f76011a](https://github.com/Forsakringskassan/docs-generator/commit/f76011a7b82f6a7f6ec7321941a3d6e5187b61e8))
+* **deps:** update dependency i18next to v26.5.6 ([96e4c3d](https://github.com/Forsakringskassan/docs-generator/commit/96e4c3dc7598710ba7f4844bb4e5d6d6bb84cc58))
+* **deps:** update dependency i18next to v26.5.7 ([142eace](https://github.com/Forsakringskassan/docs-generator/commit/142eace3e511bc8853e95d116b7e10b302fd65ea))
+
+## [3.22.2](https://github.com/Forsakringskassan/docs-generator/compare/v3.22.1...v3.22.2) (2026-10-23)
+
+### Bug Fixes
+
+* resolve iOS WebKit rendering bug on nested menus (refs SFKUI-8273) ([7ebcda5](https://github.com/Forsakringskassan/docs-generator/commit/7ebcda5514d1134769765d5c3a24ba05cd68ee5f))
+
+## [3.22.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.22.0...v3.22.1) (2026-10-23)
+
+### Bug Fixes
+
+* **api:** fix `this: void` for `sourceFiles` for `ExtractedDocsModule` as well ([16bfc5e](https://github.com/Forsakringskassan/docs-generator/commit/16bfc5e3b57fb0024d9fa6aaf81548013ad43efd))
+* **api:** normalize `Generator` working directory paths and file URLs ([5636071](https://github.com/Forsakringskassan/docs-generator/commit/5636071cb4ba6b70b8f9b50e9d84162088f7a26e))
+* **deps:** update dependency i18next to v26.4.5 ([1d5049c](https://github.com/Forsakringskassan/docs-generator/commit/1d5049c5c313fc0805a43123ff4088bef1b9d951))
+* **deps:** update dependency i18next to v26.4.6 ([532e326](https://github.com/Forsakringskassan/docs-generator/commit/532e3267343e033065007ee526dbf640f100d497))
+* **deps:** update dependency i18next to v26.5.2 ([4273fa8](https://github.com/Forsakringskassan/docs-generator/commit/4273fa8a5c845a510e4ae51197462e22169ebb1e))
+* **deps:** update dependency i18next to v26.5.3 ([1d183c1](https://github.com/Forsakringskassan/docs-generator/commit/1d183c169b7342d6ccebff6ffda8c7995cae8c10))
+* **deps:** update dependency livereload-js to v4.0.3 ([#554](https://github.com/Forsakringskassan/docs-generator/issues/554)) ([93ab23a](https://github.com/Forsakringskassan/docs-generator/commit/93ab23a1d78be9b80d5f9799c01f2bea729afa42))
+* **deps:** update dependency markdown-it to v15.0.3 [security] ([12c87f8](https://github.com/Forsakringskassan/docs-generator/commit/12c87f83d801fad6fe5451bb116954e687c95928))
+* **deps:** update dependency mermaid to v12.2.0 ([435ce80](https://github.com/Forsakringskassan/docs-generator/commit/435ce80c45efaa780f1574a9f7dab2b8b0abd11d))
+
+## [3.22.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.21.1...v3.22.0) (2026-10-16)
+
+### Features
+
+* add configurable documentation widths ([27623f5](https://github.com/Forsakringskassan/docs-generator/commit/27623f585e97a92deb9bd8c89f61dd3c489c26e4))
+
+### Bug Fixes
+
+* correct documentation line-height variable ([7987d15](https://github.com/Forsakringskassan/docs-generator/commit/7987d1549718c5a1e3bfd4d7076967f7124fc6c4))
+
+## [3.21.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.21.0...v3.21.1) (2026-10-16)
+
+### Bug Fixes
+
+* **deps:** update dependency i18next to v26.4.4 ([3b33241](https://github.com/Forsakringskassan/docs-generator/commit/3b3324183b7adf88307621321355e50f775c52d7))
+* hide search instruction menu in mobile view (refs SFKUI-8008) ([cf3e034](https://github.com/Forsakringskassan/docs-generator/commit/cf3e0344ca544afe4b08757439fe428954b5ca9b))
+
+## [3.21.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.20.1...v3.21.0) (2026-10-14)
+
+### Features
+
+* **api:** processor `handler` optional ([44404c7](https://github.com/Forsakringskassan/docs-generator/commit/44404c78bf4a95ac5789c8c7efe7cb699ee32b5a))
+
+### Bug Fixes
+
+* **layout:** preserve page title bottom margin ([bfb79e6](https://github.com/Forsakringskassan/docs-generator/commit/bfb79e6f7d1b9e8342768ef0f889b30d7fe133ee))
+
+## [3.20.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.20.0...v3.20.1) (2026-10-14)
+
+### Bug Fixes
+
+* **deps:** update dependency i18next to v26.4.3 ([27e203d](https://github.com/Forsakringskassan/docs-generator/commit/27e203d9802ef00c3b3b505435adc55b42017014))
+* **layout:** prefix `aside` id with `docs-` ([b7fa168](https://github.com/Forsakringskassan/docs-generator/commit/b7fa168953723c3d0d4d95fcfb80a836c9772e2f))
+* **layout:** prefix `content` id with `docs-` ([eb592bb](https://github.com/Forsakringskassan/docs-generator/commit/eb592bb63281b8e620d285c1cbd12898a91f8528))
+* **layout:** prefix `outline` id with `docs-` ([e213fd0](https://github.com/Forsakringskassan/docs-generator/commit/e213fd088f8858edea9166cfa8cc73a45ff08390))
+* **layout:** prefix `primary` id with `docs-` ([bfe1ddc](https://github.com/Forsakringskassan/docs-generator/commit/bfe1ddc548ab0847bd7a4fc5c0bbcaddcd4dbc5c))
+* **layout:** prefix `search` id with `docs-` ([ec22224](https://github.com/Forsakringskassan/docs-generator/commit/ec22224de4f8b176621adfbfed68706ac0a61930))
+* **layout:** prefix `sidenav` id with `docs-` ([2d01f76](https://github.com/Forsakringskassan/docs-generator/commit/2d01f766b1c89381b2c341a24e74d8fd429d333c))
+* **layout:** prefix `title` id with `docs-` ([0887464](https://github.com/Forsakringskassan/docs-generator/commit/088746416f014a380b0918c263aa21e92d17a82f))
+* **layout:** prefix `topnav` id with `docs-` ([54c23c5](https://github.com/Forsakringskassan/docs-generator/commit/54c23c586e9b02b9bb21fc67296369700bbda7de))
+
+## [3.20.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.19.1...v3.20.0) (2026-10-13)
+
+### Features
+
+* add `metadata` field to extracted markdown content ([7fd3bb9](https://github.com/Forsakringskassan/docs-generator/commit/7fd3bb974c5c1d5ec57639fa80e3b661c058fa2b))
+* add `version` field to extracted markdown content ([9f34c65](https://github.com/Forsakringskassan/docs-generator/commit/9f34c65d444092780a19a967e694ede4a2bc65f1))
+
+### Bug Fixes
+
+* `src` parameter in `sourceFiles` in extracted markdown content is optional ([c1b2ffe](https://github.com/Forsakringskassan/docs-generator/commit/c1b2ffe2105d22e148030d4486021b2f0bf845e6))
+* declare `sourceFiles` in extracted markdown content as `void` ([05efdeb](https://github.com/Forsakringskassan/docs-generator/commit/05efdeb3c381924a08707571bdf792ec4c6f19be))
+* restrict api container opening tag ([fc893b6](https://github.com/Forsakringskassan/docs-generator/commit/fc893b68430b6d70f30d325ae8ce9ad89af8edc0)), closes [#538](https://github.com/Forsakringskassan/docs-generator/issues/538)
+
+## [3.19.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.19.0...v3.19.1) (2026-10-12)
+
+### Bug Fixes
+
+* **deps:** update dependency @microsoft/api-extractor-model to v7.33.15 ([2446aa0](https://github.com/Forsakringskassan/docs-generator/commit/2446aa049ee4257aae70b822985eed8ed83a91b3))
+* normalize line endings (to LF) when parsing markdown document ([04f1087](https://github.com/Forsakringskassan/docs-generator/commit/04f1087fd1eb9d95a93e5541e708e7a4204b4ac4))
+* require newline after `:::` when extracting partials from api container ([813ec9f](https://github.com/Forsakringskassan/docs-generator/commit/813ec9f715bac477c7c14c7fcacf8efadd28cea0))
+* resolve virtual entry directory for Windows source paths ([4bd7fcc](https://github.com/Forsakringskassan/docs-generator/commit/4bd7fccb8bed8673477885153ceaaeac2a19587f))
+
+## [3.19.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.18.0...v3.19.0) (2026-10-09)
+
+### Features
+
+* move component aside to separate partial ([93cf3f5](https://github.com/Forsakringskassan/docs-generator/commit/93cf3f5607274ecd44820fddbd18345fbfa6c178))
+
+### Bug Fixes
+
+* allow setting multiple filename extensions to `sourceUrlProcesor()` ([5a4a991](https://github.com/Forsakringskassan/docs-generator/commit/5a4a991b09d83ad3de29290464aaf101ba582662))
+
+## [3.18.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.17.0...v3.18.0) (2026-10-07)
+
+### Features
+
+* move site branding to separate partial ([b773589](https://github.com/Forsakringskassan/docs-generator/commit/b773589654a717a3bbb7fbe82b4b4901b42838f3))
+
+### Bug Fixes
+
+* use short-title from json files (fixes SFKUI-8314) ([14ebf2f](https://github.com/Forsakringskassan/docs-generator/commit/14ebf2f73b2b22204ecc180ce1c5961e8900872d))
+
+## [3.17.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.16.0...v3.17.0) (2026-10-06)
+
+### Features
+
+* use native glob when matching files ([a88f2e9](https://github.com/Forsakringskassan/docs-generator/commit/a88f2e959a8e188ad094edb6a979cd9d551ce95a))
+
+### Bug Fixes
+
+* **deps:** update dependency mermaid to v12.1.0 ([13458b7](https://github.com/Forsakringskassan/docs-generator/commit/13458b7d6ff98fa413010d1fb4b04755b7aa8efd))
+
+## [3.16.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.15.2...v3.16.0) (2026-10-05)
+
+### Features
+
+* add styling for selectable version button ([364b828](https://github.com/Forsakringskassan/docs-generator/commit/364b828c14d52e85a08ccd31f70df6965f285643))
+* footer styling ([4e1a86e](https://github.com/Forsakringskassan/docs-generator/commit/4e1a86eb7cd1771dbcaab5d16001dd42410e59ba))
+
+### Bug Fixes
+
+* **deps:** update dependency @microsoft/tsdoc to v0.17.1 ([2fdc004](https://github.com/Forsakringskassan/docs-generator/commit/2fdc0046d226e42608322b871e37c18540747dd3))
+* prevent mobile search button from overflowing (refs SFKUI-8267) ([98cd8a8](https://github.com/Forsakringskassan/docs-generator/commit/98cd8a8533b30f558c09c1ed4ffb99737a831fd8))
+* rename hardcoded version id ([a0d96da](https://github.com/Forsakringskassan/docs-generator/commit/a0d96da283e7df56e45a89c9dd7195a4024d168f))
+
+## [3.15.2](https://github.com/Forsakringskassan/docs-generator/compare/v3.15.1...v3.15.2) (2026-10-02)
+
+### Bug Fixes
+
+* **deps:** update dependency @microsoft/api-extractor-model to v7.33.14 ([#507](https://github.com/Forsakringskassan/docs-generator/issues/507)) ([8207cb5](https://github.com/Forsakringskassan/docs-generator/commit/8207cb528a4c158f1a7509324e33f98218e12145))
+* render rounded example backgrounds ([6ec585b](https://github.com/Forsakringskassan/docs-generator/commit/6ec585b663c94ceb4f11ebca04b78be304e072b3))
+
+## [3.15.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.15.0...v3.15.1) (2026-10-02)
+
+### Bug Fixes
+
+* reduced padding indent mobile menu (refs SFKUI-8272) ([b384278](https://github.com/Forsakringskassan/docs-generator/commit/b384278d400735a370db22a67d8c989a6251308a))
+
+## [3.15.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.14.0...v3.15.0) (2026-09-30)
+
+### Features
+
+* **api:** add `ExtractedDocsModule` interface ([63889b1](https://github.com/Forsakringskassan/docs-generator/commit/63889b1cbb2378e13945a3efcac456554da69262))
+* include generator version when extracting markdown documentation ([0ee8ab6](https://github.com/Forsakringskassan/docs-generator/commit/0ee8ab636851d980721f40ace012188c6851a3a9))
+* use native glob when processing file readers ([5aa39a1](https://github.com/Forsakringskassan/docs-generator/commit/5aa39a149dd2e78288007c755318c7cc760d1308))
+
+### Bug Fixes
+
+* do not exclude `node_modules` when searching for examples ([0ee2ec2](https://github.com/Forsakringskassan/docs-generator/commit/0ee2ec2865babe53203d0c6dbdeeba87b906b351))
+* fix basePath typo in extracted markdown files ([14ea505](https://github.com/Forsakringskassan/docs-generator/commit/14ea50598f1c4a3ffb9a3f5c99004c6fcd4e634a))
+
 ## [3.14.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.13.0...v3.14.0) (2026-09-29)
 
 ### Features

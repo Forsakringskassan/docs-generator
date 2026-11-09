@@ -238,3 +238,35 @@ describe("fileInfo", () => {
         `);
     });
 });
+
+describe("line endings", () => {
+    it("should normalize LF", () => {
+        expect.assertions(1);
+        const markdown = "foo\nbar\nbaz\n";
+        const { body } = parseFile("foo.md", "", markdown);
+        expect(body).toBe("foo\nbar\nbaz\n");
+    });
+
+    it("should normalize CRLF", () => {
+        expect.assertions(1);
+        const markdown = "foo\r\nbar\r\nbaz\r\n";
+        const { body } = parseFile("foo.md", "", markdown);
+        expect(body).toBe("foo\nbar\nbaz\n");
+    });
+});
+
+describe("trailing newline", () => {
+    it("should normalize omitted newline", () => {
+        expect.assertions(1);
+        const markdown = "foo";
+        const { body } = parseFile("foo.md", "", markdown);
+        expect(body).toBe("foo\n");
+    });
+
+    it("should normalize included newline", () => {
+        expect.assertions(1);
+        const markdown = "foo\n";
+        const { body } = parseFile("foo.md", "", markdown);
+        expect(body).toBe("foo\n");
+    });
+});

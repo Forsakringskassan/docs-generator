@@ -158,6 +158,7 @@ export function myProcessor(): Processor {
         handler() {
             /* ... */
         },
+        /* eslint-disable-next-line unicorn/prefer-default-parameters -- technical debt */
         resolveLink({ key, title }) {
             if (key === "foo") {
                 return {

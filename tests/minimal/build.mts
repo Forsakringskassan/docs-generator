@@ -7,7 +7,7 @@ import {
 const base = path.basename(import.meta.dirname);
 const outputFolder = path.join("../../public/integration-tests", base);
 
-const docs = new Generator(import.meta.url, {
+const docs = new Generator(import.meta.dirname, {
     site: {
         name: "Integration test: minimal",
         lang: "en",

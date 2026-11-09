@@ -1,10 +1,10 @@
+import fs from "node:fs/promises";
 import {
     type ApiInterface,
     type ApiItem,
     ApiItemKind,
     ApiModel,
 } from "@microsoft/api-extractor-model";
-import { glob } from "glob";
 import { type DocumentPartial } from "../../document";
 import { type Processor, type ProcessorOptions } from "../../processor";
 import { naturalJoin } from "../../utils";
@@ -21,7 +21,7 @@ export interface ApiExtractorProcessorOptions extends ProcessorOptions {
 }
 
 function getFilenames(patterns: string | string[]): Promise<string[]> {
-    return glob(patterns, { posix: true });
+    return Array.fromAsync(fs.glob(patterns), (it) => it.replaceAll("\\", "/"));
 }
 
 function pluralize(text: string, array: unknown[]): string {

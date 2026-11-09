@@ -12,9 +12,14 @@ export default {
                 type: "font",
                 value: `"Inter Variable", sans-serif`,
             },
-            "font-line-height": {
-                description: "Default `font-line-height`.",
+            "line-height": {
+                description: "Default `line-height`.",
                 value: "1.5",
+            },
+            "font-line-height": {
+                description:
+                    "Deprecated alias for `--docs-line-height`. Set `--docs-line-height` to customize line height.",
+                value: "var(--docs-line-height)",
             },
             "font-size": {
                 description: "Default `font-size`.",
@@ -265,6 +270,16 @@ export default {
                     "`--docs-text-color-discrete` is overridden with this value.",
                 type: "color",
                 value: "#5f6165",
+            },
+            "text-color-link": {
+                description: "Link color",
+                type: "color",
+                value: "#4a52b6",
+            },
+            "text-color-link-hover": {
+                description: "Link color",
+                type: "color",
+                value: "#1b1e23",
             },
             "background-color": {
                 type: "color",
