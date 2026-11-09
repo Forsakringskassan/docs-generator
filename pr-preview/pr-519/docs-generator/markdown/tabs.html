@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Tabs - FK Documentation generator</title><link
             rel="stylesheet"
-            href="../assets/docs-96581f.css"
+            href="../assets/docs-8599c9.css"
             crossorigin
-            integrity="sha384-fY/8NaZEojHSRxID4N6G3R9Qmhk8lN4Djwhy8tp1GJOnt6Q8Cf98fMfi/bRq9URW"
+            integrity="sha384-nOjT9T0Zzy74VD/6Q5ujTlkxn5Vd+U1NWNMlzDtHLDD3yWuziLhWxDdMePWMe+g5"
             
         />
         <link
@@ -22,11 +22,11 @@
         <script type="importmap">
             {
   "imports": {
-    "vue": "../assets/vendor-vue-30e32f.js",
+    "vue": "../assets/vendor-vue-1b0935.js",
     "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-0e520d.js"
   },
   "integrity": {
-    "../assets/vendor-vue-30e32f.js": "sha384-Mdt0eTt0mOGhd1xI/X1wjDpb6OU3XvrsRF+ggbomGF7+xRayJqSZBAu+Zp67TNXS",
+    "../assets/vendor-vue-1b0935.js": "sha384-bYWPJyWKeJIWX1KXs28OBnzGvmdn2S8+kM1+ZaKe5MRjUwr0gAZJJ2P9GAkOMcqS",
     "../assets/vendor-forsakringskassan-docs-live-example-0e520d.js": "sha384-Zomp3tpZgQ5vBn1jDfJPFtzxDwJLLe39dK/jC//bT97+TQqCbXlfNz6um+bZc61n"
   }
 }
@@ -1455,9 +1455,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        <span class="version-text-block">7852-tabs</span>  (<a href="https://github.com/Forsakringskassan/docs-generator/commits/f41deb12ea9d4485ed488f9ff8be426bce3701c1">f41deb1</a>)<br />
+        <span class="version-text-block">7852-tabs</span>  (<a href="https://github.com/Forsakringskassan/docs-generator/commits/c5c3e258124cf5484e2b3df865fe1310dc79b0f0">c5c3e25</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/519">PR 519</a><br />
-       <span class="version-text-block">2026-10-30 08:49</span>
+       <span class="version-text-block">2026-11-09 09:31</span>
     </span>
 </div>
 </div>
@@ -1693,10 +1693,13 @@
                     </div>
                     
 
-                    <div id="docs-content"><p class="docs-paragraph">Tabs can be created like this:</p>
+                    <div id="docs-content"><p class="docs-paragraph">Tabs can be created using the custom syntax <code>§§§</code>.
+Titles of the tabs are set after the <code>§§§</code> marker, the last tab is terminated with an empty <code>§§§</code>.
+Any content between the markers are rendered as the tab content.</p>
+<p class="docs-paragraph">Example:</p>
 
                 <div
-                    id="example-626a7e"
+                    id="example-980dfb"
                     class="code-preview code-preview--default"
                     
                     
@@ -1748,13 +1751,23 @@ Some common sports:
                 </div>
             <p class="docs-paragraph">Above will be rendered as:</p>
 
-            <!-- html-validate-disable-next no-missing-references -- Tab buttons are added with typescript -->
+            <button
+                id="tab-dog-breeds"
+                class="docs-tab"
+                role="tab"
+                type="button"
+                aria-selected="false"
+                aria-controls="tabpanel-dog-breeds"
+                tabindex="-1"
+            >
+                Dog breeds
+            </button>
             <div
-                id="tabpanel-Dog-breeds"
+                id="tabpanel-dog-breeds"
                 class="docs-tabpanel hidden-tabpanel"
                 role="tabpanel"
                 tabindex="0"
-                aria-labelledby="tab-Dog-breeds"
+                aria-labelledby="tab-dog-breeds"
             >
                 <p class="docs-paragraph">Common dog breeds:</p>
 <ul>
@@ -1765,13 +1778,23 @@ Some common sports:
 
             </div>
         
-            <!-- html-validate-disable-next no-missing-references -- Tab buttons are added with typescript -->
+            <button
+                id="tab-cat-breeds"
+                class="docs-tab"
+                role="tab"
+                type="button"
+                aria-selected="false"
+                aria-controls="tabpanel-cat-breeds"
+                tabindex="-1"
+            >
+                Cat breeds
+            </button>
             <div
-                id="tabpanel-Cat-breeds"
+                id="tabpanel-cat-breeds"
                 class="docs-tabpanel hidden-tabpanel"
                 role="tabpanel"
                 tabindex="0"
-                aria-labelledby="tab-Cat-breeds"
+                aria-labelledby="tab-cat-breeds"
             >
                 <p class="docs-paragraph">Common cat breeds:</p>
 <ul>
@@ -1782,13 +1805,23 @@ Some common sports:
 
             </div>
         
-            <!-- html-validate-disable-next no-missing-references -- Tab buttons are added with typescript -->
+            <button
+                id="tab-fruits"
+                class="docs-tab"
+                role="tab"
+                type="button"
+                aria-selected="false"
+                aria-controls="tabpanel-fruits"
+                tabindex="-1"
+            >
+                Fruits
+            </button>
             <div
-                id="tabpanel-Fruits"
+                id="tabpanel-fruits"
                 class="docs-tabpanel hidden-tabpanel"
                 role="tabpanel"
                 tabindex="0"
-                aria-labelledby="tab-Fruits"
+                aria-labelledby="tab-fruits"
             >
                 <p class="docs-paragraph">These are types of fruit:</p>
 <ul>
@@ -1799,13 +1832,23 @@ Some common sports:
 
             </div>
         
-            <!-- html-validate-disable-next no-missing-references -- Tab buttons are added with typescript -->
+            <button
+                id="tab-flowers"
+                class="docs-tab"
+                role="tab"
+                type="button"
+                aria-selected="false"
+                aria-controls="tabpanel-flowers"
+                tabindex="-1"
+            >
+                Flowers
+            </button>
             <div
-                id="tabpanel-Flowers"
+                id="tabpanel-flowers"
                 class="docs-tabpanel hidden-tabpanel"
                 role="tabpanel"
                 tabindex="0"
-                aria-labelledby="tab-Flowers"
+                aria-labelledby="tab-flowers"
             >
                 <p class="docs-paragraph">These are some flowers:</p>
 <ul>
@@ -1816,13 +1859,23 @@ Some common sports:
 
             </div>
         
-            <!-- html-validate-disable-next no-missing-references -- Tab buttons are added with typescript -->
+            <button
+                id="tab-sports"
+                class="docs-tab"
+                role="tab"
+                type="button"
+                aria-selected="false"
+                aria-controls="tabpanel-sports"
+                tabindex="-1"
+            >
+                Sports
+            </button>
             <div
-                id="tabpanel-Sports"
+                id="tabpanel-sports"
                 class="docs-tabpanel hidden-tabpanel"
                 role="tabpanel"
                 tabindex="0"
-                aria-labelledby="tab-Sports"
+                aria-labelledby="tab-sports"
             >
                 <p class="docs-paragraph">Some common sports:</p>
 <ul>
@@ -1999,16 +2052,16 @@ Some common sports:
             integrity="sha384-zAoLcKQxzwmKl8WDuv2SdmMjcqkFzdJo6p4UsXF27ONwO6eGqJD0F2C0Aipv2cAC"
             
         ></script><script
-            src="../assets/processors_selectable-version_select-version-87da25.js"
+            src="../assets/processors_selectable-version_select-version-fdfd43.js"
             type="module"
             crossorigin
-            integrity="sha384-jE0vs+12v8IZ1B3UbQzd7DniC6V5S77Dgvj7x2GKyiVcsqAMHS6DcGzZnjQFbbM9"
+            integrity="sha384-rLaD+Jyv40QwkkaNPARazuebBFFXpGjBmxqW2PSGwlEG/LBPSV34SMiJPTzD1aQ2"
             
         ></script><script
-            src="../assets/runtime-d83c2e.js"
+            src="../assets/runtime-a62603.js"
             type="module"
             crossorigin
-            integrity="sha384-f7wl8dO2dNLl4+Kz5VTrX4YDoWhNIqaV4QnVq6OWN16QL5VDZ2iFe3OSWF3DwlxX"
+            integrity="sha384-D9hcmcgBefP5yMtat5r4cBjvdp0hun5VaUCqFGng67T2lGWkrL+nTgXD5EozKaCt"
             
         ></script>
     </body>
