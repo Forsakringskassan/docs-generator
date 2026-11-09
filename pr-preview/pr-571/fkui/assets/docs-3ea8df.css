@@ -9464,12 +9464,6 @@ header .docs-page-header__logo > a {
     cursor: pointer;
   }
 }
-@media (hover: hover) {
-  .docs-selectable-version__item:hover {
-    background: #e5e5f5;
-    cursor: pointer;
-  }
-}
 .docs-selectable-version__link {
   width: 100%;
   padding: 0.2rem;
