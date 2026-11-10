@@ -38,6 +38,7 @@
     "Markdown",
     "Mermaid",
     "Redirects",
+    "Tabs",
     "Alternative text",
     "Details",
     "Messagebox",
@@ -245,6 +246,11 @@
       "terms": []
     },
     {
+      "url": "markdown/tabs.html",
+      "title": "Tabs",
+      "terms": []
+    },
+    {
       "url": "markdown/containers/alt-text.html",
       "title": "Alternative text",
       "terms": []
@@ -427,6 +433,7 @@
     "58": 55,
     "59": 56,
     "60": 57,
-    "61": 58
+    "61": 58,
+    "62": 59
   }
 }
