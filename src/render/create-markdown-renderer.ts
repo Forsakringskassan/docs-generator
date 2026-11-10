@@ -12,6 +12,7 @@ import {
     imageResources,
     paragraph,
     table,
+    tabsRenderer,
 } from "./markdown";
 import { type MarkdownEnv } from "./markdown-env";
 import { processInlineTags } from "./process-inline-tags";
@@ -142,6 +143,15 @@ export function createMarkdownRenderer(
             {
                 messagebox: { title: {}, ...options.messagebox },
             },
+        ),
+    );
+    md.use(
+        tabsRenderer(
+            getCurrentDocument,
+            docs,
+            env,
+            included,
+            options.handleSoftError,
         ),
     );
     md.use(paragraph());
