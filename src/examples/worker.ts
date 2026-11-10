@@ -1,3 +1,4 @@
+import { existsSync } from "node:fs";
 import { parentPort } from "node:worker_threads";
 import { version } from "vue";
 import { type Plugin, build as esbuild } from "esbuild";
@@ -39,7 +40,9 @@ export interface CompileResponse<T = unknown> {
 /**
  * @internal
  */
-export type CompileResult = ExampleCompileTask;
+export type CompileResult = ExampleCompileTask & {
+    readonly inputs: Set<string>;
+};
 
 /**
  * @internal
@@ -80,10 +83,11 @@ async function compileExample(
     ];
     const virtualEntries = { [virtualEntryPoint(task)]: task.sourcecode };
     const iconLib = process.env.DOCS_ICON_LIB ?? "@fkui/icon-lib-default";
-    await esbuild({
+    const { metafile } = await esbuild({
         entryPoints,
         outdir,
         bundle: true,
+        metafile: true,
         format: "esm",
         platform: "browser",
         external,
@@ -94,7 +98,9 @@ async function compileExample(
         },
         plugins: [virtualEntryPlugin(virtualEntries), VuePlugin()],
     });
-    return { ...task };
+    const inputs = new Set(Object.keys(metafile.inputs).filter(existsSync));
+    inputs.add(task.sourceFile);
+    return { ...task, inputs };
 }
 
 async function compileExampleMultiple(
