@@ -5,7 +5,7 @@ var __require = /* @__PURE__ */ ((x6) => typeof require !== "undefined" ? requir
   throw Error('Dynamic require of "' + x6 + '" is not supported');
 });
 
-// dist/runtime-internal.mjs
+// node_modules/@forsakringskassan/docs-generator/dist/runtime-internal.mjs
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -301779,6 +301779,7 @@ if (toggle && navigation) {
     if (previousPath !== location.pathname) {
       replaceContent(location.href);
     }
+    openActiveTab();
     previousPath = location.pathname;
   });
   document.head.append(variableBlock);
@@ -301789,6 +301790,21 @@ if (toggle && navigation) {
   window.addEventListener("resize", () => {
     updateSidenavHeight(navigation);
   });
+}
+window.addEventListener("DOMContentLoaded", openActiveTab);
+function openActiveTab() {
+  if (!location.hash) {
+    return;
+  }
+  const element3 = document.querySelector(location.hash);
+  const tabPanel = element3?.closest(".docs-tabpanel");
+  if (!tabPanel?.classList.contains("hidden-tabpanel")) {
+    return;
+  }
+  const tab = tabPanel.parentElement?.querySelector(
+    `[aria-controls="${tabPanel.id}"]`
+  );
+  tab?.click();
 }
 var banner = document.querySelector("#version-banner");
 if (banner) {
@@ -301919,6 +301935,238 @@ onContentReady(() => {
   headerLayoutDetector(newRefs.nav);
   initCloseDetailMenu();
 });
+function setupOverflow(tablistWrapper, tabList) {
+  const leftButton = createOverflowArrowButton("left");
+  leftButton.addEventListener("click", () => {
+    scrollWithOverflowButton(tabList, "left");
+  });
+  tablistWrapper.insertBefore(leftButton, tablistWrapper.firstChild);
+  const rightButton = createOverflowArrowButton("right");
+  rightButton.addEventListener("click", () => {
+    scrollWithOverflowButton(tabList, "right");
+  });
+  tablistWrapper.append(rightButton);
+  const resizeObserver = new ResizeObserver(() => {
+    updateOverflowButtonsVisibility(tabList);
+  });
+  resizeObserver.observe(tabList);
+  updateOverflowButtonsVisibility(tabList);
+}
+function isTabCutOffLeft(tabListRect, tab) {
+  return tab.getBoundingClientRect().left < tabListRect.left - 1;
+}
+function isTabCutOffRight(tabListRect, tab) {
+  return tab.getBoundingClientRect().right > tabListRect.right + 1;
+}
+function scrollOverflow(tablist, tab, direction2) {
+  if (direction2 === "left") {
+    tablist.scrollLeft -= 1;
+  } else {
+    tablist.scrollLeft += 1;
+  }
+  updateOverflowButtonsVisibility(tablist);
+  scrollToTab(tablist, tab, direction2);
+  updateOverflowButtonsVisibility(tablist);
+}
+function updateOverflowButtonsVisibility(tabList) {
+  const leftButton = document.querySelector(
+    ".docs-tabs .docs-tabs-more-button--left"
+  );
+  const rightButton = document.querySelector(
+    ".docs-tabs .docs-tabs-more-button--right"
+  );
+  if (!leftButton || !rightButton) {
+    return;
+  }
+  const showRightButton = tabList.scrollWidth - tabList.clientWidth - tabList.scrollLeft > 1;
+  rightButton.hidden = !showRightButton;
+  const showLeftButton = tabList.scrollLeft > 0;
+  leftButton.hidden = !showLeftButton;
+}
+function scrollWithOverflowButton(tabList, direction2) {
+  const tab = findArrowToTab(tabList, direction2);
+  if (!tab) {
+    return;
+  }
+  scrollOverflow(tabList, tab, direction2);
+}
+function scrollToTab(tabList, tab, direction2) {
+  const tabListRect = tabList.getBoundingClientRect();
+  if (direction2 === "right") {
+    tabList.scrollLeft += tab.getBoundingClientRect().right - tabListRect.right;
+  } else {
+    tabList.scrollLeft -= tabListRect.left - tab.getBoundingClientRect().left;
+  }
+}
+function findArrowToTab(tabList, direction2) {
+  const tabs = Array.from(tabList.children);
+  const tabListRect = tabList.getBoundingClientRect();
+  if (direction2 === "right") {
+    const nextTab = tabs.find((tab) => {
+      return isTabCutOffRight(tabListRect, tab);
+    });
+    return nextTab;
+  }
+  const prevTab = [...tabs].findLast((tab) => {
+    return isTabCutOffLeft(tabListRect, tab);
+  });
+  return prevTab;
+}
+function createOverflowArrowButton(direction2) {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.hidden = true;
+  button.classList.add(
+    "docs-tabs-more-button",
+    `docs-tabs-more-button--${direction2}`
+  );
+  button.setAttribute("aria-hidden", "true");
+  button.setAttribute("aria-label", `More tabs ${direction2}`);
+  button.tabIndex = -1;
+  const icon2 = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  icon2.classList.add(
+    "docs-tabs-more-icon",
+    `docs-tabs-more-icon--${direction2}`
+  );
+  const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
+  use.setAttribute("href", "#docs-icon-arrow-down");
+  icon2.append(use);
+  button.append(icon2);
+  return button;
+}
+onContentReady(() => {
+  renderTabs();
+});
+window.addEventListener("docs:navigation", renderTabs);
+function renderTabs() {
+  const tabPanels = Array.from(
+    document.querySelectorAll(".docs-tabpanel")
+  );
+  const tabs = Array.from(
+    document.querySelectorAll(".docs-tab")
+  );
+  if (tabPanels.length === 0 || tabPanels.length !== tabs.length) {
+    return;
+  }
+  tabPanels[0].classList.remove("hidden-tabpanel");
+  const tabsContainer = document.createElement("div");
+  tabsContainer.classList.add("docs-tabs");
+  const tablistWrapper = document.createElement("div");
+  tablistWrapper.classList.add("docs-tablist-wrapper");
+  const tabList = document.createElement("div");
+  tabList.setAttribute("role", "tablist");
+  tabList.classList.add("docs-tablist");
+  tabPanels[0].before(tabsContainer);
+  tabsContainer.append(tablistWrapper);
+  tablistWrapper.append(tabList);
+  for (const tabPanel of tabPanels) {
+    tabsContainer.append(tabPanel);
+  }
+  for (const tab of tabs) {
+    tabList.append(tab);
+    tab.addEventListener("click", (event3) => {
+      onClick(tabsContainer, event3);
+    });
+    tab.addEventListener("keydown", (event3) => {
+      onKeydown(tabsContainer, event3);
+    });
+  }
+  const firstTab = tabList.firstChild;
+  firstTab.removeAttribute("tabIndex");
+  firstTab.setAttribute("aria-selected", "true");
+  setupOverflow(tablistWrapper, tabList);
+}
+function onKeydown(tabsContainer, event3) {
+  const tabs = getTabs(tabsContainer);
+  switch (event3.key) {
+    case "ArrowLeft":
+      moveSelectedTab(tabsContainer, -1);
+      break;
+    case "ArrowRight":
+      moveSelectedTab(tabsContainer, 1);
+      break;
+    case "Home": {
+      const tab = tabs.at(0);
+      if (!tab) {
+        return;
+      }
+      setSelectedTab(tabsContainer, tab);
+      break;
+    }
+    case "End": {
+      const tab = tabs.at(-1);
+      if (!tab) {
+        return;
+      }
+      setSelectedTab(tabsContainer, tab);
+      break;
+    }
+    default:
+      return;
+  }
+  event3.preventDefault();
+  event3.stopPropagation();
+}
+function onClick(tabsContainer, event3) {
+  setSelectedTab(tabsContainer, event3.target);
+}
+function scrollTabIntoView(tab) {
+  const tablist = tab.parentElement;
+  if (!tablist) {
+    return;
+  }
+  if (isTabCutOffLeft(tablist.getBoundingClientRect(), tab)) {
+    scrollOverflow(tablist, tab, "left");
+  } else if (isTabCutOffRight(tablist.getBoundingClientRect(), tab)) {
+    scrollOverflow(tablist, tab, "right");
+  } else {
+    updateOverflowButtonsVisibility(tablist);
+  }
+}
+function moveSelectedTab(tabsContainer, direction2) {
+  const currentTab = getCurrentTab(tabsContainer);
+  if (!currentTab) {
+    return;
+  }
+  const siblingTab = direction2 === -1 ? currentTab.previousElementSibling : currentTab.nextElementSibling;
+  if (!siblingTab) {
+    return;
+  }
+  setSelectedTab(tabsContainer, siblingTab);
+}
+function setSelectedTab(tabsContainer, newTab) {
+  const tabs = getTabs(tabsContainer);
+  for (const tab of tabs) {
+    tab.setAttribute("aria-selected", "false");
+    tab.tabIndex = -1;
+  }
+  newTab.setAttribute("aria-selected", "true");
+  newTab.removeAttribute("tabIndex");
+  const tabPanels = tabsContainer.querySelectorAll(".docs-tabpanel");
+  for (const tabPanel2 of tabPanels) {
+    tabPanel2.classList.add("hidden-tabpanel");
+  }
+  const tabPanelId = newTab.getAttribute("aria-controls");
+  if (!tabPanelId) {
+    throw new Error("No aria-controls on tab panel");
+  }
+  const tabPanel = tabsContainer.querySelector(
+    `.docs-tabpanel[id="${tabPanelId}"]`
+  );
+  tabPanel?.classList.remove("hidden-tabpanel");
+  newTab.focus();
+  scrollTabIntoView(newTab);
+}
+function getCurrentTab(tabsContainer) {
+  return tabsContainer.querySelector(
+    '[role="tab"][aria-selected="true"]'
+  );
+}
+function getTabs(tabsContainer) {
+  return Array.from(
+    tabsContainer.querySelectorAll('[role="tab"]')
+  );
+}
 var motdSymbol = /* @__PURE__ */ Symbol.for("motd");
 var motdProxy = {
   get enabled() {
@@ -301942,40 +302190,44 @@ export {
 };
 /*! Bundled license information:
 
-dompurify/dist/purify.es.mjs:
-  (*! @license DOMPurify 3.4.17 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.4.17/LICENSE *)
-  (*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE *)
-
-lodash-es/lodash.js:
-  (**
-   * @license
-   * Lodash (Custom Build) <https://lodash.com/>
-   * Build: `lodash modularize exports="es" --repo lodash/lodash#4.18.1 -o ./`
-   * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
-   * Released under MIT license <https://lodash.com/license>
-   * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
-   * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
-   *)
-
-cytoscape/dist/cytoscape.esm.mjs:
-  (*!
-  Embeddable Minimum Strictly-Compliant Promises/A+ 1.1.1 Thenable
-  Copyright (c) 2013-2014 Ralf S. Engelschall (http://engelschall.com)
-  Licensed under The MIT License (http://opensource.org/licenses/MIT)
-  *)
-  (*!
-  Event object based on jQuery events, MIT license
+@forsakringskassan/docs-generator/dist/runtime-internal.mjs:
+  (*! Bundled license information:
   
-  https://jquery.org/license/
-  https://tldrlegal.com/license/mit-license
-  https://github.com/jquery/jquery/blob/master/src/event.js
+  dompurify/dist/purify.es.mjs:
+    (*! @license DOMPurify 3.4.17 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.4.17/LICENSE *)
+    (*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE *)
+  
+  lodash-es/lodash.js:
+    (**
+     * @license
+     * Lodash (Custom Build) <https://lodash.com/>
+     * Build: `lodash modularize exports="es" --repo lodash/lodash#4.18.1 -o ./`
+     * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
+     * Released under MIT license <https://lodash.com/license>
+     * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+     * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+     *)
+  
+  cytoscape/dist/cytoscape.esm.mjs:
+    (*!
+    Embeddable Minimum Strictly-Compliant Promises/A+ 1.1.1 Thenable
+    Copyright (c) 2013-2014 Ralf S. Engelschall (http://engelschall.com)
+    Licensed under The MIT License (http://opensource.org/licenses/MIT)
+    *)
+    (*!
+    Event object based on jQuery events, MIT license
+    
+    https://jquery.org/license/
+    https://tldrlegal.com/license/mit-license
+    https://github.com/jquery/jquery/blob/master/src/event.js
+    *)
+    (*! Bezier curve function generator. Copyright Gaetan Renaudeau. MIT License: http://en.wikipedia.org/wiki/MIT_License *)
+    (*! Runge-Kutta spring physics function generator. Adapted from Framer.js, copyright Koen Bok. MIT License: http://en.wikipedia.org/wiki/MIT_License *)
+  
+  mermaid/dist/mermaid.core.mjs:
+    (*! Check if previously processed *)
+    (*!
+     * Wait for document loaded before starting the execution
+     *)
   *)
-  (*! Bezier curve function generator. Copyright Gaetan Renaudeau. MIT License: http://en.wikipedia.org/wiki/MIT_License *)
-  (*! Runge-Kutta spring physics function generator. Adapted from Framer.js, copyright Koen Bok. MIT License: http://en.wikipedia.org/wiki/MIT_License *)
-
-mermaid/dist/mermaid.core.mjs:
-  (*! Check if previously processed *)
-  (*!
-   * Wait for document loaded before starting the execution
-   *)
 */
