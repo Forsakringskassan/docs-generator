@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## [3.24.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.23.1...v3.24.0) (2026-11-11)
+
+### Features
+
+* create tabs component (refs SFKUI-7852) ([fd7222c](https://github.com/Forsakringskassan/docs-generator/commit/fd7222c2c7c4f50faf34b2e62613ec1b8a847f4a))
+
+### Bug Fixes
+
+* **deps:** update dependency i18next to v26.7.1 ([db80552](https://github.com/Forsakringskassan/docs-generator/commit/db80552c30bf7ef929a6f058e4c26ae415d3b901))
+* **deps:** update dependency i18next to v26.7.2 ([f39ba77](https://github.com/Forsakringskassan/docs-generator/commit/f39ba774f62c04d6a1b7c22b9983b459920ab81c))
+* **deps:** update dependency mermaid to v12.3.0 ([cad0e37](https://github.com/Forsakringskassan/docs-generator/commit/cad0e377fb7dc4b867e233eeeae3b858841566fe))
+* **deps:** update dependency semver to v7.8.6 ([386d3ab](https://github.com/Forsakringskassan/docs-generator/commit/386d3ab4949edac7aa6c80cddb9705c27c362c3b))
+
 ## [3.23.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.23.0...v3.23.1) (2026-11-06)
 
 ### Bug Fixes
