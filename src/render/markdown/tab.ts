@@ -12,7 +12,8 @@ export function tab(context: ContainerContext): ContainerCallback {
     return (tokens, index) => {
         const token = tokens[index];
         const title = parseInfo(token.info);
-        const text = token.content.trim();
+        /* Preserve original line numbers when reparsing the content after the tab marker. */
+        const text = "\n".repeat((token.map?.[0] ?? 0) + 1) + token.content;
 
         const titleSelector = parseCSSSelector(title);
         const tabPanelId = `tabpanel-${titleSelector}`;
