@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [3.24.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.24.0...v3.24.1) (2026-11-11)
+
+### Bug Fixes
+
+* preserve example selectors in tabs ([ab29139](https://github.com/Forsakringskassan/docs-generator/commit/ab29139a2083056f90aba3eccf6ef87afc7f8906))
+
 ## [3.24.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.23.1...v3.24.0) (2026-11-11)
 
 ### Features
