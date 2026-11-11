@@ -2,6 +2,7 @@ import path from "node:path";
 import {
     Generator,
     frontMatterFileReader,
+    manifestProcessor,
 } from "@forsakringskassan/docs-generator";
 
 const base = path.basename(import.meta.dirname);
@@ -13,6 +14,16 @@ const docs = new Generator(import.meta.url, {
         lang: "en",
     },
     outputFolder,
+    exampleFolders: ["./docs"],
+    processors: [
+        manifestProcessor({
+            json: path.resolve(
+                import.meta.dirname,
+                outputFolder,
+                "manifest.json",
+            ),
+        }),
+    ],
     templateFolders: ["./docs/templates"],
     sourceFiles: [
         {

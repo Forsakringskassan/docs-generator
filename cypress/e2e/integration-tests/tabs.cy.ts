@@ -1,8 +1,28 @@
+import { type Manifest } from "../../../src";
+
 beforeEach(() => {
     cy.visit("/integration-tests/tabs/cats/");
 });
 
 describe("tabs", () => {
+    it("should find an imported example in a closed tab using its manifest selector", () => {
+        cy.get("#tab-cat-toys").should("have.attr", "aria-selected", "false");
+        cy.request<Manifest>("/integration-tests/tabs/manifest.json").then(
+            ({ body: manifest }) => {
+                const page = manifest.pages.find(
+                    (it) => it.path === "cats/index.html",
+                );
+                const example = page?.examples.find(
+                    (it) => it.name === "cat-toys",
+                );
+                if (!example) {
+                    throw new Error("Expected cat-toys example in manifest");
+                }
+                cy.get(example.selector).should("exist");
+            },
+        );
+    });
+
     it("1.1 - should render a tablist and tab panels", () => {
         cy.get('.docs-tabs [role="tab"]').should("have.length.at.least", 1);
         cy.get('.docs-tabpanel[role="tabpanel"]').should(

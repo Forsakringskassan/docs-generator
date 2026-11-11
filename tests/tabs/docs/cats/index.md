@@ -21,6 +21,10 @@ Testing some tabs here
 - Scrunchies
 - Owner's hair
 
+```import name=cat-toys
+cat-toys.html
+```
+
 §§§ Cat colors
 
 ## Common cat colors
