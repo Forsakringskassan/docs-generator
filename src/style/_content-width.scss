@@ -8,7 +8,7 @@
     }
 
     // Details use content width, overriding the messagebox rule above.
-    &:where(#docs-title, .docs-heading, .code-preview, pre, .table, .docs-messagebox--details) {
+    &:where(#docs-title, .docs-heading, .code-preview, pre, .table, .docs-messagebox--details, .docs-tablist-wrapper) {
         box-sizing: border-box;
         max-width: min(100%, var(--docs-content-max-width, 100%));
     }

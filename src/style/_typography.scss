@@ -98,6 +98,10 @@
     margin-top: 3rem;
 }
 
+:where(.docs-paragraph + .docs-tabs) {
+    margin-block-start: 2.5rem;
+}
+
 @media (width <=$breakpoint-sm) {
     :where(.docs-heading--h1) {
         font-size: 1.75rem;
