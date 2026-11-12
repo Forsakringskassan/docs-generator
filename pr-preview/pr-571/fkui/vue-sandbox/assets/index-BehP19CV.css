@@ -187,7 +187,7 @@
   --fkds-color-footer-text-primary: #ffffff;
   --fkds-focus-indicator-color: #1b1e23;
   --fkds-focus-indicator-color-background: #ffffff;
-  --fkui-theme-default-version: "6.64.0";
+  --fkui-theme-default-version: "6.65.0";
 }
 
 *,
@@ -2766,6 +2766,10 @@ input[type=search]:focus-visible,
   margin: 0;
   padding: 1rem;
   align-items: center;
+}
+.datepicker-field__close > .datepicker-field__close__button:hover, .datepicker-field__close > .datepicker-field__close__button:active {
+  color: var(--fkds-color-action-text-secondary-default);
+  mix-blend-mode: normal;
 }
 
 .popup--overlay .datepicker-field__popup {
