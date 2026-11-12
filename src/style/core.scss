@@ -106,12 +106,20 @@ main #docs-aside dd {
     }
 }
 
+.code-preview:not(:where(.code-preview *)) {
+    margin-block-end: 2rem;
+
+    // Let the example set the gap to the next block.
+    + * {
+        margin-block-start: 0;
+    }
+}
+
 .code-preview--default {
     border: $code-preview-border-width solid var(--docs-code-border-color);
     border-radius: $code-preview-border-radius;
     width: 100%;
     background-color: var(--docs-code-background-color);
-    margin-bottom: 1rem;
 }
 
 .code-preview--default .code-preview__preview {
@@ -128,7 +136,6 @@ main #docs-aside dd {
 .code-preview--borderless {
     width: 100%;
     background-color: var(--docs-code-background-color);
-    margin-bottom: 1rem;
 
     &[data-tags~="live-example"] {
         border-radius: $code-preview-border-radius;

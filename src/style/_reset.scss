@@ -10,7 +10,7 @@ body {
     padding: 0;
 }
 
-p:not(:where(.code-preview + .docs-paragraph)) {
+p {
     margin-top: 0;
 }
 
