@@ -17,12 +17,14 @@ import {
     getFingerprint,
     getOutputFilePath,
     haveOutput,
+    retryOnBusy,
     takeWhile,
     zip,
 } from "../utils";
 import { manifestState } from "./manifest-processor";
 
 type ManifestPage = Manifest["pages"][number];
+type ManifestExample = ManifestPage["examples"][number];
 
 /**
  * Serializable metadata exported with extracted documentation.
@@ -102,11 +104,6 @@ export interface ApiContainerData {
     content: string;
 }
 
-async function copyFile(src: string, dst: string): Promise<void> {
-    await fs.mkdir(path.dirname(dst), { recursive: true });
-    await fs.cp(src, dst);
-}
-
 function equal<T>(values: [T, T]): boolean {
     return values[0] === values[1];
 }
@@ -120,23 +117,73 @@ function commonPath(a: string, b: string): string {
     return common.join(path.sep);
 }
 
-async function extractExamples(
-    page: ManifestPage,
+/**
+ * Get all source files used by an example. Inline examples do not have any
+ * source files.
+ */
+function getExampleSources(example: ManifestExample): string[] {
+    return example.src ? [example.src] : [];
+}
+
+function getDestination(src: string, outputFolder: string): string {
+    const common = commonPath(path.resolve(outputFolder), path.resolve(src));
+    const subpath = path.relative(common, path.resolve(src));
+    return path.join(outputFolder, "files", subpath);
+}
+
+/**
+ * Creates all folders needed for the destination files.
+ *
+ * @param files - Map of source file to destination file.
+ */
+async function createAllFolders(files: Map<string, string>): Promise<void> {
+    const folders = new Set(
+        Array.from(files.values(), (dst) => path.dirname(dst)),
+    );
+    const creating = Array.from(folders, (folder) => {
+        return fs.mkdir(folder, { recursive: true });
+    });
+    await Promise.all(creating);
+}
+
+/**
+ * Copies all files to their destination. The destination folders must already
+ * exist.
+ *
+ * @param files - Map of source file to destination file.
+ */
+async function copyAllFiles(files: Map<string, string>): Promise<void> {
+    const copying = Array.from(files, ([src, dst]) => {
+        return retryOnBusy(() => fs.copyFile(src, dst));
+    });
+    await Promise.all(copying);
+}
+
+/**
+ * Copies all example source files. Each file is copied once even if used by
+ * multiple examples or pages, as concurrent copies to the same destination
+ * fail with `EBUSY` on Windows.
+ *
+ * @internal
+ */
+export async function extractExamples(
+    pages: ManifestPage[],
     options: { outputFolder: string },
 ): Promise<void> {
     const { outputFolder } = options;
-    for (const example of page.examples) {
-        /* inline examples do not have a source file */
-        if (!example.src) {
-            continue;
-        }
-        const common = commonPath(
-            path.resolve(outputFolder),
-            path.resolve(example.src),
-        );
-        const subpath = path.relative(common, path.resolve(example.src));
-        await copyFile(example.src, path.join(outputFolder, "files", subpath));
-    }
+    const uniqueFiles = new Set(
+        pages
+            .flatMap((page) => page.examples)
+            .flatMap((example) => getExampleSources(example)),
+    );
+    const files = new Map(
+        Array.from(uniqueFiles, (src) => {
+            return [src, getDestination(src, outputFolder)];
+        }),
+    );
+
+    await createAllFolders(files);
+    await copyAllFiles(files);
 }
 
 function isMarkdown(doc: DocumentPage): boolean {
@@ -429,11 +476,7 @@ export function extractMarkdownProcessor(
             await extractDocuments(context.docs, partials, { outputFolder });
             await extractPartials(partials, { outputFolder });
             await extractLinks(context.docs, { outputFolder });
-            const { pages } = manifest;
-            const resources = pages.map((page) => {
-                return extractExamples(page, { outputFolder });
-            });
-            await Promise.all(resources);
+            await extractExamples(manifest.pages, { outputFolder });
 
             /* write an index for programmatical usage */
             const metadata = (await metadataFn?.()) ?? null;

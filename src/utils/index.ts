@@ -22,6 +22,7 @@ export { naturalJoin } from "./natural-join";
 export { normalizePath } from "./normalize-path";
 export { normalizeWorkingDirectory } from "./normalize-working-directory";
 export { parseImport } from "./parse-import";
+export { retryOnBusy } from "./retry-on-busy";
 export { runCommand } from "./run-command";
 export {
     type AttributeTable,
