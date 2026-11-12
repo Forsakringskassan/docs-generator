@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [3.24.2](https://github.com/Forsakringskassan/docs-generator/compare/v3.24.1...v3.24.2) (2026-11-12)
+
+### Bug Fixes
+
+* adjust documentation tab spacing and width ([03f09c2](https://github.com/Forsakringskassan/docs-generator/commit/03f09c223a93a9bfe53dff24dee018a88f7d98fa))
+* unify spacing below examples ([b72e0ab](https://github.com/Forsakringskassan/docs-generator/commit/b72e0ab0add29d679bbce53f08cb6202ac508d0a))
+
 ## [3.24.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.24.0...v3.24.1) (2026-11-11)
 
 ### Bug Fixes
