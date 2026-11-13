@@ -1,11 +1,21 @@
-import { describe, expect, it, vi } from "vitest";
+import { fs, vol } from "memfs";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { type PartialFile } from "../file-reader";
+import { type Manifest } from "../manifest";
 import { createMockDocument, createMockPartial } from "../utils";
 import {
+    extractExamples,
     findApiContainer,
     generateIndex,
     onApiContainer,
 } from "./extract-markdown-processor";
+
+/* @ts-expect-error -- technical debt: memfs is not 100% type compatible */
+vi.mock(import("node:fs/promises"), () => {
+    return {
+        default: fs.promises,
+    };
+});
 
 /* mock `getFingerprint()` for stable tests */
 vi.mock(import("../utils/get-fingerprint"), () => {
@@ -224,5 +234,60 @@ describe("onApiContainer()", () => {
                 { body: "Foo!", format: "html", id: "partial:html:0d15ea5e" },
             ],
         ]);
+    });
+});
+
+describe("extractExamples()", () => {
+    beforeEach(() => {
+        vol.reset();
+        vol.fromJSON({
+            "/project/src/shared.vue": "shared",
+            "/project/src/other.vue": "other",
+        });
+    });
+
+    afterEach(() => {
+        vi.restoreAllMocks();
+    });
+
+    function createPage(srcs: Array<string | null>): Manifest["pages"][number] {
+        return {
+            path: "page.html",
+            src: "page.md",
+            title: "page",
+            redirect: null,
+            outline: [],
+            examples: srcs.map((src) => ({
+                src,
+                selector: "",
+                language: "vue",
+                tags: [],
+            })),
+        };
+    }
+
+    it("should copy each source file once even when used by multiple pages", async () => {
+        expect.assertions(3);
+        const shared = "/project/src/shared.vue";
+        const other = "/project/src/other.vue";
+        const copyFile = vi.spyOn(fs.promises, "copyFile");
+
+        /* `null` is an inline example without a source file */
+        const page1 = createPage([shared, other, null]);
+        /* `shared` is used by both pages and twice on this page */
+        const page2 = createPage([shared, shared]);
+
+        await extractExamples([page1, page2], {
+            outputFolder: "/project/dist",
+        });
+
+        /* four source references but only two unique files */
+        expect(copyFile).toHaveBeenCalledTimes(2);
+        await expect(
+            fs.promises.readFile("/project/dist/files/src/shared.vue", "utf8"),
+        ).resolves.toBe("shared");
+        await expect(
+            fs.promises.readFile("/project/dist/files/src/other.vue", "utf8"),
+        ).resolves.toBe("other");
     });
 });
