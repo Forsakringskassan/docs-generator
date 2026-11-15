@@ -152,7 +152,7 @@
     "@sidvind/rollup-plugin-worker": "2.1.11",
     "@tsconfig/node22": "22.0.7",
     "@tsconfig/recommended": "1.0.14",
-    "@tsconfig/strictest": "2.0.8",
+    "@tsconfig/strictest": "2.0.9",
     "@types/babel__code-frame": "7.27.0",
     "@types/babel__traverse": "7.28.0",
     "@types/cli-progress": "3.11.6",
