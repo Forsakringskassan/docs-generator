@@ -30,6 +30,7 @@ markdown/code-preview/diff.html
 markdown/code-preview/fullscreen.html
 markdown/code-preview/index.html
 markdown/code-preview/javascript.html
+markdown/code-preview/test.html
 markdown/code-preview/vue.html
 markdown/containers/alt-text.html
 markdown/containers/details.html

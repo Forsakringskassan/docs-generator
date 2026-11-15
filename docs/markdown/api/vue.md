@@ -15,6 +15,8 @@ import {
     vueFileReader,
 } from "@forsakringskassan/docs-generator";
 
+import { Person } from "./person";
+
 const docs = new Generator(import.meta.dirname, {
     site: { name: "My Awesome Site" },
     sourceFiles: [
