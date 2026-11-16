@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## [3.24.3](https://github.com/Forsakringskassan/docs-generator/compare/v3.24.2...v3.24.3) (2026-11-16)
+
+### Bug Fixes
+
+* `:active` do not show focus indicator (refs SFKUI-6500) ([ae4382e](https://github.com/Forsakringskassan/docs-generator/commit/ae4382ea1f8e1062b0e356293047b8ba9e5b92bd))
+* avoid EBUSY when extracting shared examples on Windows ([0ff3cb9](https://github.com/Forsakringskassan/docs-generator/commit/0ff3cb9f9d31c965d56137483ff18f3e8f2677f3))
+* correct default focus box-shadow value (refs SFKUI-6500) ([d00f6d9](https://github.com/Forsakringskassan/docs-generator/commit/d00f6d98353e8dfccb74cbac7382fcc5de0efd7a))
+* **deps:** update dependency scroll-into-view-if-needed to v3.2.0 ([#581](https://github.com/Forsakringskassan/docs-generator/issues/581)) ([b52bb56](https://github.com/Forsakringskassan/docs-generator/commit/b52bb561216fff059a1ba9215e269151228f0c82))
+* fix hover selector for search result items (refs SFKUI-6500) ([1a7d469](https://github.com/Forsakringskassan/docs-generator/commit/1a7d46922109d0bb295dcf7ffa71144fc694fffc))
+* focus do not force angular corners (refs SFKUI-6500) ([246f6e8](https://github.com/Forsakringskassan/docs-generator/commit/246f6e8a08a2fd6d0548b96ab011d2b5f9c9f156))
+* focus only adds focus indicator outline (refs SFKUI-6500) ([16ba8cf](https://github.com/Forsakringskassan/docs-generator/commit/16ba8cf5aa1b36d4d443e4bc00564f52c4b882c5))
+* only set hover styling if device can hover (refs SFKUI-6500) ([44bbb2a](https://github.com/Forsakringskassan/docs-generator/commit/44bbb2a750bce9ff55101b3e6a404fc7f823ce14))
+* use `focus-visible` instead of `focus`(refs SFKUI-6500) ([75d2a2e](https://github.com/Forsakringskassan/docs-generator/commit/75d2a2e0e6a87ae6c4d70ec64712785a0a4bd8cd))
+
 ## [3.24.2](https://github.com/Forsakringskassan/docs-generator/compare/v3.24.1...v3.24.2) (2026-11-12)
 
 ### Bug Fixes
