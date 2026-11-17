@@ -58,6 +58,80 @@ function cloneScripts(element: HTMLElement, href: string): void {
 }
 
 /**
+ * Set the link and every group containing it as active and expand those
+ * groups so the link is visible.
+ *
+ * @param navigation - The `<nav>` element in the sidenav.
+ * @param link - The `<a>` element in the sidenav to mark as active.
+ */
+function setActive(navigation: Element, link: HTMLAnchorElement): void {
+    const listItem = link.closest("li");
+    if (!listItem) {
+        return;
+    }
+    listItem.classList.add("active");
+
+    const groups = navigation.querySelectorAll("li.expandable");
+    for (const group of groups) {
+        if (!group.contains(link)) {
+            continue;
+        }
+        group.classList.add("active");
+
+        const details =
+            group.querySelector<HTMLDetailsElement>(":scope > details");
+        if (details) {
+            details.open = true;
+        }
+    }
+}
+
+/**
+ * Update the sidenav for the page being navigated to: making link hrefs
+ * relative to the new page and setting the new page's link as active.
+ *
+ * @param newPage - The parsed document of the page being navigated to.
+ */
+function updateSidenav(newPage: Document): void {
+    const navigation = document.querySelector("#docs-sidenav nav");
+    if (!navigation) {
+        return;
+    }
+
+    for (const element of navigation.querySelectorAll(".active")) {
+        element.classList.remove("active");
+    }
+
+    const links = navigation.querySelectorAll<HTMLAnchorElement>(
+        "li.link a[data-path]",
+    );
+    for (const link of links) {
+        const { path } = link.dataset;
+        if (!path) {
+            continue;
+        }
+
+        const newPageLink = newPage.querySelector(
+            `#docs-sidenav a[data-path="${CSS.escape(path)}"]`,
+        );
+        if (!newPageLink) {
+            continue;
+        }
+
+        const href = newPageLink.getAttribute("href");
+        if (href) {
+            link.setAttribute("href", href);
+        }
+
+        const isActiveOnNewPage =
+            newPageLink.closest("li.link.active") !== null;
+        if (isActiveOnNewPage) {
+            setActive(navigation, link);
+        }
+    }
+}
+
+/**
  * Replaces the content of `<main>` with the given URL.
  *
  * If the request fails the entire `<body>` is replaced.
@@ -95,23 +169,7 @@ async function replaceContent(href: string): Promise<void> {
         footerTarget.replaceWith(footer);
     }
 
-    /* update external urls in sidenav */
-    const anchorSelector = "#docs-sidenav li.link a";
-    const anchorLinks =
-        document.querySelectorAll<HTMLAnchorElement>(anchorSelector);
-    for (const link of anchorLinks) {
-        const { path } = link.dataset;
-        if (!path) {
-            continue;
-        }
-        const element = doc.querySelector(
-            `#docs-sidenav a[data-path="${CSS.escape(path)}"]`,
-        );
-        const href = element?.getAttribute("href");
-        if (href) {
-            link.setAttribute("href", href);
-        }
-    }
+    updateSidenav(doc);
 
     /* update rootUrl on document root */
     document.documentElement.dataset.rootUrl = rootUrl;
@@ -130,16 +188,6 @@ async function replaceContent(href: string): Promise<void> {
     window.dispatchEvent(new Event("docs:navigation"));
 }
 
-/**
- * Get parent element unless max depth is reached.
- */
-function getParentElement(el: HTMLElement, depth: number): HTMLElement | null {
-    if (depth === 0) {
-        return null;
-    }
-    return el.parentElement?.closest("li.link, li.expandable") ?? null;
-}
-
 function hasModifierkey(event: MouseEvent): boolean {
     return event.ctrlKey || event.altKey || event.metaKey || event.shiftKey;
 }
@@ -150,12 +198,10 @@ function hasModifierkey(event: MouseEvent): boolean {
  * menu scrolling etc.
  *
  * @param toggle - The toggle element in `#sidebar`.
- * @param navigation - The `<nav>` element in `#sidebar`.
  * @param link - The `<a>` element to install click handler for.
  */
 function replaceContentOnClick(
     toggle: HTMLInputElement,
-    navigation: HTMLElement,
     link: HTMLAnchorElement,
 ): void {
     const { href } = link;
@@ -172,21 +218,6 @@ function replaceContentOnClick(
         previousPath = location.pathname;
 
         window.scrollTo({ top: 0, behavior: "smooth" });
-
-        /* remove old active link */
-        const current = navigation.querySelectorAll(".active");
-        for (const element of current) {
-            element.classList.remove("active");
-        }
-
-        /* set new active link */
-        for (
-            let parent = link.parentElement, maxDepth = 5;
-            parent;
-            parent = getParentElement(parent, maxDepth--)
-        ) {
-            parent.classList.add("active");
-        }
 
         /* move focus */
         const heading = document.querySelector<HTMLElement>("main h1");
@@ -261,7 +292,7 @@ if (toggle && navigation) {
         if (rel === "external") {
             continue;
         }
-        replaceContentOnClick(toggle, navigation, link);
+        replaceContentOnClick(toggle, link);
     }
 
     window.addEventListener("popstate", () => {
