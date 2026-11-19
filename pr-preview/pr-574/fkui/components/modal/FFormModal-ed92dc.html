@@ -9,9 +9,9 @@
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-47f5dd.css"
+            href="../../assets/docs-369771.css"
             crossorigin
-            integrity="sha384-449Ko0RBp64rluZS6QPhVcUvlccHPbgdcD/KCyO+XuhMy7CR6CE1I6laV5VlUKh0"
+            integrity="sha384-DEIj/adu2vrJaAcH6dCgXGuG0anHIEI2wDaoO5qsCt9wA62pRfniHCnqEmnJ5k09"
             
         />
         <link
@@ -123,14 +123,13 @@
             crossorigin
             integrity="sha384-WUx9VYX7tJH3PhljH5EqI+IptokgZ1JINForzpvAyaTUT4ZALKim9P+Vqq1vbdIx"
             
-        ></script> 
-        <div id="example-fc0386"></div>
-        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
-        <style>
-            
-        </style>
-        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FFormModal-fc0386.js"></script>
-    
+        ></script> <f-form-modal
+    :is-open
+    :value
+    :before-submit="onBeforeSubmit"
+    @submit="onSubmit"
+>
+</f-form-modal>
+
     </body>
 </html>

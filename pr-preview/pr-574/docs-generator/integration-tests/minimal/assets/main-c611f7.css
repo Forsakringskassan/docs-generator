@@ -1196,6 +1196,7 @@ main #docs-aside dd {
 
 .user-background {
   color-scheme: light dark;
+  color: CanvasText;
 }
 
 @media (prefers-color-scheme: light) {
@@ -1210,7 +1211,6 @@ main #docs-aside dd {
 }
 .code-preview[data-background=solid] .user-background {
   background: Canvas;
-  color: CanvasText;
 }
 
 .code-preview main,
