@@ -97,6 +97,10 @@
     --docs-tab-active-border-color: var(--fkds-color-navigation-border-selected);
 }
 
+.user-background {
+    color: var(--fkds-color-text-primary);
+}
+
 // reset overflow set from @fkui/design
 :root {
     overflow-y: initial;
