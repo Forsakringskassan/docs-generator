@@ -2186,7 +2186,7 @@ function memoize(callback) {
     return cache.get(key);
   };
 }
-var current = "v3.24.3";
+var current = "v3.24.4";
 var message = "Det finns en nyare version";
 function isOutside(rect, point) {
   if (point.y < rect.top || point.y > rect.top + rect.height) {
