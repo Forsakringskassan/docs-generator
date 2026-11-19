@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [3.24.4](https://github.com/Forsakringskassan/docs-generator/compare/v3.24.3...v3.24.4) (2026-11-19)
+
+### Bug Fixes
+
+* apply theme text color to examples ([1ace3b3](https://github.com/Forsakringskassan/docs-generator/commit/1ace3b353a8f607de0f76855f31d86537aa9d0ad))
+
 ## [3.24.3](https://github.com/Forsakringskassan/docs-generator/compare/v3.24.2...v3.24.3) (2026-11-16)
 
 ### Bug Fixes
