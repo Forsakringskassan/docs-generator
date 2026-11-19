@@ -90,6 +90,7 @@ main #docs-aside dd {
 
 .user-background {
     color-scheme: light dark;
+    color: CanvasText;
 
     @media (prefers-color-scheme: light) {
         background: repeating-conic-gradient(Canvas 0 90deg, color-mix(in srgb, Canvas 92%, CanvasText) 0 180deg) 0 0 / 20px 20px round;
@@ -102,7 +103,6 @@ main #docs-aside dd {
 
 .code-preview[data-background="solid"] .user-background {
     background: Canvas;
-    color: CanvasText;
 }
 
 .code-preview {
