@@ -73,6 +73,7 @@ export interface DocumentPage {
     fileInfo: FileInfo;
     format: "markdown" | "html" | "json" | "redirect";
     id: string;
+    inputs?: string[];
     kind: "page";
     name: string;
     outline: DocumentOutline;
@@ -257,6 +258,7 @@ export interface Manifest {
             heading: string;
             anchor: string;
         }>;
+        inputs: string[];
         examples: Array<{
             name?: string;
             src: string | null;

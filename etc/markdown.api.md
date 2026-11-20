@@ -41,6 +41,7 @@ export interface DocumentPage {
     fileInfo: FileInfo;
     format: "markdown" | "html" | "json" | "redirect";
     id: string;
+    inputs?: string[];
     kind: "page";
     name: string;
     outline: DocumentOutline;

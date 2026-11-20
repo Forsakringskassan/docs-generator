@@ -171,11 +171,19 @@ export async function extractExamples(
     options: { outputFolder: string },
 ): Promise<void> {
     const { outputFolder } = options;
+
+    const exampleFiles = pages
+        .flatMap((page) => page.examples)
+        .flatMap((example) => getExampleSources(example));
+
+    const inputFiles = pages.flatMap((page) => page.inputs);
+
     const uniqueFiles = new Set(
-        pages
-            .flatMap((page) => page.examples)
-            .flatMap((example) => getExampleSources(example)),
+        [...exampleFiles, ...inputFiles].map((filePath) =>
+            filePath.replaceAll("\\", "/"),
+        ),
     );
+
     const files = new Map(
         Array.from(uniqueFiles, (src) => {
             return [src, getDestination(src, outputFolder)];
@@ -185,7 +193,6 @@ export async function extractExamples(
     await createAllFolders(files);
     await copyAllFiles(files);
 }
-
 function isMarkdown(doc: DocumentPage): boolean {
     return doc.format === "markdown";
 }
@@ -465,6 +472,19 @@ export function extractMarkdownProcessor(
                 throw new Error(
                     `"extractMarkdownProcessor()" requires "manifestProcess()"`,
                 );
+            }
+
+            /* Uppdatera manifest.pages med inputs från render-steget */
+            const docsBySrc = new Map(
+                context.docs
+                    .filter(isDocumentPage)
+                    .map((doc) => [doc.fileInfo.fullPath, doc]),
+            );
+            for (const page of manifest.pages) {
+                const doc = docsBySrc.get(page.src);
+                if (doc?.inputs) {
+                    page.inputs = doc.inputs;
+                }
             }
 
             /* clear and recreate old output folder */

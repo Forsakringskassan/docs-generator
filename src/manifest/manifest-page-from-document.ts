@@ -17,7 +17,13 @@ type DocumentPageWithOutput = DocumentPage & {
 };
 type DocumentPageLike = Pick<
     DocumentPageWithOutput,
-    "fileInfo" | "name" | "attributes" | "outline" | "body" | "format"
+    | "fileInfo"
+    | "name"
+    | "attributes"
+    | "outline"
+    | "body"
+    | "format"
+    | "inputs"
 >;
 type ManifestPage = Manifest["pages"][number];
 type ManifestOutline = ManifestPage["outline"];
@@ -112,5 +118,6 @@ export function manifestPageFromDocument(
         redirect: format === "redirect" ? body : null,
         outline: flattenOutline(doc.outline),
         examples: findExamples(context, doc),
+        inputs: doc.inputs ?? [],
     };
 }

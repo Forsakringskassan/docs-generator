@@ -15,6 +15,7 @@ import {
     generateExample,
     workerUrl as exampleWorkerUrl,
 } from "../examples";
+import { type CompileResult } from "../examples/worker";
 import { type LinkResolver } from "../link-resolver";
 import {
     type NavigationLeaf,
@@ -126,10 +127,10 @@ async function compileExamples(options: {
     tasks: ExampleCompileTask[];
     assets: AssetInfo[];
     vendors: VendorAsset[];
-}): Promise<void> {
+}): Promise<CompileResult[]> {
     const { fileInfo, tasks, assets, vendors } = options;
     if (tasks.length === 0) {
-        return;
+        return [];
     }
 
     const external = [
@@ -143,9 +144,8 @@ async function compileExamples(options: {
 
     /* skip forking if there are no tasks to be run anyway */
     if (dirtyTasks.length === 0) {
-        return;
+        return [];
     }
-
     const ref = taskRef++;
     const message: CompileMessage = {
         message: "compile",
@@ -160,10 +160,9 @@ async function compileExamples(options: {
             if (message.ref !== ref) {
                 return;
             }
-
             exampleWorker.off("message", onmessage);
             exampleWorker.off("error", onerror);
-            resolve();
+            resolve(message.results);
         }
 
         function onerror(err: Error): void {
@@ -435,7 +434,7 @@ export async function render(
         const assets = Object.values(templateData.assets).filter(
             (it) => it.importmap,
         );
-        await compileExamples({
+        const results = await compileExamples({
             fileInfo,
             cacheFolder,
             outputFolder,
@@ -443,6 +442,13 @@ export async function render(
             assets,
             vendors,
         });
+        const allInputs = new Set<string>(doc.inputs);
+        for (const item of results) {
+            for (const input of item.inputs) {
+                allInputs.add(input);
+            }
+        }
+        doc.inputs = Array.from(allInputs);
     } catch (err: unknown) {
         const prefix = `Failed to compile examples from "${fileInfo.fullPath}"`;
         const message = err instanceof Error ? err.message : String(err);

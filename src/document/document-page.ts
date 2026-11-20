@@ -38,4 +38,7 @@ export interface DocumentPage {
     template: string;
 
     fileInfo: FileInfo;
+
+    /** list of input file paths required by examples on this page */
+    inputs?: string[];
 }
