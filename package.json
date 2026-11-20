@@ -107,6 +107,7 @@
     "@leeoniya/ufuzzy": "1.0.19",
     "@microsoft/api-extractor-model": "7.33.16",
     "@microsoft/tsdoc": "0.17.1",
+    "@vue/compiler-sfc": "^3.0.0",
     "chokidar": "6.0.0",
     "cli-progress": "3.12.0",
     "dedent": "1.7.2",

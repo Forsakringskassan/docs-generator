@@ -4,6 +4,7 @@ import { version } from "vue";
 import { type Plugin, build as esbuild } from "esbuild";
 import { virtualEntryPlugin } from "../esbuild";
 import { tsconfigPath as tsconfig } from "../tsconfig-path";
+import { collectLocalImports } from "./collect-imports";
 import { type ExampleCompileTask } from "./example-task";
 import { vuePlugin as Vue3Plugin } from "plugin-vue3";
 
@@ -98,8 +99,10 @@ async function compileExample(
         },
         plugins: [virtualEntryPlugin(virtualEntries), VuePlugin()],
     });
-    const inputs = new Set(Object.keys(metafile.inputs).filter(existsSync));
-    inputs.add(task.sourceFile);
+    const baseInputs = new Set(Object.keys(metafile.inputs).filter(existsSync));
+    baseInputs.add(task.sourceFile);
+
+    const inputs = collectLocalImports(baseInputs);
 
     return { ...task, inputs };
 }
