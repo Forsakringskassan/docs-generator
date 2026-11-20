@@ -1,4 +1,5 @@
 import { type i18n } from "i18next";
+import { type DocumentPage } from "../document";
 import { type LinkResolver } from "../link-resolver";
 import {
     type TemplateBlockData,
@@ -30,4 +31,5 @@ export interface RenderOptions {
     };
 
     addResource(this: void, dst: string, src: string): void;
+    addDependency(doc: DocumentPage, files: Iterable<string>): void;
 }

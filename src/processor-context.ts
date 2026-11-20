@@ -1,5 +1,5 @@
 import { type ResourceTask } from "./assets";
-import { type Document } from "./document";
+import { type Document, type DocumentPage } from "./document";
 import { type NavigationSection } from "./navigation";
 import { type StateMap } from "./state-map";
 import { type FileMatcher } from "./utils";
@@ -57,6 +57,18 @@ export interface ProcessorContext {
      * @param src - File or directory to copy.
      */
     addResource(dst: string, src: string): void;
+
+    /**
+     * Register additional source files or dependencies required by a document
+     * (e.g. files imported by live examples).
+     */
+    addDependency(doc: DocumentPage, files: Iterable<string>): void;
+    /**
+     * Get all registered dependencies for a document.
+     */
+    getDependencies(doc: {
+        fileInfo: { fullPath: string };
+    }): ReadonlySet<string>;
 
     /**
      * Add a new block to be rendered in the template.

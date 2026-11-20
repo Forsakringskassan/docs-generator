@@ -257,6 +257,7 @@ export interface Manifest {
             heading: string;
             anchor: string;
         }>;
+        inputs: string[];
         examples: Array<{
             name?: string;
             src: string | null;
@@ -413,6 +414,7 @@ export type Processor = ProcessorDescriptor<"before"> | ProcessorDescriptor<"sta
 
 // @public (undocumented)
 export interface ProcessorContext {
+    addDependency(doc: DocumentPage, files: Iterable<string>): void;
     // (undocumented)
     addDocument(document: Document_2 | Document_2[]): void;
     addResource(dst: string, src: string): void;
@@ -427,6 +429,11 @@ export interface ProcessorContext {
     getAllTemplateBlocks(): Map<string, Array<TemplateBlockData<unknown>>>;
     // (undocumented)
     getAllTemplateData(): TemplateData & Record<string, unknown>;
+    getDependencies(doc: {
+        fileInfo: {
+            fullPath: string;
+        };
+    }): ReadonlySet<string>;
     // (undocumented)
     getState<K extends keyof StateMap>(key: K): StateMap[K] | null;
     // (undocumented)

@@ -56,6 +56,7 @@ function createMockContext(): ProcessorContext {
             children: [],
         },
         addResource: noop,
+        addDependency: noop,
         addVendorAsset: noop,
         addTemplateBlock: noop,
         setSideNavigation: noop,
@@ -67,6 +68,9 @@ function createMockContext(): ProcessorContext {
         getTemplateData: noop,
         getAllTemplateBlocks() {
             return new Map();
+        },
+        getDependencies() {
+            return new Set();
         },
         getAllTemplateData() {
             return {

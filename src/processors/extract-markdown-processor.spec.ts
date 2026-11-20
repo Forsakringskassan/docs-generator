@@ -257,6 +257,7 @@ describe("extractExamples()", () => {
             title: "page",
             redirect: null,
             outline: [],
+            inputs: [],
             examples: srcs.map((src) => ({
                 src,
                 selector: "",

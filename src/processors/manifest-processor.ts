@@ -93,7 +93,7 @@ export function manifestProcessor(
     const { markdown, json, verify } = options;
     return {
         name: "manifestProcessor",
-        before: "render",
+        after: "render",
         async handler(context) {
             const docs = context.docs.filter(isDocumentPage).filter(haveOutput);
             const pages = docs.map((doc) =>
