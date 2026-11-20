@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [3.25.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.24.4...v3.25.0) (2026-11-20)
+
+### Features
+
+* **deps:** update dependency i18next to v27 ([b32390c](https://github.com/Forsakringskassan/docs-generator/commit/b32390ce905238c2b8f122cae5fa1cbaa63222d4))
+
+### Bug Fixes
+
+* fix sidenav not updating active link on browser nav (fixes SFKUI-8260) ([47e13e7](https://github.com/Forsakringskassan/docs-generator/commit/47e13e7969b82f5c48313d6a005ef77ad5f7dd3b))
+
 ## [3.24.4](https://github.com/Forsakringskassan/docs-generator/compare/v3.24.3...v3.24.4) (2026-11-19)
 
 ### Bug Fixes
