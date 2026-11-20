@@ -101,10 +101,13 @@ function findExamples(
  * @internal
  */
 export function manifestPageFromDocument(
-    context: Pick<ProcessorContext, "exampleFileMatcher">,
+    context: Pick<ProcessorContext, "exampleFileMatcher" | "getDependencies">,
     doc: DocumentPageLike,
 ): ManifestPage {
     const { body, fileInfo, format } = doc;
+    const inputs = Array.from(
+        context.getDependencies(fileInfo.fullPath),
+    ).toSorted((a, b) => a.localeCompare(b));
     return {
         path: getOutputFilePath("", fileInfo),
         src: doc.fileInfo.fullPath,
@@ -112,5 +115,6 @@ export function manifestPageFromDocument(
         redirect: format === "redirect" ? body : null,
         outline: flattenOutline(doc.outline),
         examples: findExamples(context, doc),
+        inputs,
     };
 }

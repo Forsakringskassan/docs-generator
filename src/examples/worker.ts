@@ -98,8 +98,10 @@ async function compileExample(
         },
         plugins: [virtualEntryPlugin(virtualEntries), VuePlugin()],
     });
+
     const inputs = new Set(Object.keys(metafile.inputs).filter(existsSync));
     inputs.add(task.sourceFile);
+
     return { ...task, inputs };
 }
 
@@ -117,7 +119,6 @@ if (port) {
     let runner = true;
     port.on("message", async (message: CompileMessage) => {
         const { tasks } = message;
-
         /* push task on queue but don't execute it yet */
         queue.push(async () => {
             const results = await compileExampleMultiple(message, tasks);

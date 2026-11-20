@@ -251,12 +251,16 @@ describe("extractExamples()", () => {
     });
 
     function createPage(srcs: Array<string | null>): Manifest["pages"][number] {
+        const inputs = Array.from(
+            new Set(srcs.filter((src): src is string => src !== null)),
+        );
         return {
             path: "page.html",
             src: "page.md",
             title: "page",
             redirect: null,
             outline: [],
+            inputs,
             examples: srcs.map((src) => ({
                 src,
                 selector: "",

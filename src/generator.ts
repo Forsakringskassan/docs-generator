@@ -221,6 +221,7 @@ function createContext(options: {
     exampleFileMatcher: FileMatcher;
     templateLoader: TemplateLoader;
 }): Omit<ProcessorContext, "log" | "error"> {
+    const dependencies = new Map<string, Set<string>>();
     const { outputFolder, exampleFileMatcher, templateLoader } = options;
     let docs: Document[] = [];
     let vendors: VendorAsset[] = [];
@@ -281,6 +282,22 @@ function createContext(options: {
                 from: src.replaceAll("\\", "/"),
                 to: dst,
             });
+        },
+        addDependencies(filePath, files) {
+            let set = dependencies.get(filePath);
+            if (!set) {
+                set = new Set();
+                dependencies.set(filePath, set);
+            }
+            for (const file of files) {
+                const relativePath = path.isAbsolute(file)
+                    ? path.relative(process.cwd(), file)
+                    : file;
+                set.add(relativePath.replaceAll("\\", "/"));
+            }
+        },
+        getDependencies(filePath) {
+            return dependencies.get(filePath) ?? new Set();
         },
 
         addTemplateBlock(container, id, renderer): void {
@@ -588,7 +605,7 @@ export class Generator {
 
         const docs = context.docs.filter(isDocumentPage).filter(haveOutput);
         const pages = docs.map((doc) => {
-            return manifestPageFromDocument({ exampleFileMatcher }, doc);
+            return manifestPageFromDocument(context, doc);
         });
         return { pages };
     }
