@@ -12,4 +12,8 @@ export { generateExample } from "./generate-example";
 export { parseInfostring } from "./parse-infostring";
 export { transformCode } from "./transform-code";
 export { default as workerUrl } from "./worker?worker&url";
-export { type CompileMessage, type CompileResponse } from "./worker";
+export {
+    type CompileMessage,
+    type CompileResponse,
+    type CompileResult,
+} from "./worker";

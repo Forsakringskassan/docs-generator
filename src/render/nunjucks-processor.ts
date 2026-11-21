@@ -15,7 +15,7 @@ const progressbar = new cliProgress.SingleBar({
 export function nunjucksProcessor(
     options: Omit<
         RenderOptions,
-        "templateBlocks" | "templateData" | "addResource"
+        "templateBlocks" | "templateData" | "addResource" | "addDependency"
     >,
 ): Processor {
     return {
@@ -36,6 +36,9 @@ export function nunjucksProcessor(
                     linkResolvers: options.linkResolvers,
                     addResource(dst, src) {
                         context.addResource(dst, src);
+                    },
+                    addDependency(doc, files) {
+                        context.addDependency(doc, files);
                     },
                 });
             }
