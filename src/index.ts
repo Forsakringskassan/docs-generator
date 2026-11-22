@@ -38,14 +38,18 @@ export {
     type NavigationSection,
 } from "./navigation";
 export { type PackageJson } from "./package-json";
+/* eslint-disable @typescript-eslint/no-deprecated -- re-exporting deprecated types for backwards compatibility */
 export {
     type Processor,
+    type ProcessorDependency,
     type ProcessorDescriptor,
     type ProcessorHandler,
     type ProcessorHook,
     type ProcessorOptions,
     type ProcessorRuntime,
+    type ProcessorTarget,
 } from "./processor";
+/* eslint-enable @typescript-eslint/no-deprecated */
 export {
     type ProcessorContext,
     type TemplateBlockData,

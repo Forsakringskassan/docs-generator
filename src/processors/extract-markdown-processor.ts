@@ -449,7 +449,7 @@ export function extractMarkdownProcessor(
     } = options;
 
     return {
-        after: "render",
+        after: ["render", "manifestProcessor"],
         name: "extract-markdown-processor",
         async handler(context) {
             if (!enabled) {
