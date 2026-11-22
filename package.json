@@ -144,7 +144,7 @@
     "@forsakringskassan/stylelint-config": "3.6.0",
     "@forsakringskassan/vitest-config": "5.1.0",
     "@forsakringskassan/vitest-config-jsdom": "5.1.0",
-    "@html-validate/release-scripts": "7.6.20",
+    "@html-validate/release-scripts": "7.6.22",
     "@microsoft/api-extractor": "7.60.1",
     "@rollup/plugin-commonjs": "29.0.3",
     "@rollup/plugin-json": "6.1.0",
