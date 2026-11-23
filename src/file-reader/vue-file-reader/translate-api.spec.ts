@@ -682,6 +682,214 @@ describe("composition API", () => {
         ]);
     });
 
+    it("should parse method signature props", async () => {
+        expect.assertions(1);
+        const filepath = fixture("CompositionPropsMethod.vue");
+        const result = await translateAPI(filepath);
+        expect(result.props).toEqual([
+            {
+                name: "foo",
+                type: "string",
+                required: false,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+            {
+                name: "fetchData",
+                type: "(first: number, last: number) => string[] | Promise<string[]>",
+                required: false,
+                description: "Lorem ipsum dolor\nsit amet.",
+                default: null,
+                deprecated: null,
+            },
+            {
+                name: "bar",
+                type: "number",
+                required: true,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+            {
+                name: "transform",
+                type: "(value: string) => string",
+                required: true,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+            {
+                name: "pick",
+                type: "<T extends object>(items: T[], index: number) => T | undefined",
+                required: false,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+            {
+                name: "log",
+                type: '(message: string, level: "info" | "warn" | "error", source: string, timestamp: number, ...details: Array<{ key: string; value: unknown }>) => void',
+                required: false,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+            {
+                name: "obsolete",
+                type: "() => void",
+                required: false,
+                description: null,
+                default: null,
+                deprecated: "Use `transform` instead",
+            },
+        ]);
+    });
+
+    it("should parse method signature props with defaults", async () => {
+        expect.assertions(1);
+        const filepath = fixture("CompositionPropsMethodDefaults.vue");
+        const result = await translateAPI(filepath);
+        expect(result.props).toEqual([
+            {
+                name: "foo",
+                type: "string",
+                required: false,
+                description: null,
+                default: { value: `"default"` },
+                deprecated: null,
+            },
+            {
+                name: "sort",
+                type: "(items: string[]) => string[]",
+                required: false,
+                description: "Lorem ipsum.",
+                default: { value: "(items: string[]) => items" },
+                deprecated: null,
+            },
+        ]);
+    });
+
+    it("should parse method signature props with interface", async () => {
+        expect.assertions(1);
+        const filepath = fixture("CompositionPropsMethodInterface.vue");
+        const result = await translateAPI(filepath);
+        expect(result.props).toEqual([
+            {
+                name: "onSelect",
+                type: "(id: string) => void",
+                required: false,
+                description: "Lorem ipsum.",
+                default: null,
+                deprecated: null,
+            },
+            {
+                name: "id",
+                type: "string",
+                required: true,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+            {
+                name: "format",
+                type: "(id: string) => string",
+                required: true,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+        ]);
+    });
+
+    it("should parse method signature props with imported interface", async () => {
+        expect.assertions(1);
+        const filepath = fixture("CompositionPropsMethodImported.vue");
+        const result = await translateAPI(filepath);
+        expect(result.props).toEqual([
+            {
+                name: "id",
+                type: "string",
+                required: true,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+            {
+                name: "format",
+                type: "(value: string, options: { pad: number; }) => string",
+                required: false,
+                description: "Lorem ipsum.",
+                default: null,
+                deprecated: null,
+            },
+        ]);
+    });
+
+    it("should parse function type props", async () => {
+        expect.assertions(1);
+        const filepath = fixture("CompositionPropsFunction.vue");
+        const result = await translateAPI(filepath);
+        expect(result.props).toEqual([
+            {
+                name: "rowClass",
+                type: "(row: number) => string",
+                required: false,
+                description: "Lorem ipsum.",
+                default: null,
+                deprecated: null,
+            },
+            {
+                name: "label",
+                type: "string | ((row: number) => string)",
+                required: true,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+            {
+                name: "callbacks",
+                type: "Array<() => void>",
+                required: false,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+        ]);
+    });
+
+    it("should parse props with type operators, qualified names and indexed access", async () => {
+        expect.assertions(1);
+        const filepath = fixture("CompositionPropsUnnamedType.vue");
+        const result = await translateAPI(filepath);
+        expect(result.props).toEqual([
+            {
+                name: "field",
+                type: "keyof Item",
+                required: true,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+            {
+                name: "format",
+                type: "Intl.DateTimeFormatOptions",
+                required: false,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+            {
+                name: "name",
+                type: 'Item["name"]',
+                required: true,
+                description: null,
+                default: null,
+                deprecated: null,
+            },
+        ]);
+    });
+
     /* eslint-disable-next-line vitest/no-disabled-tests -- vue-docgen-api fails to recognize this */
     it.skip("should parse type props with props destructuring", async () => {
         expect.assertions(1);

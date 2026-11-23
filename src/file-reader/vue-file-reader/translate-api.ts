@@ -13,6 +13,7 @@ import {
     type ComponentProp,
     type ComponentSlot,
 } from "./component-api";
+import { definePropsTypeHandler } from "./define-props-type-handler";
 
 interface PropDeprecatedTag {
     description?: string | boolean;
@@ -309,7 +310,9 @@ function filterModels(
  */
 export async function translateAPI(filePath: string): Promise<ComponentAPI> {
     try {
-        const api = await parse(filePath);
+        const api = await parse(filePath, {
+            addScriptHandlers: [definePropsTypeHandler],
+        });
         const rawProps = api.props ? translateProps(api.props) : [];
         const rawEvents = api.events ? translateEvents(api.events) : [];
 
