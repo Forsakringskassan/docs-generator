@@ -24,7 +24,7 @@ export type AttributeValue = string | number | boolean | null | {
 };
 
 // @internal
-export const availableProcessors: Processor[];
+export const availableProcessors: ProcessorHandler[];
 
 // @public (undocumented)
 export interface CompileOptions {
@@ -410,7 +410,7 @@ export interface PrettyError {
 }
 
 // @public (undocumented)
-export type Processor = ProcessorDescriptor<"before"> | ProcessorDescriptor<"stage"> | ProcessorDescriptor<"after">;
+export type Processor = ProcessorHandler;
 
 // @public (undocumented)
 export interface ProcessorContext {
@@ -468,14 +468,15 @@ export interface ProcessorContext {
 }
 
 // @public (undocumented)
-export type ProcessorDescriptor<K extends "before" | "stage" | "after"> = ProcessorHook<K> & ProcessorHandler;
+export type ProcessorDependency = ProcessorTarget | ProcessorTarget[];
+
+// @public @deprecated (undocumented)
+export type ProcessorDescriptor<K extends "before" | "stage" | "after"> = K extends string ? Processor : never;
 
 // @public (undocumented)
 export interface ProcessorHandler {
-    // (undocumented)
-    after?: ProcessorStage;
-    // (undocumented)
-    before?: ProcessorStage;
+    after?: ProcessorDependency;
+    before?: ProcessorDependency;
     // (undocumented)
     enabled?: boolean;
     // (undocumented)
@@ -483,14 +484,12 @@ export interface ProcessorHandler {
     name: string;
     resolveLink?: LinkResolver;
     runtime?: ProcessorRuntime[];
-    // (undocumented)
+    // @deprecated (undocumented)
     stage?: ProcessorStage;
 }
 
-// @public (undocumented)
-export type ProcessorHook<K extends "before" | "stage" | "after"> = {
-    [k in K]: ProcessorStage;
-};
+// @public @deprecated (undocumented)
+export type ProcessorHook<K extends "before" | "stage" | "after"> = K extends string ? Processor : never;
 
 // @public (undocumented)
 export interface ProcessorOptions {
@@ -512,6 +511,9 @@ export function processorRuntimeName(processor: Processor, runtime: ProcessorRun
 
 // @public (undocumented)
 export type ProcessorStage = "generate-docs" | "generate-nav" | "assets" | "render";
+
+// @public
+export type ProcessorTarget = ProcessorStage | (string & {});
 
 // @public
 export function redirectFileProcessor(prefix?: string, filename?: string): Processor;

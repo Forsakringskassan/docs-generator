@@ -35,6 +35,7 @@ import { redirectProcessor } from "./processors";
 import { type TemplateLoader, nunjucksProcessor } from "./render";
 import { createTemplateLoader } from "./render/render";
 import { serve } from "./serve";
+import { sortProcessors } from "./sort-processors";
 import { type StateMap } from "./state-map";
 import {
     type FileMatcher,
@@ -134,46 +135,99 @@ function toArray<T>(value: T | T[]): T[] {
     return Array.isArray(value) ? value : [value];
 }
 
-function filterProcessors(
-    stage: ProcessorStage,
-    processors: Processor[],
-): Processor[] {
-    const before: Processor[] = [];
-    const during: Processor[] = [];
-    const after: Processor[] = [];
-    for (const processor of processors) {
-        if (processor.enabled === false) {
-            continue;
-        }
-        if (processor.before === stage) {
-            before.push(processor);
-        }
-        if (processor.stage === stage) {
-            during.push(processor);
-        }
-        if (processor.after === stage) {
-            after.push(processor);
-        }
-    }
-    return [...before, ...during, ...after];
-}
+// function filterProcessors(
+//     stage: ProcessorStage,
+//     processors: Processor[],
+// ): Processor[] {
+//     const before: Processor[] = [];
+//     const during: Processor[] = [];
+//     const after: Processor[] = [];
+//     for (const processor of processors) {
+//         if (processor.enabled === false) {
+//             continue;
+//         }
+//         if (processor.before === stage) {
+//             before.push(processor);
+//         }
+//         if (processor.stage === stage) {
+//             during.push(processor);
+//         }
+//         if (processor.after === stage) {
+//             after.push(processor);
+//         }
+//     }
+//     return [...before, ...during, ...after];
+// }
+
+// async function stage(
+//     stage: ProcessorStage,
+//     context: Omit<ProcessorContext, "log" | "error">,
+//     processors: Processor[],
+//     options?: { verbose: boolean },
+// ): Promise<string[]> {
+//     const { verbose = true } = options ?? {};
+//     if (verbose) {
+//         console.log(`stage:${stage}`);
+//     }
+//     let generatedFiles: string[] = [];
+//     const filteredProcessors = filterProcessors(stage, processors);
+//     for (let i = 0; i < filteredProcessors.length; i++) {
+//         const processor = filteredProcessors[i];
+//         const isLast = i === filteredProcessors.length - 1;
+//         if (verbose) {
+//             console.log(isLast ? "  └─" : "  ├─", processor.name);
+//         }
+//         if (!processor.handler) {
+//             continue;
+//         }
+//         try {
+//             const prefix = (() => {
+//                 if (verbose) {
+//                     return isLast ? " ".repeat(6) : "  │   ";
+//                 }
+//                 return "";
+//             })();
+//             const result = await processor.handler({
+//                 ...context,
+//                 log(...args: unknown[]) {
+//                     if (verbose) {
+//                         console.log(prefix, ...args);
+//                     }
+//                 },
+//                 error(...args: unknown[]) {
+//                     process.exitCode = 1;
+//                     console.error(
+//                         prefix,
+//                         ...args.map((it) =>
+//                             typeof it === "string" ? styleText("red", it) : it,
+//                         ),
+//                     );
+//                 },
+//             });
+//             if (result) {
+//                 generatedFiles = [...generatedFiles, ...result];
+//             }
+//         } catch (err) {
+//             console.error(`When running processor "${processor.name}":`);
+//             throw err;
+//         }
+//     }
+//     return generatedFiles;
+// }
 
 /* eslint-disable no-console -- expected to log */
-async function stage(
-    stage: ProcessorStage,
+async function runProcessors(
     context: Omit<ProcessorContext, "log" | "error">,
     processors: Processor[],
-    options?: { verbose: boolean },
+    options?: { verbose?: boolean; until?: ProcessorStage },
 ): Promise<string[]> {
-    const { verbose = true } = options ?? {};
-    if (verbose) {
-        console.log(`stage:${stage}`);
-    }
+    const { verbose = true, until } = options ?? {};
+    const sortedProcessors = sortProcessors(processors, { until });
     let generatedFiles: string[] = [];
-    const filteredProcessors = filterProcessors(stage, processors);
-    for (let i = 0; i < filteredProcessors.length; i++) {
-        const processor = filteredProcessors[i];
-        const isLast = i === filteredProcessors.length - 1;
+
+    for (let i = 0; i < sortedProcessors.length; i++) {
+        const processor = sortedProcessors[i];
+        const isLast = i === sortedProcessors.length - 1;
         if (verbose) {
             console.log(isLast ? "  └─" : "  ├─", processor.name);
         }
@@ -599,7 +653,10 @@ export class Generator {
             exampleFileMatcher,
             templateLoader,
         });
-        await stage("generate-docs", context, processors, { verbose: false });
+        await runProcessors(context, processors, {
+            verbose: false,
+            until: "generate-docs",
+        });
 
         const docs = context.docs.filter(isDocumentPage).filter(haveOutput);
         const pages = docs.map((doc) => {
@@ -719,13 +776,7 @@ export class Generator {
             filename: "partials/component-aside.html",
         });
 
-        const generatedFiles = [
-            await stage("generate-docs", context, processors),
-            await stage("generate-nav", context, processors),
-            await stage("assets", context, processors),
-            await stage("render", context, processors),
-        ];
-        return generatedFiles.flat();
+        return runProcessors(context, processors);
     }
 
     /**

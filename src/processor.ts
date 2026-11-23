@@ -30,27 +30,43 @@ export interface ProcessorRuntime {
 }
 
 /**
+ * A dependency target: either a virtual stage or another processor's name.
+ *
  * @public
  */
-/* eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style -- technical debt */
-export type ProcessorHook<K extends "before" | "stage" | "after"> = {
-    [k in K]: ProcessorStage;
-};
+// /* eslint-disable-next-line @typescript-eslint/ban-types -- allow string autocomplete with ProcessorStage */
+export type ProcessorTarget = ProcessorStage | (string & {});
+
+/**
+ * @public
+ */
+export type ProcessorDependency = ProcessorTarget | ProcessorTarget[];
 
 /**
  * @public
  */
 export interface ProcessorHandler {
-    before?: ProcessorStage;
-    stage?: ProcessorStage;
-    after?: ProcessorStage;
-
     /**
-     * Name of this processor. Only used for logging purposes.
+     * Name of this processor. Used for logging and `before`/`after` ordering.
      */
     name: string;
 
     enabled?: boolean;
+
+    /**
+     * @deprecated Use `before` and/or `after` instead.
+     */
+    stage?: ProcessorStage;
+
+    /**
+     * Run this processor before the given virtual stage(s) or processor(s).
+     */
+    before?: ProcessorDependency;
+
+    /**
+     * Run this processor after the given virtual stage(s) or processor(s).
+     */
+    after?: ProcessorDependency;
 
     /** List of runtime client scripts required by this processor */
     runtime?: ProcessorRuntime[];
@@ -70,13 +86,18 @@ export interface ProcessorHandler {
 /**
  * @public
  */
-export type ProcessorDescriptor<K extends "before" | "stage" | "after"> =
-    ProcessorHook<K> & ProcessorHandler;
+export type Processor = ProcessorHandler;
 
 /**
  * @public
+ * @deprecated Use {@link Processor} instead.
  */
-export type Processor =
-    | ProcessorDescriptor<"before">
-    | ProcessorDescriptor<"stage">
-    | ProcessorDescriptor<"after">;
+export type ProcessorDescriptor<K extends "before" | "stage" | "after"> =
+    K extends string ? Processor : never;
+
+/**
+ * @public
+ * @deprecated Use {@link Processor} instead.
+ */
+export type ProcessorHook<K extends "before" | "stage" | "after"> =
+    K extends string ? Processor : never;
