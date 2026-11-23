@@ -52,6 +52,7 @@ function createMockContext(): ProcessorContext {
                 docs.push(doc);
             }
         },
+        ignorePatterns: [],
         exampleFileMatcher() {
             return "";
         },

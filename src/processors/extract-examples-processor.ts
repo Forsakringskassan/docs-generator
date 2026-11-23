@@ -112,8 +112,9 @@ export function extractExamplesProcessor(
     }
 
     return {
-        stage: "render",
+        after: "render",
         name: "extract-examples-processor",
+        ignoreExamples: enabled && outputFolder ? [outputFolder] : [],
         async handler(context) {
             if (!enabled) {
                 return;

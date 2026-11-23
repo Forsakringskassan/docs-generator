@@ -27,6 +27,7 @@ import {
 import { type FileMatcher, getFingerprint, getOutputFilePath } from "../utils";
 import { type VendorAsset } from "../vendor";
 import { createMarkdownRenderer } from "./create-markdown-renderer";
+import { partitionCachedTasks, writeCachedInputs } from "./example-cache";
 import * as filter from "./filter";
 import { findTemplate } from "./find-template";
 import { type RenderOptions } from "./render-options";
@@ -139,13 +140,19 @@ async function compileExamples(options: {
     ];
     const cacheFolder = path.posix.join(options.cacheFolder, fileInfo.path);
     const outputFolder = path.posix.join(options.outputFolder, fileInfo.path);
-    const cacheMiss = cache(cacheFolder, outputFolder);
-    const dirtyTasks = tasks.filter(cacheMiss);
+
+    const { cachedResults, dirtyTasks } = partitionCachedTasks(
+        tasks,
+        fileInfo.path,
+        cacheFolder,
+        outputFolder,
+    );
 
     /* skip forking if there are no tasks to be run anyway */
     if (dirtyTasks.length === 0) {
-        return [];
+        return cachedResults;
     }
+
     const ref = taskRef++;
     const message: CompileMessage = {
         message: "compile",
@@ -162,7 +169,16 @@ async function compileExamples(options: {
             }
             exampleWorker.off("message", onmessage);
             exampleWorker.off("error", onerror);
-            resolve(message.results);
+
+            for (const result of message.results) {
+                writeCachedInputs(
+                    fileInfo.path,
+                    result.outputFile,
+                    result.inputs,
+                );
+            }
+
+            resolve([...cachedResults, ...message.results]);
         }
 
         function onerror(err: Error): void {

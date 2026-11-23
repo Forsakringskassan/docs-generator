@@ -81,6 +81,10 @@ export interface ProcessorHandler {
      * Resolve a link from a `{@link ...}` tag.
      */
     resolveLink?: LinkResolver;
+    /**
+     * Glob patterns or folders to ignore when searching for example files.
+     */
+    ignoreExamples?: string[];
 }
 
 /**

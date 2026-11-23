@@ -444,6 +444,8 @@ export interface ProcessorContext {
     getTemplateData(key: string): unknown;
     // @internal
     hasTemplate(name: string): boolean;
+    // (undocumented)
+    readonly ignorePatterns: string[];
     log(...args: unknown[]): void;
     // (undocumented)
     readonly outputFolder: string;
@@ -481,6 +483,7 @@ export interface ProcessorHandler {
     enabled?: boolean;
     // (undocumented)
     handler?(context: ProcessorContext): void | string[] | Promise<void> | Promise<string[]>;
+    ignoreExamples?: string[];
     name: string;
     resolveLink?: LinkResolver;
     runtime?: ProcessorRuntime[];

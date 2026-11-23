@@ -43,6 +43,7 @@ export interface ProcessorContext {
     readonly sidenav: NavigationSection;
     readonly resources: ResourceTask[];
     readonly outputFolder: string;
+    readonly ignorePatterns: string[];
 
     setState<K extends keyof StateMap>(key: K, value: StateMap[K]): void;
     getState<K extends keyof StateMap>(key: K): StateMap[K] | null;
