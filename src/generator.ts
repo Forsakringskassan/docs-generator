@@ -274,9 +274,11 @@ function createContext(options: {
     outputFolder: string;
     exampleFileMatcher: FileMatcher;
     templateLoader: TemplateLoader;
+    ignorePatterns: string[];
 }): Omit<ProcessorContext, "log" | "error"> {
     const dependencies = new Map<string, Set<string>>();
-    const { outputFolder, exampleFileMatcher, templateLoader } = options;
+    const { outputFolder, exampleFileMatcher, templateLoader, ignorePatterns } =
+        options;
     let docs: Document[] = [];
     let vendors: VendorAsset[] = [];
     const resources: ResourceTask[] = [];
@@ -300,6 +302,7 @@ function createContext(options: {
     const templateData = new Map<string, unknown>();
     const stateData = new Map<PropertyKey, unknown>();
     return {
+        ignorePatterns,
         get docs(): Document[] {
             return docs;
         },
@@ -409,6 +412,14 @@ function createContext(options: {
             return stateData.get(key) as StateMap[K];
         },
     };
+}
+
+/**
+ * @internal
+ */
+function toIgnorePatterns(folder: string): string[] {
+    const normalized = folder.replaceAll("\\", "/").replace(/^\.\//, "");
+    return [normalized, `${normalized}/**`];
 }
 
 /**
@@ -652,6 +663,7 @@ export class Generator {
             outputFolder: "",
             exampleFileMatcher,
             templateLoader,
+            ignorePatterns: [],
         });
         await runProcessors(context, processors, {
             verbose: false,
@@ -749,14 +761,26 @@ export class Generator {
 
         compileProcessorRuntime(this, import.meta.url, processors);
 
+        const ignoredExamples = this.processors.flatMap((it) =>
+            it.enabled !== false ? (it.ignoreExamples ?? []) : [],
+        );
+
+        const ignorePatterns: string[] = [
+            ...toIgnorePatterns(outputFolder),
+            ...toIgnorePatterns(cacheFolder),
+            ...toIgnorePatterns("temp"),
+            ...ignoredExamples.flatMap((it) => toIgnorePatterns(it)),
+        ];
+
         const exampleFileMatcher = await fileMatcher(examplePatterns, {
-            ignore: [],
+            ignore: ignorePatterns,
         });
         const templateLoader = createTemplateLoader(templateFolders);
         const context = createContext({
             outputFolder,
             exampleFileMatcher,
             templateLoader,
+            ignorePatterns,
         });
 
         /* default template blocks */

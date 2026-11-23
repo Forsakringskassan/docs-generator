@@ -55,6 +55,7 @@ function createMockContext(): ProcessorContext {
             visible: true,
             children: [],
         },
+        ignorePatterns: [],
         addResource: noop,
         addDependency: noop,
         addVendorAsset: noop,

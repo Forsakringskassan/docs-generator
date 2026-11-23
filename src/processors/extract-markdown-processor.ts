@@ -451,6 +451,7 @@ export function extractMarkdownProcessor(
     return {
         after: ["render", "manifestProcessor"],
         name: "extract-markdown-processor",
+        ignoreExamples: enabled && outputFolder ? [outputFolder] : [],
         async handler(context) {
             if (!enabled) {
                 return;

@@ -88,7 +88,7 @@ export function sourceUrlProcessor(
             }
 
             const matcher = await fileMatcher(sourceFiles, {
-                ignore: ["**/node_modules/**"],
+                ignore: ["**/node_modules/**", ...context.ignorePatterns],
             });
 
             const hash = (await gitCommitHash("full")) ?? "";
