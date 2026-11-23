@@ -16,6 +16,7 @@ export default [
             "**/node_modules/**",
             "**/temp/**",
             "**/public/**",
+            "spike/**",
         ],
     },
 

@@ -19,6 +19,8 @@ export {
     type FileReader,
     type PartialFile,
     type SourceFiles,
+    type VueFileReaderOptions,
+    createVueFileReader,
     frontMatterFileReader,
     navigationFileReader,
     partialFileReader,

@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "esnext",
+        "moduleResolution": "bundler",
+        "lib": ["esnext", "dom"],
+        "types": [],
+        "strict": true,
+        "allowJs": true,
+        "skipLibCheck": true,
+        "noEmit": true
+    },
+    "include": ["./*.vue", "./*.ts"]
+}

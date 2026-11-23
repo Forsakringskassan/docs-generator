@@ -1,5 +1,3 @@
-/* eslint-disable sonarjs/fixme-tag -- false positive */
-
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { translateAPI } from "./translate-api";
@@ -121,15 +119,14 @@ describe("options API", () => {
         ]);
     });
 
-    /* eslint-disable-next-line vitest/no-disabled-tests -- known bug */
-    it.skip("should parse enum prop", async () => {
+    it("should parse enum prop", async () => {
         expect.assertions(1);
         const filepath = fixture("OptionsPropsEnum.vue");
         const result = await translateAPI(filepath);
         expect(result.props).toEqual([
             {
                 name: "value",
-                type: "'foo' | 'bar' | 'baz'",
+                type: '"foo" | "bar" | "baz"',
                 required: true,
                 description: null,
                 default: null,
@@ -177,7 +174,7 @@ describe("options API", () => {
             },
             {
                 name: "untypedArray",
-                type: "array",
+                type: "unknown[]",
                 required: true,
                 description: null,
                 default: null,
@@ -255,7 +252,7 @@ describe("options API", () => {
                 properties: [
                     {
                         name: "name",
-                        type: "mixed",
+                        type: "string",
                         description: `dolor sit amet`,
                     },
                 ],
@@ -300,8 +297,7 @@ describe("options API", () => {
             },
             {
                 name: "bar",
-                /* eslint-disable-next-line no-warning-comments -- bug in vue-docgen-api */
-                description: "Lorem default ipsum", // FIXME
+                description: null,
                 bindings: [],
                 deprecated: null,
             },
@@ -382,8 +378,7 @@ describe("composition API", () => {
         expect(result.events).toEqual([]);
     });
 
-    /* eslint-disable-next-line vitest/no-disabled-tests -- vue-docgen-api fails to recognize this */
-    it.skip("should handle v-model with `defineModel`", async () => {
+    it("should handle v-model with `defineModel`", async () => {
         expect.assertions(3);
         const filepath = fixture("CompositionVmodelDefine.vue");
         const result = await translateAPI(filepath);
@@ -560,7 +555,7 @@ describe("composition API", () => {
             },
             {
                 name: "untypedArray",
-                type: "any[]",
+                type: "Array",
                 required: true,
                 description: null,
                 default: null,
@@ -584,7 +579,7 @@ describe("composition API", () => {
             },
             {
                 name: "singleElementTuple",
-                type: "[number]",
+                type: "[foo: number]",
                 required: true,
                 description: null,
                 default: null,
@@ -592,7 +587,7 @@ describe("composition API", () => {
             },
             {
                 name: "multipleElementTuple",
-                type: "[string, number]",
+                type: "[foo: string, bar: number]",
                 required: true,
                 description: null,
                 default: null,
@@ -633,15 +628,14 @@ describe("composition API", () => {
         ]);
     });
 
-    /* eslint-disable-next-line vitest/no-disabled-tests -- known bug */
-    it.skip("should parse enum prop", async () => {
+    it("should parse enum prop", async () => {
         expect.assertions(1);
         const filepath = fixture("CompositionPropsEnum.vue");
         const result = await translateAPI(filepath);
         expect(result.props).toEqual([
             {
                 name: "value",
-                type: "'foo' | 'bar' | 'baz'",
+                type: '"foo" | "bar" | "baz"',
                 required: true,
                 description: null,
                 default: null,
@@ -682,8 +676,7 @@ describe("composition API", () => {
         ]);
     });
 
-    /* eslint-disable-next-line vitest/no-disabled-tests -- vue-docgen-api fails to recognize this */
-    it.skip("should parse type props with props destructuring", async () => {
+    it("should parse type props with props destructuring", async () => {
         expect.assertions(1);
         const filepath = fixture("CompositionPropsDestructuring.vue");
         const result = await translateAPI(filepath);
@@ -706,7 +699,7 @@ describe("composition API", () => {
             },
             {
                 name: "baz",
-                type: "{ name: string }",
+                type: "number",
                 required: false,
                 description: "Lorem ipsum dolor\nsit amet.",
                 default: { value: "42" },
@@ -741,8 +734,7 @@ describe("composition API", () => {
         ]);
     });
 
-    /* eslint-disable-next-line vitest/no-disabled-tests -- vue-docgen-api fails to recognize this */
-    it.skip("should parse events (object)", async () => {
+    it("should parse events (object)", async () => {
         expect.assertions(1);
         const filepath = fixture("CompositionEmitsObject.vue");
         const result = await translateAPI(filepath);
@@ -750,18 +742,24 @@ describe("composition API", () => {
             {
                 name: "foo",
                 description: "Lorem ipsum",
-                properties: `name: undefined &#8212; dolor sit amet`,
+                properties: [
+                    {
+                        name: "name",
+                        type: "string",
+                        description: "dolor sit amet",
+                    },
+                ],
                 deprecated: null,
             },
             {
                 name: "bar",
-                description: "",
+                description: null,
                 properties: [],
                 deprecated: null,
             },
             {
                 name: "obsolete",
-                description: "",
+                description: null,
                 properties: [],
                 deprecated: "Use `foo` instead",
             },
@@ -862,8 +860,7 @@ describe("composition API", () => {
             },
             {
                 name: "bar",
-                /* eslint-disable-next-line no-warning-comments -- bug in vue-docgen-api */
-                description: "Lorem default ipsum", // FIXME
+                description: null,
                 bindings: [],
                 deprecated: null,
             },
@@ -887,12 +884,12 @@ describe("composition API", () => {
                 bindings: [
                     {
                         name: "item",
-                        type: "unknown",
+                        type: "string",
                         description: "Item description",
                     },
                     {
                         name: "index",
-                        type: "unknown",
+                        type: "number",
                         description: "Index description",
                     },
                 ],
@@ -936,6 +933,94 @@ it("should handle @ignore", async () => {
             description: null,
             deprecated: null,
             bindings: [],
+        },
+    ]);
+});
+
+it("should handle method signature props with destructured defaults", async () => {
+    expect.assertions(1);
+    const filepath = fixture("CompositionPropsMethodSignature.vue");
+    const result = await translateAPI(filepath);
+    expect(result.props).toEqual([
+        {
+            name: "items",
+            type: "T[]",
+            required: false,
+            description: "The items to display.",
+            default: { value: "[]" },
+            deprecated: null,
+        },
+        {
+            name: "fetchData",
+            type: "(firstItemIndex: number, lastItemIndex: number) => T[] | Promise<T[]> | null",
+            required: false,
+            description: "The function for fetching data when switching pages.",
+            default: { value: "() => null" },
+            deprecated: null,
+        },
+        {
+            name: "callback",
+            type: "(value: T) => void",
+            required: false,
+            description: null,
+            default: null,
+            deprecated: null,
+        },
+    ]);
+});
+
+it("should handle multiple untyped emits with `@type`", async () => {
+    expect.assertions(3);
+    const filepath = fixture("OptionsEmitsTyped.vue");
+    const result = await translateAPI(filepath);
+    expect(result.models).toEqual([
+        {
+            name: "v-model",
+            type: "string",
+            required: false,
+            description: "Lorem ipsum.",
+            default: { value: `""` },
+            deprecated: null,
+        },
+    ]);
+    expect(result.props).toEqual([]);
+    expect(result.events).toEqual([
+        {
+            name: "change",
+            description: "Emitted when the value changes.",
+            properties: [
+                {
+                    name: "<anonymous>",
+                    type: "string | string[]",
+                    description: null,
+                },
+            ],
+            deprecated: null,
+        },
+    ]);
+});
+
+it("should merge documented and inferred slot bindings", async () => {
+    expect.assertions(1);
+    const filepath = fixture("CompositionSlotsBindings.vue");
+    const result = await translateAPI(filepath);
+    expect(result.slots).toEqual([
+        {
+            name: "default",
+            description: "Slot for the page.",
+            bindings: [
+                {
+                    name: "items",
+                    type: "string[]",
+                    description: "The items on the current page.",
+                },
+                {
+                    name: "numberOfItems",
+                    type: "number",
+                    description: null,
+                },
+            ],
+            deprecated: null,
         },
     ]);
 });

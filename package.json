@@ -126,7 +126,7 @@
     "semver": "7.8.6",
     "synckit": "0.12.3",
     "tiny-lr": "2.0.0",
-    "vue-docgen-api": "4.79.2"
+    "vue-component-meta": "3.3.14"
   },
   "devDependencies": {
     "@babel/types": "8.1.3",
@@ -180,13 +180,15 @@
     "rollup-plugin-visualizer": "7.1.3",
     "sass": "1.108.2",
     "typescript": "npm:@typescript/typescript6@6.0.2",
-    "vitest": "5.1.1"
+    "vitest": "5.1.1",
+    "vue-docgen-api": "4.79.2"
   },
   "peerDependencies": {
     "esbuild": "0.x",
     "express": "^4 || ^5.0.0",
     "he": "^1.2",
     "sass": "^1.71",
+    "typescript": "^5.0 || ^6.0",
     "vue": "^3.0.0"
   },
   "peerDependenciesMeta": {
@@ -212,6 +214,6 @@
     "nunjucks",
     "piscina",
     "synckit",
-    "vue-docgen-api"
+    "vue-component-meta"
   ]
 }

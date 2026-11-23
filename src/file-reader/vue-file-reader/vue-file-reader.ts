@@ -3,6 +3,7 @@ import path from "node:path";
 import { type DocumentPartial } from "../../document";
 import { normalizePath } from "../../utils";
 import { type ComponentAPI } from "./component-api";
+import { type VueFileReaderOptions } from "./component-meta-checker";
 import { findTranslations } from "./find-translations";
 import { generateEventTable } from "./generate-event-table";
 import { generateModelTable } from "./generate-model-table";
@@ -68,15 +69,39 @@ async function parseTranslation(
 }
 
 /**
+ * Create a file reader generating API documentation from Vue SFCs.
+ *
+ * Component types are resolved with the TypeScript project the component
+ * belongs to, see {@link VueFileReaderOptions.tsconfig}.
+ *
+ * @public
+ */
+export function createVueFileReader(
+    options: VueFileReaderOptions = {},
+): (filePath: string) => Promise<DocumentPartial[]> {
+    return async (filePath) => {
+        const translated = await translateAPI(filePath, options);
+        const vueApi = parseAPI(filePath, translated);
+        const vueTranslation = await parseTranslation(
+            translated.slug,
+            filePath,
+        );
+        return [vueApi, vueTranslation];
+    };
+}
+
+const defaultVueFileReader = createVueFileReader();
+
+/**
  * Generate API documentation from a Vue SFC.
+ *
+ * Uses the nearest `tsconfig.json` including the component, use
+ * {@link createVueFileReader} to configure which tsconfig to use.
  *
  * @public
  */
 export async function vueFileReader(
     filePath: string,
 ): Promise<DocumentPartial[]> {
-    const translated = await translateAPI(filePath);
-    const vueApi = parseAPI(filePath, translated);
-    const vueTranslation = await parseTranslation(translated.slug, filePath);
-    return [vueApi, vueTranslation];
+    return defaultVueFileReader(filePath);
 }
