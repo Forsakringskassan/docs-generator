@@ -105,7 +105,7 @@ describe("options API", () => {
                 type: "{ name: string }",
                 required: false,
                 description: "Lorem ipsum dolor\nsit amet.",
-                default: { value: expect.stringMatching("function()") },
+                default: { value: '{ name: "" }' },
                 deprecated: null,
             },
             {
@@ -422,7 +422,7 @@ describe("composition API", () => {
                 type: "{ name: string }",
                 required: false,
                 description: "Lorem ipsum dolor\nsit amet.",
-                default: { value: expect.stringMatching("function()") },
+                default: { value: '{ name: "" }' },
                 deprecated: null,
             },
             {
@@ -670,7 +670,7 @@ describe("composition API", () => {
                 type: "{ name: string }",
                 required: false,
                 description: "Lorem ipsum dolor\nsit amet.",
-                default: { value: expect.stringMatching("() => ") },
+                default: { value: '{ name: "" }' },
                 deprecated: null,
             },
         ]);
@@ -1020,6 +1020,84 @@ it("should merge documented and inferred slot bindings", async () => {
                     description: null,
                 },
             ],
+            deprecated: null,
+        },
+    ]);
+});
+
+it("should derive enum type from prop validator", async () => {
+    expect.assertions(1);
+    const filepath = fixture("OptionsPropsValidator.vue");
+    const result = await translateAPI(filepath);
+    expect(result.props).toEqual([
+        {
+            name: "headerTag",
+            type: '"h1" | "h2"',
+            required: false,
+            description: null,
+            default: { value: `"h2"` },
+            deprecated: null,
+        },
+        {
+            name: "align",
+            type: '"top" | "bottom"',
+            required: false,
+            description: null,
+            default: { value: `"top"` },
+            deprecated: null,
+        },
+    ]);
+});
+
+it("should inherit events, models and slots with `extends`", async () => {
+    expect.assertions(4);
+    const filepath = fixture("OptionsExtends.vue");
+    const result = await translateAPI(filepath);
+    expect(result.models).toEqual([
+        {
+            name: "v-model",
+            type: "string",
+            required: false,
+            description: "Lorem ipsum.",
+            default: { value: `""` },
+            deprecated: null,
+        },
+    ]);
+    expect(result.props).toEqual([
+        {
+            name: "decimals",
+            type: "number",
+            required: false,
+            description: null,
+            default: { value: "2" },
+            deprecated: null,
+        },
+    ]);
+    expect(result.events).toEqual([
+        {
+            name: "change",
+            description: "Emitted on change.",
+            properties: [
+                {
+                    name: "value",
+                    type: "string",
+                    description: "The new value.",
+                },
+            ],
+            deprecated: null,
+        },
+    ]);
+    expect(result.slots).toEqual([
+        {
+            name: "default",
+            description: "Label content",
+            bindings: [],
+            deprecated: null,
+        },
+        {
+            name: "icon",
+            description: null,
+            bindings: [{ name: "size", type: "unknown", description: null }],
             deprecated: null,
         },
     ]);

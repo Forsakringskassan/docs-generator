@@ -97,6 +97,26 @@ export interface NamedTag {
 }
 
 /**
+ * Index of the `}` closing the `{` at the start of the text, taking nested
+ * braces into account (`{{ isOpen: boolean }}`), or -1.
+ */
+function findClosingBrace(text: string): number {
+    let depth = 0;
+    for (let index = 0; index < text.length; index++) {
+        const char = text.charAt(index);
+        if (char === "{") {
+            depth++;
+        } else if (char === "}") {
+            depth--;
+            if (depth === 0) {
+                return index;
+            }
+        }
+    }
+    return -1;
+}
+
+/**
  * Parse the text of a `@param`, `@property` or `@binding` tag.
  *
  * Parsed by hand instead of a single regular expression to avoid
@@ -108,7 +128,7 @@ export function parseNamedTag(tagText: string): NamedTag | null {
     let remainingText = tagText.trim();
     let type: string | null = null;
     if (remainingText.startsWith("{")) {
-        const typeEnd = remainingText.indexOf("}");
+        const typeEnd = findClosingBrace(remainingText);
         if (typeEnd === -1) {
             return null;
         }

@@ -1,8 +1,10 @@
+import { readFileSync } from "node:fs";
 import fs from "node:fs/promises";
 import path from "node:path";
 import type ts from "typescript";
 import {
     type ComponentMeta,
+    type Declaration,
     type EventMeta,
     type PropertyMeta,
     type PropertyMetaSchema,
@@ -22,13 +24,17 @@ import {
     getComponentMetaChecker,
 } from "./component-meta-checker";
 import {
+    dedentFunctionText,
     getDeclaredPropType,
-    getRuntimeMethodDefault,
+    getRuntimeDefault,
+    isFunctionType,
     normalizeResolvedType,
     parseEventArguments,
+    unwrapDefaultFactory,
 } from "./component-type";
 import {
     type DocTag,
+    type NamedTag,
     emptyToNull,
     getDeprecatedText,
     hasIgnoreTag,
@@ -59,13 +65,20 @@ function camelize(name: string): string {
     return name.replaceAll(/-(\w)/g, (_, char: string) => char.toUpperCase());
 }
 
+function capitalize(name: string): string {
+    return `${name.charAt(0).toUpperCase()}${name.slice(1)}`;
+}
+
 /**
- * Name of the prop Vue generates for an event listener, `update:modelValue`
- * becomes `onUpdate:modelValue` (same as `toHandlerKey()` in `@vue/shared`).
+ * Names of the props Vue generates for an event listener: the types use
+ * `on${Capitalize<name>}` (`onGroup-validity`) while the runtime camelizes
+ * (`onGroupValidity`, same as `toHandlerKey()` in `@vue/shared`).
  */
-function toHandlerKey(eventName: string): string {
-    const camelized = camelize(eventName);
-    return `on${camelized.charAt(0).toUpperCase()}${camelized.slice(1)}`;
+function toHandlerKeys(eventName: string): string[] {
+    return [
+        `on${capitalize(eventName)}`,
+        `on${capitalize(camelize(eventName))}`,
+    ];
 }
 
 function isSameFile(a: string, b: string): boolean {
@@ -73,14 +86,31 @@ function isSameFile(a: string, b: string): boolean {
 }
 
 /**
+ * The declaration used for a prop: a prop can be declared in several places
+ * (e.g. overridden when using `extends`), the one in the component itself
+ * takes precedence.
+ */
+function getPreferredDeclaration(
+    context: TranslateContext,
+    prop: PropertyMeta,
+): Declaration | undefined {
+    const declarations = prop.getDeclarations();
+    const ownDeclaration = declarations.find((declaration) => {
+        return isSameFile(declaration.file, context.componentFile);
+    });
+    return ownDeclaration ?? declarations.at(0);
+}
+
+/**
  * Find the AST node for the declaration `vue-component-meta` reports for a
- * prop, either in the SFC itself or in an imported TypeScript file.
+ * prop: in the SFC itself, in another SFC (`extends`) or in an imported
+ * TypeScript file.
  */
 function findPropDeclarationNode(
     context: TranslateContext,
     prop: PropertyMeta,
 ): ts.Node | undefined {
-    const declaration = prop.getDeclarations().at(0);
+    const declaration = getPreferredDeclaration(context, prop);
     if (!declaration) {
         return undefined;
     }
@@ -88,26 +118,87 @@ function findPropDeclarationNode(
     if (isSameFile(declaration.file, context.componentFile)) {
         return context.sfc.findNodeAt(start, end);
     }
+    if (declaration.file.endsWith(".vue")) {
+        const declaringSource = readFileSync(declaration.file, "utf8");
+        const declaringSfc = parseSfcSource(declaration.file, declaringSource);
+        return declaringSfc.findNodeAt(start, end);
+    }
     return findNodeInProgramFile(context.program, declaration.file, start, end);
 }
 
 /**
- * Sort key placing props in declaration order: props declared in the
- * component first, then props from other files (e.g. an extended interface)
- * and last props without any declaration (e.g. `defineModel()`).
+ * Sort key placing props in declaration order: inherited props (e.g.
+ * `extends` or an extended interface) first, then props declared in the
+ * component and last props without any declaration (e.g. `defineModel()`).
  */
 function getDeclarationSortKey(
     context: TranslateContext,
     prop: PropertyMeta,
 ): [number, string, number] {
-    const declaration = prop.getDeclarations().at(0);
+    /* a prop overridden by the component keeps the position it has in the
+     * component it inherits from */
+    const declarations = prop.getDeclarations();
+    const inheritedDeclaration = declarations.find((declaration) => {
+        return !isSameFile(declaration.file, context.componentFile);
+    });
+    const declaration = inheritedDeclaration ?? declarations.at(0);
     if (!declaration) {
         return [2, "", 0];
     }
-    const fileRank = isSameFile(declaration.file, context.componentFile)
-        ? 0
-        : 1;
+    const fileRank = inheritedDeclaration ? 0 : 1;
     return [fileRank, declaration.file, declaration.range[0]];
+}
+
+/**
+ * Event listener props generated from `emits` in a component inherited from
+ * a compiled package (e.g. `extends: FTextField` imported from `@fkui/vue`),
+ * which neither `vue-component-meta` nor the source pass reports as events.
+ * Recognized as `onFoo` function props only declared in `.d.ts` files.
+ */
+function getInheritedListenerEvents(props: PropertyMeta[]): string[] {
+    return props
+        .filter((prop) => {
+            const declarations = prop.getDeclarations();
+            return (
+                !prop.global &&
+                /^on[A-Z]/.test(prop.name) &&
+                declarations.length > 0 &&
+                declarations.every((it) => it.file.endsWith(".d.ts")) &&
+                isFunctionType(prop.getTypeObject())
+            );
+        })
+        .map(
+            (prop) =>
+                `${prop.name.charAt(2).toLowerCase()}${prop.name.slice(3)}`,
+        );
+}
+
+/**
+ * Default value as presented in the documentation, `null` when the prop has
+ * no (meaningful) default.
+ */
+function getPropDefault(
+    context: TranslateContext,
+    prop: PropertyMeta,
+    declarationNode: ts.Node | undefined,
+): string | null {
+    const functionType = isFunctionType(prop.getTypeObject());
+    const runtimeDefault = getRuntimeDefault(declarationNode, functionType);
+    /* `vue-component-meta` unwraps `withDefaults()` factories with an
+     * expression body only, and also for function props where the default is
+     * not a factory, so the default is taken as written instead */
+    const withDefaultsText = context.sfc.withDefaults.get(prop.name);
+    let withDefaultsValue: string | undefined;
+    if (withDefaultsText !== undefined) {
+        withDefaultsValue = functionType
+            ? dedentFunctionText(withDefaultsText)
+            : unwrapDefaultFactory(withDefaultsText);
+    }
+    const defaultValue = runtimeDefault ?? withDefaultsValue ?? prop.default;
+    if (defaultValue === undefined || defaultValue === "undefined") {
+        return null;
+    }
+    return defaultValue;
 }
 
 function compareSortKeys(
@@ -123,11 +214,10 @@ function translateProp(
 ): ComponentProp {
     const declarationNode = findPropDeclarationNode(context, prop);
     const declaredType = getDeclaredPropType(declarationNode);
-    const defaultValue =
-        prop.default ?? getRuntimeMethodDefault(declarationNode);
+    const defaultValue = getPropDefault(context, prop, declarationNode);
     return {
         name: prop.name,
-        description: prop.description === "" ? null : prop.description,
+        description: emptyToNull(prop.description.trim()),
         type: declaredType ?? normalizeResolvedType(prop.type, prop.required),
         required: prop.required,
         default: defaultValue === null ? null : { value: defaultValue },
@@ -143,7 +233,9 @@ function translateProps(
     /* Vue exposes event listeners as `onFoo` props, those are already
      * presented as events. This also covers events `vue-component-meta` fails
      * to detect (e.g. `emits: ["foo", "bar"]`) since the props remain. */
-    const eventHandlerProps = new Set(Array.from(eventNames, toHandlerKey));
+    const eventHandlerProps = new Set(
+        Array.from(eventNames).flatMap(toHandlerKeys),
+    );
     const relevantProps = props.filter((prop) => {
         return (
             !prop.global &&
@@ -160,35 +252,32 @@ function translateProps(
     return sortedProps.map((prop) => translateProp(context, prop));
 }
 
+/* tags documenting event arguments, `@arg` and `@argument` are aliases
+ * supported by vue-docgen-api */
+const argumentTagNames = new Set(["param", "arg", "argument", "property"]);
+
 /**
- * Match `@param name - description`, `@param {type} name description` and
- * `@property {type} name description` tags with event arguments.
+ * Event arguments documented with `@param name - description`,
+ * `@arg {type} name description`, `@property {type} name description` etc.
  */
-function findArgumentTag(
-    tags: DocTag[],
-    argumentName: string,
-): { type: string | null; description: string | null } | null {
-    for (const tag of tags) {
-        if (tag.name !== "param" && tag.name !== "property") {
-            continue;
-        }
-        const namedTag = parseNamedTag(tag.text);
-        if (namedTag?.name !== argumentName) {
-            continue;
-        }
-        return { type: namedTag.type, description: namedTag.description };
-    }
-    return null;
+function getArgumentTags(tags: DocTag[]): NamedTag[] {
+    return tags
+        .filter((tag) => argumentTagNames.has(tag.name))
+        .map((tag) => parseNamedTag(tag.text))
+        .filter((namedTag) => namedTag !== null);
 }
 
 function translateEventProperties(
     eventMeta: EventMeta | undefined,
     tags: DocTag[],
 ): EventProperty[] {
+    const argumentTags = getArgumentTags(tags);
     const eventArguments = eventMeta ? parseEventArguments(eventMeta.type) : [];
     if (eventArguments.length > 0) {
         return eventArguments.map((eventArgument): EventProperty => {
-            const argumentTag = findArgumentTag(tags, eventArgument.name);
+            const argumentTag = argumentTags.find((it) => {
+                return it.name === eventArgument.name;
+            });
             return {
                 name: eventArgument.name,
                 type: eventArgument.type,
@@ -199,17 +288,23 @@ function translateEventProperties(
     /* untyped events (`emits: ["foo"]`) may document the payload with
      * `@type {Foo}` (vue-docgen-api convention) */
     const typeTag = tags.find((tag) => tag.name === "type");
-    const typeTagMatch = typeTag
-        ? /^\{(?<type>[\s\S]*)\}/.exec(typeTag.text)
+    const payloadType = typeTag
+        ? parseNamedTag(`${typeTag.text} payload`)?.type
         : null;
-    if (typeTagMatch?.groups) {
-        return [
-            {
-                name: "<anonymous>",
-                type: typeTagMatch.groups.type.trim(),
-                description: null,
-            },
-        ];
+    /* ... and name it with `@param`, `@arg` or `@property` */
+    if (argumentTags.length > 0) {
+        const typeFromTypeTag =
+            argumentTags.length === 1 ? (payloadType ?? null) : null;
+        return argumentTags.map((argumentTag): EventProperty => {
+            return {
+                name: argumentTag.name,
+                type: argumentTag.type ?? typeFromTypeTag ?? "unknown",
+                description: argumentTag.description,
+            };
+        });
+    }
+    if (payloadType) {
+        return [{ name: "<anonymous>", type: payloadType, description: null }];
     }
     return [];
 }
@@ -222,6 +317,7 @@ function translateEventProperties(
 function translateEvents(
     context: TranslateContext,
     metaEvents: EventMeta[],
+    inheritedListenerEvents: string[],
 ): ComponentEvent[] {
     const metaEventsByName = new Map(
         metaEvents.map((event) => [event.name, event]),
@@ -230,6 +326,7 @@ function translateEvents(
         context.sfc.events.map((event) => [event.name, event]),
     );
     const eventNames = new Set([
+        ...inheritedListenerEvents,
         ...context.sfc.events.map((event) => event.name),
         ...metaEvents.map((event) => event.name),
     ]);
@@ -245,7 +342,7 @@ function translateEvents(
         if (hasIgnoreTag(tags)) {
             continue;
         }
-        const metaDescription = emptyToNull(eventMeta?.description);
+        const metaDescription = emptyToNull(eventMeta?.description.trim());
         translatedEvents.push({
             name: eventName,
             description: sourceEvent?.description ?? metaDescription,
@@ -278,10 +375,7 @@ function getSlotTypeBindings(slot: SlotMeta | undefined): SlotBinding[] {
                     bindingProp.type,
                     bindingProp.required,
                 ),
-                description:
-                    bindingProp.description === ""
-                        ? null
-                        : bindingProp.description,
+                description: emptyToNull(bindingProp.description.trim()),
             };
         },
     );
@@ -289,15 +383,14 @@ function getSlotTypeBindings(slot: SlotMeta | undefined): SlotBinding[] {
 
 /**
  * Bindings documented with `@binding` take precedence (in documented order),
- * remaining bindings from the slot type are appended.
+ * remaining bindings from the slot type are appended followed by bindings
+ * only known from the `<slot>` attributes (options API components, where
+ * `vue-component-meta` reports no slots).
  */
 function mergeSlotBindings(
-    documentedBindings: ReadonlyArray<{
-        name: string;
-        type: string | null;
-        description: string | null;
-    }>,
+    documentedBindings: readonly NamedTag[],
     typeBindings: SlotBinding[],
+    attributeBindings: readonly string[],
 ): SlotBinding[] {
     const typeBindingsByName = new Map(
         typeBindings.map((binding) => [binding.name, binding]),
@@ -319,7 +412,22 @@ function mergeSlotBindings(
     const undocumentedBindings = typeBindings.filter(
         (binding) => !documentedNames.has(binding.name),
     );
-    return [...mergedDocumentedBindings, ...undocumentedBindings];
+    const knownNames = new Set([
+        ...documentedNames,
+        ...typeBindings.map((binding) => binding.name),
+    ]);
+    const untypedBindings = attributeBindings
+        .filter((name) => !knownNames.has(name))
+        .map((name): SlotBinding => ({
+            name,
+            type: "unknown",
+            description: null,
+        }));
+    return [
+        ...mergedDocumentedBindings,
+        ...undocumentedBindings,
+        ...untypedBindings,
+    ];
 }
 
 function translateSlots(
@@ -330,9 +438,10 @@ function translateSlots(
     const sourceSlotsByName = new Map(
         context.sfc.slots.map((slot) => [slot.name, slot]),
     );
+    /* template order first, `defineSlots()` only slots last */
     const slotNames = new Set([
-        ...metaSlots.map((slot) => slot.name),
         ...context.sfc.slots.map((slot) => slot.name),
+        ...metaSlots.map((slot) => slot.name),
     ]);
 
     const translatedSlots: ComponentSlot[] = [];
@@ -346,13 +455,14 @@ function translateSlots(
         if (hasIgnoreTag(tags)) {
             continue;
         }
-        const metaDescription = emptyToNull(slotMeta?.description);
+        const metaDescription = emptyToNull(slotMeta?.description.trim());
         translatedSlots.push({
             name: slotName,
             description: sourceSlot?.description ?? metaDescription,
             bindings: mergeSlotBindings(
                 sourceSlot?.bindings ?? [],
                 getSlotTypeBindings(slotMeta),
+                sourceSlot?.attributeBindings ?? [],
             ),
             deprecated: getDeprecatedText(tags),
         });
@@ -371,6 +481,7 @@ function translateSlots(
 function filterModels(
     rawProps: ComponentProp[],
     rawEvents: ComponentEvent[],
+    allEventNames: ReadonlySet<string>,
 ): {
     models: ComponentModel[];
     props: ComponentProp[];
@@ -378,11 +489,13 @@ function filterModels(
 } {
     const modelPropNames = new Set<string>();
     const models: ComponentModel[] = [];
-    for (const event of rawEvents) {
-        if (!event.name.startsWith("update:")) {
+    /* all event names, an `update:foo` event hidden with `@ignore` still
+     * makes `foo` a model */
+    for (const eventName of allEventNames) {
+        if (!eventName.startsWith("update:")) {
             continue;
         }
-        const propName = event.name.slice("update:".length);
+        const propName = eventName.slice("update:".length);
         const prop = rawProps.find((it) => it.name === propName);
         if (!prop) {
             continue;
@@ -441,14 +554,24 @@ export async function translateAPI(
             program: checker.getProgram(),
         };
 
-        const rawEvents = translateEvents(context, meta.events);
+        const inheritedListenerEvents = getInheritedListenerEvents(meta.props);
+        const rawEvents = translateEvents(
+            context,
+            meta.events,
+            inheritedListenerEvents,
+        );
         /* includes ignored events so their listener props are hidden as well */
         const allEventNames = new Set([
+            ...inheritedListenerEvents,
             ...context.sfc.events.map((event) => event.name),
             ...meta.events.map((event) => event.name),
         ]);
         const rawProps = translateProps(context, meta.props, allEventNames);
-        const { models, props, events } = filterModels(rawProps, rawEvents);
+        const { models, props, events } = filterModels(
+            rawProps,
+            rawEvents,
+            allEventNames,
+        );
         const slots = translateSlots(context, meta.slots);
         const name = meta.name ?? path.parse(filePath).name;
 

@@ -1,3 +1,5 @@
+import fs from "node:fs";
+import path from "node:path";
 import ts from "typescript";
 import {
     type SFCBlock,
@@ -45,8 +47,8 @@ export interface SourceEventDoc {
 export type SourceSlotBindingDoc = NamedTag;
 
 /**
- * Documentation for a single slot written as an HTML comment directly
- * preceding the `<slot>` element in the template.
+ * A `<slot>` rendered in the template, with the documentation written as an
+ * HTML comment preceding the `<slot>` element (if any).
  *
  * @internal
  */
@@ -54,7 +56,10 @@ export interface SourceSlotDoc {
     readonly name: string;
     readonly description: string | null;
     readonly tags: DocTag[];
+    /** Bindings documented with `@binding` */
     readonly bindings: SourceSlotBindingDoc[];
+    /** Names of bindings passed as attributes or `v-bind="{ ... }"` */
+    readonly attributeBindings: string[];
 }
 
 interface ParsedScriptBlock {
@@ -72,10 +77,23 @@ interface ParsedScriptBlock {
  * @internal
  */
 export interface SfcSource {
-    /** Events in declaration order with their doc comments */
+    /**
+     * Events in declaration order with their doc comments, including events
+     * inherited with `extends`.
+     */
     readonly events: SourceEventDoc[];
-    /** Template slots (with a doc comment) in template order */
+    /**
+     * All `<slot>` elements in the template in template order, inherited
+     * from the component given by `extends` if the component has no
+     * template of its own.
+     */
     readonly slots: SourceSlotDoc[];
+    /**
+     * Default values given to `withDefaults()` as written, keyed by prop
+     * name. `vue-component-meta` unwraps `() => value`, which is wrong for
+     * props of function type.
+     */
+    readonly withDefaults: ReadonlyMap<string, string>;
     /**
      * Find the declaration node starting at the given offset in the SFC
      * source, as reported by `vue-component-meta` `getDeclarations()`.
@@ -468,35 +486,154 @@ function getStaticSlotName(slotElement: ElementNode): string | null {
     return "default";
 }
 
-function parseSlotComment(
-    name: string,
-    commentText: string,
-): SourceSlotDoc | null {
-    const docComment = parseDocComment(commentText);
-    const slotTag = docComment.tags.find((tag) => tag.name === "slot");
-    if (!slotTag) {
-        return null;
+/**
+ * Keys of an object literal expression such as `{ item, index: i }` as
+ * used in `v-bind="{ ... }"`.
+ */
+function getObjectLiteralKeys(expressionText: string): string[] {
+    const sourceFile = ts.createSourceFile(
+        "v-bind.ts",
+        `(${expressionText});`,
+        ts.ScriptTarget.Latest,
+        true,
+        ts.ScriptKind.TS,
+    );
+    const [statement] = sourceFile.statements;
+    if (!ts.isExpressionStatement(statement)) {
+        return [];
     }
+    let expression = statement.expression;
+    while (ts.isParenthesizedExpression(expression)) {
+        expression = expression.expression;
+    }
+    if (!ts.isObjectLiteralExpression(expression)) {
+        return [];
+    }
+    return expression.properties
+        .map((property) => {
+            return property.name ? getStaticPropertyName(property.name) : null;
+        })
+        .filter((name) => name !== null);
+}
+
+/**
+ * Names of the slot props passed to a `<slot>` element: static attributes,
+ * `:foo="bar"` (including the `:foo` shorthand) and `v-bind="{ foo }"`.
+ */
+function getAttributeBindings(slotElement: ElementNode): string[] {
+    const bindingNames: string[] = [];
+    for (const prop of slotElement.props) {
+        if (prop.name === "name") {
+            continue;
+        }
+        const propType: number = prop.type;
+        if (propType === ATTRIBUTE_NODE) {
+            bindingNames.push(prop.name);
+            continue;
+        }
+        if (prop.name !== "bind" || !("arg" in prop)) {
+            continue;
+        }
+        const bindArgument = prop.arg;
+        if (bindArgument && "content" in bindArgument) {
+            if (bindArgument.content !== "name") {
+                bindingNames.push(bindArgument.content);
+            }
+            continue;
+        }
+        const bindExpression = prop.exp;
+        if (bindExpression && "content" in bindExpression) {
+            bindingNames.push(...getObjectLiteralKeys(bindExpression.content));
+        }
+    }
+    return bindingNames;
+}
+
+/**
+ * Find the `@slot` comment for a slot: the closest preceding sibling
+ * comment containing `@slot`, skipping other comments in between (e.g.
+ * linter directives) but stopping at any other node.
+ */
+function findSlotComment(
+    siblings: TemplateChildNode[],
+    slotIndex: number,
+): CommentNode | null {
+    for (let index = slotIndex - 1; index >= 0; index--) {
+        const sibling = siblings[index];
+        if (!isCommentNode(sibling)) {
+            return null;
+        }
+        if (/@slot\b/.test(sibling.content)) {
+            return sibling;
+        }
+    }
+    return null;
+}
+
+function parseSlotElement(
+    slotName: string,
+    slotElement: ElementNode,
+    slotComment: CommentNode | null,
+): SourceSlotDoc {
+    const attributeBindings = getAttributeBindings(slotElement);
+    const docComment = slotComment
+        ? parseDocComment(slotComment.content)
+        : null;
+    if (!docComment) {
+        return {
+            name: slotName,
+            description: null,
+            tags: [],
+            bindings: [],
+            attributeBindings,
+        };
+    }
+    const slotTag = docComment.tags.find((tag) => tag.name === "slot");
     const bindings = docComment.tags
         .filter((tag) => tag.name === "binding")
         .map((tag) => parseNamedTag(tag.text))
         .filter((binding) => binding !== null);
-    const description =
-        slotTag.text === "" ? docComment.description : slotTag.text;
+    const slotTagText = slotTag?.text ?? "";
     return {
-        name,
-        description,
+        name: slotName,
+        description: slotTagText === "" ? docComment.description : slotTagText,
         tags: docComment.tags.filter(
             (tag) => tag.name !== "slot" && tag.name !== "binding",
         ),
         bindings,
+        attributeBindings,
     };
 }
 
 /**
- * Collect `@slot` doc comments placed directly before `<slot>` elements.
+ * The same slot can be rendered in several places (e.g. different `v-if`
+ * branches): the first documented description wins while bindings from all
+ * occurrences are merged (same as vue-docgen-api).
  */
-function collectTemplateSlotDocs(
+function mergeSlotOccurrences(
+    first: SourceSlotDoc,
+    other: SourceSlotDoc,
+): SourceSlotDoc {
+    const primary =
+        first.description === null && other.description !== null
+            ? other
+            : first;
+    const secondary = primary === first ? other : first;
+    const documentedNames = new Set(primary.bindings.map((it) => it.name));
+    const bindings = [
+        ...primary.bindings,
+        ...secondary.bindings.filter((it) => !documentedNames.has(it.name)),
+    ];
+    const attributeBindings = Array.from(
+        new Set([...primary.attributeBindings, ...secondary.attributeBindings]),
+    );
+    return { ...primary, bindings, attributeBindings };
+}
+
+/**
+ * Collect all `<slot>` elements with their `@slot` doc comments.
+ */
+function collectTemplateSlots(
     templateAst: RootNode | undefined,
 ): SourceSlotDoc[] {
     const slotsByName = new Map<string, SourceSlotDoc>();
@@ -505,18 +642,21 @@ function collectTemplateSlotDocs(
             if (!isElementNode(child)) {
                 continue;
             }
-            if (child.tag === "slot") {
-                const slotName = getStaticSlotName(child);
-                const precedingSibling = children[index - 1];
-                const slotDoc =
-                    slotName !== null && isCommentNode(precedingSibling)
-                        ? parseSlotComment(slotName, precedingSibling.content)
-                        : null;
-                /* the same slot can be rendered in several branches, the first
-                 * documented occurrence wins */
-                if (slotDoc && !slotsByName.has(slotDoc.name)) {
-                    slotsByName.set(slotDoc.name, slotDoc);
-                }
+            const slotName =
+                child.tag === "slot" ? getStaticSlotName(child) : null;
+            if (slotName !== null) {
+                const slotDoc = parseSlotElement(
+                    slotName,
+                    child,
+                    findSlotComment(children, index),
+                );
+                const existingSlot = slotsByName.get(slotName);
+                slotsByName.set(
+                    slotName,
+                    existingSlot
+                        ? mergeSlotOccurrences(existingSlot, slotDoc)
+                        : slotDoc,
+                );
             }
             visitChildren(child.children);
         }
@@ -525,6 +665,119 @@ function collectTemplateSlotDocs(
         visitChildren(templateAst.children);
     }
     return Array.from(slotsByName.values());
+}
+
+/**
+ * Default values passed to `withDefaults()` exactly as written.
+ */
+function collectWithDefaults(
+    scriptBlocks: ParsedScriptBlock[],
+): Map<string, string> {
+    const defaults = new Map<string, string>();
+    for (const { sourceFile, setup } of scriptBlocks) {
+        if (!setup) {
+            continue;
+        }
+        const visit = (node: ts.Node): void => {
+            const isWithDefaultsCall =
+                ts.isCallExpression(node) &&
+                ts.isIdentifier(node.expression) &&
+                node.expression.text === "withDefaults";
+            const defaultsArgument = isWithDefaultsCall
+                ? node.arguments.at(1)
+                : undefined;
+            if (
+                !defaultsArgument ||
+                !ts.isObjectLiteralExpression(defaultsArgument)
+            ) {
+                ts.forEachChild(node, visit);
+                return;
+            }
+            for (const property of defaultsArgument.properties) {
+                const propName = property.name
+                    ? getStaticPropertyName(property.name)
+                    : null;
+                if (propName === null) {
+                    continue;
+                }
+                const defaultNode = ts.isPropertyAssignment(property)
+                    ? property.initializer
+                    : property;
+                defaults.set(propName, defaultNode.getText(sourceFile));
+            }
+        };
+        visit(sourceFile);
+    }
+    return defaults;
+}
+
+function findImportedVueFile(
+    filePath: string,
+    sourceFile: ts.SourceFile,
+    importedName: string,
+): string | null {
+    for (const statement of sourceFile.statements) {
+        if (
+            !ts.isImportDeclaration(statement) ||
+            !ts.isStringLiteral(statement.moduleSpecifier)
+        ) {
+            continue;
+        }
+        const defaultImportName = statement.importClause?.name?.text;
+        const moduleName = statement.moduleSpecifier.text;
+        const isRelativeVueImport =
+            moduleName.startsWith(".") && moduleName.endsWith(".vue");
+        if (defaultImportName === importedName && isRelativeVueImport) {
+            return path.resolve(path.dirname(filePath), moduleName);
+        }
+    }
+    return null;
+}
+
+/**
+ * Resolve the SFC given to `extends` in the options API, e.g.
+ * `extends: FTextField` with `import FTextField from "./FTextField.vue"`.
+ * Only relative imports of `.vue` files are followed.
+ */
+function resolveExtendedComponent(
+    filePath: string,
+    scriptBlocks: ParsedScriptBlock[],
+): string | null {
+    for (const { sourceFile, setup } of scriptBlocks) {
+        if (setup) {
+            continue;
+        }
+        const optionsObject = findOptionsObject(sourceFile);
+        const extendsProperty = optionsObject?.properties.find(
+            (property): property is ts.PropertyAssignment => {
+                return (
+                    ts.isPropertyAssignment(property) &&
+                    getStaticPropertyName(property.name) === "extends"
+                );
+            },
+        );
+        const extendsIdentifier = extendsProperty?.initializer;
+        if (!extendsIdentifier || !ts.isIdentifier(extendsIdentifier)) {
+            continue;
+        }
+        return findImportedVueFile(
+            filePath,
+            sourceFile,
+            extendsIdentifier.text,
+        );
+    }
+    return null;
+}
+
+function mergeInheritedEvents(
+    inheritedEvents: SourceEventDoc[],
+    ownEvents: SourceEventDoc[],
+): SourceEventDoc[] {
+    const ownEventNames = new Set(ownEvents.map((event) => event.name));
+    const inheritedOnly = inheritedEvents.filter((event) => {
+        return !ownEventNames.has(event.name);
+    });
+    return [...inheritedOnly, ...ownEvents];
 }
 
 function findNodeInSourceFile(
@@ -549,12 +802,24 @@ function findNodeInSourceFile(
     return ts.forEachChild(sourceFile, visit) ?? startMatch;
 }
 
+const sfcSourceCache = new Map<string, { source: string; sfc: SfcSource }>();
+
 /**
  * Parse an SFC into the pieces `vue-component-meta` does not cover.
  *
  * @internal
  */
-export function parseSfcSource(filePath: string, source: string): SfcSource {
+export function parseSfcSource(
+    filePath: string,
+    source: string,
+    visitedFiles: ReadonlySet<string> = new Set(),
+): SfcSource {
+    const cacheKey = path.resolve(filePath);
+    const cached = sfcSourceCache.get(cacheKey);
+    if (cached?.source === source) {
+        return cached.sfc;
+    }
+
     const { descriptor } = parseSFC(source, { filename: filePath });
     const scriptBlocks = [
         descriptor.script
@@ -565,9 +830,30 @@ export function parseSfcSource(filePath: string, source: string): SfcSource {
             : null,
     ].filter((block) => block !== null);
 
-    return {
-        events: collectEventDocs(scriptBlocks),
-        slots: collectTemplateSlotDocs(descriptor.template?.ast),
+    let events = collectEventDocs(scriptBlocks);
+    let slots = collectTemplateSlots(descriptor.template?.ast);
+    const extendedFile = resolveExtendedComponent(filePath, scriptBlocks);
+    const canFollowExtends =
+        extendedFile !== null &&
+        !visitedFiles.has(extendedFile) &&
+        fs.existsSync(extendedFile);
+    if (extendedFile && canFollowExtends) {
+        const extendedSfc = parseSfcSource(
+            extendedFile,
+            fs.readFileSync(extendedFile, "utf8"),
+            new Set([...visitedFiles, cacheKey]),
+        );
+        events = mergeInheritedEvents(extendedSfc.events, events);
+        /* the template is inherited only when the component has none */
+        if (!descriptor.template) {
+            slots = extendedSfc.slots;
+        }
+    }
+
+    const sfc: SfcSource = {
+        events,
+        slots,
+        withDefaults: collectWithDefaults(scriptBlocks),
         findNodeAt(start, end) {
             for (const { sourceFile, offset } of scriptBlocks) {
                 const blockEnd = offset + sourceFile.text.length;
@@ -583,6 +869,8 @@ export function parseSfcSource(filePath: string, source: string): SfcSource {
             return undefined;
         },
     };
+    sfcSourceCache.set(cacheKey, { source, sfc });
+    return sfc;
 }
 
 /**

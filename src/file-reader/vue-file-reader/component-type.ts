@@ -1,3 +1,4 @@
+import path from "node:path";
 import ts from "typescript";
 
 const printer = ts.createPrinter({ removeComments: true });
@@ -145,6 +146,165 @@ function findObjectProperty(
     });
 }
 
+function findArrayConstant(
+    sourceFile: ts.SourceFile,
+    constantName: string,
+): ts.ArrayLiteralExpression | null {
+    for (const statement of sourceFile.statements) {
+        if (!ts.isVariableStatement(statement)) {
+            continue;
+        }
+        for (const declaration of statement.declarationList.declarations) {
+            const isMatch =
+                ts.isIdentifier(declaration.name) &&
+                declaration.name.text === constantName;
+            if (isMatch && declaration.initializer) {
+                return resolveArrayLiteral(declaration.initializer);
+            }
+        }
+    }
+    return null;
+}
+
+/**
+ * Find a constant imported with a relative import, e.g.
+ * `import { ALIGNMENT } from "./constants"`.
+ */
+function findImportedArrayConstant(
+    sourceFile: ts.SourceFile,
+    constantName: string,
+): ts.ArrayLiteralExpression | null {
+    for (const statement of sourceFile.statements) {
+        if (
+            !ts.isImportDeclaration(statement) ||
+            !ts.isStringLiteral(statement.moduleSpecifier)
+        ) {
+            continue;
+        }
+        const namedBindings = statement.importClause?.namedBindings;
+        const importSpecifier =
+            namedBindings && ts.isNamedImports(namedBindings)
+                ? namedBindings.elements.find(
+                      (it) => it.name.text === constantName,
+                  )
+                : undefined;
+        const moduleName = statement.moduleSpecifier.text;
+        if (!importSpecifier || !moduleName.startsWith(".")) {
+            continue;
+        }
+        const exportedName = (
+            importSpecifier.propertyName ?? importSpecifier.name
+        ).text;
+        const basePath = path.resolve(
+            path.dirname(sourceFile.fileName),
+            moduleName,
+        );
+        const candidates = [
+            basePath,
+            `${basePath}.ts`,
+            `${basePath}.js`,
+            path.join(basePath, "index.ts"),
+        ];
+        const modulePath = candidates.find((it) => ts.sys.fileExists(it));
+        const moduleText = modulePath ? ts.sys.readFile(modulePath) : undefined;
+        if (!modulePath || moduleText === undefined) {
+            return null;
+        }
+        const moduleSourceFile = ts.createSourceFile(
+            modulePath,
+            moduleText,
+            ts.ScriptTarget.Latest,
+            true,
+        );
+        return findArrayConstant(moduleSourceFile, exportedName);
+    }
+    return null;
+}
+
+/**
+ * Resolve an expression to an array literal, following `as const` and
+ * identifiers declared as a `const` in the same file or imported from a
+ * relative module, e.g. `const ALIGNMENT = ["top", "bottom"] as const`.
+ */
+function resolveArrayLiteral(
+    expression: ts.Expression,
+): ts.ArrayLiteralExpression | null {
+    let unwrapped = expression;
+    while (
+        ts.isAsExpression(unwrapped) ||
+        ts.isParenthesizedExpression(unwrapped)
+    ) {
+        unwrapped = unwrapped.expression;
+    }
+    if (ts.isArrayLiteralExpression(unwrapped)) {
+        return unwrapped;
+    }
+    if (!ts.isIdentifier(unwrapped)) {
+        return null;
+    }
+    const sourceFile = unwrapped.getSourceFile();
+    return (
+        findArrayConstant(sourceFile, unwrapped.text) ??
+        findImportedArrayConstant(sourceFile, unwrapped.text)
+    );
+}
+
+/**
+ * `undefined` and `null` in the list of allowed values only make the prop
+ * optional and are not part of the presented type.
+ */
+function isNullishLiteral(element: ts.Expression): boolean {
+    return (
+        element.kind === ts.SyntaxKind.NullKeyword ||
+        (ts.isIdentifier(element) && element.text === "undefined")
+    );
+}
+
+/**
+ * Derive a union of string literals from a prop validator checking the value
+ * against a list, the convention supported by vue-docgen-api:
+ *
+ * - `validator(value) { return ["a", "b"].includes(value); }`
+ * - `validator: (value) => ALLOWED.includes(value)`
+ * - `validator(value) { return ["a", "b"].indexOf(value) !== -1; }`
+ */
+function getValidatorEnumType(
+    propOptions: ts.ObjectLiteralExpression,
+): string | null {
+    const validatorOption = findObjectProperty(propOptions, "validator");
+    if (!validatorOption) {
+        return null;
+    }
+    let enumType: string | null = null;
+    const visit = (node: ts.Node): void => {
+        if (enumType !== null) {
+            return;
+        }
+        const isListCheck =
+            ts.isCallExpression(node) &&
+            ts.isPropertyAccessExpression(node.expression) &&
+            ["includes", "indexOf"].includes(node.expression.name.text);
+        const list = isListCheck
+            ? resolveArrayLiteral(node.expression.expression)
+            : null;
+        const elements = list?.elements.filter((it) => !isNullishLiteral(it));
+        const values = elements?.filter((element) => {
+            return ts.isStringLiteralLike(element);
+        });
+        const isStringList =
+            values !== undefined &&
+            values.length > 0 &&
+            values.length === elements?.length;
+        if (isStringList) {
+            enumType = values.map((it) => JSON.stringify(it.text)).join(" | ");
+            return;
+        }
+        ts.forEachChild(node, visit);
+    };
+    visit(validatorOption);
+    return enumType;
+}
+
 /**
  * Get the type exactly as the author wrote it from the prop declaration:
  *
@@ -178,6 +338,17 @@ export function getDeclaredPropType(node: ts.Node | undefined): string | null {
             if (typeOption && ts.isPropertyAssignment(typeOption)) {
                 declaredTypeNode = getPropTypeArgument(typeOption.initializer);
             }
+            /* `type: String` (or `PropType<string>`) with
+             * `validator() { return [..].includes(v) }` */
+            const isPlainString =
+                !declaredTypeNode ||
+                declaredTypeNode.kind === ts.SyntaxKind.StringKeyword;
+            const validatorEnumType = isPlainString
+                ? getValidatorEnumType(initializer)
+                : null;
+            if (validatorEnumType || !declaredTypeNode) {
+                return validatorEnumType;
+            }
         } else {
             declaredTypeNode = getPropTypeArgument(initializer);
         }
@@ -194,30 +365,161 @@ export function getDeclaredPropType(node: ts.Node | undefined): string | null {
 }
 
 /**
- * Get the default value for runtime props declaring `default` as a method,
- * e.g. `default() { return []; }`, which `vue-component-meta` does not
- * report.
+ * Remove the indentation the function had in the source from all lines but
+ * the first, so `default() {\n            return 1;\n        }` is presented as
+ * `function() {\n    return 1;\n}`.
+ */
+export function dedentFunctionText(text: string): string {
+    const lines = text.replaceAll("\r\n", "\n").split("\n");
+    const indentedLines = lines.slice(1).filter((line) => line.trim() !== "");
+    if (indentedLines.length === 0) {
+        return text;
+    }
+    const commonIndent = Math.min(
+        ...indentedLines.map((line) => line.length - line.trimStart().length),
+    );
+    return [
+        lines[0],
+        ...lines.slice(1).map((line) => line.slice(commonIndent)),
+    ].join("\n");
+}
+
+/**
+ * Returns the expression of a function with a single `return` statement (or
+ * an expression body), i.e. the value a default factory produces.
+ */
+function getFactoryValue(
+    factory: ts.MethodDeclaration | ts.ArrowFunction | ts.FunctionExpression,
+): ts.Expression | null {
+    const { body } = factory;
+    if (!body) {
+        return null;
+    }
+    if (!ts.isBlock(body)) {
+        return body;
+    }
+    if (body.statements.length !== 1) {
+        return null;
+    }
+    const [statement] = body.statements;
+    if (!ts.isReturnStatement(statement)) {
+        return null;
+    }
+    return statement.expression ?? null;
+}
+
+/**
+ * Check if a (possibly optional) prop type is a function type, in which case
+ * Vue uses the `default` as-is instead of calling it as a factory.
  *
  * @internal
  */
-export function getRuntimeMethodDefault(
+export function isFunctionType(type: ts.Type): boolean {
+    const constituents = type.isUnion() ? type.types : [type];
+    const nullishFlags = ts.TypeFlags.Undefined | ts.TypeFlags.Null;
+    const nonNullish = constituents.filter((it) => !(it.flags & nullishFlags));
+    return (
+        nonNullish.length > 0 &&
+        nonNullish.every((it) => it.getCallSignatures().length > 0)
+    );
+}
+
+/**
+ * Present a `withDefaults()` default for a prop that is not a function: a
+ * factory returning a single value (`() => { return []; }`) is presented as
+ * the value (`[]`), same as for runtime props.
+ *
+ * @internal
+ */
+export function unwrapDefaultFactory(defaultText: string): string {
+    const sourceFile = ts.createSourceFile(
+        "default.ts",
+        `(${defaultText});`,
+        ts.ScriptTarget.Latest,
+        true,
+        ts.ScriptKind.TS,
+    );
+    const [statement] = sourceFile.statements;
+    if (!ts.isExpressionStatement(statement)) {
+        return defaultText;
+    }
+    let expression = statement.expression;
+    while (ts.isParenthesizedExpression(expression)) {
+        expression = expression.expression;
+    }
+    if (
+        !ts.isArrowFunction(expression) &&
+        !ts.isFunctionExpression(expression)
+    ) {
+        return defaultText;
+    }
+    const factoryValue = getFactoryValue(expression);
+    if (!factoryValue) {
+        return dedentFunctionText(defaultText);
+    }
+    return dedentFunctionText(factoryValue.getText(sourceFile));
+}
+
+/**
+ * Get the default value of a runtime prop (`foo: { default: ... }`) from the
+ * declaration, as `vue-component-meta` does not report method defaults and
+ * unwraps `() => value` also for function props where it is not a factory.
+ *
+ * - function props: the function as written.
+ * - other props: the value returned by the factory if it is a single
+ *   expression, else the factory as written.
+ *
+ * Returns `undefined` when the declaration has no `default` option.
+ *
+ * @internal
+ */
+export function getRuntimeDefault(
     node: ts.Node | undefined,
-): string | null {
+    functionType: boolean,
+): string | undefined {
     if (!node || !ts.isPropertyAssignment(node)) {
-        return null;
+        return undefined;
     }
     const { initializer } = node;
     if (!ts.isObjectLiteralExpression(initializer)) {
-        return null;
+        return undefined;
     }
     const defaultOption = findObjectProperty(initializer, "default");
-    if (!defaultOption || !ts.isMethodDeclaration(defaultOption)) {
-        return null;
+    if (!defaultOption) {
+        return undefined;
     }
     const sourceFile = node.getSourceFile();
-    const methodText = defaultOption.getText(sourceFile);
-    const nameText = defaultOption.name.getText(sourceFile);
-    return `function${methodText.slice(nameText.length)}`;
+    let factory:
+        ts.MethodDeclaration | ts.ArrowFunction | ts.FunctionExpression | null =
+        null;
+    if (ts.isMethodDeclaration(defaultOption)) {
+        factory = defaultOption;
+    } else if (ts.isPropertyAssignment(defaultOption)) {
+        const defaultValue = defaultOption.initializer;
+        if (
+            ts.isArrowFunction(defaultValue) ||
+            ts.isFunctionExpression(defaultValue)
+        ) {
+            factory = defaultValue;
+        } else {
+            return dedentFunctionText(defaultValue.getText(sourceFile));
+        }
+    }
+    if (!factory) {
+        return undefined;
+    }
+    const factoryValue = functionType ? null : getFactoryValue(factory);
+    if (factoryValue) {
+        return dedentFunctionText(factoryValue.getText(sourceFile));
+    }
+    const factoryText = factory.getText(sourceFile);
+    if (ts.isMethodDeclaration(factory)) {
+        const nameText = factory.name.getText(sourceFile);
+        return dedentFunctionText(
+            `function${factoryText.slice(nameText.length)}`,
+        );
+    }
+    return dedentFunctionText(factoryText);
 }
 
 /**

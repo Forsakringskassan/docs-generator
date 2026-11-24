@@ -81,6 +81,17 @@ async function loadImplementations(outDir) {
     return import(pathToFileURL(path.resolve(outfile)).href);
 }
 
+/* vue-docgen-api prints defaults with CRLF on Windows, not a real difference */
+function normalizeEol(value) {
+    /* matches the escaped `\r\n` in the JSON text */
+    return JSON.parse(
+        JSON.stringify(value ?? null).replaceAll(
+            String.raw`\r\n`,
+            String.raw`\n`,
+        ),
+    );
+}
+
 function byName(items) {
     return new Map(items.map((it) => [it.name, it]));
 }
@@ -103,7 +114,12 @@ function diffSection(section, oldItems, newItems) {
             if (field === "name") {
                 continue;
             }
-            if (!isDeepStrictEqual(oldItem[field], newItem[field])) {
+            if (
+                !isDeepStrictEqual(
+                    normalizeEol(oldItem[field]),
+                    normalizeEol(newItem[field]),
+                )
+            ) {
                 changes.push({
                     section,
                     name,
