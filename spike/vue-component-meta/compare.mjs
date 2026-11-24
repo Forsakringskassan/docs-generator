@@ -1,10 +1,17 @@
-/* Spike only: compares the component API extracted by vue-docgen-api (the
- * previous implementation, kept in ./translate-api-docgen.ts) with the
- * vue-component-meta prototype for a set of Vue SFCs.
+/* Spike only: compares the component API extracted by two implementations
+ * for a set of Vue SFCs:
+ *
+ * - `docgen`: vue-docgen-api, the current implementation (kept in
+ *   ./translate-api-docgen.ts)
+ * - `meta`: the vue-component-meta prototype on this branch
+ * - `refactor`: the earlier `origin/refactor/vue-component-meta` attempt
+ *   (kept in ./translate-api-refactor.ts)
  *
  * Usage:
  *
- *   node spike/vue-component-meta/compare.mjs <out-dir> <root> <include...> [--exclude <glob>...] [--tsconfig <path>]
+ *   node spike/vue-component-meta/compare.mjs <out-dir> <root> <include...>
+ *     [--exclude <glob>...] [--tsconfig <path>]
+ *     [--baseline docgen|meta|refactor] [--candidate docgen|meta|refactor]
  *
  * Example (FKUI):
  *
@@ -26,17 +33,23 @@ function parseArgs(argv) {
     const include = [];
     const exclude = [];
     let tsconfig;
+    let baseline = "docgen";
+    let candidate = "meta";
     for (let index = 0; index < rest.length; index++) {
         const arg = rest[index];
         if (arg === "--exclude") {
             exclude.push(rest[++index]);
         } else if (arg === "--tsconfig") {
             tsconfig = rest[++index];
+        } else if (arg === "--baseline") {
+            baseline = rest[++index];
+        } else if (arg === "--candidate") {
+            candidate = rest[++index];
         } else {
             include.push(arg);
         }
     }
-    return { outDir, root, include, exclude, tsconfig };
+    return { outDir, root, include, exclude, tsconfig, baseline, candidate };
 }
 
 async function loadImplementations(outDir) {
@@ -46,6 +59,8 @@ async function loadImplementations(outDir) {
         [
             `export { translateAPI } from ${JSON.stringify(path.resolve(spikeDir, "../../src/file-reader/vue-file-reader/translate-api.ts"))};`,
             `export { translateAPIDocgen } from ${JSON.stringify(path.resolve(spikeDir, "translate-api-docgen.ts"))};`,
+            `export { translateAPIRefactor } from ${JSON.stringify(path.resolve(spikeDir, "translate-api-refactor.ts"))};`,
+            `export { resolveTsconfig } from ${JSON.stringify(path.resolve(spikeDir, "../../src/file-reader/vue-file-reader/component-meta-checker.ts"))};`,
         ].join("\n"),
     );
     const outfile = path.join(outDir, "implementations.mjs");
@@ -178,11 +193,35 @@ function formatValue(value) {
     return text.replaceAll("|", "\\|").replaceAll("\n", "⏎");
 }
 
-const { outDir, root, include, exclude, tsconfig } = parseArgs(
-    process.argv.slice(2),
-);
+const { outDir, root, include, exclude, tsconfig, baseline, candidate } =
+    parseArgs(process.argv.slice(2));
 await fs.mkdir(outDir, { recursive: true });
-const { translateAPI, translateAPIDocgen } = await loadImplementations(outDir);
+const {
+    translateAPI,
+    translateAPIDocgen,
+    translateAPIRefactor,
+    resolveTsconfig,
+} = await loadImplementations(outDir);
+
+const implementations = {
+    docgen: {
+        label: "vue-docgen-api",
+        translate: (file) => translateAPIDocgen(file),
+    },
+    meta: {
+        label: "vue-component-meta (this branch)",
+        translate: (file) => translateAPI(file, tsconfig ? { tsconfig } : {}),
+    },
+    refactor: {
+        label: "refactor/vue-component-meta",
+        /* same tsconfig resolution as this branch for a fair comparison, the
+         * earlier branch takes a single tsconfig as argument */
+        translate: (file) =>
+            translateAPIRefactor(file, resolveTsconfig(file, { tsconfig })),
+    },
+};
+const baselineImplementation = implementations[baseline];
+const candidateImplementation = implementations[candidate];
 
 const includedFiles = new Set();
 for (const pattern of include) {
@@ -202,17 +241,17 @@ for (const file of files) {
     let error;
     try {
         const oldStart = performance.now();
-        oldApi = await translateAPIDocgen(file);
+        oldApi = await baselineImplementation.translate(file);
         oldTotalMs += performance.now() - oldStart;
     } catch (err) {
-        error = `vue-docgen-api: ${err.cause?.message ?? err.message}`;
+        error = `${baselineImplementation.label}: ${err.cause?.message ?? err.message}`;
     }
     try {
         const newStart = performance.now();
-        newApi = await translateAPI(file, tsconfig ? { tsconfig } : {});
+        newApi = await candidateImplementation.translate(file);
         newTotalMs += performance.now() - newStart;
     } catch (err) {
-        error = `${error ?? ""} vue-component-meta: ${err.cause?.stack ?? err.message}`;
+        error = `${error ?? ""} ${candidateImplementation.label}: ${err.cause?.stack ?? err.message}`;
     }
     const changes = oldApi && newApi ? diffComponent(oldApi, newApi) : [];
     results.push({ file: relative, error, changes, oldApi, newApi });
@@ -228,13 +267,13 @@ for (const change of allChanges) {
 }
 
 const lines = [
-    `# vue-docgen-api vs vue-component-meta`,
+    `# ${baselineImplementation.label} vs ${candidateImplementation.label}`,
     "",
     `- Components: ${files.length}`,
     `- Identical output: ${results.filter((it) => !it.error && it.changes.length === 0).length}`,
     `- Errors: ${results.filter((it) => it.error).length}`,
-    `- vue-docgen-api time: ${oldTotalMs.toFixed(0)} ms (sequential)`,
-    `- vue-component-meta time: ${newTotalMs.toFixed(0)} ms (sequential, includes building the TypeScript program)`,
+    `- ${baselineImplementation.label} time: ${oldTotalMs.toFixed(0)} ms (sequential)`,
+    `- ${candidateImplementation.label} time: ${newTotalMs.toFixed(0)} ms (sequential)`,
     "",
     "## Summary",
     "",
@@ -252,7 +291,7 @@ const lines = [
     "",
     "## Changes",
     "",
-    "| File | Section | Name | Change | vue-docgen-api | vue-component-meta |",
+    `| File | Section | Name | Change | ${baselineImplementation.label} | ${candidateImplementation.label} |`,
     "| --- | --- | --- | --- | --- | --- |",
     ...allChanges.map(
         (change) =>

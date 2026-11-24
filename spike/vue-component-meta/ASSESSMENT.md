@@ -110,9 +110,66 @@ Review needed before shipping: whether the default-value presentation, and the r
 
 vue-docgen-api is slow on the full set because `vue-labs`' XTimeTextField makes it resolve the built `@fkui/vue`. The cost is paid once per build.
 
+## Comparison with `origin/refactor/vue-component-meta`
+
+An earlier, unmerged attempt exists: commit 573d624 by David Sveningsson, 2025-12-21, `feat(deps)!: replace vue-docgen-api with vue-component-meta`. Its implementation is copied verbatim, apart from import paths, to `translate-api-refactor.ts`, so the harness can compare it (`--baseline` / `--candidate refactor`). Reports: `fkui-refactor-vs-docgen/report.md` and `fkui-refactor-vs-meta/report.md`.
+
+### What it does
+
+- Only **slots** move to vue-component-meta. **Props, events and models still come from vue-docgen-api**, so the archived dependency stays, and so do its bugs: `fetchData?()` is dropped, and `defineModel`, destructure defaults, the composition `emits` object and `TSFunctionType` are unchanged.
+- Slot docs in HTML comments are removed as a breaking change. Slots must be declared with `defineSlots()` or `slots: Object as SlotsType<…>`.
+- `vueFileReader` becomes a factory, `vueFileReader(tsconfig = "tsconfig.json")`, which is a breaking change for every consumer. vue-component-meta is an optional peer dependency loaded with a dynamic `import()`.
+- The returned reader calls `createChecker(tsconfig)` for every file, so the TypeScript program is rebuilt per component.
+
+### Results
+
+|                                                                     | vue-docgen-api (`main`)   | `refactor/vue-component-meta`                                                                       | This branch                                             |
+| ------------------------------------------------------------------- | ------------------------- | --------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| This branch's spec (37 tests)                                       | 18 pass / 19 fail         | 18 pass / 19 fail                                                                                   | 37 pass                                                 |
+| Its own spec, Jest on a 2025-12 base, not run here                  | (same tests: 4 skipped)   | 26 active, 4 skipped (enums ×2, `defineModel`, composition emits object)                            | –                                                       |
+| FKUI slots / with description                                       | 235 / 203                 | 56 / 4                                                                                              | 234 / 203                                               |
+| FKUI slot bindings / with description                               | 128 / 120                 | 40 / 1                                                                                              | 127 / 121                                               |
+| FKUI components identical to vue-docgen-api                         | –                         | 72 of 144 (only slots differ)                                                                       | 68 of 144 (differences classified above)                |
+| `fetchData?()`, `defineModel`, destructure defaults, function types | ✗                         | ✗                                                                                                   | ✓                                                       |
+| Event docs, `extends`, validator enums                              | ✓                         | ✓ (via vue-docgen-api)                                                                              | ✓ (source pass)                                         |
+| Template `@slot` / `@binding` comments                              | ✓                         | ✗ (breaking)                                                                                        | ✓                                                       |
+| `defineSlots()` / `SlotsType` JSDoc and binding types               | partial (types `unknown`) | ✓                                                                                                   | ✓                                                       |
+| Options-API slots without `SlotsType`                               | ✓                         | ✗ (vue-component-meta reports none)                                                                 | ✓                                                       |
+| Archived `vue-docgen-api` at runtime                                | yes                       | yes                                                                                                 | no                                                      |
+| `vueFileReader` API                                                 | `(filePath)`              | breaking: `(tsconfig?) => reader`                                                                   | unchanged, plus `createVueFileReader({ tsconfig })`     |
+| Finding the tsconfig                                                | –                         | explicit; one tsconfig must include every component                                                 | automatic (nearest, following `references`) or explicit |
+| FKUI full set, time                                                 | 5.4–6.9 s                 | ~225 s extrapolated (~1.5 s per file with a new checker each time); ~8 s if the checker were cached | 7.9–8.7 s                                               |
+| `typescript` / vue-component-meta loading                           | –                         | lazy, optional peer                                                                                 | eager, required peer                                    |
+
+The two implementations fail different tests from this branch's spec. Some expectations encode this branch's intended output (e.g. default-value formatting), so that row shows coverage, not strict correctness.
+
+**FKUI impact of the earlier approach:** 179 of 235 slots and 199 of 203 slot descriptions disappear until FKUI rewrites the slot docs of about 80 components as `defineSlots()` or `SlotsType`. For the 65 options-API components that also means adding `slots: Object as SlotsType<…>`.
+
+### Worth adopting from the earlier branch
+
+- **Lazy loading.** It dynamically imports vue-component-meta and makes it an optional peer dependency. This branch imports `vue-component-meta` and `typescript` when the module loads, so every docs-generator consumer needs TypeScript ≤ 6 installed, even without `vueFileReader`. Loading the extractor (and `sfc-source.ts`/`component-type.ts`) on the first `vueFileReader` call avoids that and softens the TypeScript 7 problem.
+- **Optional slots in `defineSlots()`** (`default?()`), as in its fixtures. Already handled here; worth a fixture.
+
+### Recommendation
+
+Continue from this branch rather than the earlier one:
+
+- it removes vue-docgen-api instead of keeping it;
+- it fixes the reported bugs;
+- it keeps FKUI's existing slot documentation working;
+- it does not break `vueFileReader`.
+
+The earlier branch's goal of steering authors toward `defineSlots()` / `SlotsType` still makes sense as guidance, but not as a hard break. Both are supported here.
+
+Before either goes further, agree with the author of `origin/refactor/vue-component-meta` on two questions:
+
+1. Should HTML-comment slot docs keep working?
+2. Should `vueFileReader` stay zero-config?
+
 ## Open questions
 
 - Report the three vue-component-meta gaps upstream?
+- Lazy-load vue-component-meta and TypeScript as optional peers (as the earlier branch does)?
 - How to support consumers on TypeScript 7: bundle TS 6 under an alias, or require `typescript` ≤ 6?
 - Accept the default-value presentation and the resolved types as a documented breaking change (major version)?
 - Watch mode: invalidate cached checkers when non-`.vue` dependencies change.
