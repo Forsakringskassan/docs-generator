@@ -1,2 +1,2 @@
-export { type VueFileReaderOptions } from "./component-meta-checker";
+export { type VueFileReaderOptions } from "./vue-file-reader-options";
 export { createVueFileReader, vueFileReader } from "./vue-file-reader";

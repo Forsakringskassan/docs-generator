@@ -20,7 +20,6 @@ import {
 } from "./component-api";
 import {
     type ComponentMetaChecker,
-    type VueFileReaderOptions,
     getComponentMetaChecker,
 } from "./component-meta-checker";
 import {
@@ -45,6 +44,7 @@ import {
     findNodeInProgramFile,
     parseSfcSource,
 } from "./sfc-source";
+import { type VueFileReaderOptions } from "./vue-file-reader-options";
 
 type EventProperty = ComponentEvent["properties"][number];
 type SlotBinding = ComponentSlot["bindings"][number];

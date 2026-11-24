@@ -43,6 +43,9 @@ export interface ComponentAttribute {
 export function cookieProcessor(options?: ProcessorOptions): Processor;
 
 // @public
+export function createVueFileReader(options?: VueFileReaderOptions): (filePath: string) => Promise<DocumentPartial[]>;
+
+// @public
 export function defineSources(sources: SourceFiles[]): SourceFiles[];
 
 // @public (undocumented)
@@ -644,6 +647,11 @@ export interface VersionProcessorOptions extends ProcessorOptions {
 
 // @public
 export function vueFileReader(filePath: string): Promise<DocumentPartial[]>;
+
+// @public (undocumented)
+export interface VueFileReaderOptions {
+    tsconfig?: string;
+}
 
 // (No @packageDocumentation comment for this package)
 

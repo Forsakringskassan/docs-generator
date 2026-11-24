@@ -194,6 +194,9 @@
   "peerDependenciesMeta": {
     "express": {
       "optional": true
+    },
+    "typescript": {
+      "optional": true
     }
   },
   "engines": {

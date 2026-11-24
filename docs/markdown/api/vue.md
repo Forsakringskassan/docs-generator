@@ -32,6 +32,9 @@ const docs = new Generator(import.meta.dirname, {
 await docs.build();
 ```
 
+Component types are resolved with TypeScript, which requires `typescript` 5.x or 6.x to be installed (TypeScript 7 does not provide the compiler API).
+The nearest `tsconfig.json` including the component is used, use `createVueFileReader({ tsconfig: "path/to/tsconfig.json" })` instead of `vueFileReader` to choose another one.
+
 This will read each component and generate API documentation which can later be included in markdown with:
 
 ```md
