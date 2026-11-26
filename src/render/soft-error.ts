@@ -16,6 +16,10 @@ export interface SoftErrorDetails {
     EINCLUDETARGET: { id: string };
     EINCLUDERECURSION: undefined;
     ETAGMISSING: undefined;
+    EVARIABLEFORMAT: undefined;
+    EVARIABLETARGET: {
+        key: string;
+    };
 }
 
 /**

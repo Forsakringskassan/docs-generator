@@ -142,6 +142,8 @@ export interface MarkdownOptions {
     messagebox?: {
         title?: Record<string, string>;
     };
+    // (undocumented)
+    templateData?: Record<string, unknown>;
 }
 
 // @public
@@ -210,6 +212,12 @@ export interface SoftErrorDetails {
     };
     // (undocumented)
     ETAGMISSING: undefined;
+    // (undocumented)
+    EVARIABLEFORMAT: undefined;
+    // (undocumented)
+    EVARIABLETARGET: {
+        key: string;
+    };
 }
 
 // @public (undocumented)

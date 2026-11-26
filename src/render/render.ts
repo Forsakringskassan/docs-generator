@@ -358,6 +358,7 @@ export async function render(
         },
         messagebox: options.markdown.messagebox,
         linkResolvers,
+        templateData,
     });
 
     njk.addFilter("marked", (content: string) => {
