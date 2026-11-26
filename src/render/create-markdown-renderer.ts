@@ -67,6 +67,8 @@ export interface MarkdownOptions {
 
     /** List of link resolvers to use */
     readonly linkResolvers?: LinkResolver[] | undefined;
+
+    templateData?: Record<string, unknown>;
 }
 
 /**
@@ -167,7 +169,7 @@ export function createMarkdownRenderer(
             env.ids = new Set();
             const html = md.render(content, env);
             return processInlineTags(
-                inlineTags(linkResolvers ?? []),
+                inlineTags(linkResolvers ?? [], options.templateData ?? {}),
                 doc,
                 docs,
                 html,

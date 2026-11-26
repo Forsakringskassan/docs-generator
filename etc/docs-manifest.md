@@ -37,6 +37,7 @@ markdown/containers/messagebox.html
 markdown/definition-lists.html
 markdown/images.html
 markdown/index.html
+markdown/inline-tags.html
 markdown/mermaid.html
 markdown/redirects.html
 markdown/tabs.html

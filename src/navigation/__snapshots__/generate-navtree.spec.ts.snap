@@ -125,6 +125,13 @@ exports[`smoketest 1`] = `
         },
         {
           "external": false,
+          "id": "fs:docs/markdown/inline-tags.md",
+          "path": "./markdown/inline-tags.html",
+          "sortorder": Infinity,
+          "title": "Inline-tags",
+        },
+        {
+          "external": false,
           "id": "fs:docs/markdown/mermaid.md",
           "path": "./markdown/mermaid.html",
           "sortorder": Infinity,
