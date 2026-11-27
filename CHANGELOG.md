@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## [3.25.1](https://github.com/Forsakringskassan/docs-generator/compare/v3.25.0...v3.25.1) (2026-11-27)
+
+### Bug Fixes
+
+* **deps:** update dependency i18next to v27.1.5 ([006d8fa](https://github.com/Forsakringskassan/docs-generator/commit/006d8faa00b7e7b6d159763fc8896e97f54441f9))
+* **deps:** update dependency i18next to v27.2.1 ([09211d0](https://github.com/Forsakringskassan/docs-generator/commit/09211d08f82934a6a69b836ff350f26c78b36df5))
+* **deps:** update dependency i18next to v27.2.2 ([3d15beb](https://github.com/Forsakringskassan/docs-generator/commit/3d15beb01805cb6a1401124c727801f26b3a660a))
+* **deps:** update dependency i18next to v27.2.3 ([6aa71b9](https://github.com/Forsakringskassan/docs-generator/commit/6aa71b994f125144b067d0b54c8c2c853f3836e8))
+
 ## [3.25.0](https://github.com/Forsakringskassan/docs-generator/compare/v3.24.4...v3.25.0) (2026-11-20)
 
 ### Features
