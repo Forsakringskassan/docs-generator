@@ -142,10 +142,13 @@ main #docs-aside dd {
 
 .code-preview--borderless {
     width: 100%;
-    background-color: var(--docs-code-background-color);
 
     &[data-tags~="live-example"] {
         border-radius: $code-preview-border-radius;
+    }
+
+    .live-example__controls {
+        background-color: var(--docs-code-background-color);
     }
 }
 

@@ -220,6 +220,25 @@ It follows the same light or dark color-scheme preference as the checkered backg
 <p>Hello world!</p>
 ```
 
+### Borderless
+
+Removes the visual border and background from the example.
+Typically combined with the `nomarkup` tag.
+
+**Input:**
+
+````md
+```html nomarkup borderless
+<p>Hello world!</p>
+```
+````
+
+**Output:**:
+
+```html nomarkup borderless
+<p>Hello world!</p>
+```
+
 ## Runnable examples
 
 ```import
