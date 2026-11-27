@@ -59,6 +59,16 @@ export interface ProcessorContext {
     addResource(dst: string, src: string): void;
 
     /**
+     * Register additional source files or dependencies required by a document
+     * (e.g. files imported by live examples).
+     */
+    addDependencies(filePath: string, files: Iterable<string>): void;
+    /**
+     * Get all registered dependencies for a document.
+     */
+    getDependencies(filePath: string): ReadonlySet<string>;
+
+    /**
      * Add a new block to be rendered in the template.
      *
      * @param container - The template container to add the block to. The

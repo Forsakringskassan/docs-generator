@@ -24,7 +24,6 @@ import {
 import { manifestState } from "./manifest-processor";
 
 type ManifestPage = Manifest["pages"][number];
-type ManifestExample = ManifestPage["examples"][number];
 
 /**
  * Serializable metadata exported with extracted documentation.
@@ -117,14 +116,6 @@ function commonPath(a: string, b: string): string {
     return common.join(path.sep);
 }
 
-/**
- * Get all source files used by an example. Inline examples do not have any
- * source files.
- */
-function getExampleSources(example: ManifestExample): string[] {
-    return example.src ? [example.src] : [];
-}
-
 function getDestination(src: string, outputFolder: string): string {
     const common = commonPath(path.resolve(outputFolder), path.resolve(src));
     const subpath = path.relative(common, path.resolve(src));
@@ -171,11 +162,9 @@ export async function extractExamples(
     options: { outputFolder: string },
 ): Promise<void> {
     const { outputFolder } = options;
-    const uniqueFiles = new Set(
-        pages
-            .flatMap((page) => page.examples)
-            .flatMap((example) => getExampleSources(example)),
-    );
+
+    const uniqueFiles = new Set(pages.flatMap((page) => page.inputs));
+
     const files = new Map(
         Array.from(uniqueFiles, (src) => {
             return [src, getDestination(src, outputFolder)];

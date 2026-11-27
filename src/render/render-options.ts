@@ -30,4 +30,5 @@ export interface RenderOptions {
     };
 
     addResource(this: void, dst: string, src: string): void;
+    addDependencies(filePath: string, files: Iterable<string>): void;
 }

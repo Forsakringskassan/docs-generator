@@ -9,6 +9,7 @@ export interface Manifest {
         title: string;
         redirect: null | string;
         outline: Array<{ heading: string; anchor: string }>;
+        inputs: string[];
         examples: Array<{
             name?: string;
             /** Path to imported example file (relative to project root) or `null` if example is inline */
