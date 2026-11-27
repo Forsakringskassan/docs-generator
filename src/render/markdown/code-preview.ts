@@ -186,7 +186,8 @@ export function codePreview(
         const testId = findTestId(tags) ?? findTag(tags, "name")?.value;
         const liveExample = tags.includes("live-example");
         const staticCode = !example.runtime || tags.includes("static");
-        const noMarkup = tags.includes("nomarkup");
+        const noMarkup =
+            tags.includes("nomarkup") || tags.includes("borderless");
         const fullscreen = tags.includes("fullscreen");
         const wrapperModifier = getWrapperClassModifier(tags);
         const previewModifier = getPreviewClassModifier(tags);
