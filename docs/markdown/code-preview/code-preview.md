@@ -223,19 +223,19 @@ It follows the same light or dark color-scheme preference as the checkered backg
 ### Borderless
 
 Removes the visual border and background from the example.
-Typically combined with the `nomarkup` tag.
+Implies the `nomarkup` tag.
 
 **Input:**
 
 ````md
-```html nomarkup borderless
+```html borderless
 <p>Hello world!</p>
 ```
 ````
 
 **Output:**:
 
-```html nomarkup borderless
+```html borderless
 <p>Hello world!</p>
 ```
 

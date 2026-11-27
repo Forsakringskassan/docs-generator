@@ -256,18 +256,13 @@ describe("borderless tag", () => {
     it("should not apply user background", async () => {
         expect.assertions(1);
         const source = dedent`
-	        \`\`\`html nomarkup borderless
+	        \`\`\`html borderless
 	        <p>Hello world!</p>
 	        \`\`\`
 	    `;
         const result = await renderMarkdown(source);
         expect(result).toMatchInlineSnapshot(`
-          <div
-              id="example-3b50f8"
-              class="code-preview code-preview--borderless"
-              data-tags="nomarkup borderless"
-              data-language="html"
-          >
+          <div id="example-a9792e" class="code-preview code-preview--borderless" data-tags="borderless" data-language="html">
               <div class="code-preview__preview">[ mocked example content ]</div>
           </div>
         `);
