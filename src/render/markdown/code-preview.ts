@@ -38,11 +38,18 @@ export interface CodePreviewOptions {
     getImportedSource(this: void, filename: string): string;
 }
 
-function getClassModifier(tags: string[]): string {
+function getWrapperClassModifier(tags: string[]): string {
     if (tags.includes("borderless")) {
         return "code-preview--borderless";
     }
     return "code-preview--default";
+}
+
+function getPreviewClassModifier(tags: string[]): string {
+    if (tags.includes("borderless")) {
+        return "";
+    }
+    return "user-background";
 }
 
 function getStandalonePath(output: string | null): string | null {
@@ -181,7 +188,8 @@ export function codePreview(
         const staticCode = !example.runtime || tags.includes("static");
         const noMarkup = tags.includes("nomarkup");
         const fullscreen = tags.includes("fullscreen");
-        const modifier = getClassModifier(tags);
+        const wrapperModifier = getWrapperClassModifier(tags);
+        const previewModifier = getPreviewClassModifier(tags);
         const standalonePath = getStandalonePath(example.output);
         const showFullscreen = Boolean(standalonePath) && fullscreen;
         const testIdAttr = testId ? `data-test="${testId}"` : "";
@@ -227,7 +235,7 @@ export function codePreview(
             return /* HTML */ `
                 <div
                     id="example-${fingerprint}"
-                    class="code-preview ${modifier}"
+                    class="code-preview ${wrapperModifier}"
                     ${testIdAttr}
                     ${dataTagsAttr}
                     data-language="${example.language}"
@@ -242,14 +250,14 @@ export function codePreview(
             return /* HTML */ `
                 <div
                     id="example-${fingerprint}"
-                    class="code-preview ${modifier}"
+                    class="code-preview ${wrapperModifier}"
                     ${testIdAttr}
                     ${dataTagsAttr}
                     ${backgroundAttr}
                     data-language="${example.language}"
                 >
                     ${example.comments.join("\n")}
-                    <div class="code-preview__preview user-background">
+                    <div class="code-preview__preview ${previewModifier}">
                         ${example.markup}
                     </div>
                 </div>
@@ -291,14 +299,14 @@ export function codePreview(
         return /* HTML */ `
             <div
                 id="example-${fingerprint}"
-                class="code-preview ${modifier}"
+                class="code-preview ${wrapperModifier}"
                 ${testIdAttr}
                 ${dataTagsAttr}
                 ${backgroundAttr}
                 data-language="${example.language}"
             >
                 ${example.comments.join("\n")}
-                <div class="code-preview__preview user-background">
+                <div class="code-preview__preview ${previewModifier}">
                     ${example.markup}
                 </div>
                 <div>${toggleMarkup} ${toggleFullscreen}</div>
