@@ -180,7 +180,7 @@
     "rollup-plugin-visualizer": "7.3.0",
     "sass": "1.108.2",
     "typescript": "npm:@typescript/typescript6@6.0.2",
-    "vitest": "5.1.1"
+    "vitest": "5.1.2"
   },
   "peerDependencies": {
     "esbuild": "0.x",
