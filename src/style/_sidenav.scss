@@ -57,15 +57,15 @@
     }
 }
 
-.docs-icon.icon-back {
+.sidenav__toggle-icon-back {
     display: none;
 }
 
-.sidenav__toggle:checked + label .docs-icon.icon-menu {
+.sidenav__toggle:checked + label .sidenav__toggle-icon-menu {
     display: none;
 }
 
-.sidenav__toggle:checked + label .docs-icon.icon-back {
+.sidenav__toggle:checked + label .sidenav__toggle-icon-back {
     display: block;
 }
 
@@ -87,9 +87,10 @@
         display: none;
     }
 
-    .docs-icon.icon-menu {
+    .sidenav__toggle-icon-menu {
         display: none;
     }
+
     .sidenav__toggle-label {
         display: none;
     }
