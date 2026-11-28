@@ -1,0 +1,88 @@
+.badge {
+  border-radius: var(--f-border-radius-medium);
+  border-style: solid;
+  border-width: var(--f-border-width-small);
+  box-sizing: border-box;
+  color: var(--f-text-color-default);
+  display: inline-block;
+  font-size: var(--f-font-size-standard);
+  line-height: var(--f-line-height-large);
+  font-weight: var(--f-font-weight-normal);
+  padding: 0 0.5rem;
+}
+
+.badge--default {
+  background-color: var(--f-background-badge-default);
+  border-color: var(--f-background-badge-default);
+}
+
+.badge--default-inverted {
+  background-color: var(--f-background-badge-default-inverted);
+  border-color: var(--f-border-color-badge-default);
+}
+
+.badge--warning {
+  background-color: var(--f-background-badge-warning);
+  border-color: var(--f-background-badge-warning);
+}
+
+.badge--warning-inverted {
+  background-color: var(--f-background-badge-warning-inverted);
+  border-color: var(--f-border-color-badge-warning);
+}
+
+.badge--error {
+  color: var(--f-text-color-default-inverted);
+  background-color: var(--f-background-badge-error);
+  border-color: var(--f-background-badge-error);
+}
+
+.badge--error-inverted {
+  background-color: var(--f-background-badge-error-inverted);
+  border-color: var(--f-border-color-badge-error);
+}
+
+.badge--success {
+  color: var(--f-text-color-default-inverted);
+  background-color: var(--f-background-badge-success);
+  border-color: var(--f-background-badge-success);
+}
+
+.badge--success-inverted {
+  background-color: var(--f-background-badge-success-inverted);
+  border-color: var(--f-border-color-badge-success);
+}
+
+.badge--info {
+  color: var(--f-text-color-default-inverted);
+  background-color: var(--f-background-badge-info);
+  border-color: var(--f-background-badge-info);
+}
+
+.badge--info-inverted {
+  background-color: var(--f-background-badge-info-inverted);
+  border-color: var(--f-border-color-badge-info);
+}
+
+.icon,
+.icon-stack {
+  display: inline-block;
+  height: var(--f-icon-size-small);
+  max-height: 100%;
+  max-width: 100%;
+  pointer-events: none;
+  width: var(--f-icon-size-small);
+}
+
+.icon-stack {
+  position: relative;
+}
+
+.icon-stack .icon {
+  position: absolute;
+}
+
+.icon-stack--info .f-icon-circle {
+  color: var(--f-icon-color-white);
+  fill: var(--f-icon-color-info);
+}
