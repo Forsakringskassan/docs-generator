@@ -1470,9 +1470,9 @@
 </div>
 <div class="toolbar__item">
     <span class="version">
-        <span class="version-text-block">buggfix/link-button-design</span>  (<a href="https://github.com/Forsakringskassan/docs-generator/commits/89f931622695cb7ddc8c16760c4fc9846f0f8c7a">89f9316</a>)<br />
+        <span class="version-text-block">buggfix/link-button-design</span>  (<a href="https://github.com/Forsakringskassan/docs-generator/commits/46ab5b58a2be97c8456395c8302f0ef694092c56">46ab5b5</a>)<br />
         <a href="https://github.com/Forsakringskassan/docs-generator/pull/588">PR 588</a><br />
-       <span class="version-text-block">2026-11-28 07:46</span>
+       <span class="version-text-block">2026-11-28 18:19</span>
     </span>
 </div>
 </div>
@@ -1835,24 +1835,7 @@ Link resolvers are called in the same order as they appear in the list of proces
 }
 </code></pre>
                 </div>
-            <h3 id="variablel_resolver" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#variablel_resolver">Variablel resolver</a></h3><h4 id="template_variables_variable" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#template_variables_variable">Template variables (<code>{@variable ...}</code>)</a></h4><p class="docs-paragraph">In addition to <code>{@link ...}</code>, you can insert values stored in <code>templateData</code> (such as variables registered by processors via <code>context.setTemplateData(key, value)</code>) directly in Markdown files using the <code>{@variable &lt;name&gt;}</code> inline tag.</p>
-<p class="docs-paragraph">This works in regular Markdown text as well as inside HTML attributes:</p>
-
-                <div
-                    id="example-3c9c38"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="markdown"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-markdown" tabindex="0"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--primary&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;{@variable sandboxLink}&quot;</span>&gt;</span></span>
-<span class="hljs-code">    Open playground
-&lt;/a&gt;
-</span></code></pre>
-                </div>
-            <p class="docs-paragraph">If the referenced variable does not exist or is not a string or number, rendering will fail with <code>EVARIABLETARGET</code>.</p>
-
+            
 
                     </div>
                 </main>
