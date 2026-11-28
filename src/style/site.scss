@@ -63,26 +63,7 @@ body:has(#mobile-toggle:checked) {
     display: inline-block;
     width: var(--docs-icon-size);
     height: var(--docs-icon-size);
-    max-height: 100%;
     max-width: 100%;
+    max-height: 100%;
     pointer-events: none;
-
-    &-stack {
-        display: inline-block;
-        height: var(--docs-icon-size);
-        max-height: 100%;
-        max-width: 100%;
-        pointer-events: none;
-        width: var(--docs-icon-size);
-        position: relative;
-        .icon {
-            position: absolute;
-        }
-    }
-    &-stack--info {
-        .f-icon-circle {
-            color: #ffffff;
-            fill: #4a52b6;
-        }
-    }
 }

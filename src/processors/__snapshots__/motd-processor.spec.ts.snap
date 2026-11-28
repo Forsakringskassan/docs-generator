@@ -5,14 +5,12 @@ exports[`should render template with static message 1`] = `
 <template id="motd-message">
 <div class="docs-motd docs-motd--info">
     <span class="docs-motd__icon">
-        <span class="docs-icon-stack docs-icon-stack--info">
-            <svg class="docs-icon icon--circle" focusable="false" aria-hidden="true">
-                <use xlink:href="#docs-icon-circle"></use>
-            </svg>
-            <svg class="docs-icon icon--i" focusable="false" aria-hidden="true">
-                <use xlink:href="#docs-icon-i"></use>
-            </svg>
-        </span>
+        <svg class="docs-icon docs-motd__icon-circle" focusable="false" aria-hidden="true">
+            <use xlink:href="#docs-icon-circle"></use>
+        </svg>
+        <svg class="docs-icon docs-motd__icon-i" focusable="false" aria-hidden="true">
+            <use xlink:href="#docs-icon-i"></use>
+        </svg>
     </span><span data-bind="screenreader" class="sr-only"></span>
     <p data-bind="message"></p></div>
 </template>
@@ -22,14 +20,12 @@ exports[`should render template with static message 1`] = `
     
 <div class="docs-motd docs-motd--info">
     <span class="docs-motd__icon">
-        <span class="docs-icon-stack docs-icon-stack--info">
-            <svg class="docs-icon icon--circle" focusable="false" aria-hidden="true">
-                <use xlink:href="#docs-icon-circle"></use>
-            </svg>
-            <svg class="docs-icon icon--i" focusable="false" aria-hidden="true">
-                <use xlink:href="#docs-icon-i"></use>
-            </svg>
-        </span>
+        <svg class="docs-icon docs-motd__icon-circle" focusable="false" aria-hidden="true">
+            <use xlink:href="#docs-icon-circle"></use>
+        </svg>
+        <svg class="docs-icon docs-motd__icon-i" focusable="false" aria-hidden="true">
+            <use xlink:href="#docs-icon-i"></use>
+        </svg>
     </span><span class="sr-only">Informationsmeddelande</span>
     <p>lorem ipsum</p></div>
 </div>
@@ -41,14 +37,12 @@ exports[`should render template without static message 1`] = `
 <template id="motd-message">
 <div class="docs-motd docs-motd--info">
     <span class="docs-motd__icon">
-        <span class="docs-icon-stack docs-icon-stack--info">
-            <svg class="docs-icon icon--circle" focusable="false" aria-hidden="true">
-                <use xlink:href="#docs-icon-circle"></use>
-            </svg>
-            <svg class="docs-icon icon--i" focusable="false" aria-hidden="true">
-                <use xlink:href="#docs-icon-i"></use>
-            </svg>
-        </span>
+        <svg class="docs-icon docs-motd__icon-circle" focusable="false" aria-hidden="true">
+            <use xlink:href="#docs-icon-circle"></use>
+        </svg>
+        <svg class="docs-icon docs-motd__icon-i" focusable="false" aria-hidden="true">
+            <use xlink:href="#docs-icon-i"></use>
+        </svg>
     </span><span data-bind="screenreader" class="sr-only"></span>
     <p data-bind="message"></p></div>
 </template>
