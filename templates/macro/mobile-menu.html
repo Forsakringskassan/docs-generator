@@ -12,9 +12,14 @@
 
     <li class="expandable">
         <details {% if open %}open{% endif %}>
-            <summary>{{ item.title }} <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
-            {% if item.children.length > 0 %}
+            <summary>
+                {{ item.title }}
+                <svg class="docs-icon" focusable="false" aria-hidden="true">
+                    <use href="#docs-icon-arrow-down"></use>
+                </svg>
+            </summary>
 
+            {% if item.children.length > 0 %}
 
             {# Verify if parent link is already registered as a child. #}
                {% set alreadyExists = false %}

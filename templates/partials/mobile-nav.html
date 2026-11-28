@@ -4,7 +4,9 @@
 <div class="docs-mobile-nav">
     <input id="mobile-toggle" type="checkbox" class="sr-only" aria-label="{{$t('mobile-nav.aria-label')}}" />
     <label for="mobile-toggle" class="docs-mobile-nav-label">
-        <svg class="docs-icon"><use href="#docs-icon-menu"></use></svg>
+        <svg class="docs-icon" focusable="false" aria-hidden="true">
+            <use href="#docs-icon-menu"></use>
+        </svg>
         <span>{{$t("mobile-nav.menu")}}</span>
     </label>
     <nav id="nav-container" class="docs-mobile-navigation" aria-label="{{$t('mobile-nav.nav')}}">
