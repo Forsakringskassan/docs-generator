@@ -8,18 +8,20 @@ layout: content-with-menu
 ```html nomarkup
 <div class="docs-motd docs-motd--info">
     <span class="docs-motd__icon">
-        <span class="docs-stack docs-icon-stack--info">
-            <svg
-                class="docs-icon icon--circle"
-                focusable="false"
-                aria-hidden="true"
-            >
-                <use xlink:href="#docs-icon-circle"></use>
-            </svg>
-            <svg class="docs-icon icon--i" focusable="false" aria-hidden="true">
-                <use xlink:href="#docs-icon-i"></use>
-            </svg>
-        </span>
+        <svg
+            class="docs-icon docs-motd__icon-circle"
+            focusable="false"
+            aria-hidden="true"
+        >
+            <use xlink:href="#docs-icon-circle"></use>
+        </svg>
+        <svg
+            class="docs-icon docs-motd__icon-i"
+            focusable="false"
+            aria-hidden="true"
+        >
+            <use xlink:href="#docs-icon-i"></use>
+        </svg>
     </span>
     <span class="sr-only">Informationsmeddelande</span>
     <p>My awesome message of the day!</p>

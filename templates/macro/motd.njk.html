@@ -1,14 +1,12 @@
 {%- macro motd(message) %}
 <div class="docs-motd docs-motd--info">
     <span class="docs-motd__icon">
-        <span class="docs-icon-stack docs-icon-stack--info">
-            <svg class="docs-icon icon--circle" focusable="false" aria-hidden="true">
-                <use xlink:href="#docs-icon-circle"></use>
-            </svg>
-            <svg class="docs-icon icon--i" focusable="false" aria-hidden="true">
-                <use xlink:href="#docs-icon-i"></use>
-            </svg>
-        </span>
+        <svg class="docs-icon docs-motd__icon-circle" focusable="false" aria-hidden="true">
+            <use xlink:href="#docs-icon-circle"></use>
+        </svg>
+        <svg class="docs-icon docs-motd__icon-i" focusable="false" aria-hidden="true">
+            <use xlink:href="#docs-icon-i"></use>
+        </svg>
     </span>
     {%- if message -%}
     <span class="sr-only">Informationsmeddelande</span>

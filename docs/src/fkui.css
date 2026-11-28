@@ -53,23 +53,3 @@
     background-color: var(--f-background-badge-info-inverted);
     border-color: var(--f-border-color-badge-info);
 }
-
-.icon,
-.icon-stack {
-    display: inline-block;
-    height: var(--f-icon-size-small);
-    max-height: 100%;
-    max-width: 100%;
-    pointer-events: none;
-    width: var(--f-icon-size-small);
-}
-.icon-stack {
-    position: relative;
-}
-.icon-stack .icon {
-    position: absolute;
-}
-.icon-stack--info .f-icon-circle {
-    color: var(--f-icon-color-white);
-    fill: var(--f-icon-color-info);
-}
