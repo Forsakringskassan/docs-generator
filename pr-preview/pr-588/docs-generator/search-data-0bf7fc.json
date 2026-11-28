@@ -36,6 +36,7 @@
     "Definition lists",
     "Images",
     "Markdown",
+    "Inline-tags",
     "Mermaid",
     "Redirects",
     "Tabs",
@@ -233,6 +234,11 @@
     {
       "url": "markdown/index.html",
       "title": "Markdown",
+      "terms": []
+    },
+    {
+      "url": "markdown/inline-tags.html",
+      "title": "Inline-tags",
       "terms": []
     },
     {
@@ -434,6 +440,7 @@
     "59": 56,
     "60": 57,
     "61": 58,
-    "62": 59
+    "62": 59,
+    "63": 60
   }
 }
